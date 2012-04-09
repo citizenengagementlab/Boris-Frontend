@@ -1,0 +1,125 @@
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+/*
+// GRID SYSTEM
+// -----------
+
+// Fixed (940px)
+#gridSystem > .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth);
+
+// Fluid (940px)
+#fluidGridSystem > .generate(@gridColumns, @fluidGridColumnWidth, @fluidGridGutterWidth);
+*/
+body {
+  width: 100%;
+  *zoom: 1;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  display: table;
+  content: "";
+}
+body:after {
+  clear: both;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  *zoom: 1;
+  *zoom: 1;
+}
+.container:before,
+.container:after {
+  display: table;
+  content: "";
+}
+.container:after {
+  clear: both;
+}
+.container:before,
+.container:after {
+  content: "";
+  display: table;
+}
+.container:after {
+  clear: both;
+}
+.main-box {
+  background-color: #eeeeee;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+form {
+  background-color: #eeeeee !important;
+}
+.content {
+  background-color: #eeeeee;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.tabs {
+  background-color: #eeeeee;
+}
+.inline-form {
+  float: left;
+}
+.name-group li {
+  display: inline-block;
+  position: relative;
+  right: 25px;
+  margin-right: 10px;
+}
+.checkbox input[type="checkbox"] {
+  margin-left: -16px !important;
+}
+.mailing {
+  display: none;
+}
+button#continue-button {
+  position: relative;
+  left: 485px;
+  bottom: 10px;
+}
+button#register {
+  position: relative;
+  left: 450px;
+}
+button a {
+  color: #FFF;
+}
+body {
+  background-color: #474747;
+  background-image: -moz-linear-gradient(top, #555555, #333333);
+  background-image: -ms-linear-gradient(top, #555555, #333333);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), to(#333333));
+  background-image: -webkit-linear-gradient(top, #555555, #333333);
+  background-image: -o-linear-gradient(top, #555555, #333333);
+  background-image: linear-gradient(top, #555555, #333333);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#333333', GradientType=0);
+}

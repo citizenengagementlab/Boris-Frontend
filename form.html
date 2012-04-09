@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!-- Import CSS -->
+		<link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/css/bootstrap-responsive.css" />
+		
+		<!-- Import Javascript -->
+		<script type="text/javascript" src="scripts/js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="scripts/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="scripts/js/scripts.js"></script>
+	</head>
+	
+	<body>
+		<div class="container">
+			<form class="well main-box" id="accordion-group">
+				<input type="hidden" value="en" name="lang" id="lang" />
+				<div class="active" id="tab-new">
+					<h1 data-toggle="collapse" data-target="#accordion-new" data-parent="#accordion-group">Step 1 - Eligibility</h1>
+					<div id="accordion-new" class="content collapse in">				
+						<div class="control-group">
+							<label class="control-label" for="email_address">Email Address</label>
+							<div class="controls">
+								<input type="text" class="span3" name="email_address" id="email_address" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="home_zip_code">Zip Code</label>
+							<div class="controls">
+								<input type="text" class="span2" name="home_zip_code" id="home_zip_code" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="date_of_birth">Date of Birth</label>
+							<div class="controls">
+								<input type="text" class="span3" name="date_of_birth" id="date_of_birth" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<div class="controls">
+								<label class="control-label checkbox" for="us_citizen">
+									<input type="checkbox" name="us_citizen" id="us_citizen"/>I am a US Citizen
+								</label>
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<div class="controls">
+								<label class="control-label checkbox" for="first_registration">
+									<input type="checkbox" name="first_registration"  id="first_registration" />I am registering to vote for the first time.
+								</label>
+							</div>
+						</div>
+						
+						<p>Note:  If you are an American citizen living abroad or a uniformed military voter, click here to register to vote.</p>
+						
+						<button class="btn-large btn-primary continue" id="step1-submit" data-toggle="collapse" data-target="#accordion-personal" data-parent="#accordion-group" value="Continue">
+							<a data-toggle="tab" class="tab-link" href="#tab-personal">Continue</a>
+						</button>
+					</div>
+				</div>
+		
+				<div id="tab-personal">
+					<h1 data-toggle="collapse" data-target="#accordion-personal" data-parent="#accordion-group">Step 2 - Personal Information</h1>
+					<div id="accordion-personal" class="content collapse">
+						<h2>Name</h2>
+							<ul class="control-group name-group">
+								<li>
+								<label class="control-label" for="name_title">Title</label>
+								<div class="controls">
+									<select name="name_title" id="name_title" class="span1">
+										<option value=""></option>
+										<option value="Mr.">Mr.</option>
+										<option value="Mrs.">Mrs.</option>
+										<option value="Miss">Miss</option>
+										<option value="Ms.">Ms.</option>
+									</select>
+								</div>
+								</li>
+								<li>
+								<label class="control-label" for="first_name">First Name</label>
+								<div class="controls">
+									<input type="text" name="first_name" id="first_name" class="span2" />
+								</div>
+								</li>
+								<li>
+								<label class="control-label" for="middle_name">Middle Name</label>
+								<div class="controls">
+									<input type="text" name="middle_name" id="middle_name" class="span1" />
+								</div>
+								</li>
+								<li>
+								<label class="control-label" for="last_name">Last Name</label>
+								<div class="controls">
+									<input type="text" name="last_name" id="last_name" class="span2" />
+								</div>
+								</li>
+								<li>
+								<label class="control-label" for="name_suffix">Suffix</label>
+								<div class="controls">
+									<select id="name_suffix" name="name_suffix" class="span1">
+										<option value=""></option>
+										<option value="Jr">Jr.</option>
+										<option value="Sr">Sr.</option>
+										<option value="II">II</option>
+										<option value="III">III</option>
+										<option value="IV">IV</option>
+									</select>
+								</div>
+								</li>
+							</ul>		
+						<h2>Home Address</h2>
+						<ul class="control-group name-group">
+							<li>
+							<label class="control-label">Address</label>
+							<div class="controls">
+								<input type="text" name="home_address" class="span3" />
+							</div>
+							</li>
+							<li>
+							<label class="control-label" for="home_unit">Unit Lot</label>
+							<div class="controls">
+								<input type="text" class="span1" name="home_unit" id="home_unit" />
+							</div>
+							</li>
+						</ul>
+						<ul class="control-group name-group">
+							<li>
+							<label class="control-label" for="home_city">City</label>
+							<div class="controls">
+								<input type="text" name="home_city" class="span2" id="home_city" />
+							</div>
+							</li>
+							<li>
+							<label class="control-label" for="home_state_id">State</label>
+							<div class="controls">
+								<input type="text" name="home_state_id" class="span1" id="home_state_id" />
+							</div>
+							</li>
+							<li>
+							<label class="control-label" for="home_zip_code">Zip Code</label> 
+							<div class="controls">
+								<input type="text" name="home_zip_code" class="span1" id="home_zip_code"/>
+							</div>
+							</li>
+						</ul>
+						<div class="control-group">
+							<div class="controls">
+								<label class="checkbox" for="has_mailing_address">I get my mail at a different address from the one above.
+									<input type="checkbox" name="has_mailing_address" id="has_mailing_address" />
+								</label>
+							</div>
+							<div class="mailing">
+								<h2>Mailing Address</h2>
+								<ul class="control-group name-group">
+									<li>
+									<label class="control-label" for="mailing_address">Address</label>
+									<div class="controls">
+										<input type="text" name="mailing_address" class="span3" />
+									</div>
+									</li>
+									<li>
+									<label class="control-label" for="mailing_unit">Unit Lot</label>
+									<div class="controls">
+										<input type="text" name="mailing_unit" class="span1" id="unit" />
+									</div>
+									</li>
+								</ul>
+								<ul class="control-group name-group">
+									<li>
+									<label class="control-label" for="mailing_city">City</label>
+									<div class="controls">
+										<input type="text" name="mailing_city" class="span2" id="city" />
+									</div>
+									</li>
+									<li>
+									<label class="control-label" for="mailing_state">State</label>
+									<div class="controls">
+										<input type="text" name="mailing_state" class="span1" id="state" />
+									</div>
+									</li>
+									<li>
+									<label class="control-label" for="mailing_zip_code">Zip Code</label> 
+									<div class="controls">
+										<input type="text" name="mailing_zip_code" class="span1" id="zip3"/>
+									</div>
+									</li>
+								</ul>
+							</div>
+						</div>	
+						<ul class="control-group name-group">
+							<li>
+							<label class="control-label" for="race">Race</label>
+							<div class="controls">
+								<select id="race" name="race" class="span3">
+										<option value=""></option>
+										<option value="Jr">American Indian/Alaskan Native</option>
+										<option value="Sr">Asian/Pacific Islander</option>
+										<option value="II">Black (Not Hispanic)</option>
+										<option value="III">Hispanic</option>
+										<option value="IV">Multi-racial</option>
+										<option value="IV">White (not Hispanic)</option>
+										<option value="IV">Other</option>
+										<option value="IV">Decline to State</option>
+								</select>
+							</div>
+							</li>
+								
+							<li>
+							<label class="control-label" for="party">Party
+								<div class="controls">
+								<select id="party" name="party" class="span2">
+										<option value=""></option>
+										<option value="Jr">Democratic</option>
+										<option value="Sr">Independent</option>
+										<option value="II">Green</option>
+										<option value="III">Libertarian</option>
+										<option value="IV">Republican</option>
+										<option value="IV">Other</option>
+										<option value="IV">Decline to State</option>
+								</select>
+								</div>
+							</label>
+							</li>
+						</ul>
+						<button class="btn-large btn-primary continue" id="step2-submit" data-toggle="collapse" data-target="#accordion-additional" data-parent="#accordion-group" value="Continue"><a data-toggle="tab" class="tab-link" href="#tab-additional">Continue</a></button>
+					</div>
+				</div>
+				
+				
+				<div id="tab-additional">
+					<h1 data-toggle="collapse" data-target="#accordion-additional" data-parent="#accordion-group">Step 3 - Additional Information</h1>
+					<div id="accordion-additional" class="collapse content">
+						<div class="control-group">
+							<div class="controls">
+								<label class="control-label" for="id_number">ID Number</label>
+								<input type="text" class="span2" id="id_number">
+							</div>
+						</div>
+						<ul class="control-group name-group">
+							<li>
+							<label class="control-label" for="phone">Phone</label>
+							<div class="controls">
+								<input type="text" name="phone" class="span2 inline" id="phone" />
+								<span class="help-inline">###-###-####</span>
+							</div>
+							</li>
+							<li>
+							<label class="control-label" for="phone_type">Type</label>
+							<div class="controls">
+								<select id="registrant_race" name="phone_type" class="input-small">
+									<option value=""></option>
+									<option value="Jr">Mobile</option>
+									<option value="Sr">Work</option>
+									<option value="II">Home</option>
+									<option value="III">Other</option>
+								</select>
+							</div>
+							</li>
+						</ul>
+						<div class="control-group">
+							<div class="controls">
+								<label class="checkbox control-label" for="text_msg">
+								<input type="checkbox" id="text-msg" /> Send me text messages from Rock The Vote.</label>
+							</div>
+							<div class="controls">
+								<label class="checkbox control-label" for="change_of_name">
+								<input type="checkbox" name="change_of_name" id="change_of_name" /> I have changed my name.</label>
+							</div>
+							<div class="name-change">
+								<h2>Previous Name</h2>
+								<ul class="control-group name-group">
+									<li>
+									<label class="control-label" for="title">Title</label>
+									<div class="controls">
+										<select id="title" name="prev_name_title" class="span1">
+											<option value=""></option>
+											<option value="Mr.">Mr.</option>
+											<option value="Mrs.">Mrs.</option>
+											<option value="Miss">Miss</option>
+											<option value="Ms.">Ms.</option>
+										</select>
+									</div>
+									</li>
+									<li>
+									<label class="control-label">Full Name</label>
+									<div class="controls">
+										<input type="text" name="prev_first_name" class="span3" value="Full Name" />
+										<input type="text" name="prev_middle_name" class="span3" value="Middle Name" />
+										<input type="text" name="prev_last_name" class="span3" value="Last Name" />
+									</div>
+									</li>
+									<li>
+									<label class="control-label">Suffix</label>
+									<div class="controls">
+										<select id="registrant_name_suffix" name="previous_name_suffix" class="span1">
+											<option value=""></option>
+											<option value="Jr">Jr.</option>
+											<option value="Sr">Sr.</option>
+											<option value="II">II</option>
+											<option value="III">III</option>
+											<option value="IV">IV</option>
+										</select>
+									</div>
+									</li>
+								</ul>		
+							</div>
+							<div class="controls">
+								<label class=" checkbox control-label" for="change_of_address">
+								<input type="checkbox" name="change_of_address" id="change_of_address" /> I have changed my address.</label>
+							</div>
+							<div class="address-change">
+								<h2>Previous Address</h2>
+								<ul class="control-group name-group">
+									<li>
+									<label class="control-label">Address</label>
+									<div class="controls">
+										<input type="text" name="prev_address" class="span3" />
+									</div>
+									</li>
+									<li>
+									<label class="control-label" for="unit">Unit Lot</label>
+									<div class="controls">
+										<input type="text" name="prev_unit" class="span1" id="unit" />
+									</div>
+									</li>
+								</ul>
+								<ul class="control-group name-group">
+									<li>
+									<label class="control-label" for="city">City</label>
+									<div class="controls">
+										<input type="text" name="prev_city" class="span2" id="city" />
+									</div>
+									</li>
+									<li>
+									<label class="control-label" for="state">State</label>
+									<div class="controls">
+										<input type="text" name="prev_state_id" class="span1" id="state" />
+									</div>
+									</li>
+									<li>
+									<label class="control-label" for="zip4">Zip Code</label> 
+									<div class="controls">
+										<input type="text" name="prev_zip_code" class="span1" id="zip4"/>
+									</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<button class="btn-large btn-primary continue" id="step3-submit" data-toggle="collapse" data-target="#accordion-action" data-parent="#accordion-group" value="Continue"><a data-toggle="tab" class="tab-link" href="#tab-action">Continue</a></button>
+					</div>
+				</div>
+				
+				<div id="tab-action">
+					<h1 data-toggle="collapse" data-target="#accordion-action" data-parent="#accordion-group">Step 4 - Stay Informed and Take Action</h1>
+					<div id="accordion-action" class="collapse content">
+						<div class="control-group">
+							<div class="controls">
+								<label class="checkbox control-label" for="notifications">
+									<input type="checkbox" name="opt-in-email" id="notifications" /> Receive e-mails at youremail@email.com.
+								</label>
+								<label class="checkbox control-label" for="notifications">
+									<input type="checkbox" name="opt-in-sms" id="notifications" /> Receive text messages from Rock The Vote.
+								</label>
+							</div>
+							<p>We will send you timely election reminders, polling place information, and information about music and issues.</p>
+						</div>
+						<h2>Questions For You</h2>
+						<div class="control-group">
+							<label class="control-label" for="school">If you are in school, where do you go?</label>
+							<div class="controls">
+								<input type="text" class="input-xlarge" />
+							</div>	
+							<label class="control-label" for="issue">What issue do you care most about?</label>
+							<div class="controls">
+								<input type="text" class="span4" />
+							</div>
+							<div class="controls">
+								<label class="control-label checkbox" for="volunteer">
+									<input type="checkbox" id="volunteer" /> 
+									I would like to volunteer with Rock The Vote.
+								</label>
+							</div>
+						</div>
+						<div class="form-actions">
+							<button type="submit" id="register" class="btn-large btn-primary" value="Register Now">Register Now</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="tabs">
+				<ul id="tab" class="nav nav-tabs">
+					<li class="active"><a href="#tab-new" data-toggle="tab">New Registrant</a></li>
+					<li class=""><a href="#tab-personal" data-toggle="tab">Personal Information</a></li>
+					<li class=""><a href="#tab-additional" data-toggle="tab">Additional Information</a></li>
+					<li class=""><a href="#tab-action" data-toggle="tab">Take Action and Stay Informed</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

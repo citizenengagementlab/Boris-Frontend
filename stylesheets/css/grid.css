@@ -1,0 +1,21 @@
+/*
+// GRID SYSTEM
+// -----------
+
+// Fixed (940px)
+#gridSystem > .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth);
+
+// Fluid (940px)
+#fluidGridSystem > .generate(@gridColumns, @fluidGridColumnWidth, @fluidGridGutterWidth);
+*/
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before, body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}

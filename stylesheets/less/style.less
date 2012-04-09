@@ -1,0 +1,67 @@
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins.less";
+@import "grid.less";
+
+.container {
+	.container-fixed();
+}
+
+
+.main-box {
+	background-color:@grayLighter;
+	.center-block();
+	width:650px;
+	.border-radius(5px);
+}
+
+form {
+	background-color: @grayLighter !important;
+}
+.content {
+	background-color:@grayLighter;
+	.border-radius(5px);
+	
+}
+
+.tabs {
+	background-color: @grayLighter;
+}
+
+.inline-form {
+	float:left;
+}
+
+.name-group {
+	li {
+	display:inline-block;
+	position:relative;
+	right:25px;
+	margin-right: 10px; }
+}
+
+.checkbox input[type="checkbox"] {
+	margin-left: -16px !important;
+}
+
+.mailing {
+	display:none;
+}
+
+button#continue-button {
+	position: relative;
+	left: 485px;
+	bottom: 10px;
+}
+
+button#register {
+	position:relative;
+	left:450px;
+}
+
+button a {
+	color:#FFF;
+}
+
+body {
+	#gradient.vertical();
+}
