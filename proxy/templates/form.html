@@ -11,18 +11,16 @@
 	</head>
 	
 	<body>
+		<div class="container">
 		<header>
-			<img src="http://placehold.it/232x79">
+			<img id="logo" src="/static/img/RTVlogo.svg">
 			<h1>Voter Registration</h1>
 		</header>
 		<section>
-			<header>
-				<h2>Get Registered!</h2>
-				<p>Registering to vote is easy -- and you can do it now.</p>
-			</header>
-			
 			<form action="" method="get" id="get_started">
 				<fieldset id="get_started">
+					<legend class="accordion-header">Get Registered!</legend>
+					<p>Registering to vote is easy -- and you can do it now.</p>
 					<ul>
 						<li>
 							<label for="first_name">First Name</label>
@@ -40,15 +38,16 @@
 							<label for="home_zip_code">Zip Code</label>
 							<input type="text"  name="zip_code" id="zip_code" />
 						</li>
-					</ul>
-					<button type="submit" id="get_started_submit">Get Started</button>
+						<li class="form-action">
+							<input type="submit" id="get_started" value="Get Started"></input>
+						</li>					</ul>
 				</fieldset>
 			</form>
-			
+		</section>
+		<section>
 			<form action="" method="post" id="ovr">
-			<section>
-			<h2>Address</h2>
 			<fieldset id="address">
+				<legend class="accordion-header">Address Information</legend>
 				<ul>
 					<li>
 						<label for="home_address">Address</label>
@@ -81,8 +80,9 @@
 					</li>
 				</ul>
 			</fieldset>
-			<h2>Personal</h2>
 			<fieldset id="personal_info">
+				<legend class="accordion-header">Personal Information</legend>
+
 				<ul>
 					<li>
 						<label for="name_title">Title</label>
@@ -116,8 +116,8 @@
 					</li>
 				</ul>
 			</fieldset>		
-			<h2>Contact</h2>
 			<fieldset>
+				<legend class="accordion-header">Contact Information</legend>
 				<ul>
 					<li>
 						<label for="email_address">Email Address</label>
@@ -137,9 +137,9 @@
 						</label>
 					</li>
 				</ul>
-			</fieldset>		
-			<h2>Additional Information</h2>	
+			</fieldset>
 			<fieldset>
+				<legend class="accordion-header">Additional Information</legend>
 				<ul>
 					<li>
 						<label for="race">Race</label>
@@ -167,9 +167,13 @@
 							<input type="checkbox" name="us_citizen" id="us_citizen"/> I am a US Citizen
 						</label>
 					</li>
+					<li class="form-action">
+						<input type="submit" id="register" value="Register"></input>
+					</li>
 				</ul>
 			</fieldset>
-			<button type="submit" id="register">Register</button>
+		</form>
 		</section>
+	</div>
 	</body>
 </html>
