@@ -50,17 +50,33 @@ if (hash === "#tab") {
 		}
 	});
 	
-	//Ajax request for the form.
+	//first api hit, get state requirements
+	$("button#get_started").click(function(event){
+		event.preventDefault();
+		$.ajax({
+			type:"get",
+			url:"https://rtvdemo:bullwinkle@rtvstaging2.osuosl.org/api/v1/state_requirements.json",
+			data:{'home_zip_code':$("#home_zip_code").val(),
+						'lang':'en'},
+			success:function(response){
+				//load state values
+				
+				//valid political parties
+				for (i in response.party_list) {
+					var party = response.party_list[i];
+					$('select#party').append("<option val="+party+">"+party+"</option>");
+				}
+				//requirements
+				
+				//id validation
+				
+				//
+				
+			},
+			error:function(response){ console.log(response); }
+		});
+});
 	
-	$("#email_address").live("keyup", function(){
-	$.ajax({
-		type: "get",
-		url: "https://rtvstaging2.osuosl.org/api/v1/state_requirements.json?lang=en&home_zip_code=94608",
-		data: this.data,
-		dataType: "jsonp",
-		success: function(response){ alert(response); },
-		error: function(response){ alert(response); },
-		cache: false
 	});
 });
 /*
