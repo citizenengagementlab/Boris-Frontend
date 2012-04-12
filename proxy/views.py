@@ -13,7 +13,7 @@ def proxy(request, url):
         conn.add_credentials(settings.PROXY_CREDENTIALS['user'],
                              settings.PROXY_CREDENTIALS['password'])
                              
-    print request.method,
+    print "PROXY",request.method,
     if request.method == "GET":
         print request.GET
         url_ending = "%s?%s" % (url, urlencode(request.GET))
