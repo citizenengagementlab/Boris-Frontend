@@ -11,18 +11,16 @@
 	</head>
 	
 	<body>
+		<div class="container">
 		<header>
-			<img src="http://placehold.it/232x79">
+			<img id="logo" src="images/RTVlogo.svg">
 			<h1>Voter Registration</h1>
 		</header>
 		<section>
-			<header>
-			<h2>Get Registered!</h2>
-			<p>Registering to vote is easy -- and you can do it now.</p>
-			</header>
 			<form action="" method="post" id="ovr">
 				<fieldset>
-					<ul class="control-group name-group">
+					<legend class="accordion-header">Get Registered!</legend>
+					<p>Registering to vote is easy -- and you can do it now.</p>			<ul class="control-group name-group">
 						<li>
 							<label for="first_name">First Name</label>
 							<input type="text" name="first_name" id="first_name"  />
@@ -39,17 +37,21 @@
 							<label for="home_zip_code">Zip Code</label>
 							<input type="text"  name="home_zip_code" id="home_zip_code" />
 						</li>
+						<li class="form-action">
+							<input type="submit" id="get_started" value="Get Started"></input>
+						</li>
 					</ul>
-					<button type="submit" id="get_started">Get Started</button>
 				</fieldset>
+			</form>
 		</section>
 			
 		<section>
-			<h2>Address</h2>
+			<form action="" method="post" id="register_form">
 			<fieldset>
+				<legend class="accordion-header">Address Information</legend>
 				<ul>
 					<li>
-						<label for="home_address">Address</label>
+						<label for="home_address">Street Address</label>
 						<input type="text" name="home_address" id="home_address" />		
 					</li>
 					<li>
@@ -66,7 +68,7 @@
 					</li>
 					<li>
 						<label for="has_different_address">
-							<input type="checkbox" name="has_different_address" id="has_different_address" />
+							<input type="checkbox" name="has_different_address" id="has_different_address" /> I have a different mailing address.
 						</label>
 					</li>	
 					<li>
@@ -79,8 +81,8 @@
 					</li>
 				</ul>
 			</fieldset>
-			<h2>Personal</h2>
 			<fieldset>
+				<legend class="accordion-header">Personal Information</legend>
 				<ul>
 					<li>
 						<label for="name_title">Title</label>
@@ -114,8 +116,8 @@
 					</li>
 				</ul>
 			</fieldset>		
-			<h2>Contact</h2>
 			<fieldset>
+				<legend class="accordion-header">Contact Information</legend>
 				<ul>
 					<li>
 						<label for="email_address">Email Address</label>
@@ -136,11 +138,11 @@
 					</li>
 				</ul>
 			</fieldset>		
-			<h2>Additional Information</h2>	
 			<fieldset>
+				<legend class="accordion-header">Additional Information</legend>
 				<ul>
 					<li>
-						<label for="race">Race</label>
+						<label for="race">Race or Ethnic Group</label>
 						<select id="race" name="race" >
 							<option value=""></option>
 							<option value="Jr">American Indian/Alaskan Native</option>
@@ -154,21 +156,29 @@
 						</select>
 					</li>
 					<li>
-						<label for="party">Party
-							<select id="party" name="party">
-								<option value=""></option>
-							</select>
-						</label>
+						<label for="party">Political Party</label>
+						<select id="party" name="party">
+							<option value=""></option>
+							<option value="">Democratic</option>
+							<option value="">Libertarian</option>
+							<option value="">Republican</option>
+							<option value="">Unaffiliated</option>
+							<option value="">Other</option>
+						</select>
 					</li>
 					<li>
 						<label for="us_citizen">
-							<input type="checkbox" name="us_citizen" id="us_citizen"/>I am a US Citizen
+							<input type="checkbox" name="us_citizen" id="us_citizen" checked/> I am a US Citizen.
 						</label>
+					</li>
+					<li class="form-action">
+						<input type="submit" id="register" value="Register"></input>
 					</li>
 				</ul>
 			</fieldset>
-			<button type="submit" id="register">Register</button>
+			</form>
 		</section>
+	</div>
 	</body>
 </html>
 	
