@@ -16,6 +16,21 @@ var api_url = "http://localhost:8000/proxy";
 	};
 })( jQuery );
 
+function zipLookup(zip) {
+	var response = null;
+	$.ajax({
+		type:"get",
+		url:"/usps/zip_lookup",
+		data:{'zip':zip},
+		success:function(data) {
+			console.log(data);
+			$('form#ovr #home_zip_code').val(data.zip);
+			$('form#ovr #home_city').val(data.city);
+			$('form#ovr #home_state_id').val(data.state);
+		},
+	});
+}
+
 $(document).ready(function() {
 	//ui switch functionality
 	if (hash === "#tab") {
@@ -88,10 +103,14 @@ $(document).ready(function() {
 				
 				//sos contact info
 				
+				//do city, state lookup
+				usps = zipLookup($('form#get_started #zip_code').val());
+				
+				
 				//copy entered info over
 				$('form#ovr #first_name').val($('form#get_started #first_name').val());
 				$('form#ovr #last_name').val($('form#get_started #last_name').val());
-				$('form#ovr #home_zip_code').val($('form#get_started #zip_code').val());
+				//$('form#ovr #home_zip_code').val($('form#get_started #zip_code').val());
 				$('form#ovr #email_address').val($('form#get_started #email_address').val());
 			},
 			error:function(response){ console.log(response); }
@@ -141,9 +160,8 @@ $('#last_name').val('Smith');
 $('#email_address').val('jack@example.com');
 $('#name_title').val('Mr.');
 $('#home_address').val('123 Example Rd');
-$('#home_city').val('Carrum');
 $('#id_number').val('123-456-7890');
-$('#zip_code').val('06390');
+$('#zip_code').val('90210');
 $('#date_of_birth').val('1979-10-24');
 
 
