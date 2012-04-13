@@ -5,8 +5,8 @@ from django.shortcuts import render_to_response
 from django.conf import settings
 PROXY_FORMAT = u"https://%s/%s" % (settings.PROXY_DOMAIN, u"%s")
 
-def proxy(request, url):
     print "PROXY",request.method,
+def rtv-proxy(request, url):
     if request.method == "GET":
         print request.GET
         url_ending = "%s?%s" % (url, urllib.urlencode(request.GET))
