@@ -1,7 +1,7 @@
 var hash = document.location.hash;
 // Sets up the three UI templates.  Changing the hash tag in the URL switches the UI.
 
-var proxy_host = "http://localhost:8000/proxy";
+var api_url = "http://localhost:8000/proxy";
 
 (function( $ ){
 	$.fn.serializeJSON=function() {
@@ -66,11 +66,11 @@ $(document).ready(function() {
 	});
 	
 	//first api hit, get state requirements
-	$("button#get_started_submit").click(function(event){
+	$("input#get_started").click(function(event){
 		event.preventDefault();
 		$.ajax({
 			type:"get",
-			url:proxy_host+"/api/v1/state_requirements.json",
+			url:api_url+"/api/v1/state_requirements.json",
 			data:{'home_zip_code':$("#get_started #zip_code").val(),
 						'lang':'en'},
 			success:function(response){
@@ -99,7 +99,7 @@ $(document).ready(function() {
 });
 	
 	//second api hit, send off registration
-	$("button#register").click(function(event) {
+	$("input#register").click(function(event) {
 		event.preventDefault();
 		form_data = $('form#ovr').serializeJSON();
 		
@@ -107,15 +107,15 @@ $(document).ready(function() {
 		form_data.lang='en';
 		form_data.partner_id='1';
 		form_data.home_state_id='1'; //need to determine this from the zipcode...
+		form_data.opt_in_email
 		//form_data.partner_tracking_id='0';
 		console.log(form_data);
 		
 		$.ajax({
 			type:"POST",
-			url:proxy_host+"/api/v1/registrations.json",
+			url:api_url+"/api/v1/registrations.json",
 			data:{'registration':form_data},
-			//dataType:'jsonp',
-			cache:'true',
+			cache:'false',
 			success:function(response) {
 				console.log(response);
 			},
