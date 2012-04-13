@@ -1,7 +1,7 @@
 var hash = document.location.hash;
 // Sets up the three UI templates.  Changing the hash tag in the URL switches the UI.
 
-var api_url = "http://localhost:8000/proxy";
+var api_url = "http://localhost:8000/rtv-proxy";
 
 (function( $ ){
 	$.fn.serializeJSON=function() {
@@ -23,7 +23,6 @@ function zipLookup(zip) {
 		url:"/usps/zip_lookup",
 		data:{'zip':zip},
 		success:function(data) {
-			console.log(data);
 			$('form#ovr #home_zip_code').val(data.zip);
 			$('form#ovr #home_city').val(data.city);
 			$('form#ovr #home_state_id').val(data.state);
@@ -106,7 +105,6 @@ $(document).ready(function() {
 				//do city, state lookup
 				usps = zipLookup($('form#get_started #zip_code').val());
 				
-				
 				//copy entered info over
 				$('form#ovr #first_name').val($('form#get_started #first_name').val());
 				$('form#ovr #last_name').val($('form#get_started #last_name').val());
@@ -158,10 +156,10 @@ console.log('starting with example data');
 $('#first_name').val('Jack');
 $('#last_name').val('Smith');
 $('#email_address').val('jack@example.com');
+$('#zip_code').val('90210');
 $('#name_title').val('Mr.');
 $('#home_address').val('123 Example Rd');
 $('#id_number').val('123-456-7890');
-$('#zip_code').val('90210');
 $('#date_of_birth').val('1979-10-24');
 
 
