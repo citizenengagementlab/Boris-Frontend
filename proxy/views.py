@@ -40,7 +40,7 @@ def rtv_proxy(request, url):
         return HttpResponse(e.read(),status=e.code)
         
     content = response.read()
-    return HttpResponse(content)
+    return HttpResponse(content,mimetype="application/json")
 
 def register(request):
     return render_to_response('form.html')
