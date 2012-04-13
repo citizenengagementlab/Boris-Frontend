@@ -116,7 +116,7 @@ $(document).ready(function() {
 			error:function(response){ console.log(response); }
 		});
 });
-	
+
 	//second api hit, send off registration
 	$("input#register").click(function(event) {
 		event.preventDefault();

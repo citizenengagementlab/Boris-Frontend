@@ -16,7 +16,7 @@
 			<img id="logo" src="/static/img/RTVlogo.svg">
 			<h1>Voter Registration</h1>
 		</header>
-		<section>
+		<section id="state_form">
 			<form action="" method="get" id="get_started">
 				<fieldset id="get_started">
 					<legend class="accordion-header">Get Registered!</legend>
@@ -39,12 +39,13 @@
 							<input type="text"  name="zip_code" id="zip_code" />
 						</li>
 						<li class="form-action">
-							<input type="submit" id="get_started" value="Get Started"></input>
-						</li>					</ul>
+							<input type="submit" id="get_started" value="Get Started" />
+						</li>
+					</ul>
 				</fieldset>
 			</form>
 		</section>
-		<section>
+		<section id="registration_form">
 			<form action="" method="post" id="ovr">
 			<fieldset id="address">
 				<legend class="accordion-header">Address Information</legend>
@@ -169,7 +170,7 @@
 						</label>
 					</li>
 					<li class="form-action">
-						<input type="submit" id="register" value="Register"></input>
+						<input type="submit" id="register" value="Register" />
 					</li>
 				</ul>
 			</fieldset>
