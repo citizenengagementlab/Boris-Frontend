@@ -108,9 +108,9 @@ $(document).ready(function() {
 		form_data.partner_id='1';
 		form_data.home_state_id='1'; //need to determine this from the zipcode...
 		
-		//check required booleans for unchecked values
+		//check required booleans
 		var required_booleans = ['opt_in_email','opt_in_sms','us_citizen'];
-		
+		//and set unchecked fields to zero
 		for (i in required_booleans) {
 			field = required_booleans[i];
 			if (form_data[field] == null) {

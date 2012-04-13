@@ -28,8 +28,9 @@ def proxy(request, url):
         auth_handler = urllib2.HTTPBasicAuthHandler(password_manager)
         url_opener = urllib2.build_opener(auth_handler)
         urllib2.install_opener(url_opener)
-        password_manager.add_password(None, url, settings.PROXY_CREDENTIALS['user'],
-                                                 settings.PROXY_CREDENTIALS['password'])
+        password_manager.add_password(None, url, #none means don't specify realm
+                                      settings.PROXY_CREDENTIALS['user'],
+                                      settings.PROXY_CREDENTIALS['password'])
     try:
         if request.method == "GET":
             response = urllib2.urlopen(url)
