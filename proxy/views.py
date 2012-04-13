@@ -23,8 +23,11 @@ def proxy(request, url):
     elif request.method == "POST":
         print request.POST
         url = PROXY_FORMAT % url
-        data = urlencode(request.POST)
+        data = request.POST
         resp, content = conn.request(url, request.method, data)
+        print "POST DATA",request.POST
+        print "POST QUERY",data
+        print "PROXY RESPONSE",content
         return HttpResponse(content)
 
 def register(request):

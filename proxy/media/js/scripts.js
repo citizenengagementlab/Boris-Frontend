@@ -113,7 +113,7 @@ $(document).ready(function() {
 		$.ajax({
 			type:"POST",
 			url:proxy_host+"/api/v1/registrations.json",
-			data:form_data,
+			data:{'registration':form_data},
 			//dataType:'jsonp',
 			cache:'true',
 			success:function(response) {
