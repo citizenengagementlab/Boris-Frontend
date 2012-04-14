@@ -30,7 +30,40 @@ function zipLookup(zip) {
 	});
 }
 
+
+
 $(document).ready(function() {
+
+		//hide optional fields
+	$(".mailing").hide();
+	$(".name-change").hide();
+	$(".address-change").hide();
+	
+	//show optional fields when necessary
+	$("#has_different_address").toggle(function() {
+			$(this).find(':checkbox').attr('checked', true);
+			$('.mailing').show(); 
+		}, function() {
+			$(this).find(':checkbox').attr('checked', false);
+			$('.mailing').hide();
+	});
+	
+	$("#change_of_name").toggle(function() {
+			$(this).find(':checkbox').prop('checked', true);
+			$('.name-change').show();
+		}, function() {
+			$(this).find(':checkbox').prop('checked', false);
+			$('.name-change').hide();
+	});
+		
+	$("#change_of_address").toggle(function() {
+			$(this).find(':checkbox').prop('checked', true);
+			$('.address-change').show();
+		}, function() {
+			$(this).find(':checkbox').prop('checked', false);
+			$('.address-change').hide();
+	});
+
 	//ui switch functionality
 	if (hash === "#tab") {
 		$('.tabs').tab('show');
@@ -51,34 +84,9 @@ $(document).ready(function() {
 		$("button.continue").hide();
 	}
 	
-	//hide optional fields
-	$(".mailing").hide();
-	$(".name-change").hide();
-	$(".address-change").hide();
+
 	
-	//show optional fields when necessary
-	$("#has_mailing_address").click(function() {
-		if($("#has_mailing_address").is(":checked")) {
-			$('.mailing').slideDown();
-		} else {
-			$('.mailing').slideUp();
-		}
-	});
-	$("#change_of_name").click(function() {
-		if($("#change_of_name").is(":checked")) {
-			$('.name-change').slideDown();
-		} else {
-			$('.name-change').slideUp();
-		}
-	});
-	$("#change_of_address").click(function() {
-		if($("#change_of_address").is(":checked")) {
-			$('.address-change').slideDown();
-		} else {
-			$('.address-change').slideUp();
-		}
-	});
-	
+		
 	//first api hit, get state requirements
 	$("input#get_started").click(function(event){
 		event.preventDefault();

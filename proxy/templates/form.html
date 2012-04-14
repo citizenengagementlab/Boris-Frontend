@@ -72,11 +72,47 @@
 							<input type="checkbox" name="has_different_address" id="has_different_address" /> I have a different mailing address.
 						</label>
 					</li>	
+					<div class="mailing"> 
+						<li>
+							<label for="mailing_address">Mailing Address</label>
+							<input type="text" name="mailing_address" id="mailing_address" />
+						</li>
+						<li>
+							<label for="mailing_city">Mailing City</label>
+							<input type="text" name="mailing_city" class="span2" id="city" />
+						</li>
+						<li>
+							<label for="mailing_state">Mailing State</label>
+							<input type="text" name="mailing_state" class="span1" id="state" />
+						</li>
+						<li>
+							<label for="mailing_zip_code">Mailing Zip Code</label> 
+							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
+						</li>
+					</div>
 					<li>
 						<label for="change_of_address">
 							<input type="checkbox" name="change_of_address" id="change_of_address" /> I have recently moved.
 						</label>
 					</li>
+					<div class="address-change">
+						<li>
+							<label for="prev_address">Previous Address</label>
+							<input type="text" name="prev_address" />
+						</li>
+						<li>
+							<label for="prev_city">Previous City</label>
+							<input type="text" name="prev_city" id="prev_city" />
+						</li>
+						<li>
+							<label for="prev_state_id">Previous State</label>
+							<input type="text" name="prev_state_id" id="prev_state_id" />
+						</li>
+						<li>
+							<label for="prev_zip_code">Previous Zip Code</label> 
+							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
+						</li>
+					</div>
 					<li>
 						<a href="http://overseasvotefoundation.org">Registering Abroad?</a>
 					</li>
@@ -108,6 +144,26 @@
 						<label for="change_of_name">
 						<input type="checkbox" name="change_of_name" id="change_of_name" /> I have changed my name.</label>
 					</li>
+					<div class="name-change">
+						<li>
+							<label for="prev_name_title">Previous Title</label>
+							<select name="prev_name_title" id="prev_name_title">
+								<option value=""></option>
+								<option value="Mr.">Mr.</option>
+								<option value="Mrs.">Mrs.</option>
+								<option value="Miss">Miss</option>
+								<option value="Ms.">Ms.</option>
+							</select>
+						</li>
+						<li>
+							<label for="prev_first_name">Previous First Name</label>
+							<input type="text" name="prev_first_name" id="prev_first_name"  />
+						</li>
+						<li>
+							<label for="prev_last_name">Previous Last Name</label>
+							<input type="text" name="prev_last_name" id="prev_last_name"  />
+						</li>
+					</div>
 					<li>
 						<label for="id_number">ID Number</label>
 						<input type="text"  name="id_number" id="id_number">
