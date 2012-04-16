@@ -1,2 +1,6 @@
-$(document).ready ->
+pageInit = ->
+	$('#registration_form').hide()
 	
+
+$ ->
+	pageInit()
