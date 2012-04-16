@@ -364,7 +364,8 @@ form ul li {
   width: 250px;
 }
 li.last_name,
-li.first_name {
+li.first_name,
+li.zip_code {
   clear: none;
 }
 li.title {

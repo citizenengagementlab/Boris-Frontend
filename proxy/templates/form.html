@@ -27,7 +27,7 @@
 							<label for="first_name">First Name</label>
 							<input type="text" name="first_name" id="first_name"  />
 						</li>
-						<li class="last_name">
+						<li>
 							<label for="last_name">Last Name</label>
 							<input type="text" name="last_name" id="last_name"  />
 						</li>
@@ -55,10 +55,6 @@
 						<label for="home_address">Address</label>
 						<input type="text" name="home_address" id="home_address" />		
 					</li>
-					<li>
-						<label for="home_zip_code">Zip Code</label>
-						<input type="text"  name="home_zip_code" id="home_zip_code" />
-					</li>	
 					<li>		
 						<label for="home_city">City</label>
 						<input type="text" name="home_city" id="home_city" />		
@@ -67,6 +63,10 @@
 						<label  for="home_state_id">State</label>
 						<input type="text" name="home_state_id" id="home_state_id" />
 					</li>
+					<li class="zip_code">
+						<label for="home_zip_code">Zip Code</label>
+						<input type="text"  name="home_zip_code" id="home_zip_code" />
+					</li>	
 					<li>
 						<label for="has_different_address">
 							<input type="checkbox" name="has_different_address" id="has_different_address" /> I have a different mailing address.
@@ -74,19 +74,19 @@
 					</li>	
 					<div class="mailing"> 
 						<li>
-							<label for="mailing_address">Mailing Address</label>
+							<label for="mailing_address">Address</label>
 							<input type="text" name="mailing_address" id="mailing_address" />
 						</li>
 						<li>
-							<label for="mailing_city">Mailing City</label>
+							<label for="mailing_city">City</label>
 							<input type="text" name="mailing_city" class="span2" id="city" />
 						</li>
 						<li>
-							<label for="mailing_state">Mailing State</label>
+							<label for="mailing_state">State</label>
 							<input type="text" name="mailing_state" class="span1" id="state" />
 						</li>
-						<li>
-							<label for="mailing_zip_code">Mailing Zip Code</label> 
+						<li class="zip_code" >
+							<label for="mailing_zip_code">Zip Code</label> 
 							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
 						</li>
 					</div>
@@ -97,19 +97,19 @@
 					</li>
 					<div class="address-change">
 						<li>
-							<label for="prev_address">Previous Address</label>
+							<label for="prev_address">Address</label>
 							<input type="text" name="prev_address" />
 						</li>
 						<li>
-							<label for="prev_city">Previous City</label>
+							<label for="prev_city">City</label>
 							<input type="text" name="prev_city" id="prev_city" />
 						</li>
 						<li>
-							<label for="prev_state_id">Previous State</label>
+							<label for="prev_state_id">State</label>
 							<input type="text" name="prev_state_id" id="prev_state_id" />
 						</li>
-						<li>
-							<label for="prev_zip_code">Previous Zip Code</label> 
+						<li class="zip_code">
+							<label for="prev_zip_code">Zip Code</label> 
 							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
 						</li>
 					</div>
