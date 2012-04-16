@@ -43,7 +43,7 @@ $(document).ready(function() {
 		
 		$("#registration_form").hide();
 		
-		$("#get_started").click(function() {
+		$("input#get_started").click(function() {
 	 			$('#state_form').hide();
 	 			$('#registration_form').show();
 	  	});	
@@ -99,7 +99,7 @@ $(document).ready(function() {
 	
 		
 	//first api hit, get state requirements
-	$("input#get_started").click(function(event){
+	$("#get_started").click(function(event){
 		event.preventDefault();
 		$.ajax({
 			type:"get",
