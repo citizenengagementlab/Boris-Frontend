@@ -35,11 +35,21 @@ function zipLookup(zip) {
 $(document).ready(function() {
 
 	//hide optional fields
-	$(".mailing").hide();
-	$(".name-change").hide();
-	$(".address-change").hide();
+		$(".mailing").hide();
+		$(".name-change").hide();
+		$(".address-change").hide();
+		
+	// Hide second page of registration form - swap sections when state requirements is done.
+		
+		$("#registration_form").hide();
+		
+		$("#get_started").click(function() {
+	 			$('#state_form').hide();
+	 			$('#registration_form').show();
+	  	});	
 	
-
+	
+	// Reveal optional fields when checkbox is checked - otherwise, hide.	
 	$("#has_different_address").click(function() {
 	 		if($("#has_different_address").is(":checked")) {
 	 			$('.mailing').fadeIn();
