@@ -34,35 +34,36 @@ function zipLookup(zip) {
 
 $(document).ready(function() {
 
-		//hide optional fields
+	//hide optional fields
 	$(".mailing").hide();
 	$(".name-change").hide();
 	$(".address-change").hide();
 	
-	//show optional fields when necessary
-	$("#has_different_address").toggle(function() {
-			$(this).find(':checkbox').attr('checked', true);
-			$('.mailing').show(); 
-		}, function() {
-			$(this).find(':checkbox').attr('checked', false);
-			$('.mailing').hide();
-	});
-	
-	$("#change_of_name").toggle(function() {
-			$(this).find(':checkbox').prop('checked', true);
-			$('.name-change').show();
-		}, function() {
-			$(this).find(':checkbox').prop('checked', false);
-			$('.name-change').hide();
-	});
-		
-	$("#change_of_address").toggle(function() {
-			$(this).find(':checkbox').prop('checked', true);
-			$('.address-change').show();
-		}, function() {
-			$(this).find(':checkbox').prop('checked', false);
-			$('.address-change').hide();
-	});
+
+	$("#has_different_address").click(function() {
+	 		if($("#has_different_address").is(":checked")) {
+	 			$('.mailing').fadeIn();
+	 		} else {
+	 			$('.mailing').fadeOut();
+	 		}	
+	 	});	
+	 	
+	 	$("#change_of_name").click(function() {
+	 		if($("#change_of_name").is(":checked")) {
+	 			$('.name-change').fadeIn();
+	 		} else {
+	 			$('.name-change').fadeOut();
+	 		}
+	 	});	
+	 	
+	 	$("#change_of_address").click(function() {
+	 		if($("#change_of_address").is(":checked")) {
+	 			$('.address-change').fadeIn();
+	 		} else {
+	 			$('.address-change').fadeOut();
+	 		}
+	 	});
+
 
 	//ui switch functionality
 	if (hash === "#tab") {
