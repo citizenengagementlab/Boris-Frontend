@@ -363,6 +363,13 @@ form ul li {
   margin-bottom: 10px;
   width: 250px;
 }
+li.last_name,
+li.first_name {
+  clear: none;
+}
+li.title {
+  width: 60px;
+}
 legend.accordion-header {
   display: block;
   padding: 5px;
