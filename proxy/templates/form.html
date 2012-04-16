@@ -12,12 +12,14 @@
 	</head>
 	
 	<body>
-		<div class="container">
 		<header>
-			<img id="logo" src="/static/img/RTVlogo.svg">
-			<h1>Voter Registration</h1>
+			<h1>Register to Vote</h1>
+			<img id="logo" src="/static/img/rtvpower.png">
 		</header>
-		<section id="state_form">
+
+		<div class="container">
+			<h1>Register To Vote</h1>
+			<section id="state_form">
 			<form action="" method="get" id="get_started">
 				<fieldset id="get_started">
 					<legend class="accordion-header">Get Registered!</legend>
@@ -55,12 +57,16 @@
 						<label for="home_address">Address</label>
 						<input type="text" name="home_address" id="home_address" />		
 					</li>
+					<li class="unit">
+						<label for="home_unit">Unit</label>
+						<input type="text" name="home_unit" id="home_unit" />		
+					</li>
 					<li>		
 						<label for="home_city">City</label>
 						<input type="text" name="home_city" id="home_city" />		
 					</li>
-					<li>
-						<label  for="home_state_id">State</label>
+					<li class="state">
+						<label for="home_state_id">State</label>
 						<input type="text" name="home_state_id" id="home_state_id" />
 					</li>
 					<li class="zip_code">
@@ -77,11 +83,15 @@
 							<label for="mailing_address">Address</label>
 							<input type="text" name="mailing_address" id="mailing_address" />
 						</li>
+						<li class="unit">
+							<label for="home_unit">Unit</label>
+							<input type="text" name="mailing_unit" id="mailing_unit" />		
+						</li>
 						<li>
 							<label for="mailing_city">City</label>
 							<input type="text" name="mailing_city" class="span2" id="city" />
 						</li>
-						<li>
+						<li class="state">
 							<label for="mailing_state">State</label>
 							<input type="text" name="mailing_state" class="span1" id="state" />
 						</li>
@@ -100,11 +110,15 @@
 							<label for="prev_address">Address</label>
 							<input type="text" name="prev_address" />
 						</li>
+						<li class="unit">
+							<label for="prev_unit">Unit</label>
+							<input type="text" name="prev_unit" id="prev_unit" />		
+						</li>
 						<li>
 							<label for="prev_city">City</label>
 							<input type="text" name="prev_city" id="prev_city" />
 						</li>
-						<li>
+						<li class="state">
 							<label for="prev_state_id">State</label>
 							<input type="text" name="prev_state_id" id="prev_state_id" />
 						</li>
@@ -215,11 +229,10 @@
 						</select>
 					</li>
 					<li>
-						<label for="party">Party
+						<label for="party">Party</label>
 							<select id="party" name="party">
 								<option value=""></option>
 							</select>
-						</label>
 					</li>
 					<li>
 						<label for="us_citizen">
