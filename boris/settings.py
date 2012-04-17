@@ -2,7 +2,7 @@ import os,sys
 from os.path import join
 PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
 
-# Django settings for proxy project.
+# Django settings for boris project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -104,7 +104,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'proxy.urls'
+ROOT_URLCONF = 'boris.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH,'templates'),
