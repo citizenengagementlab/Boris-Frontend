@@ -1,1 +1,2 @@
-((function(){var a;a=function(){return $("#registration_form").hide()};$(function(){return a()})})).call(this);
+/* Form Logic
+*/((function(){})).call(this);

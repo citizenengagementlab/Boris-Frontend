@@ -1,6 +1,1 @@
-pageInit = ->
-	$('#registration_form').hide()
-	
-
-$ ->
-	pageInit()
+### Form Logic ###
