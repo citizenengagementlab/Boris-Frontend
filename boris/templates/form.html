@@ -60,7 +60,8 @@
 		<section id="registration_form">
 			<form action="" method="post" id="ovr">
 			<fieldset id="address">
-				<legend class="accordion-header">Address Information</legend>
+				<legend class="accordion-header">Address Information 
+					<p class ="tooltip"><a id="tooltip_address">?</a><span class="tooltip_text_address"></span></p></legend>
 				<ul>
 					<li>
 						<label for="home_address">Address</label>
@@ -142,7 +143,7 @@
 				</ul>
 			</fieldset>
 			<fieldset id="personal_info">
-				<legend class="accordion-header">Personal Information</legend>
+				<legend class="accordion-header">Personal Information </legend>
 				<ul>
 					<li class="title">
 						<label for="name_title">Title</label>
@@ -161,10 +162,12 @@
 					<li class="no_clear">
 						<label for="last_name">Last Name</label>
 						<input type="text" name="last_name" id="last_name"  />
+						<p class ="tooltip"><a id="tooltip_personal">?</a><span class="tooltip_text" id="tooltip_text_personal">Put your full name and in these boxes. Please do not use nicknames or initials. If this application is for a change of name you will be asked for your previous name in a later section. And don't forget to include your title (Mr., Mrs., Miss, Ms.).</span></p>
 					</li>
 					<li>
 						<label for="change_of_name">
 						<input type="checkbox" name="change_of_name" id="change_of_name" /> I have changed my name.</label>
+						<p class ="tooltip"><a id="tooltip_change_of_name">?</a><span class="tooltip_text" id="tooltip_change_of_name">If you have changed your name since your last registration, enter your previous name.</span></p>
 					</li>
 					<div class="name-change">
 						<li class="title">
@@ -195,6 +198,10 @@
 					<li>
 						<label for="date_of_birth">Date of Birth</label>
 						<input type="text"  name="date_of_birth" id="date_of_birth" />
+						<p class="tooltip">
+							<a id="tooltip_dob">?</a>
+							<span class="tooltip_text" id="tooltip_text_dob">On your voter registration application, you are required to indicate whether you will be 18 years old on or before election day. However, many states allow you to register before your 18th birthday, so please click <a href="http://www.rockthevote.com/voter-registration/online-application-system/register-before-you-are-18-rules.html">here</a> to see the rule for your state.</span>
+						</p>
 					</li>
 				</ul>
 			</fieldset>		
