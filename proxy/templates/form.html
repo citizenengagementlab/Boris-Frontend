@@ -12,12 +12,14 @@
 	</head>
 	
 	<body>
-		<div class="container">
 		<header>
-			<img id="logo" src="/static/img/RTVlogo.svg">
-			<h1>Voter Registration</h1>
+			<h1>Register to Vote</h1>
+			<img id="logo" src="/static/img/rtvpower.png">
 		</header>
-		<section id="state_form">
+
+		<div class="container">
+			<h1>Register To Vote</h1>
+			<section id="state_form">
 			<form action="" method="get" id="get_started">
 				<fieldset id="get_started">
 					<legend class="accordion-header">Get Registered!</legend>
@@ -26,18 +28,22 @@
 						<li>
 							<label for="first_name">First Name</label>
 							<input type="text" name="first_name" id="first_name"  />
+							<img id="tooltip" src="/static/img/help_icon.gif" />
 						</li>
 						<li>
 							<label for="last_name">Last Name</label>
 							<input type="text" name="last_name" id="last_name"  />
+							<img id="tooltip" src="/static/img/help_icon.gif" />
 						</li>
 						<li>
 							<label for="email_address">Email Address</label>
 							<input type="text"  name="email_address" id="email_address" />
+							<img id="tooltip" src="/static/img/help_icon.gif" />
 						</li>
 						<li>
 							<label for="home_zip_code">Zip Code</label>
 							<input type="text"  name="zip_code" id="zip_code" />
+							<img class="zip_code_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 						</li>
 						<li class="form-action">
 							<input type="submit" id="get_started" value="Get Started" />
@@ -50,43 +56,53 @@
 			<form action="" method="post" id="ovr">
 			<fieldset id="address">
 				<legend class="accordion-header">Address Information</legend>
+				<img class="accordion_header_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 				<ul>
 					<li>
 						<label for="home_address">Address</label>
-						<input type="text" name="home_address" id="home_address" />		
+						<input type="text" name="home_address" id="home_address" />	
 					</li>
-					<li>
-						<label for="home_zip_code">Zip Code</label>
-						<input type="text"  name="home_zip_code" id="home_zip_code" />
-					</li>	
-					<li>		
+					<li class="no_clear">
+						<label for="home_unit">Unit</label>
+						<input type="text" name="home_unit" id="home_unit" />		
+					</li>
+					<li class="city">		
 						<label for="home_city">City</label>
 						<input type="text" name="home_city" id="home_city" />		
 					</li>
-					<li>
-						<label  for="home_state_id">State</label>
+					<li class="no_clear">
+						<label for="home_state_id">State</label>
 						<input type="text" name="home_state_id" id="home_state_id" />
 					</li>
+					<li class="no_clear">
+						<label for="home_zip_code">Zip Code</label>
+						<input type="text"  name="home_zip_code" id="home_zip_code" />
+					</li>	
 					<li>
 						<label for="has_different_address">
 							<input type="checkbox" name="has_different_address" id="has_different_address" /> I have a different mailing address.
 						</label>
+						<img class="has_different_address_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 					</li>	
 					<div class="mailing"> 
 						<li>
-							<label for="mailing_address">Mailing Address</label>
+							<label for="mailing_address">Address</label>
 							<input type="text" name="mailing_address" id="mailing_address" />
 						</li>
-						<li>
-							<label for="mailing_city">Mailing City</label>
+						<li class="no_clear">
+							<label for="home_unit">Unit</label>
+							<input type="text" name="mailing_unit" id="mailing_unit" />		
+						</li>
+						<li class="city">
+							<label for="mailing_city">City</label>
 							<input type="text" name="mailing_city" class="span2" id="city" />
 						</li>
-						<li>
-							<label for="mailing_state">Mailing State</label>
+						<li class="no_clear">
+							<label for="mailing_state">State</label>
 							<input type="text" name="mailing_state" class="span1" id="state" />
 						</li>
-						<li>
-							<label for="mailing_zip_code">Mailing Zip Code</label> 
+						<li class="no_clear" >
+							<label for="mailing_zip_code">Zip Code</label> 
 							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
 						</li>
 					</div>
@@ -94,22 +110,27 @@
 						<label for="change_of_address">
 							<input type="checkbox" name="change_of_address" id="change_of_address" /> I have recently moved.
 						</label>
+						<img class="change_of_address_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<div class="address-change">
 						<li>
-							<label for="prev_address">Previous Address</label>
+							<label for="prev_address">Address</label>
 							<input type="text" name="prev_address" />
 						</li>
-						<li>
-							<label for="prev_city">Previous City</label>
+						<li class="no_clear">
+							<label for="prev_unit">Unit</label>
+							<input type="text" name="prev_unit" id="prev_unit" />		
+						</li>
+						<li class="city">
+							<label for="prev_city">City</label>
 							<input type="text" name="prev_city" id="prev_city" />
 						</li>
-						<li>
-							<label for="prev_state_id">Previous State</label>
+						<li class="no_clear">
+							<label for="prev_state_id">State</label>
 							<input type="text" name="prev_state_id" id="prev_state_id" />
 						</li>
-						<li>
-							<label for="prev_zip_code">Previous Zip Code</label> 
+						<li class="no_clear">
+							<label for="prev_zip_code">Zip Code</label> 
 							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
 						</li>
 					</div>
@@ -120,9 +141,9 @@
 			</fieldset>
 			<fieldset id="personal_info">
 				<legend class="accordion-header">Personal Information</legend>
-
+				<img class="accordion_header_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 				<ul>
-					<li>
+					<li class="title">
 						<label for="name_title">Title</label>
 						<select name="name_title" id="name_title">
 							<option value=""></option>
@@ -132,21 +153,22 @@
 							<option value="Ms.">Ms.</option>
 						</select>
 					</li>
-					<li>
+					<li class="no_clear">
 						<label for="first_name">First Name</label>
 						<input type="text" name="first_name" id="first_name"  />
 					</li>
-					<li>
+					<li class="no_clear">
 						<label for="last_name">Last Name</label>
 						<input type="text" name="last_name" id="last_name"  />
 					</li>
 					<li>
 						<label for="change_of_name">
 						<input type="checkbox" name="change_of_name" id="change_of_name" /> I have changed my name.</label>
+						<img class="change_of_name_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<div class="name-change">
-						<li>
-							<label for="prev_name_title">Previous Title</label>
+						<li class="title">
+							<label for="prev_name_title">Title</label>
 							<select name="prev_name_title" id="prev_name_title">
 								<option value=""></option>
 								<option value="Mr.">Mr.</option>
@@ -155,18 +177,19 @@
 								<option value="Ms.">Ms.</option>
 							</select>
 						</li>
-						<li>
-							<label for="prev_first_name">Previous First Name</label>
+						<li class="first_name">
+							<label for="prev_first_name">First Name</label>
 							<input type="text" name="prev_first_name" id="prev_first_name"  />
 						</li>
-						<li>
-							<label for="prev_last_name">Previous Last Name</label>
+						<li class="last_name">
+							<label for="prev_last_name">Last Name</label>
 							<input type="text" name="prev_last_name" id="prev_last_name"  />
 						</li>
 					</div>
 					<li>
 						<label for="id_number">ID Number</label>
 						<input type="text"  name="id_number" id="id_number">
+						<img class="id_number_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<li>
 						<label for="date_of_birth">Date of Birth</label>
@@ -188,6 +211,7 @@
 					<li>
 						<label  for="phone">Phone</label>
 						<input type="text" name="phone" id="phone" />
+						<img class="phone_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<li>
 						<label for="opt_in_sms">
@@ -213,13 +237,14 @@
 							<option value="Other">Other</option>
 							<option value="Decline to State">Decline to State</option>
 						</select>
+						<img class="race_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<li>
-						<label for="party">Party
+						<label for="party">Party</label>
 							<select id="party" name="party">
 								<option value=""></option>
 							</select>
-						</label>
+							<img class="party_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<li>
 						<label for="us_citizen">
@@ -233,6 +258,13 @@
 			</fieldset>
 		</form>
 		</section>
+		<footer>
+			<a href="http://www.rockthevote.com/voter-registration/online-application-system/faq.html">FAQ</a>
+			<a href="http://www.rockthevote.com/voter-registration/online-application-system/privacy.html">Privacy & Security</a>
+			<a href="http://www.rockthevote.com/voter-registration/online-application-system/contact.html">Contact</a>
+			<a href="http://www.rockthevote.com/voter-registration/online-application-system/about.html">About</a>
+			<span>© Copyright 2012, Rock the Vote</span>
+		</footer>
 	</div>
 	</body>
 </html>
