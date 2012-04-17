@@ -22,15 +22,17 @@
   };
 
   showRegistrationForm = function() {
-    /* Show Registration Form
-    */
-    var email, firstName, lastName;
-    firstName = $('#get_started #first_name').val();
-    lastName = $('#get_started #last_name').val();
-    email = $('#get_started #email').val();
-    /* don't return true, return a real thing
-    */
-    return true;
+    var email, firstName, lastName, zip;
+    firstName = $('#pre_first_name').val();
+    lastName = $('#pre_last_name').val();
+    email = $('#pre_email_address').val();
+    zip = $('#pre_zip_code');
+    $('#first_name').val(firstName);
+    $('#last_name').val(lastName);
+    $('#email_address').val(email);
+    $('#home_zip_code').val(zip);
+    $('#state_form').hide();
+    return $('#registration_form').show();
   };
 
   getStateRequirements = function() {
@@ -38,8 +40,8 @@
     apiUrl = "";
     url = "";
     data = {};
-    data["'home_zip_code'"] = $('#home_zip_code').val();
-    data["'lang'"] = "en";
+    data["'home_zip_code'"] = $('#pre_zip_code').val();
+    data["'lang'"] = $('#lang_id').val();
     return $.ajax({
       url: apiUrl + url,
       data: data,
