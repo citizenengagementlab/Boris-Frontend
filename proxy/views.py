@@ -1,5 +1,6 @@
 import urllib2,urllib,json
 from django.http import HttpResponse
+from django.template import RequestContext
 from django.shortcuts import render_to_response
 
 from django.conf import settings
@@ -43,4 +44,4 @@ def rtv_proxy(request, url):
     return HttpResponse(content,mimetype="application/json")
 
 def register(request):
-    return render_to_response('form.html')
+    return render_to_response('form.html',context_instance=RequestContext(request))
