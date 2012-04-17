@@ -364,9 +364,6 @@ fieldset {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-li.city {
-  width: 185px;
-}
 form ul {
   list-style: none;
   padding: 10px;
@@ -388,11 +385,10 @@ form ul li {
   margin-bottom: 10px;
   width: 220px;
 }
-li.last_name,
-li.first_name,
-li.zip_code,
-li.unit,
-li.state {
+form ul li.city {
+  width: 185px;
+}
+.no_clear {
   clear: none;
 }
 li.state {
