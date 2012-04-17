@@ -39,7 +39,8 @@
 							<input type="text"  name="email_address" id="email_address" />
 							<p class="tooltip">
 								 <a id="tooltip_email">?</a>
-						         <span class="tooltip_text" id="tooltip_text_email">We will e-mail you a copy of your voter registration form.</span>
+						         <span class="tooltip_text" id="tooltip_text_email">
+						         	We will e-mail you a copy of your voter registration form.</span>
 						    </p>
 						</li>
 						<li>
@@ -47,7 +48,8 @@
 							<input type="text"  name="zip_code" id="zip_code" />
 							<p class="tooltip">
 								<a id="tooltip_zip_code">?</a> 
-								<span class="tooltip_text" id="tooltip_text_zip_code">Enter ZIP code for the address where you live, even if you don't receive mail there.</span>
+								<span class="tooltip_text" id="tooltip_text_zip_code">
+									Enter ZIP code for the address where you live, even if you don't receive mail there.</span>
 							</p>
 						</li>
 						<li class="form-action">
@@ -60,8 +62,7 @@
 		<section id="registration_form">
 			<form action="" method="post" id="ovr">
 			<fieldset id="address">
-				<legend class="accordion-header">Address Information 
-					<p class ="tooltip"><a id="tooltip_address">?</a><span class="tooltip_text_address"></span></p></legend>
+				<legend class="accordion-header">Address Information </legend>
 				<ul>
 					<li>
 						<label for="home_address">Address</label>
@@ -78,16 +79,22 @@
 					<li class="no_clear">
 						<label for="home_state_id">State</label>
 						<input type="text" name="home_state_id" id="home_state_id" />
+						<p class ="tooltip">
+							<a id="tooltip_address">?</a>
+							<span class="tooltip_text" id="tooltip_text_address">Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form.</span>
+						</p>
 					</li>
 					<li class="no_clear">
 						<label for="home_zip_code">Zip Code</label>
 						<input type="text"  name="home_zip_code" id="home_zip_code" />
 					</li>	
-					<li>
-						<label for="has_different_address">
-							<input type="checkbox" name="has_different_address" id="has_different_address" /> I have a different mailing address.
+					<li class="checkbox">
+						<label class="checkbox_label" for="has_different_address">
+							<input type="checkbox" name="has_different_address" id="has_different_address" />
+								I have a different mailing address.
 						</label>
-					</li>	
+						<p class="tooltip_checkbox"><a id="tooltip_has_different_address">?</a><span class="tooltip_text" id="tooltip_text_has_different_address"> If you receive mail at a different address, please enter it here.</span></p>
+					</li>						
 					<div class="mailing"> 
 						<li>
 							<label for="mailing_address">Address</label>
@@ -110,10 +117,15 @@
 							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
 						</li>
 					</div>
-					<li>
-						<label for="change_of_address">
+					<li class="checkbox">
+						<label class="checkbox_label" for="change_of_address">
 							<input type="checkbox" name="change_of_address" id="change_of_address" /> I have recently moved.
 						</label>
+						<p class="tooltip_checkbox">
+							<a id="tooltip_change_of_address">?</a>
+							<span class="tooltip_text" id="tooltip_text_change_of_address">
+								If you have moved since your last registration, enter your previous address.</span>
+						</p>
 					</li>
 					<div class="address-change">
 						<li>
@@ -162,12 +174,15 @@
 					<li class="no_clear">
 						<label for="last_name">Last Name</label>
 						<input type="text" name="last_name" id="last_name"  />
-						<p class ="tooltip"><a id="tooltip_personal">?</a><span class="tooltip_text" id="tooltip_text_personal">Put your full name and in these boxes. Please do not use nicknames or initials. If this application is for a change of name you will be asked for your previous name in a later section. And don't forget to include your title (Mr., Mrs., Miss, Ms.).</span></p>
+						<p class ="tooltip"><a id="tooltip_personal">?</a><span class="tooltip_text" id="tooltip_text_personal">
+							Put your full name in these boxes. Please do not use nicknames or initials.</span></p>
 					</li>
-					<li>
-						<label for="change_of_name">
-						<input type="checkbox" name="change_of_name" id="change_of_name" /> I have changed my name.</label>
-						<p class ="tooltip"><a id="tooltip_change_of_name">?</a><span class="tooltip_text" id="tooltip_change_of_name">If you have changed your name since your last registration, enter your previous name.</span></p>
+					<li class="checkbox">
+						<label class="checkbox_label" for="change_of_name">
+						<input type="checkbox" name="change_of_name" id="change_of_name" /> 
+						I have changed my name.</label>
+						<p class ="tooltip_checkbox"><a id="tooltip_change_of_name">?</a><span class="tooltip_text" id="tooltip_text_change_of_name">
+							If you have changed your name since your last registration, enter your previous name.</span></p>
 					</li>
 					<div class="name-change">
 						<li class="title">
@@ -246,7 +261,7 @@
 							<option value="Other">Other</option>
 							<option value="Decline to State">Decline to State</option>
 						</select>
-						<p class="tooltip"><a id="tooltip_race">?</a><span class="tooltip_text" id="tooltip_text_race"></span></p>
+						<p class="tooltip-select"><a id="tooltip_race">?</a><span class="tooltip_text" id="tooltip_text_race"></span></p>
 						
 					</li>
 					<li class="party">
@@ -254,7 +269,7 @@
 							<select id="party" name="party">
 								<option value=""></option>
 							</select>
-						<p class="tooltip"><a id="tooltip_party">?</a> <span class="tooltip_text" id="tooltip_text_party"></span></p>
+						<p class="tooltip-select"><a id="tooltip_party">?</a> <span class="tooltip_text" id="tooltip_text_party"></span></p>
 						
 					</li>
 					<li>

@@ -381,9 +381,12 @@ form ul:after {
 form ul li {
   float: left;
   clear: both;
-  margin-right: 10px;
+  margin-right: 5px;
   margin-bottom: 10px;
-  width: 230px;
+  width: 240px;
+}
+form ul li.checkbox {
+  width: 100%;
 }
 form ul li.city {
   width: 185px;
@@ -494,12 +497,44 @@ p.tooltip {
   position: absolute;
   margin-left: 10px;
   margin-top: 5px;
-  padding: 0px 5px;
+  margin-right: 50px;
 }
 p.tooltip a {
   text-decoration: underline;
 }
+p.tooltip_checkbox {
+  display: inline;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+p.tooltip_checkbox a {
+  text-decoration: underline;
+}
+p.tooltip-select {
+  display: inline;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+p.tooltip-select a {
+  text-decoration: underline;
+}
+legend p.tooltip {
+  display: inline;
+  margin-left: 10px;
+  margin-top: 0px;
+  position: absolute;
+}
+legend p.tooltip a {
+  text-decoration: underline;
+}
+legend p.tooltip span {
+  color: #FFF;
+}
+.checkbox_label {
+  float: left;
+}
 span.tooltip_text {
   position: relative;
   color: #000;
+  font-size: 11px;
 }
