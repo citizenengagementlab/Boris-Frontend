@@ -1,7 +1,7 @@
 var hash = document.location.hash;
 // Sets up the three UI templates.  Changing the hash tag in the URL switches the UI.
 
-var api_url = "http://localhost:8000/rtv";
+var api_url = "/rtv";
 
 (function( $ ){
 	$.fn.serializeJSON=function() {
