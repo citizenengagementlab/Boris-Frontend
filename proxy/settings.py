@@ -84,6 +84,8 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '=80-zfiesp1dv1)k5lg_(#w3l5@#=3_lou2t@*8kyo!eb62mv='
 
@@ -116,6 +118,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'storages',
+    'proxy',
     )
 
 
@@ -145,4 +149,8 @@ LOGGING = {
 try:
     from settings_local import *
 except:
-    pass
+    #we're on Heroku, the settings are in the the environ
+    PROXY_DOMAIN = "rtvstaging2.osuosl.org"
+    PROXY_CREDENTIALS = {'user':os.environ['RTV_USER'],
+                         'password':os.environ['RTV_PASS']}
+    USPS_USERID = os.environ['USPS_USERID']
