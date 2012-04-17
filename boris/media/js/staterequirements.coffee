@@ -12,7 +12,8 @@ getCityState = (zip) ->
       $("form#ovr #home_state_id").val data.state
     error: (error) ->
       ### Handle Error ###
-      
+
+
 getStateRequirements = () ->
   apiUrl = ""
   url = ""
@@ -27,7 +28,7 @@ getStateRequirements = () ->
       ### Handle Political Parties ###
       if response.party_list
         parties = response.party_list
-        target = $('select#party')
+        $target = $('select#party')
         html = ""
         for i in parties
           ### generate html ###
@@ -36,16 +37,25 @@ getStateRequirements = () ->
         if response.no_party_msg == "Decline to state"
           html += "<option val=\"Decline to state\">Decline to state</option>\n"
         ### append HTML ###
-        target.append(html)
+        $target.append(html)
+      
       ### Handle Required Fields ###
       if response.requires_party
         $('#party').attr('data-required', true);
       if response.requires_party
         $('#party').attr('data-required', true);
-      ### Handle Help Text ###
+      
+      ### TODO Handle Help Text ###
+      
+
       ### Handle ID Validation ###
+      minLength = response.id_min_length || 0
+      maxLength = response.id_max_length || 100
+      $('#id_number').attr('data-maxlength', maxLength).attr('data-minlength', minLength)
 
       ### Handle SOS Contact Info ###
+
+
       ### Callback to advance form ###
     error: (error) ->
       ### Handle Error ###

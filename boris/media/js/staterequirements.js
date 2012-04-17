@@ -35,10 +35,10 @@
       success: function(response) {
         /* Handle Political Parties
         */
-        var html, i, parties, party, target, _i, _len;
+        var $target, html, i, maxLength, minLength, parties, party, _i, _len;
         if (response.party_list) {
           parties = response.party_list;
-          target = $('select#party');
+          $target = $('select#party');
           html = "";
           for (_i = 0, _len = parties.length; _i < _len; _i++) {
             i = parties[_i];
@@ -52,18 +52,19 @@
           }
           /* append HTML
           */
-          target.append(html);
+          $target.append(html);
         }
         /* Handle Required Fields
         */
         if (response.requires_party) $('#party').attr('data-required', true);
-        if (response.requires_party) {
-          return $('#party').attr('data-required', true);
-        }
-        /* Handle Help Text
+        if (response.requires_party) $('#party').attr('data-required', true);
+        /* TODO Handle Help Text
         */
         /* Handle ID Validation
         */
+        minLength = response.id_min_length || 0;
+        maxLength = response.id_max_length || 100;
+        return $('#id_number').attr('data-maxlength', maxLength).attr('data-minlength', minLength);
         /* Handle SOS Contact Info
         */
         /* Callback to advance form
