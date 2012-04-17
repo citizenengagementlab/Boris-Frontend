@@ -386,10 +386,14 @@ form ul li {
   clear: both;
   margin-right: 10px;
   margin-bottom: 10px;
-  width: 220px;
+  width: 230px;
 }
 form ul li.city {
   width: 185px;
+}
+form ul li.party {
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 li.state {
   width: 150px;
@@ -493,6 +497,12 @@ img#tooltip {
   position: relative;
   float: right;
   top: 3px;
+}
+img#tooltip.first_name_tooltip,
+img#tooltip.last_name_tooltip,
+img#tooltip.email_address_tooltip,
+img#tooltip.zip_code_tooltip {
+  top: 4px;
 }
 img#tooltip.zip_code_tooltip {
   right: 148px;

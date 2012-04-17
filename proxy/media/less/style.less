@@ -68,15 +68,16 @@ form ul {
 		clear: both;
 		margin-right: 10px;
 		margin-bottom: 10px;
-		width: 220px;
+		width: 230px;
 	}
 	li.city {
 	width:185px;
+	}	
+	li.party {
+		margin-top:0px;
+		margin-bottom:20px;
+	}
 }
-}
-
-
-
 
 li.state {
 	width:150px;
@@ -154,7 +155,6 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="button"]), textarea
 	clear:none;
 }
 
-
 /* Tooltip Image Styles */
 
 img#tooltip {
@@ -162,6 +162,10 @@ img#tooltip {
 	position:relative;
 	float:right;
 	top:3px;
+}
+
+img#tooltip.first_name_tooltip, img#tooltip.last_name_tooltip, img#tooltip.email_address_tooltip, img#tooltip.zip_code_tooltip {
+	top:4px;
 }
 
 img#tooltip.zip_code_tooltip {

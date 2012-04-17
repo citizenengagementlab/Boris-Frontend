@@ -28,17 +28,17 @@
 						<li>
 							<label for="first_name">First Name</label>
 							<input type="text" name="first_name" id="first_name"  />
-							<img id="tooltip" src="/static/img/help_icon.gif" />
+							<img class="first_name_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 						</li>
 						<li>
 							<label for="last_name">Last Name</label>
 							<input type="text" name="last_name" id="last_name"  />
-							<img id="tooltip" src="/static/img/help_icon.gif" />
+							<img class="last_name_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 						</li>
 						<li>
 							<label for="email_address">Email Address</label>
 							<input type="text"  name="email_address" id="email_address" />
-							<img id="tooltip" src="/static/img/help_icon.gif" />
+							<img class="email_address_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 						</li>
 						<li>
 							<label for="home_zip_code">Zip Code</label>
@@ -177,11 +177,11 @@
 								<option value="Ms.">Ms.</option>
 							</select>
 						</li>
-						<li class="first_name">
+						<li class="no_clear">
 							<label for="prev_first_name">First Name</label>
 							<input type="text" name="prev_first_name" id="prev_first_name"  />
 						</li>
-						<li class="last_name">
+						<li class="no_clear">
 							<label for="prev_last_name">Last Name</label>
 							<input type="text" name="prev_last_name" id="prev_last_name"  />
 						</li>
@@ -239,7 +239,7 @@
 						</select>
 						<img class="race_tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
-					<li>
+					<li class="party">
 						<label for="party">Party</label>
 							<select id="party" name="party">
 								<option value=""></option>
