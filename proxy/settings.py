@@ -153,6 +153,7 @@ try:
     from settings_local import *
 except:
     #we're on Heroku, sensitive info is in environ
+    DEBUG = False
     PROXY_DOMAIN = "rtvstaging2.osuosl.org"
     PROXY_CREDENTIALS = {'user':os.environ['RTV_USER'],
                          'password':os.environ['RTV_PASS']}
@@ -163,3 +164,8 @@ except:
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
     EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+    #s3 settings
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = 'register2.rockthevote.com'
+    STATIC_URL = 'https://s3.amazonaws.com/register2.rockthevote.com/'
