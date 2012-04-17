@@ -11,10 +11,9 @@ $("document").ready(function() {
 	$("#tooltip_text_zip_code").hide();
 	
 
-	$("#tooltip_email").hover(function() {
+	$("#tooltip_email").toggle(function() {
 	
 		$("#tooltip_text_email").show();
-		
 		}, function() { 
 		
 		$("#tooltip_text_email").hide(); 
@@ -22,7 +21,7 @@ $("document").ready(function() {
 		
 	});
 	
-	$("#tooltip_zip_code").hover(function() {
+	$("#tooltip_zip_code").toggle(function() {
 	
 		$("#tooltip_text_zip_code").show();
 		
