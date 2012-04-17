@@ -1,3 +1,4 @@
+/* Imports */
 .clearfix {
   *zoom: 1;
 }
@@ -314,11 +315,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-fieldset {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
+/* Structural */
 html {
   background: #f0f0f0;
 }
@@ -362,9 +359,12 @@ form {
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
-.home_city,
-.prev_city,
-.mailing_city {
+fieldset {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+li.city {
   width: 185px;
 }
 form ul {
@@ -432,6 +432,20 @@ legend.accordion-header {
   background-image: linear-gradient(top, #006aae, #004b7b);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006aae', endColorstr='#004b7b', GradientType=0);
+}
+footer {
+  border-top: 1px solid #AAA;
+  padding: 10px;
+  text-align: center;
+}
+footer a {
+  margin-left: 20px;
+}
+footer span {
+  font-style: italic;
+  font-size: 12px;
+  width: 180px;
+  margin-left: 40px;
 }
 label {
   display: block;
