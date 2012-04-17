@@ -157,56 +157,21 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="button"]), textarea
 
 /* Tooltip Image Styles */
 
-img#tooltip {
-	display:inline;
+p.tooltip, {
+	display:inline; 
+	position:absolute;
+	color:#AAA;
+	margin-left:10px;
+	margin-top:5px;
+	padding: 0px 5px;
+	
+}
+
+span.tooltip_text {
 	position:relative;
-	float:right;
-	top:3px;
-}
-
-img#tooltip.first_name_tooltip, img#tooltip.last_name_tooltip, img#tooltip.email_address_tooltip, img#tooltip.zip_code_tooltip {
-	top:4px;
-}
-
-img#tooltip.zip_code_tooltip {
-	right:148px;
-}
-
-img#tooltip.accordion_header_tooltip {
-	top:-28px;
-	right:480px;
-}
-
-img#tooltip.has_different_address_tooltip {
-	left:15px;
-	top:-18px
-}
-
-
-img#tooltip.change_of_address_tooltip {
-	right:50px;
-	top:-18px
-}
-
-img#tooltip.change_of_name_tooltip {
-	right:30px;
-	top: -18px;
-}
-
-img#tooltip.id_number_tooltip {
-	top:4px;
-}
-
-img#tooltip.phone_tooltip {
-	top:4px;
-}
-
-img#tooltip.race_tooltip {
-	left:10px;
-	top:-17px;
-}
-
-img#tooltip.party_tooltip {
-	right:100px;
-	top:0px;
+	display:inline;
+	color:#000;
+	width:60px;
+	height:60px;
+	color:#000;
 }
