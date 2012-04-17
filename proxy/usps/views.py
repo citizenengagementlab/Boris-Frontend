@@ -9,7 +9,7 @@ from usps.api.addressinformation import CityStateLookup
 
 def zip_lookup(request):
     USERID = settings.USPS_USERID
-    connector = CityStateLookup(USPS_CONNECTION_TEST, USERID)
+    connector = CityStateLookup(USPS_CONNECTION, USERID)
     
     zip5 = request.GET.get('zip')
     if zip5:
