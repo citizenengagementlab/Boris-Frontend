@@ -28,22 +28,22 @@
 						<li>
 							<label for="first_name">First Name</label>
 							<input type="text" name="first_name" id="first_name"  />
-							<div id="tooltip"><img src="/static/img/help_icon.gif" /></div>
+							<img id="tooltip" src="/static/img/help_icon.gif" />
 						</li>
 						<li>
 							<label for="last_name">Last Name</label>
 							<input type="text" name="last_name" id="last_name"  />
-							<div id="tooltip"><img src="/static/img/help_icon.gif" /></div>
+							<img id="tooltip" src="/static/img/help_icon.gif" />
 						</li>
 						<li>
 							<label for="email_address">Email Address</label>
 							<input type="text"  name="email_address" id="email_address" />
-							<div id="tooltip"><img src="/static/img/help_icon.gif" /></div>
+							<img id="tooltip" src="/static/img/help_icon.gif" />
 						</li>
 						<li>
 							<label for="home_zip_code">Zip Code</label>
 							<input type="text"  name="zip_code" id="zip_code" />
-							<div id="tooltip"><img src="/static/img/help_icon.gif" /></div>
+							<img id="tooltip" src="/static/img/help_icon.gif" />
 						</li>
 						<li class="form-action">
 							<input type="submit" id="get_started" value="Get Started" />
@@ -56,16 +56,17 @@
 			<form action="" method="post" id="ovr">
 			<fieldset id="address">
 				<legend class="accordion-header">Address Information</legend>
+				<img class="legend-tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 				<ul>
 					<li>
 						<label for="home_address">Address</label>
-						<input type="text" name="home_address" id="home_address" />		
+						<input type="text" name="home_address" id="home_address" />	
 					</li>
 					<li class="unit">
 						<label for="home_unit">Unit</label>
 						<input type="text" name="home_unit" id="home_unit" />		
 					</li>
-					<li>		
+					<li class="home_city">		
 						<label for="home_city">City</label>
 						<input type="text" name="home_city" id="home_city" />		
 					</li>
@@ -81,6 +82,7 @@
 						<label for="has_different_address">
 							<input type="checkbox" name="has_different_address" id="has_different_address" /> I have a different mailing address.
 						</label>
+						<img class="checkbox-tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 					</li>	
 					<div class="mailing"> 
 						<li>
@@ -91,7 +93,7 @@
 							<label for="home_unit">Unit</label>
 							<input type="text" name="mailing_unit" id="mailing_unit" />		
 						</li>
-						<li>
+						<li class="mailing_city">
 							<label for="mailing_city">City</label>
 							<input type="text" name="mailing_city" class="span2" id="city" />
 						</li>
@@ -108,6 +110,7 @@
 						<label for="change_of_address">
 							<input type="checkbox" name="change_of_address" id="change_of_address" /> I have recently moved.
 						</label>
+						<img class="checkbox-tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<div class="address-change">
 						<li>
@@ -118,7 +121,7 @@
 							<label for="prev_unit">Unit</label>
 							<input type="text" name="prev_unit" id="prev_unit" />		
 						</li>
-						<li>
+						<li class="prev_city">
 							<label for="prev_city">City</label>
 							<input type="text" name="prev_city" id="prev_city" />
 						</li>
@@ -138,7 +141,7 @@
 			</fieldset>
 			<fieldset id="personal_info">
 				<legend class="accordion-header">Personal Information</legend>
-
+				<img class="legend-tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 				<ul>
 					<li class="title">
 						<label for="name_title">Title</label>
@@ -161,6 +164,7 @@
 					<li>
 						<label for="change_of_name">
 						<input type="checkbox" name="change_of_name" id="change_of_name" /> I have changed my name.</label>
+						<img class="checkbox-tooltip" id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<div class="name-change">
 						<li class="title">
@@ -185,6 +189,7 @@
 					<li>
 						<label for="id_number">ID Number</label>
 						<input type="text"  name="id_number" id="id_number">
+						<img  id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<li>
 						<label for="date_of_birth">Date of Birth</label>
@@ -206,6 +211,7 @@
 					<li>
 						<label  for="phone">Phone</label>
 						<input type="text" name="phone" id="phone" />
+						<img id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<li>
 						<label for="opt_in_sms">
@@ -231,12 +237,14 @@
 							<option value="Other">Other</option>
 							<option value="Decline to State">Decline to State</option>
 						</select>
+						<img id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<li>
 						<label for="party">Party</label>
 							<select id="party" name="party">
 								<option value=""></option>
 							</select>
+							<img id="tooltip" src="/static/img/help_icon.gif" />
 					</li>
 					<li>
 						<label for="us_citizen">
