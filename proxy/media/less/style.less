@@ -44,20 +44,13 @@ form {
 }
 
 
-img#tooltip {
-	display:inline;
-	position:relative;
-	float:right;
-}
 
 
 .home_city, .prev_city, .mailing_city {
 	width:185px;
 }
 
-img.checkbox-tooltip {
-	bottom:20px;
-}
+
 
 form ul {
 	list-style: none;
@@ -69,7 +62,7 @@ form ul {
 		clear: both;
 		margin-right: 10px;
 		margin-bottom: 10px;
-		width: 250px;
+		width: 220px;
 	}
 }
 
@@ -104,10 +97,7 @@ legend.accordion-header {
 	#gradient.vertical(lighten(#004B7B,10%), #004B7B;
 }
 
-img.legend-tooltip {
-	right:480px;
-	bottom:28px !important;
-}
+
 
 
 label {
@@ -126,6 +116,7 @@ input[type="submit"] {
 	display: block;
 }
 
+
 input#zip_code, input#home_zip_code, input#mailing_zip_code , input#prev_zip_code {
 	width: 50px;
 }
@@ -135,4 +126,56 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="button"]), textarea
 	width: 90%;
 	#gradient.vertical(#f5f5f5, #fff);
 	box-shadow: 0 1px 0 rgba(255,255,255,.5), inset 0 1px 1px rgba(0,0,0,.15);
+}
+
+/* Tooltip Image Styles */
+
+img#tooltip {
+	display:inline;
+	position:relative;
+	float:right;
+	top:3px;
+}
+
+img#tooltip.zip_code_tooltip {
+	right:148px;
+}
+
+img#tooltip.accordion_header_tooltip {
+	top:-28px;
+	right:480px;
+}
+
+img#tooltip.has_different_address_tooltip {
+	left:15px;
+	top:-18px
+}
+
+
+img#tooltip.change_of_address_tooltip {
+	right:50px;
+	top:-18px
+}
+
+img#tooltip.change_of_name_tooltip {
+	right:30px;
+	top: -18px;
+}
+
+img#tooltip.id_number_tooltip {
+	top:4px;
+}
+
+img#tooltip.phone_tooltip {
+	top:4px;
+}
+
+img#tooltip.race_tooltip {
+	left:10px;
+	top:-17px;
+}
+
+img#tooltip.party_tooltip {
+	right:100px;
+	top:0px;
 }
