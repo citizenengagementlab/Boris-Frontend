@@ -489,12 +489,15 @@ textarea {
   clear: none;
 }
 /* Tooltip Styles */
-a.tooltip {
+p.tooltip {
   display: inline;
   position: absolute;
   margin-left: 10px;
   margin-top: 5px;
   padding: 0px 5px;
+}
+p.tooltip a {
+  text-decoration: underline;
 }
 span.tooltip_text {
   position: relative;
