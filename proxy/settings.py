@@ -152,12 +152,12 @@ EMAIL_SUBJECT_PREFIX = "[Rocky-Boris] "
 try:
     from settings_local import *
 except:
-    #we're on Heroku, the settings are in the the environ
+    #we're on Heroku, sensitive info is in environ
     PROXY_DOMAIN = "rtvstaging2.osuosl.org"
     PROXY_CREDENTIALS = {'user':os.environ['RTV_USER'],
                          'password':os.environ['RTV_PASS']}
     USPS_USERID = os.environ['USPS_USERID']
-    
+    #sendgrid settings
     EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
     EMAIL_HOST= 'smtp.sendgrid.net'
     EMAIL_PORT = 587
