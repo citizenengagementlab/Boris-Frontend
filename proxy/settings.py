@@ -8,7 +8,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Josh Levinger', 'josh.l@engagementlab.org'),
 )
 
 MANAGERS = ADMINS
@@ -146,6 +146,9 @@ LOGGING = {
     }
 }
 
+
+EMAIL_SUBJECT_PREFIX = "[Rocky-Boris] "
+
 try:
     from settings_local import *
 except:
@@ -154,3 +157,9 @@ except:
     PROXY_CREDENTIALS = {'user':os.environ['RTV_USER'],
                          'password':os.environ['RTV_PASS']}
     USPS_USERID = os.environ['USPS_USERID']
+    
+    EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+    EMAIL_HOST= 'smtp.sendgrid.net'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
