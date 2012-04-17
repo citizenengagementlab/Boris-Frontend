@@ -1,5 +1,5 @@
 (function() {
-  var getCityState, getStateRequirements;
+  var getCityState, getStateRequirements, showRegistrationForm;
 
   getCityState = function(zip) {
     return $.ajax({
@@ -19,6 +19,18 @@
         */
       }
     });
+  };
+
+  showRegistrationForm = function() {
+    /* Show Registration Form
+    */
+    var email, firstName, lastName;
+    firstName = $('#get_started #first_name').val();
+    lastName = $('#get_started #last_name').val();
+    email = $('#get_started #email').val();
+    /* don't return true, return a real thing
+    */
+    return true;
   };
 
   getStateRequirements = function() {
@@ -60,15 +72,16 @@
         if (response.requires_party) $('#party').attr('data-required', true);
         /* TODO Handle Help Text
         */
-        /* Handle ID Validation
+        /* Handle ID Validation Requirements
         */
         minLength = response.id_min_length || 0;
         maxLength = response.id_max_length || 100;
-        return $('#id_number').attr('data-maxlength', maxLength).attr('data-minlength', minLength);
+        $('#id_number').attr('data-maxlength', maxLength).attr('data-minlength', minLength);
         /* Handle SOS Contact Info
         */
         /* Callback to advance form
         */
+        return showRegistrationForm();
       },
       error: function(error) {
         /* Handle Error

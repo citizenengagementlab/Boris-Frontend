@@ -13,6 +13,13 @@ getCityState = (zip) ->
     error: (error) ->
       ### Handle Error ###
 
+showRegistrationForm = () ->
+  ### Show Registration Form ###
+  firstName = $('#get_started #first_name').val()
+  lastName  = $('#get_started #last_name').val()
+  email     = $('#get_started #email').val()
+  ### don't return true, return a real thing ###
+  true
 
 getStateRequirements = () ->
   apiUrl = ""
@@ -48,7 +55,7 @@ getStateRequirements = () ->
       ### TODO Handle Help Text ###
       
 
-      ### Handle ID Validation ###
+      ### Handle ID Validation Requirements ###
       minLength = response.id_min_length || 0
       maxLength = response.id_max_length || 100
       $('#id_number').attr('data-maxlength', maxLength).attr('data-minlength', minLength)
@@ -57,6 +64,8 @@ getStateRequirements = () ->
 
 
       ### Callback to advance form ###
+      showRegistrationForm()
+
     error: (error) ->
       ### Handle Error ###
   })
