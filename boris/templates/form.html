@@ -20,47 +20,48 @@
 		<div class="container">
 			<h1>Register To Vote</h1>
 			<section id="state_form">
-			<form action="" method="get" id="get_started">
-				<fieldset id="get_started">
-					<legend class="accordion-header">Get Registered!</legend>
-					<p>Registering to vote is easy -- and you can do it now.</p>
-					<ul>
-						<li>
-							<label for="first_name">First Name</label>
-							<input type="text" name="first_name" id="first_name"  />
-							
-						</li>
-						<li>
-							<label for="last_name">Last Name</label>
-							<input type="text" name="last_name" id="last_name"  />
-						</li>
-						<li>
-							<label for="email_address">Email Address</label>
-							<input type="text"  name="email_address" id="email_address" />
-							<p class="tooltip">
-								 <a id="tooltip_email">?</a>
-						         <span class="tooltip_text" id="tooltip_text_email">
-						         	We will e-mail you a copy of your voter registration form.</span>
-						    </p>
-						</li>
-						<li>
-							<label for="home_zip_code">Zip Code</label>
-							<input type="text"  name="zip_code" id="zip_code" />
-							<p class="tooltip">
-								<a id="tooltip_zip_code">?</a> 
-								<span class="tooltip_text" id="tooltip_text_zip_code">
-									Enter ZIP code for the address where you live, even if you don't receive mail there.</span>
-							</p>
-						</li>
-						<li class="form-action">
-							<input type="submit" id="get_started" value="Get Started" />
-						</li>
-					</ul>
-				</fieldset>
-			</form>
-		</section>
+				<form action="" method="get" id="get_started">
+					<fieldset id="get_started">
+						<legend class="accordion-header">Get Registered!</legend>
+						<p>Registering to vote is easy -- and you can do it now.</p>
+						<ul>
+							<li>
+								<label for="pre_first_name">First Name</label>
+								<input type="text" name="first_name" id="pre_first_name"  />			
+
+							</li>
+							<li>
+								<label for="pre_last_name">Last Name</label>
+								<input type="text" name="last_name" id="pre_last_name"  />			
+							</li>
+							<li>
+								<label for="pre_email_address">Email Address</label>
+								<input type="text"  name="email_address" id="pre_email_address" />			
+								<p class="tooltip">
+									<a id="tooltip_email">?</a>
+									<span class="tooltip_text" id="tooltip_text_email">We will e-mail you a copy of your voter registration form.</span>
+								</p>
+							</li>
+							<li>
+								<label for="pre_zip_code">Zip Code</label>
+								<input type="text"  name="zip_code" id="pre_zip_code" />			
+								<p class="tooltip">
+									<a id="tooltip_zip_code">?</a>
+									<span class="tooltip_text" id="tooltip_text_zip_code">
+										Enter ZIP code for the address where you live, even if you don't receive mail there.
+									</span>
+								</p>
+							</li>
+							<li class="form-action">
+								<input type="hidden" name="lang" id="lang_id" value="en">			
+								<input type="submit" id="get_started" value="Get Started" />			
+							</li>
+						</ul>
+					</fieldset>
+				</form>
+			</section>
 		<section id="registration_form">
-			<form action="" method="post" id="ovr">
+			<form action="" method="post" id="registration">
 			<fieldset id="address">
 				<legend class="accordion-header">Address Information </legend>
 				<ul>
@@ -286,7 +287,7 @@
 		</section>
 		<footer>
 			<a href="http://www.rockthevote.com/voter-registration/online-application-system/faq.html">FAQ</a>
-			<a href="http://www.rockthevote.com/voter-registration/online-application-system/privacy.html">Privacy & Security</a>
+			<a href="http://www.rockthevote.com/voter-registration/online-application-system/privacy.html">Privacy &amp; Security</a>
 			<a href="http://www.rockthevote.com/voter-registration/online-application-system/contact.html">Contact</a>
 			<a href="http://www.rockthevote.com/voter-registration/online-application-system/about.html">About</a>
 			<span>© Copyright 2012, Rock the Vote</span>
