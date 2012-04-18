@@ -358,6 +358,16 @@ header img#logo {
   padding-right: 20px;
   padding-top: 5px;
 }
+header h1 {
+  margin: 0px;
+  padding-top: 8px;
+  padding-left: 20px;
+  color: #000;
+  width: 200px;
+  -webkit-text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
+  -moz-text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
+  text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
+}
 .container {
   width: 650px;
   display: block;
@@ -527,9 +537,6 @@ p.tooltip {
   margin-top: 5px;
   margin-right: 50px;
 }
-p.tooltip a {
-  text-decoration: underline;
-}
 p.tooltip_checkbox {
   position: absolute;
   margin-right: 0px;
@@ -569,6 +576,15 @@ span.tooltip_text {
 h1 {
   display: inline;
 }
-#top-link {
+a#top_link {
   float: right;
+  *zoom: 1;
+}
+a#top_link:before,
+a#top_link:after {
+  display: table;
+  content: "";
+}
+a#top_link:after {
+  clear: both;
 }
