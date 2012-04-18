@@ -23,9 +23,9 @@ function zipLookup(zip) {
 		url:"/usps/zip_lookup",
 		data:{'zip':zip},
 		success:function(data) {
-			$('form#ovr #home_zip_code').val(data.zip);
-			$('form#ovr #home_city').val(data.city);
-			$('form#ovr #home_state_id').val(data.state);
+			$('#home_zip_code').val(data.zip);
+			$('#home_city').val(data.city);
+			$('#home_state_id').val(data.state);
 		},
 	});
 }
@@ -104,7 +104,7 @@ $(document).ready(function() {
 		$.ajax({
 			type:"get",
 			url:api_url+"/api/v1/state_requirements.json",
-			data:{'home_zip_code':$("#get_started #zip_code").val(),
+			data:{'home_zip_code':$("#pre_zip_code").val(),
 						'lang':'en'},
 			success:function(response){
 				//load state-specific values
@@ -112,7 +112,6 @@ $(document).ready(function() {
 				//valid political parties
 				for (i in response.party_list) {
 					var party = response.party_list[i];
-					$('select#party').append("<option val="+party+">"+party+"</option>");
 				}
 				
 				//required fields
@@ -122,7 +121,7 @@ $(document).ready(function() {
 				//sos contact info
 				
 				//do city, state lookup
-				usps = zipLookup($('form#get_started #zip_code').val());
+				usps = zipLookup($('#pre_zip_code').val());
 				
 				//copy entered info over
 				$('form#ovr #first_name').val($('form#get_started #first_name').val());
