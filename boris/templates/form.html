@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<html>
+{%extends "base.html"%}
 
-	<head>
-		<!-- Import CSS -->
-		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css" />
-		
-		<!-- Import Javascript -->
-		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="{{STATIC_URL}}js/scripts.js"></script>
-		<script type="text/javascript" src="{{STATIC_URL}}js/form.js"></script>
-		<script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
-	</head>
-	
-	<body>
-		<header>
-			<img id="logo" src="{{STATIC_URL}}img/rtvpower.png">
-		</header>
+{%block scripts%}
+<script type="text/javascript" src="{{STATIC_URL}}js/scripts.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/form.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
+{%endblock scripts%}
 
-		<div class="container">
+{%block content%}
 			<h1>Register To Vote</h1>
 			<a id="top-link" href="/">Start Over</a>
 			<section id="state_form">
@@ -286,13 +275,4 @@
 			</fieldset>
 		</form>
 		</section>
-		<footer>
-			<a href="http://www.rockthevote.com/voter-registration/online-application-system/faq.html">FAQ</a>
-			<a href="http://www.rockthevote.com/voter-registration/online-application-system/privacy.html">Privacy &amp; Security</a>
-			<a href="http://www.rockthevote.com/voter-registration/online-application-system/contact.html">Contact</a>
-			<a href="http://www.rockthevote.com/voter-registration/online-application-system/about.html">About</a>
-			<span>© Copyright 2012, Rock the Vote</span>
-		</footer>
-	</div>
-	</body>
-</html>
+{%endblock content%}
