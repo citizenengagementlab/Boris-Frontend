@@ -99,7 +99,7 @@ $(document).ready(function() {
 	
 		
 	//first api hit, get state requirements
-	$("#get_started").click(function(event){
+	$("input#get_started").click(function(event){
 		event.preventDefault();
 		$.ajax({
 			type:"get",

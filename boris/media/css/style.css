@@ -72,29 +72,11 @@ textarea {
   font-family: sans-serif;
   color: #222;
 }
-/* 
- * These selection declarations have to be separate
- * No text-shadow: twitter.com/miketaylr/status/12228805301
- * Also: hot pink!
- */
-::-moz-selection {
-  background: #fe57a1;
-  color: #fff;
-  text-shadow: none;
-}
-::selection {
-  background: #fe57a1;
-  color: #fff;
-  text-shadow: none;
-}
 /* =============================================================================
    Links
    ========================================================================== */
 a {
   color: #00e;
-}
-a:visited {
-  color: #551a8b;
 }
 a:focus {
   outline: thin dotted;
@@ -184,7 +166,7 @@ sub {
    ========================================================================== */
 ul,
 ol {
-  margin: 1em 0;
+  margin: 0 0 1em 0;
   padding: 0 0 0 40px;
 }
 dd {
@@ -315,6 +297,54 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+/* =============================================================================
+   Non-semantic helper classes
+   Please define your styles before this section.
+   ========================================================================== */
+/* For image replacement */
+.ir {
+  display: block;
+  text-indent: -999em;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
+}
+.ir br {
+  display: none;
+}
+/* Hide for both screenreaders and browsers:
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+/* Hide only visually, but have it available for screenreaders: by Jon Neal.
+  www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: drupal.org/node/897638 */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible {
+  visibility: hidden;
+}
 /* Structural */
 html {
   background: #f0f0f0;
@@ -328,16 +358,6 @@ header img#logo {
   padding-right: 20px;
   padding-top: 5px;
 }
-header h1 {
-  margin-top: 0px;
-  padding-top: 8px;
-  padding-left: 20px;
-  color: #000;
-  width: 200px;
-  -webkit-text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
-  -moz-text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
-  text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
-}
 .container {
   width: 650px;
   display: block;
@@ -347,10 +367,13 @@ header h1 {
   background: #f0f0f0;
 }
 .container h1 {
+  margin: 0px;
   color: #000;
   -webkit-text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
   -moz-text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
   text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
+  display: inline-block;
+  width: 230px;
 }
 form {
   padding-bottom: 10px;
@@ -503,9 +526,9 @@ p.tooltip a {
   text-decoration: underline;
 }
 p.tooltip_checkbox {
-  display: inline;
-  margin-left: 10px;
-  margin-top: 5px;
+  position: absolute;
+  margin-right: 0px;
+  margin-top: 0px;
 }
 p.tooltip_checkbox a {
   text-decoration: underline;
@@ -537,4 +560,7 @@ span.tooltip_text {
   position: relative;
   color: #000;
   font-size: 11px;
+}
+#top_link {
+  float: right;
 }
