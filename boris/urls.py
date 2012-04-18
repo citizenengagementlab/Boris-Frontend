@@ -4,6 +4,7 @@ from django.conf import settings
 urlpatterns = patterns('boris.views',
     (r'^$', 'frontpage'),
     (r'^registrants/new/$', 'register'),
+    (r'^registrants/finish/$', 'finish'),
 )
 
 urlpatterns += patterns(
