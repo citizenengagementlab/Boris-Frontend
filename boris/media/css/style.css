@@ -578,13 +578,4 @@ h1 {
 }
 a#top_link {
   float: right;
-  *zoom: 1;
-}
-a#top_link:before,
-a#top_link:after {
-  display: table;
-  content: "";
-}
-a#top_link:after {
-  clear: both;
 }
