@@ -7,9 +7,15 @@
 
 $("document").ready(function() {
 
-	$("#top_link").hide();
 
+	$("#top_link").hide();
 	$("input#get_started").click(function() {
-		$("#top_link").show();	
+		$("#top_link").show();
+	});
+	
+	$("#top_link").click(function() {
+		$(this).hide();
+		$("#registration_form").hide();
+		$("#state_form").show();
 	});
 });

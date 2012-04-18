@@ -566,6 +566,9 @@ span.tooltip_text {
   color: #000;
   font-size: 11px;
 }
-#top_link {
+h1 {
+  display: inline;
+}
+#top-link {
   float: right;
 }
