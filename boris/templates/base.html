@@ -2,8 +2,10 @@
 <html>
 
 	<head>
+		<title>{%block title%}{%endblock title%}</title>
 		<!-- Import CSS -->
 		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css" />
+		{%block styles%}{%endblock styles%}
 		
 		<!-- Import Javascript -->
 		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
