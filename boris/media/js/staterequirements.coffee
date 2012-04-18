@@ -1,18 +1,3 @@
-
-getCityState = (zip) ->
-  $.ajax
-    type: 'get'
-    url: '/usps/zip_lookup/'
-    data:
-      zip: zip
-    success: (data) ->
-      ### Handle City and State Data ###
-      $("form#ovr #home_zip_code").val data.zip
-      $("form#ovr #home_city").val data.city
-      $("form#ovr #home_state_id").val data.state
-    error: (error) ->
-      ### Handle Error ###
-
 showRegistrationForm = () ->
   firstName = $('#pre_first_name').val()
   lastName  = $('#pre_last_name').val()
@@ -25,14 +10,28 @@ showRegistrationForm = () ->
   $('#state_form').hide()
   $('#registration_form').show()
 
+getCityState = (zip) ->
+  $.ajax
+    type: 'get'
+    url: '/usps/zip_lookup/'
+    data:
+      zip: zip
+    success: (data) ->
+      ### Handle City and State Data ###
+      $("form#ovr #home_zip_code").val data.zip
+      $("form#ovr #home_city").val data.city
+      $("form#ovr #home_state_id").val data.state
+      getStateRequirements()
+    error: (error) ->
+      ### TODO: Handle Error ###
+
 getStateRequirements = () ->
-  apiUrl = ""
-  url = ""
+  url = "/api/v1/state_requirements.json"
   data = {}
   data["'home_zip_code'"] = $('#pre_zip_code').val()
   data["'lang'"] = $('#lang_id').val()
   $.ajax({
-    url: apiUrl + url
+    url: url
     data: data
     type: 'get'
     success: (response) ->
@@ -56,20 +55,25 @@ getStateRequirements = () ->
       if response.requires_party
         $('#party').attr('data-required', true);
       
-      ### TODO Handle Help Text ###
-      
+      ### Handle Help Text ###
+      if response.id_number_msg
+        $('#tooltip_text_id_number').text(response.id_number_msg)
+      if response.requires_party_msg
+        $('#tooltip_text_party').text(response.requires_party_msg)
+      if response.requires_race_msg
+        $('#tooltip_text_race').text(response.requires_race_msg)
 
       ### Handle ID Validation Requirements ###
       minLength = response.id_min_length || 0
       maxLength = response.id_max_length || 100
       $('#id_number').attr('data-maxlength', maxLength).attr('data-minlength', minLength)
 
-      ### Handle SOS Contact Info ###
+      ### Handle SOS Contact Info (where is this used?) ###
 
 
       ### Callback to advance form ###
       showRegistrationForm()
 
     error: (error) ->
-      ### Handle Error ###
+      ### TODO: Handle Error ###
   })
