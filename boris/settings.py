@@ -119,6 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'storages',
+    'gunicorn',
     'proxy',
     )
 
