@@ -3,6 +3,7 @@
 $(function() 
 
 {
+	if(document.location.hash==="#accordion") {
 	$("input#get_started").click(function() {
 	
 		$(".accordion-content:not(:first)").hide();
@@ -18,7 +19,7 @@ $(function()
 		
 		
 	});
-	
+	}
 
 		
 
