@@ -2,7 +2,6 @@
 
 @import "mixins.less";
 @import "normalize.less";
-@import "tooltip.less";
 
 
 /* Structural */
@@ -174,20 +173,43 @@ p.tooltip, {
 	margin-left:10px;
 	margin-top:5px;
 	margin-right:50px;
+	a {
+		padding: 2px;
+		border: 1px solid #999;
+		.border-radius(3px);
+		font-weight: bold;
+		color: #FFF;
+		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
+		#gradient.vertical(lighten(#004B7B,10%), #004B7B;
+	}
 }
 
 p.tooltip_checkbox, {
 	position:absolute;
 	margin-right:0px;
 	margin-top:0px;
-	a { text-decoration: underline;}
+	a { 
+		padding: 2px;
+		border: 1px solid #999;
+		.border-radius(3px);
+		font-weight: bold;
+		color: #FFF;
+		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
+		#gradient.vertical(lighten(#004B7B,10%), #004B7B;
+	}
 }
 
 p.tooltip-select {
 	display:inline; 
 	margin-left:10px;
 	margin-top:5px;
-	a { text-decoration: underline;}
+	a { padding: 2px;
+		border: 1px solid #999;
+		.border-radius(3px);
+		font-weight: bold;
+		color: #FFF;
+		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
+		#gradient.vertical(lighten(#004B7B,10%), #004B7B;}
 }
 
 legend p.tooltip {
@@ -195,7 +217,13 @@ legend p.tooltip {
 	margin-left:10px;
 	margin-top:0px;
 	position:absolute;
-	a { text-decoration: underline;}
+	a { padding: 2px;
+		border: 1px solid #999;
+		.border-radius(3px);
+		font-weight: bold;
+		color: #FFF;
+		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
+		#gradient.vertical(lighten(#004B7B,10%), #004B7B;}
 	span {color: #FFF;}
 }
 
