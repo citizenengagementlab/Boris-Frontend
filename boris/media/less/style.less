@@ -19,6 +19,15 @@ header {
 		padding-right:20px;
 		padding-top:5px;
 	}
+
+	h1 {
+		margin:0px;
+		padding-top:8px;
+		padding-left:20px;
+		color:#000;
+		width:200px;
+		.text-shadow(0 -1px 0 rgba(255,255,255,.35));
+	}
 }
 
 
@@ -37,7 +46,7 @@ header {
 }
 
 #state_form {
-	margin-top: -10px; /* Cannot figure out what is causing the discrepency in height between the two sections.  I assume it's some form of margin collapse.. */
+	margin-top: -13px; /* Cannot figure out what is causing the discrepency in height between the two sections.  I assume it's some form of margin collapse.. */
 	
 }
 
@@ -164,21 +173,43 @@ p.tooltip, {
 	margin-left:10px;
 	margin-top:5px;
 	margin-right:50px;
-	a { text-decoration: underline;}
+	a {
+		padding: 2px;
+		border: 1px solid #999;
+		.border-radius(3px);
+		font-weight: bold;
+		color: #FFF;
+		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
+		#gradient.vertical(lighten(#004B7B,10%), #004B7B;
+	}
 }
 
 p.tooltip_checkbox, {
 	position:absolute;
 	margin-right:0px;
 	margin-top:0px;
-	a { text-decoration: underline;}
+	a { 
+		padding: 2px;
+		border: 1px solid #999;
+		.border-radius(3px);
+		font-weight: bold;
+		color: #FFF;
+		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
+		#gradient.vertical(lighten(#004B7B,10%), #004B7B;
+	}
 }
 
 p.tooltip-select {
 	display:inline; 
 	margin-left:10px;
 	margin-top:5px;
-	a { text-decoration: underline;}
+	a { padding: 2px;
+		border: 1px solid #999;
+		.border-radius(3px);
+		font-weight: bold;
+		color: #FFF;
+		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
+		#gradient.vertical(lighten(#004B7B,10%), #004B7B;}
 }
 
 legend p.tooltip {
@@ -186,7 +217,13 @@ legend p.tooltip {
 	margin-left:10px;
 	margin-top:0px;
 	position:absolute;
-	a { text-decoration: underline;}
+	a { padding: 2px;
+		border: 1px solid #999;
+		.border-radius(3px);
+		font-weight: bold;
+		color: #FFF;
+		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
+		#gradient.vertical(lighten(#004B7B,10%), #004B7B;}
 	span {color: #FFF;}
 }
 
@@ -200,6 +237,11 @@ span.tooltip_text {
 	font-size:11px;
 }
 
-#top_link {
+h1 {
+	display:inline;
+}
+
+
+a#top_link {
 	float:right;
 }
