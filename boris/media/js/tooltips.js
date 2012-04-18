@@ -18,6 +18,7 @@ $("document").ready(function() {
 	
 	$(".tooltip > a").toggle(function() {
 		$(this).next().show();
+		$(".tooltip_text").not($(this).next()).hide();
 		}, function() { 
 		$(this).next().hide(); 
 	});
