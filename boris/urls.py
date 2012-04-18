@@ -7,12 +7,12 @@ urlpatterns = patterns('boris.views',
     (r'^registrants/finish/$', 'finish'),
 )
 
-urlpatterns += patterns(
-    (r'^rtv/(?P<url>.*)$', include('proxy.urls')),
+urlpatterns += patterns('',
+    (r'^rtv/', include('proxy.urls')),
     (r'^usps/',include('usps.urls'))
 )
 
 if settings.DEBUG:
-    urlpatterns += patterns(
+    urlpatterns += patterns('',
         (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT }),
     )
