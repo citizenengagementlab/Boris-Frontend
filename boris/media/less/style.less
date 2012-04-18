@@ -199,6 +199,18 @@ p.tooltip_checkbox, {
 		color: #FFF;
 		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
 		#gradient.vertical(lighten(#004B7B,10%), #004B7B;
+		z-index:0;
+	}
+	span {
+		a {
+			padding: 0px;
+			border: 1px solid #999;
+			.border-radius(3px);
+			font-weight: bold;
+			color: #FFF;
+			.text-shadow(0 -1px 0 rgba(0,0,0,.95));
+			#gradient.vertical(lighten(#004B7B,10%), #004B7B;
+		}
 	}
 }
 
@@ -213,22 +225,10 @@ p.tooltip-select {
 		color: #FFF;
 		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
 		#gradient.vertical(lighten(#004B7B,10%), #004B7B;}
+		z-index:0;
 }
 
-legend p.tooltip {
-	display:inline; 
-	margin-left:10px;
-	margin-top:0px;
-	position:absolute;
-	a { padding: 2px;
-		border: 1px solid #999;
-		.border-radius(3px);
-		font-weight: bold;
-		color: #FFF;
-		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
-		#gradient.vertical(lighten(#004B7B,10%), #004B7B;}
-	span {color: #FFF;}
-}
+
 
 .checkbox_label {
 	float:left;

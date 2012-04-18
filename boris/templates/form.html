@@ -6,6 +6,8 @@
 <script type="text/javascript" src="{{STATIC_URL}}js/scripts.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/form.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/accordion.js"></script>
+
 {%endblock scripts%}
 
 {%block content%}
@@ -55,8 +57,8 @@
 		<section id="registration_form">
 			<form action="" method="post" id="registration">
 			<fieldset id="address">
-				<legend class="accordion-header">Address Information </legend>
-				<ul>
+				<legend class="accordion-header">Address Information</legend>
+				<ul class="accordion-content">
 					<li>
 						<label for="home_address">Address</label>
 						<input type="text" name="home_address" id="home_address" />	
@@ -145,11 +147,12 @@
 					<li>
 						<a href="http://overseasvotefoundation.org">Registering Abroad?</a>
 					</li>
+					<li><input type="button" class="accordion-next" value="Continue" /></li>
 				</ul>
 			</fieldset>
-			<fieldset id="personal_info">
+			<fieldset id="personal" class="accordion">
 				<legend class="accordion-header">Personal Information </legend>
-				<ul>
+				<ul class="accordion-content">
 					<li class="title">
 						<label for="name_title">Title</label>
 						<select name="name_title" id="name_title">
@@ -211,11 +214,12 @@
 							<span class="tooltip_text" id="tooltip_text_dob">On your voter registration application, you are required to indicate whether you will be 18 years old on or before election day. However, many states allow you to register before your 18th birthday, so please click <a href="http://www.rockthevote.com/voter-registration/online-application-system/register-before-you-are-18-rules.html">here</a> to see the rule for your state.</span>
 						</p>
 					</li>
+					<li><input type="button" class="accordion-next" value="Continue" /></li>
 				</ul>
 			</fieldset>		
-			<fieldset>
+			<fieldset id="contact">
 				<legend class="accordion-header">Contact Information</legend>
-				<ul>
+				<ul class="accordion-content">
 					<li>
 						<label for="email_address">Email Address</label>
 						<input type="text" name="email_address" id="email_address" />
@@ -236,11 +240,12 @@
 							
 						</label>
 					</li>
+					<li><input type="button" class="accordion-next" value="Continue" /></li>
 				</ul>
 			</fieldset>
-			<fieldset>
+			<fieldset id="additional">
 				<legend class="accordion-header">Additional Information</legend>
-				<ul>
+				<ul class="accordion-content">
 					<li>
 						<label for="race">Race</label>
 						<select id="race" name="race" >
@@ -254,7 +259,7 @@
 							<option value="Other">Other</option>
 							<option value="Decline to State">Decline to State</option>
 						</select>
-						<p class="tooltip-select"><a id="tooltip_race">?</a><span class="tooltip_text" id="tooltip_text_race"></span></p>
+						<p class="tooltip tooltip-select"><a id="tooltip_race">?</a><span class="tooltip_text" id="tooltip_text_race"></span></p>
 						
 					</li>
 					<li class="party">
@@ -262,7 +267,7 @@
 							<select id="party" name="party">
 								<option value=""></option>
 							</select>
-						<p class="tooltip-select"><a id="tooltip_party">?</a> <span class="tooltip_text" id="tooltip_text_party"></span></p>
+						<p class="tooltip tooltip-select"><a id="tooltip_party">?</a> <span class="tooltip_text" id="tooltip_text_party"></span></p>
 						
 					</li>
 					<li>

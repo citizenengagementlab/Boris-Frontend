@@ -586,11 +586,34 @@ p.tooltip_checkbox a {
   background-image: linear-gradient(top, #006aae, #004b7b);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006aae', endColorstr='#004b7b', GradientType=0);
+  z-index: 0;
+}
+p.tooltip_checkbox span a {
+  padding: 0px;
+  border: 1px solid #999;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-weight: bold;
+  color: #FFF;
+  -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
+  -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
+  background-color: #005e9a;
+  background-image: -moz-linear-gradient(top, #006aae, #004b7b);
+  background-image: -ms-linear-gradient(top, #006aae, #004b7b);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#006aae), to(#004b7b));
+  background-image: -webkit-linear-gradient(top, #006aae, #004b7b);
+  background-image: -o-linear-gradient(top, #006aae, #004b7b);
+  background-image: linear-gradient(top, #006aae, #004b7b);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006aae', endColorstr='#004b7b', GradientType=0);
 }
 p.tooltip-select {
   display: inline;
   margin-left: 10px;
   margin-top: 5px;
+  z-index: 0;
 }
 p.tooltip-select a {
   padding: 2px;
@@ -612,36 +635,6 @@ p.tooltip-select a {
   background-image: linear-gradient(top, #006aae, #004b7b);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006aae', endColorstr='#004b7b', GradientType=0);
-}
-legend p.tooltip {
-  display: inline;
-  margin-left: 10px;
-  margin-top: 0px;
-  position: absolute;
-}
-legend p.tooltip a {
-  padding: 2px;
-  border: 1px solid #999;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  font-weight: bold;
-  color: #FFF;
-  -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  background-color: #005e9a;
-  background-image: -moz-linear-gradient(top, #006aae, #004b7b);
-  background-image: -ms-linear-gradient(top, #006aae, #004b7b);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#006aae), to(#004b7b));
-  background-image: -webkit-linear-gradient(top, #006aae, #004b7b);
-  background-image: -o-linear-gradient(top, #006aae, #004b7b);
-  background-image: linear-gradient(top, #006aae, #004b7b);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006aae', endColorstr='#004b7b', GradientType=0);
-}
-legend p.tooltip span {
-  color: #FFF;
 }
 .checkbox_label {
   float: left;
