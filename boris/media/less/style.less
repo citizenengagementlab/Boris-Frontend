@@ -167,13 +167,13 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="button"]), textarea
 
 /* Tooltip Styles */
 
-p.tooltip, {
+p.tooltip {
 	display:inline; 
 	position:absolute;
 	margin-left:10px;
 	margin-top:3px;
 	margin-right:50px;
-	width:240px;
+	width:260px;
 	a {
 		padding: 2px;
 		border: 1px solid #999;
@@ -183,49 +183,44 @@ p.tooltip, {
 		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
 		#gradient.vertical(lighten(#004B7B,10%), #004B7B;
 		float:left;
-		margin-right:10px;
+	}
+	span {
+		background-color:#FFF;
+		display:block;
+		width:190px;
+		min-height:30px;
+		position:relative;
+		left:30px;
+		border: 3px solid lighten(#004B7b,11%);
+		.border-radius(3px);
+		padding:10px;
+		color:#000;
+		font-size:11px;
+		text-align:center;
+		z-index:1000;
+		a {		
+			padding:0px;
+			border:0px;
+			.border-radius(0px);
+			font-weight:normal;
+			color:#00E;
+			.text-shadow(0 0 0 rgba(0,0,0,.95));
+			float:none;
+			margin-right:0px;
+			background-color:#F0F0F0 !important;
+			#gradient.vertical(lighten(#F0F0F0,0%), #F0F0F0;
+			}
 	}
 }
 
 p.tooltip_checkbox, {
-	position:absolute;
 	margin-right:0px;
 	margin-top:-2px;
-	a { 
-		padding: 2px;
-		border: 1px solid #999;
-		.border-radius(3px);
-		font-weight: bold;
-		color: #FFF;
-		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
-		#gradient.vertical(lighten(#004B7B,10%), #004B7B;
-		z-index:0;
-	}
-	span {
-		a {
-			padding: 0px;
-			border: 1px solid #999;
-			.border-radius(3px);
-			font-weight: bold;
-			color: #FFF;
-			.text-shadow(0 -1px 0 rgba(0,0,0,.95));
-			#gradient.vertical(lighten(#004B7B,10%), #004B7B;
-		}
-	}
 }
 
-p.tooltip-select {
-	display:inline; 
+p.tooltip-select { 
 	margin-left:10px;
-	margin-top:5px;
-	a { padding: 2px;
-		border: 1px solid #999;
-		.border-radius(3px);
-		font-weight: bold;
-		color: #FFF;
-		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
-		#gradient.vertical(lighten(#004B7B,10%), #004B7B;}
-		z-index:0;
+	margin-top:-2px;
 }
 
 
@@ -234,11 +229,6 @@ p.tooltip-select {
 	float:left;
 }
 
-span.tooltip_text {
-	position:relative;
-	color:#000;
-	font-size:11px;
-}
 
 h1 {
 	display:inline;

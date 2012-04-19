@@ -14,6 +14,7 @@ $(function()
 		$(".accordion-next").click(function() {
 			$(this).parent().parent().parent(this).children(".accordion-content").slideUp();
 			console.log($(this).parent().parent().parent(this).next().children().slideDown());
+			$(".tooltip_text").hide();
 		});
 		
 		
