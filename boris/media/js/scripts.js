@@ -7,11 +7,13 @@ $(function()
 	$(".prev-button").hide();
 	$("#tabnav").hide();
 	$("#tabnav ul").hide();
-	$("li.buttons").css("bottom","-10px"); // Keep register button from overlapping content
+	
 	if(hash==="#accordion") {
 		accordion();
 	} else if(hash==="#tabs") {
 		tabs();
+	} else {
+	    $("li.buttons").css("bottom","-10px"); // Keep register button from overlapping content in normal form
 	}
 });
 	
