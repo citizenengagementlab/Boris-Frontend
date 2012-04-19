@@ -32,7 +32,7 @@ header {
 
 
 .container {
-	width: 650px;
+	width: 604px;
 	.center-block;
 	padding: 10px 20px;
 	background: #f0f0f0;
@@ -74,6 +74,7 @@ form ul {
 	padding: 10px;
 	margin: 0;
 	.clearfix;
+	position:relative;
 	li {
 		float: left;
 		clear: both;
@@ -94,6 +95,11 @@ form ul {
 		margin-top:0px;
 		margin-bottom:20px;
 		position:relative;
+	}
+	li.buttons {
+		position:absolute;
+		bottom:10px;
+		margin:0px;
 	}
 }
 
@@ -172,6 +178,8 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="button"]), textarea
 	clear:none;
 }
 
+
+#print { display: none; }
 /* Tooltip Styles */
 
 p.tooltip {
@@ -194,7 +202,7 @@ p.tooltip {
 	span {
 		background-color:#FFF;
 		display:block;
-		width:190px;
+		width:160px;
 		min-height:30px;
 		position:relative;
 		left:30px;
@@ -205,6 +213,7 @@ p.tooltip {
 		font-size:11px;
 		text-align:center;
 		z-index:1000;
+		max-width:170px;
 		a {		
 			padding:0px;
 			border:0px;
@@ -254,19 +263,52 @@ a#top_link {
 #tabnav ul {
 	list-style-type: none;
 	padding: .2em .2em 0;
+	margin-bottom:0;
 	li {
 		 list-style: none;
 		 display:inline;
 		 position: relative; 
-		 top: 1px; 
+		 bottom:2px;
 		 margin-left:17px;
-		 border-bottom: 0 !important; 
-		 padding: 0; 
 		 white-space: nowrap; 
 		 vertical-align: top; 
 		 .text-shadow(0 -1px 0 rgba(0,0,0,.90));
-		 &:hover {
+		 a {
+		 	text-decoration:none;
+		 	color:#FFF;
+	/*
+	 	&:active {
 		 	color:#AAA;
+		 	}
+*/
+		 	&:hover {
+		 	color:#AAA;
+		 	}
 		 }
 	}
 }
+
+/*
+
+Sticky Footer by Ryan Fait
+http://ryanfait.com/
+
+*/
+
+* {
+	margin: 0;
+}
+html, body {
+	height: 100%;
+}
+.wrapper {
+	min-height:96%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -37px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+	height: 37px; /* .push must be the same height as .footer */
+}
+
+

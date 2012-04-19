@@ -3,10 +3,11 @@ var hash = document.location.hash;
 $(function() 
 
 {
-	$(".accordion-next").hide();
-	$(".accordion-prev").hide();
+	$(".next-button").hide();
+	$(".prev-button").hide();
 	$("#tabnav").hide();
 	$("#tabnav ul").hide();
+	$("li.buttons").css("bottom","-10px"); // Keep register button from overlapping content
 	if(hash==="#accordion") {
 		accordion();
 	} else if(hash==="#tabs") {

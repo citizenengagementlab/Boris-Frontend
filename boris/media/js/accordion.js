@@ -2,10 +2,10 @@
 
 	
 function accordion() {	
-	$("form ul").css("height","250px");
+	$("form ul").css("height","270px");
 	
-	$(".accordion-next").show();
-	$(".accordion-prev").show();
+	$(".next-button").show();
+	$(".prev-button").show();
 
 	$("input#get_started").click(function() {
 	
@@ -14,9 +14,14 @@ function accordion() {
 			$(".accordion-content").slideUp("slow");
 			$(this).next().slideDown("slow");
 		});
-		$(".accordion-next").click(function() {
+		$(".next-button").click(function() {
 			$(this).parent().parent().parent(this).children(".accordion-content").slideUp();
-			console.log($(this).parent().parent().parent(this).next().children().slideDown());
+			$(this).parent().parent().parent(this).next().children().slideDown();
+		});
+		
+		$(".prev-button").click(function() {
+			$(this).parent().parent().parent(this).children(".accordion-content").slideUp();
+			$(this).parent().parent().parent(this).prev().children().slideDown();
 		});
 	});
 }

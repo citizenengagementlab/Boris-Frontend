@@ -369,7 +369,7 @@ header h1 {
   text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
 }
 .container {
-  width: 650px;
+  width: 604px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -410,6 +410,7 @@ form ul {
   padding: 10px;
   margin: 0;
   *zoom: 1;
+  position: relative;
 }
 form ul:before,
 form ul:after {
@@ -441,6 +442,11 @@ form ul li.party {
   margin-top: 0px;
   margin-bottom: 20px;
   position: relative;
+}
+form ul li.buttons {
+  position: absolute;
+  bottom: 10px;
+  margin: 0px;
 }
 li.state {
   width: 150px;
@@ -538,6 +544,9 @@ textarea {
 .no_clear {
   clear: none;
 }
+#print {
+  display: none;
+}
 /* Tooltip Styles */
 p.tooltip {
   display: inline;
@@ -572,7 +581,7 @@ p.tooltip a {
 p.tooltip span {
   background-color: #FFF;
   display: block;
-  width: 190px;
+  width: 160px;
   min-height: 30px;
   position: relative;
   left: 30px;
@@ -585,6 +594,7 @@ p.tooltip span {
   font-size: 11px;
   text-align: center;
   z-index: 1000;
+  max-width: 170px;
 }
 p.tooltip span a {
   padding: 0px;
@@ -633,8 +643,58 @@ a#top_link {
 }
 #tabnav ul {
   list-style-type: none;
+  padding: .2em .2em 0;
+  margin-bottom: 0;
 }
 #tabnav ul li {
+  list-style: none;
   display: inline;
-  margin-right: 5px;
+  position: relative;
+  bottom: 2px;
+  margin-left: 17px;
+  white-space: nowrap;
+  vertical-align: top;
+  -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
+  -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
+}
+#tabnav ul li a {
+  text-decoration: none;
+  color: #FFF;
+  /*
+	 	&:active {
+		 	color:#AAA;
+		 	}
+*/
+
+}
+#tabnav ul li a:hover {
+  color: #AAA;
+}
+/*
+
+Sticky Footer by Ryan Fait
+http://ryanfait.com/
+
+*/
+* {
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+.wrapper {
+  min-height: 96%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -37px;
+  /* the bottom margin is the negative value of the footer's height */
+
+}
+.footer,
+.push {
+  height: 37px;
+  /* .push must be the same height as .footer */
+
 }

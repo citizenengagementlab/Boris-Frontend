@@ -5,22 +5,23 @@
 		<title>{%block title%}{%endblock title%}</title>
 		<!-- Import CSS -->
 		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css" />
-		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/jquery-ui-1.8.19.custom.css" />
 		{%block styles%}{%endblock styles%}
 		
 		<!-- Import Javascript -->
 		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.19.custom.min.js"></script>
 		{%block scripts%}{%endblock scripts%}
 	</head>
 	
 	<body>
+		<div class="wrapper">
 		<header>
 			<img id="logo" src="{{STATIC_URL}}img/rtvpower.png">
 		</header>
 
 		<div class="container">
 			{%block content%}{%endblock%}
+		</div>
+		<div class="push"></div>
 		<footer>
 			<a href="http://www.rockthevote.com/voter-registration/online-application-system/faq.html">FAQ</a>
 			<a href="http://www.rockthevote.com/voter-registration/online-application-system/privacy.html">Privacy &amp; Security</a>
