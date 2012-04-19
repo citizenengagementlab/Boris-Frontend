@@ -1,5 +1,9 @@
 (function() {
+<<<<<<< HEAD
   var getCityState, getStateRequirements, initForm, showRegistrationForm, submitStartForm, validateAddress, validateBirthday, validateChangedName, validateCitizenship, validateCity, validateEmail, validateFirstName, validateIDNumber, validateLastName, validateMailingAddress, validateParty, validatePhoneNumber, validateRace, validateRecentlyMoved, validateState, validateTitle, validateZip;
+=======
+  var getCityState, getStateRequirements, initForm, showRegistrationForm, submitRegistrationForm, submitStartForm, validateAddress, validateBirthday, validateChangedName, validateCitizenship, validateCity, validateEmail, validateFirstName, validateIDNumber, validateLastName, validateMailingAddress, validateParty, validatePhoneNumber, validateRace, validateRecentlyMoved, validateState, validateTitle, validateZip;
+>>>>>>> origin/master
 
   validateAddress = function($input) {
     return $input.val().length > 0;
@@ -247,7 +251,161 @@
   */
 
   submitStartForm = function() {
+<<<<<<< HEAD
     return getCityState($("#pre_zip_code").val());
+=======
+    var $email, $firstname, $lastname, $zip, errors, i, _i, _len;
+    $firstname = $("#pre_first_name");
+    $lastname = $("#pre_last_name");
+    $email = $("#pre_email_address");
+    $zip = $("#pre_zip_code");
+    errors = [];
+    if (!validateFirstName($firstname)) {
+      errors.push({
+        id: $firstname.attr('id'),
+        msg: "First Name is Required"
+      });
+    }
+    if (!validateLastName($lastname)) {
+      errors.push({
+        id: $lastname.attr('id'),
+        msg: "Last Name is Required"
+      });
+    }
+    if (!validateEmail($email)) {
+      errors.push({
+        id: $email.attr('id'),
+        msg: "Enter a Valid Email Address"
+      });
+    }
+    if (!validateZip($zip)) {
+      errors.push({
+        id: $zip.attr('id'),
+        msg: "Please Enter a Valid Zip Code"
+      });
+    }
+    if (errors.length < 0) {
+      for (_i = 0, _len = errors.length; _i < _len; _i++) {
+        i = errors[_i];
+        $(errors[i].id).addClass('error').prepend("<span class='error-message'>" + errors[i].msg + "</span>");
+      }
+      return false;
+    } else {
+      return getCityState($("#pre_zip_code").val());
+    }
+  };
+
+  submitRegistrationForm = function() {
+    var $address, $city, $dob, $email, $firstname, $idnumber, $lastname, $mailingaddress, $namechange, $phone, $prevaddress, $state, $title, $zip, errors, i, _i, _len;
+    $title = $("#name_title");
+    $firstname = $("#first_name");
+    $lastname = $("#last_name");
+    $namechange = $("#change_of_name");
+    $idnumber = $("#id_number");
+    $dob = $("#date_of_birth");
+    $email = $("#email_address");
+    $phone = $("#phone");
+    $address = $("#home_address");
+    $city = $("#home_city");
+    $state = $("#home_state_id");
+    $zip = $("#zip_code");
+    $mailingaddress = $("#has_different_address");
+    $prevaddress = $("#change_of_address");
+    errors = [];
+    if (!validateTitle($title)) {
+      errors.push({
+        id: $title.attr('id'),
+        msg: "Title is Required"
+      });
+    }
+    if (!validateFirstName($firstname)) {
+      errors.push({
+        id: $firstname.attr('id'),
+        msg: "First Name is Required"
+      });
+    }
+    if (!validateLastName($lastname)) {
+      errors.push({
+        id: $lastname.attr('id'),
+        msg: "Last Name is Required"
+      });
+    }
+    if (!validateEmail($email)) {
+      errors.push({
+        id: $email.attr('id'),
+        msg: "Enter a Valid Email Address"
+      });
+    }
+    if (!validateZip($zip)) {
+      errors.push({
+        id: $zip.attr('id'),
+        msg: "Please Enter a Valid Zip Code"
+      });
+    }
+    if (!validateChangedName($namechange)) {
+      errors.push({
+        id: $namechange.attr('id'),
+        msg: "Please include your previous name"
+      });
+    }
+    if (!validateIDNumber($idnumber)) {
+      errors.push({
+        id: $idnumber.attr('id'),
+        msg: "Please enter a valid ID Number"
+      });
+    }
+    if (!validateBirthday($dob)) {
+      errors.push({
+        id: $dob.attr('id'),
+        msg: "Please enter a valid date in a MM/DD/YYYY format, you must be 18 years old to register"
+      });
+    }
+    if (!validatePhoneNumber($phone)) {
+      errors.push({
+        id: $phone.attr('id'),
+        msg: "Enter a valid phone number"
+      });
+    }
+    if (!validateAddress($address)) {
+      errors.push({
+        id: $address.attr('id'),
+        msg: "Address is Required"
+      });
+    }
+    if (!validateCity($city)) {
+      errors.push({
+        id: $city.attr('id'),
+        msg: "City is Required"
+      });
+    }
+    if (!validateState($state)) {
+      errors.push({
+        id: $state.attr('id'),
+        msg: "State is Required"
+      });
+    }
+    if (!validateMailingAddress($mailingaddress)) {
+      errors.push({
+        id: $mailingaddress.attr('id'),
+        msg: "Please enter your mailing address"
+      });
+    }
+    if (!validateRecentlyMoved($prevaddress)) {
+      errors.push({
+        id: $prevaddress.attr('id'),
+        msg: "Please enter your previous address information"
+      });
+    }
+    if (errors.length < 0) {
+      for (_i = 0, _len = errors.length; _i < _len; _i++) {
+        i = errors[_i];
+        $(errors[i].id).addClass('error').prepend("<span class='error-message'>" + errors[i].msg + "</span>");
+      }
+      return false;
+    } else {
+      return getCityState($("#pre_zip_code").val());
+    }
+>>>>>>> origin/master
   };
 
   initForm = function() {
@@ -255,10 +413,21 @@
     $(".mailing").hide();
     $(".name-change").hide();
     $(".address-change").hide();
+<<<<<<< HEAD
     return $("form#get_started").submit(function(e) {
       e.preventDefault();
       return submitStartForm();
     });
+=======
+    $("form#get_started").submit(function(e) {
+      e.preventDefault();
+      return submitStartForm();
+    });
+    return $("registration").submit(function(e) {
+      e.preventDefault();
+      return submitRegistrationForm();
+    });
+>>>>>>> origin/master
   };
 
   /* -------------------------------------------- 
