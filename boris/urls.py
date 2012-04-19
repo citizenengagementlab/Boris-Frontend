@@ -5,6 +5,7 @@ urlpatterns = patterns('boris.views',
     (r'^$', 'frontpage'),
     (r'^registrants/new/$', 'register'),
     (r'^registrants/finish/$', 'finish'),
+    (r'^rtv_iframe_test/$', 'rtv_iframe_test'),
 )
 
 urlpatterns += patterns('',
