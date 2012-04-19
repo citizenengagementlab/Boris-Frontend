@@ -31,7 +31,7 @@ submitStartForm = ->
 
 submitRegistrationForm = ->
 	# validate registration form inputs
-	fields = {
+	requiredFields = {
 		title:
 			id: "#name_title"
 			msg: "Title is required"
@@ -92,7 +92,7 @@ submitRegistrationForm = ->
 
 	errors = []
 
-	for field in fields
+	for field in requiredFields
 		if field.validate
 			continue
 		else
