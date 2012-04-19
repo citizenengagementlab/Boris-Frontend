@@ -2,7 +2,7 @@
 
 	
 function accordion() {	
-	$("form ul").css("height","270px");
+	$("form ul").css("height","260px");
 	
 	$(".next-button").show();
 	$(".prev-button").show();

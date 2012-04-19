@@ -554,7 +554,6 @@ p.tooltip {
   margin-left: 10px;
   margin-top: 3px;
   margin-right: 50px;
-  width: 100px;
 }
 p.tooltip a {
   padding: 2px;
@@ -594,7 +593,7 @@ p.tooltip span {
   font-size: 11px;
   text-align: center;
   z-index: 1000;
-  max-width: 170px;
+  max-width: 120px;
 }
 p.tooltip span a {
   padding: 0px;
