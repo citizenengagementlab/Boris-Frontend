@@ -188,7 +188,7 @@ p.tooltip {
 	margin-left:10px;
 	margin-top:3px;
 	margin-right:50px;
-	width:260px;
+	width:100px;
 	a {
 		padding: 2px;
 		border: 1px solid #999;
@@ -258,33 +258,42 @@ a#top_link {
 
 #tabnav {
 	height:100%;
+	padding:8px;
 	position: relative; 
 }
 #tabnav ul {
 	list-style-type: none;
-	padding: .2em .2em 0;
+/* 	padding: .2em .2em 0; */
+	padding:1px 3px;
 	margin-bottom:0;
+	margin-left:10px;
 	li {
 		 list-style: none;
 		 display:inline;
 		 position: relative; 
-		 bottom:2px;
-		 margin-left:17px;
+		 margin-left:-4px;
+		 border-right:1px solid #FFF;
+		 padding:12px 6px 12px 0px;
 		 white-space: nowrap; 
 		 vertical-align: top; 
 		 .text-shadow(0 -1px 0 rgba(0,0,0,.90));
 		 a {
 		 	text-decoration:none;
 		 	color:#FFF;
-	/*
-	 	&:active {
-		 	color:#AAA;
-		 	}
-*/
+			padding-left:6px;
 		 	&:hover {
 		 	color:#AAA;
 		 	}
 		 }
+		
+	}
+	.first-tabnav {
+		padding-right:10px;
+		margin-left:-10px;
+	}
+	.last-tabnav { 
+		border: 0px !important;
+		padding-left:3px;
 	}
 }
 

@@ -18,8 +18,9 @@ function tabs() {
 		$(".next-button").click(function() {
 			$(this).parent().parent(this).hide();
 			$(".accordion-content[data-content=" + $(this).attr("data-tab") + "]").show();
+			$("#tabnav ul a").css("color","#FFF");
 			$("#tabnav ul a[data-tab=" + $(this).attr("data-tab") + "]").css("color", "#AAA");
-			console.log($("#tabnav ul a").not($("#tabnav ul a[data-tab=" + $(this).attr("data-tab") + "]").css("color", "#AAA")));
+			
 		});
 	
 		$(".prev-button").click(function() {
