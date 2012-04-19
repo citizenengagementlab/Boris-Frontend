@@ -71,7 +71,6 @@ $(document).ready(function() {
 	 		}
 	 	});
 
-
 	//first api hit, get state requirements
 	$("input#get_started").click(function(event){
 		event.preventDefault();
