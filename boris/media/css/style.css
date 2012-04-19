@@ -422,16 +422,22 @@ form ul li {
   margin-right: 5px;
   margin-bottom: 10px;
   width: 240px;
+  position: relative;
+  /* Setting the li to relative positioning ensures that the elements inside the tooltip wrapper animate properly.  */
+
 }
 form ul li.checkbox {
   width: 100%;
+  position: relative;
 }
 form ul li.city {
   width: 185px;
+  position: relative;
 }
 form ul li.party {
   margin-top: 0px;
   margin-bottom: 20px;
+  position: relative;
 }
 li.state {
   width: 150px;
