@@ -3,6 +3,18 @@
 $(function() 
 
 {
+
+	$(".accordion-next").hide();
+	$(".accordion-prev").hide();
+
+	if(document.location.hash==="#accordion") {
+	
+		
+	$("form ul").css("height","250px");
+	
+	$(".accordion-next").show();
+	$(".accordion-prev").show();
+
 	$("input#get_started").click(function() {
 	
 		$(".accordion-content:not(:first)").hide();
@@ -18,7 +30,13 @@ $(function()
 		
 		
 	});
+
+	} else if(document.location.has==="#tabs") {
+		$("#tab-nav").show();
 	
+	
+	} 
+
 
 		
 

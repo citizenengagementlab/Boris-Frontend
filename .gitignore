@@ -35,3 +35,5 @@ build/boto/bin/sdbadmin
 build/boto/bin/kill_instance
 
 build/boto/bin/list_instances
+
+boris/media/js/accordion-ck.js
