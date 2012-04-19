@@ -1,5 +1,5 @@
 (function() {
-  var getCityState, getStateRequirements, initForm, showRegistrationForm, submitRegistrationForm, submitStartForm, validateAddress, validateBirthday, validateChangedName, validateCitizenship, validateCity, validateEmail, validateFirstName, validateIDNumber, validateLastName, validateMailingAddress, validateParty, validatePhoneNumber, validateRace, validateRecentlyMoved, validateState, validateTitle, validateZip;
+  var getCityState, getStateRequirements, initForm, showRegistrationForm, submitRegistrationForm, submitStartForm, validateAddress, validateBirthday, validateChangedName, validateCitizenship, validateCity, validateEmail, validateIDNumber, validateMailingAddress, validateName, validateParty, validatePhoneNumber, validateRace, validateRecentlyMoved, validateState, validateTitle, validateZip;
 
   validateAddress = function($input) {
     return $input.val().length > 0;
@@ -47,11 +47,7 @@
     return $input.val().length > 0;
   };
 
-  validateFirstName = function($input) {
-    return $input.val().length > 0;
-  };
-
-  validateLastName = function($input) {
+  validateName = function($input) {
     return $input.val().length > 0;
   };
 
@@ -60,8 +56,8 @@
       /* Validate Previous Name
       */
       if (!validateTitle($('#prev_name_title'))) return false;
-      if (!validateFirstName($('#prev_first_name'))) return false;
-      if (!validateLastName($('#prev_last_name'))) return false;
+      if (!validateName($('#prev_first_name'))) return false;
+      if (!validateName($('#prev_last_name'))) return false;
     } else {
       return true;
     }
@@ -253,13 +249,13 @@
     $email = $("#pre_email_address");
     $zip = $("#pre_zip_code");
     errors = [];
-    if (!validateFirstName($firstname)) {
+    if (!validateName($firstname)) {
       errors.push({
         id: $firstname.attr('id'),
         msg: "First Name is Required"
       });
     }
-    if (!validateLastName($lastname)) {
+    if (!validateName($lastname)) {
       errors.push({
         id: $lastname.attr('id'),
         msg: "Last Name is Required"
@@ -289,109 +285,122 @@
   };
 
   submitRegistrationForm = function() {
-    var $address, $city, $dob, $email, $firstname, $idnumber, $lastname, $mailingaddress, $namechange, $phone, $prevaddress, $state, $title, $zip, errors, i, _i, _len;
-    $title = $("#name_title");
-    $firstname = $("#first_name");
-    $lastname = $("#last_name");
-    $namechange = $("#change_of_name");
-    $idnumber = $("#id_number");
-    $dob = $("#date_of_birth");
-    $email = $("#email_address");
-    $phone = $("#phone");
-    $address = $("#home_address");
-    $city = $("#home_city");
-    $state = $("#home_state_id");
-    $zip = $("#zip_code");
-    $mailingaddress = $("#has_different_address");
-    $prevaddress = $("#change_of_address");
+    var errors, field, fields, i, _i, _j, _len, _len2;
+    fields = {
+      title: {
+        id: "#name_title",
+        msg: "Title is required",
+        validate: function() {
+          return validateTitle($(this.id));
+        }
+      },
+      firstName: {
+        id: "#first_name",
+        msg: "First name is required",
+        validate: function() {
+          return validateName($(this.id));
+        }
+      },
+      lastName: {
+        id: "#last_name",
+        msg: "Last name is required",
+        validate: function() {
+          return validateName($(this.id));
+        }
+      },
+      nameChange: {
+        id: "#change_of_name",
+        msg: "Please enter your previous name",
+        validate: function() {
+          return validateChangedName($(this.id));
+        }
+      },
+      idNumber: {
+        id: "#id_number",
+        msg: "Please enter a valid id number",
+        validate: function() {
+          return validateIDNumber($(this.id));
+        }
+      },
+      birthday: {
+        id: "#date_of_birth",
+        msg: "Please enter a valid date in a MM/DD/YYYY format, you must be 18 years old to register.",
+        validate: function() {
+          return validateBirthday($(this.id));
+        }
+      },
+      email: {
+        id: "#email_address",
+        msg: "Please enter a valid email address",
+        validate: function() {
+          return validateEmail($(this.id));
+        }
+      },
+      phone: {
+        id: "#phone",
+        msg: "Please enter a valid phone number",
+        validate: function() {
+          return validatePhoneNumber($(this.id));
+        }
+      },
+      address: {
+        id: "#home_address",
+        msg: "Address is required",
+        validate: function() {
+          return validateAddress($(this.id));
+        }
+      },
+      city: {
+        id: "#home_city",
+        msg: "City is required",
+        validate: function() {
+          return validateCity($(this.id));
+        }
+      },
+      state: {
+        id: "#home_state_id",
+        msg: "State is required",
+        validate: function() {
+          return validateState($(this.id));
+        }
+      },
+      zip: {
+        id: "#zip_code",
+        msg: "Please enter a 5 digit zip code",
+        validate: function() {
+          return validateZip($(this.id));
+        }
+      },
+      mailingAddress: {
+        id: "#has_different_address",
+        msg: "Please enter your mailing address information",
+        validate: function() {
+          return validateMailingAddress($(this.id));
+        }
+      },
+      prevAddress: {
+        id: "#change_of_address",
+        msg: "Please enter your previous address information",
+        validate: function() {
+          return validateRecentlyMoved($(this.id));
+        }
+      }
+    };
     errors = [];
-    if (!validateTitle($title)) {
-      errors.push({
-        id: $title.attr('id'),
-        msg: "Title is Required"
-      });
-    }
-    if (!validateFirstName($firstname)) {
-      errors.push({
-        id: $firstname.attr('id'),
-        msg: "First Name is Required"
-      });
-    }
-    if (!validateLastName($lastname)) {
-      errors.push({
-        id: $lastname.attr('id'),
-        msg: "Last Name is Required"
-      });
-    }
-    if (!validateEmail($email)) {
-      errors.push({
-        id: $email.attr('id'),
-        msg: "Enter a Valid Email Address"
-      });
-    }
-    if (!validateZip($zip)) {
-      errors.push({
-        id: $zip.attr('id'),
-        msg: "Please Enter a Valid Zip Code"
-      });
-    }
-    if (!validateChangedName($namechange)) {
-      errors.push({
-        id: $namechange.attr('id'),
-        msg: "Please include your previous name"
-      });
-    }
-    if (!validateIDNumber($idnumber)) {
-      errors.push({
-        id: $idnumber.attr('id'),
-        msg: "Please enter a valid ID Number"
-      });
-    }
-    if (!validateBirthday($dob)) {
-      errors.push({
-        id: $dob.attr('id'),
-        msg: "Please enter a valid date in a MM/DD/YYYY format, you must be 18 years old to register"
-      });
-    }
-    if (!validatePhoneNumber($phone)) {
-      errors.push({
-        id: $phone.attr('id'),
-        msg: "Enter a valid phone number"
-      });
-    }
-    if (!validateAddress($address)) {
-      errors.push({
-        id: $address.attr('id'),
-        msg: "Address is Required"
-      });
-    }
-    if (!validateCity($city)) {
-      errors.push({
-        id: $city.attr('id'),
-        msg: "City is Required"
-      });
-    }
-    if (!validateState($state)) {
-      errors.push({
-        id: $state.attr('id'),
-        msg: "State is Required"
-      });
-    }
-    if (!validateMailingAddress($mailingaddress)) {
-      errors.push({
-        id: $mailingaddress.attr('id'),
-        msg: "Please enter your mailing address"
-      });
-    }
-    if (!validateRecentlyMoved($prevaddress)) {
-      errors.push({
-        id: $prevaddress.attr('id'),
-        msg: "Please enter your previous address information"
-      });
+    for (_i = 0, _len = fields.length; _i < _len; _i++) {
+      field = fields[_i];
+      if (field.validate) {
+        continue;
+      } else {
+        errors.push({
+          id: field.id,
+          msg: field.msg
+        });
+      }
     }
     if (errors.length < 0) {
-      for (_i = 0, _len = errors.length; _i < _len; _i++) {
-        i = errors[_i];
+      for (_j = 0, _len2 = errors.length; _j < _len2; _j++) {
+        i = errors[_j];
         $(errors[i].id).addClass('error').prepend("<span class='error-message'>" + errors[i].msg + "</span>");
       }
       return false;

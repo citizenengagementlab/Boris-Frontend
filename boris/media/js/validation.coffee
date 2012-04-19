@@ -41,10 +41,7 @@ validateRecentlyMoved = ($input) ->
 validateTitle = ($input) ->
 	return $input.val().length > 0
 
-validateFirstName = ($input) ->
-	return $input.val().length > 0
-
-validateLastName = ($input) ->
+validateName = ($input) ->
 	return $input.val().length > 0
 
 validateChangedName = ($input) ->
@@ -52,9 +49,9 @@ validateChangedName = ($input) ->
 		### Validate Previous Name ###
 		if !validateTitle $('#prev_name_title')
 			return false
-		if !validateFirstName $('#prev_first_name')
+		if !validateName $('#prev_first_name')
 			return false
-		if !validateLastName $('#prev_last_name')
+		if !validateName $('#prev_last_name')
 			return false
 	else
 		true
