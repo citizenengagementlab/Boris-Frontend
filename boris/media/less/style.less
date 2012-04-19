@@ -46,8 +46,12 @@ header {
 }
 
 #state_form {
-	margin-top: -13px; /* Cannot figure out what is causing the discrepency in height between the two sections.  I assume it's some form of margin collapse.. */
+	margin-top: 0px; /* Cannot figure out what is causing the discrepency in height between the two sections.  I assume it's some form of margin collapse.. */
 	
+}
+
+#registration_form {
+	margin-top:13px;
 }
 
 form {
@@ -70,22 +74,27 @@ form ul {
 	padding: 10px;
 	margin: 0;
 	.clearfix;
+	height:250px;
 	li {
 		float: left;
 		clear: both;
 		margin-right: 5px;
 		margin-bottom: 10px;
 		width: 240px;
+		position:relative;  /* Setting the li to relative positioning ensures that the elements inside the tooltip wrapper animate properly.  */
 	}
 	li.checkbox {
 		width:100%;
+		position:relative;
 	}
 	li.city {
 	width:185px;
+	position:relative;
 	}	
 	li.party {
 		margin-top:0px;
 		margin-bottom:20px;
+		position:relative;
 	}
 }
 
@@ -144,7 +153,6 @@ input, select, textarea {
 
 input[type="submit"] {
 	clear: both;
-	display: block;
 }
 
 
@@ -167,13 +175,13 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="button"]), textarea
 
 /* Tooltip Styles */
 
-p.tooltip, {
+p.tooltip {
 	display:inline; 
 	position:absolute;
 	margin-left:10px;
 	margin-top:3px;
 	margin-right:50px;
-	width:240px;
+	width:260px;
 	a {
 		padding: 2px;
 		border: 1px solid #999;
@@ -183,49 +191,44 @@ p.tooltip, {
 		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
 		#gradient.vertical(lighten(#004B7B,10%), #004B7B;
 		float:left;
-		margin-right:10px;
+	}
+	span {
+		background-color:#FFF;
+		display:block;
+		width:190px;
+		min-height:30px;
+		position:relative;
+		left:30px;
+		border: 3px solid lighten(#004B7b,11%);
+		.border-radius(3px);
+		padding:10px;
+		color:#000;
+		font-size:11px;
+		text-align:center;
+		z-index:1000;
+		a {		
+			padding:0px;
+			border:0px;
+			.border-radius(0px);
+			font-weight:normal;
+			color:#00E;
+			.text-shadow(0 0 0 rgba(0,0,0,.95));
+			float:none;
+			margin-right:0px;
+			background-color:#F0F0F0 !important;
+			#gradient.vertical(lighten(#F0F0F0,0%), #F0F0F0;
+			}
 	}
 }
 
 p.tooltip_checkbox, {
-	position:absolute;
 	margin-right:0px;
 	margin-top:-2px;
-	a { 
-		padding: 2px;
-		border: 1px solid #999;
-		.border-radius(3px);
-		font-weight: bold;
-		color: #FFF;
-		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
-		#gradient.vertical(lighten(#004B7B,10%), #004B7B;
-		z-index:0;
-	}
-	span {
-		a {
-			padding: 0px;
-			border: 1px solid #999;
-			.border-radius(3px);
-			font-weight: bold;
-			color: #FFF;
-			.text-shadow(0 -1px 0 rgba(0,0,0,.95));
-			#gradient.vertical(lighten(#004B7B,10%), #004B7B;
-		}
-	}
 }
 
-p.tooltip-select {
-	display:inline; 
+p.tooltip-select { 
 	margin-left:10px;
-	margin-top:5px;
-	a { padding: 2px;
-		border: 1px solid #999;
-		.border-radius(3px);
-		font-weight: bold;
-		color: #FFF;
-		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
-		#gradient.vertical(lighten(#004B7B,10%), #004B7B;}
-		z-index:0;
+	margin-top:-2px;
 }
 
 
@@ -234,11 +237,6 @@ p.tooltip-select {
 	float:left;
 }
 
-span.tooltip_text {
-	position:relative;
-	color:#000;
-	font-size:11px;
-}
 
 h1 {
 	display:inline;

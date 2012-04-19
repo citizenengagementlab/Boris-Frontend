@@ -386,9 +386,12 @@ header h1 {
   width: 230px;
 }
 #state_form {
-  margin-top: -13px;
+  margin-top: 0px;
   /* Cannot figure out what is causing the discrepency in height between the two sections.  I assume it's some form of margin collapse.. */
 
+}
+#registration_form {
+  margin-top: 13px;
 }
 form {
   padding-bottom: 10px;
@@ -407,6 +410,7 @@ form ul {
   padding: 10px;
   margin: 0;
   *zoom: 1;
+  height: 250px;
 }
 form ul:before,
 form ul:after {
@@ -422,16 +426,22 @@ form ul li {
   margin-right: 5px;
   margin-bottom: 10px;
   width: 240px;
+  position: relative;
+  /* Setting the li to relative positioning ensures that the elements inside the tooltip wrapper animate properly.  */
+
 }
 form ul li.checkbox {
   width: 100%;
+  position: relative;
 }
 form ul li.city {
   width: 185px;
+  position: relative;
 }
 form ul li.party {
   margin-top: 0px;
   margin-bottom: 20px;
+  position: relative;
 }
 li.state {
   width: 150px;
@@ -502,7 +512,6 @@ textarea {
 }
 input[type="submit"] {
   clear: both;
-  display: block;
 }
 input#zip_code,
 input#home_zip_code,
@@ -536,7 +545,7 @@ p.tooltip {
   margin-left: 10px;
   margin-top: 3px;
   margin-right: 50px;
-  width: 240px;
+  width: 260px;
 }
 p.tooltip a {
   padding: 2px;
@@ -559,90 +568,58 @@ p.tooltip a {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006aae', endColorstr='#004b7b', GradientType=0);
   float: left;
-  margin-right: 10px;
+}
+p.tooltip span {
+  background-color: #FFF;
+  display: block;
+  width: 190px;
+  min-height: 30px;
+  position: relative;
+  left: 30px;
+  border: 3px solid #006db3;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 10px;
+  color: #000;
+  font-size: 11px;
+  text-align: center;
+  z-index: 1000;
+}
+p.tooltip span a {
+  padding: 0px;
+  border: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  font-weight: normal;
+  color: #00E;
+  -webkit-text-shadow: 0 0 0 rgba(0, 0, 0, 0.95);
+  -moz-text-shadow: 0 0 0 rgba(0, 0, 0, 0.95);
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0.95);
+  float: none;
+  margin-right: 0px;
+  background-color: #F0F0F0 !important;
+  background-color: #f0f0f0;
+  background-image: -moz-linear-gradient(top, #f0f0f0, #f0f0f0);
+  background-image: -ms-linear-gradient(top, #f0f0f0, #f0f0f0);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f0f0f0), to(#f0f0f0));
+  background-image: -webkit-linear-gradient(top, #f0f0f0, #f0f0f0);
+  background-image: -o-linear-gradient(top, #f0f0f0, #f0f0f0);
+  background-image: linear-gradient(top, #f0f0f0, #f0f0f0);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#f0f0f0', GradientType=0);
 }
 p.tooltip_checkbox {
-  position: absolute;
   margin-right: 0px;
   margin-top: -2px;
 }
-p.tooltip_checkbox a {
-  padding: 2px;
-  border: 1px solid #999;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  font-weight: bold;
-  color: #FFF;
-  -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  background-color: #005e9a;
-  background-image: -moz-linear-gradient(top, #006aae, #004b7b);
-  background-image: -ms-linear-gradient(top, #006aae, #004b7b);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#006aae), to(#004b7b));
-  background-image: -webkit-linear-gradient(top, #006aae, #004b7b);
-  background-image: -o-linear-gradient(top, #006aae, #004b7b);
-  background-image: linear-gradient(top, #006aae, #004b7b);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006aae', endColorstr='#004b7b', GradientType=0);
-  z-index: 0;
-}
-p.tooltip_checkbox span a {
-  padding: 0px;
-  border: 1px solid #999;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  font-weight: bold;
-  color: #FFF;
-  -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  background-color: #005e9a;
-  background-image: -moz-linear-gradient(top, #006aae, #004b7b);
-  background-image: -ms-linear-gradient(top, #006aae, #004b7b);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#006aae), to(#004b7b));
-  background-image: -webkit-linear-gradient(top, #006aae, #004b7b);
-  background-image: -o-linear-gradient(top, #006aae, #004b7b);
-  background-image: linear-gradient(top, #006aae, #004b7b);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006aae', endColorstr='#004b7b', GradientType=0);
-}
 p.tooltip-select {
-  display: inline;
   margin-left: 10px;
-  margin-top: 5px;
-  z-index: 0;
-}
-p.tooltip-select a {
-  padding: 2px;
-  border: 1px solid #999;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  font-weight: bold;
-  color: #FFF;
-  -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  background-color: #005e9a;
-  background-image: -moz-linear-gradient(top, #006aae, #004b7b);
-  background-image: -ms-linear-gradient(top, #006aae, #004b7b);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#006aae), to(#004b7b));
-  background-image: -webkit-linear-gradient(top, #006aae, #004b7b);
-  background-image: -o-linear-gradient(top, #006aae, #004b7b);
-  background-image: linear-gradient(top, #006aae, #004b7b);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006aae', endColorstr='#004b7b', GradientType=0);
+  margin-top: -2px;
 }
 .checkbox_label {
   float: left;
-}
-span.tooltip_text {
-  position: relative;
-  color: #000;
-  font-size: 11px;
 }
 h1 {
   display: inline;
