@@ -1,16 +1,7 @@
 // TODO - Accordion Form
 
-$(function() 
-
-{
-
-	$(".accordion-next").hide();
-	$(".accordion-prev").hide();
-	$("#tabnav").hide();
-	$("#tabnav ul").hide();
-	if(document.location.hash==="#accordion") {
 	
-		
+function accordion() {	
 	$("form ul").css("height","250px");
 	
 	$(".accordion-next").show();
@@ -27,25 +18,5 @@ $(function()
 			$(this).parent().parent().parent(this).children(".accordion-content").slideUp();
 			console.log($(this).parent().parent().parent(this).next().children().slideDown());
 		});
-		
-		
-		
-	});
-
-	} else if(document.location.hash==="#tabs") {
-		$("input#get_started").click(function() {
-		$(".accordion-content:not(:first)").hide();
-		$("#tabnav").show();
-		$("#tabnav ul").show();
-		$(".accordion-header").hide();
-	
 	});
 }
-
-
-		
-
-	//when user clicks header, hides all other sections but one associated with that header (accordion-header)
-
-});
-	

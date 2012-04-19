@@ -249,11 +249,24 @@ a#top_link {
 
 #tabnav {
 	height:100%;
+	position: relative; 
 }
 #tabnav ul {
 	list-style-type: none;
+	padding: .2em .2em 0;
 	li {
-		display: inline;
-		margin-right:5px;
+		 list-style: none;
+		 display:inline;
+		 position: relative; 
+		 top: 1px; 
+		 margin-left:17px;
+		 border-bottom: 0 !important; 
+		 padding: 0; 
+		 white-space: nowrap; 
+		 vertical-align: top; 
+		 .text-shadow(0 -1px 0 rgba(0,0,0,.90));
+		 &:hover {
+		 	color:#AAA;
+		 }
 	}
 }

@@ -1,5 +1,21 @@
 var hash = document.location.hash;
 // Sets up the three UI templates.  Changing the hash tag in the URL switches the UI.
+$(function() 
+
+{
+	$(".accordion-next").hide();
+	$(".accordion-prev").hide();
+	$("#tabnav").hide();
+	$("#tabnav ul").hide();
+	if(hash==="#accordion") {
+		accordion();
+	} else if(hash==="#tabs") {
+		tabs();
+	}
+});
+	
+
+
 
 var api_url = "/rtv";
 

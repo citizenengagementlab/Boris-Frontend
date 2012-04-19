@@ -629,6 +629,7 @@ a#top_link {
 }
 #tabnav {
   height: 100%;
+  position: relative;
 }
 #tabnav ul {
   list-style-type: none;
