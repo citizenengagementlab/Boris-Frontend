@@ -6,7 +6,8 @@ $(function()
 
 	$(".accordion-next").hide();
 	$(".accordion-prev").hide();
-
+	$("#tabnav").hide();
+	$("#tabnav ul").hide();
 	if(document.location.hash==="#accordion") {
 	
 		
@@ -31,11 +32,15 @@ $(function()
 		
 	});
 
-	} else if(document.location.has==="#tabs") {
-		$("#tab-nav").show();
+	} else if(document.location.hash==="#tabs") {
+		$("input#get_started").click(function() {
+		$(".accordion-content:not(:first)").hide();
+		$("#tabnav").show();
+		$("#tabnav ul").show();
+		$(".accordion-header").hide();
 	
-	
-	} 
+	});
+}
 
 
 		

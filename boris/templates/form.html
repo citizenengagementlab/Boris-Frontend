@@ -16,7 +16,7 @@
 			<section id="state_form">
 				<form action="" method="get" id="get_started">
 					<fieldset id="get_started">
-						<legend class="accordion-header">Get Registered!</legend>
+						<legend class="header">Get Registered!</legend>
 						<p>Registering to vote is easy -- and you can do it now.</p>
 						<ul>
 							<li>
@@ -55,6 +55,14 @@
 				</form>
 			</section>
 		<section id="registration_form">
+				<legend id="tabnav" class="header">
+					<ul>
+						<li>Address Information</li>
+						<li>Personal Information</li>
+						<li>Contact Information</li>
+						<li>Additional Information</li>
+					</ul>
+				</legend>
 			<form action="" method="post" id="registration">
 			<fieldset id="address">
 				<legend class="accordion-header">Address Information</legend>
@@ -281,12 +289,5 @@
 				</ul>
 			</fieldset>
 		</form>
-		
-		<ul id="tabnav">
-			<li>Address Information</li>
-			<li>Personal Information</li>
-			<li>Contact Information</li>
-			<li>Additional Information</li>
-		</ul>
 		</section>
 {%endblock content%}
