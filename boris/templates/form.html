@@ -21,6 +21,7 @@ $(document).ready(function() {
 			<a id="top_link" href="/{%if layout%}?layout={{layout}}{%endif%}">Start Over</a>
 			<section id="state_form">
 				<form action="submit" method="post" id="get_started">
+					<input type="hidden" name="partner_id" val="{{partner_id}}" />
 					<fieldset id="get_started">
 						<legend class="header">Get Registered!</legend>
 						<p>Registering to vote is easy -- and you can do it now.</p>
