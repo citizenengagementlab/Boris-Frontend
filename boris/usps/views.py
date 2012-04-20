@@ -23,6 +23,6 @@ def zip_lookup(request):
         except USPSXMLError,e:
             return HttpResponseServerError('USPS Error: %s' % e)
     else:
-        return render_to_response('requires zip get parameter')
+        return HttpResponseServerError('requires zip get parameter')
     
     return HttpResponse(json.dumps(cleaned),mimetype="application/json")
