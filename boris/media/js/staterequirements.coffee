@@ -2,7 +2,7 @@ showRegistrationForm = () ->
   firstName = $('#pre_first_name').val()
   lastName  = $('#pre_last_name').val()
   email     = $('#pre_email_address').val()
-  zip       = $('#pre_zip_code')  
+  zip       = $('#pre_zip_code').val()
   $('#first_name').val(firstName)
   $('#last_name').val(lastName)
   $('#email_address').val(email)
@@ -16,20 +16,26 @@ getCityState = (zip) ->
     url: '/usps/zip_lookup/'
     data:
       zip: zip
-    success: (data) ->
+    success: (d) ->
       ### Handle City and State Data ###
-      $("form#ovr #home_zip_code").val data.zip
-      $("form#ovr #home_city").val data.city
-      $("form#ovr #home_state_id").val data.state
+      #zipCode = $("#pre_zip_code").val()
+      #alert(zipCode)
+      homeCity = d.city
+      homeState = d.state
+
+      #$("#home_zip_code").val(zipCode)
+      $("#home_city").val(homeCity)
+      $("#home_state_id").val(homeState)
       getStateRequirements()
     error: (error) ->
       ### TODO: Handle Error ###
 
 getStateRequirements = () ->
-  url = "/api/v1/state_requirements.json"
-  data = {}
-  data["'home_zip_code'"] = $('#pre_zip_code').val()
-  data["'lang'"] = $('#lang_id').val()
+  url = "/rtv/api/v1/state_requirements.json"
+  data = {
+    'home_zip_code': $('#pre_zip_code').val()
+    'lang': $('#lang_id').val()
+  }
   $.ajax({
     url: url
     data: data
