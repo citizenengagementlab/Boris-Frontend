@@ -446,8 +446,6 @@
       return false;
     } else {
       data = $(this).serializeJSON();
-      data.partner_id = '1';
-      data.home_state_id = '1';
       requiredBools = ['opt_in_email', 'opt_in_sms', 'us_citizen'];
       for (_k = 0, _len3 = requiredBools.length; _k < _len3; _k++) {
         i = requiredBools[_k];

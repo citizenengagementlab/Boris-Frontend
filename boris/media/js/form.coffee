@@ -130,8 +130,6 @@ submitRegistrationForm = ->
 	else
 		# Post registration
 		data = $(@).serializeJSON()
-		data.partner_id = '1'
-		data.home_state_id = '1'
 
 		requiredBools = [
 			'opt_in_email'
