@@ -46,11 +46,10 @@ getStateRequirements = () ->
         parties = response.party_list
         $target = $('select#party')
         html = ""
-        for i in parties
+        for party in parties
           ### generate html ###
-          party = parties[i]
           html += "<option val=#{party}>#{party}</option>\n"
-        if response.no_party_msg == "Decline to state"
+        if response.no_party_msg.toLowerCase() == "decline to state"
           html += "<option val=\"Decline to state\">Decline to state</option>\n"
         ### append HTML ###
         $target.append(html)
