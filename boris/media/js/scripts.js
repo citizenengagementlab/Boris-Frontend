@@ -45,6 +45,11 @@ $(document).ready(function() {
 	 			$('#registration_form').show();
 	  	});	
 	
+	//hide "start over" link until "get started" button is clicked
+	
+		$("input#get_started").click(function() {
+			$("#top_link").show();
+		});
 	
 	// Reveal optional fields when checkbox is checked - otherwise, hide.	
 	$("#has_different_address").click(function() {

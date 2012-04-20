@@ -12,7 +12,7 @@ html {
 
 
 header {
-	background: #b4b4b4;
+	#gradient.vertical(lighten(#000,30%), #000;
 	height:50px;
 	img#logo {
 		float:right;
@@ -52,7 +52,7 @@ header {
 }
 
 #registration_form {
-	margin-top:13px;
+	margin-top:20px;
 }
 
 form {
@@ -127,7 +127,7 @@ legend.accordion-header, legend.header {
 	font-weight: bold;
 	color: #FFF;
 	.text-shadow(0 -1px 0 rgba(0,0,0,.95));
-	#gradient.vertical(lighten(#004B7B,10%), #004B7B;
+	#gradient.vertical(#AAA, darken(#AAA,20%);
 }
 
 footer {
@@ -157,8 +157,14 @@ input, select, textarea {
 	.box-shadow(0 1px 0 rgba(255,255,255,.5));
 }
 
-input[type="submit"] {
+input[type="submit"], input[type="button"] {
 	clear: both;
+	color:#FFF;
+	#gradient.vertical(lighten(#b2272c,50%), #b2272c);
+	.border-radius(4px);
+	.box-shadow(0 0px 0 rgba(0,0,0,0));
+	width:100px;
+	height:35px;
 }
 
 
@@ -194,9 +200,8 @@ p.tooltip {
 		border: 1px solid #999;
 		.border-radius(3px);
 		font-weight: bold;
-		color: #FFF;
-		.text-shadow(0 -1px 0 rgba(0,0,0,.95));
-		#gradient.vertical(lighten(#004B7B,10%), #004B7B;
+		color: #B2272C;
+		#gradient.vertical(lighten(#AAA,50%), #AAA;
 		float:left;
 	}
 	span {
@@ -206,7 +211,7 @@ p.tooltip {
 		min-height:30px;
 		position:relative;
 		left:30px;
-		border: 3px solid lighten(#004B7b,11%);
+		border: 3px solid lighten(#B2272C,11%);
 		.border-radius(3px);
 		padding:10px;
 		color:#000;
@@ -219,12 +224,12 @@ p.tooltip {
 			border:0px;
 			.border-radius(0px);
 			font-weight:normal;
-			color:#00E;
+			color:#FFF;
 			.text-shadow(0 0 0 rgba(0,0,0,.95));
 			float:none;
 			margin-right:0px;
 			background-color:#F0F0F0 !important;
-			#gradient.vertical(lighten(#F0F0F0,0%), #F0F0F0;
+			#gradient.vertical(lighten(#F0F0F0,0%), #F0F0F0; /* overriding gradient from parent anchor */
 			}
 	}
 }
@@ -253,47 +258,48 @@ h1 {
 
 a#top_link {
 	float:right;
+	display:none;
 }
 
 
 #tabnav {
 	height:100%;
-	padding:8px;
 	position: relative; 
+	padding:3px;
 }
+
 #tabnav ul {
 	list-style-type: none;
-/* 	padding: .2em .2em 0; */
-	padding:1px 3px;
-	margin-bottom:0;
-	margin-left:10px;
 	li {
-		 list-style: none;
 		 display:inline;
-		 position: relative; 
-		 margin-left:-4px;
-		 border-right:1px solid #FFF;
-		 padding:12px 6px 12px 0px;
-		 white-space: nowrap; 
-		 vertical-align: top; 
+		 border-right:1px solid #f0f0f0;
+		 padding:4px 13px 18px 8px;
 		 .text-shadow(0 -1px 0 rgba(0,0,0,.90));
 		 a {
 		 	text-decoration:none;
 		 	color:#FFF;
-			padding-left:6px;
+		 	padding:10px;
+		 	position:relative;
+		 	top:5px;
 		 	&:hover {
-		 	color:#AAA;
+		 	color:#f8f8f8;
 		 	}
 		 }
 		
 	}
 	.first-tabnav {
-		padding-right:10px;
-		margin-left:-10px;
+		padding-right:0px;
+		margin-left:-14px;
+		a {
+			position:relative;
+			left:-17px;
+		}
 	}
 	.last-tabnav { 
-		border: 0px !important;
-		padding-left:3px;
+		border: 0px;
+		position:relative;
+		left:8px;
+		padding-left:0px;
 	}
 }
 
