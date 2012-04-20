@@ -49,6 +49,19 @@ submitStartForm = ->
 		return false
 	else
 		getCityState($("#pre_zip_code").val())
+		saveRegistrant($('form#get_started'))
+		
+saveRegistrant = ->
+	data = $(@).serializeJSON()
+	$.ajax({
+		type: "POST"
+		url: $(@).attr('action')
+		data: {'registrant':data}
+		cache: false
+		error: (response) -> #handle error
+			console.log response
+	})
+	
 
 submitRegistrationForm = ->
 	# validate registration form inputs
@@ -130,8 +143,6 @@ submitRegistrationForm = ->
 	else
 		# Post registration
 		data = $(@).serializeJSON()
-		data.partner_id = '1'
-		data.home_state_id = '1'
 
 		requiredBools = [
 			'opt_in_email'
@@ -153,11 +164,21 @@ submitRegistrationForm = ->
 			cache: false
 			error: (response) -> #handle error
 				console.log response
-			success: (response) -> #handle success
-				console.log response
-			complete: (response) -> #handle complete
-				console.log response
 		})
+		
+saveProgress = ($field) ->
+	console.log($field)
+	$.ajax({
+		type:"POST"
+		url: "/registrants/save_progress/"
+		data: {
+			email_address:$('#email_address').val()
+			field_name:$field.attr('name')
+			field_value:$field.val()
+		}
+		error: (response) ->
+			console.log(response);
+	})
 
 initForm = ->
 	# Setup Hidden Elements
@@ -178,5 +199,10 @@ initForm = ->
 			e.preventDefault()
 			submitRegistrationForm()
 		)
+	$("form#registration input, form#registration select").change(
+		(e) ->
+			saveProgress($(@))
+	)
+
 
 	# TODO: Setup Onchange Validation Logic

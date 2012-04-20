@@ -19,10 +19,10 @@ def zip_lookup(request):
             cleaned['city'] = response['City'].lower().title()
             cleaned['state'] = response['State'].upper()
             cleaned['zip'] = response['Zip5']
-            print cleaned
+            #print cleaned
         except USPSXMLError,e:
             return HttpResponseServerError('USPS Error: %s' % e)
     else:
-        return render_to_response('requires zip get parameter')
+        return HttpResponseServerError('requires zip get parameter')
     
     return HttpResponse(json.dumps(cleaned),mimetype="application/json")

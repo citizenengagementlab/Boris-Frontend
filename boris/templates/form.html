@@ -4,12 +4,6 @@
 
 {%block scripts%}
 
-{%comment%}
-<script type="text/javascript" src="{{STATIC_URL}}js/scripts.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}js/form.js"></script>
-{%endcomment%}
-
-
 <script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
 
 <script type="text/javascript" src="{{STATIC_URL}}js/{{layout|default:'singlepage'}}.js"></script>
@@ -30,7 +24,7 @@ $(document).ready(function() {
 			
 			
 			<section id="state_form">
-				<form action="" method="post" id="get_started">
+				<form action="/registrants/save_registrant/" method="post" id="get_started">
 					<input type="hidden" name="partner_id" val="{{partner_id}}" />
 					<fieldset id="get_started">
 						<legend class="header">Get Registered!</legend>
@@ -80,7 +74,7 @@ $(document).ready(function() {
 						<li class="last-tabnav"><a data-tab="additional">Additional Info</a></li>
 					</ul>
 				</legend>
-			<form action="/registrants/submit/" method="post" id="registration">
+			<form action="" method="post" id="registration">
 			<fieldset id="address">
 				<legend class="accordion-header">Address Information</legend>
 				<ul class="accordion-content" data-content="address">
@@ -99,7 +93,7 @@ $(document).ready(function() {
 					<li class="no_clear">
 						<label for="home_state_id">State</label>
 						<input type="text" name="home_state_id" id="home_state_id" />
-						<p class ="tooltip tooltip_address">
+						<p class ="tooltip">
 							<a id="tooltip_address">?</a>
 							<span class="tooltip_text" id="tooltip_text_address">Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form.</span>
 						</p>
@@ -261,7 +255,7 @@ $(document).ready(function() {
 					<li>
 						<label  for="phone">Phone</label>
 						<input type="text" name="phone" id="phone" />
-						<p class="tooltip"><a id="tooltip_phone">?</a><span class="tooltip_text" id="tooltip_text_phone">Most states ask for your telephone number in case there are questions about your application. You are not required to provide your phone number.</span></p>
+						<p class="tooltip"><a id="tooltip_phone">?</a><span class="tooltip_text" id="tooltip_text_phone"></span></p>
 						
 					</li>
 					<li>
@@ -317,5 +311,5 @@ $(document).ready(function() {
 		</form>
 		</section>
 		</div>
-		
+		<div class="push"></div>
 {%endblock content%}

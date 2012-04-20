@@ -9,6 +9,3 @@ def rtv_iframe_test(request):
     context = {'layout':layout}
     return render_to_response('rtv_iframe_test.html',context,
                 context_instance=RequestContext(request))
-                
-def submit(request):
-	return render_to_response('submit.html', context_instance=RequestContext(request))

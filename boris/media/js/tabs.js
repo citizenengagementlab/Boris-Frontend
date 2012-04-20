@@ -3,13 +3,13 @@ function tabs() {
 		$(".accordion-content:not(:first)").hide();
 		$("#tabnav").show();
 		$("#tabnav ul").show();
-		$("#tabnav ul a:first").addClass("tab-active");
+		$("#tabnav ul a:first").css("color", "#AAA");
 		$(".next-button").show();
 		$(".prev-button").show();
 		$(".accordion-header").hide();
 		$("#tabnav ul a").click(function() {	
-			$(this).addClass("tab-active");
-			$("#tabnav ul a").not($(this)).removeClass("tab-active");
+			$(this).css("color", "#AAA");
+			$("#tabnav ul a").not($(this)).css("color", "#FFF");
 			$(".accordion-content:visible").hide();
 			$(".accordion-content[data-content=" + $(this).attr("data-tab") + "]").show();
 		});
@@ -17,19 +17,26 @@ function tabs() {
 		$(".next-button").click(function() {
 			$(this).parent().parent(this).hide();
 			$(".accordion-content[data-content=" + $(this).attr("data-tab") + "]").show();
-			$("#tabnav ul a").removeClass("tab-active");
-			$("#tabnav ul a[data-tab=" + $(this).attr("data-tab") + "]").addClass("tab-active");
+			$("#tabnav ul a").css("color","#FFF");
+			$("#tabnav ul a[data-tab=" + $(this).attr("data-tab") + "]").css("color", "#AAA");
 			
 		});
 	
 		$(".prev-button").click(function() {
 			$(this).parent().parent(this).hide();
 			$(".accordion-content[data-content=" + $(this).attr("data-tab") + "]").show();	
-			$("#tabnav ul a").removeClass("tab-active");
-			$("#tabnav ul a[data-tab=" + $(this).attr("data-tab") + "]").addClass("tab-active");
 		
 		});
 	});
 }
 
 
+/*button behavior
+
+			
+		$(".prev-button").click(function() {
+			$(this).parent().parent().parent(this).children(".accordion-content").slideUp();
+			$(this).parent().parent().parent(this).prev().children().slideDown();
+		});
+		
+		*/
