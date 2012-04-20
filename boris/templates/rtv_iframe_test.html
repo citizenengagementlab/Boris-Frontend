@@ -401,7 +401,7 @@ function getValue(varsource)
 <script type="text/javascript">
 var source = getValue("source");
 document.open();
-document.write ('<iframe src="/registrants/new/#{{layout}}" width="604" height="795" frameborder="0" style=""><p>Your browser does not support iframes.</p></iframe>');
+document.write ('<iframe src="/registrants/new/{%if layout%}?layout={{layout}}{%endif%}" width="604" height="795" frameborder="0" style=""><p>Your browser does not support iframes.</p></iframe>');
 document.close();
 </script> 
 

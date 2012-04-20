@@ -1,23 +1,3 @@
-var hash = document.location.hash;
-// Sets up the three UI templates.  Changing the hash tag in the URL switches the UI.
-$(function() 
-
-{
-	$(".next-button").hide();
-	$(".prev-button").hide();
-	$("#tabnav").hide();
-	$("#tabnav ul").hide();
-	$("li.buttons").css("bottom","-10px"); // Keep register button from overlapping content
-	if(hash==="#accordion") {
-		accordion();
-	} else if(hash==="#tabs") {
-		tabs();
-	}
-});
-	
-
-
-
 var api_url = "/rtv";
 
 (function( $ ){
@@ -91,30 +71,6 @@ $(document).ready(function() {
 	 		}
 	 	});
 
-
-	//ui switch functionality
-	if (hash === "#tab") {
-		$('.tabs').tab('show');
-		$('.tabs').show();
-		$("form").addClass("tab-content");
-		$("#tab-new, #tab-personal , #tab-additional, #tab-action").addClass("tab-pane");
-		$("h1").removeAttr("data-toggle");
-		$("#accordion-new, #accordion-personal, #accordion-additional, #accordion-action").removeClass("collapse");
-		$("button.continue").removeAttr("data-toggle");
-	} else if (hash === "#accordion") {
-		$('.tabs').hide();
-		$("#tab-link").removeAttr("data-toggle");
-	
-	} else {
-		$('.tabs').hide();
-		$("h1").removeAttr("data-toggle");
-		$("#accordion-new, #accordion-personal, #accordion-additional, #accordion-action").removeClass("collapse");
-		$("button.continue").hide();
-	}
-	
-
-	
-		
 	//first api hit, get state requirements
 	$("input#get_started").click(function(event){
 		event.preventDefault();

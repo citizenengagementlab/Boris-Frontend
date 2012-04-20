@@ -1,8 +1,13 @@
 // TODO - Accordion Form
 
 	
-function accordion() {	
-	$("form ul").css("height","270px");
+function accordion() {
+	//hide tabs
+	$("#tabnav").hide();
+	$("#tabnav ul").hide();
+	//end
+	
+	$("form ul").css("height","260px");
 	
 	$(".next-button").show();
 	$(".prev-button").show();

@@ -369,12 +369,13 @@ header h1 {
   text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
 }
 .container {
-  width: 604px;
+  width: 564px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   padding: 10px 20px;
   background: #f0f0f0;
+  box-sizing: border-box;
 }
 .container h1 {
   margin: 0px;
@@ -554,7 +555,6 @@ p.tooltip {
   margin-left: 10px;
   margin-top: 3px;
   margin-right: 50px;
-  width: 100px;
 }
 p.tooltip a {
   padding: 2px;
@@ -594,7 +594,7 @@ p.tooltip span {
   font-size: 11px;
   text-align: center;
   z-index: 1000;
-  max-width: 170px;
+  max-width: 120px;
 }
 p.tooltip span a {
   padding: 0px;

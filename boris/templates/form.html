@@ -6,17 +6,22 @@
 <script type="text/javascript" src="{{STATIC_URL}}js/scripts.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/form.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}js/accordion.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}js/tabs.js"></script>
 
+<script type="text/javascript" src="{{STATIC_URL}}js/{{layout|default:'singlepage'}}.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	{{layout|default:'singlepage'}}();
+});
+</script>
 {%endblock scripts%}
 
 {%block content%}
 	
 			<h1>Register To Vote</h1>
-			<a id="top_link" href="/">Start Over</a>
+			<a id="top_link" href="/{%if layout%}?layout={{layout}}{%endif%}">Start Over</a>
 			<section id="state_form">
 				<form action="submit" method="post" id="get_started">
+					<input type="hidden" name="partner_id" val="{{partner_id}}" />
 					<fieldset id="get_started">
 						<legend class="header">Get Registered!</legend>
 						<p>Registering to vote is easy -- and you can do it now.</p>
@@ -241,7 +246,7 @@
 					</li>
 					<li>
 						<label for="opt_in_email">
-						<input type="checkbox" name="opt_in_email" id="opt_in_email" /> I want to receive updates via email.</label>
+						<input type="checkbox" name="opt_in_email" id="opt_in_email" checked="checked"/> I want to receive updates via email.</label>
 					</li>
 					<li>
 						<label  for="phone">Phone</label>
