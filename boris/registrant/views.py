@@ -25,7 +25,7 @@ def get_started_save(request):
 def submit(request):
     #actually hits the rtv api
     #returns a redirect to print
-    return HttpResponse('submit not yet implemented')
+    return render_to_response('submit.html', context_instance=RequestContext(request))
 
 def download(request):
     return HttpResponse('download not yet implemented')

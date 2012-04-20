@@ -1,0 +1,25 @@
+#print_form {
+	margin-top:20px;
+}
+
+.container #print_form h1 {
+	width:100%;
+}
+
+.container #print_form button {
+	width:200px;
+	height:80px;
+	margin: 30px auto;
+	display:block;
+	text-align:left;
+}
+
+.container #print_form button a {
+	text-decoration:none;
+	font-weight:bold;
+	font-size: 17px;
+	color:#FFF;
+}
+.container #print_form p {
+	text-align:center;
+}

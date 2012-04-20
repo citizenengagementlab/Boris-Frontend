@@ -33,12 +33,3 @@ function tabs() {
 }
 
 
-/*button behavior
-
-			
-		$(".prev-button").click(function() {
-			$(this).parent().parent().parent(this).children(".accordion-content").slideUp();
-			$(this).parent().parent().parent(this).prev().children().slideDown();
-		});
-		
-		*/
