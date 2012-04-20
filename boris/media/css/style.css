@@ -422,9 +422,6 @@ fieldset {
 fieldset#get_started > p {
   padding-top: 10px;
 }
-.accordion-content {
-  height: 330px;
-}
 form ul {
   list-style: none;
   padding: 10px;
@@ -468,8 +465,6 @@ form ul li.party {
   position: relative;
 }
 form ul li.buttons {
-  position: absolute;
-  bottom: 10px;
   margin: 0px;
   width: 210px;
 }
