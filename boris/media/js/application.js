@@ -1,15 +1,5 @@
 (function() {
-  var console, getCityState, getStateRequirements, initForm, showRegistrationForm, submitRegistrationForm, submitStartForm, validateAddress, validateBirthday, validateChangedName, validateCitizenship, validateCity, validateEmail, validateIDNumber, validateMailingAddress, validateName, validateParty, validatePhoneNumber, validateRace, validateRecentlyMoved, validateState, validateTitle, validateZip;
-
-  if (!window.console) {
-    console = {};
-    console.log = function() {};
-  }
-
-  /* -------------------------------------------- 
-       Begin validation.coffee 
-  --------------------------------------------
-  */
+  var clearValidationErrors, getCityState, getStateRequirements, initForm, showRegistrationForm, submitRegistrationForm, submitStartForm, validateAddress, validateBirthday, validateChangedName, validateCitizenship, validateCity, validateEmail, validateIDNumber, validateMailingAddress, validateName, validateParty, validatePhoneNumber, validateRace, validateRecentlyMoved, validateState, validateTitle, validateZip;
 
   validateAddress = function($input) {
     return $input.val().length > 0;
@@ -24,7 +14,7 @@
   };
 
   validateState = function($input) {
-    return $input.val() > 0;
+    return $input.val().length > 0;
   };
 
   validateMailingAddress = function($input) {
@@ -269,8 +259,14 @@
     return json;
   };
 
+  clearValidationErrors = function($form) {
+    $form.find('input, textarea, select').removeClass('error');
+    return $form.find('p.error-message').remove();
+  };
+
   submitStartForm = function() {
-    var errors, field, i, requiredFields, _i, _j, _len, _len2;
+    var error, errors, field, key, requiredFields, _i, _len;
+    clearValidationErrors($('#get_started'));
     requiredFields = {
       firstName: {
         id: "#pre_first_name",
@@ -302,21 +298,20 @@
       }
     };
     errors = [];
-    for (_i = 0, _len = requiredFields.length; _i < _len; _i++) {
-      field = requiredFields[_i];
-      if (field.validate) {
-        continue;
-      } else {
+    for (key in requiredFields) {
+      field = requiredFields[key];
+      if (!field.validate()) {
         errors.push({
           id: field.id,
           msg: field.msg
         });
       }
     }
-    if (errors.length < 0) {
-      for (_j = 0, _len2 = errors.length; _j < _len2; _j++) {
-        i = errors[_j];
-        $(errors[i].id).addClass('error').prepend("<span class='error-message'>" + errors[i].msg + "</span>");
+    if (errors.length > 0) {
+      for (_i = 0, _len = errors.length; _i < _len; _i++) {
+        error = errors[_i];
+        console.log(error.msg);
+        $(error.id).addClass('error').parent().children('label').append("<p class='error-message'>" + error.msg + "</p>").children('.error-message').hide().fadeIn();
       }
       return false;
     } else {
@@ -325,7 +320,7 @@
   };
 
   submitRegistrationForm = function() {
-    var data, errors, field, i, requiredBools, requiredFields, _i, _j, _k, _len, _len2, _len3;
+    var data, error, errors, field, i, key, requiredBools, requiredFields, _i, _j, _len, _len2;
     requiredFields = {
       title: {
         id: "#name_title",
@@ -405,7 +400,7 @@
         }
       },
       zip: {
-        id: "#zip_code",
+        id: "#home_zip_code",
         msg: "Please enter a 5 digit zip code",
         validate: function() {
           return validateZip($(this.id));
@@ -427,28 +422,27 @@
       }
     };
     errors = [];
-    for (_i = 0, _len = requiredFields.length; _i < _len; _i++) {
-      field = requiredFields[_i];
-      if (field.validate) {
-        continue;
-      } else {
+    for (key in requiredFields) {
+      field = requiredFields[key];
+      if (!field.validate()) {
         errors.push({
           id: field.id,
           msg: field.msg
         });
       }
     }
-    if (errors.length < 0) {
-      for (_j = 0, _len2 = errors.length; _j < _len2; _j++) {
-        i = errors[_j];
-        $(errors[i].id).addClass('error').prepend("<span class='error-message'>" + errors[i].msg + "</span>");
+    if (errors.length > 0) {
+      for (_i = 0, _len = errors.length; _i < _len; _i++) {
+        error = errors[_i];
+        console.log(error.msg);
+        $(error.id).addClass('error').parent().children('label').append("<p class='error-message'>" + error.msg + "</p>").children('.error-message').hide().fadeIn();
       }
       return false;
     } else {
       data = $(this).serializeJSON();
       requiredBools = ['opt_in_email', 'opt_in_sms', 'us_citizen'];
-      for (_k = 0, _len3 = requiredBools.length; _k < _len3; _k++) {
-        i = requiredBools[_k];
+      for (_j = 0, _len2 = requiredBools.length; _j < _len2; _j++) {
+        i = requiredBools[_j];
         if (!data[requiredBools[i]]) data[requiredBools[i]] = 0;
       }
       console.log('Ready to Send:');
@@ -478,11 +472,32 @@
     $(".mailing").hide();
     $(".name-change").hide();
     $(".address-change").hide();
+    $("#has_different_address").click(function() {
+      if ($("#has_different_address").is(":checked")) {
+        return $(".mailing").fadeIn();
+      } else {
+        return $(".mailing").fadeOut();
+      }
+    });
+    $("#change_of_name").click(function() {
+      if ($("#change_of_name").is(":checked")) {
+        return $(".name-change").fadeIn();
+      } else {
+        return $(".name-change").fadeOut();
+      }
+    });
+    $("#change_of_address").click(function() {
+      if ($("#change_of_address").is(":checked")) {
+        return $(".address-change").fadeIn();
+      } else {
+        return $(".address-change").fadeOut();
+      }
+    });
     $("form#get_started").submit(function(e) {
       e.preventDefault();
       if (!submitStartForm()) return false;
     });
-    return $("registration").submit(function(e) {
+    return $("#registration").submit(function(e) {
       e.preventDefault();
       return submitRegistrationForm();
     });

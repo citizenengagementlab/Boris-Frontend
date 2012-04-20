@@ -8,7 +8,7 @@ validateCity = ($input) ->
 	return $input.val().length > 0
 
 validateState = ($input) ->
-	return $input.val() > 0
+	return $input.val().length > 0
 
 validateMailingAddress = ($input) ->
 	if $input.attr("checked") == "checked"
