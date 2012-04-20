@@ -705,7 +705,9 @@ a#top_link {
   top: 5px;
 }
 #tabnav ul li a:hover {
-  color: #333;
+  -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+  -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
 }
 #tabnav ul .first-tabnav {
   padding-right: 0px;
@@ -747,4 +749,9 @@ body {
   height: 37px;
   /* .push must be the same height as .footer */
 
+}
+.tab-active {
+  -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+  -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
 }
