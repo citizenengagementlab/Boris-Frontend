@@ -1,5 +1,15 @@
 (function() {
-  var getCityState, getStateRequirements, initForm, showRegistrationForm, submitRegistrationForm, submitStartForm, validateAddress, validateBirthday, validateChangedName, validateCitizenship, validateCity, validateEmail, validateIDNumber, validateMailingAddress, validateName, validateParty, validatePhoneNumber, validateRace, validateRecentlyMoved, validateState, validateTitle, validateZip;
+  var console, getCityState, getStateRequirements, initForm, showRegistrationForm, submitRegistrationForm, submitStartForm, validateAddress, validateBirthday, validateChangedName, validateCitizenship, validateCity, validateEmail, validateIDNumber, validateMailingAddress, validateName, validateParty, validatePhoneNumber, validateRace, validateRecentlyMoved, validateState, validateTitle, validateZip;
+
+  if (!window.console) {
+    console = {};
+    console.log = function() {};
+  }
+
+  /* -------------------------------------------- 
+       Begin validation.coffee 
+  --------------------------------------------
+  */
 
   validateAddress = function($input) {
     return $input.val().length > 0;
