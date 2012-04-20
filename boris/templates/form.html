@@ -27,10 +27,10 @@ $(document).ready(function() {
 
 {%block content%}
 	
-			<h1>Register To Vote</h1>
+			
 			<a id="top_link" href="/{%if layout%}?layout={{layout}}{%endif%}">Start Over</a>
 			<section id="state_form">
-				<form action="submit" method="post" id="get_started">
+				<form action="" method="post" id="get_started">
 					<input type="hidden" name="partner_id" val="{{partner_id}}" />
 					<fieldset id="get_started">
 						<legend class="header">Get Registered!</legend>
@@ -74,10 +74,10 @@ $(document).ready(function() {
 		<section id="registration_form">
 				<legend id="tabnav" class="header">
 					<ul>
-						<li class="first-tabnav"><a data-tab="address">Address Information</a></li>
-						<li><a data-tab="personal">Personal Information</a></li>
-						<li><a data-tab="contact">Contact Information</a></li>
-						<li class="last-tabnav"><a data-tab="additional">Additional Information</a></li>
+						<li class="first-tabnav"><a data-tab="address">Address Info</a></li>
+						<li><a data-tab="personal">Personal Info</a></li>
+						<li><a data-tab="contact">Contact Info</a></li>
+						<li class="last-tabnav"><a data-tab="additional">Additional Info</a></li>
 					</ul>
 				</legend>
 			<form action="" method="post" id="registration">
@@ -309,13 +309,10 @@ $(document).ready(function() {
 						</label>
 					</li>
 					<li class="buttons form-action">
-						<input type="submit" id="register" value="Register" />
+						<input type="submit" id="register" action="submit" value="Register" />
 						<input type="button" data-tab="contact" class="prev-button" value="Go Back" />
 					</li>
 				</ul>
-			</fieldset>
-			<fieldset id="print">
-				<button>PRINT YOUR REGISTRATION</button>
 			</fieldset>
 		</form>
 		</section>
