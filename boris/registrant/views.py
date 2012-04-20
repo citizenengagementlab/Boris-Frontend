@@ -1,5 +1,8 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
+from django.http import HttpResponse,HttpResponseBadRequest
+
+from registrant.models import Registrant,RegistrationProgress
 
 def register(request):
     #determine form layout from get parameter
@@ -18,12 +21,39 @@ def register(request):
     return render_to_response('form.html',context,
                 context_instance=RequestContext(request))
                 
-def get_started_save(request):
+def save_registrant(request):
     #save name,email,zip to our local db
-    return HttpResponse('get_started_save not yet implemented')
+    if request.method != "POST":
+        return HttpResponseBadRequest('must post to save_registrant')
+    else:
+        try:
+            post_data = {'first_name':request.POST['first_name'],
+                         'last_name':request.POST['last_name'],
+                         'email':request.POST['email_address'],
+                         'zip_code':request.POST['zip_code']}
+        except KeyError,e:
+            return HttpResponseBadRequest(e)
+        registrant = Registrant(**post_data)
+        registrant.save()
+        return HttpResponse('registrant saved')
+    return HttpResponse('error')
+    
+def save_progress(request):
+    if request.method != "POST":
+        return HttpResponseBadRequest('must post to save_progress')
+    else:
+        try:
+            registrant = Registrant.objects.filter(email=request.POST['email_address']).latest()
+            progress = RegistrationProgress(field_name=request.POST['field_name'],
+                         field_value=request.POST['field_value'],
+                         registrant=registrant)
+            progress.save()
+        except KeyError,e:
+            return HttpResponseBadRequest(e)
+        return HttpResponse('progress saved')
+    return HttpResponse('save_progress error')
     
 def submit(request):
-    #actually hits the rtv api
     #returns a redirect to print
     return HttpResponse('submit not yet implemented')
 

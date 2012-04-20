@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.contrib import admin
 from django.conf import settings
 
 urlpatterns = patterns('boris.views',
@@ -9,7 +10,12 @@ urlpatterns = patterns('boris.views',
 urlpatterns += patterns('',
     (r'^registrants/', include('registrant.urls')),
     (r'^rtv/', include('proxy.urls')),
-    (r'^usps/',include('usps.urls'))
+    (r'^usps/',include('usps.urls')),
+)
+
+admin.autodiscover()
+urlpatterns += patterns('',
+    (r'^admin/', include(admin.site.urls)), 
 )
 
 if settings.DEBUG:

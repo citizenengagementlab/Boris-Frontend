@@ -19,7 +19,7 @@ def zip_lookup(request):
             cleaned['city'] = response['City'].lower().title()
             cleaned['state'] = response['State'].upper()
             cleaned['zip'] = response['Zip5']
-            print cleaned
+            #print cleaned
         except USPSXMLError,e:
             return HttpResponseServerError('USPS Error: %s' % e)
     else:
