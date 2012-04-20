@@ -1,22 +1,43 @@
 ### Form Logic ###
 
+$.fn.serializeJSON = ->
+	json = {}
+	$.map($(@).serializeArray(), (n, i) ->
+			if n.value == "on"
+				n.value = 1
+			else if n.value == "off"
+				n.value = 0
+			json[n.name] = n.value
+		)
+	json
+
 submitStartForm = ->
-	# validate start form inputs
-	$firstname = $("#pre_first_name")
-	$lastname  = $("#pre_last_name")
-	$email     = $("#pre_email_address")
-	$zip       = $("#pre_zip_code")
+
+	requiredFields =
+		firstName:
+			id: "#first_name"
+			msg: "First name is required"
+			validate: -> validateName($(@.id))
+		lastName:
+			id: "#last_name"
+			msg: "Last name is required"
+			validate: -> validateName($(@.id))
+		email:
+			id: "#email_address"
+			msg: "Please enter a valid email address"
+			validate: -> validateEmail($(@.id))
+		zip:
+			id: "#zip_code"
+			msg: "Please enter a 5 digit zip code"
+			validate: -> validateZip($(@.id))
 
 	errors = []
 
-	if !validateName($firstname)
-		errors.push({id: $firstname.attr('id'), msg: "First Name is Required"})
-	if !validateName($lastname)
-		errors.push({id: $lastname.attr('id'), msg: "Last Name is Required"})
-	if !validateEmail($email)
-		errors.push({id: $email.attr('id'), msg: "Enter a Valid Email Address"})
-	if !validateZip($zip)
-		errors.push({id: $zip.attr('id'), msg: "Please Enter a Valid Zip Code"})
+	for field in requiredFields
+		if field.validate
+			continue
+		else
+			errors.push({id: field.id, msg: field.msg})
 
 	# Return if there is an error
 	if errors.length < 0
@@ -107,7 +128,36 @@ submitRegistrationForm = ->
 				.prepend("<span class='error-message'>#{errors[i].msg}</span>")
 		return false
 	else
-		getCityState($("#pre_zip_code").val())
+		# Post registration
+		data = $(@).serializeJSON()
+		data.partner_id = '1'
+		data.home_state_id = '1'
+
+		requiredBools = [
+			'opt_in_email'
+			'opt_in_sms'
+			'us_citizen'
+		]
+
+		for i in requiredBools
+			if !data[requiredBools[i]]
+				data[requiredBools[i]] = 0
+
+		console.log 'Ready to Send:'
+		console.log data
+
+		$.ajax({
+			type: "POST"
+			url: "/api/v1/registrations.json"
+			data: {'registration':data}
+			cache: false
+			error: (response) -> #handle error
+				console.log response
+			success: (response) -> #handle success
+				console.log response
+			complete: (response) -> #handle complete
+				console.log response
+		})
 
 initForm = ->
 	# Setup Hidden Elements
