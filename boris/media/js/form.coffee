@@ -15,19 +15,19 @@ submitStartForm = ->
 
 	requiredFields =
 		firstName:
-			id: "#first_name"
+			id: "#pre_first_name"
 			msg: "First name is required"
 			validate: -> validateName($(@.id))
 		lastName:
-			id: "#last_name"
+			id: "#pre_last_name"
 			msg: "Last name is required"
 			validate: -> validateName($(@.id))
 		email:
-			id: "#email_address"
+			id: "#pre_email_address"
 			msg: "Please enter a valid email address"
 			validate: -> validateEmail($(@.id))
 		zip:
-			id: "#zip_code"
+			id: "#pre_zip_code"
 			msg: "Please enter a 5 digit zip code"
 			validate: -> validateZip($(@.id))
 
@@ -170,7 +170,8 @@ initForm = ->
 	$("form#get_started").submit(
 		(e) ->
 			e.preventDefault()
-			submitStartForm()
+			if !submitStartForm()
+				return false
 		)
 	$("registration").submit(
 		(e) ->

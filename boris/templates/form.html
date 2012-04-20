@@ -3,8 +3,13 @@
 {%block title%}Register to Vote{%endblock title%}
 
 {%block scripts%}
+
+{%comment%}
 <script type="text/javascript" src="{{STATIC_URL}}js/scripts.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/form.js"></script>
+{%endcomment%}
+
+
 <script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
 
 <script type="text/javascript" src="{{STATIC_URL}}js/{{layout|default:'singlepage'}}.js"></script>
@@ -13,6 +18,11 @@ $(document).ready(function() {
 	{{layout|default:'singlepage'}}();
 });
 </script>
+
+<script type="text/javascript" src="{{STATIC_URL}}js/application.js"></script>
+
+<style type="text/css">.error {color: red;border: 1px solid red !important;}</style>
+
 {%endblock scripts%}
 
 {%block content%}
