@@ -349,6 +349,14 @@ table {
 html {
   background: #f0f0f0;
 }
+span#tooltip_text_address {
+  top: 30px;
+  left: -30px;
+}
+span#tooltip_text_personal {
+  top: 30px;
+  left: -90px;
+}
 header {
   background-color: #2e2e2e;
   background-image: -moz-linear-gradient(top, #4d4d4d, #000000);
@@ -399,8 +407,8 @@ header h1 {
   /* Cannot figure out what is causing the discrepency in height between the two sections.  I assume it's some form of margin collapse.. */
 
 }
-#state_form {
-  margin-top: 16px;
+#registration_form {
+  margin-top: 20px;
 }
 form {
   padding-bottom: 10px;
@@ -414,13 +422,15 @@ fieldset {
 fieldset#get_started > p {
   padding-top: 10px;
 }
+.accordion-content {
+  height: 330px;
+}
 form ul {
   list-style: none;
   padding: 10px;
   margin: 0;
   *zoom: 1;
   position: relative;
-  height: 270px;
 }
 form ul:before,
 form ul:after {
@@ -435,10 +445,14 @@ form ul li {
   clear: both;
   margin-right: 5px;
   margin-bottom: 10px;
-  width: 240px;
+  width: 214px;
   position: relative;
   /* Setting the li to relative positioning ensures that the elements inside the tooltip wrapper animate properly.  */
 
+}
+form ul li input#first_name,
+form ul li input#last_name {
+  width: 190px;
 }
 form ul li.checkbox {
   width: 100%;
@@ -452,6 +466,12 @@ form ul li.party {
   margin-top: 0px;
   margin-bottom: 20px;
   position: relative;
+}
+form ul li.buttons {
+  position: absolute;
+  bottom: 10px;
+  margin: 0px;
+  width: 210px;
 }
 li.state {
   width: 150px;
@@ -482,15 +502,15 @@ legend.header {
   -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
   -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  background-color: #939393;
-  background-image: -moz-linear-gradient(top, #a7a7a7, #747474);
-  background-image: -ms-linear-gradient(top, #a7a7a7, #747474);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#a7a7a7), to(#747474));
-  background-image: -webkit-linear-gradient(top, #a7a7a7, #747474);
-  background-image: -o-linear-gradient(top, #a7a7a7, #747474);
-  background-image: linear-gradient(top, #a7a7a7, #747474);
+  background-color: #b5b5b5;
+  background-image: -moz-linear-gradient(top, #d4d4d4, #888888);
+  background-image: -ms-linear-gradient(top, #d4d4d4, #888888);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d4d4d4), to(#888888));
+  background-image: -webkit-linear-gradient(top, #d4d4d4, #888888);
+  background-image: -o-linear-gradient(top, #d4d4d4, #888888);
+  background-image: linear-gradient(top, #d4d4d4, #888888);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a7a7a7', endColorstr='#747474', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d4d4d4', endColorstr='#888888', GradientType=0);
 }
 footer {
   border-top: 1px solid #AAA;
@@ -534,9 +554,6 @@ input[type="button"] {
   background-image: linear-gradient(top, #f8e0e1, #b2272c);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f8e0e1', endColorstr='#b2272c', GradientType=0);
-  border-color: #b2272c #b2272c #73191c;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -545,24 +562,6 @@ input[type="button"] {
   box-shadow: 0 0px 0 rgba(0, 0, 0, 0);
   width: 100px;
   height: 35px;
-}
-input[type="submit"]:hover,
-input[type="button"]:hover,
-input[type="submit"]:active,
-input[type="button"]:active,
-input[type="submit"].active,
-input[type="button"].active,
-input[type="submit"].disabled,
-input[type="button"].disabled,
-input[type="submit"][disabled],
-input[type="button"][disabled] {
-  background-color: #b2272c;
-}
-input[type="submit"]:active,
-input[type="button"]:active,
-input[type="submit"].active,
-input[type="button"].active {
-  background-color: #881e22 \9;
 }
 input#zip_code,
 input#home_zip_code,
@@ -620,13 +619,13 @@ p.tooltip a {
   float: left;
 }
 p.tooltip span {
-  background-color: #FFF;
+  background-color: #E5F6FE;
   display: block;
   width: 160px;
   min-height: 30px;
   position: relative;
   left: 30px;
-  border: 3px solid #d43d42;
+  border: 8px solid #ADD9ED;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -644,22 +643,22 @@ p.tooltip span a {
   -moz-border-radius: 0px;
   border-radius: 0px;
   font-weight: normal;
-  color: #FFF;
+  color: #E00;
   -webkit-text-shadow: 0 0 0 rgba(0, 0, 0, 0.95);
   -moz-text-shadow: 0 0 0 rgba(0, 0, 0, 0.95);
   text-shadow: 0 0 0 rgba(0, 0, 0, 0.95);
   float: none;
   margin-right: 0px;
   background-color: #F0F0F0 !important;
-  background-color: #f0f0f0;
-  background-image: -moz-linear-gradient(top, #f0f0f0, #f0f0f0);
-  background-image: -ms-linear-gradient(top, #f0f0f0, #f0f0f0);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f0f0f0), to(#f0f0f0));
-  background-image: -webkit-linear-gradient(top, #f0f0f0, #f0f0f0);
-  background-image: -o-linear-gradient(top, #f0f0f0, #f0f0f0);
-  background-image: linear-gradient(top, #f0f0f0, #f0f0f0);
+  background-color: #e5f6fe;
+  background-image: -moz-linear-gradient(top, #e5f6fe, #e5f6fe);
+  background-image: -ms-linear-gradient(top, #e5f6fe, #e5f6fe);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e5f6fe), to(#e5f6fe));
+  background-image: -webkit-linear-gradient(top, #e5f6fe, #e5f6fe);
+  background-image: -o-linear-gradient(top, #e5f6fe, #e5f6fe);
+  background-image: linear-gradient(top, #e5f6fe, #e5f6fe);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#f0f0f0', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e5f6fe', endColorstr='#e5f6fe', GradientType=0);
   /* overriding gradient from parent anchor */
 
 }
@@ -686,9 +685,6 @@ a#top_link {
   position: relative;
   padding: 3px;
 }
-.accordion-content {
-  height: 330px;
-}
 #tabnav ul {
   list-style-type: none;
 }
@@ -708,10 +704,7 @@ a#top_link {
   top: 5px;
 }
 #tabnav ul li a:hover {
-  color: #fff;
-  -webkit-text-shadow: 0px 0px -1px rgba(255, 255, 255, 0.9);
-  -moz-text-shadow: 0px 0px -1px rgba(255, 255, 255, 0.9);
-  text-shadow: 0px 0px -1px rgba(255, 255, 255, 0.9);
+  color: #333;
 }
 #tabnav ul .first-tabnav {
   padding-right: 0px;
@@ -753,9 +746,4 @@ body {
   height: 37px;
   /* .push must be the same height as .footer */
 
-}
-.mailing,
-.name-change,
-.address-change {
-  display: none;
 }
