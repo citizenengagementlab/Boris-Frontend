@@ -672,9 +672,16 @@ p.tooltip-select {
 h1 {
   display: inline;
 }
-a#top_link {
-  float: right;
-  display: none;
+button#top_link {
+  float: left;
+  width: 80px;
+  height: 25px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+button#top_link a {
+  text-decoration: none;
+  color: #FFF;
 }
 #tabnav {
   height: 100%;
