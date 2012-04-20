@@ -3,6 +3,6 @@ venv
 settings_local.py
 rocky_dev.db
 .DS_Store
-build/boto/.gitignore
-build/boto/*
-boris/media/js/accordion-ck.js
+build/
+include/
+lib/
