@@ -2,10 +2,19 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
 
 def register(request):
+    #determine form layout from get parameter
     layout = request.GET.get('layout')
+    #catch typo
+    if layout == "tab":
+        layout = "tabs"
+    if layout not in ['tabs','accordion','singlepage']:
+        #invalid layout param, default to singlepage
+        layout = None
     context = {'layout':layout}
+    
     #TODO: setup partner_id based on layout
     context['partner_id'] = 1
+    
     return render_to_response('form.html',context,
                 context_instance=RequestContext(request))
                 
