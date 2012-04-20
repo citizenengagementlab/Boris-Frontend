@@ -4,8 +4,17 @@ https://register.rockthevote.com/stylesheets/application.css
 https://register.rockthevote.com/stylesheets/registration.css
 */
 
+#finish h1 {
+	margin-top:20px;
+}
+
+#finish p {
+	margin:20px auto;
+}
+
 p.centered {
   text-align: center;
+  margin: 20px auto;
 }
 
 form div.button {

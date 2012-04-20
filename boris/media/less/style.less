@@ -10,6 +10,15 @@ html {
 	background: #f0f0f0;
 }
 
+span#tooltip_text_address {
+	top:30px;
+	left:-30px;
+}
+
+span#tooltip_text_personal {
+top: 30px; 
+left: -90px;
+}
 
 header {
 	#gradient.vertical(lighten(#000,30%), #000;
@@ -60,7 +69,6 @@ form {
 	margin-bottom: 10px;
 }
 
-
 fieldset {
 	.border-radius(5px);
 }
@@ -68,6 +76,10 @@ fieldset {
 fieldset#get_started > p {
 	padding-top:10px;
 
+}
+
+.accordion-content {
+  height: 330px;
 }
 
 form ul {
@@ -81,8 +93,11 @@ form ul {
 		clear: both;
 		margin-right: 5px;
 		margin-bottom: 10px;
-		width: 240px;
+		width: 214px;
 		position:relative;  /* Setting the li to relative positioning ensures that the elements inside the tooltip wrapper animate properly.  */
+		input#first_name, input#last_name {
+			width:190px;
+		}
 	}
 	li.checkbox {
 		width:100%;
@@ -101,6 +116,7 @@ form ul {
 		position:absolute;
 		bottom:10px;
 		margin:0px;
+		width:210px;
 	}
 }
 
@@ -127,7 +143,7 @@ legend.accordion-header, legend.header {
 	font-weight: bold;
 	color: #FFF;
 	.text-shadow(0 -1px 0 rgba(0,0,0,.95));
-	#gradient.vertical(#AAA, darken(#AAA,20%);
+	#gradient.vertical(#d4d4d4, darken(#d4d4d4,30%);
 }
 
 footer {
@@ -195,7 +211,7 @@ p.tooltip {
 	margin-left:10px;
 	margin-top:3px;
 	margin-right:50px;
-	a {
+		a {
 		padding: 2px;
 		border: 1px solid #999;
 		.border-radius(3px);
@@ -205,13 +221,13 @@ p.tooltip {
 		float:left;
 	}
 	span {
-		background-color:#FFF;
+		background-color:#E5F6FE;
 		display:block;
 		width:160px;
 		min-height:30px;
 		position:relative;
 		left:30px;
-		border: 3px solid lighten(#B2272C,11%);
+		border: 8px solid #ADD9ED;
 		.border-radius(3px);
 		padding:10px;
 		color:#000;
@@ -219,17 +235,17 @@ p.tooltip {
 		text-align:center;
 		z-index:1000;
 		max-width:120px;
-		a {		
+			a {		
 			padding:0px;
 			border:0px;
 			.border-radius(0px);
 			font-weight:normal;
-			color:#FFF;
+			color:#E00;
 			.text-shadow(0 0 0 rgba(0,0,0,.95));
 			float:none;
 			margin-right:0px;
 			background-color:#F0F0F0 !important;
-			#gradient.vertical(lighten(#F0F0F0,0%), #F0F0F0; /* overriding gradient from parent anchor */
+			#gradient.vertical(lighten(#E5F6FE,0%), #E5F6FE; /* overriding gradient from parent anchor */
 			}
 	}
 }
@@ -282,7 +298,7 @@ a#top_link {
 		 	position:relative;
 		 	top:5px;
 		 	&:hover {
-		 	color:#f8f8f8;
+		 	color:#333;
 		 	}
 		 }
 		
