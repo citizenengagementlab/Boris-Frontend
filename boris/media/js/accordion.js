@@ -7,13 +7,13 @@ function accordion() {
 	$("#tabnav ul").hide();
 	//end
 	
-	$("form ul").css("height","260px");
-	
+	//show continue and previous buttons
 	$(".next-button").show();
 	$(".prev-button").show();
 
+	//Accordion functionality
 	$("input#get_started").click(function() {
-	
+		//Hide all but the first accordion section
 		$(".accordion-content:not(:first)").hide();
 		$(".accordion-header").click(function() {
 			$(".accordion-content").slideUp("slow");

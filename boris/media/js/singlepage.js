@@ -1,5 +1,5 @@
 function singlepage() {
-	$(".next-button").hide();
+	    $(".next-button").hide();
 		$(".prev-button").hide();
 		$("#tabnav").hide();
 		$("#tabnav ul").hide();

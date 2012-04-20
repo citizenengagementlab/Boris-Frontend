@@ -1,6 +1,5 @@
 function tabs() {
 	$("input#get_started").click(function() {
-		$(".accordion-content").css("height","260px");
 		$(".accordion-content:not(:first)").hide();
 		$("#tabnav").show();
 		$("#tabnav ul").show();
