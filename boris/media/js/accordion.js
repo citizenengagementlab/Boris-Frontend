@@ -15,15 +15,20 @@ function accordion() {
 	$("input#get_started").click(function() {
 		//Hide all but the first accordion section
 		$(".accordion-content:not(:first)").hide();
-		$(".accordion-header").click(function() {
+		//Clicking the header closes or opens that particular section (buggy, and not really needed)
+	/*
+	$(".accordion-header").click(function() {
 			$(".accordion-content").slideUp("slow");
 			$(this).next().slideDown("slow");
 		});
+*/
+		//Clicking the continue button closes the current section and opens the next.
 		$(".next-button").click(function() {
 			$(this).parent().parent().parent(this).children(".accordion-content").slideUp();
 			$(this).parent().parent().parent(this).next().children().slideDown();
 		});
 		
+		//Clicking the previous button closes the current sections and opens the previous.
 		$(".prev-button").click(function() {
 			$(this).parent().parent().parent(this).children(".accordion-content").slideUp();
 			$(this).parent().parent().parent(this).prev().children().slideDown();
