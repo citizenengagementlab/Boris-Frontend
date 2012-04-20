@@ -3,7 +3,6 @@
 @import "mixins.less";
 @import "normalize.less";
 
-
 /* Structural */
 
 html {
@@ -78,9 +77,6 @@ fieldset#get_started > p {
 
 }
 
-.accordion-content {
-  height: 330px;
-}
 
 form ul {
 	list-style: none;
@@ -113,8 +109,6 @@ form ul {
 		position:relative;
 	}
 	li.buttons {
-		position:absolute;
-		bottom:10px;
 		margin:0px;
 		width:210px;
 	}
@@ -173,7 +167,7 @@ input, select, textarea {
 	.box-shadow(0 1px 0 rgba(255,255,255,.5));
 }
 
-input[type="submit"], input[type="button"] {
+input[type="submit"], input[type="button"], button {
 	clear: both;
 	color:#FFF;
 	#gradient.vertical(lighten(#b2272c,50%), #b2272c);
@@ -272,9 +266,16 @@ h1 {
 }
 
 
-a#top_link {
-	float:right;
-	display:none;
+button#top_link {
+	float:left;
+	width: 80px;
+	height: 25px;
+	margin-left: 20px;
+	margin-top: 10px;
+	a {
+		text-decoration:none;
+		color:#FFF;
+	}
 }
 
 
@@ -298,7 +299,7 @@ a#top_link {
 		 	position:relative;
 		 	top:5px;
 		 	&:hover {
-		 	color:#333;
+		 	.text-shadow(0 0 1px rgba(255,255,255,0.40));
 		 	}
 		 }
 		
@@ -342,4 +343,6 @@ html, body {
 	height: 37px; /* .push must be the same height as .footer */
 }
 
-
+.tab-active {
+	.text-shadow(0 0 1px rgba(255,255,255,0.40));
+}
