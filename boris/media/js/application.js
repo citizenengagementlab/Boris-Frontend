@@ -200,7 +200,7 @@
         homeCity = d.city;
         homeState = d.state;
         $("#home_city").val(homeCity);
-        $("#home_state_id").val(homeState);
+        $("#home_state_id").val(homeState).attr('readonly', 'readonly');
         return getStateRequirements();
       },
       error: function(error) {
@@ -270,8 +270,8 @@
         /* Handle ID Validation Requirements
         */
 
-        minLength = response.id_min_length || 0;
-        maxLength = response.id_max_length || 100;
+        minLength = response.id_length_min || 0;
+        maxLength = response.id_length_max || 100;
         $('#id_number').attr('data-maxlength', maxLength).attr('data-minlength', minLength);
         /* Handle SOS Contact Info (where is this used?)
         */

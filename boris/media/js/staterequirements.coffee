@@ -25,7 +25,8 @@ getCityState = (zip) ->
 
       #$("#home_zip_code").val(zipCode)
       $("#home_city").val(homeCity)
-      $("#home_state_id").val(homeState)
+      $("#home_state_id").val(homeState).attr('readonly','readonly')
+      
       getStateRequirements()
     error: (error) ->
       ### TODO: Handle Error ###
@@ -69,12 +70,11 @@ getStateRequirements = () ->
         $('#tooltip_text_race').text(response.requires_race_msg)
 
       ### Handle ID Validation Requirements ###
-      minLength = response.id_min_length || 0
-      maxLength = response.id_max_length || 100
+      minLength = response.id_length_min || 0
+      maxLength = response.id_length_max || 100
       $('#id_number').attr('data-maxlength', maxLength).attr('data-minlength', minLength)
 
       ### Handle SOS Contact Info (where is this used?) ###
-
 
       ### Callback to advance form ###
       showRegistrationForm()
