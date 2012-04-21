@@ -6,15 +6,18 @@
 
 {%block content%}
 
-{%if error%}
-<!-- this is a huge hack, but sometimes you have to roll the hard six -->
 <script type="text/javascript">
+{%if error%}
+/* this is a huge hack, but we haven't wired up the form for server side refill yet
+fake it with javascript history
+*/
 history.back();
-</script>
 {%endif%}
 
-<script type="text/javascript">
 $(document).ready(function() {
+	/* force a delay, because we don't know when the API will return... */
+	$('#wait_form').delay(2500).fadeOut();
+	$('#print_form').delay(3000).fadeIn();
 	$('#print_form button[type=submit]').click(function() {
 		//opens the pdf in a new window
 		//advance to the thanks page via javascript
@@ -23,10 +26,14 @@ $(document).ready(function() {
 });
 </script>
 
+<section id="wait_form">
+<img src="http://s3.amazonaws.com/register2.rockthevote.com/img/big-spinner.gif" class="spinner">
+<h1>Please wait while we generate your registration form</h1>
+</section>
+
 <section id="print_form">
 <h1>You are not done.  Click on the print form button to print out your voter registration form.  Sign it and mail to the address located on the form.</h1>
 <button type="submit"><a href="{{pdfurl}}" target="_blank">PRINT YOUR REGISTRATION FORM NOW</a></button>
 <p>You won't be registered unless you print, sign and mail in your form!</p>
 </section>
-</div>
 {%endblock content%}
