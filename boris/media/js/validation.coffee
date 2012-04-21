@@ -66,18 +66,21 @@ validateIDNumber = ($input) ->
 		true
 
 validateBirthday = ($input) ->
-	today    = new Date()
-	birthday = new Date($input.val())
-	age      = today.getFullYear() - birthday.getFullYear()
-	m        = today.getMonth() - birthday.getMonth()
-
-	if (m < 0 || (m == 0 && today.getDate() < birthday.getDate()))
-		age--
-
-	if age < 18
-		false
+	if !$input.val()
+		return false
 	else
-		true
+		today    = new Date()
+		birthday = new Date($input.val())
+		age      = today.getFullYear() - birthday.getFullYear()
+		m        = today.getMonth() - birthday.getMonth()
+
+		if (m < 0 || (m == 0 && today.getDate() < birthday.getDate()))
+			age--
+
+		if age < 18
+			return false
+		else
+			return true
 
 validateEmail = ($input) ->
 	re = /^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -108,5 +111,3 @@ validateCitizenship = ($input) ->
 		false
 	else
 		true
-
-
