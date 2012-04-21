@@ -514,17 +514,7 @@
       }
       console.log('Ready to Send:');
       console.log(data);
-      return $.ajax({
-        type: "POST",
-        url: "/api/v1/registrations.json",
-        data: {
-          'registration': data
-        },
-        cache: false,
-        error: function(response) {
-          return console.log(response);
-        }
-      });
+      return true;
     }
   };
 
@@ -576,7 +566,7 @@
         return false;
       }
     });
-    $("registration").submit(function(e) {
+    $("form#registration").submit(function(e) {
       e.preventDefault();
       if (!submitRegistrationForm()) {
         return false;

@@ -18,7 +18,6 @@ $(document).ready(function() {
 {%endblock scripts%}
 
 {%block content%}
-
 		<section id="state_form">
 			<form action="/registrants/save_registrant/" method="post" id="get_started">
 				<input type="hidden" name="partner_id" val="{{partner_id}}" />
@@ -61,6 +60,7 @@ $(document).ready(function() {
 				</fieldset>
 			</form>
 		</section>
+
 		<section id="registration_form">
 				<legend id="tabnav" class="header">
 					<ul>
@@ -299,6 +299,7 @@ $(document).ready(function() {
 						</label>
 					</li>
 					<li class="buttons form-action">
+						<input type="hidden" name="lang" id="lang_id" value="en">
 						<input type="submit" id="register" action="submit" value="Register" />
 						<input type="button" data-tab="contact" class="prev-button" value="Go Back" />
 					</li>
