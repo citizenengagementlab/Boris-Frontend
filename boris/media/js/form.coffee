@@ -226,7 +226,7 @@ initForm = ->
 			if !submitRegistrationForm()
 				return false
 			else
-				return true
+				$(this).unbind('submit').submit()
 		)
 	$("form#registration input, form#registration select").change(
 		(e) ->

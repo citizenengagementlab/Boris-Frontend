@@ -573,7 +573,7 @@
       if (!submitRegistrationForm()) {
         return false;
       } else {
-        return true;
+        return $(this).unbind('submit').submit();
       }
     });
     return $("form#registration input, form#registration select").change(function(e) {
