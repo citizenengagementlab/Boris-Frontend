@@ -13,12 +13,15 @@ def rtv_proxy(request, url):
     elif request.method == "POST":
         if settings.DEBUG: print request.POST
         url = PROXY_FORMAT % url
-        #don't use urllib.urlencode to encode data dictionary,
-        #that munges the brackets, do &-join manually and quote_plus the values
-        data = []
-        for (k,v) in request.POST.items():
-            data.append('registration[%s]=%s' % (k,urllib.quote_plus(v)))
-        data = "&".join(data)
+        if 'registrations.json' in url:
+            #don't use urllib.urlencode to encode data dictionary,
+            #that munges the brackets, do &-join manually and quote_plus the values
+            data = []
+            for (k,v) in request.POST.items():
+                data.append('registration[%s]=%s' % (k,urllib.quote_plus(v)))
+            data = "&".join(data)
+        else:
+            data = urllib.urlencode(request.POST)
         if settings.DEBUG: print "POST QUERY",data
     
     if settings.PROXY_CREDENTIALS:
