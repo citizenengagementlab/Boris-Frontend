@@ -2,7 +2,6 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
 from django.http import HttpResponse,HttpResponseBadRequest
 
-import json
 from proxy.views import rtv_proxy
 from registrant.models import Registrant,RegistrationProgress
 
@@ -87,7 +86,6 @@ def submit(request):
     if rtv_response.has_key('error'):
         #something went wrong that wasn't caught in the frontend validation
         context['error'] = True
-        print rtv_response
     return render_to_response('submit.html', context, context_instance=RequestContext(request))
     
 def finish(request):
