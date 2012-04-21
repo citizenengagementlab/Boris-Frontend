@@ -399,8 +399,8 @@ header h1 {
   /* Cannot figure out what is causing the discrepency in height between the two sections.  I assume it's some form of margin collapse.. */
 
 }
-#state_form {
-  margin-top: 16px;
+#registration_form {
+  margin-top: 20px;
 }
 form {
   padding-bottom: 10px;
@@ -420,7 +420,6 @@ form ul {
   margin: 0;
   *zoom: 1;
   position: relative;
-  height: 270px;
 }
 form ul:before,
 form ul:after {
@@ -453,12 +452,9 @@ form ul li.party {
   margin-bottom: 20px;
   position: relative;
 }
-
 form ul li.buttons {
   margin: 0px;
-  width: 210px;
 }
-
 li.state {
   width: 150px;
 }
@@ -488,15 +484,15 @@ legend.header {
   -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
   -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  background-color: #939393;
-  background-image: -moz-linear-gradient(top, #a7a7a7, #747474);
-  background-image: -ms-linear-gradient(top, #a7a7a7, #747474);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#a7a7a7), to(#747474));
-  background-image: -webkit-linear-gradient(top, #a7a7a7, #747474);
-  background-image: -o-linear-gradient(top, #a7a7a7, #747474);
-  background-image: linear-gradient(top, #a7a7a7, #747474);
+  background-color: #969696;
+  background-image: -moz-linear-gradient(top, #aaaaaa, #777777);
+  background-image: -ms-linear-gradient(top, #aaaaaa, #777777);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#aaaaaa), to(#777777));
+  background-image: -webkit-linear-gradient(top, #aaaaaa, #777777);
+  background-image: -o-linear-gradient(top, #aaaaaa, #777777);
+  background-image: linear-gradient(top, #aaaaaa, #777777);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a7a7a7', endColorstr='#747474', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aaaaaa', endColorstr='#777777', GradientType=0);
 }
 footer {
   border-top: 1px solid #AAA;
@@ -528,7 +524,8 @@ textarea {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 input[type="submit"],
-input[type="button"] {
+input[type="button"],
+button {
   clear: both;
   color: #FFF;
   background-color: #dc9698;
@@ -540,9 +537,6 @@ input[type="button"] {
   background-image: linear-gradient(top, #f8e0e1, #b2272c);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f8e0e1', endColorstr='#b2272c', GradientType=0);
-  border-color: #b2272c #b2272c #73191c;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -551,24 +545,6 @@ input[type="button"] {
   box-shadow: 0 0px 0 rgba(0, 0, 0, 0);
   width: 100px;
   height: 35px;
-}
-input[type="submit"]:hover,
-input[type="button"]:hover,
-input[type="submit"]:active,
-input[type="button"]:active,
-input[type="submit"].active,
-input[type="button"].active,
-input[type="submit"].disabled,
-input[type="button"].disabled,
-input[type="submit"][disabled],
-input[type="button"][disabled] {
-  background-color: #b2272c;
-}
-input[type="submit"]:active,
-input[type="button"]:active,
-input[type="submit"].active,
-input[type="button"].active {
-  background-color: #881e22 \9;
 }
 input#zip_code,
 input#home_zip_code,
@@ -600,30 +576,36 @@ textarea {
 }
 /* Tooltip Styles */
 p.tooltip {
-  display: inline;
+  display: inline-block;
+  *display: inline;
   position: absolute;
-  margin-left: 10px;
-  margin-top: 3px;
-  margin-right: 50px;
+  top: 20px;
+  right: 0;
 }
 p.tooltip a {
-  padding: 2px;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #999;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
   font-weight: bold;
   color: #B2272C;
-  background-color: #dddddd;
-  background-image: -moz-linear-gradient(top, #ffffff, #aaaaaa);
-  background-image: -ms-linear-gradient(top, #ffffff, #aaaaaa);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#aaaaaa));
-  background-image: -webkit-linear-gradient(top, #ffffff, #aaaaaa);
-  background-image: -o-linear-gradient(top, #ffffff, #aaaaaa);
-  background-image: linear-gradient(top, #ffffff, #aaaaaa);
+  background-color: #e3e3e3;
+  background-image: -moz-linear-gradient(top, #f2f2f2, #cccccc);
+  background-image: -ms-linear-gradient(top, #f2f2f2, #cccccc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f2f2f2), to(#cccccc));
+  background-image: -webkit-linear-gradient(top, #f2f2f2, #cccccc);
+  background-image: -o-linear-gradient(top, #f2f2f2, #cccccc);
+  background-image: linear-gradient(top, #f2f2f2, #cccccc);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#aaaaaa', GradientType=0);
-  float: left;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2f2f2', endColorstr='#cccccc', GradientType=0);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 p.tooltip span {
   background-color: #FFF;
@@ -699,9 +681,6 @@ button#top_link a {
   position: relative;
   padding: 3px;
 }
-.accordion-content {
-  height: 330px;
-}
 #tabnav ul {
   list-style-type: none;
 }
@@ -721,10 +700,9 @@ button#top_link a {
   top: 5px;
 }
 #tabnav ul li a:hover {
-  color: #fff;
-  -webkit-text-shadow: 0px 0px -1px rgba(255, 255, 255, 0.9);
-  -moz-text-shadow: 0px 0px -1px rgba(255, 255, 255, 0.9);
-  text-shadow: 0px 0px -1px rgba(255, 255, 255, 0.9);
+  -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+  -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
 }
 #tabnav ul .first-tabnav {
   padding-right: 0px;
@@ -767,8 +745,8 @@ body {
   /* .push must be the same height as .footer */
 
 }
-.mailing,
-.name-change,
-.address-change {
-  display: none;
+.tab-active {
+  -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+  -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
 }

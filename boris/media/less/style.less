@@ -124,7 +124,7 @@ legend.accordion-header, legend.header {
 	font-weight: bold;
 	color: #FFF;
 	.text-shadow(0 -1px 0 rgba(0,0,0,.95));
-	#gradient.vertical(#AAA, darken(#AAA,20%);
+	#gradient.vertical(lighten(#AAA,5%), darken(#AAA,5%);
 }
 
 footer {
@@ -187,19 +187,25 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="button"]), textarea
 /* Tooltip Styles */
 
 p.tooltip {
-	display:inline; 
+	display:inline-block;
+	*display: inline; //IE7
 	position:absolute;
-	margin-left:10px;
-	margin-top:3px;
-	margin-right:50px;
+	top: 20px;
+	right: 0;
 	a {
-		padding: 2px;
+		display: inline-block;
+		height: 20px;
+		width: 20px;
+		line-height: 20px;
+		text-align: center;
+		.box-sizing(border-box);
 		border: 1px solid #999;
-		.border-radius(3px);
 		font-weight: bold;
 		color: #B2272C;
-		#gradient.vertical(lighten(#AAA,50%), #AAA;
-		float:left;
+		#gradient.vertical(lighten(#CCC,15%), #CCC;
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 	span {
 		background-color:#FFF;
