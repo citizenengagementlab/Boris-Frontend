@@ -23,4 +23,7 @@ $("document").ready(function() {
 		}, function() { 
 		$(this).next().hide(); 
 	});
+	$(".tooltip_text").click(function(e) {
+		$(this).toggle();
+	});
 });
