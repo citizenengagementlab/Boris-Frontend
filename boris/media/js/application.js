@@ -91,6 +91,9 @@
 
   validateIDNumber = function($input) {
     var idLength, maxLength, minLength;
+    if ($input.val().toUpperCase() === "NONE") {
+      return true;
+    }
     maxLength = $input.attr("data-maxlength");
     minLength = $input.attr("data-minlength");
     idLength = $input.val().length;

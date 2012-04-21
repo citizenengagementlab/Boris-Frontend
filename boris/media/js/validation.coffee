@@ -57,13 +57,15 @@ validateChangedName = ($input) ->
 		true
 
 validateIDNumber = ($input) ->
+	if ($input.val().toUpperCase() == "NONE" )
+		return true
 	maxLength = $input.attr("data-maxlength")
 	minLength = $input.attr("data-minlength")
 	idLength = $input.val().length
 	if (minLength > idLength || idLength > maxLength)
-		false
+		return false
 	else
-		true
+		return true
 
 validateBirthday = ($input) ->
 	if !$input.val()
