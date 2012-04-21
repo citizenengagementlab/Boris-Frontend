@@ -7,9 +7,10 @@ PROXY_FORMAT = u"https://%s/%s" % (settings.PROXY_DOMAIN, u"%s")
 def rtv_proxy_view(request,url):
     #wrapper for direct django view
     if request.method == "GET":
-        return rtv_proxy("GET",request.GET,url)
+        response = rtv_proxy("GET",request.GET,url)
     elif request.method == "POST":
-        return rtv_proxy("POST",request.GET,url)
+        response = rtv_proxy("POST",request.GET,url)
+    return HttpResponse(json.dumps(response),mimetype="application/json")
 
 def rtv_proxy(method, values, url):
     if settings.DEBUG: print "PROXY",method,
@@ -46,7 +47,9 @@ def rtv_proxy(method, values, url):
         elif method == "POST":
             response = urllib2.urlopen(url,data)
     except urllib2.HTTPError,e:
-        return HttpResponse(e.read(),status=e.code)
+        error_dict = {'error':json.loads(e.read())}
+        error_dict['status'] = e.code
+        return error_dict
         
     content = response.read()
-    return HttpResponse(content,mimetype="application/json")
+    return json.loads(content)
