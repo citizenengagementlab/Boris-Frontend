@@ -57,9 +57,9 @@ getStateRequirements = () ->
       
       ### Handle Required Fields ###
       if response.requires_party
-        $('#party').attr('data-required', true);
+        $('#party').attr('data-required', true)
       if response.requires_party
-        $('#party').attr('data-required', true);
+        $('#party').attr('data-required', true)
       
       ### Handle Help Text ###
       if response.id_number_msg
@@ -79,6 +79,11 @@ getStateRequirements = () ->
       ### Callback to advance form ###
       showRegistrationForm()
 
-    error: (error) ->
-      ### TODO: Handle Error ###
+    error: (xhr,status,error) ->
+      $('form#get_started img.spinner').hide()
+      response = $.parseJSON(xhr.responseText)
+      $('#state_form').before('<div class="error-message big-error">'+response.error.message+'</div>')
+      console.log(response)
+      $('#state_form').hide()
+
   })

@@ -284,10 +284,13 @@
 
         return showRegistrationForm();
       },
-      error: function(error) {
-        /* TODO: Handle Error
-        */
-
+      error: function(xhr, status, error) {
+        var response;
+        $('form#get_started img.spinner').hide();
+        response = $.parseJSON(xhr.responseText);
+        $('#state_form').before('<div class="error-message big-error">' + response.error.message + '</div>');
+        console.log(response);
+        return $('#state_form').hide();
       }
     });
   };

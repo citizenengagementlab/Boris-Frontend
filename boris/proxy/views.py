@@ -10,7 +10,11 @@ def rtv_proxy_view(request,url):
         response = rtv_proxy("GET",request.GET,url)
     elif request.method == "POST":
         response = rtv_proxy("POST",request.GET,url)
-    return HttpResponse(json.dumps(response),mimetype="application/json")
+    if response.has_key('error'):
+        status = response['status']
+    else:
+        status = 200
+    return HttpResponse(json.dumps(response),mimetype="application/json",status=status)
 
 def rtv_proxy(method, values, url):
     if settings.DEBUG: print "PROXY",method,
