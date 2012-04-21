@@ -158,7 +158,7 @@ try:
 except:
     #we're on Heroku, sensitive info is in environ
     DEBUG = False
-    PROXY_DOMAIN = "rtvstaging2.osuosl.org"
+    PROXY_DOMAIN = "rtvstaging.osuosl.org"
     PROXY_CREDENTIALS = {'user':os.environ['RTV_USER'],
                          'password':os.environ['RTV_PASS']}
     USPS_USERID = os.environ['USPS_USERID']
