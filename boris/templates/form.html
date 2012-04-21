@@ -20,51 +20,49 @@ $(document).ready(function() {
 {%endblock scripts%}
 
 {%block content%}
-	
-			
-			
-			<section id="state_form">
-				<form action="/registrants/save_registrant/" method="post" id="get_started">
-					<input type="hidden" name="partner_id" val="{{partner_id}}" />
-					<fieldset id="get_started">
-						<legend class="header">Get Registered!</legend>
-						<p>Registering to vote is easy -- and you can do it now.</p>
-						<ul>
-							<li>
-								<label for="pre_first_name">First Name</label>
-								<input type="text" name="first_name" id="pre_first_name"  />			
 
-							</li>
-							<li>
-								<label for="pre_last_name">Last Name</label>
-								<input type="text" name="last_name" id="pre_last_name"  />			
-							</li>
-							<li>
-								<label for="pre_email_address">Email Address</label>
-								<input type="text"  name="email_address" id="pre_email_address" />			
-								<p class="tooltip">
-									<a id="tooltip_email">?</a>
-									<span class="tooltip_text" id="tooltip_text_email">We will e-mail you a copy of your voter registration form.</span>
-								</p>
-							</li>
-							<li>
-								<label for="pre_zip_code">Zip Code</label>
-								<input type="text"  name="zip_code" id="pre_zip_code" />			
-								<p class="tooltip">
-									<a id="tooltip_zip_code">?</a>
-									<span class="tooltip_text" id="tooltip_text_zip_code">
-										Enter ZIP code for the address where you live, even if you don't receive mail there.
-									</span>
-								</p>
-							</li>
-							<li class="form-action">
-								<input type="hidden" name="lang" id="lang_id" value="en">			
-								<input type="submit" id="get_started" value="Get Started" />			
-							</li>
-						</ul>
-					</fieldset>
-				</form>
-			</section>
+		<section id="state_form">
+			<form action="/registrants/save_registrant/" method="post" id="get_started">
+				<input type="hidden" name="partner_id" val="{{partner_id}}" />
+				<fieldset id="get_started">
+					<legend class="header">Get Registered!</legend>
+					<p>Registering to vote is easy -- and you can do it now.</p>
+					<ul>
+						<li>
+							<label for="pre_first_name">First Name</label>
+							<input type="text" name="first_name" id="pre_first_name"  />			
+
+						</li>
+						<li>
+							<label for="pre_last_name">Last Name</label>
+							<input type="text" name="last_name" id="pre_last_name"  />			
+						</li>
+						<li>
+							<label for="pre_email_address">Email Address</label>
+							<input type="text"  name="email_address" id="pre_email_address" />
+							<p class="tooltip">
+								<a id="tooltip_email">?</a>
+								<span class="tooltip_text" id="tooltip_text_email">We will e-mail you a copy of your voter registration form.</span>
+							</p>
+						</li>
+						<li>
+							<label for="pre_zip_code">Zip Code</label>
+							<input type="text"  name="zip_code" id="pre_zip_code" />			
+							<p class="tooltip">
+								<a id="tooltip_zip_code">?</a>
+								<span class="tooltip_text" id="tooltip_text_zip_code">
+									Enter ZIP code for the address where you live, even if you don't receive mail there.
+								</span>
+							</p>
+						</li>
+						<li class="form-action">
+							<input type="hidden" name="lang" id="lang_id" value="en">			
+							<input type="submit" id="get_started" value="Get Started" />			
+						</li>
+					</ul>
+				</fieldset>
+			</form>
+		</section>
 		<section id="registration_form">
 				<legend id="tabnav" class="header">
 					<ul>
@@ -108,7 +106,7 @@ $(document).ready(function() {
 								I have a different mailing address.
 						</label>
 						<p class="tooltip tooltip_checkbox"><a id="tooltip_has_different_address">?</a><span class="tooltip_text" id="tooltip_text_has_different_address"> If you receive mail at a different address, please enter it here.</span></p>
-					</li>						
+					</li>
 					<div class="mailing"> 
 						<li>
 							<label for="mailing_address">Address</label>
@@ -310,6 +308,5 @@ $(document).ready(function() {
 			</fieldset>
 		</form>
 		</section>
-		</div>
 		<div class="push"></div>
 {%endblock content%}
