@@ -91,6 +91,9 @@
 
   validateIDNumber = function($input) {
     var idLength, maxLength, minLength;
+    if ($input.val().toUpperCase() === "NONE") {
+      return true;
+    }
     maxLength = $input.attr("data-maxlength");
     minLength = $input.attr("data-minlength");
     idLength = $input.val().length;
@@ -200,7 +203,7 @@
         homeCity = d.city;
         homeState = d.state;
         $("#home_city").val(homeCity);
-        $("#home_state_id").val(homeState);
+        $("#home_state_id").val(homeState).attr('readonly', 'readonly');
         return getStateRequirements();
       },
       error: function(error) {
@@ -270,8 +273,8 @@
         /* Handle ID Validation Requirements
         */
 
-        minLength = response.id_min_length || 0;
-        maxLength = response.id_max_length || 100;
+        minLength = response.id_length_min || 0;
+        maxLength = response.id_length_max || 100;
         $('#id_number').attr('data-maxlength', maxLength).attr('data-minlength', minLength);
         /* Handle SOS Contact Info (where is this used?)
         */
@@ -386,6 +389,9 @@
       cache: false,
       error: function(response) {
         return console.log(response);
+      },
+      beforeSend: function() {
+        return $('form#get_started input[type=submit]').after('<img src="http://s3.amazonaws.com/register2.rockthevote.com/img/ajax-spinner.gif" class="spinner">');
       }
     });
   };
@@ -571,7 +577,9 @@
     });
     $("form#registration").submit(function(e) {
       e.preventDefault();
+      $('form#registration input[type=submit]').after('<img src="http://s3.amazonaws.com/register2.rockthevote.com/img/ajax-spinner.gif" class="spinner">');
       if (!submitRegistrationForm()) {
+        $('form#registration img.spinner').remove();
         return false;
       } else {
         return $('#registration').off('submit').submit();

@@ -23,7 +23,6 @@ $(document).ready(function() {
 			
 			<section id="state_form">
 				<form action="/registrants/save_registrant/" method="post" id="get_started">
-					<input type="hidden" name="partner_id" val="{{partner_id}}" />
 					<fieldset id="get_started">
 						<legend class="header">Get Registered!</legend>
 						<p>Registering to vote is easy -- and you can do it now.</p>
@@ -76,6 +75,7 @@ $(document).ready(function() {
 					</ul>
 				</legend>
 				<form action="/registrants/submit/" method="post" id="registration">
+					<input type="hidden" name="partner_id" value="{{partner_id}}" />
 			<fieldset id="address">
 				<legend class="accordion-header">Address Information</legend>
 				<ul class="accordion-content" data-content="address">

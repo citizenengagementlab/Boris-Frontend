@@ -4,24 +4,32 @@ from django.http import HttpResponse
 from django.conf import settings
 PROXY_FORMAT = u"https://%s/%s" % (settings.PROXY_DOMAIN, u"%s")
 
-def rtv_proxy(request, url):
-    if settings.DEBUG: print "PROXY",request.method,
+def rtv_proxy_view(request,url):
+    #wrapper for direct django view
     if request.method == "GET":
-        if settings.DEBUG: print request.GET
-        url_ending = "%s?%s" % (url, urllib.urlencode(request.GET))
-        url = PROXY_FORMAT % url_ending
+        response = rtv_proxy("GET",request.GET,url)
     elif request.method == "POST":
-        if settings.DEBUG: print request.POST
+        response = rtv_proxy("POST",request.GET,url)
+    return HttpResponse(json.dumps(response),mimetype="application/json")
+
+def rtv_proxy(method, values, url):
+    if settings.DEBUG: print "PROXY",method,
+    if method == "GET":
+        if settings.DEBUG: print values
+        url_ending = "%s?%s" % (url, urllib.urlencode(values))
+        url = PROXY_FORMAT % url_ending
+    elif method == "POST":
+        if settings.DEBUG: print values
         url = PROXY_FORMAT % url
         if 'registrations.json' in url:
             #don't use urllib.urlencode to encode data dictionary,
             #that munges the brackets, do &-join manually and quote_plus the values
             data = []
-            for (k,v) in request.POST.items():
+            for (k,v) in values.items():
                 data.append('registration[%s]=%s' % (k,urllib.quote_plus(v)))
             data = "&".join(data)
         else:
-            data = urllib.urlencode(request.POST)
+            data = urllib.urlencode(values)
         if settings.DEBUG: print "POST QUERY",data
     
     if settings.PROXY_CREDENTIALS:
@@ -34,12 +42,14 @@ def rtv_proxy(request, url):
                                       settings.PROXY_CREDENTIALS['user'],
                                       settings.PROXY_CREDENTIALS['password'])
     try:
-        if request.method == "GET":
+        if method == "GET":
             response = urllib2.urlopen(url)
-        elif request.method == "POST":
+        elif method == "POST":
             response = urllib2.urlopen(url,data)
     except urllib2.HTTPError,e:
-        return HttpResponse(e.read(),status=e.code)
+        error_dict = {'error':json.loads(e.read())}
+        error_dict['status'] = e.code
+        return error_dict
         
     content = response.read()
-    return HttpResponse(content,mimetype="application/json")
+    return json.loads(content)

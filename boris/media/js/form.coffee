@@ -70,6 +70,10 @@ saveRegistrant = ->
 		cache: false
 		error: (response) -> #handle error
 			console.log response
+		beforeSend: ->
+			#show spinner
+			$('form#get_started input[type=submit]')
+				.after('<img src="http://s3.amazonaws.com/register2.rockthevote.com/img/ajax-spinner.gif" class="spinner">')
 	})
 	
 
@@ -212,7 +216,10 @@ initForm = ->
 	$("form#registration").submit(
 		(e) ->
 			e.preventDefault()
+			$('form#registration input[type=submit]')
+				.after('<img src="http://s3.amazonaws.com/register2.rockthevote.com/img/ajax-spinner.gif" class="spinner">')
 			if !submitRegistrationForm()
+				$('form#registration img.spinner').remove()
 				return false
 			else
 				$('#registration')
