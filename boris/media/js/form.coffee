@@ -58,14 +58,15 @@ submitStartForm = ->
 				.fadeIn()
 		return false
 	else
-		getCityState($("#pre_zip_code").val())
 		saveRegistrant($('form#get_started'))
+		getCityState($("#pre_zip_code").val())
 		
-saveRegistrant = ->
-	data = $(@).serializeJSON()
+saveRegistrant = ($form) ->
+	data = $form.serializeJSON()
+	console.log data
 	$.ajax({
 		type: "POST"
-		url: $(@).attr('action')
+		url: $form.attr('action')
 		data: {'registrant':data}
 		cache: false
 		error: (response) -> #handle error

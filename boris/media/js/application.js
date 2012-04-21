@@ -206,10 +206,12 @@
         $("#home_state_id").val(homeState).attr('readonly', 'readonly');
         return getStateRequirements();
       },
-      error: function(error) {
+      error: function(xhr, status, error) {
         /* TODO: Handle Error
         */
-
+        console.log(error);
+        $('#pre_zip_code').addClass('error').parent().append("<p class='error-message'>Invalid zip code</p>").children('.error-message').hide().fadeIn();
+        return $('form#get_started img.spinner').remove();
       }
     });
   };
@@ -289,7 +291,6 @@
         $('form#get_started img.spinner').hide();
         response = $.parseJSON(xhr.responseText);
         $('#state_form').before('<div class="error-message big-error">' + response.error.message + '</div>');
-        console.log(response);
         return $('#state_form').hide();
       }
     });
@@ -375,17 +376,18 @@
       }
       return false;
     } else {
-      getCityState($("#pre_zip_code").val());
-      return saveRegistrant($('form#get_started'));
+      saveRegistrant($('form#get_started'));
+      return getCityState($("#pre_zip_code").val());
     }
   };
 
-  saveRegistrant = function() {
+  saveRegistrant = function($form) {
     var data;
-    data = $(this).serializeJSON();
+    data = $form.serializeJSON();
+    console.log(data);
     return $.ajax({
       type: "POST",
-      url: $(this).attr('action'),
+      url: $form.attr('action'),
       data: {
         'registrant': data
       },

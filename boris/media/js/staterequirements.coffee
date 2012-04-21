@@ -28,8 +28,17 @@ getCityState = (zip) ->
       $("#home_state_id").val(homeState).attr('readonly','readonly')
       
       getStateRequirements()
-    error: (error) ->
+    error: (xhr,status,error) ->
       ### TODO: Handle Error ###
+      console.log error
+      $('#pre_zip_code')
+        .addClass('error')
+        .parent()
+        .append("<p class='error-message'>Invalid zip code</p>")
+        .children('.error-message')
+        .hide()
+        .fadeIn()
+      $('form#get_started img.spinner').remove()
 
 getStateRequirements = () ->
   url = "/rtv/api/v1/state_requirements.json"
@@ -83,7 +92,6 @@ getStateRequirements = () ->
       $('form#get_started img.spinner').hide()
       response = $.parseJSON(xhr.responseText)
       $('#state_form').before('<div class="error-message big-error">'+response.error.message+'</div>')
-      console.log(response)
       $('#state_form').hide()
 
   })
