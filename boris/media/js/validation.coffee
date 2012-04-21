@@ -84,9 +84,11 @@ validateEmail = ($input) ->
 	re.test($input.val())
 
 validatePhoneNumber = ($input) ->
-	re = /(1-)?[(]*(\d{3})[) -.]*(\d{3})[ -.]*(\d{4})\D*/
-	re.test($input.val())
-
+	if $input.attr('data-required') == true || $input.val().length > 0
+		re = /(1-)?[(]*(\d{3})[) -.]*(\d{3})[ -.]*(\d{4})\D*/
+		return re.test($input.val())
+	else
+		return true
 validateRace = ($input) ->
 	required = $input.attr("data-required")
 	if (required == true && $input.val().length = 0)

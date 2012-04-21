@@ -125,8 +125,12 @@
 
   validatePhoneNumber = function($input) {
     var re;
-    re = /(1-)?[(]*(\d{3})[) -.]*(\d{3})[ -.]*(\d{4})\D*/;
-    return re.test($input.val());
+    if ($input.attr('data-required') === true || $input.val().length > 0) {
+      re = /(1-)?[(]*(\d{3})[) -.]*(\d{3})[ -.]*(\d{4})\D*/;
+      return re.test($input.val());
+    } else {
+      return true;
+    }
   };
 
   validateRace = function($input) {
@@ -218,17 +222,16 @@
         /* Handle Political Parties
         */
 
-        var $target, html, i, maxLength, minLength, parties, party, _i, _len;
+        var $target, html, maxLength, minLength, parties, party, _i, _len;
         if (response.party_list) {
           parties = response.party_list;
           $target = $('select#party');
           html = "";
           for (_i = 0, _len = parties.length; _i < _len; _i++) {
-            i = parties[_i];
+            party = parties[_i];
             /* generate html
             */
 
-            party = parties[i];
             html += "<option val=" + party + ">" + party + "</option>\n";
           }
           if (response.no_party_msg === "Decline to state") {
