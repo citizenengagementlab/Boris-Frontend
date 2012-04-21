@@ -103,17 +103,21 @@
 
   validateBirthday = function($input) {
     var age, birthday, m, today;
-    today = new Date();
-    birthday = new Date($input.val());
-    age = today.getFullYear() - birthday.getFullYear();
-    m = today.getMonth() - birthday.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
-      age--;
-    }
-    if (age < 18) {
+    if (!$input.val()) {
       return false;
     } else {
-      return true;
+      today = new Date();
+      birthday = new Date($input.val());
+      age = today.getFullYear() - birthday.getFullYear();
+      m = today.getMonth() - birthday.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
+        age--;
+      }
+      if (age < 18) {
+        return false;
+      } else {
+        return true;
+      }
     }
   };
 
@@ -387,7 +391,7 @@
   };
 
   submitRegistrationForm = function() {
-    var data, error, errors, field, i, key, requiredBools, requiredFields, _i, _j, _len, _len1;
+    var error, errors, field, key, requiredFields, _i, _len;
     clearValidationErrors($('#registration'));
     requiredFields = {
       title: {
@@ -487,6 +491,13 @@
         validate: function() {
           return validateRecentlyMoved($(this.id));
         }
+      },
+      citizen: {
+        id: "#us_citizen",
+        msg: "Please enter your previous address information",
+        validate: function() {
+          return validateCitizenship($(this.id));
+        }
       }
     };
     errors = [];
@@ -507,16 +518,6 @@
       }
       return false;
     } else {
-      data = $(this).serializeJSON();
-      requiredBools = ['opt_in_email', 'opt_in_sms', 'us_citizen'];
-      for (_j = 0, _len1 = requiredBools.length; _j < _len1; _j++) {
-        i = requiredBools[_j];
-        if (!data[requiredBools[i]]) {
-          data[requiredBools[i]] = 0;
-        }
-      }
-      console.log('Ready to Send:');
-      console.log(data);
       return true;
     }
   };
@@ -573,7 +574,7 @@
       if (!submitRegistrationForm()) {
         return false;
       } else {
-        return $(this).unbind('submit').submit();
+        return $('#registration').off('submit').submit();
       }
     });
     return $("form#registration input, form#registration select").change(function(e) {

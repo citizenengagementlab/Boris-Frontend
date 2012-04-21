@@ -135,6 +135,10 @@ submitRegistrationForm = ->
 			id: "#change_of_address"
 			msg: "Please enter your previous address information"
 			validate: -> validateRecentlyMoved($(@.id))
+		citizen:
+			id: "#us_citizen"
+			msg: "Please enter your previous address information"
+			validate: -> validateCitizenship($(@.id))
 	}
 
 	errors = []
@@ -159,20 +163,7 @@ submitRegistrationForm = ->
 		return false
 	else
 		# Post registration
-		data = $(@).serializeJSON()
-
-		requiredBools = [
-			'opt_in_email'
-			'opt_in_sms'
-			'us_citizen'
-		]
-
-		for i in requiredBools
-			if !data[requiredBools[i]]
-				data[requiredBools[i]] = 0
-
-		console.log 'Ready to Send:'
-		console.log data
+		# data = $('#registration').serializeJSON()
 		return true
 
 saveProgress = ($field) ->
@@ -226,7 +217,9 @@ initForm = ->
 			if !submitRegistrationForm()
 				return false
 			else
-				$(this).unbind('submit').submit()
+				$('#registration')
+					.off('submit')
+					.submit()
 		)
 	$("form#registration input, form#registration select").change(
 		(e) ->
