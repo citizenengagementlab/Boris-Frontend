@@ -232,7 +232,8 @@ initForm = ->
 	$("registration").submit(
 		(e) ->
 			e.preventDefault()
-			submitRegistrationForm()
+			if !submitRegistrationForm()
+				return false
 		)
 	$("form#registration input, form#registration select").change(
 		(e) ->

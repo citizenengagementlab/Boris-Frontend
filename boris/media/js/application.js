@@ -15,7 +15,7 @@
   };
 
   validateState = function($input) {
-    return $input.val() > 0;
+    return $input.val().length > 0;
   };
 
   validateMailingAddress = function($input) {
@@ -578,7 +578,9 @@
     });
     $("registration").submit(function(e) {
       e.preventDefault();
-      return submitRegistrationForm();
+      if (!submitRegistrationForm()) {
+        return false;
+      }
     });
     return $("form#registration input, form#registration select").change(function(e) {
       return saveProgress($(this));
