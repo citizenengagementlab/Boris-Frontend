@@ -180,7 +180,6 @@ $(document).ready(function() {
 						<label for="name_title">Title
 						<p class ="tooltip"><a id="tooltip_personal">?</a><span class="tooltip_text" id="tooltip_text_personal">
 							Put your full name in these boxes. Please do not use nicknames or initials.</span></p>
-					</li>
 						</label>
 						<select name="name_title" id="name_title">
 							<option value=""></option>
@@ -190,13 +189,14 @@ $(document).ready(function() {
 							<option value="Ms.">Ms.</option>
 						</select>
 					</li>
-					<li class="no_clear">
+					<li class="no_clear name">
 						<label for="first_name">First Name</label>
 						<input type="text" name="first_name" id="first_name"  />
 					</li>
-					<li class="no_clear">
+					<li class="no_clear name">
 						<label for="last_name">Last Name</label>
 						<input type="text" name="last_name" id="last_name"  />
+					</li>
 					<li class="title">
 						<label for="name_suffix">Suffix</label>
 						<select id="name_suffix" name="name_suffix">
@@ -212,14 +212,13 @@ $(document).ready(function() {
 						<label class="checkbox_label" for="change_of_name">
 							<input type="checkbox" name="change_of_name" id="change_of_name" />						
 							I have changed my name.
-						</label>
-						<p class ="tooltip tooltip_checkbox">
+							<p class ="tooltip tooltip_checkbox">
 							<a id="tooltip_change_of_name">?</a>
 							<span class="tooltip_text" id="tooltip_text_change_of_name">
 								Ifyou have changed your name since your last registration, enter your previous name.
 							</span>
 						</p>
-
+						</label>
 					</li>
 					<div class="name-change">
 						<li class="title">
@@ -232,13 +231,24 @@ $(document).ready(function() {
 								<option value="Ms.">Ms.</option>
 							</select>
 						</li>
-						<li class="no_clear">
+						<li class="no_clear name">
 							<label for="prev_first_name">First Name</label>
 							<input type="text" name="prev_first_name" id="prev_first_name"  />
 						</li>
-						<li class="no_clear">
+						<li class="no_clear name">
 							<label for="prev_last_name">Last Name</label>
 							<input type="text" name="prev_last_name" id="prev_last_name"  />
+						</li>
+						<li class="title">
+						<label for="name_suffix">Suffix</label>
+							<select id="name_suffix" name="name_suffix">
+								<option value="">(none)</option>
+								<option value="Jr.">Jr.</option>
+								<option value="Sr.">Sr.</option>
+								<option value="II">II</option>
+								<option value="III">III</option>
+								<option value="IV">IV</option>
+							</select>
 						</li>
 					</div>
 					<li>
@@ -275,13 +285,21 @@ $(document).ready(function() {
 						<label for="opt_in_email">
 						<input type="checkbox" name="opt_in_email" id="opt_in_email" checked="checked"/> I want to receive updates via email.</label>
 					</li>
-					<li>
-						<label  for="phone">Phone
-							<p class="tooltip"><a id="tooltip_phone">?</a><span class="tooltip_text" id="tooltip_text_phone"></span></p>
+					<li style="clear: left">
+						<label for="phone">Phone
+							<p class="tooltip"><a id="tooltip_phone">?</a><span class="tooltip_text" id="tooltip_text_phone">Most states ask for your telephone number in case there are questions about your application. You are not required to provide your phone number.</span></p>
 						</label>
 						<input type="text" name="phone" id="phone" />
-						
 					</li>
+					<li style="clear: right">
+						<label for="phone_type">Type</label>
+						<select name="phone_type" id="phone_type">
+							<option value=""></option>
+							<option value="Mobile">Mobile</option>
+							<option value="Home">Home</option>
+							<option value="Work">Work</option>
+							<option value="Other">Other</option>
+						</select>					</li>
 					<li>
 						<label for="opt_in_sms">
 							<input type="checkbox" name="opt_in_sms" id="opt_in_sms" /> Receive text messages from Rock The Vote.

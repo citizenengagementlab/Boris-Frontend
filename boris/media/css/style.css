@@ -461,6 +461,10 @@ li.state {
 }
 li.title {
   width: 60px;
+  clear: none;
+}
+li.name {
+  width: 33%;
 }
 legend.accordion-header,
 legend.header {
