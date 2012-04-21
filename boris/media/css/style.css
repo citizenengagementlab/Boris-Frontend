@@ -513,7 +513,7 @@ label {
   margin-bottom: 1px;
 }
 .error-message {
-  color: red;
+  color: #C00;
 }
 input,
 select,
@@ -526,10 +526,10 @@ textarea {
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
-input .error,
-select .error,
-textarea .error {
-  border-right: 1px solid #C00;
+input.error,
+select.error,
+textarea.error {
+  border: 1px solid #C00 !important;
 }
 input[type="submit"],
 input[type="button"],

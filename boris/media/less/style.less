@@ -149,15 +149,15 @@ label {
 }
 
 .error-message {
-	color: red;
+	color: #C00;
 }
 
 input, select, textarea {
 	padding: 5px;
 	.box-sizing(border-box);
 	.box-shadow(0 1px 0 rgba(255,255,255,.5));
-	.error {
-		border-right: 1px solid #C00;
+	&.error {
+		border: 1px solid #C00 !important;
 	}
 }
 
