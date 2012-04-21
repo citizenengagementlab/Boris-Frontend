@@ -365,7 +365,7 @@
       for (_i = 0, _len = errors.length; _i < _len; _i++) {
         error = errors[_i];
         console.log(error.msg);
-        $(error.id).addClass('error').parent().children('label').append("<p class='error-message'>" + error.msg + "</p>").children('.error-message').hide().fadeIn();
+        $(error.id).addClass('error').parent().append("<p class='error-message'>" + error.msg + "</p>").children('.error-message').hide().fadeIn();
       }
       return false;
     } else {
@@ -494,7 +494,7 @@
       },
       citizen: {
         id: "#us_citizen",
-        msg: "Please enter your previous address information",
+        msg: "You must be a US citizen",
         validate: function() {
           return validateCitizenship($(this.id));
         }
@@ -514,7 +514,7 @@
       for (_i = 0, _len = errors.length; _i < _len; _i++) {
         error = errors[_i];
         console.log(error.msg);
-        $(error.id).addClass('error').parent().children('label').append("<p class='error-message'>" + error.msg + "</p>").children('.error-message').hide().fadeIn();
+        $(error.id).addClass('error').parent().append("<p class='error-message'>" + error.msg + "</p>").children('.error-message').hide().fadeIn();
       }
       return false;
     } else {

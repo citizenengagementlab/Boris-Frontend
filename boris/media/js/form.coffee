@@ -52,7 +52,6 @@ submitStartForm = ->
 			$(error.id)
 				.addClass('error')
 				.parent()
-				.children('label')
 				.append("<p class='error-message'>#{error.msg}</p>")
 				.children('.error-message')
 				.hide()
@@ -137,7 +136,7 @@ submitRegistrationForm = ->
 			validate: -> validateRecentlyMoved($(@.id))
 		citizen:
 			id: "#us_citizen"
-			msg: "Please enter your previous address information"
+			msg: "You must be a US citizen"
 			validate: -> validateCitizenship($(@.id))
 	}
 
@@ -155,7 +154,6 @@ submitRegistrationForm = ->
 			$(error.id)
 				.addClass('error')
 				.parent()
-				.children('label')
 				.append("<p class='error-message'>#{error.msg}</p>")
 				.children('.error-message')
 				.hide()

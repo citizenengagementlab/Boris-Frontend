@@ -11,8 +11,8 @@ html {
 
 
 header {
+	margin: 0 auto;
 	#gradient.vertical(lighten(#000,30%), #000;
-	height:50px;
 	img#logo {
 		float:right;
 		padding-right:20px;
@@ -20,12 +20,12 @@ header {
 	}
 
 	h1 {
-		margin:0px;
-		padding-top:8px;
-		padding-left:20px;
-		color:#000;
-		width:200px;
-		.text-shadow(0 -1px 0 rgba(255,255,255,.35));
+		color: #FFF;
+		text-shadow: -1px -1px 1px rgba(0,0,0,1); 
+		text-align: center;
+		font-size: 36px;
+		line-height: 60px;
+
 	}
 }
 
@@ -40,7 +40,6 @@ header {
 		margin:0px;
 		color:#000;
 		.text-shadow(0 -1px 0 rgba(255,255,255,.35));
-		display:inline-block;
 		width:230px;
 	}
 }
@@ -61,7 +60,7 @@ form {
 
 
 fieldset {
-	.border-radius(5px);
+	.border-radius(3px);
 }
 
 fieldset#get_started > p {
@@ -120,10 +119,10 @@ legend.accordion-header, legend.header {
 	border: 1px solid #999;
 	width: 100%;
 	.box-sizing(border-box);
-	.border-radius(3px);
+	.border-radius(2px);
 	font-weight: bold;
 	color: #FFF;
-	.text-shadow(0 -1px 0 rgba(0,0,0,.95));
+	.text-shadow(0 -1px 0 rgba(0,0,0,.5));
 	#gradient.vertical(lighten(#AAA,5%), darken(#AAA,5%);
 }
 
@@ -164,9 +163,11 @@ input, select, textarea {
 input[type="submit"], input[type="button"], button {
 	clear: both;
 	color:#FFF;
-	#gradient.vertical(lighten(#b2272c,50%), #b2272c);
+	#gradient.vertical(lighten(#b2272c,20%), #b2272c);
 	.border-radius(4px);
-	.box-shadow(0 0px 0 rgba(0,0,0,0));
+	.box-shadow(0 1px 0 rgba(255,255,255,.25));
+	.text-shadow(0 -1px 0 rgba(0,0,0,.25));
+	border: 1px solid #b2272c;
 	width:100px;
 	height:35px;
 }
@@ -178,9 +179,9 @@ input#zip_code, input#home_zip_code, input#mailing_zip_code , input#prev_zip_cod
 
 input:not([type="submit"]):not([type="checkbox"]):not([type="button"]), textarea {
 	border: 1px solid #666;
-	width: 90%;
 	#gradient.vertical(#f5f5f5, #fff);
 	box-shadow: 0 1px 0 rgba(255,255,255,.5), inset 0 1px 1px rgba(0,0,0,.15);
+	width: 100%;
 }
 
 /* Formatting */
@@ -194,53 +195,45 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="button"]), textarea
 /* Tooltip Styles */
 
 p.tooltip {
-	display:inline-block;
-	*display: inline; //IE7
-	position:absolute;
-	top: 20px;
-	right: 0;
-	a {
+	display: inline;
+	position: relative;
+	& > a {
 		display: inline-block;
-		height: 20px;
-		width: 20px;
-		line-height: 20px;
+		height: 15px;
+		width: 15px;
+		line-height: 15px;
 		text-align: center;
 		.box-sizing(border-box);
 		border: 1px solid #999;
 		font-weight: bold;
 		color: #B2272C;
 		#gradient.vertical(lighten(#CCC,15%), #CCC;
-		position: absolute;
-		top: 0;
-		left: 0;
 	}
-	span {
-		background-color:#FFF;
+	& > span {
+		background-color:lighten(#ADD9ED, 15%);
 		display:block;
-		width:160px;
 		min-height:30px;
-		position:relative;
-		left:30px;
-		border: 3px solid lighten(#B2272C,11%);
+		position:absolute;
+		left: 30px;
+		top: -20px;
+		border: 8px solid #ADD9ED;
 		.border-radius(3px);
 		padding:10px;
 		color:#000;
 		font-size:11px;
-		text-align:center;
 		z-index:1000;
-		max-width:120px;
-		a {		
-			padding:0px;
-			border:0px;
-			.border-radius(0px);
-			font-weight:normal;
-			color:#FFF;
-			.text-shadow(0 0 0 rgba(0,0,0,.95));
-			float:none;
-			margin-right:0px;
-			background-color:#F0F0F0 !important;
-			#gradient.vertical(lighten(#F0F0F0,0%), #F0F0F0; /* overriding gradient from parent anchor */
-			}
+		width:200px;
+		.box-shadow(2px 2px 2px rgba(0,0,0,.15));
+		&:before {
+			content: "";
+			display: block;
+			height: 0;
+			width: 0;
+			border: 8px solid red;
+			position: absolute;
+			left: -24px;
+			border-color: transparent #ADD9ED transparent transparent;
+		}
 	}
 }
 
@@ -254,17 +247,8 @@ p.tooltip-select {
 	margin-top:-2px;
 }
 
-
-
 .checkbox_label {
-	float:left;
 }
-
-
-h1 {
-	display:inline;
-}
-
 
 button#top_link {
 	float:left;
