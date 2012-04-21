@@ -55,7 +55,17 @@ def save_progress(request):
     return HttpResponse('save_progress error')
     
 def submit(request):
-    rtv_response = rtv_proxy(request,'/api/v1/registrations.json')
+    submitted_form = request.POST.copy()
+    #make a mutable copy
+    
+    #check for required values that are false
+    required_bools = ['opt_in_sms','opt_in_email','us_citizen']
+    for r in required_bools:
+        if not submitted_form.has_key(r):
+            #and fill it in with zero
+            submitted_form[r] = ['0']
+    
+    rtv_response = rtv_proxy('POST',submitted_form,'/api/v1/registrations.json')
     print rtv_response
     #hit the proxy
     return render_to_response('submit.html', context_instance=RequestContext(request))
