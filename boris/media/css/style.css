@@ -484,15 +484,15 @@ legend.header {
   -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
   -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.95);
-  background-color: #969696;
-  background-image: -moz-linear-gradient(top, #aaaaaa, #777777);
-  background-image: -ms-linear-gradient(top, #aaaaaa, #777777);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#aaaaaa), to(#777777));
-  background-image: -webkit-linear-gradient(top, #aaaaaa, #777777);
-  background-image: -o-linear-gradient(top, #aaaaaa, #777777);
-  background-image: linear-gradient(top, #aaaaaa, #777777);
+  background-color: #adadad;
+  background-image: -moz-linear-gradient(top, #b7b7b7, #9d9d9d);
+  background-image: -ms-linear-gradient(top, #b7b7b7, #9d9d9d);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b7b7b7), to(#9d9d9d));
+  background-image: -webkit-linear-gradient(top, #b7b7b7, #9d9d9d);
+  background-image: -o-linear-gradient(top, #b7b7b7, #9d9d9d);
+  background-image: linear-gradient(top, #b7b7b7, #9d9d9d);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aaaaaa', endColorstr='#777777', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7b7b7', endColorstr='#9d9d9d', GradientType=0);
 }
 footer {
   border-top: 1px solid #AAA;
@@ -522,6 +522,14 @@ textarea {
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+input.error,
+select.error,
+textarea.error {
+  border: 1px solid #C00 !important;
+}
+.error-message {
+  color: #C00;
 }
 input[type="submit"],
 input[type="button"],
