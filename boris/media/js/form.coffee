@@ -11,9 +11,16 @@ $.fn.serializeJSON = ->
 		)
 	json
 
-submitStartForm = ->
+clearValidationErrors = ($form) ->
+	$form.find('input, textarea, select')
+		.removeClass('error')
+	$form.find('p.error-message')
+		.remove()
 
-	requiredFields =
+submitStartForm = ->
+	clearValidationErrors($('#get_started'))
+
+	requiredFields = {
 		firstName:
 			id: "#pre_first_name"
 			msg: "First name is required"
@@ -30,22 +37,26 @@ submitStartForm = ->
 			id: "#pre_zip_code"
 			msg: "Please enter a 5 digit zip code"
 			validate: -> validateZip($(@.id))
+		}
 
 	errors = []
 
-	for field in requiredFields
-		if field.validate
-			continue
-		else
+	for key, field of requiredFields
+		if !field.validate()
 			errors.push({id: field.id, msg: field.msg})
-
 	# Return if there is an error
-	if errors.length < 0
+	if errors.length > 0
 		# Handle Validation Errors
-		for i in errors
-			$(errors[i].id)
+		for error in errors
+			console.log(error.msg)
+			$(error.id)
 				.addClass('error')
-				.prepend("<span class='error-message'>#{errors[i].msg}</span>")
+				.parent()
+				.children('label')
+				.append("<p class='error-message'>#{error.msg}</p>")
+				.children('.error-message')
+				.hide()
+				.fadeIn()
 		return false
 	else
 		getCityState($("#pre_zip_code").val())
@@ -64,6 +75,8 @@ saveRegistrant = ->
 	
 
 submitRegistrationForm = ->
+	clearValidationErrors($('#registration'))
+	
 	# validate registration form inputs
 	requiredFields = {
 		title:
@@ -126,19 +139,23 @@ submitRegistrationForm = ->
 
 	errors = []
 
-	for field in requiredFields
-		if field.validate
-			continue
-		else
+	for key, field of requiredFields
+		if !field.validate()
 			errors.push({id: field.id, msg: field.msg})
 
 	# Return if there is an error
-	if errors.length < 0
+	if errors.length > 0
 		# Handle Validation Errors
-		for i in errors
-			$(errors[i].id)
+		for error in errors
+			console.log(error.msg)
+			$(error.id)
 				.addClass('error')
-				.prepend("<span class='error-message'>#{errors[i].msg}</span>")
+				.parent()
+				.children('label')
+				.append("<p class='error-message'>#{error.msg}</p>")
+				.children('.error-message')
+				.hide()
+				.fadeIn()
 		return false
 	else
 		# Post registration
@@ -179,6 +196,24 @@ initForm = ->
 	$(".mailing").hide()
 	$(".name-change").hide()
 	$(".address-change").hide()
+	# Setup click handlers
+	$("#has_different_address").click ->
+	  if $("#has_different_address").is(":checked")
+	    $(".mailing").fadeIn()
+	  else
+	    $(".mailing").fadeOut()
+
+	$("#change_of_name").click ->
+	  if $("#change_of_name").is(":checked")
+	    $(".name-change").fadeIn()
+	  else
+	    $(".name-change").fadeOut()
+
+	$("#change_of_address").click ->
+	  if $("#change_of_address").is(":checked")
+	    $(".address-change").fadeIn()
+	  else
+	    $(".address-change").fadeOut()
 
 	# Setup Form Submit Events
 	$("form#get_started").submit(
