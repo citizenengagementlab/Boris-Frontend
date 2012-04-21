@@ -148,10 +148,17 @@ label {
 	margin-bottom:1px;
 }
 
+.error-message {
+	color: red;
+}
+
 input, select, textarea {
 	padding: 5px;
 	.box-sizing(border-box);
 	.box-shadow(0 1px 0 rgba(255,255,255,.5));
+	.error {
+		border-right: 1px solid #C00;
+	}
 }
 
 input[type="submit"], input[type="button"], button {
