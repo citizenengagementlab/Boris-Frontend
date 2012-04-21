@@ -15,7 +15,7 @@
   };
 
   validateState = function($input) {
-    return $input.val() > 0;
+    return $input.val().length > 0;
   };
 
   validateMailingAddress = function($input) {
@@ -465,7 +465,7 @@
         }
       },
       zip: {
-        id: "#zip_code",
+        id: "#home_zip_code",
         msg: "Please enter a 5 digit zip code",
         validate: function() {
           return validateZip($(this.id));
@@ -519,7 +519,6 @@
   };
 
   saveProgress = function($field) {
-    console.log($field);
     return $.ajax({
       type: "POST",
       url: "/registrants/save_progress/",
@@ -567,7 +566,12 @@
       }
     });
     $("form#registration").submit(function(e) {
-      return submitRegistrationForm();
+      e.preventDefault();
+      if (!submitRegistrationForm()) {
+        return false;
+      } else {
+        return true;
+      }
     });
     return $("form#registration input, form#registration select").change(function(e) {
       return saveProgress($(this));

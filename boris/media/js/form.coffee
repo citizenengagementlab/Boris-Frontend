@@ -124,7 +124,7 @@ submitRegistrationForm = ->
 			msg: "State is required"
 			validate: -> validateState($(@.id))
 		zip:
-			id: "#zip_code"
+			id: "#home_zip_code"
 			msg: "Please enter a 5 digit zip code"
 			validate: -> validateZip($(@.id))
 		mailingAddress:
@@ -173,11 +173,9 @@ submitRegistrationForm = ->
 
 		console.log 'Ready to Send:'
 		console.log data
-		
 		return true
 
 saveProgress = ($field) ->
-	console.log($field)
 	$.ajax({
 		type:"POST"
 		url: "/registrants/save_progress/"
@@ -224,9 +222,11 @@ initForm = ->
 		)
 	$("form#registration").submit(
 		(e) ->
-			#e.preventDefault()
-			submitRegistrationForm()
-			
+			e.preventDefault()
+			if !submitRegistrationForm()
+				return false
+			else
+				return true
 		)
 	$("form#registration input, form#registration select").change(
 		(e) ->
