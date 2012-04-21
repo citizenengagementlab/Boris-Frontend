@@ -1,2 +1,2 @@
 /* JS for Tooltip behavior */// State Requirements forms
-$("document").ready(function(){$(".tooltip_text").hide();$(".tooltip > a").toggle(function(){$(this).next().show();$(".tooltip_text").not($(this).next()).hide()},function(){$(this).next().hide()})});
+$("document").ready(function(){$(".tooltip_text").hide();$(".tooltip > a").toggle(function(a){a.stopPropagation();$(this).next().show();$(".tooltip_text").not($(this).next()).hide()},function(){$(this).next().hide()})});

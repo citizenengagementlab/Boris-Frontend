@@ -16,7 +16,8 @@ $("document").ready(function() {
 	});
 */
 	
-	$(".tooltip > a").toggle(function() {
+	$(".tooltip > a").toggle(function(e) {
+		e.stopPropagation();
 		$(this).next().show();
 		$(".tooltip_text").not($(this).next()).hide();
 		}, function() { 
