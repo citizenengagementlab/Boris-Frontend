@@ -17,7 +17,7 @@ def rtv_proxy(request, url):
         #that munges the brackets, do &-join manually and quote_plus the values
         data = []
         for (k,v) in request.POST.items():
-            data.append('%s=%s' % (k,urllib.quote_plus(v)))
+            data.append('registration[%s]=%s' % (k,urllib.quote_plus(v)))
         data = "&".join(data)
         if settings.DEBUG: print "POST QUERY",data
     

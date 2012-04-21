@@ -156,16 +156,9 @@ submitRegistrationForm = ->
 
 		console.log 'Ready to Send:'
 		console.log data
-
-		$.ajax({
-			type: "POST"
-			url: "/api/v1/registrations.json"
-			data: {'registration':data}
-			cache: false
-			error: (response) -> #handle error
-				console.log response
-		})
 		
+		return true
+
 saveProgress = ($field) ->
 	console.log($field)
 	$.ajax({
@@ -194,10 +187,11 @@ initForm = ->
 			if !submitStartForm()
 				return false
 		)
-	$("registration").submit(
+	$("form#registration").submit(
 		(e) ->
-			e.preventDefault()
+			#e.preventDefault()
 			submitRegistrationForm()
+			
 		)
 	$("form#registration input, form#registration select").change(
 		(e) ->

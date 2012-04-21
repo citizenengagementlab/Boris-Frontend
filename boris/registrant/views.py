@@ -2,6 +2,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
 from django.http import HttpResponse,HttpResponseBadRequest
 
+from proxy.views import rtv_proxy
 from registrant.models import Registrant,RegistrationProgress
 
 def register(request):
@@ -54,14 +55,10 @@ def save_progress(request):
     return HttpResponse('save_progress error')
     
 def submit(request):
-    #returns a redirect to print
-    return HttpResponse('submit not yet implemented')
-
-def download(request):
-    return HttpResponse('download not yet implemented')
-
-def get_pdf(request):
-    return HttpResponse('getpdf not yet implemented')
+    rtv_response = rtv_proxy(request,'/api/v1/registrations.json')
+    print rtv_response
+    #hit the proxy
+    return render_to_response('submit.html', context_instance=RequestContext(request))
     
 def finish(request):
     return render_to_response('finish.html',context_instance=RequestContext(request))
