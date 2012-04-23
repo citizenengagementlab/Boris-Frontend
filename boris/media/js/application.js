@@ -550,7 +550,6 @@
   };
 
   initForm = function() {
-    /* $("#registration_form").hide();  // Since we aren't separating anymore… */
     $(".mailing").hide();
     $(".name-change").hide();
     $(".address-change").hide();

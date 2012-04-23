@@ -428,6 +428,9 @@ form ul li.checkbox {
   width: 100%;
   position: relative;
 }
+form ul li.intro-text {
+  width: 330px;
+}
 form ul li.city {
   width: 185px;
   position: relative;

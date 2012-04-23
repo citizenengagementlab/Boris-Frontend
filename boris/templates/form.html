@@ -30,9 +30,9 @@ $(document).ready(function() {
 			<section id="state_form">
 				<form action="/registrants/save_registrant/" method="post" id="get_started">
 					<fieldset id="get_started">
-						<legend class="header">Get Registered!</legend>
-						<p>Registering to vote is easy -- and you can do it now.</p>
-						<ul>
+						<legend class="accordion-header">Get Registered!</legend>
+						<ul class="accordion-content" data-content="getStarted">
+							<li class="intro-text"><p>Registering to vote is easy -- and you can do it now.</p></li>
 							<li>
 								<label for="pre_first_name">First Name</label>
 								<input type="text" name="first_name" id="pre_first_name"  />			
@@ -65,7 +65,7 @@ $(document).ready(function() {
 							</li>
 							<li class="form-action">
 								<input type="hidden" name="lang" id="lang_id" value="en">
-								<input type="submit" id="get_started" value="Get Started" />
+								<input type="submit" data-tab="address" id="get_started" value="Get Started" />
 							</li>
 						</ul>
 					</fieldset>
@@ -169,6 +169,7 @@ $(document).ready(function() {
 					</li>
 					<li class="buttons">
 						<input type="button" data-tab="personal" class="next-button" value="Continue" />
+						<input type="button" data-tab="getStarted" class="prev-button" value="Go Back" />
 					</li>
 				</ul>
 			</fieldset>

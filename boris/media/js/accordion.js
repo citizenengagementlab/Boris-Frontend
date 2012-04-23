@@ -2,28 +2,19 @@
 
 	
 function accordion() {
-	//hide tabs
-	$("#tabnav").hide();
-	$("#tabnav ul").hide();
-	//end
-	
-	//show continue and previous buttons
-	$(".next-button").show();
-	$(".prev-button").show();
 
-	//Accordion functionality
-	$("input#get_started").click(function() {
+	$("document").ready(function() {
+		//hide tabs
+		$("ul#tabnav").hide();
+		//end
+		//show continue and previous buttons
+		$(".next-button, .prev-button").show();
+		//Accordion functionality
 		//Hide all but the first accordion section
 		$(".accordion-content:not(:first)").hide();
-		//Clicking the header closes or opens that particular section (buggy, and not really needed)
-	/*
-	$(".accordion-header").click(function() {
-			$(".accordion-content").slideUp("slow");
-			$(this).next().slideDown("slow");
-		});
-*/
+		
 		//Clicking the continue button closes the current section and opens the next.
-		$(".next-button").click(function() {
+		$(".next-button, input#get_started").click(function() {
 			$(this).parent().parent().parent(this).children(".accordion-content").slideUp();
 			$(this).parent().parent().parent(this).next().children().slideDown();
 		});
