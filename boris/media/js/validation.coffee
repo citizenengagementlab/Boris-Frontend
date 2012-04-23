@@ -1,3 +1,9 @@
+clearValidationErrors = ($fieldset) ->
+	$fieldset.find('input, textarea, select')
+		.removeClass('error')
+	$fieldset.find('p.error-message')
+		.remove()
+
 validateAddress = ($input) ->
 	return $input.val().length > 0
 
@@ -113,3 +119,139 @@ validateCitizenship = ($input) ->
 		false
 	else
 		true
+
+validateFieldset = (fields) -> # Takes an {} of required fields
+	errors = []
+
+	for key, field of fields
+		if !field.validate()
+			errors.push({id: field.id, msg: field.msg})
+
+	# Return if there is an error
+	if errors.length > 0
+		# Handle Validation Errors
+		for error in errors
+			console.log(error.msg)
+			$(error.id)
+				.addClass('error')
+				.parent()
+				.append("<p class='error-message'>#{error.msg}</p>")
+				.children('.error-message')
+				.hide()
+				.fadeIn()
+		return false
+	else
+		return true
+
+validateStartFields = ->
+	requiredFields = {
+		firstName:
+			id: "#pre_first_name"
+			msg: "First name is required"
+			validate: -> validateName($(@.id))
+		lastName:
+			id: "#pre_last_name"
+			msg: "Last name is required"
+			validate: -> validateName($(@.id))
+		email:
+			id: "#pre_email_address"
+			msg: "Please enter a valid email address"
+			validate: -> validateEmail($(@.id))
+		zip:
+			id: "#pre_zip_code"
+			msg: "Please enter a 5 digit zip code"
+			validate: -> validateZip($(@.id))
+		}
+
+	validateFieldset(requiredFields)
+
+validatePersonal = ->
+	requiredFields = {
+		title:
+			id: "#name_title"
+			msg: "Title is required"
+			validate: -> validateTitle($(@.id))
+		firstName:
+			id: "#first_name"
+			msg: "First name is required"
+			validate: -> validateName($(@.id))
+		lastName:
+			id: "#last_name"
+			msg: "Last name is required"
+			validate: -> validateName($(@.id))
+		nameChange:
+			id: "#change_of_name"
+			msg: "Please enter your previous name"
+			validate: -> validateChangedName($(@.id))
+		idNumber:
+			id: "#id_number"
+			msg: "Please enter a valid id number"
+			validate: -> validateIDNumber($(@.id))
+		birthday:
+			id: "#date_of_birth"
+			msg: "Please enter a valid date in a MM/DD/YYYY format, you must be 18 years old to register."
+			validate: -> validateBirthday($(@.id))
+		}
+
+	validateFieldset(requiredFields)
+
+validateContact = ->
+	requiredFields = {
+		email:
+			id: "#email_address"
+			msg: "Please enter a valid email address"
+			validate: -> validateEmail($(@.id))
+		phone:
+			id: "#phone"
+			msg: "Please enter a valid phone number"
+			validate: -> validatePhoneNumber($(@.id))	
+		}
+	validateFieldset(requiredFields)
+
+validateAdditional = ->
+	requiredFields = {
+		citizen:
+			id: "#us_citizen"
+			msg: "You must be a US citizen"
+			validate: -> validateCitizenship($(@.id))
+		race:
+			id: "#race"
+			msg: "Required"
+			validate: -> validateRace($(@.id))
+		party:
+			id: "#party"
+			msg: "Required"
+			validate: -> validateParty($(@.id))
+		}
+
+	validateFieldset(requiredFields)
+
+validateAddresses = ->
+	requiredFields = {
+		home_address:
+			id: "#home_address"
+			msg: "Address is required"
+			validate: -> validateAddress($(@.id))
+		city:
+			id: "#home_city"
+			msg: "City is required"
+			validate: -> validateCity($(@.id))
+		state:
+			id: "#home_state_id"
+			msg: "State is required"
+			validate: -> validateState($(@.id))
+		zip:
+			id: "#home_zip_code"
+			msg: "Please enter a 5 digit zip code"
+			validate: -> validateZip($(@.id))
+		mailingAddress:
+			id: "#has_different_address"
+			msg: "Please enter your mailing address information"
+			validate: -> validateMailingAddress($(@.id))
+		prevAddress:
+			id: "#change_of_address"
+			msg: "Please enter your previous address information"
+			validate: -> validateRecentlyMoved($(@.id))
+		}
+
+	validateFieldset(requiredFields)
