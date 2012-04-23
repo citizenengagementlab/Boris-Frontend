@@ -184,8 +184,8 @@
     $('#last_name').val(lastName);
     $('#email_address').val(email);
     $('#home_zip_code').val(zip);
- /*    $('#state_form').hide(); */
     $('#registration_form').fadeIn();
+    $('input#get_started').hide();
     return $('form#get_started img.spinner').remove();
   };
 

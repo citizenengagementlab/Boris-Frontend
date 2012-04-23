@@ -440,6 +440,9 @@ form ul li.party {
 form ul li.buttons {
   margin: 0px;
 }
+form ul li.form-action {
+  margin-bottom: 0px;
+}
 li.state {
   width: 150px;
 }
