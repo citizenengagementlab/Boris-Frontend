@@ -459,7 +459,9 @@ li.name {
   width: 33%;
 }
 legend.accordion-header,
-legend.header {
+legend.header,
+ul#tabnav,
+ul.header {
   display: block;
   padding: 10px;
   margin: 10px 0;
@@ -657,47 +659,36 @@ button#top_link a {
   text-decoration: none;
   color: #FFF;
 }
-#tabnav {
+ul#tabnav {
+  padding: 10px 0px;
+  list-style-type: none;
   height: 100%;
   position: relative;
-  padding: 3px;
 }
-#tabnav ul {
-  list-style-type: none;
-}
-#tabnav ul li {
+ul#tabnav li {
   display: inline;
+  padding: 18px 6px;
   border-right: 1px solid #f0f0f0;
-  padding: 4px 13px 18px 8px;
   -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
   -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
 }
-#tabnav ul li a {
+ul#tabnav li a {
   text-decoration: none;
   color: #FFF;
-  padding: 10px;
   position: relative;
-  top: 5px;
+  right: 2px;
 }
-#tabnav ul li a:hover {
+ul#tabnav li a:hover {
   -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
   -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
 }
-#tabnav ul .first-tabnav {
-  padding-right: 0px;
-  margin-left: -14px;
-}
-#tabnav ul .first-tabnav a {
-  position: relative;
-  left: -17px;
-}
-#tabnav ul .last-tabnav {
+ul#tabnav li.last-tabnav {
   border: 0px;
-  position: relative;
-  left: 8px;
-  padding-left: 0px;
+}
+ul#tabnav li.last-tabnav a {
+  left: 5px;
 }
 /*
 
