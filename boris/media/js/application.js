@@ -184,8 +184,9 @@
     $('#last_name').val(lastName);
     $('#email_address').val(email);
     $('#home_zip_code').val(zip);
-    $('#state_form').hide();
-    return $('#registration_form').show();
+ /*    $('#state_form').hide(); */
+    $('#registration_form').fadeIn();
+    return $('form#get_started img.spinner').remove();
   };
 
   getCityState = function(zip) {
@@ -549,7 +550,7 @@
   };
 
   initForm = function() {
-    $("#registration_form").hide();
+    /* $("#registration_form").hide();  // Since we aren't separating anymore… */
     $(".mailing").hide();
     $(".name-change").hide();
     $(".address-change").hide();

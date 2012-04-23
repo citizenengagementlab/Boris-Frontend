@@ -19,7 +19,15 @@ $(document).ready(function() {
 
 {%block content%}
 	
-			
+			<legend id="tabnav" class="header">
+				<ul>
+					<li class="first-tabnav"><a data-tab="getStarted">Get Registered!</a></li>
+					<li><a data-tab="address">Address Info</a></li>
+					<li><a data-tab="personal">Personal Info</a></li>
+					<li><a data-tab="contact">Contact Info</a></li>
+					<li class="last-tabnav"><a data-tab="additional">Additional Info</a></li>
+				</ul>
+			</legend>
 			
 			<section id="state_form">
 				<form action="/registrants/save_registrant/" method="post" id="get_started">
@@ -66,14 +74,7 @@ $(document).ready(function() {
 				</form>
 			</section>
 		<section id="registration_form">
-				<legend id="tabnav" class="header">
-					<ul>
-						<li class="first-tabnav"><a data-tab="address">Address Info</a></li>
-						<li><a data-tab="personal">Personal Info</a></li>
-						<li><a data-tab="contact">Contact Info</a></li>
-						<li class="last-tabnav"><a data-tab="additional">Additional Info</a></li>
-					</ul>
-				</legend>
+				
 				<form action="/registrants/submit/" method="post" id="registration">
 					<input type="hidden" name="partner_id" value="{{partner_id}}" />
 			<fieldset id="address">

@@ -1,7 +1,9 @@
 function singlepage() {
+
+		$("section#registration_form").hide();
 	    $(".next-button").hide();
 		$(".prev-button").hide();
 		$("#tabnav").hide();
 		$("#tabnav ul").hide();
-		$("li.buttons").css("bottom","-10px"); // Keep register button from overlapping content
+		$("li.buttons").css("bottom","-10px"); // Keep register button from overlapping content\
 }

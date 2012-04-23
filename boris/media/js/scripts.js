@@ -32,15 +32,17 @@ function zipLookup(zip) {
 $(document).ready(function() {
 
 		
-	// Hide second page of registration form - swap sections when state requirements is done.
+	// We are now merging state and registration sections, so this code is commented out
 		
-		$("#registration_form").hide();
+		/* $("#registration_form").hide(); */
 		
-		$("input#get_started").click(function() {
+	/*
+	$("input#get_started").click(function() {
 	 			$('#state_form').hide();
 	 			$('#registration_form').show();
 	 			$("#top_link").show();
-	  	});			
+	  	});		
+*/	
 	
 	// Reveal optional fields when checkbox is checked - otherwise, hide.	
 	$("#has_different_address").click(function() {
