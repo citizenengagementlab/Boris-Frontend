@@ -32,7 +32,7 @@ validateMailingAddress = ($input) ->
 
 validateRecentlyMoved = ($input) ->
 	if $input.attr("checked") == "checked"
-		### TODO: Validate Previous Address ###
+		### Validate Previous Address ###
 		if !validateAddress $('#prev_address')
 			return false
 		if !validateState $('#prev_state')

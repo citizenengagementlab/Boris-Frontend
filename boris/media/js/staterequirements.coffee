@@ -93,7 +93,7 @@ getStateRequirements = () ->
       maxLength = response.id_length_max || 100
       $('#id_number').attr('data-maxlength', maxLength).attr('data-minlength', minLength)
 
-      ### Handle SOS Contact Info (where is this used?) ###
+      ### TODO: Handle SOS Contact Info (where is this used?) ###
 
       ### Callback to advance form ###
       showRegistrationForm()
