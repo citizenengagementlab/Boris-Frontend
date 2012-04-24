@@ -532,6 +532,15 @@ textarea.error {
 .error-message {
   color: #C00;
 }
+.big-error {
+  color: #C00;
+}
+.big-error h1 {
+  width: 100%;
+}
+.big-error p {
+  margin-top: 10px;
+}
 input[type="submit"],
 input[type="button"],
 button {

@@ -88,7 +88,7 @@ getStateRequirements = () ->
     error: (xhr,status,error) ->
       $('form#get_started img.spinner').hide()
       response = $.parseJSON(xhr.responseText)
-      $('#state_form').before('<div class="error-message big-error">'+response.error.message+'</div>')
+      $('#state_form').before('<div class="error-message big-error"><h1>Sorry, you are not eligible to register to vote for the following reason(s):</h1><p>'+response.error.message+'</p></div>')
       $('#state_form').hide()
 
   })
