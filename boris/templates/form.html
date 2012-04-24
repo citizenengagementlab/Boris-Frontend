@@ -6,73 +6,62 @@
 
 <script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/application.js"></script>
+{%comment%}
 <script type="text/javascript" src="{{STATIC_URL}}js/{{layout|default:'singlepage'}}.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	{{layout|default:'singlepage'}}();
 });
 </script>
-
+{%endcomment%}
 {%endblock scripts%}
 
 {%block content%}
-	
-			<nav>
+
+	<section id="state_form">
+		<form action="/registrants/save_registrant/" method="post" id="get_started">
+			<fieldset id="get_started">
+				<legend>Get Registered!</legend>
 				<ul>
-					<li class="first-tabnav"><a href="#" id="get_started">Get Registered!</a></li>
-					<li><a href="#" id="address">Address Info</a></li>
-					<li><a href="#" id="personal">Personal Info</a></li>
-					<li><a href="#" id="contact">Contact Info</a></li>
-					<li><a href="#">Additional Info</a></li>
-				</li>
-			</nav>
-						
-			<section id="state_form">
-				<form action="/registrants/save_registrant/" method="post" id="get_started">
-					<fieldset id="get_started">
-						<legend>Get Registered!</legend>
-						<ul>
-							<li class="intro-text"><p>Registering to vote is easy -- and you can do it now.</p></li>
-							<li>
-								<label for="pre_first_name">First Name</label>
-								<input type="text" name="first_name" id="pre_first_name"  />
-							</li>
-							<li>
-								<label for="pre_last_name">Last Name</label>
-								<input type="text" name="last_name" id="pre_last_name"  />
-							</li>
-							<li>
-								<label for="pre_email_address">Email Address
-								<p class="tooltip">
-									<a id="tooltip_email">?</a>
-									<span class="tooltip_text" id="tooltip_text_email">We will e-mail you a copy of your voter registration form.</span>
-								</p>
-								</label>
-								<input type="text"  name="email_address" id="pre_email_address" />
-							</li>
-							<li>
-								<label for="pre_zip_code">Zip Code
-									<p class="tooltip">
-										<a id="tooltip_zip_code">?</a>
-										<span class="tooltip_text" id="tooltip_text_zip_code">
-											Enter ZIP code for the address where you live, even if you don't receive mail there.
-										</span>
-									</p>
-								</label>
-								<input type="text"  name="zip_code" id="pre_zip_code" />
-							</li>
-							<li class="form-action">
-								<input type="hidden" name="lang" id="lang_id" value="en">
-								<input type="submit" id="get_started" value="Get Started" />
-							</li>
-						</ul>
-					</fieldset>
-				</form>
-			</section>
-		<section id="registration_form">
-				
-				<form action="/registrants/submit/" method="post" id="registration">
-					<input type="hidden" name="partner_id" value="{{partner_id}}" />
+					<li class="intro-text"><p>Registering to vote is easy -- and you can do it now.</p></li>
+					<li>
+						<label for="pre_first_name">First Name</label>
+						<input type="text" name="first_name" id="pre_first_name" />
+					</li>
+					<li>
+						<label for="pre_last_name">Last Name</label>
+						<input type="text" name="last_name" id="pre_last_name" />
+					</li>
+					<li>
+						<label for="pre_email_address">Email Address
+						<p class="tooltip">
+							<a id="tooltip_email">?</a>
+							<span class="tooltip_text" id="tooltip_text_email">We will e-mail you a copy of your voter registration form.</span>
+						</p>
+						</label>
+						<input type="text"  name="email_address" id="pre_email_address" />
+					</li>
+					<li>
+						<label for="pre_zip_code">Zip Code
+							<p class="tooltip">
+								<a id="tooltip_zip_code">?</a>
+								<span class="tooltip_text" id="tooltip_text_zip_code">
+									Enter ZIP code for the address where you live, even if you don't receive mail there.
+								</span>
+							</p>
+						</label>
+						<input type="text"  name="zip_code" id="pre_zip_code" />
+					</li>
+					<li class="form-action">
+						<input type="hidden" name="lang" id="lang_id" value="en" />
+						<input type="submit" data-tab="address" id="get_started" value="Get Started" />
+					</li>
+				</ul>
+			</fieldset>
+		</form>
+	</section>
+	<section id="registration_form">
+		<form action="/registrants/submit/" method="post" id="registration">
 			<fieldset id="address">
 				<legend>Address Information</legend>
 				<ul>
@@ -153,14 +142,14 @@ $(document).ready(function() {
 					<li class="no_clear">
 						<label for="home_zip_code">Zip Code</label>
 						<input type="text"  name="home_zip_code" id="home_zip_code" />
-					</li>	
+					</li>
 					<li class="checkbox">
 						<label class="checkbox_label" for="has_different_address">
 							<input type="checkbox" name="has_different_address" id="has_different_address" />
 								I have a different mailing address.
 								<p class="tooltip tooltip_checkbox"><a id="tooltip_has_different_address">?</a><span class="tooltip_text" id="tooltip_text_has_different_address"> If you receive mail at a different address, please enter it here.</span></p>
 						</label>
-					</li>						
+					</li>
 					<div class="mailing"> 
 						<li>
 							<label for="mailing_address">Address</label>
@@ -315,10 +304,9 @@ $(document).ready(function() {
 								<option value="WI">Wisconsin</option> 
 								<option value="WY">Wyoming</option>
 							</select>
-							<input type="text" name="prev_state_id" id="prev_state_id" />
 						</li>
 						<li class="no_clear">
-							<label for="prev_zip_code">Zip Code</label> 
+							<label for="prev_zip_code">Zip Code</label>
 							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
 						</li>
 					</div>
@@ -326,9 +314,9 @@ $(document).ready(function() {
 						<a href="http://overseasvotefoundation.org">Registering Abroad?</a>
 					</li>
 				</ul>
-		</fieldset>
+			</fieldset>
 			<fieldset id="personal">
-				<legend>Personal Information </legend>
+				<legend>Personal Information</legend>
 				<ul>
 					<li class="title">
 						<label for="name_title">Title
@@ -367,11 +355,11 @@ $(document).ready(function() {
 							<input type="checkbox" name="change_of_name" id="change_of_name" />						
 							I have changed my name.
 							<p class ="tooltip tooltip_checkbox">
-							<a id="tooltip_change_of_name">?</a>
-							<span class="tooltip_text" id="tooltip_text_change_of_name">
-								Ifyou have changed your name since your last registration, enter your previous name.
-							</span>
-						</p>
+								<a id="tooltip_change_of_name">?</a>
+								<span class="tooltip_text" id="tooltip_text_change_of_name">
+									If you have changed your name since your last registration, enter your previous name.
+								</span>
+							</p>
 						</label>
 					</li>
 					<div class="name-change">
@@ -387,11 +375,11 @@ $(document).ready(function() {
 						</li>
 						<li class="no_clear name">
 							<label for="prev_first_name">First Name</label>
-							<input type="text" name="prev_first_name" id="prev_first_name"  />
+							<input type="text" name="prev_first_name" id="prev_first_name" />
 						</li>
 						<li class="no_clear name">
 							<label for="prev_last_name">Last Name</label>
-							<input type="text" name="prev_last_name" id="prev_last_name"  />
+							<input type="text" name="prev_last_name" id="prev_last_name" />
 						</li>
 						<li class="title">
 						<label for="name_suffix">Suffix</label>
@@ -407,23 +395,21 @@ $(document).ready(function() {
 					</div>
 					<li>
 						<label for="id_number">ID Number
-												<p class="tooltip"><a id="tooltip_id_number">?</a><span class="tooltip_text" id="tooltip_text_id_number"></span></p>
-</label>
+							<p class="tooltip"><a id="tooltip_id_number">?</a><span class="tooltip_text" id="tooltip_text_id_number"></span></p>
+						</label>
 						<input type="text"  name="id_number" id="id_number">
-						
 					</li>
 					<li>
 						<label for="date_of_birth">Date of Birth
-						<p class="tooltip">
-							<a id="tooltip_dob">?</a>
-							<span class="tooltip_text" id="tooltip_text_dob">On your voter registration application, you are required to indicate whether you will be 18 years old on or before election day. However, many states allow you to register before your 18th birthday, so please click <a href="http://www.rockthevote.com/voter-registration/online-application-system/register-before-you-are-18-rules.html">here</a> to see the rule for your state.</span>
-						</p>
+							<p class="tooltip">
+								<a id="tooltip_dob">?</a>
+								<span class="tooltip_text" id="tooltip_text_dob">On your voter registration application, you are required to indicate whether you will be 18 years old on or before election day. However, many states allow you to register before your 18th birthday, so please click <a href="http://www.rockthevote.com/voter-registration/online-application-system/register-before-you-are-18-rules.html">here</a> to see the rule for your state.</span>
+							</p>
 						</label>
 						<input type="text"  name="date_of_birth" id="date_of_birth" />
-						
 					</li>
 				</ul>
-			</fieldset>		
+			</fieldset>
 			<fieldset id="contact">
 				<legend>Contact Information</legend>
 				<ul>
@@ -454,7 +440,6 @@ $(document).ready(function() {
 					<li>
 						<label for="opt_in_sms">
 							<input type="checkbox" name="opt_in_sms" id="opt_in_sms" /> Receive text messages from Rock The Vote.
-							
 						</label>
 					</li>
 				</ul>
@@ -477,32 +462,27 @@ $(document).ready(function() {
 							<option value="Other">Other</option>
 							<option value="Decline to State">Decline to State</option>
 						</select>
-
-						
 					</li>
 					<li class="party">
 						<label for="party">Political Affiliation
 						<p class="tooltip tooltip-select"><a id="tooltip_party">?</a> <span class="tooltip_text" id="tooltip_text_party"></span></p>
 						</label>
-							<select id="party" name="party">
-								<option value=""></option>
-							</select>
-
-						
+						<select id="party" name="party">
+							<option value=""></option>
+						</select>
 					</li>
 					<li>
 						<label for="us_citizen">
-							<input type="checkbox" name="us_citizen" id="us_citizen" checked='checked'/> I am a US Citizen
+							<input type="checkbox" name="us_citizen" id="us_citizen" checked='checked'/>I am a US Citizen
 						</label>
 					</li>
 					<li class="buttons form-action">
+						<input type="hidden" name="partner_id" value="{{partner_id}}" />
 						<input type="hidden" name="lang" id="lang_id" value="en">
 						<input type="submit" id="register" action="submit" value="Register" />
-						<input type="button" class="prev-button" value="Go Back" />
 					</li>
 				</ul>
 			</fieldset>
 		</form>
-		</section>
-		<div class="push"></div>
+	</section>
 {%endblock content%}
