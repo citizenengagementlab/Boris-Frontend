@@ -711,10 +711,10 @@ nav ul li a:hover {
   -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
 }
-nav ul li.last-tabnav {
+nav ul li:last-child {
   border: 0px;
 }
-nav ul li.last-tabnav a {
+nav ul li:last-child a {
   left: 5px;
 }
 /*
