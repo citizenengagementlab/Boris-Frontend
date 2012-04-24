@@ -188,7 +188,6 @@
     if (errors.length > 0) {
       for (_i = 0, _len = errors.length; _i < _len; _i++) {
         error = errors[_i];
-        console.log(error.msg);
         $(error.id).addClass('error').parent().append("<p class='error-message'>" + error.msg + "</p>").children('.error-message').hide().fadeIn();
       }
       return false;
@@ -422,7 +421,6 @@
       error: function(xhr, status, error) {
         /* TODO: Handle Error
         */
-        console.log(error);
         $('#pre_zip_code').addClass('error').parent().append("<p class='error-message'>Invalid zip code</p>").children('.error-message').hide().fadeIn();
         return $('form#get_started img.spinner').remove();
       }
@@ -548,7 +546,6 @@
   saveRegistrant = function($form) {
     var data;
     data = $form.serializeJSON();
-    console.log(data);
     return $.ajax({
       type: "POST",
       url: $form.attr('action'),
@@ -556,9 +553,7 @@
         'registrant': data
       },
       cache: false,
-      error: function(response) {
-        return console.log(response);
-      },
+      error: function(response) {},
       beforeSend: function() {
         return $('form#get_started input[type=submit]').after('<img src="http://s3.amazonaws.com/register2.rockthevote.com/img/ajax-spinner.gif" class="spinner">');
       }
@@ -592,9 +587,7 @@
         field_name: $field.attr('name'),
         field_value: $field.val()
       },
-      error: function(response) {
-        return console.log(response);
-      }
+      error: function(response) {}
     });
   };
 

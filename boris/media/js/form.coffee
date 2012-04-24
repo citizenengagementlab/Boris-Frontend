@@ -22,14 +22,14 @@ submitStartForm = ->
 		
 saveRegistrant = ($form) ->
 	data = $form.serializeJSON()
-	console.log data
+	#console.log data
 	$.ajax({
 		type: "POST"
 		url: $form.attr('action')
 		data: {'registrant':data}
 		cache: false
 		error: (response) -> #handle error
-			console.log response
+			#console.log response
 		beforeSend: ->
 			#show spinner
 			$('form#get_started input[type=submit]')
@@ -61,7 +61,7 @@ saveProgress = ($field) ->
 			field_value:$field.val()
 		}
 		error: (response) ->
-			console.log(response);
+			#console.log(response);
 	})
 
 initForm = ->

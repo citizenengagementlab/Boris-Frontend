@@ -27,7 +27,7 @@ getCityState = (zip) ->
       getStateRequirements()
     error: (xhr,status,error) ->
       ### TODO: Handle Error ###
-      console.log error
+      #console.log error
       $('#pre_zip_code')
         .addClass('error')
         .parent()

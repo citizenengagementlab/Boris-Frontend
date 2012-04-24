@@ -131,7 +131,7 @@ validateFieldset = (fields) -> # Takes an {} of required fields
 	if errors.length > 0
 		# Handle Validation Errors
 		for error in errors
-			console.log(error.msg)
+			#console.log(error.msg)
 			$(error.id)
 				.addClass('error')
 				.parent()
