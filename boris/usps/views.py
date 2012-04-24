@@ -4,6 +4,7 @@ from django.conf import settings
 import json
 
 from usps.errors import USPSXMLError
+from urllib2 import URLError
 from usps.api import USPS_CONNECTION_TEST, USPS_CONNECTION
 from usps.api.addressinformation import CityStateLookup
 
@@ -22,6 +23,9 @@ def zip_lookup(request):
             #print cleaned
         except USPSXMLError,e:
             return HttpResponseServerError('USPS Error: %s' % e)
+        except URLError,e:
+            print e
+            return HttpResponse(json.dumps({'error':'timeout'}),mimetype="application/json")
     else:
         return HttpResponseServerError('requires zip get parameter')
     

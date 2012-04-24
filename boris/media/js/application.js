@@ -411,10 +411,12 @@
         */
 
         var homeCity, homeState;
-        homeCity = d.city;
-        homeState = d.state;
-        $("#home_city").val(homeCity);
-        $("#home_state_id").val(homeState).attr('readonly', 'readonly');
+        if (d.state !== void 0) {
+          homeCity = d.city;
+          homeState = d.state;
+          $("#home_city").val(homeCity);
+          $("#home_state_id").val(homeState).attr('readonly', 'readonly');
+        }
         return getStateRequirements();
       },
       error: function(xhr, status, error) {

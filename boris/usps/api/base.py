@@ -35,7 +35,7 @@ class USPSService(object):
         """
         data = {'XML':ET.tostring(xml),
                 'API':self.API}
-        response = urllib2.urlopen(self.url, utf8urlencode(data))
+        response = urllib2.urlopen(self.url, utf8urlencode(data),timeout=5)
         root = ET.parse(response).getroot()
         if root.tag == 'Error':
             raise USPSXMLError(root)

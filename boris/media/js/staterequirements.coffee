@@ -18,15 +18,12 @@ getCityState = (zip) ->
       zip: zip
     success: (d) ->
       ### Handle City and State Data ###
-      #zipCode = $("#pre_zip_code").val()
-      #alert(zipCode)
-      homeCity = d.city
-      homeState = d.state
-
-      #$("#home_zip_code").val(zipCode)
-      $("#home_city").val(homeCity)
-      $("#home_state_id").val(homeState).attr('readonly','readonly')
-      
+      if (d.state != undefined)
+        homeCity = d.city
+        homeState = d.state
+        #$("#home_zip_code").val(zipCode)
+        $("#home_city").val(homeCity)
+        $("#home_state_id").val(homeState).attr('readonly','readonly')
       getStateRequirements()
     error: (xhr,status,error) ->
       ### TODO: Handle Error ###
