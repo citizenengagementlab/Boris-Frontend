@@ -2,7 +2,7 @@ function tabs() {
 	$("document").ready(function() {
 	
 		//Hide all tabs except the first
-		$("legend:not(:first)").hide();
+		$("fieldset:not(:first)").hide();
 		//Show the tab navigation 
 		$("nav").show();
 		//show the first step as being active when the page loads
@@ -23,15 +23,16 @@ function tabs() {
 		
 		
 		$("input#get_started").click(function() {
-			//Hide get_started fieldset
-			$("fieldset#get_started").hide();
-			//Show the next fieldset
-			$("fieldset#address").show();
-			//Remove all active states
-			$("nav li a").removeClass("tab-active");
-			//Make the next tab active
-			$("nav li a#address").addClass("tab-active");
-			
+			if (!validateStartFields()) {
+				//Hide get_started fieldset
+				$("fieldset#get_started").hide();
+				//Show the next fieldset
+				$("fieldset#address").show();
+				//Remove all active states
+				$("nav li a").removeClass("tab-active");
+				//Make the next tab active
+				$("nav li a#address").addClass("tab-active");
+			} 
 		}); 
 		
 		$("fieldset#address .prev-button").click(function() {
