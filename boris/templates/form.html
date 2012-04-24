@@ -18,13 +18,13 @@ $(document).ready(function() {
 {%block content%}
 	
 			<nav>
-				<ul>
-					<li class="first-tabnav"><a href="#" id="get_started">Get Registered!</a></li>
+				<ol>
+					<li><a href="#get_started">Get Registered!</a></li>
 					<li><a href="#address">Address Info</a></li>
 					<li><a href="#personal">Personal Info</a></li>
 					<li><a href="#contact">Contact Info</a></li>
-					<li class="last-tabnav"><a href="#additional">Additional Info</a></li>
-				</li>
+					<li><a href="#additional">Additional Info</a></li>
+				</ol>
 			</nav>
 						
 			<section id="state_form">
@@ -88,7 +88,7 @@ $(document).ready(function() {
 						<label for="home_city">City</label>
 						<input type="text" name="home_city" id="home_city" />		
 					</li>
-					<li class="no_clear">
+					<li class="no_clear state">
 						<label for="home_state_id">State
 							<p class ="tooltip">
 								<a id="tooltip_address">?</a>
@@ -150,7 +150,7 @@ $(document).ready(function() {
 							<option value="WY">Wyoming</option>
 						</select>
 					</li>
-					<li class="no_clear">
+					<li class="no_clear zip">
 						<label for="home_zip_code">Zip Code</label>
 						<input type="text"  name="home_zip_code" id="home_zip_code" />
 					</li>	
@@ -162,6 +162,7 @@ $(document).ready(function() {
 						</label>
 					</li>						
 					<div class="mailing"> 
+						<h2>Mailing Address</h2>
 						<li>
 							<label for="mailing_address">Address</label>
 							<input type="text" name="mailing_address" id="mailing_address" />
@@ -174,7 +175,7 @@ $(document).ready(function() {
 							<label for="mailing_city">City</label>
 							<input type="text" name="mailing_city" class="span2" id="mailing_city" />
 						</li>
-						<li class="no_clear">
+						<li class="no_clear state">
 							<label for="mailing_state">State</label>
 							<select type="text" name="mailing_state" id="mailing_state">
 								<option value="" selected="selected">Select a State</option> 
@@ -231,7 +232,7 @@ $(document).ready(function() {
 								<option value="WY">Wyoming</option>
 							</select>
 						</li>
-						<li class="no_clear" >
+						<li class="no_clear zip" >
 							<label for="mailing_zip_code">Zip Code</label> 
 							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
 						</li>
@@ -247,6 +248,7 @@ $(document).ready(function() {
 						</label>
 					</li>
 					<div class="address-change">
+						<h2>Previous Address</h2>
 						<li>
 							<label for="prev_address">Address</label>
 							<input type="text" name="prev_address" />
@@ -259,7 +261,7 @@ $(document).ready(function() {
 							<label for="prev_city">City</label>
 							<input type="text" name="prev_city" id="prev_city" />
 						</li>
-						<li class="no_clear">
+						<li class="no_clear state">
 							<label for="prev_state_id">State</label>
 							<select type="text" name="prev_state_id" id="prev_state_id">
 								<option value="" selected="selected">Select a State</option> 
@@ -315,9 +317,8 @@ $(document).ready(function() {
 								<option value="WI">Wisconsin</option> 
 								<option value="WY">Wyoming</option>
 							</select>
-							<input type="text" name="prev_state_id" id="prev_state_id" />
 						</li>
-						<li class="no_clear">
+						<li class="no_clear zip">
 							<label for="prev_zip_code">Zip Code</label> 
 							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
 						</li>
@@ -328,7 +329,7 @@ $(document).ready(function() {
 				</ul>
 		</fieldset>
 			<fieldset id="personal">
-				<legend>Personal Information </legend>
+				<legend>Personal Information</legend>
 				<ul>
 					<li class="title">
 						<label for="name_title">Title
@@ -375,6 +376,7 @@ $(document).ready(function() {
 						</label>
 					</li>
 					<div class="name-change">
+						<h2>Previous Name</h2>
 						<li class="title">
 							<label for="prev_name_title">Title</label>
 							<select name="prev_name_title" id="prev_name_title">
@@ -498,7 +500,6 @@ $(document).ready(function() {
 					<li class="buttons form-action">
 						<input type="hidden" name="lang" id="lang_id" value="en">
 						<input type="submit" id="register" action="submit" value="Register" />
-						<input type="button" data-tab="contact" class="prev-button" value="Go Back" />
 					</li>
 				</ul>
 			</fieldset>

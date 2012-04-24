@@ -92,8 +92,21 @@ form ul {
 	}
 }
 
+.address-change > h2, .name-change > h2, .mailing > h2 {
+	font-weight:bold;
+	font-size:13px;
+	clear:both;
+	margin-bottom:10px;
+	color:#222;
+	text-decoration:underline;
+}
+
 li.state {
-	width:150px;
+	width:140px;
+}
+
+li.zip {
+	width:60px;
 }
 
 #home_unit, #prev_unit, #mailing_unit {
@@ -108,7 +121,13 @@ li.name {
 	width: 33%
 }
 
-legend, nav ul, ul.header {
+legend {
+	text-decoration: underline;
+	color:#222;
+	font-weight:bold;
+}
+
+.fieldset-header, nav ol  {
 	display: block;
 	padding: 10px;
 	margin: 10px 0;
@@ -118,8 +137,8 @@ legend, nav ul, ul.header {
 	.border-radius(2px);
 	font-weight: bold;
 	color: #FFF;
-	.text-shadow(0 -1px 0 rgba(0,0,0,.5));
-	#gradient.vertical(lighten(#AAA,5%), darken(#AAA,5%);
+	.text-shadow(0 -1px 0 rgba(0,0,0,.5));	
+#gradient.vertical(lighten(#AAA,5%), darken(#AAA,5%);
 }
 
 footer {
@@ -267,9 +286,6 @@ p.tooltip-select {
 	margin-top:-2px;
 }
 
-.checkbox_label {
-}
-
 button#top_link {
 	float:left;
 	width: 80px;
@@ -282,7 +298,7 @@ button#top_link {
 	}
 }
 
-nav ul {
+nav ol {
 	padding: 10px 0px;
 	list-style-type: none;
 	height:100%;
@@ -309,7 +325,10 @@ nav ul {
 		}
 	}	
 }
-	
+
+.tab-active {
+	.text-shadow(0 0 1px rgba(255,255,255,0.40));
+}	
 	
 
 /*
@@ -335,6 +354,4 @@ html, body {
 	height: 37px; /* .push must be the same height as .footer */
 }
 
-.tab-active {
-	.text-shadow(0 0 1px rgba(255,255,255,0.40));
-}
+

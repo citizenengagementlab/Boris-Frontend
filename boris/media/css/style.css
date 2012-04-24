@@ -446,8 +446,21 @@ form ul li.buttons {
 form ul li.form-action {
   margin-bottom: 0px;
 }
+.address-change > h2,
+.name-change > h2,
+.mailing > h2 {
+  font-weight: bold;
+  font-size: 13px;
+  clear: both;
+  margin-bottom: 10px;
+  color: #222;
+  text-decoration: underline;
+}
 li.state {
-  width: 150px;
+  width: 140px;
+}
+li.zip {
+  width: 60px;
 }
 #home_unit,
 #prev_unit,
@@ -461,9 +474,13 @@ li.title {
 li.name {
   width: 33%;
 }
-legend,
-nav ul,
-ul.header {
+legend {
+  text-decoration: underline;
+  color: #222;
+  font-weight: bold;
+}
+.fieldset-header,
+nav ol {
   display: block;
   padding: 10px;
   margin: 10px 0;
@@ -686,13 +703,13 @@ button#top_link a {
   text-decoration: none;
   color: #FFF;
 }
-nav ul {
+nav ol {
   padding: 10px 0px;
   list-style-type: none;
   height: 100%;
   position: relative;
 }
-nav ul li {
+nav ol li {
   display: inline;
   padding: 18px 6px;
   border-right: 1px solid #f0f0f0;
@@ -700,22 +717,27 @@ nav ul li {
   -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
 }
-nav ul li a {
+nav ol li a {
   text-decoration: none;
   color: #FFF;
   position: relative;
   right: 2px;
 }
-nav ul li a:hover {
+nav ol li a:hover {
   -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
   -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
 }
-nav ul li:last-child {
+nav ol li:last-child {
   border: 0px;
 }
-nav ul li:last-child a {
+nav ol li:last-child a {
   left: 5px;
+}
+.tab-active {
+  -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+  -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
 }
 /*
 
@@ -743,9 +765,4 @@ body {
   height: 37px;
   /* .push must be the same height as .footer */
 
-}
-.tab-active {
-  -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
-  -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
 }
