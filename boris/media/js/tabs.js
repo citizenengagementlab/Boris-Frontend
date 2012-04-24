@@ -1,17 +1,17 @@
 function tabs() {
 	$("document").ready(function() {
 	
-		var buttons = '<input type="button" class="next-button" value="Continue" /><input type="button" data-tab="" class="prev-button" value="Go Back" />';
 		//Hide all tabs except the first
-		$(".accordion:not(:first)").hide();
+		$("legend:not(:first)").hide();
 		//Show the tab navigation 
 		$("nav").show();
 		//show the first step as being active when the page loads
 		$("nav li a:first").addClass("tab-active");
-		//hide accordion legends
-		$(".accordion-header").hide();
-		//html to be injected into each tab section
+		//hide legends
+		$("legend").hide();
 		
+		//html to be injected into each tab section
+		var buttons = '<input type="button" class="next-button" value="Continue" /><input type="button" data-tab="" class="prev-button" value="Go Back" />';
 
 		//loop through each fieldset, append buttons to the bottom
 		$("fieldset:not(:first)").each(function () {
@@ -48,7 +48,7 @@ function tabs() {
 			//hide the current content
 			$(this).parent("fieldset").hide();
 			//show the next content
-			var $fieldsetNext = $(this).parent("fieldset").next("fieldset")
+			var $fieldsetNext = $(this).parent("fieldset").next("fieldset");
 			$fieldsetNext.show();
 			//make the current tab inactive, by making them all inactive
 			$("nav li a").removeClass("tab-active");
@@ -60,7 +60,7 @@ function tabs() {
 			//hide the current content
 			$(this).parent("fieldset").hide();
 			//show the next data-tab, aka the next step in registration
-			var $fieldsetPrev = $(this).parent("fieldset").prev("fieldset")
+			var $fieldsetPrev = $(this).parent("fieldset").prev("fieldset");
 			$fieldsetPrev.show();
 			//make the current tab inactive, by making them all inactive
 			$("nav li a").removeClass("tab-active");
