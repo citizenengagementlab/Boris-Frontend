@@ -596,9 +596,7 @@ button:active {
   -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 0px rgba(255, 255, 255, 0.25), inset 0 -1px 0px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 0px rgba(255, 255, 255, 0.25), inset 0 -1px 0px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(0, 0, 0, 0.25);
 }
-input.prev-button {
-  clear: both;
-  color: #FFF;
+button.btn-prev {
   background-color: #c9c9c9;
   background-image: -moz-linear-gradient(top, #dddddd, #aaaaaa);
   background-image: -ms-linear-gradient(top, #dddddd, #aaaaaa);
@@ -608,18 +606,8 @@ input.prev-button {
   background-image: linear-gradient(top, #dddddd, #aaaaaa);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dddddd', endColorstr='#aaaaaa', GradientType=0);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
-  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
-  -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border: 1px solid #777777;
   width: 70px;
-  height: 35px;
 }
 img.spinner {
   margin-left: 10px;
