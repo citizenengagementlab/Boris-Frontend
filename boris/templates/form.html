@@ -70,7 +70,6 @@ $(document).ready(function() {
 	</section>
 	<section id="registration_form">
 		<form action="/registrants/submit/" method="post" id="registration">
-			<input type="hidden" name="partner_id" value="{{partner_id}}" />
 			<fieldset id="address">
 				<legend>Address Information</legend>
 				<ul>
@@ -324,9 +323,9 @@ $(document).ready(function() {
 						<a href="http://overseasvotefoundation.org">Registering Abroad?</a>
 					</li>
 				</ul>
-		</fieldset>
+			</fieldset>
 			<fieldset id="personal">
-				<legend>Personal Information </legend>
+				<legend>Personal Information</legend>
 				<ul>
 					<li class="title">
 						<label for="name_title">Title
@@ -488,10 +487,11 @@ $(document).ready(function() {
 					</li>
 					<li>
 						<label for="us_citizen">
-							<input type="checkbox" name="us_citizen" id="us_citizen" checked='checked'/> I am a US Citizen
+							<input type="checkbox" name="us_citizen" id="us_citizen" checked='checked'/>I am a US Citizen
 						</label>
 					</li>
 					<li class="buttons form-action">
+						<input type="hidden" name="partner_id" value="{{partner_id}}" />
 						<input type="hidden" name="lang" id="lang_id" value="en">
 						<input type="submit" id="register" action="submit" value="Register" />
 						<input type="button" data-tab="contact" class="prev-button" value="Go Back" />
