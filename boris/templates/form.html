@@ -5,7 +5,6 @@
 {%block scripts%}
 
 <script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
-
 <script type="text/javascript" src="{{STATIC_URL}}js/{{layout|default:'singlepage'}}.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -20,18 +19,18 @@ $(document).ready(function() {
 {%block content%}
 	
 			<ul id="tabnav" class="header">
-				<li class="first-tabnav"><a data-tab="getStarted">Get Registered!</a></li>
-				<li><a data-tab="address">Address Info</a></li>
-				<li><a data-tab="personal">Personal Info</a></li>
-				<li><a data-tab="contact">Contact Info</a></li>
-				<li class="last-tabnav"><a data-tab="additional">Additional Info</a></li>
+				<li class="first-tabnav"><a href="#" id="get_started">Get Registered!</a></li>
+				<li><a href="#" id="address">Address Info</a></li>
+				<li><a href="#" id="personal">Personal Info</a></li>
+				<li><a href="#" id="contact">Contact Info</a></li>
+				<li class="last-tabnav"><a href="#" data-tab="additional">Additional Info</a></li>
 			</ul>
 						
 			<section id="state_form">
 				<form action="/registrants/save_registrant/" method="post" id="get_started">
-					<fieldset id="get_started">
+					<fieldset id="get_started" class="accordion">
 						<legend class="accordion-header">Get Registered!</legend>
-						<ul class="accordion-content" data-content="getStarted">
+						<ul>
 							<li class="intro-text"><p>Registering to vote is easy -- and you can do it now.</p></li>
 							<li>
 								<label for="pre_first_name">First Name</label>
@@ -75,9 +74,9 @@ $(document).ready(function() {
 				
 				<form action="/registrants/submit/" method="post" id="registration">
 					<input type="hidden" name="partner_id" value="{{partner_id}}" />
-			<fieldset id="address">
+			<fieldset id="address" class="accordion">
 				<legend class="accordion-header">Address Information</legend>
-				<ul class="accordion-content" data-content="address">
+				<ul>
 					<li>
 						<label for="home_address">Address</label>
 						<input type="text" name="home_address" id="home_address" />	
@@ -167,15 +166,11 @@ $(document).ready(function() {
 					<li>
 						<a href="http://overseasvotefoundation.org">Registering Abroad?</a>
 					</li>
-					<li class="buttons">
-						<input type="button" data-tab="personal" class="next-button" value="Continue" />
-						<input type="button" data-tab="getStarted" class="prev-button" value="Go Back" />
-					</li>
 				</ul>
-			</fieldset>
+		</fieldset>
 			<fieldset id="personal" class="accordion">
 				<legend class="accordion-header">Personal Information </legend>
-				<ul class="accordion-content" data-content="personal">
+				<ul>
 					<li class="title">
 						<label for="name_title">Title
 						<p class ="tooltip"><a id="tooltip_personal">?</a><span class="tooltip_text" id="tooltip_text_personal">
@@ -268,15 +263,11 @@ $(document).ready(function() {
 						<input type="text"  name="date_of_birth" id="date_of_birth" />
 						
 					</li>
-					<li class="buttons">
-						<input type="button" data-tab="contact" class="next-button" value="Continue" />
-						<input type="button" data-tab="address" class="prev-button" value="Go Back" />
-					</li>
 				</ul>
 			</fieldset>		
-			<fieldset id="contact">
+			<fieldset id="contact" class="accordion">
 				<legend class="accordion-header">Contact Information</legend>
-				<ul class="accordion-content" data-content="contact">
+				<ul>
 					<li>
 						<label for="email_address">Email Address</label>
 						<input type="text" name="email_address" id="email_address" />
@@ -312,9 +303,9 @@ $(document).ready(function() {
 					</li>
 				</ul>
 			</fieldset>
-			<fieldset id="additional">
+			<fieldset id="additional" class="accordion">
 				<legend class="accordion-header">Additional Information</legend>
-				<ul class="accordion-content" data-content="additional">
+				<ul>
 					<li>
 						<label for="race">Race or Ethnic Group
 						<p class="tooltip tooltip-select"><a id="tooltip_race">?</a><span class="tooltip_text" id="tooltip_text_race"></span></p>
@@ -350,8 +341,6 @@ $(document).ready(function() {
 					</li>
 					<li class="buttons form-action">
 						<input type="hidden" name="lang" id="lang_id" value="en">
-						<input type="submit" id="register" action="submit" value="Register" />
-						<input type="button" data-tab="contact" class="prev-button" value="Go Back" />
 					</li>
 				</ul>
 			</fieldset>
