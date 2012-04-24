@@ -716,41 +716,61 @@ button#top_link a {
   text-decoration: none;
   color: #FFF;
 }
-nav ol {
-  padding: 10px 0px;
-  list-style-type: none;
-  height: 100%;
+#tab-indicators ol {
+  list-style: none;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#tab-indicators ol li {
+  position: relative;
+  background-color: #dddddd;
+  display: inline-block;
+  *display: inline;
+  height: 40px;
+  line-height: 40px;
+  width: 50px;
+  text-align: center;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  color: #AAA;
+  padding-left: 25px;
+}
+#tab-indicators ol li:after {
+  content: "";
+  border: 20px solid #dddddd;
+  border-color: transparent transparent transparent #dddddd;
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 100%;
+  z-index: 100;
+}
+#tab-indicators ol li:first-child {
+  padding-left: 10px;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+#tab-indicators ol .tab.active,
+#tab-indicators ol .tab.active.complete {
+  background-color: #0074cc;
+  color: white;
   position: relative;
 }
-nav ol li {
-  display: inline;
-  padding: 18px 6px;
-  border-right: 1px solid #f0f0f0;
-  -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
-  -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
+#tab-indicators ol .tab.active:after,
+#tab-indicators ol .tab.active.complete:after {
+  border-color: transparent transparent transparent #0074cc;
 }
-nav ol li a {
-  text-decoration: none;
-  color: #FFF;
+#tab-indicators ol .tab.complete {
+  background-color: #5bb75b;
+  color: white;
   position: relative;
-  right: 2px;
 }
-nav ol li a:hover {
-  -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
-  -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
-}
-nav ol li:last-child {
-  border: 0px;
-}
-nav ol li:last-child a {
-  left: 5px;
-}
-.tab-active {
-  -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
-  -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
+#tab-indicators ol .tab.complete:after {
+  border-color: transparent transparent transparent #5bb75b;
 }
 /*
 

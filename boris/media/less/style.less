@@ -306,36 +306,60 @@ button#top_link {
 	}
 }
 
-nav ol {
-	padding: 10px 0px;
-	list-style-type: none;
-	height:100%;
-	position: relative; 
-	li {
-		display:inline;
-		padding: 18px 6px;
-		border-right:1px solid #f0f0f0;
-		.text-shadow(0 -1px 0 rgba(0,0,0,.90));
-			a {
-		 	text-decoration:none;
-		 	color:#FFF;
-		 	position:relative;
-		 	right:2px;
-		 	&:hover {
-		 	.text-shadow(0 0 1px rgba(255,255,255,0.40));
-		 	}
-		}	
-	}	
-	li:last-child { 
-		border: 0px;
-		a {
-			left:5px;
-		}
-	}	
-}
 
-.tab-active {
-	.text-shadow(0 0 1px rgba(255,255,255,0.40));
+
+#tab-indicators ol {
+	list-style: none;
+	margin: 0 0 10px 0;
+	padding: 0;
+	li {
+		@bgcolor: #DDD;
+		position: relative;
+		background-color: @bgcolor;
+		display: inline-block;
+		*display: inline;
+		height: 40px;
+		line-height: 40px;
+		width: 50px;
+		text-align: center;
+		.box-shadow(0 1px 1px rgba(0,0,0,.1));
+		color: #AAA;
+		padding-left: 25px;
+		&:after {
+			content: "";
+			border: 20px solid @bgcolor;
+			border-color: transparent transparent transparent @bgcolor;
+			position: absolute;
+			display: block;
+			width: 0;
+			height: 0;
+			top: 0;
+			left: 100%;
+			z-index: 100;
+		}
+		&:first-child {
+			padding-left: 10px;
+			.border-radius(3px 0 0 3px);
+		}
+	}
+	.tab.active, .tab.active.complete {
+		@bgcolor: #0074CC;
+		background-color: @bgcolor;
+		color: white;
+		position: relative;
+		&:after {
+			border-color: transparent transparent transparent @bgcolor;
+		}
+	}
+	.tab.complete {
+		@bgcolor: #5BB75B;
+		background-color: @bgcolor;
+		color: white;
+		position: relative;
+		&:after {
+			border-color: transparent transparent transparent @bgcolor;
+		}
+	}
 }	
 	
 
