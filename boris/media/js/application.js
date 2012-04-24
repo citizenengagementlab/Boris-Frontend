@@ -568,7 +568,9 @@
     valid.push(validatePersonal());
     valid.push(validateContact());
     valid.push(validateAdditional());
-    $('html, body').scrollTop($('.error').first().offset().top);
+    if ($('.error').length > 0) {
+      $('html, body').scrollTop($('.error').first().offset().top);
+    }
     for (_i = 0, _len = valid.length; _i < _len; _i++) {
       v = valid[_i];
       if (!v) {

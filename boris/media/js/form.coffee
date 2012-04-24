@@ -44,7 +44,8 @@ submitRegistrationForm = ->
 	valid.push validatePersonal()
 	valid.push validateContact()
 	valid.push validateAdditional()
-	$('html, body').scrollTop( $('.error').first().offset().top )
+	if $('.error').length > 0
+		$('html, body').scrollTop( $('.error').first().offset().top )
 
 	for v in valid
 		if !v
