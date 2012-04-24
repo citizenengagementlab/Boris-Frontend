@@ -66,7 +66,7 @@ $(document).ready(function() {
 				</form>
 			</section>
 		<section id="registration_form">
-				<legend id="tabnav" class="header">
+				<legend id="tabnav" class="header visuallyhidden">
 					<ul>
 						<li class="first-tabnav"><a data-tab="address">Address Info</a></li>
 						<li><a data-tab="personal">Personal Info</a></li>
@@ -77,7 +77,7 @@ $(document).ready(function() {
 				<form action="/registrants/submit/" method="post" id="registration">
 					<input type="hidden" name="partner_id" value="{{partner_id}}" />
 			<fieldset id="address">
-				<legend class="accordion-header">Address Information</legend>
+				<legend class="accordion-header visuallyhidden">Address Information</legend>
 				<ul class="accordion-content" data-content="address">
 					<li>
 						<label for="home_address">Address
@@ -334,7 +334,7 @@ $(document).ready(function() {
 				</ul>
 			</fieldset>
 			<fieldset id="personal" class="accordion">
-				<legend class="accordion-header">Personal Information </legend>
+				<legend class="accordion-header visuallyhidden">Personal Information </legend>
 				<ul class="accordion-content" data-content="personal">
 					<li class="title">
 						<label for="name_title">Title
@@ -435,7 +435,7 @@ $(document).ready(function() {
 				</ul>
 			</fieldset>		
 			<fieldset id="contact">
-				<legend class="accordion-header">Contact Information</legend>
+				<legend class="accordion-header visuallyhidden">Contact Information</legend>
 				<ul class="accordion-content" data-content="contact">
 					<li>
 						<label for="email_address">Email Address</label>
@@ -473,7 +473,7 @@ $(document).ready(function() {
 				</ul>
 			</fieldset>
 			<fieldset id="additional">
-				<legend class="accordion-header">Additional Information</legend>
+				<legend class="accordion-header visuallyhidden">Additional Information</legend>
 				<ul class="accordion-content" data-content="additional">
 					<li>
 						<label for="race">Race or Ethnic Group
