@@ -1,37 +1,45 @@
-// TODO - Accordion Form
-
-	
 function accordion() {
-	//hide tabs
-	$("#tabnav").hide();
-	$("#tabnav ul").hide();
-	//end
-	
-	//show continue and previous buttons
-	$(".next-button").show();
-	$(".prev-button").show();
-
-	//Accordion functionality
-	$("input#get_started").click(function() {
-		//Hide all but the first accordion section
-		$(".accordion-content:not(:first)").hide();
-		//Clicking the header closes or opens that particular section (buggy, and not really needed)
-	/*
-	$(".accordion-header").click(function() {
-			$(".accordion-content").slideUp("slow");
-			$(this).next().slideDown("slow");
+	$("document").ready(function() {
+		var buttons = '<input type="button" class="next-button" value="Continue" /><input type="button" data-tab="" class="prev-button" value="Go Back" />';
+		
+		//hide tabs
+		$("nav").hide();
+		//show all accordions
+		$("legend").show();
+		
+		//append buttons to each fieldset
+		$("fieldset:not(:first)").each(function () {
+			$(this).append(buttons);
 		});
-*/
+		//Accordion functionality
+		//Hide all but the first fieldset
+		$("fieldset:not(:first)").hide();
+		
+		$("input#get_started").click(function() {
+			if (!validateStartFields()) {
+				//Hide get_started fieldset
+				$("fieldset#get_started").hide();
+				//Show the next fieldset
+				$("fieldset#address").show();
+			}
+		});
+		
 		//Clicking the continue button closes the current section and opens the next.
 		$(".next-button").click(function() {
-			$(this).parent().parent().parent(this).children(".accordion-content").slideUp();
-			$(this).parent().parent().parent(this).next().children().slideDown();
+			var $fieldsetThis = $(this).parents("fieldset");
+			var $fieldsetNext = $fieldsetThis.next("fieldset");
+			console.log($fieldsetNext);
+			$fieldsetNext.slideUp();
+			$fieldsetThis.slideDown();
 		});
 		
 		//Clicking the previous button closes the current sections and opens the previous.
 		$(".prev-button").click(function() {
-			$(this).parent().parent().parent(this).children(".accordion-content").slideUp();
-			$(this).parent().parent().parent(this).prev().children().slideDown();
+			var $fieldsetThis = $(this).parents("fieldset");
+			var $fieldsetPrev = $fieldsetThis.prev("fieldset");
+			console.log($fieldsetPrev);
+			$fieldsetThis.slideUp();
+			$fieldsetPrev.slideDown();
 		});
 	});
 }

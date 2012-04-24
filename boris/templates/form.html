@@ -5,6 +5,7 @@
 {%block scripts%}
 
 <script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/application.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/{{layout|default:'singlepage'}}.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -12,19 +13,19 @@ $(document).ready(function() {
 });
 </script>
 
-<script type="text/javascript" src="{{STATIC_URL}}js/application.js"></script>
-
 {%endblock scripts%}
 
 {%block content%}
 	
-			<ul id="tabnav" class="header">
-				<li class="first-tabnav"><a href="#" id="get_started">Get Registered!</a></li>
-				<li><a href="#" id="address">Address Info</a></li>
-				<li><a href="#" id="personal">Personal Info</a></li>
-				<li><a href="#" id="contact">Contact Info</a></li>
-				<li class="last-tabnav"><a href="#" data-tab="additional">Additional Info</a></li>
-			</ul>
+			<nav>
+				<ul>
+					<li class="first-tabnav"><a href="#" id="get_started">Get Registered!</a></li>
+					<li><a href="#" id="address">Address Info</a></li>
+					<li><a href="#" id="personal">Personal Info</a></li>
+					<li><a href="#" id="contact">Contact Info</a></li>
+					<li class="last-tabnav"><a href="#" data-tab="additional">Additional Info</a></li>
+				</li>
+			</nav>
 						
 			<section id="state_form">
 				<form action="/registrants/save_registrant/" method="post" id="get_started">
@@ -34,12 +35,11 @@ $(document).ready(function() {
 							<li class="intro-text"><p>Registering to vote is easy -- and you can do it now.</p></li>
 							<li>
 								<label for="pre_first_name">First Name</label>
-								<input type="text" name="first_name" id="pre_first_name"  />			
-
+								<input type="text" name="first_name" id="pre_first_name"  />
 							</li>
 							<li>
 								<label for="pre_last_name">Last Name</label>
-								<input type="text" name="last_name" id="pre_last_name"  />			
+								<input type="text" name="last_name" id="pre_last_name"  />
 							</li>
 							<li>
 								<label for="pre_email_address">Email Address
@@ -48,8 +48,7 @@ $(document).ready(function() {
 									<span class="tooltip_text" id="tooltip_text_email">We will e-mail you a copy of your voter registration form.</span>
 								</p>
 								</label>
-								<input type="text"  name="email_address" id="pre_email_address" />			
-
+								<input type="text"  name="email_address" id="pre_email_address" />
 							</li>
 							<li>
 								<label for="pre_zip_code">Zip Code
@@ -60,7 +59,7 @@ $(document).ready(function() {
 										</span>
 									</p>
 								</label>
-								<input type="text"  name="zip_code" id="pre_zip_code" />			
+								<input type="text"  name="zip_code" id="pre_zip_code" />
 							</li>
 							<li class="form-action">
 								<input type="hidden" name="lang" id="lang_id" value="en">

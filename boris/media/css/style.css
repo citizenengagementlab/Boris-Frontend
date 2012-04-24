@@ -462,7 +462,7 @@ li.name {
   width: 33%;
 }
 legend,
-ul#tabnav,
+nav ul,
 ul.header {
   display: block;
   padding: 10px;
@@ -686,13 +686,13 @@ button#top_link a {
   text-decoration: none;
   color: #FFF;
 }
-ul#tabnav {
+nav ul {
   padding: 10px 0px;
   list-style-type: none;
   height: 100%;
   position: relative;
 }
-ul#tabnav li {
+nav ul li {
   display: inline;
   padding: 18px 6px;
   border-right: 1px solid #f0f0f0;
@@ -700,21 +700,21 @@ ul#tabnav li {
   -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
 }
-ul#tabnav li a {
+nav ul li a {
   text-decoration: none;
   color: #FFF;
   position: relative;
   right: 2px;
 }
-ul#tabnav li a:hover {
+nav ul li a:hover {
   -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
   -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
 }
-ul#tabnav li.last-tabnav {
+nav ul li.last-tabnav {
   border: 0px;
 }
-ul#tabnav li.last-tabnav a {
+nav ul li.last-tabnav a {
   left: 5px;
 }
 /*
