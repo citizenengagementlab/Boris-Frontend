@@ -6,3 +6,11 @@
 
 jQuery ($) ->
 	initForm()
+	console.log "ALL THE #{window.LAYOUT.toUpperCase()}!!!"
+	switch window.LAYOUT
+	  when "singlepage"
+	  	initPage()
+	  when "tabs"
+	  	initTabs()
+	  when "accordion"
+	  	initAccordion()

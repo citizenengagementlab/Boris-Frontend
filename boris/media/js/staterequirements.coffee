@@ -7,8 +7,19 @@ showRegistrationForm = () ->
   $('#last_name').val(lastName)
   $('#email_address').val(email)
   $('#home_zip_code').val(zip)
-  $('#state_form').hide()
-  $('#registration_form').show()
+  
+  switch window.LAYOUT
+    when "singlepage"
+      $('#state_form').hide()
+      $('#registration_form').show()
+    when "tabs"
+      $("#get_started").hide()
+      $("#address").show()
+    when "accordion"
+      $("#get_started > ul").slideUp()
+      $("#address > ul").slideDown()
+
+
 
 getCityState = (zip) ->
   $.ajax
@@ -25,8 +36,9 @@ getCityState = (zip) ->
         $("#home_city").val(homeCity)
         $("#home_state_id").val(homeState).attr('readonly','readonly')
       getStateRequirements()
+      return true
     error: (xhr,status,error) ->
-      ### TODO: Handle Error ###
+      ### Handle Error ###
       #console.log error
       $('#pre_zip_code')
         .addClass('error')
@@ -36,6 +48,7 @@ getCityState = (zip) ->
         .hide()
         .fadeIn()
       $('form#get_started img.spinner').remove()
+      return false
 
 getStateRequirements = () ->
   url = "/rtv/api/v1/state_requirements.json"
