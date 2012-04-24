@@ -17,7 +17,11 @@ def register(request):
     context = {'layout':layout}
     
     #TODO: setup partner_id based on layout
-    context['partner_id'] = 1
+    partner_ids = {'singlepage':11911,'tabs':11917,'accordion':11929}
+    try:
+        context['partner_id'] = partner_ids[layout]
+    except KeyError:
+        partner_id = 1
     
     return render_to_response('form.html',context,
                 context_instance=RequestContext(request))
