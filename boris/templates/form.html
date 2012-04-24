@@ -20,10 +20,10 @@ $(document).ready(function() {
 			<nav>
 				<ul>
 					<li class="first-tabnav"><a href="#" id="get_started">Get Registered!</a></li>
-					<li><a href="#" id="address">Address Info</a></li>
-					<li><a href="#" id="personal">Personal Info</a></li>
-					<li><a href="#" id="contact">Contact Info</a></li>
-					<li><a href="#">Additional Info</a></li>
+					<li><a href="#address">Address Info</a></li>
+					<li><a href="#personal">Personal Info</a></li>
+					<li><a href="#contact">Contact Info</a></li>
+					<li class="last-tabnav"><a href="#additional">Additional Info</a></li>
 				</li>
 			</nav>
 						
@@ -63,7 +63,7 @@ $(document).ready(function() {
 							</li>
 							<li class="form-action">
 								<input type="hidden" name="lang" id="lang_id" value="en">
-								<input type="submit" id="get_started" value="Get Started" />
+								<input type="submit" data-tab="address" id="get_started" value="Get Started" />
 							</li>
 						</ul>
 					</fieldset>
@@ -71,8 +71,8 @@ $(document).ready(function() {
 			</section>
 		<section id="registration_form">
 				
-				<form action="/registrants/submit/" method="post" id="registration">
-					<input type="hidden" name="partner_id" value="{{partner_id}}" />
+			<form action="/registrants/submit/" method="post" id="registration">
+				<input type="hidden" name="partner_id" value="{{partner_id}}" />
 			<fieldset id="address">
 				<legend>Address Information</legend>
 				<ul>
@@ -498,7 +498,7 @@ $(document).ready(function() {
 					<li class="buttons form-action">
 						<input type="hidden" name="lang" id="lang_id" value="en">
 						<input type="submit" id="register" action="submit" value="Register" />
-						<input type="button" class="prev-button" value="Go Back" />
+						<input type="button" data-tab="contact" class="prev-button" value="Go Back" />
 					</li>
 				</ul>
 			</fieldset>
