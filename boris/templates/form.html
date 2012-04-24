@@ -17,13 +17,13 @@ $(document).ready(function() {
 
 {%block content%}
 	<nav>
-		<ul>
-			<li class="first-tabnav"><a href="#get_started">Get Registered!</a></li>
+		<ol>
+			<li><a href="#get_started">Get Registered!</a></li>
 			<li><a href="#address">Address Info</a></li>
 			<li><a href="#personal">Personal Info</a></li>
 			<li><a href="#contact">Contact Info</a></li>
-			<li class="last-tabnav"><a href="#additional">Additional Info</a></li>
-		</ul>
+			<li><a href="#additional">Additional Info</a></li>
+		</ol>
 	</nav>
 				
 	<section id="state_form">
@@ -34,11 +34,11 @@ $(document).ready(function() {
 					<li class="intro-text"><p>Registering to vote is easy -- and you can do it now.</p></li>
 					<li>
 						<label for="pre_first_name">First Name</label>
-						<input type="text" name="first_name" id="pre_first_name"  />
+						<input type="text" name="first_name" id="pre_first_name" />
 					</li>
 					<li>
 						<label for="pre_last_name">Last Name</label>
-						<input type="text" name="last_name" id="pre_last_name"  />
+						<input type="text" name="last_name" id="pre_last_name" />
 					</li>
 					<li>
 						<label for="pre_email_address">Email Address
@@ -61,7 +61,7 @@ $(document).ready(function() {
 						<input type="text"  name="zip_code" id="pre_zip_code" />
 					</li>
 					<li class="form-action">
-						<input type="hidden" name="lang" id="lang_id" value="en">
+						<input type="hidden" name="lang" id="lang_id" value="en" />
 						<input type="submit" data-tab="address" id="get_started" value="Get Started" />
 					</li>
 				</ul>
@@ -150,14 +150,14 @@ $(document).ready(function() {
 					<li class="no_clear">
 						<label for="home_zip_code">Zip Code</label>
 						<input type="text"  name="home_zip_code" id="home_zip_code" />
-					</li>	
+					</li>
 					<li class="checkbox">
 						<label class="checkbox_label" for="has_different_address">
 							<input type="checkbox" name="has_different_address" id="has_different_address" />
 								I have a different mailing address.
 								<p class="tooltip tooltip_checkbox"><a id="tooltip_has_different_address">?</a><span class="tooltip_text" id="tooltip_text_has_different_address"> If you receive mail at a different address, please enter it here.</span></p>
 						</label>
-					</li>						
+					</li>
 					<div class="mailing"> 
 						<li>
 							<label for="mailing_address">Address</label>
@@ -315,7 +315,7 @@ $(document).ready(function() {
 							<input type="text" name="prev_state_id" id="prev_state_id" />
 						</li>
 						<li class="no_clear">
-							<label for="prev_zip_code">Zip Code</label> 
+							<label for="prev_zip_code">Zip Code</label>
 							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
 						</li>
 					</div>
@@ -364,11 +364,11 @@ $(document).ready(function() {
 							<input type="checkbox" name="change_of_name" id="change_of_name" />						
 							I have changed my name.
 							<p class ="tooltip tooltip_checkbox">
-							<a id="tooltip_change_of_name">?</a>
-							<span class="tooltip_text" id="tooltip_text_change_of_name">
-								Ifyou have changed your name since your last registration, enter your previous name.
-							</span>
-						</p>
+								<a id="tooltip_change_of_name">?</a>
+								<span class="tooltip_text" id="tooltip_text_change_of_name">
+									If you have changed your name since your last registration, enter your previous name.
+								</span>
+							</p>
 						</label>
 					</li>
 					<div class="name-change">
@@ -384,11 +384,11 @@ $(document).ready(function() {
 						</li>
 						<li class="no_clear name">
 							<label for="prev_first_name">First Name</label>
-							<input type="text" name="prev_first_name" id="prev_first_name"  />
+							<input type="text" name="prev_first_name" id="prev_first_name" />
 						</li>
 						<li class="no_clear name">
 							<label for="prev_last_name">Last Name</label>
-							<input type="text" name="prev_last_name" id="prev_last_name"  />
+							<input type="text" name="prev_last_name" id="prev_last_name" />
 						</li>
 						<li class="title">
 						<label for="name_suffix">Suffix</label>
@@ -449,7 +449,6 @@ $(document).ready(function() {
 					<li>
 						<label for="opt_in_sms">
 							<input type="checkbox" name="opt_in_sms" id="opt_in_sms" /> Receive text messages from Rock The Vote.
-							
 						</label>
 					</li>
 				</ul>
@@ -472,18 +471,14 @@ $(document).ready(function() {
 							<option value="Other">Other</option>
 							<option value="Decline to State">Decline to State</option>
 						</select>
-
-						
 					</li>
 					<li class="party">
 						<label for="party">Political Affiliation
 						<p class="tooltip tooltip-select"><a id="tooltip_party">?</a> <span class="tooltip_text" id="tooltip_text_party"></span></p>
 						</label>
-							<select id="party" name="party">
-								<option value=""></option>
-							</select>
-
-						
+						<select id="party" name="party">
+							<option value=""></option>
+						</select>
 					</li>
 					<li>
 						<label for="us_citizen">
@@ -494,7 +489,6 @@ $(document).ready(function() {
 						<input type="hidden" name="partner_id" value="{{partner_id}}" />
 						<input type="hidden" name="lang" id="lang_id" value="en">
 						<input type="submit" id="register" action="submit" value="Register" />
-						<input type="button" data-tab="contact" class="prev-button" value="Go Back" />
 					</li>
 				</ul>
 			</fieldset>
