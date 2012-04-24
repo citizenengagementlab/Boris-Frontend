@@ -1,4 +1,4 @@
-fsNext = (e, self) ->
+accordionNext = (e, self) ->
 	$(self)
 		.parents('ul')
 		.slideUp()
@@ -7,7 +7,7 @@ fsNext = (e, self) ->
 		.children('ul')
 		.slideDown()
 
-fsPrev = (e, self) ->
+accordionPrev = (e, self) ->
 		$(self)
 		.parents('ul')
 		.slideUp()
@@ -16,7 +16,7 @@ fsPrev = (e, self) ->
 		.children('ul')
 		.slideDown()
 
-fsValidate = (id) ->
+accordionValidate = (id) ->
 		switch id
 			when "address"
 				return validateAddresses()
@@ -42,20 +42,20 @@ initAccordion = ->
 		unless $fs.find('li.form-action').length == 1
 			$fs.append("<li class=\"form-action\"></li>")
 		unless $fs.parent('fieldset').next().length == 0
-			$fs.find('li.form-action').prepend("<button class=\"btn-next\">Next</button>")
+			$fs.find('li.form-action').append("<button class=\"btn-next\">Next</button>")
 		unless $fs.parent('fieldset').prev().length == 0
-			$fs.find('li.form-action').prepend("<button class=\"btn-prev\">Back</button>")
+			$fs.find('li.form-action').append("<button class=\"btn-prev\">Back</button>")
 
 	# Bind Click Handlers
 	$("button.btn-next").on('click', (e) ->
 		e.preventDefault()
-		if fsValidate($(this).parents('fieldset').attr('id')) != true
+		if accordionValidate($(this).parents('fieldset').attr('id')) != true
 			false
 		else
-			fsNext(e, this)
+			accordionNext(e, this)
 	)
 	$("button.btn-prev").on('click', (e) ->
 		e.preventDefault()
 		console.log "Next!"
-		fsPrev(e, this)
+		accordionPrev(e, this)
 	)
