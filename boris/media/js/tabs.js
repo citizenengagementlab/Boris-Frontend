@@ -15,7 +15,37 @@ function tabs() {
 
 		//loop through each fieldset, append buttons to the bottom
 		$("fieldset:not(:first)").each(function () {
-			$(this).append(buttons);
+			var $fs = $(this);
+			$fs.append(buttons);
+			var id = $fs.attr('id');
+			switch(id) {
+				case 'address':
+					$fs.children('.next-button').on('click', function(e){
+						if (!validateAddresses())
+							{return false;}
+					});
+					break;
+				case 'personal':
+					$fs.children('.next-button').on('click', function(e){
+						if (!validatePersonal())
+							{return false;}
+					});
+					break;
+				case 'contact':
+					$fs.children('.next-button').on('click', function(e){
+						if (!validateContact())
+							{return false;}
+					});
+					break;
+				case 'additional':
+					$fs.children('.next-button').on('click', function(e){
+						if (!validateAdditional())
+							{return false;}
+					});
+					break;
+				default:
+					return false;
+			}
 		});		
 	
 		//BUT hide the Continue button on the last section.
@@ -68,4 +98,5 @@ function tabs() {
 			$("nav li a").filter("#" + $fieldsetPrev.attr("id")).addClass("tab-active");
 		});
 	});
+	
 }
