@@ -46,7 +46,7 @@ validateMailingAddress = function($input) {
 
 validateRecentlyMoved = function($input) {
   if ($input.attr("checked") === "checked") {
-    /* TODO: Validate Previous Address
+    /* Validate Previous Address
     */
 
     if (!validateAddress($('#prev_address'))) {
@@ -404,7 +404,9 @@ showRegistrationForm = function() {
       return $('#registration_form').show();
     case "tabs":
       $("#get_started").hide();
-      return $("#address").show();
+      $("#address").show();
+      $("#get_started-tab").addClass("complete").removeClass("active");
+      return $("#address-tab").addClass("active");
     case "accordion":
       $("#get_started > ul").slideUp();
       return $("#address > ul").slideDown();
@@ -504,7 +506,7 @@ getStateRequirements = function() {
       minLength = response.id_length_min || 0;
       maxLength = response.id_length_max || 100;
       $('#id_number').attr('data-maxlength', maxLength).attr('data-minlength', minLength);
-      /* Handle SOS Contact Info (where is this used?)
+      /* TODO: Handle SOS Contact Info (where is this used?)
       */
 
       /* Callback to advance form
@@ -517,7 +519,8 @@ getStateRequirements = function() {
       $('form#get_started img.spinner').hide();
       response = $.parseJSON(xhr.responseText);
       $('#state_form').before('<div class="error-message big-error"><h1>Sorry, you are not eligible to register to vote for the following reason(s):</h1><p>' + response.error.message + '</p></div>');
-      return $('#state_form').hide();
+      $('#state_form').hide();
+      return $('#registration').hide();
     }
   });
 };
@@ -665,10 +668,19 @@ initPage = function() {
 
 
 tabNext = function(e, self) {
+  var $tab;
+  $tab = $("#" + ($(self).parents('fieldset').attr('id')) + "-tab");
+  $('li.tab.active').removeClass("active");
+  $tab.addClass("complete");
+  $tab.next().addClass("active");
   return $(self).parents('fieldset').hide().next().show();
 };
 
 tabPrev = function(e, self) {
+  var $tab;
+  $tab = $("#" + ($(self).parents('fieldset').attr('id')) + "-tab");
+  $tab.removeClass("active");
+  $tab.prev().addClass("active");
   return $(self).parents('fieldset').hide().prev().show();
 };
 
@@ -688,13 +700,14 @@ tabValidate = function(id) {
 };
 
 initTabs = function() {
-  var $fieldsets, html;
+  var $fieldsets, counter, html;
   $fieldsets = $('fieldset');
   $fieldsets.hide().filter(':first').show();
   html = "<div id=\"tab-indicators\"><ol></ol></div>";
   $('#state_form').before(html);
+  counter = 1;
   $fieldsets.each(function() {
-    var $fs, text;
+    var $fs, tabClass;
     $fs = $(this);
     if ($fs.find('li.form-action').length !== 1) {
       $fs.children('ul').append("<li class=\"form-action\"></li>");
@@ -705,9 +718,10 @@ initTabs = function() {
     if ($fs.prev().length !== 0) {
       $fs.find('li.form-action').append("<button class=\"btn-prev\">Back</button>");
     }
-    text = $fs.children('legend').text();
-    html = "<li>\n	<a href=\"#" + ($fs.attr('id')) + "\">" + text + "</a>\n</li>";
-    return $('#tab-indicators > ol').append(html);
+    tabClass = counter === 1 ? "active tab" : "tab";
+    html = "<li class=\"" + tabClass + "\" id=\"" + ($fs.attr('id')) + "-tab\">\n	Step " + counter + "\n</li>";
+    $('#tab-indicators > ol').append(html);
+    return counter++;
   });
   $("button.btn-next").on('click', function(e) {
     e.preventDefault();

@@ -15,6 +15,8 @@ showRegistrationForm = () ->
     when "tabs"
       $("#get_started").hide()
       $("#address").show()
+      $("#get_started-tab").addClass("complete").removeClass("active")
+      $("#address-tab").addClass("active")
     when "accordion"
       $("#get_started > ul").slideUp()
       $("#address > ul").slideDown()

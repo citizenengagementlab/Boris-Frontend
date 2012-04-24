@@ -1,4 +1,9 @@
 tabNext = (e, self) ->
+	$tab = 	$("##{$(self).parents('fieldset').attr('id')}-tab")
+	$('li.tab.active').removeClass("active")
+	$tab.addClass("complete")
+	$tab.next().addClass("active")
+
 	$(self)
 		.parents('fieldset')
 		.hide()
@@ -6,7 +11,11 @@ tabNext = (e, self) ->
 		.show()
 
 tabPrev = (e, self) ->
-		$(self)
+	$tab = 	$("##{$(self).parents('fieldset').attr('id')}-tab")
+	$tab.removeClass("active")
+	$tab.prev().addClass("active")
+	
+	$(self)
 		.parents('fieldset')
 		.hide()
 		.prev()
@@ -35,7 +44,7 @@ initTabs = ->
 	# Generate Fieldset Header
 	html = "<div id=\"tab-indicators\"><ol></ol></div>"
 	$('#state_form').before(html)
-
+	counter = 1
 	$fieldsets.each ->
 		$fs = $(this)
 		unless $fs.find('li.form-action').length == 1
@@ -43,15 +52,15 @@ initTabs = ->
 		unless $fs.next().length == 0
 			$fs.find('li.form-action').append("<button class=\"btn-next\">Next</button>")
 		unless $fs.prev().length == 0
-			$fs.find('li.form-action').append("<button class=\"btn-prev\">Back</button>")
-		text = $fs.children('legend').text()
-		
-		html = """
-				<li>
-					<a href=\"##{ $fs.attr('id') }\">#{text}</a>
+			$fs.find('li.form-action').append("<button class=\"btn-prev\">Back</button>")		
+		tabClass = if (counter == 1) then "active tab" else "tab"
+		html =  """
+				<li class="#{tabClass}" id="#{ $fs.attr('id') }-tab">
+					Step #{counter}
 				</li>
 				"""
 		$('#tab-indicators > ol').append(html)
+		counter++
 
 	# Bind Click Handlers
 	$("button.btn-next").on('click', (e) ->
