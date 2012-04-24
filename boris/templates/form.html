@@ -16,63 +16,61 @@ $(document).ready(function() {
 {%endblock scripts%}
 
 {%block content%}
-	
-			<nav>
-				<ul>
-					<li class="first-tabnav"><a href="#" id="get_started">Get Registered!</a></li>
-					<li><a href="#address">Address Info</a></li>
-					<li><a href="#personal">Personal Info</a></li>
-					<li><a href="#contact">Contact Info</a></li>
-					<li class="last-tabnav"><a href="#additional">Additional Info</a></li>
-				</li>
-			</nav>
-						
-			<section id="state_form">
-				<form action="/registrants/save_registrant/" method="post" id="get_started">
-					<fieldset id="get_started">
-						<legend>Get Registered!</legend>
-						<ul>
-							<li class="intro-text"><p>Registering to vote is easy -- and you can do it now.</p></li>
-							<li>
-								<label for="pre_first_name">First Name</label>
-								<input type="text" name="first_name" id="pre_first_name"  />
-							</li>
-							<li>
-								<label for="pre_last_name">Last Name</label>
-								<input type="text" name="last_name" id="pre_last_name"  />
-							</li>
-							<li>
-								<label for="pre_email_address">Email Address
-								<p class="tooltip">
-									<a id="tooltip_email">?</a>
-									<span class="tooltip_text" id="tooltip_text_email">We will e-mail you a copy of your voter registration form.</span>
-								</p>
-								</label>
-								<input type="text"  name="email_address" id="pre_email_address" />
-							</li>
-							<li>
-								<label for="pre_zip_code">Zip Code
-									<p class="tooltip">
-										<a id="tooltip_zip_code">?</a>
-										<span class="tooltip_text" id="tooltip_text_zip_code">
-											Enter ZIP code for the address where you live, even if you don't receive mail there.
-										</span>
-									</p>
-								</label>
-								<input type="text"  name="zip_code" id="pre_zip_code" />
-							</li>
-							<li class="form-action">
-								<input type="hidden" name="lang" id="lang_id" value="en">
-								<input type="submit" data-tab="address" id="get_started" value="Get Started" />
-							</li>
-						</ul>
-					</fieldset>
-				</form>
-			</section>
-		<section id="registration_form">
+	<nav>
+		<ul>
+			<li class="first-tabnav"><a href="#get_started">Get Registered!</a></li>
+			<li><a href="#address">Address Info</a></li>
+			<li><a href="#personal">Personal Info</a></li>
+			<li><a href="#contact">Contact Info</a></li>
+			<li class="last-tabnav"><a href="#additional">Additional Info</a></li>
+		</ul>
+	</nav>
 				
-			<form action="/registrants/submit/" method="post" id="registration">
-				<input type="hidden" name="partner_id" value="{{partner_id}}" />
+	<section id="state_form">
+		<form action="/registrants/save_registrant/" method="post" id="get_started">
+			<fieldset id="get_started">
+				<legend>Get Registered!</legend>
+				<ul>
+					<li class="intro-text"><p>Registering to vote is easy -- and you can do it now.</p></li>
+					<li>
+						<label for="pre_first_name">First Name</label>
+						<input type="text" name="first_name" id="pre_first_name"  />
+					</li>
+					<li>
+						<label for="pre_last_name">Last Name</label>
+						<input type="text" name="last_name" id="pre_last_name"  />
+					</li>
+					<li>
+						<label for="pre_email_address">Email Address
+						<p class="tooltip">
+							<a id="tooltip_email">?</a>
+							<span class="tooltip_text" id="tooltip_text_email">We will e-mail you a copy of your voter registration form.</span>
+						</p>
+						</label>
+						<input type="text"  name="email_address" id="pre_email_address" />
+					</li>
+					<li>
+						<label for="pre_zip_code">Zip Code
+							<p class="tooltip">
+								<a id="tooltip_zip_code">?</a>
+								<span class="tooltip_text" id="tooltip_text_zip_code">
+									Enter ZIP code for the address where you live, even if you don't receive mail there.
+								</span>
+							</p>
+						</label>
+						<input type="text"  name="zip_code" id="pre_zip_code" />
+					</li>
+					<li class="form-action">
+						<input type="hidden" name="lang" id="lang_id" value="en">
+						<input type="submit" data-tab="address" id="get_started" value="Get Started" />
+					</li>
+				</ul>
+			</fieldset>
+		</form>
+	</section>
+	<section id="registration_form">
+		<form action="/registrants/submit/" method="post" id="registration">
+			<input type="hidden" name="partner_id" value="{{partner_id}}" />
 			<fieldset id="address">
 				<legend>Address Information</legend>
 				<ul>
@@ -407,23 +405,21 @@ $(document).ready(function() {
 					</div>
 					<li>
 						<label for="id_number">ID Number
-												<p class="tooltip"><a id="tooltip_id_number">?</a><span class="tooltip_text" id="tooltip_text_id_number"></span></p>
-</label>
+							<p class="tooltip"><a id="tooltip_id_number">?</a><span class="tooltip_text" id="tooltip_text_id_number"></span></p>
+						</label>
 						<input type="text"  name="id_number" id="id_number">
-						
 					</li>
 					<li>
 						<label for="date_of_birth">Date of Birth
-						<p class="tooltip">
-							<a id="tooltip_dob">?</a>
-							<span class="tooltip_text" id="tooltip_text_dob">On your voter registration application, you are required to indicate whether you will be 18 years old on or before election day. However, many states allow you to register before your 18th birthday, so please click <a href="http://www.rockthevote.com/voter-registration/online-application-system/register-before-you-are-18-rules.html">here</a> to see the rule for your state.</span>
-						</p>
+							<p class="tooltip">
+								<a id="tooltip_dob">?</a>
+								<span class="tooltip_text" id="tooltip_text_dob">On your voter registration application, you are required to indicate whether you will be 18 years old on or before election day. However, many states allow you to register before your 18th birthday, so please click <a href="http://www.rockthevote.com/voter-registration/online-application-system/register-before-you-are-18-rules.html">here</a> to see the rule for your state.</span>
+							</p>
 						</label>
 						<input type="text"  name="date_of_birth" id="date_of_birth" />
-						
 					</li>
 				</ul>
-			</fieldset>		
+			</fieldset>
 			<fieldset id="contact">
 				<legend>Contact Information</legend>
 				<ul>
@@ -503,6 +499,6 @@ $(document).ready(function() {
 				</ul>
 			</fieldset>
 		</form>
-		</section>
-		<div class="push"></div>
+	</section>
+	<div class="push"></div>
 {%endblock content%}
