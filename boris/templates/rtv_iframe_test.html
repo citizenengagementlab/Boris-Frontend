@@ -401,7 +401,14 @@ function getValue(varsource)
 <script type="text/javascript">
 var source = getValue("source");
 document.open();
-document.write ('<iframe src="/registrants/new/{%if layout%}?layout={{layout}}{%endif%}" width="604" height="795" frameborder="0" style=""><p>Your browser does not support iframes.</p></iframe>');
+{%if layout%}
+document.write ('<iframe src="/registrants/new/?layout={{layout}}" width="604" height="795" frameborder="0" style=""><p>Your browser does not support iframes.</p></iframe>');
+{%else%}
+var layouts = ['singlepage','tabs','accordion'];
+l = layouts[Math.floor(Math.random()*layouts.length)];
+console.log(l);
+document.write ('<iframe src="/registrants/new/?layout='+l+'" width="604" height="795" frameborder="0" style=""><p>Your browser does not support iframes.</p></iframe>');
+{%endif%}
 document.close();
 </script> 
 
