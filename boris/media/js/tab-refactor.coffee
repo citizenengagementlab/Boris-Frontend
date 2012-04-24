@@ -1,18 +1,18 @@
-fsNext = (e, self) ->
+tabNext = (e, self) ->
 	$(self)
 		.parents('fieldset')
 		.hide()
 		.next()
 		.show()
 
-fsPrev = (e, self) ->
+tabPrev = (e, self) ->
 		$(self)
 		.parents('fieldset')
 		.hide()
 		.prev()
 		.show()
 
-fsValidate = (id) ->
+tabValidate = (id) ->
 		switch id
 			when "address"
 				return validateAddresses()
@@ -31,9 +31,8 @@ initTabs = ->
 	$fieldsets.hide()
 		.filter(':first')
 		.show()
-	$fieldsets.filter('#address')
-		.show()
-	# TODO: Generate Fieldset Header
+
+	# Generate Fieldset Header
 	html = "<div id=\"tab-indicators\"><ol></ol></div>"
 	$('#state_form').before(html)
 
@@ -42,9 +41,9 @@ initTabs = ->
 		unless $fs.find('li.form-action').length == 1
 			$fs.children('ul').append("<li class=\"form-action\"></li>")
 		unless $fs.next().length == 0
-			$fs.find('li.form-action').prepend("<button class=\"btn-next\">Next</button>")
+			$fs.find('li.form-action').append("<button class=\"btn-next\">Next</button>")
 		unless $fs.prev().length == 0
-			$fs.find('li.form-action').prepend("<button class=\"btn-prev\">Back</button>")
+			$fs.find('li.form-action').append("<button class=\"btn-prev\">Back</button>")
 		text = $fs.children('legend').text()
 		
 		html = """
@@ -57,13 +56,13 @@ initTabs = ->
 	# Bind Click Handlers
 	$("button.btn-next").on('click', (e) ->
 		e.preventDefault()
-		if fsValidate($(this).parents('fieldset').attr('id')) != true
+		if tabValidate($(this).parents('fieldset').attr('id')) != true
 			false
 		else
-			fsNext(e, this)
+			tabNext(e, this)
 	)
 	$("button.btn-prev").on('click', (e) ->
 		e.preventDefault()
 		console.log "Next!"
-		fsPrev(e, this)
+		tabPrev(e, this)
 	)
