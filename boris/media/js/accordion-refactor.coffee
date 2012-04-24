@@ -29,14 +29,14 @@ fsValidate = (id) ->
 			else
 				return true
 
-initAccordian = ->
+initAccordion = ->
 	# Hide unused fieldsets
-	$('#registration_form').show()
 	$fieldsets = $('fieldset > ul')
 	$fieldsets.hide()
 		.filter(':first')
 		.show()
-
+	$('#registration_form').show()
+	$('legend').addClass('accordion-header')
 	$fieldsets.each ->
 		$fs = $(this)
 		unless $fs.find('li.form-action').length == 1

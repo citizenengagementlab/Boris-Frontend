@@ -2,7 +2,7 @@
 #@codekit-prepend 'staterequirements.coffee'
 #@codekit-prepend 'form.coffee'
 #@codekit-prepend 'tab-refactor.coffee'
-#@codekit-prepend 'accordian-refactor.coffee'
+#@codekit-prepend 'accordion-refactor.coffee'
 
 jQuery ($) ->
 	initForm()
