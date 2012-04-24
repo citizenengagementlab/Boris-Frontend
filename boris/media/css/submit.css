@@ -1,9 +1,15 @@
-#print_form {
+.container #wait_form {
+	margin:20px auto;
+	width: 300px;
+	text-align: center;
+}
+
+.container #print_form {
 	margin-top:20px;
 	display:none;
 }
 
-.container #print_form h1 {
+.container h1 {
 	width:100%;
 }
 
