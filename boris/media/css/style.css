@@ -391,18 +391,6 @@ header h1 {
   text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
   width: 230px;
 }
-#state_form {
-  margin-top: 0px;
-  /* Cannot figure out what is causing the discrepency in height between the two sections.  I assume it's some form of margin collapse.. */
-
-}
-#registration_form {
-  margin-top: 20px;
-}
-form {
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
 fieldset {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -440,6 +428,9 @@ form ul li.checkbox {
   width: 100%;
   position: relative;
 }
+form ul li.intro-text {
+  width: 330px;
+}
 form ul li.city {
   width: 185px;
   position: relative;
@@ -451,6 +442,9 @@ form ul li.party {
 }
 form ul li.buttons {
   margin: 0px;
+}
+form ul li.form-action {
+  margin-bottom: 0px;
 }
 li.state {
   width: 150px;
@@ -467,8 +461,9 @@ li.title {
 li.name {
   width: 33%;
 }
-legend.accordion-header,
-legend.header {
+legend,
+ul#tabnav,
+ul.header {
   display: block;
   padding: 10px;
   margin: 10px 0;
@@ -691,47 +686,36 @@ button#top_link a {
   text-decoration: none;
   color: #FFF;
 }
-#tabnav {
+ul#tabnav {
+  padding: 10px 0px;
+  list-style-type: none;
   height: 100%;
   position: relative;
-  padding: 3px;
 }
-#tabnav ul {
-  list-style-type: none;
-}
-#tabnav ul li {
+ul#tabnav li {
   display: inline;
+  padding: 18px 6px;
   border-right: 1px solid #f0f0f0;
-  padding: 4px 13px 18px 8px;
   -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
   -moz-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
 }
-#tabnav ul li a {
+ul#tabnav li a {
   text-decoration: none;
   color: #FFF;
-  padding: 10px;
   position: relative;
-  top: 5px;
+  right: 2px;
 }
-#tabnav ul li a:hover {
+ul#tabnav li a:hover {
   -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
   -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
 }
-#tabnav ul .first-tabnav {
-  padding-right: 0px;
-  margin-left: -14px;
-}
-#tabnav ul .first-tabnav a {
-  position: relative;
-  left: -17px;
-}
-#tabnav ul .last-tabnav {
+ul#tabnav li.last-tabnav {
   border: 0px;
-  position: relative;
-  left: 8px;
-  padding-left: 0px;
+}
+ul#tabnav li.last-tabnav a {
+  left: 5px;
 }
 /*
 

@@ -5,7 +5,6 @@
 {%block scripts%}
 
 <script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
-
 <script type="text/javascript" src="{{STATIC_URL}}js/{{layout|default:'singlepage'}}.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -19,14 +18,20 @@ $(document).ready(function() {
 
 {%block content%}
 	
-			
-			
+			<ul id="tabnav" class="header">
+				<li class="first-tabnav"><a href="#" id="get_started">Get Registered!</a></li>
+				<li><a href="#" id="address">Address Info</a></li>
+				<li><a href="#" id="personal">Personal Info</a></li>
+				<li><a href="#" id="contact">Contact Info</a></li>
+				<li class="last-tabnav"><a href="#" data-tab="additional">Additional Info</a></li>
+			</ul>
+						
 			<section id="state_form">
 				<form action="/registrants/save_registrant/" method="post" id="get_started">
-					<fieldset id="start_fields">
-						<legend class="header">Get Registered!</legend>
-						<p>Registering to vote is easy -- and you can do it now.</p>
+					<fieldset id="get_started">
+						<legend>Get Registered!</legend>
 						<ul>
+							<li class="intro-text"><p>Registering to vote is easy -- and you can do it now.</p></li>
 							<li>
 								<label for="pre_first_name">First Name</label>
 								<input type="text" name="first_name" id="pre_first_name"  />			
@@ -59,33 +64,21 @@ $(document).ready(function() {
 							</li>
 							<li class="form-action">
 								<input type="hidden" name="lang" id="lang_id" value="en">
-								<input type="submit" id="get_started" value="Get Started" />
+								<input type="submit" data-tab="address" id="get_started" value="Get Started" />
 							</li>
 						</ul>
 					</fieldset>
 				</form>
 			</section>
 		<section id="registration_form">
-				<legend id="tabnav" class="header visuallyhidden">
-					<ul>
-						<li class="first-tabnav"><a data-tab="address">Address Info</a></li>
-						<li><a data-tab="personal">Personal Info</a></li>
-						<li><a data-tab="contact">Contact Info</a></li>
-						<li class="last-tabnav"><a data-tab="additional">Additional Info</a></li>
-					</ul>
-				</legend>
+				
 				<form action="/registrants/submit/" method="post" id="registration">
 					<input type="hidden" name="partner_id" value="{{partner_id}}" />
 			<fieldset id="address">
-				<legend class="accordion-header visuallyhidden">Address Information</legend>
-				<ul class="accordion-content" data-content="address">
+				<legend>Address Information</legend>
+				<ul>
 					<li>
-						<label for="home_address">Address
-							<p class ="tooltip">
-								<a id="tooltip_address">?</a>
-								<span class="tooltip_text" id="tooltip_text_address">Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form.</span>
-							</p>
-						</label>
+						<label for="home_address">Address</label>
 						<input type="text" name="home_address" id="home_address" />	
 					</li>
 					<li class="no_clear">
@@ -98,6 +91,10 @@ $(document).ready(function() {
 					</li>
 					<li class="no_clear">
 						<label for="home_state_id">State
+							<p class ="tooltip">
+								<a id="tooltip_address">?</a>
+								<span class="tooltip_text" id="tooltip_text_address">Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form.</span>
+							</p>
 						</label>
 						<select type="text" name="home_state_id" id="home_state_id">
 							<option value="" selected="selected">Select a State</option> 
@@ -154,7 +151,7 @@ $(document).ready(function() {
 							<option value="WY">Wyoming</option>
 						</select>
 					</li>
-					<li class="zip">
+					<li class="no_clear">
 						<label for="home_zip_code">Zip Code</label>
 						<input type="text"  name="home_zip_code" id="home_zip_code" />
 					</li>	
@@ -235,7 +232,7 @@ $(document).ready(function() {
 								<option value="WY">Wyoming</option>
 							</select>
 						</li>
-						<li class="" >
+						<li class="no_clear" >
 							<label for="mailing_zip_code">Zip Code</label> 
 							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
 						</li>
@@ -319,8 +316,9 @@ $(document).ready(function() {
 								<option value="WI">Wisconsin</option> 
 								<option value="WY">Wyoming</option>
 							</select>
+							<input type="text" name="prev_state_id" id="prev_state_id" />
 						</li>
-						<li class="">
+						<li class="no_clear">
 							<label for="prev_zip_code">Zip Code</label> 
 							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
 						</li>
@@ -328,14 +326,11 @@ $(document).ready(function() {
 					<li>
 						<a href="http://overseasvotefoundation.org">Registering Abroad?</a>
 					</li>
-					<li class="buttons">
-						<input type="button" data-tab="personal" class="next-button" value="Continue" />
-					</li>
 				</ul>
-			</fieldset>
-			<fieldset id="personal" class="accordion">
-				<legend class="accordion-header visuallyhidden">Personal Information </legend>
-				<ul class="accordion-content" data-content="personal">
+		</fieldset>
+			<fieldset id="personal">
+				<legend>Personal Information </legend>
+				<ul>
 					<li class="title">
 						<label for="name_title">Title
 						<p class ="tooltip"><a id="tooltip_personal">?</a><span class="tooltip_text" id="tooltip_text_personal">
@@ -428,15 +423,11 @@ $(document).ready(function() {
 						<input type="text"  name="date_of_birth" id="date_of_birth" />
 						
 					</li>
-					<li class="buttons">
-						<input type="button" data-tab="contact" class="next-button" value="Continue" />
-						<input type="button" data-tab="address" class="prev-button" value="Go Back" />
-					</li>
 				</ul>
 			</fieldset>		
 			<fieldset id="contact">
-				<legend class="accordion-header visuallyhidden">Contact Information</legend>
-				<ul class="accordion-content" data-content="contact">
+				<legend>Contact Information</legend>
+				<ul>
 					<li>
 						<label for="email_address">Email Address</label>
 						<input type="text" name="email_address" id="email_address" />
@@ -459,22 +450,19 @@ $(document).ready(function() {
 							<option value="Home">Home</option>
 							<option value="Work">Work</option>
 							<option value="Other">Other</option>
-						</select>					</li>
+						</select>
+					</li>
 					<li>
 						<label for="opt_in_sms">
 							<input type="checkbox" name="opt_in_sms" id="opt_in_sms" /> Receive text messages from Rock The Vote.
 							
 						</label>
 					</li>
-					<li class="buttons">
-						<input type="button" data-tab="additional" class="next-button" value="Continue" />
-						<input type="button" data-tab="personal" class="prev-button" value="Go Back" />
-					</li>
 				</ul>
 			</fieldset>
 			<fieldset id="additional">
-				<legend class="accordion-header visuallyhidden">Additional Information</legend>
-				<ul class="accordion-content" data-content="additional">
+				<legend>Additional Information</legend>
+				<ul>
 					<li>
 						<label for="race">Race or Ethnic Group
 						<p class="tooltip tooltip-select"><a id="tooltip_race">?</a><span class="tooltip_text" id="tooltip_text_race"></span></p>

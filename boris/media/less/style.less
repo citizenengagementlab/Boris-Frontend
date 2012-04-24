@@ -44,20 +44,6 @@ header {
 	}
 }
 
-#state_form {
-	margin-top: 0px; /* Cannot figure out what is causing the discrepency in height between the two sections.  I assume it's some form of margin collapse.. */
-	
-}
-
-#registration_form {
-	margin-top:20px;
-}
-
-form {
-	padding-bottom: 10px;
-	margin-bottom: 10px;
-}
-
 
 fieldset {
 	.border-radius(3px);
@@ -86,6 +72,9 @@ form ul {
 		width:100%;
 		position:relative;
 	}
+	li.intro-text {
+		width:330px;
+	}
 	li.city {
 	width:185px;
 	position:relative;
@@ -97,6 +86,9 @@ form ul {
 	}
 	li.buttons {
 		margin:0px;
+	}
+	li.form-action {
+		margin-bottom:0px;
 	}
 }
 
@@ -116,7 +108,7 @@ li.name {
 	width: 33%
 }
 
-legend.accordion-header, legend.header {
+legend, ul#tabnav, ul.header {
 	display: block;
 	padding: 10px;
 	margin: 10px 0;
@@ -290,47 +282,35 @@ button#top_link {
 	}
 }
 
-
-#tabnav {
+ul#tabnav {
+	padding: 10px 0px;
+	list-style-type: none;
 	height:100%;
 	position: relative; 
-	padding:3px;
-}
-
-#tabnav ul {
-	list-style-type: none;
 	li {
-		 display:inline;
-		 border-right:1px solid #f0f0f0;
-		 padding:4px 13px 18px 8px;
-		 .text-shadow(0 -1px 0 rgba(0,0,0,.90));
-		 a {
+		display:inline;
+		padding: 18px 6px;
+		border-right:1px solid #f0f0f0;
+		.text-shadow(0 -1px 0 rgba(0,0,0,.90));
+			a {
 		 	text-decoration:none;
 		 	color:#FFF;
-		 	padding:10px;
 		 	position:relative;
-		 	top:5px;
+		 	right:2px;
 		 	&:hover {
 		 	.text-shadow(0 0 1px rgba(255,255,255,0.40));
 		 	}
-		 }
-		
-	}
-	.first-tabnav {
-		padding-right:0px;
-		margin-left:-14px;
-		a {
-			position:relative;
-			left:-17px;
-		}
-	}
-	.last-tabnav { 
+		}	
+	}	
+	li.last-tabnav { 
 		border: 0px;
-		position:relative;
-		left:8px;
-		padding-left:0px;
-	}
+		a {
+			left:5px;
+		}
+	}	
 }
+	
+	
 
 /*
 
