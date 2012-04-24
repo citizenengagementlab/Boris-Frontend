@@ -67,10 +67,10 @@ saveProgress = ($field) ->
 
 initForm = ->
 	# Setup Hidden Elements
-	$("#registration_form").hide()	
 	$(".mailing").hide()
 	$(".name-change").hide()
 	$(".address-change").hide()
+
 	# Setup click handlers
 	$("#has_different_address").click ->
 	  if $("#has_different_address").is(":checked")
@@ -89,14 +89,10 @@ initForm = ->
 	    $(".address-change").fadeIn()
 	  else
 	    $(".address-change").fadeOut()
-
-	# Setup Form Submit Events
-	$("form#get_started").submit(
+	$("form#registration input, form#registration select").change(
 		(e) ->
-			e.preventDefault()
-			if !submitStartForm()
-				return false
-		)
+			saveProgress($(@))
+	)
 	$("form#registration").submit(
 		(e) ->
 			e.preventDefault()
@@ -110,10 +106,15 @@ initForm = ->
 					.off('submit')
 					.submit()
 		)
-	$("form#registration input, form#registration select").change(
+	# Setup Form Submit Events
+	$("form#get_started").submit(
 		(e) ->
-			saveProgress($(@))
-	)
+			e.preventDefault()
+			if !submitStartForm()
+				return false
+		)
 
-
-	# TODO: Setup Onchange Validation Logic
+initPage = ->
+	# Hide Registration Form
+	$("#registration_form").hide()
+	

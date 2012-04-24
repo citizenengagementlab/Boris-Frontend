@@ -1,18 +1,22 @@
-tabNext = (e, self) ->
+accordionNext = (e, self) ->
 	$(self)
-		.parents('fieldset')
-		.hide()
+		.parents('ul')
+		.slideUp()
+		.parent('fieldset')
 		.next()
-		.show()
+		.children('ul')
+		.slideDown()
 
-tabPrev = (e, self) ->
+accordionPrev = (e, self) ->
 		$(self)
-		.parents('fieldset')
-		.hide()
+		.parents('ul')
+		.slideUp()
+		.parent('fieldset')
 		.prev()
-		.show()
+		.children('ul')
+		.slideDown()
 
-tabValidate = (id) ->
+accordionValidate = (id) ->
 		switch id
 			when "address"
 				return validateAddresses()
@@ -25,44 +29,33 @@ tabValidate = (id) ->
 			else
 				return true
 
-initTabs = ->
+initAccordion = ->
 	# Hide unused fieldsets
-	$fieldsets = $('fieldset')
+	$fieldsets = $('fieldset > ul')
 	$fieldsets.hide()
 		.filter(':first')
 		.show()
-
-	# Generate Fieldset Header
-	html = "<div id=\"tab-indicators\"><ol></ol></div>"
-	$('#state_form').before(html)
-
+	$('#registration_form').show()
+	$('legend').addClass('accordion-header')
 	$fieldsets.each ->
 		$fs = $(this)
 		unless $fs.find('li.form-action').length == 1
-			$fs.children('ul').append("<li class=\"form-action\"></li>")
-		unless $fs.next().length == 0
+			$fs.append("<li class=\"form-action\"></li>")
+		unless $fs.parent('fieldset').next().length == 0
 			$fs.find('li.form-action').append("<button class=\"btn-next\">Next</button>")
-		unless $fs.prev().length == 0
+		unless $fs.parent('fieldset').prev().length == 0
 			$fs.find('li.form-action').append("<button class=\"btn-prev\">Back</button>")
-		text = $fs.children('legend').text()
-		
-		html = """
-				<li>
-					<a href=\"##{ $fs.attr('id') }\">#{text}</a>
-				</li>
-				"""
-		$('#tab-indicators > ol').append(html)
 
 	# Bind Click Handlers
 	$("button.btn-next").on('click', (e) ->
 		e.preventDefault()
-		if tabValidate($(this).parents('fieldset').attr('id')) != true
+		if accordionValidate($(this).parents('fieldset').attr('id')) != true
 			false
 		else
-			tabNext(e, this)
+			accordionNext(e, this)
 	)
 	$("button.btn-prev").on('click', (e) ->
 		e.preventDefault()
 		console.log "Next!"
-		tabPrev(e, this)
+		accordionPrev(e, this)
 	)

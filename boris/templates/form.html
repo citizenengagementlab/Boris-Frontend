@@ -8,12 +8,11 @@
 <script type="text/javascript" src="{{STATIC_URL}}js/application.js"></script>
 {%comment%}
 <script type="text/javascript" src="{{STATIC_URL}}js/{{layout|default:'singlepage'}}.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	{{layout|default:'singlepage'}}();
-});
-</script>
 {%endcomment%}
+
+<script type="text/javascript">
+window.LAYOUT = "{{layout|default:'singlepage'}}";
+</script>
 {%endblock scripts%}
 
 {%block content%}

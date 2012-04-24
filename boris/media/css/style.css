@@ -479,8 +479,7 @@ legend {
   color: #222;
   font-weight: bold;
 }
-.fieldset-header,
-nav ol {
+.accordion-header {
   display: block;
   padding: 10px;
   margin: 10px 0;
@@ -506,6 +505,7 @@ nav ol {
   background-image: linear-gradient(top, #b7b7b7, #9d9d9d);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7b7b7', endColorstr='#9d9d9d', GradientType=0);
+  text-decoration: none;
 }
 footer {
   border-top: 1px solid #AAA;
