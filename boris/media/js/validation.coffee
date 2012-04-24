@@ -144,6 +144,7 @@ validateFieldset = (fields) -> # Takes an {} of required fields
 		return true
 
 validateStartFields = ->
+	clearValidationErrors($("#get_started"))
 	requiredFields = {
 		firstName:
 			id: "#pre_first_name"
@@ -166,6 +167,8 @@ validateStartFields = ->
 	validateFieldset(requiredFields)
 
 validatePersonal = ->
+	clearValidationErrors($("#personal"))
+
 	requiredFields = {
 		title:
 			id: "#name_title"
@@ -196,6 +199,7 @@ validatePersonal = ->
 	validateFieldset(requiredFields)
 
 validateContact = ->
+	clearValidationErrors($("#contact"))
 	requiredFields = {
 		email:
 			id: "#email_address"
@@ -209,6 +213,8 @@ validateContact = ->
 	validateFieldset(requiredFields)
 
 validateAdditional = ->
+	clearValidationErrors($("#additional"))
+
 	requiredFields = {
 		citizen:
 			id: "#us_citizen"
@@ -227,6 +233,8 @@ validateAdditional = ->
 	validateFieldset(requiredFields)
 
 validateAddresses = ->
+	clearValidationErrors($("#address"))
+
 	requiredFields = {
 		home_address:
 			id: "#home_address"

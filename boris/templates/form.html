@@ -6,26 +6,18 @@
 
 <script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/application.js"></script>
+{%comment%}
 <script type="text/javascript" src="{{STATIC_URL}}js/{{layout|default:'singlepage'}}.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	{{layout|default:'singlepage'}}();
 });
 </script>
-
+{%endcomment%}
 {%endblock scripts%}
 
 {%block content%}
-	<nav>
-		<ol>
-			<li><a href="#get_started">Get Registered!</a></li>
-			<li><a href="#address">Address Info</a></li>
-			<li><a href="#personal">Personal Info</a></li>
-			<li><a href="#contact">Contact Info</a></li>
-			<li><a href="#additional">Additional Info</a></li>
-		</ol>
-	</nav>
-				
+
 	<section id="state_form">
 		<form action="/registrants/save_registrant/" method="post" id="get_started">
 			<fieldset id="get_started">
@@ -312,7 +304,6 @@ $(document).ready(function() {
 								<option value="WI">Wisconsin</option> 
 								<option value="WY">Wyoming</option>
 							</select>
-							<input type="text" name="prev_state_id" id="prev_state_id" />
 						</li>
 						<li class="no_clear">
 							<label for="prev_zip_code">Zip Code</label>
@@ -494,5 +485,4 @@ $(document).ready(function() {
 			</fieldset>
 		</form>
 	</section>
-	<div class="push"></div>
 {%endblock content%}
