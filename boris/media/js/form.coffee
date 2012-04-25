@@ -68,7 +68,7 @@ saveProgress = ($field) ->
 initForm = ->
 	# Setup Hidden Elements
 	$(".mailing").hide()
-	$(".name-change").hide()
+	$("#previous_name").hide()
 	$(".address-change").hide()
 
 	# Setup click handlers
@@ -80,9 +80,9 @@ initForm = ->
 
 	$("#change_of_name").click ->
 	  if $("#change_of_name").is(":checked")
-	    $(".name-change").fadeIn()
+	    $("#previous_name").fadeIn()
 	  else
-	    $(".name-change").fadeOut()
+	    $("#previous_name").fadeOut()
 
 	$("#change_of_address").click ->
 	  if $("#change_of_address").is(":checked")
