@@ -90,7 +90,7 @@ def submit(request):
         context['pdfurl'] = rtv_response['pdfurl']
     if rtv_response.has_key('error'):
         #something went wrong that wasn't caught in the frontend validation
-        context['error'] = True
+        context['error'] = "The field %(field_name)s is %(message)s" % rtv_response['error']
     return render_to_response('submit.html', context, context_instance=RequestContext(request))
     
 def finish(request):

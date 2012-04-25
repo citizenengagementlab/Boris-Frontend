@@ -462,6 +462,7 @@ li.state {
 li.zip {
   width: 60px;
 }
+/* TODO:  Style the forms such that you don't have to make a bunch of specific conditions for each form input.  */
 #home_unit,
 #prev_unit,
 #mailing_unit {
@@ -596,7 +597,7 @@ button:active {
   -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 0px rgba(255, 255, 255, 0.25), inset 0 -1px 0px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 0px rgba(255, 255, 255, 0.25), inset 0 -1px 0px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(0, 0, 0, 0.25);
 }
-button.btn-prev {
+button.btn-prev, button.start-over {
   background-color: #c9c9c9;
   background-image: -moz-linear-gradient(top, #dddddd, #aaaaaa);
   background-image: -ms-linear-gradient(top, #dddddd, #aaaaaa);
@@ -608,6 +609,7 @@ button.btn-prev {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dddddd', endColorstr='#aaaaaa', GradientType=0);
   border: 1px solid #777777;
   width: 70px;
+  margin-left: 20px;
 }
 img.spinner {
   margin-left: 10px;

@@ -13,6 +13,7 @@ tabNext = (e, self) ->
 tabPrev = (e, self) ->
 	$tab = 	$("##{$(self).parents('fieldset').attr('id')}-tab")
 	$tab.removeClass("active")
+	$tab.removeClass("complete")
 	$tab.prev().addClass("active")
 	
 	$(self)
@@ -61,8 +62,16 @@ initTabs = ->
 				"""
 		$('#tab-indicators > ol').append(html)
 		counter++
+	#Start Over Button
+	$("fieldset#address").find("li.form-action").append("<button class=\"start-over\">Go Back</button>");
+
 
 	# Bind Click Handlers
+	$("button.start-over").on('click',(e) ->
+  	e.preventDefault()
+  	window.location.reload();
+  	)
+	
 	$("button.btn-next").on('click', (e) ->
 		e.preventDefault()
 		if tabValidate($(this).parents('fieldset').attr('id')) != true
@@ -72,6 +81,6 @@ initTabs = ->
 	)
 	$("button.btn-prev").on('click', (e) ->
 		e.preventDefault()
-		console.log "Next!"
+		#console.log "Next!"
 		tabPrev(e, this)
 	)
