@@ -72,6 +72,5 @@ initTabs = ->
 	)
 	$("button.btn-prev").on('click', (e) ->
 		e.preventDefault()
-		console.log "Next!"
 		tabPrev(e, this)
 	)
