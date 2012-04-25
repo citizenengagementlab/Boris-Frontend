@@ -7,15 +7,11 @@
 {%block content%}
 
 <script type="text/javascript">
-{%if error%}
-/* this is a huge hack, but we haven't wired up the form for server side refill yet
-fake it with javascript history
-*/
-console.log('{{error}}');
-history.back();
-{%endif%}
-
 $(document).ready(function() {
+{%if error%}
+	$('#wait_form').append('<p class="error">Sorry, we seem to be experiencing an error. Please <a href="" onclick="history.back()">go back</a> and try again.<div class="error-message">{{error}}</div>');
+	console.log('{{error}}');
+{%else%}
 	/* force a delay, because we don't know when the API will return... */
 	$('#wait_form').delay(2500).fadeOut();
 	$('#print_form').delay(3000).fadeIn();
@@ -24,6 +20,7 @@ $(document).ready(function() {
 		//advance to the thanks page via javascript
 		window.location.href = "/registrants/finish";
 	});
+{%endif%}
 });
 </script>
 
