@@ -462,6 +462,7 @@ li.state {
 li.zip {
   width: 60px;
 }
+/* TODO:  Style the forms such that you don't have to make a bunch of specific conditions for each form input.  */
 #home_unit,
 #prev_unit,
 #mailing_unit {
@@ -608,6 +609,7 @@ button.btn-prev {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dddddd', endColorstr='#aaaaaa', GradientType=0);
   border: 1px solid #777777;
   width: 70px;
+  margin-left: 20px;
 }
 img.spinner {
   margin-left: 10px;

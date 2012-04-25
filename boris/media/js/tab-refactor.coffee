@@ -13,6 +13,7 @@ tabNext = (e, self) ->
 tabPrev = (e, self) ->
 	$tab = 	$("##{$(self).parents('fieldset').attr('id')}-tab")
 	$tab.removeClass("active")
+	$tab.removeClass("complete")
 	$tab.prev().addClass("active")
 	
 	$(self)

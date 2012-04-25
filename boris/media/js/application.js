@@ -701,6 +701,7 @@ tabPrev = function(e, self) {
   var $tab;
   $tab = $("#" + ($(self).parents('fieldset').attr('id')) + "-tab");
   $tab.removeClass("active");
+  $tab.removeClass("complete");
   $tab.prev().addClass("active");
   return $(self).parents('fieldset').hide().prev().show();
 };
