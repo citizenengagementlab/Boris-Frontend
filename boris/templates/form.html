@@ -22,16 +22,15 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 			<fieldset id="get_started">
 				<legend>1. Get Registered!</legend>
 				<ul>
-					<li class="intro-text"><p>Registering to vote is easy -- and you can do it now.</p></li>
-					<li>
+					<li class="firstname">
 						<label for="pre_first_name">First Name</label>
 						<input type="text" name="first_name" id="pre_first_name" />
 					</li>
-					<li>
+					<li class="lastname">
 						<label for="pre_last_name">Last Name</label>
 						<input type="text" name="last_name" id="pre_last_name" />
 					</li>
-					<li>
+					<li class="emailaddress">
 						<label for="pre_email_address">Email Address
 						<p class="tooltip">
 							<a id="tooltip_email">?</a>
@@ -40,7 +39,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 						</label>
 						<input type="text"  name="email_address" id="pre_email_address" />
 					</li>
-					<li>
+					<li class="zipcode">
 						<label for="pre_zip_code">Zip Code
 							<p class="tooltip">
 								<a id="tooltip_zip_code">?</a>
@@ -64,24 +63,25 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 			<fieldset id="address">
 				<legend>2. Address Information</legend>
 				<ul>
-					<li>
-						<label for="home_address">Address</label>
-						<input type="text" name="home_address" id="home_address" />
-					</li>
-					<li class="no_clear">
-						<label for="home_unit">Unit</label>
-						<input type="text" name="home_unit" id="home_unit" />
-					</li>
-					<li class="city">		
-						<label for="home_city">City</label>
-						<input type="text" name="home_city" id="home_city" />
-					</li>
-					<li class="no_clear">
-						<label for="home_state_id">State
+					<li class="address_street">
+						<label for="home_address">Address
 							<p class ="tooltip">
 								<a id="tooltip_address">?</a>
 								<span class="tooltip_text" id="tooltip_text_address">Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form.</span>
 							</p>
+						</label>
+						<input type="text" name="home_address" id="home_address" />
+					</li>
+					<li class="no_clear address_unit">
+						<label for="home_unit">Unit</label>
+						<input type="text" name="home_unit" id="home_unit" />
+					</li>
+					<li class="address_city">
+						<label for="home_city">City</label>
+						<input type="text" name="home_city" id="home_city" />
+					</li>
+					<li class="no_clear address_state">
+						<label for="home_state_id">State
 						</label>
 						<select type="text" name="home_state_id" id="home_state_id">
 							<option value="" selected="selected">Select a State</option> 
@@ -138,11 +138,11 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							<option value="WY">Wyoming</option>
 						</select>
 					</li>
-					<li class="no_clear">
+					<li class="no_clear zipcode">
 						<label for="home_zip_code">Zip Code</label>
 						<input type="text"  name="home_zip_code" id="home_zip_code" />
 					</li>
-					<li class="checkbox">
+					<li class="checkbox has_mailing_address">
 						<label class="checkbox_label" for="has_different_address">
 							<input type="checkbox" name="has_different_address" id="has_different_address" />
 								I have a different mailing address.
@@ -150,19 +150,19 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 						</label>
 					</li>
 					<div class="mailing"> 
-						<li>
+						<li class="address_street">
 							<label for="mailing_address">Mailing Address</label>
 							<input type="text" name="mailing_address" id="mailing_address" />
 						</li>
-						<li class="no_clear">
+						<li class="no_clear address_unit">
 							<label for="home_unit">Unit</label>
 							<input type="text" name="mailing_unit" id="mailing_unit" />
 						</li>
-						<li class="city">
+						<li class="address_city">
 							<label for="mailing_city">City</label>
 							<input type="text" name="mailing_city" class="span2" id="mailing_city" />
 						</li>
-						<li class="no_clear">
+						<li class="no_clear address_state">
 							<label for="mailing_state">State</label>
 							<select type="text" name="mailing_state" id="mailing_state">
 								<option value="" selected="selected">Select a State</option> 
@@ -219,12 +219,12 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 								<option value="WY">Wyoming</option>
 							</select>
 						</li>
-						<li class="no_clear" >
+						<li class="no_clear zipcode" >
 							<label for="mailing_zip_code">Zip Code</label> 
 							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
 						</li>
 					</div>
-					<li class="checkbox">
+					<li class="checkbox changed_address">
 						<label class="checkbox_label" for="change_of_address">
 							<input type="checkbox" name="change_of_address" id="change_of_address" /> I have recently moved.
 							<p class="tooltip tooltip_checkbox">
@@ -235,19 +235,19 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 						</label>
 					</li>
 					<div class="address-change">
-						<li>
+						<li address_street>
 							<label for="prev_address">Previous Address</label>
 							<input type="text" name="prev_address" />
 						</li>
-						<li class="no_clear">
+						<li class="no_clear address_unit">
 							<label for="prev_unit">Unit</label>
 							<input type="text" name="prev_unit" id="prev_unit" />
 						</li>
-						<li class="city">
+						<li class="address_city">
 							<label for="prev_city">City</label>
 							<input type="text" name="prev_city" id="prev_city" />
 						</li>
-						<li class="no_clear">
+						<li class="no_clear address_state">
 							<label for="prev_state_id">State</label>
 							<select type="text" name="prev_state_id" id="prev_state_id">
 								<option value="" selected="selected">Select a State</option> 
@@ -304,12 +304,12 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 								<option value="WY">Wyoming</option>
 							</select>
 						</li>
-						<li class="no_clear">
+						<li class="no_clear zipcode">
 							<label for="prev_zip_code">Zip Code</label>
 							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
 						</li>
 					</div>
-					<li>
+					<li class="register_abroad">
 						<a href="http://overseasvotefoundation.org" target="_blank">Registering Abroad?</a>
 					</li>
 				</ul>
@@ -330,15 +330,15 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							<option value="Ms.">Ms.</option>
 						</select>
 					</li>
-					<li class="no_clear name">
+					<li class="no_clear firstname">
 						<label for="first_name">First Name</label>
 						<input type="text" name="first_name" id="first_name"  />
 					</li>
-					<li class="no_clear name">
+					<li class="no_clear lastname">
 						<label for="last_name">Last Name</label>
 						<input type="text" name="last_name" id="last_name"  />
 					</li>
-					<li class="title">
+					<li class="suffix">
 						<label for="name_suffix">Suffix</label>
 						<select id="name_suffix" name="name_suffix">
 							<option value="">(none)</option>
@@ -349,7 +349,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							<option value="IV">IV</option>
 						</select>
 					</li>
-					<li class="checkbox">
+					<li class="checkbox name_changed">
 						<label class="checkbox_label" for="change_of_name">
 							<input type="checkbox" name="change_of_name" id="change_of_name" />
 							I have changed my name.
@@ -361,7 +361,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							</p>
 						</label>
 					</li>
-					<div class="name-change">
+					<div id="previous_name">
 						<li class="title">
 							<label for="prev_name_title">Title</label>
 							<select name="prev_name_title" id="prev_name_title">
@@ -372,15 +372,15 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 								<option value="Ms.">Ms.</option>
 							</select>
 						</li>
-						<li class="no_clear name">
+						<li class="no_clear firstname">
 							<label for="prev_first_name">First Name</label>
 							<input type="text" name="prev_first_name" id="prev_first_name" />
 						</li>
-						<li class="no_clear name">
+						<li class="no_clear lastname">
 							<label for="prev_last_name">Last Name</label>
 							<input type="text" name="prev_last_name" id="prev_last_name" />
 						</li>
-						<li class="title">
+						<li class="suffix">
 						<label for="name_suffix">Suffix</label>
 							<select id="name_suffix" name="name_suffix">
 								<option value="">(none)</option>
@@ -392,41 +392,41 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							</select>
 						</li>
 					</div>
-					<li>
+					<li class="idnumber">
 						<label for="id_number">ID Number
 							<p class="tooltip"><a id="tooltip_id_number">?</a><span class="tooltip_text" id="tooltip_text_id_number"></span></p>
 						</label>
 						<input type="text"  name="id_number" id="id_number">
 					</li>
-					<li>
+					<li class="birthday">
 						<label for="date_of_birth">Date of Birth
 							<p class="tooltip">
 								<a id="tooltip_dob">?</a>
 								<span class="tooltip_text" id="tooltip_text_dob">On your voter registration application, you are required to indicate whether you will be 18 years old on or before election day. However, many states allow you to register before your 18th birthday, so please click <a href="http://www.rockthevote.com/voter-registration/online-application-system/register-before-you-are-18-rules.html" target="_blank">here</a> to see the rule for your state.</span>
 							</p>
 						</label>
-						<input type="text"  name="date_of_birth" id="date_of_birth" />
+						<input type="text"  name="date_of_birth" id="date_of_birth" placeholder="MM/DD/YYYY" />
 					</li>
 				</ul>
 			</fieldset>
 			<fieldset id="contact">
 				<legend>4. Contact Information</legend>
 				<ul>
-					<li>
+					<li class="emailaddress">
 						<label for="email_address">Email Address</label>
 						<input type="text" name="email_address" id="email_address" />
 					</li>
-					<li>
+					<li class="checkbox emailoptin">
 						<label for="opt_in_email">
-						<input type="checkbox" name="opt_in_email" id="opt_in_email" checked="checked"/> I want to receive updates via email.</label>
+						<input type="checkbox" name="opt_in_email" id="opt_in_email" checked="checked"/> Receive email updates from Rock the Vote</label>
 					</li>
-					<li style="clear: left">
+					<li class="phonenumber">
 						<label for="phone">Phone
 							<p class="tooltip"><a id="tooltip_phone">?</a><span class="tooltip_text" id="tooltip_text_phone">Most states ask for your telephone number in case there are questions about your application. You are not required to provide your phone number.</span></p>
 						</label>
-						<input type="text" name="phone" id="phone" />
+						<input type="text" name="phone" id="phone" placeholder="123-456-7890"/>
 					</li>
-					<li style="clear: right">
+					<li class="phonetype">
 						<label for="phone_type">Type</label>
 						<select name="phone_type" id="phone_type">
 							<option value=""></option>
@@ -436,7 +436,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							<option value="Other">Other</option>
 						</select>
 					</li>
-					<li>
+					<li class="checkbox smsoptin">
 						<label for="opt_in_sms">
 							<input type="checkbox" name="opt_in_sms" id="opt_in_sms" /> Receive text messages from Rock The Vote.
 						</label>
@@ -446,7 +446,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 			<fieldset id="additional">
 				<legend>5. Additional Information</legend>
 				<ul>
-					<li>
+					<li class="race">
 						<label for="race">Race or Ethnic Group
 						<p class="tooltip tooltip-select"><a id="tooltip_race">?</a><span class="tooltip_text" id="tooltip_text_race"></span></p>
 						</label>
@@ -470,12 +470,12 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							<option value=""></option>
 						</select>
 					</li>
-					<li>
+					<li class="checkbox citizen">
 						<label for="us_citizen">
 							<input type="checkbox" name="us_citizen" id="us_citizen" checked='checked'/>I am a US Citizen
 						</label>
 					</li>
-					<li class="buttons form-action">
+					<li class="form-action">
 						<input type="hidden" name="partner_id" value="{{partner_id}}" />
 						<input type="hidden" name="lang" id="lang_id" value="en">
 						<input type="submit" id="register" action="submit" value="Register" />
