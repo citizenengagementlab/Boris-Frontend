@@ -101,13 +101,12 @@ validateIDNumber = function($input) {
   maxLength = $input.attr("data-maxlength");
   minLength = $input.attr("data-minlength");
   idLength = $input.val().length;
-  if ((idLength = 4 && !isNaN(parseFloat($input.val())) && isFinite($input.val()))) {
+  if (idLength === 4 && !isNaN(parseFloat($input.val())) && isFinite($input.val())) {
     return true;
-  }
-  if (minLength > idLength || idLength > maxLength) {
-    return false;
+  } else if (minLength < idLength && idLength < maxLength) {
+    return true;
   } else {
-    return true;
+    return false;
   }
 };
 
