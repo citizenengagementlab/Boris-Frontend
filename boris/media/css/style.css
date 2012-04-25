@@ -435,6 +435,13 @@ form ul li.city {
   width: 185px;
   position: relative;
 }
+form ul li.changed_address {
+  width: 240px;
+  clear: none;
+}
+form ul li.has_mailing_address {
+  width: 240px;
+}
 form ul li.party {
   margin-top: 0px;
   margin-bottom: 20px;
@@ -597,7 +604,7 @@ button:active {
   -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 0px rgba(255, 255, 255, 0.25), inset 0 -1px 0px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 0px rgba(255, 255, 255, 0.25), inset 0 -1px 0px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(0, 0, 0, 0.25);
 }
-button.btn-prev, button.start-over {
+button.btn-prev {
   background-color: #c9c9c9;
   background-image: -moz-linear-gradient(top, #dddddd, #aaaaaa);
   background-image: -ms-linear-gradient(top, #dddddd, #aaaaaa);
