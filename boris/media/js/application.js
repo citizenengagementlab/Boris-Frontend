@@ -637,7 +637,7 @@ saveProgress = function($field) {
 
 initForm = function() {
   $(".mailing").hide();
-  $(".name-change").hide();
+  $("#previous_name").hide();
   $(".address-change").hide();
   $("#has_different_address").click(function() {
     if ($("#has_different_address").is(":checked")) {
@@ -648,9 +648,9 @@ initForm = function() {
   });
   $("#change_of_name").click(function() {
     if ($("#change_of_name").is(":checked")) {
-      return $(".name-change").fadeIn();
+      return $("#previous_name").fadeIn();
     } else {
-      return $(".name-change").fadeOut();
+      return $("#previous_name").fadeOut();
     }
   });
   $("#change_of_address").click(function() {

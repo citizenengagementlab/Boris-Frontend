@@ -447,7 +447,7 @@ form ul li.form-action {
   margin-bottom: 0px;
 }
 .address-change > h2,
-.name-change > h2,
+#previous_name > h2,
 .mailing > h2 {
   font-weight: bold;
   font-size: 13px;
