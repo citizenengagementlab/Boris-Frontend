@@ -330,7 +330,7 @@ validateAdditional = function() {
   requiredFields = {
     citizen: {
       id: "#us_citizen",
-      msg: "You must be a US citizen",
+      msg: "You must be a U.S. citizen to register to vote",
       validate: function() {
         return validateCitizenship($(this.id));
       }

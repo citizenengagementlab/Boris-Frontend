@@ -234,7 +234,7 @@ validateAdditional = ->
 	requiredFields = {
 		citizen:
 			id: "#us_citizen"
-			msg: "You must be a US citizen"
+			msg: "You must be a U.S. citizen to register to vote"
 			validate: -> validateCitizenship($(@.id))
 		race:
 			id: "#race"
