@@ -62,8 +62,16 @@ initTabs = ->
 				"""
 		$('#tab-indicators > ol').append(html)
 		counter++
+	#Start Over Button
+	$("fieldset#address").find("li.form-action").append("<button class=\"start-over\">Go Back</button>");
+
 
 	# Bind Click Handlers
+	$("button.start-over").on('click',(e) ->
+  	e.preventDefault()
+  	window.location.reload();
+  	)
+	
 	$("button.btn-next").on('click', (e) ->
 		e.preventDefault()
 		if tabValidate($(this).parents('fieldset').attr('id')) != true
