@@ -162,14 +162,6 @@ validateFieldset = (fields) -> # Takes an {} of required fields
 validateStartFields = ->
 	clearValidationErrors($("#get_started"))
 	requiredFields = {
-		firstName:
-			id: "#pre_first_name"
-			msg: "First name is required"
-			validate: -> validateName($(@.id))
-		lastName:
-			id: "#pre_last_name"
-			msg: "Last name is required"
-			validate: -> validateName($(@.id))
 		email:
 			id: "#pre_email_address"
 			msg: "Please enter a valid email address"

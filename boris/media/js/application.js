@@ -215,20 +215,6 @@ validateStartFields = function() {
   var requiredFields;
   clearValidationErrors($("#get_started"));
   requiredFields = {
-    firstName: {
-      id: "#pre_first_name",
-      msg: "First name is required",
-      validate: function() {
-        return validateName($(this.id));
-      }
-    },
-    lastName: {
-      id: "#pre_last_name",
-      msg: "Last name is required",
-      validate: function() {
-        return validateName($(this.id));
-      }
-    },
     email: {
       id: "#pre_email_address",
       msg: "Please enter a valid email address",
