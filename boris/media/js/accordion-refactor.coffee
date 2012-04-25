@@ -63,6 +63,6 @@ initAccordion = ->
 	)
 	$("button.btn-prev").on('click', (e) ->
 		e.preventDefault()
-		console.log "Next!"
+		#console.log "Next!"
 		accordionPrev(e, this)
 	)
