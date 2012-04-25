@@ -28,7 +28,7 @@ validateMailingAddress = ($input) ->
 		if !validateZip $('#mailing_zip_code')
 			return false
 	else
-		true
+		return true
 
 validateRecentlyMoved = ($input) ->
 	if $input.attr("checked") == "checked"
@@ -42,7 +42,7 @@ validateRecentlyMoved = ($input) ->
 		if !validateZip $('#prev_zip_code')
 			return false
 	else
-		true
+		return true
 
 validateTitle = ($input) ->
 	return $input.val().length > 0
@@ -60,7 +60,7 @@ validateChangedName = ($input) ->
 		if !validateName $('#prev_last_name')
 			return false
 	else
-		true
+		return true
 
 validateIDNumber = ($input) ->
 	if ($input.val().toUpperCase() == "NONE" )
@@ -100,25 +100,37 @@ validatePhoneNumber = ($input) ->
 		return re.test($input.val())
 	else
 		return true
+
+validatePhoneType = ($input) ->
+	#required only if phone is filled in
+	if $('#phone').val() == ""
+		required = false
+	else
+		required = true
+	if (required == true && $input.val().length = 0)
+		return false
+	else
+		return true
+
 validateRace = ($input) ->
 	required = $input.attr("data-required")
 	if (required == true && $input.val().length = 0)
-		false
+		return false
 	else
-		true
+		return true
 
 validateParty = ($input) ->
 	required = $input.attr("data-required")
 	if (required == true && $input.val().length = 0)
-		false
+		return false
 	else
-		true
+		return true
 
 validateCitizenship = ($input) ->
 	if $input.attr("checked") != "checked"
-		false
+		return false
 	else
-		true
+		return true
 
 validateFieldset = (fields) -> # Takes an {} of required fields
 	errors = []
@@ -208,7 +220,11 @@ validateContact = ->
 		phone:
 			id: "#phone"
 			msg: "Please enter a valid phone number"
-			validate: -> validatePhoneNumber($(@.id))	
+			validate: -> validatePhoneNumber($(@.id))
+		phone_type:
+			id: "#phone_type"
+			msg: "Please select a phone number type"
+			validate: -> validatePhoneType($(@.id))
 		}
 	validateFieldset(requiredFields)
 
