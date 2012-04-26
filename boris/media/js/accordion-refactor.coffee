@@ -46,7 +46,7 @@ initAccordion = ->
 		unless $fs.parent('fieldset').prev().length == 0
 			$fs.find('li.form-action').append("<button class=\"btn-prev\">Back</button>")
 	# Start Over button
-	$("fieldset#address").find("li.form-action").append("<button class=\"start-over\">Go Back</button>")
+	# $("fieldset#address").find("li.form-action").append("<button class=\"start-over\">Go Back</button>")
 
 	# Bind Click Handlers
 	$("button.start-over").on('click',(e) ->

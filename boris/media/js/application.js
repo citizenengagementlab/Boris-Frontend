@@ -733,7 +733,6 @@ initTabs = function() {
     $('#tab-indicators > ol').append(html);
     return counter++;
   });
-  $("fieldset#address").find("li.form-action").append("<button class=\"start-over\">Go Back</button>");
   $("button.start-over").on('click', function(e) {
     e.preventDefault();
     return window.location.reload();
@@ -800,7 +799,6 @@ initAccordion = function() {
       return $fs.find('li.form-action').append("<button class=\"btn-prev\">Back</button>");
     }
   });
-  $("fieldset#address").find("li.form-action").append("<button class=\"start-over\">Go Back</button>");
   $("button.start-over").on('click', function(e) {
     e.preventDefault();
     return window.location.reload();

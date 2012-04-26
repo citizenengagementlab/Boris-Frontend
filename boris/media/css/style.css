@@ -428,9 +428,6 @@ form ul li.checkbox {
   width: 100%;
   position: relative;
 }
-form ul li.intro-text {
-  width: 330px;
-}
 form ul li.city {
   width: 185px;
   position: relative;
@@ -465,9 +462,6 @@ form ul li.form-action {
 }
 li.state {
   width: 140px;
-}
-li.zip {
-  width: 60px;
 }
 /* TODO:  Style the forms such that you don't have to make a bunch of specific conditions for each form input.  */
 #home_unit,
