@@ -396,6 +396,10 @@ fieldset {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
+fieldset.mailing,
+fieldset.address-change {
+  clear: both;
+}
 fieldset#get_started > p {
   padding-top: 10px;
 }
@@ -465,7 +469,9 @@ form ul li.form-action {
 li.state {
   width: 140px;
 }
-/* TODO:  Style the forms such that you don't have to make a bunch of specific conditions for each form input.  */
+legend.visible {
+  display: inline;
+}
 #home_unit,
 #prev_unit,
 #mailing_unit {

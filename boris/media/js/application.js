@@ -668,7 +668,7 @@ initForm = function() {
 
 initPage = function() {
   $("#registration_form").hide();
-  return $("legend").addClass('visuallyhidden');
+  return $("legend").addClass('visuallyhidden').filter(".visible").removeClass('visuallyhidden');
 };
 
 /* -------------------------------------------- 
