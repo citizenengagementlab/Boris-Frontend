@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     #internal apps
     'registrant',
     'proxy',
+    'ziplookup'
     )
 
 
