@@ -151,15 +151,15 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 					</li>
 					<fieldset class="mailing"> 
 						<legend class="visible">Mailing Address</legend>
-						<li class="address_street">
+						<li class="mailing-address_street">
 							<label for="mailing_address">Street Address</label>
 							<input type="text" name="mailing_address" id="mailing_address" />
 						</li>
-						<li class="address_city">
+						<li class="mailing-address_city">
 							<label for="mailing_city">City</label>
 							<input type="text" name="mailing_city" class="span2" id="mailing_city" />
 						</li>
-						<li class="no_clear state">
+						<li class="no_clear mailing-state">
 							<label for="mailing_state">State</label>
 							<select type="text" name="mailing_state" id="mailing_state">
 								<option value="" selected="selected">Select a State</option> 
@@ -216,22 +216,22 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 								<option value="WY">Wyoming</option>
 							</select>
 						</li>
-						<li class="no_clear zip" >
+						<li class="no_clear mailing-zip" >
 							<label for="mailing_zip_code">Zip Code</label> 
 							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
 						</li>
 					</fieldset>
 					<fieldset class="address-change">
-						<li class="address_street">
+						<li class="prev-address_street">
 							<legend class="visible">Previous Address</legend>
 							<label for="prev_address">Street Address</label>
 							<input type="text" name="prev_address" id="prev_address"/>
 						</li>
-						<li class="address_city">
+						<li class="prev-address_city">
 							<label for="prev_city">City</label>
 							<input type="text" name="prev_city" id="prev_city" />
 						</li>
-						<li class="no_clear state">
+						<li class="no_clear prev-state">
 							<label for="prev_state_id">State</label>
 							<select type="text" name="prev_state_id" id="prev_state">
 								<option value="" selected="selected">Select a State</option> 
@@ -288,7 +288,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 								<option value="WY">Wyoming</option>
 							</select>
 						</li>
-						<li class="no_clear zip">
+						<li class="no_clear prev-zip">
 							<label for="prev_zip_code">Zip Code</label>
 							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
 						</li>

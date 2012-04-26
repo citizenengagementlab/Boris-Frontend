@@ -10,8 +10,9 @@ showRegistrationForm = () ->
   
   switch window.LAYOUT
     when "singlepage"
-      $('#state_form').hide()
-      $('#registration_form').show()
+      $('#state_form').slideUp()
+      $('#registration_form').fadeIn()
+      $('form#get_started img.spinner').remove()
     when "tabs"
       $("#get_started").hide()
       $("#address").show()
