@@ -667,7 +667,8 @@ initForm = function() {
 };
 
 initPage = function() {
-  return $("#registration_form").hide();
+  $("#registration_form").hide();
+  return $("legend").addClass('visuallyhidden');
 };
 
 /* -------------------------------------------- 

@@ -117,5 +117,5 @@ initForm = ->
 initPage = ->
 	# Hide Registration Form
 	$("#registration_form").hide()
-	$("legend").addClas('visuallyhidden')
+	$("legend").addClass('visuallyhidden')
 	

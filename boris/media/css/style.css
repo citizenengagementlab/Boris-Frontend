@@ -424,12 +424,12 @@ form ul li {
   /* Setting the li to relative positioning ensures that the elements inside the tooltip wrapper animate properly.  */
 
 }
-form ul li.checkbox {
-  width: 100%;
+form ul li.address_city {
+  width: 185px;
   position: relative;
 }
-form ul li.city {
-  width: 185px;
+form ul li.checkbox {
+  width: 100%;
   position: relative;
 }
 form ul li.changed_address {
@@ -789,10 +789,10 @@ body {
   height: 100%;
 }
 .wrapper {
-  min-height: 96%;
+  min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -37px;
+  margin: 0 auto -58px;
   /* the bottom margin is the negative value of the footer's height */
 
 }

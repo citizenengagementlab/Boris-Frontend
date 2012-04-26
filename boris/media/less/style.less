@@ -71,14 +71,15 @@ form ul {
 	li.emailaddress {}
 	li.zipcode {}
 	li.address_street {}
+	li.address_city {
+		width:185px;
+		position:relative;
+	}	
 	li.checkbox {
 		width:100%;
 		position:relative;
 	}
-	li.city {
-	width:185px;
-	position:relative;
-	}	
+
 	li.changed_address {
 	width:240px;
 	clear:none;
@@ -387,10 +388,10 @@ html, body {
 	height: 100%;
 }
 .wrapper {
-	min-height:96%;
+	min-height:100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -37px; /* the bottom margin is the negative value of the footer's height */
+	margin: 0 auto -58px; /* the bottom margin is the negative value of the footer's height */
 }
 .footer, .push {
 	height: 37px; /* .push must be the same height as .footer */
