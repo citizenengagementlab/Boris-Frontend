@@ -671,12 +671,12 @@ p.tooltip  > a {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2f2f2', endColorstr='#cccccc', GradientType=0);
 }
 p.tooltip  > span {
-  display: none;
   background-color: #ecf6fb;
+  display: block;
   min-height: 30px;
   position: absolute;
-  right: 0px;
-  top: 22px;
+  left: 30px;
+  top: -20px;
   border: 8px solid #ADD9ED;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -697,28 +697,44 @@ p.tooltip  > span:before {
   width: 0;
   border: 8px solid red;
   position: absolute;
-  right: -7px;
-  border-color: transparent transparent #ADD9ED transparent;
-  top: -23px;
-  /*TODO Resize Tooltips to fit constraint of iframe window */
-
-}
-span#tooltip_text_address:before {
-  top: -23px;
-}
-span#tooltip_text_has_different_address:before {
-  top: -23px;
-}
-span#tooltip_text_personal:before {
-  top: -23px;
+  left: -24px;
+  border-color: transparent #ADD9ED transparent transparent;
 }
 p.tooltip_checkbox {
   margin-right: 0px;
   margin-top: -2px;
 }
+p.tooltip_checkbox  > span {
+  left: -220px;
+  top: 30px;
+}
+p.tooltip_checkbox  > span:before {
+  display: block;
+  height: 0;
+  width: 0;
+  border: 8px solid red;
+  position: absolute;
+  left: 210px;
+  border-color: transparent transparent #ADD9ED transparent;
+  top: -23px;
+}
 p.tooltip-select {
   margin-left: 10px;
   margin-top: -2px;
+}
+p.tooltip-select  > span {
+  left: -150px;
+  top: 30px;
+}
+p.tooltip-select  > span:before {
+  display: block;
+  height: 0;
+  width: 0;
+  border: 8px solid red;
+  position: absolute;
+  left: 140px;
+  border-color: transparent transparent #ADD9ED transparent;
+  top: -23px;
 }
 button#top_link {
   float: left;

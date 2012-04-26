@@ -268,12 +268,12 @@ p.tooltip {
 		#gradient.vertical(lighten(#CCC,15%), #CCC;
 	}
 	& > span {
-		display:none;
 		background-color:lighten(#ADD9ED, 15%);
+		display:block;
 		min-height:30px;
 		position:absolute;
-		right: 0px;
-		top: 22px;
+		left: 30px;
+		top: -20px;
 		border: 8px solid #ADD9ED;
 		.border-radius(3px);
 		padding:10px;
@@ -289,41 +289,48 @@ p.tooltip {
 			width: 0;
 			border: 8px solid red;
 			position: absolute;
-			right: -7px;
-			border-color: transparent transparent #ADD9ED transparent;
-			top:-23px;
-			/*TODO Resize Tooltips to fit constraint of iframe window */
+			left: -24px;
+			border-color: transparent #ADD9ED transparent transparent;
 		}
 	}
 }
 
-
-span#tooltip_text_address {
-	&:before {
-		top:-23px;
-	}
-}
-
-span#tooltip_text_has_different_address {
-	&:before {
-		top:-23px;
-	}
-}
-
-span#tooltip_text_personal {
-	&:before {
-		top:-23px;
-	}
-}
-
-p.tooltip_checkbox, {
+p.tooltip_checkbox {
 	margin-right:0px;
 	margin-top:-2px;
+	& > span {
+		left:-220px;
+		top:30px;
+		&:before {
+			display: block;
+			height: 0;
+			width: 0;
+			border: 8px solid red;
+			position: absolute;
+			left: 210px;
+			border-color: transparent transparent #ADD9ED transparent;
+			top:-23px;
+		}
+	}
 }
 
 p.tooltip-select { 
 	margin-left:10px;
 	margin-top:-2px;
+	& > span {
+		left:-150px;
+		top:30px;
+		&:before {
+			display: block;
+			height: 0;
+			width: 0;
+			border: 8px solid red;
+			position: absolute;
+			left: 140px;
+			border-color: transparent transparent #ADD9ED transparent;
+			top:-23px;
+		}
+	}
 }
 
 button#top_link {
