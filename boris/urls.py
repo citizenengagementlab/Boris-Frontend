@@ -10,7 +10,7 @@ urlpatterns = patterns('boris.views',
 urlpatterns += patterns('',
     (r'^registrants/', include('registrant.urls')),
     (r'^rtv/', include('proxy.urls')),
-    (r'^usps/',include('usps.urls')),
+    (r'^usps/',include('ziplookup.urls')),
 )
 
 admin.autodiscover()
