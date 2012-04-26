@@ -272,8 +272,8 @@ p.tooltip {
 		background-color:lighten(#ADD9ED, 15%);
 		min-height:30px;
 		position:absolute;
-		left: 30px;
-		top: -20px;
+		right: 0px;
+		top: 22px;
 		border: 8px solid #ADD9ED;
 		.border-radius(3px);
 		padding:10px;
@@ -289,9 +289,30 @@ p.tooltip {
 			width: 0;
 			border: 8px solid red;
 			position: absolute;
-			left: -24px;
-			border-color: transparent #ADD9ED transparent transparent;
+			right: -7px;
+			border-color: transparent transparent #ADD9ED transparent;
+			top:-23px;
+			/*TODO Resize Tooltips to fit constraint of iframe window */
 		}
+	}
+}
+
+
+span#tooltip_text_address {
+	&:before {
+		top:-23px;
+	}
+}
+
+span#tooltip_text_has_different_address {
+	&:before {
+		top:-23px;
+	}
+}
+
+span#tooltip_text_personal {
+	&:before {
+		top:-23px;
 	}
 }
 
