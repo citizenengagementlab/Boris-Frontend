@@ -56,7 +56,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 				<legend>2. Address Information</legend>
 				<ul>
 					<li class="address_street">
-						<label for="home_address">Address
+						<label for="home_address">Street Address
 							<p class ="tooltip">
 								<a id="tooltip_address">?</a>
 								<span class="tooltip_text" id="tooltip_text_address">Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form.</span>
@@ -149,16 +149,17 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							</p>
 						</label>
 					</li>
-							<div class="mailing"> 
-						<li class="address_street">
-							<label for="mailing_address">Mailing Address</label>
+					<fieldset class="mailing"> 
+						<legend class="visible">Mailing Address</legend>
+						<li class="mailing-address_street">
+							<label for="mailing_address">Street Address</label>
 							<input type="text" name="mailing_address" id="mailing_address" />
 						</li>
-						<li class="address_city">
+						<li class="mailing-address_city">
 							<label for="mailing_city">City</label>
 							<input type="text" name="mailing_city" class="span2" id="mailing_city" />
 						</li>
-						<li class="no_clear state">
+						<li class="no_clear mailing-state">
 							<label for="mailing_state">State</label>
 							<select type="text" name="mailing_state" id="mailing_state">
 								<option value="" selected="selected">Select a State</option> 
@@ -215,21 +216,22 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 								<option value="WY">Wyoming</option>
 							</select>
 						</li>
-						<li class="no_clear zip" >
+						<li class="no_clear mailing-zip" >
 							<label for="mailing_zip_code">Zip Code</label> 
 							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
 						</li>
-					</div>
-					<div class="address-change">
-						<li address_street>
-							<label for="prev_address">Previous Address</label>
+					</fieldset>
+					<fieldset class="address-change">
+						<li class="prev-address_street">
+							<legend class="visible">Previous Address</legend>
+							<label for="prev_address">Street Address</label>
 							<input type="text" name="prev_address" id="prev_address"/>
 						</li>
-						<li class="address_city">
+						<li class="prev-address_city">
 							<label for="prev_city">City</label>
 							<input type="text" name="prev_city" id="prev_city" />
 						</li>
-						<li class="no_clear state">
+						<li class="no_clear prev-state">
 							<label for="prev_state_id">State</label>
 							<select type="text" name="prev_state_id" id="prev_state">
 								<option value="" selected="selected">Select a State</option> 
@@ -286,11 +288,11 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 								<option value="WY">Wyoming</option>
 							</select>
 						</li>
-						<li class="no_clear zip">
+						<li class="no_clear prev-zip">
 							<label for="prev_zip_code">Zip Code</label>
 							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
 						</li>
-					</div>
+					</fieldset>
 					<li class="register_abroad">
 						<a href="http://overseasvotefoundation.org" target="_blank">Registering Abroad?</a>
 					</li>
@@ -332,7 +334,8 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							</p>
 						</label>
 					</li>
-					<div id="previous_name">
+					<fieldset id="previous_name">
+						<legend class="visible">Previous Name</legend>
 						<li class="title">
 							<label for="prev_name_title">Title</label>
 							<select name="prev_name_title" id="prev_name_title">
@@ -351,7 +354,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							<label for="prev_last_name">Last Name</label>
 							<input type="text" name="prev_last_name" id="prev_last_name" />
 						</li>
-					</div>
+					</fieldset>
 					<li class="idnumber">
 						<label for="id_number">ID Number
 							<p class="tooltip"><a id="tooltip_id_number">?</a><span class="tooltip_text" id="tooltip_text_id_number"></span></p>
@@ -380,13 +383,13 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 						<label for="opt_in_email">
 						<input type="checkbox" name="opt_in_email" id="opt_in_email" checked="checked"/> Receive email updates from Rock the Vote</label>
 					</li>
-					<li class="phonenumber">
+					<li class="phonenumber optional">
 						<label for="phone">Phone
 							<p class="tooltip"><a id="tooltip_phone">?</a><span class="tooltip_text" id="tooltip_text_phone">Most states ask for your telephone number in case there are questions about your application. You are not required to provide your phone number.</span></p>
 						</label>
 						<input type="text" name="phone" id="phone" placeholder="123-456-7890"/>
 					</li>
-					<li class="phonetype">
+					<li class="phonetype no_clear">
 						<label for="phone_type">Type</label>
 						<select name="phone_type" id="phone_type">
 							<option value="Mobile">Mobile</option>

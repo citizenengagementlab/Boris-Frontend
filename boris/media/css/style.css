@@ -347,19 +347,19 @@ table {
 }
 /* Structural */
 html {
-  background: #f0f0f0;
+  background: #f0f0f0 url('../img/png.png');
 }
 header {
   margin: 0 auto;
-  background-color: #2e2e2e;
-  background-image: -moz-linear-gradient(top, #4d4d4d, #000000);
-  background-image: -ms-linear-gradient(top, #4d4d4d, #000000);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4d4d4d), to(#000000));
-  background-image: -webkit-linear-gradient(top, #4d4d4d, #000000);
-  background-image: -o-linear-gradient(top, #4d4d4d, #000000);
-  background-image: linear-gradient(top, #4d4d4d, #000000);
+  background-color: #343434;
+  background-image: -moz-linear-gradient(top, #404040, #222222);
+  background-image: -ms-linear-gradient(top, #404040, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#404040), to(#222222));
+  background-image: -webkit-linear-gradient(top, #404040, #222222);
+  background-image: -o-linear-gradient(top, #404040, #222222);
+  background-image: linear-gradient(top, #404040, #222222);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4d4d4d', endColorstr='#000000', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#404040', endColorstr='#222222', GradientType=0);
 }
 header img#logo {
   float: right;
@@ -380,7 +380,6 @@ header h1 {
   margin-left: auto;
   margin-right: auto;
   padding: 10px 20px;
-  background: #f0f0f0;
   box-sizing: border-box;
 }
 .container h1 {
@@ -395,6 +394,10 @@ fieldset {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+}
+fieldset.mailing,
+fieldset.address-change {
+  clear: both;
 }
 fieldset#get_started > p {
   padding-top: 10px;
@@ -424,9 +427,12 @@ form ul li {
   /* Setting the li to relative positioning ensures that the elements inside the tooltip wrapper animate properly.  */
 
 }
-form ul li.address_city {
-  width: 185px;
-  position: relative;
+form ul li.zipcode {
+  width: 75px;
+}
+form ul li.address_city,
+form ul li.state {
+  display: none;
 }
 form ul li.checkbox {
   width: 100%;
@@ -438,6 +444,15 @@ form ul li.changed_address {
 }
 form ul li.has_mailing_address {
   width: 240px;
+}
+form ul li.prev-state,
+form ul li.mailing-state {
+  width: 150px;
+  margin-left: 5px;
+}
+form ul li.prev-zip,
+form ul li.mailing-zip {
+  width: 70px;
 }
 form ul li.race {
   width: 240px;
@@ -465,7 +480,9 @@ form ul li.form-action {
 li.state {
   width: 140px;
 }
-/* TODO:  Style the forms such that you don't have to make a bunch of specific conditions for each form input.  */
+legend.visible {
+  display: inline;
+}
 #home_unit,
 #prev_unit,
 #mailing_unit {

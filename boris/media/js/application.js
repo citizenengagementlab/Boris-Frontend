@@ -413,8 +413,9 @@ showRegistrationForm = function() {
   $('#home_zip_code').val(zip);
   switch (window.LAYOUT) {
     case "singlepage":
-      $('#state_form').hide();
-      return $('#registration_form').show();
+      $('#state_form').slideUp();
+      $('#registration_form').fadeIn();
+      return $('form#get_started img.spinner').remove();
     case "tabs":
       $("#get_started").hide();
       $("#address").show();
@@ -672,7 +673,7 @@ initForm = function() {
 
 initPage = function() {
   $("#registration_form").hide();
-  return $("legend").addClass('visuallyhidden');
+  return $("legend").addClass('visuallyhidden').filter(".visible").removeClass('visuallyhidden');
 };
 
 /* -------------------------------------------- 

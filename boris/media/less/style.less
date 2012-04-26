@@ -6,13 +6,13 @@
 /* Structural */
 
 html {
-	background: #f0f0f0;
+	background: #f0f0f0 url('../img/png.png');
 }
 
 
 header {
 	margin: 0 auto;
-	#gradient.vertical(lighten(#000,30%), #000;
+	#gradient.vertical(lighten(#000,25%), #222);
 	img#logo {
 		float:right;
 		padding-right:20px;
@@ -34,7 +34,6 @@ header {
 	width: 564px;
 	.center-block;
 	padding: 10px 20px;
-	background: #f0f0f0;
 	box-sizing:border-box;
 	h1 {
 		margin:0px;
@@ -47,6 +46,10 @@ header {
 
 fieldset {
 	.border-radius(3px);
+}
+
+fieldset.mailing, fieldset.address-change {
+	clear: both;
 }
 
 fieldset#get_started > p {
@@ -68,18 +71,12 @@ form ul {
 		width: 180px;
 		position:relative;  /* Setting the li to relative positioning ensures that the elements inside the tooltip wrapper animate properly.  */
 	}
-	li.emailaddress {}
-	li.zipcode {}
-	li.address_street {}
-	li.address_city {
-		width:185px;
-		position:relative;
-	}	
+	li.zipcode {width:75px;}
+	li.address_city, li.state {display:none;}
 	li.checkbox {
 		width:100%;
 		position:relative;
 	}
-
 	li.changed_address {
 	width:240px;
 	clear:none;
@@ -87,8 +84,13 @@ form ul {
 	li.has_mailing_address {
 	width:240px;
 	}
+	li.prev-state, li.mailing-state {
+		width:150px;
+		margin-left:5px;
+	}
+	li.prev-zip, li.mailing-zip {width:70px;}
 	li.race {
-	width:240px;
+		width:240px;
 	}
 	li.party {
 	clear:none;
@@ -119,7 +121,9 @@ li.zip {
 
 }
 
-/* TODO:  Style the forms such that you don't have to make a bunch of specific conditions for each form input.  */
+legend.visible {
+	display:inline;
+}
 
 #home_unit, #prev_unit, #mailing_unit {
 	width:50px;
