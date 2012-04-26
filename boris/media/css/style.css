@@ -419,7 +419,7 @@ form ul li {
   clear: both;
   margin-right: 5px;
   margin-bottom: 10px;
-  width: 240px;
+  width: 180px;
   position: relative;
   /* Setting the li to relative positioning ensures that the elements inside the tooltip wrapper animate properly.  */
 
@@ -439,10 +439,11 @@ form ul li.changed_address {
 form ul li.has_mailing_address {
   width: 240px;
 }
+form ul li.race {
+  width: 240px;
+}
 form ul li.party {
-  margin-top: 0px;
-  margin-bottom: 20px;
-  position: relative;
+  clear: none;
 }
 form ul li.buttons {
   margin: 0px;
