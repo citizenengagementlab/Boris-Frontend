@@ -65,7 +65,7 @@ form ul {
 		clear: both;
 		margin-right: 5px;
 		margin-bottom: 10px;
-		width: 240px;
+		width: 180px;
 		position:relative;  /* Setting the li to relative positioning ensures that the elements inside the tooltip wrapper animate properly.  */
 	}
 	li.emailaddress {}
@@ -87,16 +87,18 @@ form ul {
 	li.has_mailing_address {
 	width:240px;
 	}
+	li.race {
+	width:240px;
+	}
 	li.party {
-		margin-top:0px;
-		margin-bottom:20px;
-		position:relative;
+	clear:none;
 	}
 	li.buttons {
 		margin:0px;
 	}
 	li.form-action {
 		margin-bottom:0px;
+		width:240px;
 	}
 }
 
@@ -268,8 +270,8 @@ p.tooltip {
 		#gradient.vertical(lighten(#CCC,15%), #CCC;
 	}
 	& > span {
-		display:none;
 		background-color:lighten(#ADD9ED, 15%);
+		display:none;
 		min-height:30px;
 		position:absolute;
 		left: 30px;
@@ -295,14 +297,42 @@ p.tooltip {
 	}
 }
 
-p.tooltip_checkbox, {
+p.tooltip_checkbox {
 	margin-right:0px;
 	margin-top:-2px;
+	& > span {
+		left:-220px;
+		top:30px;
+		&:before {
+			display: block;
+			height: 0;
+			width: 0;
+			border: 8px solid red;
+			position: absolute;
+			left: 210px;
+			border-color: transparent transparent #ADD9ED transparent;
+			top:-23px;
+		}
+	}
 }
 
 p.tooltip-select { 
 	margin-left:10px;
 	margin-top:-2px;
+	& > span {
+		left:-150px;
+		top:30px;
+		&:before {
+			display: block;
+			height: 0;
+			width: 0;
+			border: 8px solid red;
+			position: absolute;
+			left: 140px;
+			border-color: transparent transparent #ADD9ED transparent;
+			top:-23px;
+		}
+	}
 }
 
 button#top_link {
