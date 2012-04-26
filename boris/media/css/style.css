@@ -672,7 +672,7 @@ p.tooltip  > a {
 }
 p.tooltip  > span {
   background-color: #ecf6fb;
-  display: block;
+  display: none;
   min-height: 30px;
   position: absolute;
   left: 30px;
