@@ -46,7 +46,7 @@ initTabs = ->
 	html = "<div id=\"tab-indicators\"><ol></ol></div>"
 	$('#state_form').before(html)
 	counter = 1
-	$fieldsets.each ->
+	$fieldsets.not('.mailing, .address-change, #previous_name').each -> #Keeping optional fieldsets out of the tab navigation#
 		$fs = $(this)
 		unless $fs.find('li.form-action').length == 1
 			$fs.children('ul').append("<li class=\"form-action\"></li>")

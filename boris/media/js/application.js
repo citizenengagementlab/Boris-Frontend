@@ -722,7 +722,7 @@ initTabs = function() {
   html = "<div id=\"tab-indicators\"><ol></ol></div>";
   $('#state_form').before(html);
   counter = 1;
-  $fieldsets.each(function() {
+  $fieldsets.not('.mailing, .address-change, #previous_name').each(function() {
     var $fs, tabClass;
     $fs = $(this);
     if ($fs.find('li.form-action').length !== 1) {
