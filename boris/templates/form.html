@@ -137,7 +137,17 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 								<p class="tooltip tooltip_checkbox"><a id="tooltip_has_different_address">?</a><span class="tooltip_text" id="tooltip_text_has_different_address"> If you receive mail at a different address, please enter it here.</span></p>
 						</label>
 					</li>
-					<div class="mailing"> 
+					<li class="checkbox changed_address">
+						<label class="checkbox_label" for="change_of_address">
+							<input type="checkbox" name="change_of_address" id="change_of_address" /> I have recently moved.
+							<p class="tooltip tooltip_checkbox">
+								<a id="tooltip_change_of_address">?</a>
+								<span class="tooltip_text" id="tooltip_text_change_of_address">
+									If you have moved since your last registration, enter your previous address.</span>
+							</p>
+						</label>
+					</li>
+							<div class="mailing"> 
 						<li class="address_street">
 							<label for="mailing_address">Mailing Address</label>
 							<input type="text" name="mailing_address" id="mailing_address" />
@@ -208,16 +218,6 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
 						</li>
 					</div>
-					<li class="checkbox changed_address">
-						<label class="checkbox_label" for="change_of_address">
-							<input type="checkbox" name="change_of_address" id="change_of_address" /> I have recently moved.
-							<p class="tooltip tooltip_checkbox">
-								<a id="tooltip_change_of_address">?</a>
-								<span class="tooltip_text" id="tooltip_text_change_of_address">
-									If you have moved since your last registration, enter your previous address.</span>
-							</p>
-						</label>
-					</li>
 					<div class="address-change">
 						<li address_street>
 							<label for="prev_address">Previous Address</label>
