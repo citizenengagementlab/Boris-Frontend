@@ -36,7 +36,7 @@ initAccordion = ->
 		.filter(':first')
 		.show()
 	$('#registration_form').show()
-	$('legend').addClass('accordion-header')
+	$('legend:not(.visible)').addClass('accordion-header') #Don't add class to optional fieldsets#
 	$fieldsets.each ->
 		$fs = $(this)
 		unless $fs.find('li.form-action').length == 1

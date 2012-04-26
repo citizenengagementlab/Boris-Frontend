@@ -791,7 +791,7 @@ initAccordion = function() {
   $fieldsets = $('fieldset > ul');
   $fieldsets.hide().filter(':first').show();
   $('#registration_form').show();
-  $('legend').addClass('accordion-header');
+  $('legend:not(.visible)').addClass('accordion-header');
   $fieldsets.each(function() {
     var $fs;
     $fs = $(this);
