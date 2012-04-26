@@ -22,14 +22,6 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 			<fieldset id="get_started">
 				<legend>1. Get Started!</legend>
 				<ul>
-					<li class="firstname">
-						<label for="pre_first_name">First Name</label>
-						<input type="text" name="first_name" id="pre_first_name" />
-					</li>
-					<li class="lastname">
-						<label for="pre_last_name">Last Name</label>
-						<input type="text" name="last_name" id="pre_last_name" />
-					</li>
 					<li class="emailaddress">
 						<label for="pre_email_address">Email Address
 						<p class="tooltip">
@@ -71,10 +63,6 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							</p>
 						</label>
 						<input type="text" name="home_address" id="home_address" />
-					</li>
-					<li class="no_clear address_unit">
-						<label for="home_unit">Unit</label>
-						<input type="text" name="home_unit" id="home_unit" />
 					</li>
 					<li class="address_city">
 						<label for="home_city">City</label>
@@ -149,14 +137,20 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 								<p class="tooltip tooltip_checkbox"><a id="tooltip_has_different_address">?</a><span class="tooltip_text" id="tooltip_text_has_different_address"> If you receive mail at a different address, please enter it here.</span></p>
 						</label>
 					</li>
-					<div class="mailing"> 
+					<li class="checkbox changed_address">
+						<label class="checkbox_label" for="change_of_address">
+							<input type="checkbox" name="change_of_address" id="change_of_address" /> I have recently moved.
+							<p class="tooltip tooltip_checkbox">
+								<a id="tooltip_change_of_address">?</a>
+								<span class="tooltip_text" id="tooltip_text_change_of_address">
+									If you have moved since your last registration, enter your previous address.</span>
+							</p>
+						</label>
+					</li>
+							<div class="mailing"> 
 						<li class="address_street">
 							<label for="mailing_address">Mailing Address</label>
 							<input type="text" name="mailing_address" id="mailing_address" />
-						</li>
-						<li class="no_clear address_unit">
-							<label for="home_unit">Unit</label>
-							<input type="text" name="mailing_unit" id="mailing_unit" />
 						</li>
 						<li class="address_city">
 							<label for="mailing_city">City</label>
@@ -224,24 +218,10 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
 						</li>
 					</div>
-					<li class="checkbox changed_address">
-						<label class="checkbox_label" for="change_of_address">
-							<input type="checkbox" name="change_of_address" id="change_of_address" /> I have recently moved.
-							<p class="tooltip tooltip_checkbox">
-								<a id="tooltip_change_of_address">?</a>
-								<span class="tooltip_text" id="tooltip_text_change_of_address">
-									If you have moved since your last registration, enter your previous address.</span>
-							</p>
-						</label>
-					</li>
 					<div class="address-change">
 						<li address_street>
 							<label for="prev_address">Previous Address</label>
-							<input type="text" name="prev_address" />
-						</li>
-						<li class="no_clear address_unit">
-							<label for="prev_unit">Unit</label>
-							<input type="text" name="prev_unit" id="prev_unit" />
+							<input type="text" name="prev_address" id="prev_address"/>
 						</li>
 						<li class="address_city">
 							<label for="prev_city">City</label>
@@ -249,7 +229,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 						</li>
 						<li class="no_clear state">
 							<label for="prev_state_id">State</label>
-							<select type="text" name="prev_state_id" id="prev_state_id">
+							<select type="text" name="prev_state_id" id="prev_state">
 								<option value="" selected="selected">Select a State</option> 
 								<option value="AL">Alabama</option> 
 								<option value="AK">Alaska</option> 
@@ -338,17 +318,6 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 						<label for="last_name">Last Name</label>
 						<input type="text" name="last_name" id="last_name"  />
 					</li>
-					<li class="suffix">
-						<label for="name_suffix">Suffix</label>
-						<select id="name_suffix" name="name_suffix">
-							<option value="">(none)</option>
-							<option value="Jr.">Jr.</option>
-							<option value="Sr.">Sr.</option>
-							<option value="II">II</option>
-							<option value="III">III</option>
-							<option value="IV">IV</option>
-						</select>
-					</li>
 					<li class="checkbox name_changed">
 						<label class="checkbox_label" for="change_of_name">
 							<input type="checkbox" name="change_of_name" id="change_of_name" />
@@ -379,17 +348,6 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 						<li class="no_clear lastname">
 							<label for="prev_last_name">Last Name</label>
 							<input type="text" name="prev_last_name" id="prev_last_name" />
-						</li>
-						<li class="suffix">
-						<label for="name_suffix">Suffix</label>
-							<select id="name_suffix" name="name_suffix">
-								<option value="">(none)</option>
-								<option value="Jr.">Jr.</option>
-								<option value="Sr.">Sr.</option>
-								<option value="II">II</option>
-								<option value="III">III</option>
-								<option value="IV">IV</option>
-							</select>
 						</li>
 					</div>
 					<li class="idnumber">

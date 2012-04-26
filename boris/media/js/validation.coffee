@@ -68,13 +68,13 @@ validateIDNumber = ($input) ->
 	maxLength = $input.attr("data-maxlength")
 	minLength = $input.attr("data-minlength")
 	idLength = $input.val().length
-	if (idLength = 4 && !isNaN(parseFloat($input.val())) && isFinite($input.val()))
+	if (idLength == 4 && !isNaN(parseFloat($input.val())) && isFinite($input.val()))
 		#probably last 4 digits of social
 		return true
-	if (minLength > idLength || idLength > maxLength)
-		return false
-	else
+	else if (minLength < idLength && idLength < maxLength)
 		return true
+	else
+		return false
 
 validateBirthday = ($input) ->
 	if !$input.val()
@@ -162,14 +162,6 @@ validateFieldset = (fields) -> # Takes an {} of required fields
 validateStartFields = ->
 	clearValidationErrors($("#get_started"))
 	requiredFields = {
-		firstName:
-			id: "#pre_first_name"
-			msg: "First name is required"
-			validate: -> validateName($(@.id))
-		lastName:
-			id: "#pre_last_name"
-			msg: "Last name is required"
-			validate: -> validateName($(@.id))
 		email:
 			id: "#pre_email_address"
 			msg: "Please enter a valid email address"

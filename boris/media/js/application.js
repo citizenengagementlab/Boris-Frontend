@@ -101,13 +101,12 @@ validateIDNumber = function($input) {
   maxLength = $input.attr("data-maxlength");
   minLength = $input.attr("data-minlength");
   idLength = $input.val().length;
-  if ((idLength = 4 && !isNaN(parseFloat($input.val())) && isFinite($input.val()))) {
+  if (idLength === 4 && !isNaN(parseFloat($input.val())) && isFinite($input.val())) {
     return true;
-  }
-  if (minLength > idLength || idLength > maxLength) {
-    return false;
+  } else if (minLength < idLength && idLength < maxLength) {
+    return true;
   } else {
-    return true;
+    return false;
   }
 };
 
@@ -216,20 +215,6 @@ validateStartFields = function() {
   var requiredFields;
   clearValidationErrors($("#get_started"));
   requiredFields = {
-    firstName: {
-      id: "#pre_first_name",
-      msg: "First name is required",
-      validate: function() {
-        return validateName($(this.id));
-      }
-    },
-    lastName: {
-      id: "#pre_last_name",
-      msg: "Last name is required",
-      validate: function() {
-        return validateName($(this.id));
-      }
-    },
     email: {
       id: "#pre_email_address",
       msg: "Please enter a valid email address",
@@ -748,7 +733,6 @@ initTabs = function() {
     $('#tab-indicators > ol').append(html);
     return counter++;
   });
-  $("fieldset#address").find("li.form-action").append("<button class=\"start-over\">Go Back</button>");
   $("button.start-over").on('click', function(e) {
     e.preventDefault();
     return window.location.reload();
@@ -815,7 +799,6 @@ initAccordion = function() {
       return $fs.find('li.form-action').append("<button class=\"btn-prev\">Back</button>");
     }
   });
-  $("fieldset#address").find("li.form-action").append("<button class=\"start-over\">Go Back</button>");
   $("button.start-over").on('click', function(e) {
     e.preventDefault();
     return window.location.reload();

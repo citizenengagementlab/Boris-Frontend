@@ -428,12 +428,16 @@ form ul li.checkbox {
   width: 100%;
   position: relative;
 }
-form ul li.intro-text {
-  width: 330px;
-}
 form ul li.city {
   width: 185px;
   position: relative;
+}
+form ul li.changed_address {
+  width: 240px;
+  clear: none;
+}
+form ul li.has_mailing_address {
+  width: 240px;
 }
 form ul li.party {
   margin-top: 0px;
@@ -458,9 +462,6 @@ form ul li.form-action {
 }
 li.state {
   width: 140px;
-}
-li.zip {
-  width: 60px;
 }
 /* TODO:  Style the forms such that you don't have to make a bunch of specific conditions for each form input.  */
 #home_unit,
@@ -597,7 +598,7 @@ button:active {
   -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 0px rgba(255, 255, 255, 0.25), inset 0 -1px 0px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 0px rgba(255, 255, 255, 0.25), inset 0 -1px 0px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(0, 0, 0, 0.25);
 }
-button.btn-prev, button.start-over {
+button.btn-prev {
   background-color: #c9c9c9;
   background-image: -moz-linear-gradient(top, #dddddd, #aaaaaa);
   background-image: -ms-linear-gradient(top, #dddddd, #aaaaaa);
