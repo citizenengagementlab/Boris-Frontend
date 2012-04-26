@@ -671,8 +671,8 @@ p.tooltip  > a {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2f2f2', endColorstr='#cccccc', GradientType=0);
 }
 p.tooltip  > span {
+  display: none;
   background-color: #ecf6fb;
-  display: block;
   min-height: 30px;
   position: absolute;
   left: 30px;
