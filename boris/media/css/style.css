@@ -450,6 +450,7 @@ form ul li.buttons {
 }
 form ul li.form-action {
   margin-bottom: 0px;
+  width: 240px;
 }
 .address-change > h2,
 #previous_name > h2,
