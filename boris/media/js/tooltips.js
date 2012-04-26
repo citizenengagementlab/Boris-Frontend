@@ -1,29 +1,17 @@
 /* JS for Tooltip behavior */
 
-
-// State Requirements forms
-
 $("document").ready(function() {
-
-//Hide tooltips on ready
-
-
-
-/*
-	$(".tooltip > a").hover(function() {
-		$(this).next().show();
-		}, function() { $(this).next().hide(); 
-	});
-*/
-	
-	$(".tooltip > a").toggle(function(e) {
-		e.stopPropagation();
-		$(this).next().show();
-		$(".tooltip_text").not($(this).next()).hide();
-		}, function() { 
-		$(this).next().hide(); 
-	});
-	$(".tooltip_text").click(function(e) {
-		$(this).toggle();
-	});
+	$(".tooltip > a").on('click',
+		function(e) {
+			e.stopPropagation();
+			$(this).next().show();
+			$(".tooltip > a").not($(this)).next().hide();
+			$('body').on('click',
+				function(e) {
+					$('.tooltip_text:visible').hide();
+					$(this).off('click');
+				});
+			return false;
+		}
+	);
 });
