@@ -77,18 +77,21 @@ validateIDNumber = ($input) ->
 		return false
 
 validateBirthday = ($input) ->
-	if !$input.val()
+	bday = $input.val()
+	if !bday
 		return false
 	else
+		if !bday.match(/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d+$/)
+			return false
 		today    = new Date()
-		birthday = new Date($input.val())
+		birthday = new Date(bday)
 		age      = today.getFullYear() - birthday.getFullYear()
 		m        = today.getMonth() - birthday.getMonth()
 
 		if (m < 0 || (m == 0 && today.getDate() < birthday.getDate()))
 			age--
 
-		if age < 18
+		if age < 17
 			return false
 		else
 			return true
