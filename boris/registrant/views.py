@@ -95,9 +95,12 @@ def submit(request):
     if rtv_response.has_key('error'):
         #something went wrong that wasn't caught in the frontend validation
         #clean up error message for human consumption
-        field_name = rtv_response['error']['field_name'].replace('_',' ').title()
-        message = rtv_response['message'].lower()
-        context['error'] = "%s %s" % (field_name, message)
+        try:
+            field_name = rtv_response['error']['field_name'].replace('_',' ').title()
+            message = rtv_response['error']['message'].lower()
+            context['error'] = "%s %s" % (field_name, message)
+        except KeyError:
+            context['error'] = "Looks like we've gone sideways"
     return render_to_response('submit.html', context, context_instance=RequestContext(request))
     
 def finish(request):
