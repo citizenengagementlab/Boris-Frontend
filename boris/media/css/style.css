@@ -404,7 +404,7 @@ fieldset#get_started > p {
 }
 form ul {
   list-style: none;
-  padding: 10px;
+  padding: 5px 10px;
   margin: 0;
   *zoom: 1;
   position: relative;
@@ -434,12 +434,24 @@ form ul li.checkbox {
   width: 100%;
   position: relative;
 }
+form ul li.emailoptin {
+  width: 230px;
+  clear: none;
+  position: relative;
+  top: 25px;
+}
+form ul li.smsoptin {
+  clear: none;
+  width: 180px;
+  position: relative;
+  top: 18px;
+}
 form ul li.changed_address {
-  width: 240px;
+  width: 150px;
   clear: none;
 }
 form ul li.has_mailing_address {
-  width: 240px;
+  width: 200px;
 }
 form ul li.prev-state,
 form ul li.mailing-state {
@@ -451,7 +463,10 @@ form ul li.mailing-zip {
   width: 70px;
 }
 form ul li.race {
-  width: 240px;
+  width: 210px;
+}
+form ul li.phonetype {
+  width: 70px;
 }
 form ul li.party {
   clear: none;
@@ -487,6 +502,7 @@ legend.visible {
 li.title {
   width: 60px;
   clear: none;
+  margin-right: 0px;
 }
 li.name {
   width: 33%;
@@ -647,7 +663,7 @@ span.citystate {
   color: #222;
   font-weight: bold;
   height: 25px;
-  left: 85px;
+  left: 80px;
   top: 18px;
   line-height: 25px;
   position: absolute;
@@ -717,7 +733,7 @@ p.tooltip  > span {
   color: #000;
   font-size: 11px;
   z-index: 1000;
-  width: 200px;
+  width: 190px;
   -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
@@ -732,13 +748,21 @@ p.tooltip  > span:before {
   left: -24px;
   border-color: transparent #ADD9ED transparent transparent;
 }
+label.checkbox_label,
+li.register_abroad {
+  font-size: 11px;
+}
+li.register_abroad {
+  width: 100px;
+  clear: none;
+}
 p.tooltip_checkbox {
   margin-right: 0px;
   margin-top: -2px;
 }
 p.tooltip_checkbox  > span {
   left: -220px;
-  top: 30px;
+  top: 23px;
 }
 p.tooltip_checkbox  > span:before {
   display: block;

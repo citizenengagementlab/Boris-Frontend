@@ -59,7 +59,7 @@ fieldset#get_started > p {
 
 form ul {
 	list-style: none;
-	padding: 10px;
+	padding: 5px 10px;
 	margin: 0;
 	.clearfix;
 	position:relative;
@@ -77,12 +77,24 @@ form ul {
 		width:100%;
 		position:relative;
 	}
+	li.emailoptin {
+		width:230px;
+		clear: none;
+		position: relative;
+		top: 25px;
+	}
+	li.smsoptin {
+		clear: none;
+		width:180px;
+		position:relative;
+		top:18px;
+	}
 	li.changed_address {
-	width:240px;
+	width:150px;
 	clear:none;
 	}
 	li.has_mailing_address {
-	width:240px;
+	width:200px;
 	}
 	li.prev-state, li.mailing-state {
 		width:150px;
@@ -91,7 +103,10 @@ form ul {
 	li.prev-zip, li.mailing-zip {width:70px;}
 
 	li.race {
-		width:240px;
+		width:210px;
+	}
+	li.phonetype {
+		width:70px;
 	}
 	li.party {
 	clear:none;
@@ -133,6 +148,7 @@ legend.visible {
 li.title {
 	width:60px;
 	clear: none;
+	margin-right:0px;
 }
 li.name {
 	width: 33%
@@ -248,7 +264,7 @@ span.citystate {
 	color: #222;
     font-weight: bold;
     height: 25px;
-    left: 85px;
+    left: 80px;
     top: 18px;
     line-height: 25px;
     position: absolute;
@@ -299,7 +315,7 @@ p.tooltip {
 		color:#000;
 		font-size:11px;
 		z-index:1000;
-		width:200px;
+		width:190px;
 		.box-shadow(2px 2px 2px rgba(0,0,0,.15));
 		&:before {
 			content: "";
@@ -314,12 +330,21 @@ p.tooltip {
 	}
 }
 
+label.checkbox_label, li.register_abroad {
+	font-size: 11px;
+}
+
+li.register_abroad {
+	width:100px;
+	clear:none;
+}
+
 p.tooltip_checkbox {
 	margin-right:0px;
 	margin-top:-2px;
 	& > span {
 		left:-220px;
-		top:30px;
+		top:23px;
 		&:before {
 			display: block;
 			height: 0;
