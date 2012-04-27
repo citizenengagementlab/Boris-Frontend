@@ -22,7 +22,22 @@ showRegistrationForm = () ->
       $("#get_started > ul").slideUp()
       $("#address > ul").slideDown()
 
-
+updateCityState = ($zip) ->
+  $.ajax
+    type: 'get'
+    url: '/usps/zip_lookup/'
+    data:
+      zip: $zip.val()
+    success: (d) ->
+      if (d.state)
+        homeCity = d.city
+        homeState = d.state
+        $("#home_city").val(homeCity)
+        $("#home_state_id").val(homeState).attr('readonly','readonly')
+        text = "#{homeCity}, #{homeState}"
+        $('span.citystate').text(text)
+      else
+        $('span.citystate').text(d.error)
 
 getCityState = (zip) ->
   $.ajax
@@ -35,7 +50,6 @@ getCityState = (zip) ->
       if (d.state != undefined)
         homeCity = d.city
         homeState = d.state
-        #$("#home_zip_code").val(zipCode)
         $("#home_city").val(homeCity)
         $("#home_state_id").val(homeState).attr('readonly','readonly')
       getStateRequirements()

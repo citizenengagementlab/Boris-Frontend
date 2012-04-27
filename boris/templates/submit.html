@@ -15,10 +15,10 @@ $(document).ready(function() {
 	/* force a delay, because we don't know when the API will return... */
 	$('#wait_form').delay(2500).fadeOut();
 	$('#print_form').delay(3000).fadeIn();
-	$('#print_form button[type=submit]').click(function() {
+	$('#print_form button[type=submit] > a').click(function(e) {
 		//opens the pdf in a new window
 		//advance to the thanks page via javascript
-		window.location.href = "/registrants/finish";
+		$(".container").load("/registrants/finish #finish, link");
 	});
 	{%endif%}
 });
