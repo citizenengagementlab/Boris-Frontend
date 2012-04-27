@@ -33,12 +33,16 @@ def save_registrant(request):
         return HttpResponseBadRequest('must post to save_registrant')
     else:
         try:
-            post_data = {'first_name':request.POST['registrant[first_name]'],
-                         'last_name':request.POST['registrant[last_name]'],
-                         'email':request.POST['registrant[email_address]'],
-                         'zip_code':request.POST['registrant[zip_code]']}
+            post_data = {'email':request.POST['registrant[email_address]'],
+                         'zip_code':request.POST['registrant[zip_code]'],
+                         'layout':request.POST['registrant[layout]']}
         except KeyError,e:
             return HttpResponseBadRequest(e)
+        try:
+            post_data.update({'first_name':request.POST['registrant[first_name]'],
+                              'last_name':request.POST['registrant[last_name]']})
+        except KeyError,e:
+            pass
         registrant = Registrant(**post_data)
         registrant.save()
         return HttpResponse('registrant saved')
@@ -90,7 +94,13 @@ def submit(request):
         context['pdfurl'] = rtv_response['pdfurl']
     if rtv_response.has_key('error'):
         #something went wrong that wasn't caught in the frontend validation
-        context['error'] = "The field %(field_name)s is %(message)s" % rtv_response['error']
+        #clean up error message for human consumption
+        try:
+            field_name = rtv_response['error']['field_name'].replace('_',' ').title()
+            message = rtv_response['error']['message'].lower()
+            context['error'] = "%s %s" % (field_name, message)
+        except KeyError:
+            context['error'] = "Looks like we've gone sideways"
     return render_to_response('submit.html', context, context_instance=RequestContext(request))
     
 def finish(request):

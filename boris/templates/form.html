@@ -45,7 +45,8 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 					</li>
 					<li class="form-action">
 						<input type="hidden" name="lang" id="lang_id" value="en" />
-						<input type="submit" data-tab="address" id="get_started_btn" value="Get Started" />
+						<input type="submit" id="get_started_btn" value="Get Started" />
+						<input type="hidden" name="layout" value="{{layout|default:'singlepage'}}" />
 					</li>
 				</ul>
 			</fieldset>
@@ -150,6 +151,9 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 									If you have moved since your last registration, enter your previous address.</span>
 							</p>
 						</label>
+					</li>
+					<li class="register_abroad">
+						<a href="http://overseasvotefoundation.org" target="_blank">Registering Abroad?</a>
 					</li>
 					<fieldset class="mailing"> 
 						<legend class="visible">Mailing Address</legend>
@@ -295,9 +299,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
 						</li>
 					</fieldset>
-					<li class="register_abroad">
-						<a href="http://overseasvotefoundation.org" target="_blank">Registering Abroad?</a>
-					</li>
+				
 				</ul>
 			</fieldset>
 			<fieldset id="personal">
@@ -359,7 +361,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 					</fieldset>
 					<li class="idnumber">
 						<label for="id_number">ID Number
-							<p class="tooltip"><a id="tooltip_id_number">?</a><span class="tooltip_text" id="tooltip_text_id_number"></span></p>
+							<p class="visible_tooltip"><span class="tooltip_text" id="visible_tooltip_text_id_number"></span></p>
 						</label>
 						<input type="text"  name="id_number" id="id_number">
 					</li>
@@ -379,17 +381,17 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 				<ul>
 					<li class="emailaddress">
 						<label for="email_address">Email Address</label>
-						<input type="text" name="email_address" id="email_address" />
+						<input type="text" name="email_address" id="email_address" readonly="readonly"/>
 					</li>
 					<li class="checkbox emailoptin">
-						<label for="opt_in_email">
+						<label class="checkbox_label" for="opt_in_email">
 						<input type="checkbox" name="opt_in_email" id="opt_in_email" checked="checked"/> Receive email updates from Rock the Vote</label>
 					</li>
 					<li class="phonenumber optional">
 						<label for="phone">Phone
 							<p class="tooltip"><a id="tooltip_phone">?</a><span class="tooltip_text" id="tooltip_text_phone">Most states ask for your telephone number in case there are questions about your application. You are not required to provide your phone number.</span></p>
 						</label>
-						<input type="text" name="phone" id="phone" placeholder="123-456-7890"/>
+						<input type="text" name="phone" id="phone" placeholder="323-555-4385"/>
 					</li>
 					<li class="phonetype no_clear">
 						<label for="phone_type">Type</label>
@@ -401,7 +403,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 						</select>
 					</li>
 					<li class="checkbox smsoptin">
-						<label for="opt_in_sms">
+						<label class="checkbox_label" for="opt_in_sms">
 							<input type="checkbox" name="opt_in_sms" id="opt_in_sms" /> Receive text messages from Rock The Vote.
 						</label>
 					</li>
@@ -435,8 +437,9 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 						</select>
 					</li>
 					<li class="checkbox citizen">
-						<label for="us_citizen">
-							<input type="checkbox" name="us_citizen" id="us_citizen"/> I am a US Citizen
+						<label class="checkbox_label" for="us_citizen">
+							<input type="checkbox" name="us_citizen" id="us_citizen" checked="checked"/> I am a US Citizen
+
 						</label>
 					</li>
 					<li class="form-action">

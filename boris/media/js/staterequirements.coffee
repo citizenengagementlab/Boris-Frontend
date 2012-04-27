@@ -99,7 +99,8 @@ getStateRequirements = () ->
       
       ### Handle Help Text ###
       if response.id_number_msg
-        $('#tooltip_text_id_number').text(response.id_number_msg)
+        #$('#tooltip_text_id_number').text(response.id_number_msg)
+        $('#visible_tooltip_text_id_number').text(response.id_number_msg)
       if response.requires_party_msg
         $('#tooltip_text_party').text(response.requires_party_msg)
       if response.requires_race_msg
