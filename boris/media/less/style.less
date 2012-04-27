@@ -285,6 +285,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="button"]), textarea
 
 
 #print { display: none; }
+
 /* Tooltip Styles */
 
 p.tooltip {
@@ -374,6 +375,17 @@ p.tooltip-select {
 			border-color: transparent transparent #ADD9ED transparent;
 			top:-23px;
 		}
+	}
+}
+
+p.visible_tooltip {
+	position:relative;
+	left:200px;
+	& > span {
+		position:absolute;
+		width:250px;
+		font-size:10px;
+		line-height:14px;
 	}
 }
 
