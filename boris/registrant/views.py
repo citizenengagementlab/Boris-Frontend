@@ -33,12 +33,16 @@ def save_registrant(request):
         return HttpResponseBadRequest('must post to save_registrant')
     else:
         try:
-            post_data = {'first_name':request.POST['registrant[first_name]'],
-                         'last_name':request.POST['registrant[last_name]'],
-                         'email':request.POST['registrant[email_address]'],
-                         'zip_code':request.POST['registrant[zip_code]']}
+            post_data = {'email':request.POST['registrant[email_address]'],
+                         'zip_code':request.POST['registrant[zip_code]'],
+                         'layout':request.POST['registrant[layout]']}
         except KeyError,e:
             return HttpResponseBadRequest(e)
+        try:
+            post_data.update({'first_name':request.POST['registrant[first_name]'],
+                              'last_name':request.POST['registrant[last_name]']})
+        except KeyError,e:
+            pass
         registrant = Registrant(**post_data)
         registrant.save()
         return HttpResponse('registrant saved')
