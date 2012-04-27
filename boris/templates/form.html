@@ -41,6 +41,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 							</p>
 						</label>
 						<input type="text"  name="zip_code" id="pre_zip_code" />
+						<span class="citystate"></span>
 					</li>
 					<li class="form-action">
 						<input type="hidden" name="lang" id="lang_id" value="en" />
@@ -65,11 +66,11 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 						</label>
 						<input type="text" name="home_address" id="home_address" />
 					</li>
-					<li class="address_city">
+					<li class="address_city hidden">
 						<label for="home_city">City</label>
 						<input type="hidden" name="home_city" id="home_city" />
 					</li>
-					<li class="no_clear state">
+					<li class="no_clear state hidden">
 						<label for="home_state_id">State
 						</label>
 						<select type="hidden" name="home_state_id" id="home_state_id">
@@ -130,6 +131,7 @@ window.LAYOUT = "{{layout|default:'singlepage'}}";
 					<li class="no_clear zip">
 						<label for="home_zip_code">Zip Code</label>
 						<input type="text"  name="home_zip_code" id="home_zip_code" />
+						<span class="citystate"></span>
 					</li>
 					<li class="checkbox has_mailing_address">
 						<label class="checkbox_label" for="has_different_address">

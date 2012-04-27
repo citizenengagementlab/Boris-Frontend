@@ -430,10 +430,6 @@ form ul li {
 form ul li.zipcode {
   width: 75px;
 }
-form ul li.address_city,
-form ul li.state {
-  display: none;
-}
 form ul li.checkbox {
   width: 100%;
   position: relative;
@@ -639,6 +635,16 @@ input#home_zip_code,
 input#mailing_zip_code,
 input#prev_zip_code {
   width: 50px;
+}
+span.citystate {
+  color: #C10A0A;
+  font-weight: bold;
+  height: 25px;
+  left: 85px;
+  top: 18px;
+  line-height: 25px;
+  position: absolute;
+  width: 200px;
 }
 input:not([type="submit"]):not([type="checkbox"]):not([type="button"]),
 textarea {

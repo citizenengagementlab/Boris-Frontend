@@ -106,6 +106,9 @@ initForm = ->
 					.off('submit')
 					.submit()
 		)
+	$("#pre_zip_code, #home_zip_code").on('change', (e) ->
+			updateCityState($(this))
+		)
 	# Setup Form Submit Events
 	$("form#get_started").submit(
 		(e) ->
