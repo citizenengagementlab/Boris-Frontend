@@ -570,6 +570,10 @@ textarea.error {
 .big-error p {
   margin-top: 10px;
 }
+#email_address {
+  background: #AAA;
+  color: #f0f0f0;
+}
 input[type="submit"],
 input[type="button"],
 button,
