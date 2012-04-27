@@ -36,7 +36,7 @@ def rtv_proxy(method, values, url):
             data = urllib.urlencode(values)
         if settings.DEBUG: print "POST QUERY",data
     
-    if settings.PROXY_CREDENTIALS:
+    if hasattr(settings,'PROXY_CREDENTIALS'):
         #setup a password manager to handle the authentication
         password_manager = urllib2.HTTPPasswordMgrWithDefaultRealm()
         auth_handler = urllib2.HTTPBasicAuthHandler(password_manager)
