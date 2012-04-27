@@ -18,15 +18,15 @@
 }
 
 #download_link {
-	text-decoration:none;
-	font-weight:bold;
+	text-decoration: none;
+	font-weight: bold;
 	font-size: 17px;
-	color:#FFF;
-	width:200px;
-	height:80px;
+	color: #FFF;
+	width: 150px;
+	height: 62px;
 	margin: 30px auto;
-	display:block;
-	text-align:left;
+	display: block;
+	text-align: left;
 	
 }
 .container #print_form p {

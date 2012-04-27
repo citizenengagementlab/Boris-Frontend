@@ -571,8 +571,8 @@ textarea.error {
   margin-top: 10px;
 }
 #email_address {
-  background: #AAA;
-  color: #f0f0f0;
+  background: #DDD;
+  color: #222;
 }
 input[type="submit"],
 input[type="button"],
@@ -644,7 +644,7 @@ input#prev_zip_code {
   width: 50px;
 }
 span.citystate {
-  color: #C10A0A;
+  color: #222;
   font-weight: bold;
   height: 25px;
   left: 85px;
