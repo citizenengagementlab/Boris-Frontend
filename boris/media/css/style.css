@@ -768,6 +768,16 @@ p.tooltip-select  > span:before {
   border-color: transparent transparent #ADD9ED transparent;
   top: -23px;
 }
+p.visible_tooltip {
+  position: relative;
+  left: 200px;
+}
+p.visible_tooltip  > span {
+  position: absolute;
+  width: 250px;
+  font-size: 10px;
+  line-height: 14px;
+}
 button#top_link {
   float: left;
   width: 80px;

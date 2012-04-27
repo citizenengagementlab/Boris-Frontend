@@ -159,10 +159,10 @@ try:
 except:
     #we're on Heroku, sensitive info is in environ
     DEBUG = False
-    PROXY_DOMAIN = "rtvstaging.osuosl.org"
-    PROXY_CREDENTIALS = {'user':os.environ['RTV_USER'],
-                         'password':os.environ['RTV_PASS']}
-    USPS_USERID = os.environ['USPS_USERID']
+    PROXY_DOMAIN = "register.rockthevote.com"
+    #PROXY_CREDENTIALS = {'user':os.environ['RTV_USER'],
+    #                     'password':os.environ['RTV_PASS']}
+    #USPS_USERID = os.environ['USPS_USERID']
     #sendgrid settings
     EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
     EMAIL_HOST= 'smtp.sendgrid.net'
