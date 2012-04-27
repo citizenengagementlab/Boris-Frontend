@@ -698,7 +698,7 @@ initForm = function() {
 };
 
 initPage = function() {
-  $("#registration_form").hide();
+  $("#state_form").addClass("lightbox");
   return $("legend").addClass('visuallyhidden').filter(".visible").removeClass('visuallyhidden');
 };
 

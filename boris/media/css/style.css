@@ -855,3 +855,25 @@ body {
   /* .push must be the same height as .footer */
 
 }
+#state_form.lightbox #get_started {
+  position: relative;
+  z-index: 100;
+  background: #FFF;
+  border-radius: 5px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin: 10px auto;
+}
+#state_form.lightbox:before {
+  background: url('../img/pixel.png') repeat repeat;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin-top: 60px;
+}
