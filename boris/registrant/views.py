@@ -5,6 +5,8 @@ from django.http import HttpResponse,HttpResponseBadRequest
 from proxy.views import rtv_proxy
 from registrant.models import Registrant,RegistrationProgress
 
+from django.db.models import Count
+
 def register(request):
     #determine form layout from get parameter
     layout = request.GET.get('layout')
@@ -101,7 +103,34 @@ def submit(request):
             context['error'] = "%s %s" % (field_name, message)
         except KeyError:
             context['error'] = "Looks like we've gone sideways"
+    context['email_address'] = submitted_form.get("email_address")
     return render_to_response('submit.html', context, context_instance=RequestContext(request))
     
 def finish(request):
     return render_to_response('finish.html',context_instance=RequestContext(request))
+    
+def stats(request):
+    """Gets overall performance statistics by source for a given time period. Defaults to last month."""
+    if not request.user.is_staff:
+            return HttpResponseRedirect('/admin/?next=%s' % request.path)
+    context = {}
+    context['num_started'] = Registrant.objects.all().count()
+    context['num_finished'] = RegistrationProgress.objects.filter(field_name="finished",field_value="True").count()
+    context['avg_fields_completed'] = RegistrationProgress.objects.all().count() / float(Registrant.objects.all().count())
+    
+    started_by_layout_list = Registrant.objects.values('layout').annotate(lcount=Count('id')).order_by()
+    #convert from a list to a dict
+    started_by_layout = {}
+    for l in started_by_layout_list:
+        started_by_layout[l['layout']] = l['lcount']
+    context['started_by_layout'] = started_by_layout
+        
+    finished_by_layout_list = RegistrationProgress.objects.filter(field_name="finished",field_value="True").\
+                                    values('registrant__layout').annotate(lcount=Count('id')).order_by()
+    finished_by_layout = {}
+    for l in finished_by_layout_list:
+        finished_by_layout[l['registrant__layout']] = l['lcount']
+    context['finished_by_layout'] = finished_by_layout
+    
+    return render_to_response("stats.html",
+                   context,RequestContext(request))

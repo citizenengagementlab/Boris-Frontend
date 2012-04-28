@@ -15,7 +15,8 @@ urlpatterns += patterns('',
 
 admin.autodiscover()
 urlpatterns += patterns('',
-    (r'^admin/', include(admin.site.urls)), 
+    (r'^admin/summary_stats', 'registrant.views.stats'),
+    (r'^admin/', include(admin.site.urls)),
 )
 
 if settings.DEBUG:

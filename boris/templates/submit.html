@@ -19,6 +19,15 @@ $(document).ready(function() {
 		//opens the pdf in a new window
 		//advance to the thanks page via javascript
 		$(".container").load("/registrants/finish #finish, link");
+		$.ajax({
+				type:"POST",
+				url: "/registrants/save_progress/",
+				data: {
+					email_address:"{{email_address}}",
+					field_name:"finished",
+					field_value:"True",
+				}
+			});
 	});
 	{%endif%}
 });

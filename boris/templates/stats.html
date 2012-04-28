@@ -1,0 +1,32 @@
+{%extends "admin/base_site.html"%}
+{% load humanize %}
+
+{% block content_title %}
+<h1>OVR tool performance overall statistics</h1>
+<a href="/admin/">&lt;&lt; back to admin</a>
+{%endblock%}
+
+{%block content%}
+<br><br>
+Total registrations started: {{num_started|intcomma}}<br>
+Total registrations finished: {{num_finished|intcomma}}<br>
+Average fields completed per registrant: {{avg_fields_completed}}<br>
+<br>
+By layout:
+<table>
+	<th><td>Single Page</td>
+			<td>Tabs</td>
+			<td>Accordion</td>
+	</th>
+	<tr><td>Started</td>
+			<td>{{started_by_layout.singlepage}}</td>
+			<td>{{started_by_layout.tabs}}</td>
+			<td>{{started_by_layout.accordion}}</td>
+		</tr>
+	<tr><td>Finished</td>
+			<td>{{finished_by_layout.singlepage}}</td>
+			<td>{{finished_by_layout.tabs}}</td>
+			<td>{{finished_by_layout.accordion}}</td>
+		</tr>
+<table>
+{%endblock%}

@@ -15,6 +15,12 @@ class Registrant(models.Model):
     def __unicode__(self):
         return "%s" % (self.email)
     
+    def num_fields(self):
+        return RegistrationProgress.objects.filter(registrant=self).count()
+        
+    def last_field(self):
+        RegistrationProgress.objects.filter(registrant=self).latest().field_name
+    
     class Meta:
         ordering = ['created_at',]
         get_latest_by = 'created_at'
@@ -24,3 +30,9 @@ class RegistrationProgress(models.Model):
     registrant = models.ForeignKey('Registrant')
     field_name = models.CharField(max_length=100)
     field_value = models.CharField(max_length=100)
+    
+    class Meta:
+        get_latest_by = 'created_at'
+    
+    def __unicode__(self):
+        return "%s -> %s" % (self.registrant.email, self.field_name)
