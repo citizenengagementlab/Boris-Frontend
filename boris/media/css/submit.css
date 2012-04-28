@@ -27,7 +27,7 @@
 	margin: 30px auto;
 	display: block;
 	text-align: left;
-	
+	padding:5px;
 }
 .container #print_form p {
 	text-align:center;
