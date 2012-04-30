@@ -38,10 +38,9 @@ validateMailingAddress = function($input) {
     }
     if (!validateZip($('#mailing_zip_code'))) {
       return false;
-    } else {
-      return true;
     }
   }
+  return true;
 };
 
 validateRecentlyMoved = function($input) {
@@ -61,9 +60,8 @@ validateRecentlyMoved = function($input) {
     if (!validateZip($('#prev_zip_code'))) {
       return false;
     }
-  } else {
-    return true;
   }
+  return true;
 };
 
 validateTitle = function($input) {
@@ -88,9 +86,8 @@ validateChangedName = function($input) {
     if (!validateName($('#prev_last_name'))) {
       return false;
     }
-  } else {
-    return true;
   }
+  return true;
 };
 
 validateIDNumber = function($input) {

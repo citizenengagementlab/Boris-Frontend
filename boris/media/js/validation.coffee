@@ -27,8 +27,7 @@ validateMailingAddress = ($input) ->
 			return false
 		if !validateZip $('#mailing_zip_code')
 			return false
-		else
-			true
+	return true
 
 validateRecentlyMoved = ($input) ->
 	if $input.attr("checked") == "checked"
@@ -41,9 +40,7 @@ validateRecentlyMoved = ($input) ->
 			return false
 		if !validateZip $('#prev_zip_code')
 			return false
-	else
-		true
-
+	return true
 validateTitle = ($input) ->
 	return $input.val().length > 0
 
@@ -59,8 +56,7 @@ validateChangedName = ($input) ->
 			return false
 		if !validateName $('#prev_last_name')
 			return false
-	else
-		true
+	return true
 
 validateIDNumber = ($input) ->
 	if ($input.val().toUpperCase() == "NONE" )
