@@ -27,8 +27,8 @@ validateMailingAddress = ($input) ->
 			return false
 		if !validateZip $('#mailing_zip_code')
 			return false
-	else
-		true
+		else
+			true
 
 validateRecentlyMoved = ($input) ->
 	if $input.attr("checked") == "checked"

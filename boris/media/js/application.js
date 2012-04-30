@@ -38,9 +38,9 @@ validateMailingAddress = function($input) {
     }
     if (!validateZip($('#mailing_zip_code'))) {
       return false;
+    } else {
+      return true;
     }
-  } else {
-    return true;
   }
 };
 
