@@ -72,8 +72,8 @@ initForm = ->
 	$(".address-change").hide()
 
 	# Setup click handlers
-	$("#has_different_address").click ->
-	  if $("#has_different_address").is(":checked")
+	$("#has_mailing_address").click ->
+	  if $("#has_mailing_address").is(":checked")
 	    $(".mailing").fadeIn()
 	  else
 	    $(".mailing").fadeOut()

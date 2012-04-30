@@ -375,7 +375,7 @@ validateAddresses = function() {
       }
     },
     mailingAddress: {
-      id: "#has_different_address",
+      id: "#has_mailing_address",
       msg: "Please enter your mailing address information",
       validate: function() {
         return validateMailingAddress($(this.id));
@@ -649,8 +649,8 @@ initForm = function() {
   $(".mailing").hide();
   $("#previous_name").hide();
   $(".address-change").hide();
-  $("#has_different_address").click(function() {
-    if ($("#has_different_address").is(":checked")) {
+  $("#has_mailing_address").click(function() {
+    if ($("#has_mailing_address").is(":checked")) {
       return $(".mailing").fadeIn();
     } else {
       return $(".mailing").fadeOut();
