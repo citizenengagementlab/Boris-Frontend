@@ -26,12 +26,14 @@ header {
 		font-size: 36px;
 		line-height: 60px;
 		font-variant: small-caps;
+		margin-top: 0;
+		padding-top: 0;
 	}
 }
 
 
 .container {
-	width: 564px;
+	width: 545px;
 	.center-block;
 	padding: 10px 20px;
 	box-sizing:border-box;
@@ -104,13 +106,18 @@ form ul {
 	li.prev-zip, li.mailing-zip {width:70px;}
 
 	li.race {
-		width:210px;
+		width:50%;
+		margin: 0;
+		padding: 0;
 	}
 	li.phonetype {
 		width:70px;
 	}
 	li.party {
-	clear:none;
+		clear:none;
+		width:50%;
+		margin: 0;
+		padding: 0;
 	}
 	li.buttons {
 		margin:0px;
@@ -165,7 +172,7 @@ legend {
 .accordion-header  {
 	display: block;
 	padding: 10px;
-	margin: 10px 0;
+	margin: 0 0 2px;
 	border: 1px solid #999;
 	width: 100%;
 	.box-sizing(border-box);
@@ -175,15 +182,16 @@ legend {
 	.text-shadow(0 -1px 0 rgba(0,0,0,.5));	
 	#gradient.vertical(lighten(#AAA,5%), darken(#AAA,5%);
 	text-decoration: none;
-	
+	-webkit-box-shadow: 0 1px rgba(0,0,0,.5), inset 0 1px rgba(255,255,255,.25), inset 0 0 10px rgba(0,0,0,.1);
+	-moz-box-shadow: 0 1px rgba(0,0,0,.5), inset 0 1px rgba(255,255,255,.25), inset 0 0 10px rgba(0,0,0,.1);
+	box-shadow: 0 1px rgba(0,0,0,.5), inset 0 1px rgba(255,255,255,.25), inset 0 0 10px rgba(0,0,0,.1);
 }
 
 footer {
-	border-top: 1px solid #AAA;
-	padding:10px;
 	text-align:center;
 	a {
 		margin-left:20px;
+		line-height: 40px;
 	}
 	span {
 		font-style: italic;
@@ -200,13 +208,17 @@ label {
 }
 
 input, select, textarea {
-	padding: 5px;
 	.box-sizing(border-box);
 	.box-shadow(0 1px 0 rgba(255,255,255,.5));
 	&.error {
 		border: 1px solid #C00 !important;
 	}
 }
+
+input, textarea {
+	padding: 5px;
+}
+
 .error-message {
 	color: #C00;
 }
@@ -466,21 +478,18 @@ http://ryanfait.com/
 
 */
 
-* {
-	margin: 0;
-}
-html, body {
-	height: 100%;
-}
-.wrapper {
-	min-height:100%;
-	height: auto !important;
-	height: 100%;
-	margin: 0 auto -40px; /* the bottom margin is the negative value of the footer's height */
-}
-.footer, .push {
-	height: 40px; /* .push must be the same height as .footer */
-}
+html, body {height: 100%;}
+
+.wrapper {min-height: 100%;}
+
+.container {overflow:auto;
+	padding-bottom: 40px;}  /* must be same height as the footer */
+
+.footer {position: relative;
+	margin-top: -40px; /* negative value of footer height */
+	height: 40px;
+	clear:both;} 
+
 
 #state_form.lightbox {
 	#get_started {

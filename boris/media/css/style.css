@@ -373,9 +373,11 @@ header h1 {
   font-size: 36px;
   line-height: 60px;
   font-variant: small-caps;
+  margin-top: 0;
+  padding-top: 0;
 }
 .container {
-  width: 564px;
+  width: 545px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -464,13 +466,18 @@ form ul li.mailing-zip {
   width: 70px;
 }
 form ul li.race {
-  width: 210px;
+  width: 50%;
+  margin: 0;
+  padding: 0;
 }
 form ul li.phonetype {
   width: 70px;
 }
 form ul li.party {
   clear: none;
+  width: 50%;
+  margin: 0;
+  padding: 0;
 }
 form ul li.buttons {
   margin: 0px;
@@ -516,7 +523,7 @@ legend {
 .accordion-header {
   display: block;
   padding: 10px;
-  margin: 10px 0;
+  margin: 0 0 2px;
   border: 1px solid #999;
   width: 100%;
   -webkit-box-sizing: border-box;
@@ -540,14 +547,16 @@ legend {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7b7b7', endColorstr='#9d9d9d', GradientType=0);
   text-decoration: none;
+  -webkit-box-shadow: 0 1px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.25), inset 0 0 10px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.25), inset 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.25), inset 0 0 10px rgba(0, 0, 0, 0.1);
 }
 footer {
-  border-top: 1px solid #AAA;
-  padding: 10px;
   text-align: center;
 }
 footer a {
   margin-left: 20px;
+  line-height: 40px;
 }
 footer span {
   font-style: italic;
@@ -562,7 +571,6 @@ label {
 input,
 select,
 textarea {
-  padding: 5px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -574,6 +582,10 @@ input.error,
 select.error,
 textarea.error {
   border: 1px solid #C00 !important;
+}
+input,
+textarea {
+  padding: 5px;
 }
 .error-message {
   color: #C00;
@@ -876,26 +888,25 @@ Sticky Footer by Ryan Fait
 http://ryanfait.com/
 
 */
-* {
-  margin: 0;
-}
 html,
 body {
   height: 100%;
 }
 .wrapper {
   min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -40px;
-  /* the bottom margin is the negative value of the footer's height */
-
 }
-.footer,
-.push {
-  height: 40px;
-  /* .push must be the same height as .footer */
+.container {
+  overflow: auto;
+  padding-bottom: 40px;
+}
+/* must be same height as the footer */
+.footer {
+  position: relative;
+  margin-top: -40px;
+  /* negative value of footer height */
 
+  height: 40px;
+  clear: both;
 }
 #state_form.lightbox #get_started {
   position: relative;
