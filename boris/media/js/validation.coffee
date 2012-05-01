@@ -264,7 +264,7 @@ validateAddresses = ->
 			msg: "Please enter a 5 digit zip code"
 			validate: -> validateZip($(@.id))
 		mailingAddress:
-			id: "#has_different_address"
+			id: "#has_mailing_address"
 			msg: "Please enter your mailing address information"
 			validate: -> validateMailingAddress($(@.id))
 		prevAddress:

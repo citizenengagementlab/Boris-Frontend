@@ -51,13 +51,13 @@ form div.button {
 }
 
 .share {
-  width: 540px;
+  width: 350px;
   margin: 0px auto 40px auto;
   overflow: hidden;
 }
 
 .share div {
-  width: 33%;
+  width: 50%;
   float: left;
   text-align: center;
 }

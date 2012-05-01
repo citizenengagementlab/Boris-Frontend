@@ -4,8 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/submit.css" />
 {%endblock styles%}
 
-{%block content%}
-
+{%block scripts%}
 <script type="text/javascript">
 $(document).ready(function() {
 	{%if error%}
@@ -32,7 +31,9 @@ $(document).ready(function() {
 	{%endif%}
 });
 </script>
+{%endblock%}
 
+{%block content%}
 <section id="wait_form">
 <img src="http://s3.amazonaws.com/register2.rockthevote.com/img/big-spinner.gif" class="spinner">
 <h1>Please wait while we generate your registration form</h1>
