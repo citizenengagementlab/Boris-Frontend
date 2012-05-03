@@ -28,5 +28,10 @@ By layout:
 			<td>{{finished_by_layout.tabs}}</td>
 			<td>{{finished_by_layout.accordion}}</td>
 		</tr>
+	<tr><td>Completion Rate</td>
+			<td>{{percent_by_layout.singlepage|floatformat}}%</td>
+			<td>{{percent_by_layout.tabs|floatformat}}%</td>
+			<td>{{percent_by_layout.accordion|floatformat}}%</td>
+		</tr>
 <table>
 {%endblock%}

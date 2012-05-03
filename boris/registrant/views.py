@@ -132,5 +132,18 @@ def stats(request):
         finished_by_layout[l['registrant__layout']] = l['lcount']
     context['finished_by_layout'] = finished_by_layout
     
+    percent_by_layout = {}
+    for l in ['singlepage','accordion','tabs']:
+        try:
+            finished = finished_by_layout[l]
+        except KeyError:
+            finished = 0
+        try:
+            started = started_by_layout[l]
+        except KeyError:
+            started = 0
+        percent_by_layout[l] = 100*finished/float(started)
+    context['percent_by_layout'] = percent_by_layout
+    
     return render_to_response("stats.html",
                    context,RequestContext(request))
