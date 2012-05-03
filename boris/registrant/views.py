@@ -1,11 +1,11 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
 from django.http import HttpResponse,HttpResponseBadRequest
+from django.db.models import Count
 
 from proxy.views import rtv_proxy
 from registrant.models import Registrant,RegistrationProgress
-
-from django.db.models import Count
+import json
 
 def register(request):
     #determine form layout from get parameter
@@ -113,6 +113,8 @@ def stats(request):
     """Gets overall performance statistics by source for a given time period. Defaults to last month."""
     if not request.user.is_staff:
             return HttpResponseRedirect('/admin/?next=%s' % request.path)
+    layouts = ['singlepage','accordion','tabs']
+            
     context = {}
     context['num_started'] = Registrant.objects.all().count()
     context['num_finished'] = RegistrationProgress.objects.filter(field_name="finished",field_value="True").count()
@@ -133,7 +135,7 @@ def stats(request):
     context['finished_by_layout'] = finished_by_layout
     
     percent_by_layout = {}
-    for l in ['singlepage','accordion','tabs']:
+    for l in layouts:
         try:
             finished = finished_by_layout[l]
         except KeyError:
@@ -144,6 +146,17 @@ def stats(request):
             started = 0
         percent_by_layout[l] = 100*finished/float(started)
     context['percent_by_layout'] = percent_by_layout
+    
+    progress = {}
+    for l in layouts:
+        p_d = {}
+        p_l = RegistrationProgress.objects.filter(registrant__layout=l).\
+                        values('field_name').annotate(n=Count('id')).order_by()
+        for p in p_l:
+            p_d[p['field_name']] = p['n']
+        progress[l] = p_d
+    context['progress_by_layout'] = progress.items()
+    context['layouts'] = layouts
     
     return render_to_response("stats.html",
                    context,RequestContext(request))

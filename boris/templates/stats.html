@@ -34,4 +34,14 @@ By layout:
 			<td>{{percent_by_layout.accordion|floatformat}}%</td>
 		</tr>
 <table>
+
+<script type="text/javascript">
+{% for l,p in progress_by_layout%}
+	var progress_{{l}} = eval({% templatetag openbrace %}{%for k,v in p.items%}{{k}}:{{v}}{%if not forloop.last%},{%endif%}{%endfor%}{% templatetag closebrace %});
+{%endfor%}
+
+console.log(progress_tabs);
+console.log(progress_singlepage);
+console.log(progress_accordion);
+</script>
 {%endblock%}
