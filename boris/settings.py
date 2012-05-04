@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     #3rd party packages for deployment
     'storages',
     'gunicorn',
+    'django_evolution',
     #internal apps
     'registrant',
     'proxy',

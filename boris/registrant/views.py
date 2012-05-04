@@ -116,18 +116,19 @@ def stats(request):
     layouts = ['singlepage','accordion','tabs']
             
     context = {}
-    context['num_started'] = Registrant.objects.all().count()
+    context['num_started'] = Registrant.objects.filter(ignore=False).count()
     context['num_finished'] = RegistrationProgress.objects.filter(field_name="finished",field_value="True").count()
-    context['avg_fields_completed'] = RegistrationProgress.objects.all().count() / float(Registrant.objects.all().count())
+    context['avg_fields_completed'] = RegistrationProgress.objects.filter(registrant__ignore=False).\
+                                        count() / float(Registrant.objects.filter(ignore=False).count())
     
-    started_by_layout_list = Registrant.objects.values('layout').annotate(lcount=Count('id')).order_by()
+    started_by_layout_list = Registrant.objects.filter(ignore=False).values('layout').annotate(lcount=Count('id')).order_by()
     #convert from a list to a dict
     started_by_layout = {}
     for l in started_by_layout_list:
         started_by_layout[l['layout']] = l['lcount']
     context['started_by_layout'] = started_by_layout
         
-    finished_by_layout_list = RegistrationProgress.objects.filter(field_name="finished",field_value="True").\
+    finished_by_layout_list = RegistrationProgress.objects.filter(registrant__ignore=False,field_name="finished",field_value="True").\
                                     values('registrant__layout').annotate(lcount=Count('id')).order_by()
     finished_by_layout = {}
     for l in finished_by_layout_list:
@@ -150,7 +151,7 @@ def stats(request):
     progress = {}
     for l in layouts:
         p_d = {}
-        p_l = RegistrationProgress.objects.filter(registrant__layout=l).\
+        p_l = RegistrationProgress.objects.filter(registrant__ignore=False,registrant__layout=l).\
                         values('field_name').annotate(n=Count('id')).order_by()
         for p in p_l:
             p_d[p['field_name']] = p['n']

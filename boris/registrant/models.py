@@ -11,6 +11,7 @@ class Registrant(models.Model):
     email = models.EmailField()
     zip_code = models.CharField(max_length=10)
     layout = models.CharField(choices=LAYOUT_CHOICES,max_length=10)
+    #ignore = models.BooleanField(default=False)
     
     def __unicode__(self):
         return "%s" % (self.email)
