@@ -121,8 +121,8 @@ def stats(request):
     context['avg_fields_completed'] = RegistrationProgress.objects.filter(registrant__ignore=False).distinct('registrant__email').\
                                         count() / float(Registrant.objects.filter(ignore=False).count())
     
-    started_by_layout_list = Registrant.objects.filter(ignore=False).distinct('email').\
-                                values('layout').annotate(lcount=Count('id')).order_by()
+    started_by_layout_list = Registrant.objects.filter(ignore=False).values('layout').\
+                                annotate(lcount=Count('id')).order_by()
     #convert from a list to a dict
     started_by_layout = {}
     for l in started_by_layout_list:
