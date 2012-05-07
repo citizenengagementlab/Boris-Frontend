@@ -118,8 +118,8 @@ def stats(request):
     context = {}
     context['num_started'] = Registrant.objects.filter(ignore=False).distinct('email').count()
     context['num_finished'] = RegistrationProgress.objects.filter(field_name="finished",field_value="True").count()
-    context['avg_fields_completed'] = RegistrationProgress.objects.filter(registrant__ignore=False).distinct('registrant__email').\
-                                        count() / float(Registrant.objects.filter(ignore=False).count())
+    context['avg_fields_completed'] = RegistrationProgress.objects.filter(registrant__ignore=False).\
+                    count() / float(Registrant.objects.filter(ignore=False).distinct('email').count())
     
     started_by_layout_list = Registrant.objects.filter(ignore=False).values('layout').\
                                 annotate(lcount=Count('id')).order_by()
