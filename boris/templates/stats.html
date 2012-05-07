@@ -4,8 +4,32 @@
 {% block content_title %}
 <h1>OVR tool performance overall statistics</h1>
 <a href="/admin/">&lt;&lt; back to admin</a>
-{%endblock%}
 
+{%endblock%}
+{% block extrahead %}	
+
+	<style type="text/css">
+	#graph_all, #graph_singlepage, #graph_tabbed, #graph_accordion {
+	width:4000px;
+	height:500px;
+	margin: 0 auto;
+	box-shadow: 0px -1px 1px #000;
+}
+
+p, h1 {
+	text-align:center;
+}
+	
+	
+	</style>
+	
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.flot.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/graph.js"></script>
+	
+
+	
+{% endblock %}
 {%block content%}
 <br><br>
 Total registrations started: {{num_started|intcomma}}<br>
@@ -34,6 +58,17 @@ By layout:
 			<td>{{percent_by_layout.accordion|floatformat}}%</td>
 		</tr>
 <table>
+
+  <h1>Rocky data analysis</h1>
+    <h2>All</h2>
+    <div id="graph_all"></div>
+	<h2>Single Page</h2>
+    <div id="graph_singlepage"></div>
+    <h2>Tabbed Page</h2>
+    <div id="graph_tabbed"></div>
+    <h2>Accordion Page</h2>
+    <div id="graph_accordion"></div>
+
 
 <script type="text/javascript">
 {% for l,p in progress_by_layout%}
