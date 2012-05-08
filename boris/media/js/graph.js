@@ -76,8 +76,12 @@ $(function() {
 	    		align: 'center'},
 	    },		
 	    xaxis: { 
-	    	ticks: ticks
-	    		}
+	    	ticks: ticks,
+	    },
+			yaxis: {
+				min:0,
+				max:1
+			}
 	  }   
 	  
 	var allData = [singleData, tabbedData, accordionData];
@@ -86,7 +90,7 @@ $(function() {
     var allPlot = $("#graph_all");  
     $.plot( allPlot , allData, options )   
     
-    var singlePlot = $("#graph_singlepage");  
+   /* var singlePlot = $("#graph_singlepage");  
     $.plot( singlePlot , [singleData], options )   
     
     var tabbedPlot = $("#graph_tabbed");  
@@ -94,7 +98,7 @@ $(function() {
     
     var accordionPlot = $("#graph_accordion");  
     $.plot( accordionPlot , [accordionData] , options ) 
-    
+    */
     //Settings 
 
 

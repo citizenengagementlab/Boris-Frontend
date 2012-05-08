@@ -158,7 +158,10 @@ def stats(request):
         p_l = RegistrationProgress.objects.filter(registrant__ignore=False,registrant__layout=l).\
                         values('field_name').annotate(n=Count('id')).order_by()
         for p in p_l:
-            p_d[p['field_name']] = p['n']
+            try:
+                p_d[p['field_name']] = p['n'] / float(started_by_layout[l])
+            except ZeroDivisionError:
+                p_d[p['field_name']] = 0
         progress[l] = p_d
     context['progress_by_layout'] = progress.items()
     context['layouts'] = layouts

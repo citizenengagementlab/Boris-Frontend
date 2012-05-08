@@ -10,14 +10,24 @@
 
 	<style type="text/css">
 	#graph_all, #graph_singlepage, #graph_tabbed, #graph_accordion {
-	width:1000px;
-	height:200px;
+	width:800px;
+	height:400px;
 	margin: 0 auto;
 	box-shadow: 0px -1px 1px #000;
 }
 
 p, h1 {
 	text-align:center;
+}
+
+#graph_all .xAxis > .tickLabel 
+{
+    margin-top:100px;
+    text-align:right !important;
+    -moz-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg);
+    -webkit-transform:rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 	
 	
@@ -59,15 +69,15 @@ By layout:
 		</tr>
 <table>
 
-  <h1>Rocky data analysis</h1>
+  <h1>Form field progress chart</h1>
     <h2>All</h2>
     <div id="graph_all"></div>
-	<h2>Single Page</h2>
+    <!--<h2>Single Page</h2>
     <div id="graph_singlepage"></div>
     <h2>Tabbed Page</h2>
     <div id="graph_tabbed"></div>
     <h2>Accordion Page</h2>
-    <div id="graph_accordion"></div>
+    <div id="graph_accordion"></div>-->
 
 
 <script type="text/javascript">
