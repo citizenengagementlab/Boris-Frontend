@@ -5,6 +5,7 @@ from django.conf import settings
 urlpatterns = patterns('boris.views',
     (r'^$', 'frontpage'),
     (r'^rtv_iframe_test/$', 'rtv_iframe_test'),
+    (r'^mockup/$', 'mockup'),
 )
 
 urlpatterns += patterns('',

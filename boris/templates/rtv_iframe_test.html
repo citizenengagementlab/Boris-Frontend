@@ -398,6 +398,7 @@ function getValue(varsource)
 
 </div>
 
+{%block iframe%}
 <script type="text/javascript">
 var source = getValue("source");
 document.open();
@@ -411,6 +412,7 @@ document.write ('<iframe src="/registrants/new/?layout='+l+'" width="604" height
 {%endif%}
 document.close();
 </script> 
+{%endblock%}
 
 <P>Don't miss out on the elections. Fill out the voter registration form&nbsp;above so that you will be eligible to vote. It only takes a few minutes to register to vote.</P>
 <P>&nbsp;</P>
