@@ -1,0 +1,91 @@
+@charset "utf-8"
+@import "compass"
+
+$legacy-support-for-ie: true
+$experimental-support-for-opera: true
+$experimental-support-for-khtml: false
+
+@mixin user-select($select)
+  $select: unquote($select)
+  // Mozilla needs prefix on both the -moz-property and the -moz-value
+  @include experimental(user-select, -moz-#{$select}, -moz, not -webkit, not -o, not -ms, not -khtml, not official)
+  // others do not
+  @include experimental(user-select, $select, not -moz, -webkit, not -o, not -ms, -khtml, official)
+
+
+@mixin image-background($path)
+  background-image: image-url($path)
+  background-size: image-width($path) image-height($path)
+
+@mixin image-size($path)
+  width: image-width($path)
+  height: image-height($path)
+
+@mixin image-element($path)
+  +image-size($path)
+  +image-background($path)
+
+@mixin icon-element($path)
+  display: inline-block
+  +image-element($path)
+  background-position: 50% 50%
+  background-repeat: no-repeat
+
+@mixin after-image($path, $padding: 10px, $top: 0, $right: 0)
+  position: relative
+  padding-right: $padding + image-width($path)
+
+  &:after
+    content: " "
+    display: block
+    position: absolute
+    top: $top
+    right: $right
+    width: image-width($path)
+    height: 100%
+    background: no-repeat right center
+    +image-background($path)
+
+@mixin before-image($path, $padding: 10px, $top: 0, $left: 0)
+  position: relative
+  padding-left: $padding + image-width($path)
+
+  &:before
+    content: " "
+    display: block
+    position: absolute
+    top: $top
+    left: $left
+    width: image-width($path)
+    height: 100%
+    background: no-repeat left center
+    +image-background($path)
+
+@mixin button-icon($path)
+  &:after
+    content: " "
+    display: block
+    margin: 0 auto
+    width: image-width($path)
+    height: 100%
+    background: no-repeat center center
+    +image-background($path)
+
+@mixin button-text-icon($path)
+  &:before
+    content: " "
+    display: inline-block
+    width: image-width($path)
+    height: image-height($path)
+    margin: -3px 4px 0 0
+    vertical-align: middle
+    background: no-repeat center center
+    +image-background($path)
+
+@mixin set-tap-highlight()
+  -webkit-tap-highlight-color: rgba(90,90,90, 0.5)
+
+@mixin clear-tap-highlight()
+  // Android MUST be transparent white. Anything else fails to blow away the focus box
+  -webkit-tap-highlight-color: rgba(255,255,255,0)
+

@@ -1,0 +1,290 @@
+$blueprint-grid-columns: 24
+$blueprint-grid-width: 8px
+$blueprint-grid-margin: 16px
+
+@import "base"
+@import "blueprint"
+
+$link-color:         #707070
+$link-hover-color:   #707070
+$link-focus-color:   false
+$link-active-color:  false
+$link-visited-color: false
+
+
+$font-color: #797979
+$base-font-size: 15px
+$base-line-height: 1.4em
+
+
+
+$helvetica-font-family: "Helvetica Neue", Helvetica, sans-serif
+$lucida-font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif
+
+$font-stack: normal normal normal 11px/1.4em $lucida-font-family
+
+$input-font-stack: normal normal normal 15px/16px $lucida-font-family
+$input-height: 30px
+$input-border-color: #bebebe
+$input-border-radius: 4px
+
+$input-focus-border-color: #67c6fd
+
++global-reset
++blueprint-grid
+
+html, body
+  height: 100%
+
+body
+  font: $font-stack
+  color: $font-color
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  background: image_url("bg.jpg") repeat 0 0
+
+a
+  +link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color)
+
+#header
+  height: 60px
+  line-height: 60px
+  text-align: center
+  color: white
+  text-shadow: 0 -1px 1px black
+  border-bottom: 1px solid #676766
+  background-color: #353535
+  +background-image(linear-gradient(top, #464646 0%, #313131 100%))
+
+  > h1
+    font:
+      family: $helvetica-font-family
+      size: 24px
+      weight: bold
+
+#main
+  position: relative
+  min-height: 100%
+  width: 600px
+  padding: 0 0 80px // approx footer height
+  margin: 0 auto
+
+#footer
+  position: absolute
+  bottom: 0
+  width: 100%
+  padding: 4px 0 18px
+  color: #818181
+  text-shadow: 0 1px 0 white
+  text-align: center
+  background-color: #e4e4e4
+  +box-shadow(inset 0 1px 2px rgba(0,0,0,0.3))
+
+  p
+    font:
+      family: Georgia, serif
+      style: italic
+      size: 13px
+
+    > a
+      position: relative
+      top: 2px
+      left: 2px
+      display: inline-block
+      vertical-align: bottom
+      text-indent: -9999em
+      +image-element("footer-logo.png")
+
+
+  nav
+    margin: 12px 0 0 0
+
+    > a
+      padding: 1px 8px
+      text-transform: uppercase
+      color: #818181
+      border:
+        width: 0 1px
+        style: solid
+        color: transparent #cccccc transparent #f0f0f0
+
+      &:first-child
+        border-left: none
+
+      &:last-child
+        border-right: none
+
+.input-focus
+  outline: none
+  border-color: $input-focus-border-color
+  +box-shadow(0 0 0 1px $input-focus-border-color)
+
+
+.input-placeholder
+  color: #d5d5d5
+
+input,
+textarea,
+select
+  font: $input-font-stack
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+input[type="tel"],
+textarea,
+  +box-sizing(border-box)
+  height: $input-height
+  width: 100%
+  margin: 0
+  padding: 6px 8px
+  color: black
+  border: 1px solid $input-border-color
+  +border-radius($input-border-radius)
+
+  &:focus
+    @extend .input-focus
+
+  &.placeholder, &:-moz-placeholder, &::-webkit-input-placeholder
+    @extend .input-placeholder
+
+input[type="file"]
+  margin: 0
+
+textarea
+  display: block
+  height: auto
+  min-height: $input-height
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  +appearance(none)
+  margin: 0
+
+select
+  position: relative
+  +appearance(none)
+  +box-sizing(border-box)
+  height: $input-height
+  width: 100%
+  margin: 0
+  padding: 6px 18px 6px 8px
+  vertical-align: bottom
+  color: black
+  background-color: white
+  border: 1px solid $input-border-color
+  +border-radius($input-border-radius)
+
+  &:focus
+    @extend .input-focus
+
+.select-wrap
+  position: relative
+
+  &:after
+    content: " "
+    display: block
+    position: absolute
+    top: 0px
+    right: 8px
+    width: image-width("select-arrow.png")
+    height: 100%
+    background: no-repeat right center
+    +image-background("select-arrow.png")
+
+
+fieldset
+  +container
+  overflow: visible
+  border:
+    width: 1px 0
+    style: solid
+    color: transparent transparent #e7e7e7
+  padding: 14px 20px 12px
+  +transition-property("border-color background-color")
+  +transition-duration(0.3s)
+
+  &:last-child
+    border-bottom: none
+
+  &.active
+    border-color: #c8c2b2
+    background: #fef6df
+    +box-shadow(inset 0 1px 0 #fffaee, 0 1px 0 #e1e0e0)
+
+    label
+      color: #797569
+
+
+.input
+  margin-bottom: 12px
+
+  > label
+    display: block
+    margin: 0 0 6px
+    font:
+      family: $helvetica-font-family
+      size: 15px
+      weight: bold
+
+  &.focus
+
+    > label
+      color: black
+
+
+  &.checkbox
+    margin-bottom: 0
+
+    > label
+      display: inline
+      font:
+        family: $lucida-font-family
+        size: 11px
+        weight: bold
+
+
+.button
+  padding: 8px 22px
+  -webkit-font-smoothing: antialiased
+  font:
+    family: $helvetica-font-family
+    size: 22px
+    weight: bold
+  color: #f5fbf7
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.4)
+  border: 1px solid #2c7042
+  +border-radius(4px)
+  background-color: #43ab64
+  +background-image(linear-gradient(top, #47b36a 0%, #3a9457 100%))
+  +box-shadow(inset 0 1px 0 #61d292, 0 1px 0 rgba(0,0,0,0.1))
+  +after-image("button-check-icon.png", 36px, 0, 16px)
+
+
+
+
+// 
+// Individual elements/components ----------
+// 
+
+.incorrect-location
+  float: right
+  margin: 0 2px 0 0
+  color: #1e75d2
+  font-weight: bold
+  +before-image("location-icon.png", 3px, 1px)
+
+.id-number
+  position: relative
+
+.id-number-hint-icon
+  position: absolute
+  top: 27px
+  right: 8px
+  +icon-element("input-help-icon.png")
+
+

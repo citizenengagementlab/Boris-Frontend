@@ -1,0 +1,124 @@
+- content_for :head do
+  title Voter Registration
+
+
+- form_tag "/register", :class => "registration-form", :method => "post" do
+
+  - field_set_tag do
+
+    .row
+      .input.span-12
+        == label_tag :street_address
+        == text_field_tag :street_address, :tabindex => 1
+
+      .input.span-12.last
+        == link_to "Incorrect Location?", "#", :class => "incorrect-location"
+        == label_tag :zip_code
+        == text_field_tag :zip_code, :tabindex => 2
+
+    .row
+      .span-6
+        == link_to "Registering Abroad?", "#"
+
+      .checkbox.span-10
+        == check_box_tag :mailing_address, :tabindex => 3
+        == label_tag :mailing_address, :caption => "I have a different mailing address"
+
+      .checkbox.span-8.last
+        == check_box_tag :recent_move, :tabindex => 4
+        == label_tag :recent_move, :caption => "I have recently moved"
+
+
+  - field_set_tag do
+
+    .row
+      .input.span-4
+        == label_tag :title
+
+        .select-wrap
+          == select_tag :title, :options => ['Mr.', 'Ms.', 'Mrs.', 'Dr.'], :tabindex => 5
+
+      .input.span-8
+        == label_tag :first_name
+        == text_field_tag :first_name, :tabindex => 6
+
+      .input.span-8
+        == label_tag :last_name
+        == text_field_tag :last_name, :tabindex => 7
+
+      .input.span-4.last
+        == label_tag :suffix
+
+        .select-wrap
+          == select_tag :suffix, :options => ['', 'Esq.'], :tabindex => 8
+
+    .row
+      .input.checkbox.span-8
+        == check_box_tag :us_citizen, :tabindex => 9
+        == label_tag :us_citizen, :caption => "I am a U.S. Citizen"
+
+      .input.checkbox.span-16.last
+        == check_box_tag :name_change, :tabindex => 10
+        == label_tag :name_change, :caption => "I have recently changed my name"
+
+
+  - field_set_tag do
+
+    .row
+      .input.span-16.id-number
+        == label_tag :id_number, :caption => "ID Number"
+        == text_field_tag :id_number, :tabindex => 11
+        .id-number-hint-icon
+
+      .input.span-8.last
+        == label_tag :birthdate
+        == text_field_tag :birthdate, :placeholder => "MM/DD/YY", :tabindex => 12
+
+    .row
+      .input.span-12
+        == label_tag :email_address
+        == text_field_tag :email_address, :tabindex => 13
+
+      .input.span-7
+        == label_tag :phone_number
+        == text_field_tag :phone_number, :tabindex => 14
+
+      .input.span-5.last
+        == label_tag :phone_type, :caption => "Type"
+
+        .select-wrap
+          == select_tag :phone_type, :options => ["Home", "Work", "Mobile"], :tabindex => 15
+
+  - field_set_tag do
+
+    .input.span-12
+      == label_tag :political_party
+
+      .select-wrap
+        == select_tag :political_party, :tabindex => 15
+
+    .input.span-12.last
+      == label_tag :race_or_ethnic_group
+
+      .select-wrap
+        == select_tag :race_or_ethnic_group, :tabindex => 16
+
+
+  - field_set_tag :class => :submit do
+
+    .input.checkbox
+      == check_box_tag :email_rtv, :tabindex => 17
+      == label_tag :email_cel, :caption => "Receive Email Updates from Rock The Vote"
+
+    .input.checkbox
+      == check_box_tag :sms_rtv, :tabindex => 18
+      == label_tag :email_cel, :caption => "Receive Texts from Rock The Vote"
+
+    .input.checkbox
+      == check_box_tag :email_cel, :tabindex => 19
+      == label_tag :email_cel, :caption => "Receive Emails from CEL"
+
+    button.button.button-primary type="submit" tabindex="20" Register
+
+
+
