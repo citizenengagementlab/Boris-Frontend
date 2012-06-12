@@ -265,6 +265,32 @@ fieldset
   +after-image("button-check-icon.png", 36px, 0, 16px)
 
 
+.fake-checkbox-wrap
+  display: inline-block
+  position: relative
+  margin: 0 6px 0 0
+  vertical-align: bottom
+
+  > .fake-checkbox
+    +box-sizing(border-box)
+    width: 16px
+    height: 16px
+    background-color: #fafafa
+    +background-image(linear-gradient(top, #ffffff 0%, #f6f6f6 100%))
+    border: 1px solid #a4acb0
+    +border-radius(4px)
+
+    &.checked
+      +after-image("checkbox-icon.png", 0, 0, -4px)
+      padding-right: 0
+
+  > input
+    position: absolute
+    z-index: 3
+    top: 0
+    left: 0
+    +opacity(0)
+
 
 
 // 
@@ -286,5 +312,51 @@ fieldset
   top: 27px
   right: 8px
   +icon-element("input-help-icon.png")
+
+.id-number-hint
+  visibility: hidden
+  +opacity(0)
+  position: absolute
+  padding: 8px 12px
+  font:
+    size: 11px
+    weight: bold
+  line-height: 16px
+  color: #9c9c9c
+  background: #393939
+  +transition-property(all)
+  +transition-duration(0.2s)
+
+  &:after
+    content: " "
+    display: block
+    position: absolute
+    top: -5px
+    right: 12px
+    width: 10px
+    height: 10px
+    background: #393939
+    +rotate(45deg)
+
+  .hint-open &
+    visibility: visible
+    +opacity(1)
+    +translateY(8px)
+
+fieldset.submit
+  > .inputs
+    float: left
+
+    > .input
+      margin: 0 0 4px
+
+      > input
+        margin: 0 9px 0 0
+
+      > label
+        font-size: 12px
+
+  > .button
+    float: right
 
 

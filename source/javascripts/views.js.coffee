@@ -42,6 +42,12 @@ class Views.FormField extends Backbone.View
 
 
 class Views.ZipCodeFormField extends Views.FormField
-  initialize: ->
 
+
+class Views.IdNumberFormField extends Views.FormField
+  events:
+    "click .id-number-hint-icon": "toggleHint"
+
+  toggleHint: ->
+    @$el.toggleClass "hint-open"
 

@@ -20,11 +20,11 @@
       .span-6
         == link_to "Registering Abroad?", "#"
 
-      .checkbox.span-10
+      .input.checkbox.span-10
         == check_box_tag :mailing_address, :tabindex => 3
         == label_tag :mailing_address, :caption => "I have a different mailing address"
 
-      .checkbox.span-8.last
+      .input.checkbox.span-8.last
         == check_box_tag :recent_move, :tabindex => 4
         == label_tag :recent_move, :caption => "I have recently moved"
 
@@ -69,6 +69,11 @@
         == label_tag :id_number, :caption => "ID Number"
         == text_field_tag :id_number, :tabindex => 11
         .id-number-hint-icon
+        .id-number-hint
+          | You must provide either your driver's license number or the last four 
+          | digits of your Social Security number. If you have neither a driver's 
+          | license nor a Social Security number, please enter "NONE" and an 
+          | identification number will be assigned to you by the state.
 
       .input.span-8.last
         == label_tag :birthdate
@@ -105,18 +110,18 @@
 
 
   - field_set_tag :class => :submit do
+    .inputs
+      .input.checkbox
+        == check_box_tag :email_rtv, :tabindex => 17
+        == label_tag :email_cel, :caption => "Receive Email Updates from Rock The Vote"
 
-    .input.checkbox
-      == check_box_tag :email_rtv, :tabindex => 17
-      == label_tag :email_cel, :caption => "Receive Email Updates from Rock The Vote"
+      .input.checkbox
+        == check_box_tag :sms_rtv, :tabindex => 18
+        == label_tag :email_cel, :caption => "Receive Texts from Rock The Vote"
 
-    .input.checkbox
-      == check_box_tag :sms_rtv, :tabindex => 18
-      == label_tag :email_cel, :caption => "Receive Texts from Rock The Vote"
-
-    .input.checkbox
-      == check_box_tag :email_cel, :tabindex => 19
-      == label_tag :email_cel, :caption => "Receive Emails from CEL"
+      .input.checkbox
+        == check_box_tag :email_cel, :tabindex => 19
+        == label_tag :email_cel, :caption => "Receive Emails from CEL"
 
     button.button.button-primary type="submit" tabindex="20" Register
 
