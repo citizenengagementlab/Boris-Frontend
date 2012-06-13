@@ -11,9 +11,12 @@ $(function(){
     $el.wrap("<div class='fake-checkbox-wrap'></div>")
     $el.parent().append($fake)
 
-    $el.on("change blur focus keyup", function() {
+    var check = function() {
       $fake.toggleClass("checked", $el.prop("checked"));
-    })
+      $fake.toggleClass("focus", document.activeElement == this);
+    }
+
+    $el.on("change blur focus keyup", check);
 
     // $fake.on("click", function(){
     //   $el.prop("checked", !$el.prop("checked")).trigger("change")
