@@ -1,41 +1,8 @@
 
 require 'compass'
 
+Slim::Engine.set_default_options :pretty => true, :tabsize => 2
 
-# Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
-
-
-# Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
-
-###
-# Page command
-###
-
-# Per-page layout changes:
-# 
-# With no layout
-# page "/path/to/file.html", :layout => false
-# 
-# With alternative layout
-# page "/path/to/file.html", :layout => :otherlayout
-# 
-# A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
-
-# Proxy (fake) files
-# page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
-#   @which_fake_page = "Rendering a fake page with a variable"
-# end
-
-###
-# Helpers
-###
 
 # Methods defined in the helpers block are available in templates
 helpers do
