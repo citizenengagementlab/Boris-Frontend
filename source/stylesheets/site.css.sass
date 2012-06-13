@@ -250,6 +250,7 @@ fieldset
 
 .button
   padding: 8px 22px
+  margin: 2px
   -webkit-font-smoothing: antialiased
   font:
     family: $helvetica-font-family
@@ -264,6 +265,19 @@ fieldset
   +box-shadow(inset 0 1px 0 #61d292, 0 1px 0 rgba(0,0,0,0.1))
   +after-image("button-check-icon.png", 36px, 0, 16px)
 
+  &:hover
+    background-color: #43ab64
+    +background-image(linear-gradient(top, #47b36a 0%, #34864f 100%))
+
+  &:active
+    position: relative
+    top: 1px
+    background-color: #43ab64
+    +background-image(linear-gradient(top, #47b46a 0%, #3e9f5d 100%))
+
+
+  &.complete
+    +after-image("button-complete-check-icon.png", 36px, 1px, 16px)
 
 .fake-checkbox-wrap
   display: inline-block
