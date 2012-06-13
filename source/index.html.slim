@@ -72,7 +72,7 @@
         == label_tag :id_number, :caption => "ID Number"
         == text_field_tag :id_number, :tabindex => 11
         .id-number-hint-icon
-        .id-number-hint
+        .id-number-hint.tooltip
           | You must provide either your driver's license number or the last four 
           | digits of your Social Security number. If you have neither a driver's 
           | license nor a Social Security number, please enter "NONE" and an 
@@ -116,11 +116,11 @@
     .inputs
       .input.checkbox
         == check_box_tag :email_rtv, :tabindex => 17
-        == label_tag :email_cel, :caption => "Receive Email Updates from Rock The Vote"
+        == label_tag :email_rtv, :caption => "Receive Email Updates from Rock The Vote"
 
       .input.checkbox
         == check_box_tag :sms_rtv, :tabindex => 18
-        == label_tag :email_cel, :caption => "Receive Texts from Rock The Vote"
+        == label_tag :sms_rtv, :caption => "Receive Texts from Rock The Vote"
 
       .input.checkbox
         == check_box_tag :email_cel, :tabindex => 19
