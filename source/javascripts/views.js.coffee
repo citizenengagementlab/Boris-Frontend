@@ -1,10 +1,5 @@
 @Views ||= {}
 
-class Views.Tooltip extends Backbone.View
-  show: ->
-
-  hide: ->
-
 
 class Views.Form extends Backbone.View
   events:

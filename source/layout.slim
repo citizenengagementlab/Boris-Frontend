@@ -11,7 +11,9 @@ head
 body
   #main role="main"
     header#header
-      h1.container Voter Registration
+      h1.container
+        a.logo == image_tag "logo.png"
+        | Voter Registration
 
     == yield
   
