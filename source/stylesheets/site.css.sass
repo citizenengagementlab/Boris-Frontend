@@ -263,8 +263,8 @@ fieldset
   background-color: #43ab64
   +background-image(linear-gradient(top, #47b36a 0%, #3a9457 100%))
   +box-shadow(inset 0 1px 0 #61d292, 0 1px 0 rgba(0,0,0,0.1))
-  +after-image("button-check-icon.png", 36px, 0, 16px)
-
+  +after-image("button-complete-check-icon.png", 36px, 1px, 16px)
+  
   &:hover
     background-color: #43ab64
     +background-image(linear-gradient(top, #47b36a 0%, #34864f 100%))
@@ -275,9 +275,8 @@ fieldset
     background-color: #43ab64
     +background-image(linear-gradient(top, #47b46a 0%, #3e9f5d 100%))
 
-
-  &.complete
-    +after-image("button-complete-check-icon.png", 36px, 1px, 16px)
+  &[disabled]
+    +after-image("button-check-icon.png", 36px, 0, 16px)
 
 .fake-checkbox-wrap
   display: inline-block
@@ -343,7 +342,8 @@ fieldset
   right: 8px
   +icon-element("input-help-icon.png")
 
-.id-number-hint
+
+.tooltip
   visibility: hidden
   +opacity(0)
   position: absolute
@@ -368,10 +368,18 @@ fieldset
     background: #393939
     +rotate(45deg)
 
-  .hint-open &
+  .tooltip-open &
     visibility: visible
     +opacity(1)
     +translateY(8px)
+
+
+.id-number-hint
+  &:after
+    right: 12px
+
+
+
 
 fieldset.submit
   > .inputs
