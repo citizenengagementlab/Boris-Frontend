@@ -11,10 +11,13 @@
         == label_tag :street_address
         == text_field_tag :street_address, :tabindex => 1
 
-      .input.span-12.last
+      .input.zip-code.span-12.last
         == link_to "Incorrect Location?", "#", :class => "incorrect-location"
         == label_tag :zip_code
         == text_field_tag :zip_code, :tabindex => 2
+
+        .zip-code-location-hint
+          | Santa Monica, CA
 
     .row
       .span-6
