@@ -18,8 +18,5 @@ $(function(){
 
     $el.on("change blur focus keyup", check);
 
-    // $fake.on("click", function(){
-    //   $el.prop("checked", !$el.prop("checked")).trigger("change")
-    // });
   });
 })

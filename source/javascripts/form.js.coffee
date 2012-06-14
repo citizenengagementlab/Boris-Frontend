@@ -3,3 +3,5 @@
   el: $ ".registration-form"
 
 form.focusInputByIndex 0
+form.disableButton()
+  

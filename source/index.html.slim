@@ -7,11 +7,11 @@
   - field_set_tag do
 
     .row
-      .input.span-12
+      .input.text.span-12
         == label_tag :street_address
         == text_field_tag :street_address, :tabindex => 1
 
-      .input.zip-code.span-12.last
+      .input.text.zip-code.span-12.last
         == link_to "Incorrect Location?", "#", :class => "incorrect-location"
         == label_tag :zip_code
         == text_field_tag :zip_code, :tabindex => 2
@@ -35,21 +35,21 @@
   - field_set_tag do
 
     .row
-      .input.span-4
+      .input.select.span-4
         == label_tag :title
 
         .select-wrap
           == select_tag :title, :options => ['Mr.', 'Ms.', 'Mrs.', 'Dr.'], :tabindex => 5
 
-      .input.span-8
+      .input.text.span-8
         == label_tag :first_name
         == text_field_tag :first_name, :tabindex => 6
 
-      .input.span-8
+      .input.text.span-8
         == label_tag :last_name
         == text_field_tag :last_name, :tabindex => 7
 
-      .input.span-4.last
+      .input.select.span-4.last
         == label_tag :suffix
 
         .select-wrap
@@ -68,7 +68,7 @@
   - field_set_tag do
 
     .row
-      .input.span-16.id-number
+      .input.text.span-16.id-number
         == label_tag :id_number, :caption => "ID Number"
         == text_field_tag :id_number, :tabindex => 11
         .id-number-hint-icon
@@ -78,20 +78,20 @@
           | license nor a Social Security number, please enter "NONE" and an 
           | identification number will be assigned to you by the state.
 
-      .input.span-8.last
+      .input.text.span-8.last
         == label_tag :birthdate
         == text_field_tag :birthdate, :placeholder => "MM/DD/YY", :tabindex => 12
 
     .row
-      .input.span-12
+      .input.text.span-12
         == label_tag :email_address
-        == text_field_tag :email_address, :tabindex => 13
+        == text_field_tag :email_address, :type => :email, :tabindex => 13
 
-      .input.span-7
+      .input.text.span-7
         == label_tag :phone_number
         == text_field_tag :phone_number, :tabindex => 14
 
-      .input.span-5.last
+      .input.select.span-5.last
         == label_tag :phone_type, :caption => "Type"
 
         .select-wrap
@@ -99,17 +99,17 @@
 
   - field_set_tag do
 
-    .input.span-12
+    .input.select.span-12
       == label_tag :political_party
 
       .select-wrap
-        == select_tag :political_party, :tabindex => 15
+        == select_tag :political_party, :options => ["one", "two"], :tabindex => 15
 
-    .input.span-12.last
+    .input.select.span-12.last
       == label_tag :race_or_ethnic_group
 
       .select-wrap
-        == select_tag :race_or_ethnic_group, :tabindex => 16
+        == select_tag :race_or_ethnic_group, :options => ["one", "two"], :tabindex => 16
 
 
   - field_set_tag :class => :submit do

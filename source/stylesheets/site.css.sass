@@ -29,6 +29,7 @@ $input-border-color: #bebebe
 $input-border-radius: 4px
 
 $input-focus-border-color: #67c6fd
+$input-error-border-color: #d51514
 
 +global-reset
 +blueprint-grid
@@ -234,7 +235,6 @@ fieldset
       weight: bold
 
   &.focus
-
     > label
       color: black
 
@@ -246,6 +246,29 @@ fieldset
         family: $lucida-font-family
         size: 11px
         weight: bold
+
+  &.text
+    &.error
+      position: relative
+
+      &:after
+        content: " "
+        display: block
+        position: absolute
+        top: 27px
+        right: 7px
+        width: image-width("form-error-icon.png")
+        height: image-height("form-error-icon.png")
+        background: no-repeat right center
+        +image-background("form-error-icon.png")
+
+
+  &.select
+    &.error
+      select
+        border-color: $input-error-border-color
+        +box-shadow(0 0 0 1px $input-error-border-color)
+
 
 
 .button
@@ -323,6 +346,9 @@ fieldset
 .zip-code
   position: relative
 
+  &.error
+    .zip-code-location-hint
+      right: 30px
 
 .zip-code-location-hint
   position: absolute
@@ -347,6 +373,8 @@ fieldset
   visibility: hidden
   +opacity(0)
   position: absolute
+  z-index: 2
+  right: 0
   padding: 8px 12px
   font:
     size: 11px
