@@ -1,0 +1,40 @@
+
+title:
+  - "--"
+  - "Mr."
+  - "Ms."
+  - "Mrs."
+  - "Dr."
+
+phone_type:
+  - "Home"
+  - "Work"
+  - "Mobile"
+
+race_or_ethnic_group:
+  - "Select One..."
+  - "American Indian / Alaskan Native"
+  - "Asian / Pacific Islander"
+  - "Black (Not Hispanic)"
+  - "Hispanic"
+  - "White (Not Hispanic)"
+  - "Multi-racial"
+  - "Other"
+  - "Decline to State"
+
+political_party:
+  - "Select One..."
+  - "Democratic"
+  - "Green"
+  - "Independent"
+  - "Libertarian"
+  - "Republican"
+  - "Other"
+
+suffix:
+  - "--"
+  - "Jr."
+  - "Sr."
+  - "II"
+  - "III"
+  - "IV"

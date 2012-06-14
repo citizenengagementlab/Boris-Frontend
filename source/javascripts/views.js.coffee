@@ -67,10 +67,10 @@ class Views.FormField extends Backbone.View
     @$input.on "change blur keyup", => @_onChange()
     @$input.on "change blur", => @validate()
 
-    @$input.on "focus", => 
+    @$input.on "focus", =>
       @showTooltip() unless @valid()
 
-    @$input.on "blur", => 
+    @$input.on "blur", =>
       @hideTooltip()
 
   value: ->
@@ -129,4 +129,12 @@ class Views.IdNumberFormField extends Views.FormField
 
   toggleHint: ->
     @$el.toggleClass "tooltip-open"
+
+class Views.RaceOrEthnicGroupFormField extends Views.FormField
+  valid: ->
+    super && @value() != "Select One..."
+
+class Views.PoliticalPartyFormField extends Views.FormField
+  valid: ->
+    super && @value() != "Select One..."
 

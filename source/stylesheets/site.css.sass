@@ -1,9 +1,12 @@
+$width: 600px
+
 $blueprint-grid-columns: 24
 $blueprint-grid-width: 8px
 $blueprint-grid-margin: 16px
 
 @import "base"
 @import "blueprint"
+
 
 $link-color:         #707070
 $link-hover-color:   #707070
@@ -69,7 +72,7 @@ a
 #main
   position: relative
   height: 795px
-  width: 600px
+  width: $width
   margin: 0 auto
 
 #footer
@@ -162,7 +165,6 @@ textarea
   height: auto
   min-height: $input-height
 
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button
   +appearance(none)
@@ -201,7 +203,6 @@ select
 
 
 fieldset
-  +container
   overflow: visible
   padding: 19px 20px 3px
   border:
@@ -222,6 +223,18 @@ fieldset
     label
       color: #797569
 
+fieldset.multi
+  position: relative
+  padding: 0
+  border: none
+
+  > .stage
+    position: absolute
+    overflow: visible
+
+    &.stage-1
+      z-index: 2
+
 
 .input
   margin-bottom: 21px
@@ -237,7 +250,6 @@ fieldset
   &.focus
     > label
       color: black
-
 
   &.checkbox
     > label
@@ -261,7 +273,6 @@ fieldset
         height: image-height("form-error-icon.png")
         background: no-repeat right center
         +image-background("form-error-icon.png")
-
 
   &.select
     &.error
@@ -335,6 +346,9 @@ fieldset
 // 
 // Individual elements/components ----------
 // 
+fieldset.address
+  height: 132px
+
 
 .incorrect-location
   float: right
