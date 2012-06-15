@@ -74,6 +74,7 @@ a
   height: 795px
   width: $width
   margin: 0 auto
+  overflow: hidden
 
 #footer
   position: absolute
@@ -223,17 +224,26 @@ fieldset
     label
       color: #797569
 
-fieldset.multi
+.carousel
   position: relative
   padding: 0
   border: none
 
-  > .stage
+  > .carousel-item
+    +container
     position: absolute
     overflow: visible
 
     &.stage-1
       z-index: 2
+
+  .next
+    position: absolute
+    right: 0
+    top: 0
+    bottom: 0
+    background-color: rgba(255,255,255,0.5)
+    border-left: 1px solid rgba(0,0,0,0.25)
 
 
 .input
@@ -279,6 +289,9 @@ fieldset.multi
       select
         border-color: $input-error-border-color
         +box-shadow(0 0 0 1px $input-error-border-color)
+
+      .tooltip
+        display: none
 
 
 

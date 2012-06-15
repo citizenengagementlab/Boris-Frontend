@@ -1,5 +1,29 @@
 @Views ||= {}
 
+class Views.Carousel extends Backbone.View
+  itemSelector: "> .carousel-item"
+  width: 600
+
+  events:
+    "click .next": (e) -> @next()
+    "click .back": (e) -> @to 0
+
+  initialize: ->
+    @$items = @$(@itemSelector)
+    @currentIndex = 0
+
+    $(item).css(left: i * @width) for i, item of @$items
+
+  itemForIndex: (idx) ->
+    @$items.eq idx
+
+  to: (idx) ->
+    $(item).css(left: (i - idx) * @width) for i, item of @$items
+    @currentIndex = idx
+
+  next: -> @to @currentIndex + 1
+
+  prev: -> @to @currentIndex - 1
 
 class Views.Form extends Backbone.View
   events:
@@ -8,10 +32,20 @@ class Views.Form extends Backbone.View
       $fieldset = $el.closest "fieldset"
       @activateFieldset $fieldset
 
+    "change input[name=mailing_address]": (e) ->
+      return unless e.target.checked
+      @$(".multi .stage").css(left: "-=600px")
+
+    "change input[name=recent_move]": (e) ->
+      return unless e.target.checked
+      @$(".multi .stage").css(left: "-=1200px")
+
   initialize: ->
     @$fieldsets = @$ "fieldset"
     @$inputs = @$ ":text, select, input[type=email], input[type=date]"
     @$button = @$ ".button-primary"
+
+    new Views.Carousel({el}) for el in @$(".carousel")
 
     @fields = for input in @$inputs
       id = input.name
@@ -31,8 +65,7 @@ class Views.Form extends Backbone.View
   valid: ->
     _.all _.invoke(@fields, "valid"), _.identity
 
-  enableButton: ->
-    @$button.prop "disabled", false
+  enableButton: -> @$button.prop "disabled", false
 
   disableButton: ->
     @$button.prop "disabled", true
@@ -92,21 +125,13 @@ class Views.FormField extends Backbone.View
 
     this
 
-  showTooltip: ->
-    @$el.addClass "tooltip-open"
-    this
+  showTooltip: -> @$el.addClass "tooltip-open"
 
-  hideTooltip: ->
-    @$el.removeClass "tooltip-open"
-    this
+  hideTooltip: -> @$el.removeClass "tooltip-open"
 
-  showError: ->
-    @$el.addClass "error"
-    this
+  showError: -> @$el.addClass "error"
 
-  hideError: ->
-    @$el.removeClass "error"
-    this
+  hideError: -> @$el.removeClass "error"
 
   getErrorTip: ->
     @$tooltip ||= if @$(".tooltip").length

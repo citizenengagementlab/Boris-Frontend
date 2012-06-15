@@ -4,8 +4,8 @@
 
 - form_tag "/register", :class => "registration-form", :method => "post" do
 
-  - field_set_tag :class => "multi address" do
-    - field_set_tag :class => "stage" do
+  - field_set_tag :class => "carousel address" do
+    - field_set_tag :class => "carousel-item" do
       .row
         .input.text.span-12
           == label_tag :street_address
@@ -31,32 +31,43 @@
           == check_box_tag :recent_move, :tabindex => 4
           == label_tag :recent_move, :caption => "I have recently moved"
 
-    - field_set_tag :class => "stage" do
+      .next >
+
+    - # 
+    - field_set_tag :class => "carousel-item" do
       .row
         .input.text.span-12
           == label_tag :mailing_street_address
-          == text_field_tag :mailing_street_address, :tabindex => 1
+          == text_field_tag :mailing_street_address
 
         .input.text.zip-code.span-12.last
           == label_tag :mailing_zip_code
-          == text_field_tag :mailing_zip_code, :tabindex => 2
+          == text_field_tag :mailing_zip_code
 
           .zip-code-location-hint
             | Santa Monica, CA
 
-    - field_set_tag :class => "stage" do
+      .row
+        == link_to "Back to Registration Address", "#", :class => :back
+
+      .next >
+
+    - #
+    - field_set_tag :class => "carousel-item" do
       .row
         .input.text.span-12
           == label_tag :moved_street_address
-          == text_field_tag :moved_street_address, :tabindex => 1
+          == text_field_tag :moved_street_address
 
         .input.text.zip-code.span-12.last
           == label_tag :moved_zip_code
-          == text_field_tag :moved_zip_code, :tabindex => 2
+          == text_field_tag :moved_zip_code
 
           .zip-code-location-hint
             | Santa Monica, CA
 
+      .row
+        == link_to "Back to Registration Address", "#", :class => :back
 
   - field_set_tag do
 
