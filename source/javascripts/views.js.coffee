@@ -34,18 +34,18 @@ class Views.Form extends Backbone.View
 
     "change input[name=mailing_address]": (e) ->
       return unless e.target.checked
-      @$(".multi .stage").css(left: "-=600px")
+      @carousels[0].to 1
 
     "change input[name=recent_move]": (e) ->
       return unless e.target.checked
-      @$(".multi .stage").css(left: "-=1200px")
+      @carousels[0].to 2
 
   initialize: ->
     @$fieldsets = @$ "fieldset"
     @$inputs = @$ ":text, select, input[type=email], input[type=date]"
     @$button = @$ ".button-primary"
 
-    new Views.Carousel({el}) for el in @$(".carousel")
+    @carousels = (new Views.Carousel({el}) for el in @$(".carousel"))
 
     @fields = for input in @$inputs
       id = input.name
