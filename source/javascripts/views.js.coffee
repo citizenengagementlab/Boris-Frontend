@@ -113,7 +113,7 @@ class Views.FormField extends Backbone.View
     @required = @input.required
 
   value: ->
-    $.trim @input.value + ''
+    $.trim @input.value
 
   valid: ->
     value = @value()
