@@ -9,12 +9,12 @@
       .row
         .input.text.span-12
           == label_tag :street_address
-          == text_field_tag :street_address, :tabindex => 1
+          == text_field_tag :street_address, :required => true, :tabindex => 1
 
         .input.text.zip-code.span-12.last
           == link_to "Incorrect Location?", "#", :class => "incorrect-location"
           == label_tag :zip_code
-          == text_field_tag :zip_code, :tabindex => 2
+          == text_field_tag :zip_code, :required => true, :tabindex => 2
 
           .zip-code-location-hint
             | Santa Monica, CA
@@ -31,7 +31,7 @@
           == check_box_tag :recent_move, :tabindex => 4
           == label_tag :recent_move, :caption => "I have recently moved"
 
-      .next >
+      .next
 
     - # 
     - field_set_tag :class => "carousel-item" do
@@ -50,7 +50,8 @@
       .row
         == link_to "Back to Registration Address", "#", :class => :back
 
-      .next >
+      .prev
+      .next
 
     - #
     - field_set_tag :class => "carousel-item" do
@@ -69,37 +70,65 @@
       .row
         == link_to "Back to Registration Address", "#", :class => :back
 
-  - field_set_tag do
+      .prev
 
-    .row
-      .input.select.span-4
-        == label_tag :title
+  - field_set_tag :class => "carousel name" do
+    - field_set_tag :class => "carousel-item" do
 
-        .select-wrap
-          == select_tag :title, :tabindex => 5
+      .row
+        .input.select.span-4
+          == label_tag :title
 
-      .input.text.span-8
-        == label_tag :first_name
-        == text_field_tag :first_name, :tabindex => 6
+          .select-wrap
+            == select_tag :title, :tabindex => 5
 
-      .input.text.span-8
-        == label_tag :last_name
-        == text_field_tag :last_name, :tabindex => 7
+        .input.text.span-8
+          == label_tag :first_name
+          == text_field_tag :first_name, :required => true, :tabindex => 6
 
-      .input.select.span-4.last
-        == label_tag :suffix
+        .input.text.span-8
+          == label_tag :last_name
+          == text_field_tag :last_name, :required => true, :tabindex => 7
 
-        .select-wrap
-          == select_tag :suffix, :tabindex => 8
+        .input.select.span-4.last
+          == label_tag :suffix
 
-    .row
-      .input.checkbox.span-8
-        == check_box_tag :us_citizen, :tabindex => 9
-        == label_tag :us_citizen, :caption => "I am a U.S. Citizen"
+          .select-wrap
+            == select_tag :suffix, :tabindex => 8
 
-      .input.checkbox.span-16.last
-        == check_box_tag :name_change, :tabindex => 10
-        == label_tag :name_change, :caption => "I have recently changed my name"
+      .row
+        .input.checkbox.span-8
+          == check_box_tag :us_citizen, :required => true, :tabindex => 9
+          == label_tag :us_citizen, :caption => "I am a U.S. Citizen"
+
+        .input.checkbox.span-16.last
+          == check_box_tag :name_change, :required => true, :tabindex => 10
+          == label_tag :name_change, :caption => "I have recently changed my name"
+
+    - field_set_tag :class => "carousel-item" do
+
+      .row
+        .input.select.span-4
+          == label_tag :title
+
+          .select-wrap
+            == select_tag :title
+
+        .input.text.span-8
+          == label_tag :first_name
+          == text_field_tag :first_name, :required => true
+
+        .input.text.span-8
+          == label_tag :last_name
+          == text_field_tag :last_name, :required => true
+
+        .input.select.span-4.last
+          == label_tag :suffix
+
+          .select-wrap
+            == select_tag :suffix
+
+      .prev
 
 
   - field_set_tag do
@@ -107,7 +136,7 @@
     .row
       .input.text.span-16.id-number
         == label_tag :id_number, :caption => "ID Number"
-        == text_field_tag :id_number, :tabindex => 11
+        == text_field_tag :id_number, :required => true, :tabindex => 11
         .id-number-hint-icon
         .id-number-hint.tooltip
           | You must provide either your driver's license number or the last four 
@@ -117,22 +146,22 @@
 
       .input.text.span-8.last
         == label_tag :birthdate
-        == text_field_tag :birthdate, :placeholder => "MM/DD/YY", :tabindex => 12
+        == text_field_tag :birthdate, :required => true, :placeholder => "MM/DD/YY", :tabindex => 12
 
     .row
       .input.text.span-12
         == label_tag :email_address
-        == text_field_tag :email_address, :type => :email, :tabindex => 13
+        == text_field_tag :email_address, :required => true, :type => :email, :tabindex => 13
 
       .input.text.span-7
         == label_tag :phone_number
-        == text_field_tag :phone_number, :tabindex => 14
+        == text_field_tag :phone_number, :required => true, :tabindex => 14
 
       .input.select.span-5.last
         == label_tag :phone_type, :caption => "Type"
 
         .select-wrap
-          == select_tag :phone_type, :tabindex => 15
+          == select_tag :phone_type, :required => true, :tabindex => 15
 
   - field_set_tag do
 
@@ -140,13 +169,13 @@
       == label_tag :political_party
 
       .select-wrap
-        == select_tag :political_party, :tabindex => 15
+        == select_tag :political_party, :required => true, :tabindex => 15
 
     .input.select.span-12.last
       == label_tag :race_or_ethnic_group
 
       .select-wrap
-        == select_tag :race_or_ethnic_group, :tabindex => 16
+        == select_tag :race_or_ethnic_group, :required => true, :tabindex => 16
 
 
   - field_set_tag :class => :submit do

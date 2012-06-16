@@ -5,6 +5,7 @@ class Views.Carousel extends Backbone.View
   width: 600
 
   events:
+    "click .prev": (e) -> @prev()
     "click .next": (e) -> @next()
     "click .back": (e) -> @to 0
 
@@ -39,6 +40,10 @@ class Views.Form extends Backbone.View
     "change input[name=recent_move]": (e) ->
       return unless e.target.checked
       @carousels[0].to 2
+
+    "change input[name=name_change]": (e) ->
+      return unless e.target.checked
+      @carousels[1].to 1
 
   initialize: ->
     @$fieldsets = @$ "fieldset"
@@ -91,7 +96,6 @@ class Views.Form extends Backbone.View
 
 
 class Views.FormField extends Backbone.View
-  required: true
   errorMessage: "can't be blank"
 
   initialize: ->
@@ -105,6 +109,8 @@ class Views.FormField extends Backbone.View
 
     @$input.on "blur", =>
       @hideTooltip()
+
+    @required = @input.required
 
   value: ->
     $.trim @input.value + ''
@@ -142,11 +148,6 @@ class Views.FormField extends Backbone.View
   _onChange: ->
     @trigger "change"
 
-
-class Views.ZipCodeFormField extends Views.FormField
-
-class Views.SuffixFormField extends Views.FormField
-  required: false
 
 class Views.IdNumberFormField extends Views.FormField
   events:

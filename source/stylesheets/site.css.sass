@@ -30,6 +30,7 @@ $input-font-stack: normal normal normal 15px/16px $lucida-font-family
 $input-height: 31px
 $input-border-color: #bebebe
 $input-border-radius: 4px
+$input-margin-bottom: 21px
 
 $input-focus-border-color: #67c6fd
 $input-error-border-color: #d51514
@@ -224,6 +225,7 @@ fieldset
     label
       color: #797569
 
+
 .carousel
   position: relative
   padding: 0
@@ -237,17 +239,28 @@ fieldset
     &.stage-1
       z-index: 2
 
-  .next
+  .next, .prev
     position: absolute
-    right: 0
     top: 0
     bottom: 0
+    width: 16px
     background-color: rgba(255,255,255,0.5)
-    border-left: 1px solid rgba(0,0,0,0.25)
+    background-position: 50% 50%
+    background-repeat: no-repeat
+
+  .prev
+    left: 0
+    border-right: 1px solid rgba(0,0,0,0.18)
+    +image-background("carousel-prev-icon.png")
+
+  .next
+    right: 0
+    border-left: 1px solid rgba(0,0,0,0.18)
+    +image-background("carousel-next-icon.png")
 
 
 .input
-  margin-bottom: 21px
+  margin-bottom: $input-margin-bottom
 
   > label
     display: block
@@ -359,8 +372,19 @@ fieldset
 // 
 // Individual elements/components ----------
 // 
+
+// HATE these hard coded heights
 fieldset.address
   height: 132px
+
+  > .carousel-item
+    height: 110px
+
+fieldset.name
+  height: 134px
+
+  > .carousel-item
+    height: 112px
 
 
 .incorrect-location
@@ -432,8 +456,6 @@ fieldset.address
 .id-number-hint
   &:after
     right: 12px
-
-
 
 
 fieldset.submit
