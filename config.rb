@@ -9,13 +9,23 @@ helpers do
 
   # Padrino label_tag helper, here to remove stupid trailing colon on the caption.
   def label_tag(name, options={}, &block)
-    options.reverse_merge!(:caption => name.to_s.humanize.titleize, :for => name, :id => name)
+    options.reverse_merge!(:caption => name.to_s.humanize.titleize, :for => name)
+    super
+  end
+
+  def text_field_tag(name, options={})
+    options.reverse_merge!(:id => name)
+    super
+  end
+
+  def check_box_tag(name, options={})
+    options.reverse_merge!(:id => name)
     super
   end
 
   def select_tag(name, options={})
     @select_values ||= YAML.load_file(File.join(settings.root, 'data', 'select_values.yml')).with_indifferent_access
-    options.reverse_merge!(:options => @select_values[name]) unless @select_values[name].nil?
+    options.reverse_merge!(:options => @select_values[name], :id => name) unless @select_values[name].nil?
     super
   end
 
