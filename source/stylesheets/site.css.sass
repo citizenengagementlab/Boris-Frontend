@@ -326,6 +326,7 @@ fieldset
 
 
 .input
+  position: relative
   margin-bottom: $input-margin-bottom
 
   > label
@@ -362,15 +363,13 @@ fieldset
         height: image-height("form-error-icon.png")
         background: no-repeat right center
         +image-background("form-error-icon.png")
+        pointer-events: none
 
   &.select
     &.error
       select
         border-color: $input-error-border-color
         +box-shadow(0 0 0 1px $input-error-border-color)
-
-      .tooltip
-        display: none
 
 
 

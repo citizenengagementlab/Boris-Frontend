@@ -110,6 +110,12 @@ class Views.FormField extends Backbone.View
     @$input.on "blur", =>
       @hideTooltip()
 
+    @$input.on "change", =>
+      if @valid()
+        @hideTooltip()
+      else
+        @showTooltip()
+
     @required = @input.required
 
   value: ->
