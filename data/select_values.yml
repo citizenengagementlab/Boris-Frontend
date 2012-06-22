@@ -40,6 +40,7 @@ suffix:
   - "IV"
 
 state:
+  Select State: ""
   Alaska : AK
   Alabama : AL
   Arkansas : AR
@@ -47,7 +48,7 @@ state:
   California : CA
   Colorado : CO
   Connecticut : CT
-  District : DC of Columbia
+  District of Columbia : DC
   Delaware : DE
   Florida : FL
   Georgia : GA
@@ -67,21 +68,21 @@ state:
   Missouri : MO
   Mississippi : MS
   Montana : MT
-  North : NC Carolina
-  North : ND Dakota
+  North Carolina : NC
+  North Dakota : ND
   Nebraska : NE
-  New : NH Hampshire
-  New : NJ Jersey
-  New : NM Mexico
+  New Hampshire : NH
+  New Jersey : NJ
+  New Mexico : NM
   Nevada : NV
-  New : NY York
+  New York : NY
   Ohio : OH
   Oklahoma : OK
   Oregon : OR
   Pennsylvania : PA
-  Rhode : RI Island
-  South : SC Carolina
-  South : SD Dakota
+  Rhode Island : RI
+  South Carolina : SC
+  South Dakota : SD
   Tennessee : TN
   Texas : TX
   Utah : UT
@@ -89,5 +90,5 @@ state:
   Vermont : VT
   Washington : WA
   Wisconsin : WI
-  West : WV Virginia
+  West Virginia : WV
   Wyoming : WY

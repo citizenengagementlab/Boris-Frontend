@@ -188,12 +188,15 @@ class Views.State extends Backbone.View
   selectState: (event, code) ->
     unless code
       code = @$select.val()
+      unless code
+        @disableButton()
+        return
+
       @$map.find("#jqvmap1_#{code.toLowerCase()}").click() # XXX Nasty hack because
                                                            # jqvmap doesn't support
                                                            # dynamically setting the
                                                            # selected region.
     @$select.val code.toUpperCase()
-
     @enableButton()
 
   enableButton:  -> @$button.prop "disabled", false
