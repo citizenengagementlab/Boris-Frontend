@@ -185,11 +185,14 @@ class Views.State extends Backbone.View
       selectedColor:   "#21CB00"
       showTooltip:     true
 
+    @$path = $("<path/>").css(display: "none").appendTo(@$map.find("svg g"))
+
   selectState: (event, code) ->
     unless code
       code = @$select.val()
       unless code
         @disableButton()
+        try @$path.click()
         return
 
       @$map.find("#jqvmap1_#{code.toLowerCase()}").click() # XXX Nasty hack because
