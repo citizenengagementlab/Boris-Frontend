@@ -23,6 +23,7 @@ $base-line-height: 1.4em
 
 $helvetica-font-family: "Helvetica Neue", Helvetica, sans-serif
 $lucida-font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif
+$georgia-font-family: Georgia, serif
 
 $font-stack: normal normal normal 11px/1.4em $lucida-font-family
 
@@ -76,6 +77,60 @@ a
   width: $width
   margin: 0 auto
   overflow: hidden
+
+section
+  padding: 20px 20px
+
+  &::before, &::after
+    content: ""
+    display: table
+
+  &::after
+    clear: both
+
+  & + section
+    border-top: 1px solid #D4D4D4
+
+  header
+    margin-bottom: 20px
+
+    h2
+      line-height: 45px
+      color: #4A4A4A
+      font:
+        family: $georgia-font-family
+        size: 36px
+        weight: normal
+
+    p
+      margin: 0
+      line-height: 30px
+      color: #919191
+      font:
+        family: $georgia-font-family
+        size: 24px
+        weight: normal
+
+  p
+    margin: 15px 0
+
+  .image-well
+    background: transparent image-url("image-well.png") center center no-repeat
+
+    img
+      padding: 5px
+      border: 1px solid #D4D4D4
+      background-color: #FFF
+
+body.finish
+  section
+    text-align: center
+
+    .button.download
+      display: block
+
+      &::before
+        left: 115px
 
 #footer
   position: absolute
@@ -327,6 +382,9 @@ fieldset
     size: 22px
     weight: bold
   color: #f5fbf7
+  line-height: 33px
+  line-height: 26px
+  text-decoration: none
   text-shadow: 0 -1px 0 rgba(0,0,0,0.4)
   border: 1px solid #2c7042
   +border-radius(4px)
@@ -336,8 +394,10 @@ fieldset
   +after-image("button-complete-check-icon.png", 36px, 1px, 16px)
   
   &:hover
+    color: #f5fbf7
     background-color: #43ab64
     +background-image(linear-gradient(top, #47b36a 0%, #34864f 100%))
+    cursor: pointer
 
   &:active
     position: relative
@@ -347,6 +407,13 @@ fieldset
 
   &[disabled]
     +after-image("button-check-icon.png", 36px, 0, 16px)
+
+  &.download
+    +before-image("button-download-icon.png", 36px, 0, 16px)
+
+    &::after
+      display: none
+
 
 .fake-checkbox-wrap
   display: inline-block

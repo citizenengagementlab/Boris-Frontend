@@ -1,0 +1,33 @@
+- content_for :head do
+  title Almost Finished
+
+section
+  header
+    h2 You're not quite done!
+    p You still need to download your form.
+
+  .prepend-3.span-18.append-3.last
+    == link_to "Download", "#download", :class => "button download button-primary"
+
+  .prepend-3.span-18.append-3.last
+    p.subtle
+      | (We've also e-mailed you a link to retreive your form later)
+
+
+section
+  header
+    h2 Get more involved!
+    p Help your friends register to vote.
+
+  .image-well.prepend-3.span-18.append-3.last
+    == image_tag "screenshot-involved.jpg"
+
+
+section
+  header
+    h2 Spread the word!
+
+  .prepend-3.span-18.append-3.last
+    p Social Media
+
+
