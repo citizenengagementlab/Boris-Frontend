@@ -38,3 +38,56 @@ suffix:
   - "II"
   - "III"
   - "IV"
+
+state:
+  Alaska : AK
+  Alabama : AL
+  Arkansas : AR
+  Arizona : AZ
+  California : CA
+  Colorado : CO
+  Connecticut : CT
+  District : DC of Columbia
+  Delaware : DE
+  Florida : FL
+  Georgia : GA
+  Hawaii : HI
+  Iowa : IA
+  Idaho : ID
+  Illinois : IL
+  Indiana : IN
+  Kansas : KS
+  Kentucky : KY
+  Louisiana : LA
+  Massachusetts : MA
+  Maryland : MD
+  Maine : ME
+  Michigan : MI
+  Minnesota : MN
+  Missouri : MO
+  Mississippi : MS
+  Montana : MT
+  North : NC Carolina
+  North : ND Dakota
+  Nebraska : NE
+  New : NH Hampshire
+  New : NJ Jersey
+  New : NM Mexico
+  Nevada : NV
+  New : NY York
+  Ohio : OH
+  Oklahoma : OK
+  Oregon : OR
+  Pennsylvania : PA
+  Rhode : RI Island
+  South : SC Carolina
+  South : SD Dakota
+  Tennessee : TN
+  Texas : TX
+  Utah : UT
+  Virginia : VA
+  Vermont : VT
+  Washington : WA
+  Wisconsin : WI
+  West : WV Virginia
+  Wyoming : WY

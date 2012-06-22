@@ -1,0 +1,16 @@
+- content_for :head do
+  title Select Your State
+
+- form_tag "/index.html", :class => "registration-form", :method => "get" do
+  #map
+
+  - field_set_tag :class => :submit do
+    .input.select.span-12.last
+      .select-wrap
+        == select_tag :state, :required => true, :tabindex => 1
+
+    button.button.button-primary type="submit" tabindex="20" Continue
+
+
+- content_for :body_end do
+  == javascript_include_tag "jquery.vmap", "jquery.vmap.usa", "map"
