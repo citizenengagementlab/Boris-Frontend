@@ -186,6 +186,16 @@ select
   border: 1px solid $input-border-color
   +border-radius($input-border-radius)
 
+  &.large
+    margin:  2px
+    padding: 8px 22px
+    height: 45px
+    font:
+      // family: $helvetica-font-family
+      size: 22px
+      // weight: bold
+    -webkit-font-smoothing: antialiased
+
   &:focus
     @extend .input-focus
 

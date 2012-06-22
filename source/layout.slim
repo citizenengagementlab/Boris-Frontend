@@ -13,7 +13,10 @@ body
     header#header
       h1.container
         a.logo == image_tag "logo.png"
-        | Voter Registration
+        - if content_for? :header
+          == yield_content :header
+        - else
+          | Voter Registration
 
     == yield
   

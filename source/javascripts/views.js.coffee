@@ -164,3 +164,39 @@ class Views.PoliticalPartyFormField extends Views.FormField
   valid: ->
     super && @value() != "Select One..."
 
+class Views.State extends Backbone.View
+  events:
+    "change select":           "selectState"
+    "regionClick.jqvmap #map": "selectState"
+
+  initialize: ->
+    @$button = @$ ".button-primary"
+    @$select = @$ "#state"
+    @$map    = @$ "#map"
+
+    @$map.vectorMap
+      backgroundColor: "transparent"
+      borderColor:     "#A1A09F"
+      borderOpacity:   1
+      borderWidth:     1
+      color:           "transparent"
+      enableZoom:      false
+      map:             "usa_en"
+      selectedColor:   "#21CB00"
+      showTooltip:     true
+
+  selectState: (event, code) ->
+    unless code
+      code = @$select.val()
+      @$map.find("#jqvmap1_#{code.toLowerCase()}").click() # XXX Nasty hack because
+                                                           # jqvmap doesn't support
+                                                           # dynamically setting the
+                                                           # selected region.
+    @$select.val code.toUpperCase()
+
+    @enableButton()
+
+  enableButton:  -> @$button.prop "disabled", false
+
+  disableButton: -> @$button.prop "disabled", true
+
