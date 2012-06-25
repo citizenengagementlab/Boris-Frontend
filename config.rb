@@ -4,8 +4,11 @@ require 'yaml'
 
 Slim::Engine.set_default_options :pretty => true, :tabsize => 2
 
+
 # Methods defined in the helpers block are available in templates
 helpers do
+
+
 
   # Padrino label_tag helper, here to remove stupid trailing colon on the caption.
   def label_tag(name, options={}, &block)
@@ -23,9 +26,15 @@ helpers do
     super
   end
 
-  def select_tag(name, options={})
+  def select_options(name)
     @select_values ||= YAML.load_file(File.join(settings.root, 'data', 'select_values.yml')).with_indifferent_access
-    options.reverse_merge!(:options => @select_values[name], :id => name) unless @select_values[name].nil?
+    @select_values[name]
+  end
+
+  def select_tag(name, options={})
+    if options[:options].nil? && !select_options(name).nil?
+      options.reverse_merge!(:options => select_options(name), :id => name)
+    end
     super
   end
 

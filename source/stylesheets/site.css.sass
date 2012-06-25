@@ -1,4 +1,8 @@
 $width: 600px
+$height: 795px
+$header-height: 61px
+$footer-height: 80px
+
 
 $blueprint-grid-columns: 24
 $blueprint-grid-width: 8px
@@ -6,6 +10,7 @@ $blueprint-grid-margin: 16px
 
 @import "base"
 @import "blueprint"
+
 
 
 $link-color:         #707070
@@ -36,6 +41,9 @@ $input-margin-bottom: 21px
 $input-focus-border-color: #67c6fd
 $input-error-border-color: #d51514
 
+
+
+
 +global-reset
 +blueprint-grid
 
@@ -53,8 +61,8 @@ a
   +link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color)
 
 #header
-  height: 60px
-  line-height: 60px
+  height: $header-height - 1px
+  line-height: $header-height - 1px
   text-align: center
   color: white
   text-shadow: 0 -1px 1px black
@@ -72,11 +80,18 @@ a
       float: left
 
 #main
-  position: relative
-  height: 795px
   width: $width
   margin: 0 auto
   overflow: hidden
+
+
+#content
+  position: relative
+  width: $width
+  height: 795px - $footer-height - $header-height
+  overflow: auto
+  overflow-x: hidden
+  overflow-y: auto
 
 section
   padding: 15px 20px
@@ -133,9 +148,8 @@ body.finish
         left: 115px
 
 #footer
-  position: absolute
-  bottom: 0
   width: 100%
+  height: $footer-height - 4px - 18px
   padding: 4px 0 18px
   color: #818181
   text-shadow: 0 1px 0 white
@@ -272,13 +286,15 @@ select
 
 fieldset
   overflow: visible
+  width: $width - 40px
   padding: 19px 20px 3px
   border:
     width: 1px 0
     style: solid
     color: transparent transparent #e7e7e7
-  +transition-property("border-color background-color")
-  +transition-duration(0.14s)
+  +transition-property("border-color, background-color")
+  +transition-duration("0.14s, 0.14s")
+
 
   &:last-child
     border-bottom: none
@@ -291,38 +307,8 @@ fieldset
     label
       color: #797569
 
-
-.carousel
-  position: relative
-  padding: 0
-  border: none
-
-  > .carousel-item
-    +container
-    position: absolute
-    overflow: visible
-
-    &.stage-1
-      z-index: 2
-
-  .next, .prev
-    position: absolute
-    top: 0
-    bottom: 0
-    width: 16px
-    background-color: rgba(255,255,255,0.5)
-    background-position: 50% 50%
-    background-repeat: no-repeat
-
-  .prev
-    left: 0
-    border-right: 1px solid rgba(0,0,0,0.18)
-    +image-background("carousel-prev-icon.png")
-
-  .next
-    right: 0
-    border-left: 1px solid rgba(0,0,0,0.18)
-    +image-background("carousel-next-icon.png")
+  &.closed
+    display: none
 
 
 .input
@@ -449,19 +435,6 @@ fieldset
 // 
 // Individual elements/components ----------
 // 
-
-// HATE these hard coded heights
-fieldset.address
-  height: 132px
-
-  > .carousel-item
-    height: 110px
-
-fieldset.name
-  height: 134px
-
-  > .carousel-item
-    height: 112px
 
 
 .incorrect-location

@@ -1,30 +1,5 @@
 @Views ||= {}
 
-class Views.Carousel extends Backbone.View
-  itemSelector: "> .carousel-item"
-  width: 600
-
-  events:
-    "click .prev": (e) -> @prev()
-    "click .next": (e) -> @next()
-    "click .back": (e) -> @to 0
-
-  initialize: ->
-    @$items = @$(@itemSelector)
-    @currentIndex = 0
-
-    $(item).css(left: i * @width) for i, item of @$items
-
-  itemForIndex: (idx) ->
-    @$items.eq idx
-
-  to: (idx) ->
-    $(item).css(left: (i - idx) * @width) for i, item of @$items
-    @currentIndex = idx
-
-  next: -> @to @currentIndex + 1
-
-  prev: -> @to @currentIndex - 1
 
 class Views.Form extends Backbone.View
   events:
@@ -34,23 +9,28 @@ class Views.Form extends Backbone.View
       @activateFieldset $fieldset
 
     "change input[name=mailing_address]": (e) ->
-      return unless e.target.checked
-      @carousels[0].to 1
+      toggleFieldset @$("fieldset.mailing-address"), e.target.checked
 
     "change input[name=recent_move]": (e) ->
-      return unless e.target.checked
-      @carousels[0].to 2
+      toggleFieldset @$("fieldset.previous-address"), e.target.checked
 
     "change input[name=name_change]": (e) ->
-      return unless e.target.checked
-      @carousels[1].to 1
+      toggleFieldset @$("fieldset.previous-name"), e.target.checked
+
+  openFieldset = ($el) ->
+    $el.slideDown().removeClass("closed")
+
+  closeFieldset = ($el) ->
+    $el.slideUp().addClass("closed")
+
+  toggleFieldset = ($el, bool) ->
+    bool = $el.hasClass("closed") if bool == undefined
+    if bool then openFieldset($el) else closeFieldset($el)
 
   initialize: ->
     @$fieldsets = @$ "fieldset"
     @$inputs = @$ ":text, select, input[type=email], input[type=date]"
     @$button = @$ ".button-primary"
-
-    @carousels = (new Views.Carousel({el}) for el in @$(".carousel"))
 
     @fields = for input in @$inputs
       id = input.name
