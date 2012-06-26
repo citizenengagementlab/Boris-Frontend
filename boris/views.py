@@ -13,27 +13,19 @@ def frontpage(request):
     geoip = pygeoip.GeoIP(join(settings.MEDIA_ROOT,'GeoLiteCity.dat'))
     ip_addr = request.META['REMOTE_ADDR']
     params = {}
-    if settings.DEBUG and ip_addr == "127.0.0.1":
-        ip_addr = "75.101.48.104" #test with known CA IP
-        params['debug'] = 1
+    #if settings.DEBUG and ip_addr == "127.0.0.1":
+    #    ip_addr = "75.101.48.104" #test with known CA IP
+    #    params['debug'] = 1
     result = geoip.record_by_addr(ip_addr)
     if result:
         params['state'] = result['region_name']
-        #params["zip"] = result['postal_code']
-        #zip probably not accurate enough to depend on free db
         return redirect(reverse('registrant.views.register')+
             "?"+urllib.urlencode(params))
     else:
-        #should redirect to map view
-        #tmp, redirect to registration page w/o params
-        return redirect(reverse('registrant.views.register'))
+        return redirect(reverse('registrant.views.map'))
 
 def rtv_iframe_test(request):
     layout = request.GET.get('layout')
     context = {'layout':layout}
     return render_to_response('rtv_iframe_test.html',context,
-                context_instance=RequestContext(request))
-                
-def mockup(request):
-    return render_to_response('rtv_iframe_mockup.html',{},
                 context_instance=RequestContext(request))

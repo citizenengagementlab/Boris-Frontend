@@ -5,7 +5,6 @@ from django.conf import settings
 urlpatterns = patterns('boris.views',
     (r'^$', 'frontpage'),
     (r'^rtv_iframe_test/$', 'rtv_iframe_test'),
-    (r'^mockup/$', 'mockup'),
 )
 
 urlpatterns += patterns('',
@@ -16,7 +15,7 @@ urlpatterns += patterns('',
 
 admin.autodiscover()
 urlpatterns += patterns('',
-    (r'^admin/summary_stats', 'registrant.views.stats'),
+    (r'^admin/summary_stats', 'registrant.utils.stats'),
     (r'^admin/', include(admin.site.urls)),
 )
 
