@@ -64,9 +64,7 @@
     .row
       .input.select.span-4
         == label_tag :title
-
-        .select-wrap
-          == select_tag :title, :tabindex => 5
+        == select_tag :title, :tabindex => 5
 
       .input.text.span-8
         == label_tag :first_name
@@ -78,9 +76,7 @@
 
       .input.select.span-4.last
         == label_tag :suffix
-
-        .select-wrap
-          == select_tag :suffix, :tabindex => 8
+        == select_tag :suffix, :tabindex => 8
 
     .row
       .input.checkbox.span-8
@@ -96,9 +92,7 @@
     .row
       .input.select.span-4
         == label_tag :previous_title, :caption => "Title"
-
-        .select-wrap
-          == select_tag :previous_title, :options => select_options(:title)
+        == select_tag :previous_title, :options => select_options(:title)
 
       .input.text.span-8
         == label_tag :previous_first_name, :caption => "First Name"
@@ -110,9 +104,7 @@
 
       .input.select.span-4.last
         == label_tag :previous_suffix, :caption => "Suffix"
-
-        .select-wrap
-          == select_tag :previous_suffix, :options => select_options(:suffix)
+        == select_tag :previous_suffix, :options => select_options(:suffix)
 
 
 
@@ -145,23 +137,17 @@
 
       .input.select.span-5.last
         == label_tag :phone_type, :caption => "Type"
-
-        .select-wrap
-          == select_tag :phone_type, :required => true, :tabindex => 15
+        == select_tag :phone_type, :required => true, :tabindex => 15
 
   - field_set_tag do
 
     .input.select.span-12
       == label_tag :political_party
-
-      .select-wrap
-        == select_tag :political_party, :required => true, :tabindex => 15
+      == select_tag :political_party, :required => true, :tabindex => 15
 
     .input.select.span-12.last
       == label_tag :race_or_ethnic_group
-
-      .select-wrap
-        == select_tag :race_or_ethnic_group, :required => true, :tabindex => 16
+      == select_tag :race_or_ethnic_group, :required => true, :tabindex => 16
 
 
   - field_set_tag :class => :submit do

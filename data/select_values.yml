@@ -40,7 +40,7 @@ suffix:
   - "IV"
 
 state:
-  Select State: ""
+  Select State: "Select State..."
   Alaska : AK
   Alabama : AL
   Arkansas : AR

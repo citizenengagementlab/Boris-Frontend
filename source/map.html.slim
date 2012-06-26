@@ -11,8 +11,7 @@
 
   - field_set_tag :class => :submit do
     .input.select.span-16
-      .select-wrap
-        == select_tag :state, :required => true, :tabindex => 1, :class => "large"
+      == select_tag :state, :required => true, :tabindex => 1, :class => "large"
     .span-4.last
       button.button.button-primary type="submit" tabindex="20" Continue
 
