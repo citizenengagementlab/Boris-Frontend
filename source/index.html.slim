@@ -7,40 +7,46 @@
   - field_set_tag :class => "address" do
     .row
       .input.text.span-12
-        == label_tag :street_address
-        == text_field_tag :street_address, :required => true, :tabindex => 1
+        == label_tag :home_address, :caption => "Street Address"
+        == text_field_tag :home_address, :required => true, :tabindex => 1
+        .home-address-hint.tooltip
+          | Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form.
 
       .input.text.zip-code.span-12.last
         == link_to "Incorrect Location?", "#", :class => "incorrect-location"
-        == label_tag :zip_code
-        == text_field_tag :zip_code, :required => true, :tabindex => 2
-
+        == label_tag :home_zip_code, :caption => "Zip Code"
+        == text_field_tag :home_zip_code, :required => true, :tabindex => 2
+        == input_tag :hidden, :name => "home_city", :id => "home_city"
+        == input_tag :hidden, :name => "home_state_id", :id => "home_state_id"
         .zip-code-location-hint
           | Santa Monica, CA
+
 
     .row
       .span-6
         == link_to "Registering Abroad?", "#"
 
       .input.checkbox.span-10
-        == check_box_tag :mailing_address, :tabindex => 3
-        == label_tag :mailing_address, :caption => "I have a different mailing address"
+        == check_box_tag :has_mailing_address, :tabindex => 3
+        == label_tag :has_mailing_address, :caption => "I have a different mailing address"
 
       .input.checkbox.span-8.last
-        == check_box_tag :recent_move, :tabindex => 4
-        == label_tag :recent_move, :caption => "I have recently moved"
+        == check_box_tag :change_of_address, :tabindex => 4
+        == label_tag :change_of_address, :caption => "I have recently moved"
 
   - # 
   - field_set_tag :class => "mailing-address closed" do
     .row
       .input.text.span-12
-        == label_tag :mailing_street_address
-        == text_field_tag :mailing_street_address
-
+        == label_tag :mailing_address, :caption => "Mailing Street Address"
+        == text_field_tag :mailing_address
+        .mailing-address-hint.tooltip
+          | If you receive mail at a different address, please enter it here.
       .input.text.zip-code.span-12.last
         == label_tag :mailing_zip_code
         == text_field_tag :mailing_zip_code
-
+        == input_tag :hidden, :name => "mailing_city", :id => "mailing_city"
+        == input_tag :hidden, :name => "mailing_state", :id => "mailing_state"
         .zip-code-location-hint
           | Santa Monica, CA
 
@@ -48,13 +54,15 @@
   - field_set_tag :class => "previous-address closed" do
     .row
       .input.text.span-12
-        == label_tag :previous_street_address
-        == text_field_tag :previous_street_address
-
+        == label_tag :prev_address, :caption => "Previous Street Address"
+        == text_field_tag :prev_address
+        .previous-address-hint.tooltip
+          | If you have moved since your last registration, enter your previous address.
       .input.text.zip-code.span-12.last
-        == label_tag :previous_zip_code
-        == text_field_tag :previous_zip_code
-
+        == label_tag :prev_zip_code, :caption => "Previous Zip Code"
+        == text_field_tag :prev_zip_code
+        == input_tag :hidden, :name => "prev_city", :id => "prev_city"
+        == input_tag :hidden, :name => "prev_state_id", :id => "prev_state_id"
         .zip-code-location-hint
           | Santa Monica, CA
 
@@ -63,12 +71,14 @@
 
     .row
       .input.select.span-4
-        == label_tag :title
-        == select_tag :title, :tabindex => 5
+        == label_tag :name_title, :caption => "Title"
+        == select_tag :name_title, :tabindex => 5,  :options => select_options(:title)
 
       .input.text.span-8
         == label_tag :first_name
         == text_field_tag :first_name, :required => true, :tabindex => 6
+        .full-name-hint.tooltip
+          | Use your full first name. Do not use nicknames or initials.
 
       .input.text.span-8
         == label_tag :last_name
@@ -84,29 +94,30 @@
         == label_tag :us_citizen, :caption => "I am a U.S. Citizen"
 
       .input.checkbox.span-16.last
-        == check_box_tag :name_change, :required => true, :tabindex => 10
-        == label_tag :name_change, :caption => "I have recently changed my name"
+        == check_box_tag :change_of_name, :required => true, :tabindex => 10
+        == label_tag :change_of_name, :caption => "I have recently changed my name"
 
   - field_set_tag :class => "previous-name closed" do
 
     .row
+      .span-24
+        == content_tag :legend, "Previous Name:", :style => "font-size: 15px; font-weight: bold; margin-bottom: 1em;"
+
       .input.select.span-4
-        == label_tag :previous_title, :caption => "Title"
-        == select_tag :previous_title, :options => select_options(:title)
+        == label_tag :prev_name_title, :caption => "Title"
+        == select_tag :prev_name_title, :options => select_options(:title)
 
       .input.text.span-8
-        == label_tag :previous_first_name, :caption => "First Name"
-        == text_field_tag :previous_first_name, :required => true
+        == label_tag :prev_first_name, :caption => "First Name"
+        == text_field_tag :prev_first_name, :required => true
 
       .input.text.span-8
-        == label_tag :previous_last_name, :caption => "Last Name"
-        == text_field_tag :previous_last_name, :required => true
+        == label_tag :prev_last_name, :caption => "Last Name"
+        == text_field_tag :prev_last_name, :required => true
 
       .input.select.span-4.last
-        == label_tag :previous_suffix, :caption => "Suffix"
-        == select_tag :previous_suffix, :options => select_options(:suffix)
-
-
+        == label_tag :prev_name_suffix, :caption => "Suffix"
+        == select_tag :prev_name_suffix, :options => select_options(:suffix)
 
 
   - field_set_tag do
@@ -123,8 +134,8 @@
           | identification number will be assigned to you by the state.
 
       .input.text.span-8.last
-        == label_tag :birthdate
-        == text_field_tag :birthdate, :required => true, :placeholder => "MM/DD/YY", :tabindex => 12
+        == label_tag :date_of_birth, :caption => "Birthdate"
+        == text_field_tag :date_of_birth, :required => true, :placeholder => "MM/DD/YY", :tabindex => 12
 
     .row
       .input.text.span-12
@@ -132,8 +143,8 @@
         == text_field_tag :email_address, :required => true, :type => :email, :tabindex => 13
 
       .input.text.span-7
-        == label_tag :phone_number
-        == text_field_tag :phone_number, :required => true, :tabindex => 14
+        == label_tag :phone, :caption => "Phone Number"
+        == text_field_tag :phone, :required => false, :tabindex => 14
 
       .input.select.span-5.last
         == label_tag :phone_type, :caption => "Type"
@@ -142,12 +153,12 @@
   - field_set_tag do
 
     .input.select.span-12
-      == label_tag :political_party
-      == select_tag :political_party, :required => true, :tabindex => 15
+      == label_tag :party, :caption => "Political Affiliation"
+      == select_tag :party, :required => true, :tabindex => 15
 
     .input.select.span-12.last
-      == label_tag :race_or_ethnic_group
-      == select_tag :race_or_ethnic_group, :required => true, :tabindex => 16
+      == label_tag :race, :caption => "Race or Ethnic Group"
+      == select_tag :race, :required => true, :tabindex => 16
 
 
   - field_set_tag :class => :submit do

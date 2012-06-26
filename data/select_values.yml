@@ -11,7 +11,7 @@ phone_type:
   - "Work"
   - "Mobile"
 
-race_or_ethnic_group:
+race:
   - "Select One..."
   - "American Indian / Alaskan Native"
   - "Asian / Pacific Islander"
@@ -22,7 +22,7 @@ race_or_ethnic_group:
   - "Other"
   - "Decline to State"
 
-political_party:
+party:
   - "Select One..."
   - "Democratic"
   - "Green"

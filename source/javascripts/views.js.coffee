@@ -8,13 +8,13 @@ class Views.Form extends Backbone.View
       $fieldset = $el.closest "fieldset"
       @activateFieldset $fieldset
 
-    "change input[name=mailing_address]": (e) ->
+    "change input[name=has_mailing_address]": (e) ->
       toggleFieldset @$("fieldset.mailing-address"), e.target.checked
 
-    "change input[name=recent_move]": (e) ->
+    "change input[name=change_of_address]": (e) ->
       toggleFieldset @$("fieldset.previous-address"), e.target.checked
 
-    "change input[name=name_change]": (e) ->
+    "change input[name=change_of_name]": (e) ->
       toggleFieldset @$("fieldset.previous-name"), e.target.checked
 
   openFieldset = ($el) ->
@@ -142,11 +142,11 @@ class Views.IdNumberFormField extends Views.FormField
   toggleHint: ->
     @$el.toggleClass "tooltip-open"
 
-class Views.RaceOrEthnicGroupFormField extends Views.FormField
+class Views.RaceFormField extends Views.FormField
   valid: ->
     super && @value() != "Select One..."
 
-class Views.PoliticalPartyFormField extends Views.FormField
+class Views.PartyFormField extends Views.FormField
   valid: ->
     super && @value() != "Select One..."
 
