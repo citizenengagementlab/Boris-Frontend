@@ -7,6 +7,10 @@ from proxy.views import rtv_proxy
 from registrant.models import Registrant,RegistrationProgress
 import json
 
+def map(request):
+    return render_to_response('map.html',{},
+            context_instance=RequestContext(request))
+
 def register(request):
     #determine form layout from get parameter
     layout = request.GET.get('layout')

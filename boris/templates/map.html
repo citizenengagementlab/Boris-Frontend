@@ -1,0 +1,28 @@
+{%extends "base.html"%}
+
+{%block title%}Register to Vote - Select Your State{%endblock title%}
+
+{%block scripts%}
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery.vmap.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery.vmap.usa.js"></script>
+
+<!--TODO: insert real map.js here-->
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#map').vectorMap({
+      backgroundColor: "transparent",
+      borderColor:     "#A1A09F",
+      borderOpacity:   1,
+      borderWidth:     1,
+      color:           "transparent",
+      enableZoom:      false,
+      map:             "usa_en",
+      selectedColor:   "#21CB00",
+      showTooltip:     true});
+});
+</script>
+{%endblock scripts%}
+
+{%block content%}
+<div id="map" style="width: 500px; height: 400px;"></div>
+{%endblock content%}

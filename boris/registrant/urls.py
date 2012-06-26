@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('registrant.views',
+	(r'^map/$', 'map'),
     (r'^new/$', 'register'),
     (r'^save_registrant/$', 'save_registrant'),
     (r'^save_progress/$', 'save_progress'),
