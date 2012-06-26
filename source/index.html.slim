@@ -99,10 +99,9 @@
 
   - field_set_tag :class => "previous-name closed" do
 
-    .row
-      .span-24
-        == content_tag :legend, "Previous Name:", :style => "font-size: 15px; font-weight: bold; margin-bottom: 1em;"
+    h3 Previous Name
 
+    .row
       .input.select.span-4
         == label_tag :prev_name_title, :caption => "Title"
         == select_tag :prev_name_title, :options => select_options(:title)
