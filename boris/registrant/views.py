@@ -10,6 +10,21 @@ def map(request):
             context_instance=RequestContext(request))
 
 def register(request):
+    context = {}
+    #setup partner_id based on get parameter
+    if 'partner_id' in request.GET:
+        context['partner_id'] = request.GET.get('partner_id')
+    else:
+        #use CEL default
+        context['partner_id'] = 9937
+
+    #set state based on get parameter
+    if 'state' in request.GET:
+        #hit rtv_proxy for staterequirements
+        state = request.GET.get('state')
+        #TODO: get language code from localeurl
+        staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':'en'},'/api/v1/state_requirements.json')
+        context['staterequirements'] = staterequirements
     
     return render_to_response('form.html',context,
                 context_instance=RequestContext(request))
