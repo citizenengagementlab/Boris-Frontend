@@ -8,14 +8,14 @@
     .row
       .input.text.span-12
         == label_tag :home_address, :caption => "Street Address"
-        == text_field_tag :home_address, :required => true, :tabindex => 1
+        == text_field_tag :home_address, :required => true
         .home-address-hint.tooltip
           | Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form.
 
       .input.text.zip-code.span-12.last
-        == link_to "Incorrect Location?", "#", :class => "incorrect-location"
+        == link_to "Incorrect Location?", "#", :class => "incorrect-location", :tabindex => -1
         == label_tag :home_zip_code, :caption => "Zip Code"
-        == text_field_tag :home_zip_code, :required => true, :tabindex => 2
+        == text_field_tag :home_zip_code, :required => true
         == input_tag :hidden, :name => "home_city", :id => "home_city"
         == input_tag :hidden, :name => "home_state_id", :id => "home_state_id"
         .zip-code-location-hint
@@ -24,14 +24,14 @@
 
     .row
       .span-6
-        == link_to "Registering Abroad?", "#"
+        == link_to "Registering Abroad?", "#", :tabindex => -1
 
       .input.checkbox.span-10
-        == check_box_tag :has_mailing_address, :tabindex => 3
+        == check_box_tag :has_mailing_address
         == label_tag :has_mailing_address, :caption => "I have a different mailing address"
 
       .input.checkbox.span-8.last
-        == check_box_tag :change_of_address, :tabindex => 4
+        == check_box_tag :change_of_address
         == label_tag :change_of_address, :caption => "I have recently moved"
 
   - # 
@@ -72,29 +72,29 @@
     .row
       .input.select.span-4
         == label_tag :name_title, :caption => "Title"
-        == select_tag :name_title, :tabindex => 5,  :options => select_options(:title)
+        == select_tag :name_title,  :options => select_options(:title)
 
       .input.text.span-8
         == label_tag :first_name
-        == text_field_tag :first_name, :required => true, :tabindex => 6
+        == text_field_tag :first_name, :required => true
         .full-name-hint.tooltip
           | Use your full first name. Do not use nicknames or initials.
 
       .input.text.span-8
         == label_tag :last_name
-        == text_field_tag :last_name, :required => true, :tabindex => 7
+        == text_field_tag :last_name, :required => true
 
       .input.select.span-4.last
         == label_tag :suffix
-        == select_tag :suffix, :tabindex => 8
+        == select_tag :suffix
 
     .row
       .input.checkbox.span-8
-        == check_box_tag :us_citizen, :required => true, :tabindex => 9
+        == check_box_tag :us_citizen, :required => true
         == label_tag :us_citizen, :caption => "I am a U.S. Citizen"
 
       .input.checkbox.span-16.last
-        == check_box_tag :change_of_name, :required => true, :tabindex => 10
+        == check_box_tag :change_of_name, :required => true
         == label_tag :change_of_name, :caption => "I have recently changed my name"
 
   - field_set_tag :class => "previous-name closed" do
@@ -124,7 +124,7 @@
     .row
       .input.text.span-16.id-number
         == label_tag :id_number, :caption => "ID Number"
-        == text_field_tag :id_number, :required => true, :tabindex => 11
+        == text_field_tag :id_number, :required => true
         .id-number-hint-icon
         .id-number-hint.tooltip
           | You must provide either your driver's license number or the last four 
@@ -134,44 +134,44 @@
 
       .input.text.span-8.last
         == label_tag :date_of_birth, :caption => "Birthdate"
-        == text_field_tag :date_of_birth, :required => true, :placeholder => "MM/DD/YY", :tabindex => 12
+        == text_field_tag :date_of_birth, :required => true, :placeholder => "MM/DD/YY"
 
     .row
       .input.text.span-12
         == label_tag :email_address
-        == text_field_tag :email_address, :required => true, :type => :email, :tabindex => 13
+        == text_field_tag :email_address, :required => true, :type => :email
 
       .input.text.span-7
         == label_tag :phone, :caption => "Phone Number"
-        == text_field_tag :phone, :required => false, :tabindex => 14
+        == text_field_tag :phone, :required => false
 
       .input.select.span-5.last
         == label_tag :phone_type, :caption => "Type"
-        == select_tag :phone_type, :required => true, :tabindex => 15
+        == select_tag :phone_type, :required => true
 
   - field_set_tag do
 
     .input.select.span-12
       == label_tag :party, :caption => "Political Affiliation"
-      == select_tag :party, :required => true, :tabindex => 15
+      == select_tag :party, :required => true
 
     .input.select.span-12.last
       == label_tag :race, :caption => "Race or Ethnic Group"
-      == select_tag :race, :required => true, :tabindex => 16
+      == select_tag :race, :required => true
 
 
   - field_set_tag :class => :submit do
     .inputs
       .input.checkbox
-        == check_box_tag :email_rtv, :tabindex => 17
+        == check_box_tag :email_rtv
         == label_tag :email_rtv, :caption => "Receive Email Updates from Rock The Vote"
 
       .input.checkbox
-        == check_box_tag :sms_rtv, :tabindex => 18
+        == check_box_tag :sms_rtv
         == label_tag :sms_rtv, :caption => "Receive Texts from Rock The Vote"
 
       .input.checkbox
-        == check_box_tag :email_cel, :tabindex => 19
+        == check_box_tag :email_cel
         == label_tag :email_cel, :caption => "Receive Emails from CEL"
 
     button.button.button-primary type="submit" tabindex="20" Register
