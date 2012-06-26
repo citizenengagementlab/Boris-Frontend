@@ -293,8 +293,7 @@ fieldset
     style: solid
     color: transparent transparent #e7e7e7
   +transition-property("border-color, background-color")
-  +transition-duration("0.14s, 0.14s")
-
+  +transition-duration(0.14s)
 
   &:last-child
     border-bottom: none
@@ -368,7 +367,6 @@ fieldset
     size: 22px
     weight: bold
   color: #f5fbf7
-  line-height: 33px
   line-height: 26px
   text-decoration: none
   text-shadow: 0 -1px 0 rgba(0,0,0,0.4)
@@ -378,6 +376,9 @@ fieldset
   +background-image(linear-gradient(top, #47b36a 0%, #3a9457 100%))
   +box-shadow(inset 0 1px 0 #61d292, 0 1px 0 rgba(0,0,0,0.1))
   +after-image("button-complete-check-icon.png", 36px, 1px, 16px)
+
+  .no-rgba &
+    text-shadow: 0 -1px 0 #2f7746
   
   &:hover
     color: #f5fbf7
@@ -391,7 +392,9 @@ fieldset
     background-color: #43ab64
     +background-image(linear-gradient(top, #47b46a 0%, #3e9f5d 100%))
 
-  &[disabled]
+  &[disabled], :disabled
+    color: #f5fbf7
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4)
     +after-image("button-check-icon.png", 36px, 0, 16px)
 
   &.download
