@@ -25,49 +25,15 @@ def register(request):
         #TODO: get language code from localeurl
         staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':'en'},'/api/v1/state_requirements.json')
         context['staterequirements'] = staterequirements
+    else:
+        return redirect('/registrants/map/')
     
     return render_to_response('form.html',context,
                 context_instance=RequestContext(request))
-                
-def save_registrant(request):
-    #save name,email,zip to our local db
-    if request.method != "POST":
-        return HttpResponseBadRequest('must post to save_registrant')
-    else:
-        try:
-            post_data = {'email':request.POST['registrant[email_address]'],
-                         'zip_code':request.POST['registrant[zip_code]'],
-                         'layout':request.POST['registrant[layout]']}
-        except KeyError,e:
-            return HttpResponseBadRequest(e)
-        try:
-            post_data.update({'first_name':request.POST['registrant[first_name]'],
-                              'last_name':request.POST['registrant[last_name]']})
-        except KeyError,e:
-            pass
-        registrant = Registrant(**post_data)
-        registrant.save()
-        return HttpResponse('registrant saved')
-    return HttpResponse('error')
-    
-def save_progress(request):
-    if request.method != "POST":
-        return HttpResponseBadRequest('must post to save_progress')
-    else:
-        try:
-            registrant = Registrant.objects.filter(email=request.POST['email_address']).latest()
-            progress = RegistrationProgress(field_name=request.POST['field_name'],
-                         field_value=request.POST['field_value'],
-                         registrant=registrant)
-            progress.save()
-        except KeyError,e:
-            return HttpResponseBadRequest(e)
-        return HttpResponse('progress saved')
-    return HttpResponse('save_progress error')
     
 def submit(request):
     if request.method != "POST":
-        return redirect('/registrants/new')
+        return redirect('/registrants/new/')
     submitted_form = request.POST.copy()
     #make a mutable copy
     
