@@ -72,7 +72,7 @@
     .row
       .input.select.span-4
         == label_tag :name_title, :caption => "Title"
-        == select_tag :name_title,  :options => select_options(:title)
+        == select_tag :name_title,  :options => select_options(:title), :required => true
 
       .input.text.span-8
         == label_tag :first_name
@@ -90,7 +90,7 @@
 
     .row
       .input.checkbox.span-8
-        == check_box_tag :us_citizen, :required => true
+        == check_box_tag :us_citizen, :required => true, :checked => "checked"
         == label_tag :us_citizen, :caption => "I am a U.S. Citizen"
 
       .input.checkbox.span-16.last
@@ -108,11 +108,11 @@
 
       .input.text.span-8
         == label_tag :prev_first_name, :caption => "First Name"
-        == text_field_tag :prev_first_name, :required => true
+        == text_field_tag :prev_first_name
 
       .input.text.span-8
         == label_tag :prev_last_name, :caption => "Last Name"
-        == text_field_tag :prev_last_name, :required => true
+        == text_field_tag :prev_last_name
 
       .input.select.span-4.last
         == label_tag :prev_name_suffix, :caption => "Suffix"

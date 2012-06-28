@@ -18,10 +18,15 @@ class Views.Form extends Backbone.View
       toggleFieldset @$("fieldset.previous-name"), e.target.checked
 
   openFieldset = ($el) ->
-    $el.slideDown().removeClass("closed")
+    $el.slideDown()
+      .removeClass("closed")
+      .find('input, select[name="name_title"], select[name="prev_name_title"]')
+      .attr('required', true)
 
   closeFieldset = ($el) ->
     $el.slideUp().addClass("closed")
+      .find('input, select[name="name_title"], select[name="prev_name_title"]')
+      .attr('required', false)
 
   toggleFieldset = ($el, bool) ->
     bool = $el.hasClass("closed") if bool == undefined
@@ -29,7 +34,7 @@ class Views.Form extends Backbone.View
 
   initialize: ->
     @$fieldsets = @$ "fieldset"
-    @$inputs = @$ ":text, select, input[type=email], input[type=date]"
+    @$inputs = @$ ":text, select, input[type=email], input[type=date], #us_citizen"
     @$button = @$ ".button-primary"
 
     @fields = for input in @$inputs
@@ -96,14 +101,15 @@ class Views.FormField extends Backbone.View
       else
         @showTooltip()
 
-    @required = @input.required
+    @required = ->
+      @input.required
 
   value: ->
     $.trim @input.value
 
   valid: ->
     value = @value()
-    return false if @required && value == ''
+    return false if @required() && value == ''
 
     true
 
@@ -134,7 +140,6 @@ class Views.FormField extends Backbone.View
   _onChange: ->
     @trigger "change"
 
-
 class Views.IdNumberFormField extends Views.FormField
   events:
     "click .id-number-hint-icon": "toggleHint"
@@ -144,11 +149,82 @@ class Views.IdNumberFormField extends Views.FormField
 
 class Views.RaceFormField extends Views.FormField
   valid: ->
-    super && @value() != "Select One..."
+    if @required()
+      return @value() != "Select One..."
+    true
 
 class Views.PartyFormField extends Views.FormField
   valid: ->
-    super && @value() != "Select One..."
+    if @required()
+      return @value() != "Select One..."
+    true
+    
+class Views.NameTitleFormField extends Views.FormField
+  valid: ->
+    if @required()
+      return @value() != "--"
+    true
+
+class Views.PrevNameTitleFormField extends Views.FormField
+  valid: ->
+    if @required()
+      return @value() != "--"
+    true
+
+class Views.HomeZipCodeFormField extends Views.FormField
+  errorMessage: "Enter a valid 5 digit zip code."
+  valid: =>
+    if @required()
+      return super && @value().length == 5
+    else
+      true
+
+class Views.MailingZipCodeFormField extends Views.HomeZipCodeFormField
+  valid: =>
+    super()
+
+class Views.PrevZipCodeFormField extends Views.HomeZipCodeFormField
+  valid: =>
+    super()
+
+class Views.EmailAddressFormField extends Views.FormField
+  errorMessage: "Enter a valid email address"
+  valid: =>
+    re = /^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    super && re.test(@value())
+
+class Views.DateOfBirthFormField extends Views.HomeZipCodeFormField
+  errorMessage: 'Enter your birthdate in MM/DD/YYYY format'
+  valid: =>
+    if !@value().match(/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d+$/)
+      return false
+    # Check Age
+    today    = new Date()
+    birthday = new Date(@value())
+    age      = today.getFullYear() - birthday.getFullYear()
+    month    = today.getMonth() - birthday.getMonth
+    if (month < 0 || (month == 0 && today.getDate() < birthday.getDate()))
+      age--
+
+    if age < 17
+      @$input.siblings('.tooltip').text "You must turn 18 by the next election to register to vote."
+      return false
+    true
+
+class Views.PhoneFormField extends Views.FormField
+  errorMessage: "Enter a phone number in xxx-xxx-xxxx format"
+  valid: =>
+    if @$input.attr('required') == true || @value().length > 0
+      re = /(1-)?[(]*(\d{3})[) -.]*(\d{3})[ -.]*(\d{4})\D*/
+      return re.test(@value())
+    return true
+
+class Views.UsCitizenFormField extends Views.FormField
+  errorMessage: "Must be a citizen to register"
+  valid: =>
+    if !@$input.attr('checked')
+      return false
+    true
 
 class Views.State extends Backbone.View
   events:
@@ -181,7 +257,7 @@ class Views.State extends Backbone.View
         try @$path.click()
         return
 
-      @$map.find("#jqvmap1_#{code.toLowerCase()}").click() # XXX Nasty hack because
+      @$map.find("#jqvmap1_#{code.toLowerCase('')}").click() # XXX Nasty hack because
                                                            # jqvmap doesn't support
                                                            # dynamically setting the
                                                            # selected region.
@@ -191,4 +267,3 @@ class Views.State extends Backbone.View
   enableButton:  -> @$button.prop "disabled", false
 
   disableButton: -> @$button.prop "disabled", true
-
