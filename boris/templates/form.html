@@ -2,454 +2,235 @@
 
 {%block title%}Register to Vote{%endblock title%}
 
-{%block scripts%}
-
-<script type="text/javascript" src="{{STATIC_URL}}js/tooltips.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}js/application.js"></script>
-{%comment%}
-<script type="text/javascript" src="{{STATIC_URL}}js/{{layout|default:'singlepage'}}.js"></script>
-{%endcomment%}
-
-<script type="text/javascript">
-window.LAYOUT = "{{layout|default:'singlepage'}}";
-</script>
-{%endblock scripts%}
-
 {%block content%}
-{{staterequirements}}
-
-	<section id="state_form">
-		<form action="/registrants/save_registrant/" method="post" id="get_started">
-			<fieldset id="get_started">
-				<legend>1. Get Started!</legend>
-				<ul>
-					<li class="emailaddress">
-						<label for="pre_email_address">Email Address
-						<p class="tooltip">
-							<a id="tooltip_email">?</a>
-							<span class="tooltip_text" id="tooltip_text_email">We will e-mail you a copy of your voter registration form.</span>
-						</p>
-						</label>
-						<input type="text"  name="email_address" id="pre_email_address" />
-					</li>
-					<li class="zipcode">
-						<label for="pre_zip_code">Zip Code
-							<p class="tooltip">
-								<a id="tooltip_zip_code">?</a>
-								<span class="tooltip_text" id="tooltip_text_zip_code">
-									Enter ZIP code for the address where you live, even if you don't receive mail there.
-								</span>
-							</p>
-						</label>
-						<input type="text"  name="zip_code" id="pre_zip_code" />
-						<span class="citystate"></span>
-					</li>
-					<li class="form-action">
-						<input type="hidden" name="lang" id="lang_id" value="en" />
-						<input type="submit" id="get_started_btn" value="Get Started" />
-						<input type="hidden" name="layout" value="{{layout|default:'singlepage'}}" />
-					</li>
-				</ul>
-			</fieldset>
-		</form>
-	</section>
-	<section id="registration_form">
-		<form action="/registrants/submit/" method="post" id="registration">
-			<fieldset id="address">
-				<legend>2. Address Information</legend>
-				<ul>
-					<li class="address_street">
-						<label for="home_address">Street Address
-							<p class ="tooltip">
-								<a id="tooltip_address">?</a>
-								<span class="tooltip_text" id="tooltip_text_address">Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form.</span>
-							</p>
-						</label>
-						<input type="text" name="home_address" id="home_address" />
-					</li>
-					<li class="address_city hidden">
-						<label for="home_city">City</label>
-						<input type="hidden" name="home_city" id="home_city" />
-					</li>
-					<li class="no_clear state hidden">
-						<label for="home_state_id">State
-						</label>
-						<select type="hidden" name="home_state_id" id="home_state_id">
-							<option value="" selected="selected">Select a State</option> 
-							<option value="AL">Alabama</option> 
-							<option value="AK">Alaska</option> 
-							<option value="AZ">Arizona</option> 
-							<option value="AR">Arkansas</option> 
-							<option value="CA">California</option> 
-							<option value="CO">Colorado</option> 
-							<option value="CT">Connecticut</option> 
-							<option value="DE">Delaware</option> 
-							<option value="DC">District Of Columbia</option> 
-							<option value="FL">Florida</option> 
-							<option value="GA">Georgia</option> 
-							<option value="HI">Hawaii</option> 
-							<option value="ID">Idaho</option> 
-							<option value="IL">Illinois</option> 
-							<option value="IN">Indiana</option> 
-							<option value="IA">Iowa</option> 
-							<option value="KS">Kansas</option> 
-							<option value="KY">Kentucky</option> 
-							<option value="LA">Louisiana</option> 
-							<option value="ME">Maine</option> 
-							<option value="MD">Maryland</option> 
-							<option value="MA">Massachusetts</option> 
-							<option value="MI">Michigan</option> 
-							<option value="MN">Minnesota</option> 
-							<option value="MS">Mississippi</option> 
-							<option value="MO">Missouri</option> 
-							<option value="MT">Montana</option> 
-							<option value="NE">Nebraska</option> 
-							<option value="NV">Nevada</option> 
-							<option value="NH">New Hampshire</option> 
-							<option value="NJ">New Jersey</option> 
-							<option value="NM">New Mexico</option> 
-							<option value="NY">New York</option> 
-							<option value="NC">North Carolina</option> 
-							<option value="ND">North Dakota</option> 
-							<option value="OH">Ohio</option> 
-							<option value="OK">Oklahoma</option> 
-							<option value="OR">Oregon</option> 
-							<option value="PA">Pennsylvania</option> 
-							<option value="RI">Rhode Island</option> 
-							<option value="SC">South Carolina</option> 
-							<option value="SD">South Dakota</option> 
-							<option value="TN">Tennessee</option> 
-							<option value="TX">Texas</option> 
-							<option value="UT">Utah</option> 
-							<option value="VT">Vermont</option> 
-							<option value="VA">Virginia</option> 
-							<option value="WA">Washington</option> 
-							<option value="WV">West Virginia</option> 
-							<option value="WI">Wisconsin</option> 
-							<option value="WY">Wyoming</option>
-						</select>
-					</li>
-					<li class="no_clear zip">
-						<label for="home_zip_code">Zip Code</label>
-						<input type="text"  name="home_zip_code" id="home_zip_code" />
-						<span class="citystate"></span>
-					</li>
-					<li class="checkbox has_mailing_address">
-						<label class="checkbox_label" for="has_mailing_address">
-							<input type="checkbox" name="has_mailing_address" id="has_mailing_address" /> I have a different mailing address.
-							<p class="tooltip tooltip_checkbox">
-								<a id="tooltip_has_mailing_address">?</a>
-								<span class="tooltip_text" id="tooltip_text_has_mailing_address"> If you receive mail at a different address, please enter it here.</span>
-							</p>
-						</label>
-					</li>
-					<li class="checkbox changed_address">
-						<label class="checkbox_label" for="change_of_address">
-							<input type="checkbox" name="change_of_address" id="change_of_address" /> I have recently moved.
-							<p class="tooltip tooltip_checkbox">
-								<a id="tooltip_change_of_address">?</a>
-								<span class="tooltip_text" id="tooltip_text_change_of_address">
-									If you have moved since your last registration, enter your previous address.</span>
-							</p>
-						</label>
-					</li>
-					<li class="register_abroad">
-						<a href="http://overseasvotefoundation.org" target="_blank">Registering Abroad?</a>
-					</li>
-					<fieldset class="mailing"> 
-						<legend class="visible">Mailing Address</legend>
-						<li class="mailing-address_street">
-							<label for="mailing_address">Street Address</label>
-							<input type="text" name="mailing_address" id="mailing_address" />
-						</li>
-						<li class="mailing-address_city">
-							<label for="mailing_city">City</label>
-							<input type="text" name="mailing_city" class="span2" id="mailing_city" />
-						</li>
-						<li class="no_clear mailing-state">
-							<label for="mailing_state">State</label>
-							<select type="text" name="mailing_state" id="mailing_state">
-								<option value="" selected="selected">Select a State</option> 
-								<option value="AL">Alabama</option> 
-								<option value="AK">Alaska</option> 
-								<option value="AZ">Arizona</option> 
-								<option value="AR">Arkansas</option> 
-								<option value="CA">California</option> 
-								<option value="CO">Colorado</option> 
-								<option value="CT">Connecticut</option> 
-								<option value="DE">Delaware</option> 
-								<option value="DC">District Of Columbia</option> 
-								<option value="FL">Florida</option> 
-								<option value="GA">Georgia</option> 
-								<option value="HI">Hawaii</option> 
-								<option value="ID">Idaho</option> 
-								<option value="IL">Illinois</option> 
-								<option value="IN">Indiana</option> 
-								<option value="IA">Iowa</option> 
-								<option value="KS">Kansas</option> 
-								<option value="KY">Kentucky</option> 
-								<option value="LA">Louisiana</option> 
-								<option value="ME">Maine</option> 
-								<option value="MD">Maryland</option> 
-								<option value="MA">Massachusetts</option> 
-								<option value="MI">Michigan</option> 
-								<option value="MN">Minnesota</option> 
-								<option value="MS">Mississippi</option> 
-								<option value="MO">Missouri</option> 
-								<option value="MT">Montana</option> 
-								<option value="NE">Nebraska</option> 
-								<option value="NV">Nevada</option> 
-								<option value="NH">New Hampshire</option> 
-								<option value="NJ">New Jersey</option> 
-								<option value="NM">New Mexico</option> 
-								<option value="NY">New York</option> 
-								<option value="NC">North Carolina</option> 
-								<option value="ND">North Dakota</option> 
-								<option value="OH">Ohio</option> 
-								<option value="OK">Oklahoma</option> 
-								<option value="OR">Oregon</option> 
-								<option value="PA">Pennsylvania</option> 
-								<option value="RI">Rhode Island</option> 
-								<option value="SC">South Carolina</option> 
-								<option value="SD">South Dakota</option> 
-								<option value="TN">Tennessee</option> 
-								<option value="TX">Texas</option> 
-								<option value="UT">Utah</option> 
-								<option value="VT">Vermont</option> 
-								<option value="VA">Virginia</option> 
-								<option value="WA">Washington</option> 
-								<option value="WV">West Virginia</option> 
-								<option value="WI">Wisconsin</option> 
-								<option value="WY">Wyoming</option>
-							</select>
-						</li>
-						<li class="no_clear mailing-zip" >
-							<label for="mailing_zip_code">Zip Code</label> 
-							<input type="text" name="mailing_zip_code" id="mailing_zip_code"/>
-						</li>
-					</fieldset>
-					<fieldset class="address-change">
-						<li class="prev-address_street">
-							<legend class="visible">Previous Address</legend>
-							<label for="prev_address">Street Address</label>
-							<input type="text" name="prev_address" id="prev_address"/>
-						</li>
-						<li class="prev-address_city">
-							<label for="prev_city">City</label>
-							<input type="text" name="prev_city" id="prev_city" />
-						</li>
-						<li class="no_clear prev-state">
-							<label for="prev_state_id">State</label>
-							<select type="text" name="prev_state_id" id="prev_state">
-								<option value="" selected="selected">Select a State</option> 
-								<option value="AL">Alabama</option> 
-								<option value="AK">Alaska</option> 
-								<option value="AZ">Arizona</option> 
-								<option value="AR">Arkansas</option> 
-								<option value="CA">California</option> 
-								<option value="CO">Colorado</option> 
-								<option value="CT">Connecticut</option> 
-								<option value="DE">Delaware</option> 
-								<option value="DC">District Of Columbia</option> 
-								<option value="FL">Florida</option> 
-								<option value="GA">Georgia</option> 
-								<option value="HI">Hawaii</option> 
-								<option value="ID">Idaho</option> 
-								<option value="IL">Illinois</option> 
-								<option value="IN">Indiana</option> 
-								<option value="IA">Iowa</option> 
-								<option value="KS">Kansas</option> 
-								<option value="KY">Kentucky</option> 
-								<option value="LA">Louisiana</option> 
-								<option value="ME">Maine</option> 
-								<option value="MD">Maryland</option> 
-								<option value="MA">Massachusetts</option> 
-								<option value="MI">Michigan</option> 
-								<option value="MN">Minnesota</option> 
-								<option value="MS">Mississippi</option> 
-								<option value="MO">Missouri</option> 
-								<option value="MT">Montana</option> 
-								<option value="NE">Nebraska</option> 
-								<option value="NV">Nevada</option> 
-								<option value="NH">New Hampshire</option> 
-								<option value="NJ">New Jersey</option> 
-								<option value="NM">New Mexico</option> 
-								<option value="NY">New York</option> 
-								<option value="NC">North Carolina</option> 
-								<option value="ND">North Dakota</option> 
-								<option value="OH">Ohio</option> 
-								<option value="OK">Oklahoma</option> 
-								<option value="OR">Oregon</option> 
-								<option value="PA">Pennsylvania</option> 
-								<option value="RI">Rhode Island</option> 
-								<option value="SC">South Carolina</option> 
-								<option value="SD">South Dakota</option> 
-								<option value="TN">Tennessee</option> 
-								<option value="TX">Texas</option> 
-								<option value="UT">Utah</option> 
-								<option value="VT">Vermont</option> 
-								<option value="VA">Virginia</option> 
-								<option value="WA">Washington</option> 
-								<option value="WV">West Virginia</option> 
-								<option value="WI">Wisconsin</option> 
-								<option value="WY">Wyoming</option>
-							</select>
-						</li>
-						<li class="no_clear prev-zip">
-							<label for="prev_zip_code">Zip Code</label>
-							<input type="text" name="prev_zip_code" id="prev_zip_code"/>
-						</li>
-					</fieldset>
-				
-				</ul>
-			</fieldset>
-			<fieldset id="personal">
-				<legend>3. Personal Information</legend>
-				<ul>
-					<li class="title">
-						<label for="name_title">Title
-						<p class ="tooltip"><a id="tooltip_personal">?</a><span class="tooltip_text" id="tooltip_text_personal">
-							Put your full name in these boxes. Please do not use nicknames or initials.</span></p>
-						</label>
-						<select name="name_title" id="name_title">
-							<option value=""></option>
-							<option value="Mr.">Mr.</option>
-							<option value="Mrs.">Mrs.</option>
-							<option value="Miss">Miss</option>
-							<option value="Ms.">Ms.</option>
-						</select>
-					</li>
-					<li class="no_clear firstname">
-						<label for="first_name">First Name</label>
-						<input type="text" name="first_name" id="first_name"  />
-					</li>
-					<li class="no_clear lastname">
-						<label for="last_name">Last Name</label>
-						<input type="text" name="last_name" id="last_name"  />
-					</li>
-					<li class="checkbox name_changed">
-						<label class="checkbox_label" for="change_of_name">
-							<input type="checkbox" name="change_of_name" id="change_of_name" />
-							I have changed my name.
-							<p class ="tooltip tooltip_checkbox">
-								<a id="tooltip_change_of_name">?</a>
-								<span class="tooltip_text" id="tooltip_text_change_of_name">
-									If you have changed your name since your last registration, enter your previous name.
-								</span>
-							</p>
-						</label>
-					</li>
-					<fieldset id="previous_name">
-						<legend class="visible">Previous Name</legend>
-						<li class="title">
-							<label for="prev_name_title">Title</label>
-							<select name="prev_name_title" id="prev_name_title">
-								<option value=""></option>
-								<option value="Mr.">Mr.</option>
-								<option value="Mrs.">Mrs.</option>
-								<option value="Miss">Miss</option>
-								<option value="Ms.">Ms.</option>
-							</select>
-						</li>
-						<li class="no_clear firstname">
-							<label for="prev_first_name">First Name</label>
-							<input type="text" name="prev_first_name" id="prev_first_name" />
-						</li>
-						<li class="no_clear lastname">
-							<label for="prev_last_name">Last Name</label>
-							<input type="text" name="prev_last_name" id="prev_last_name" />
-						</li>
-					</fieldset>
-					<li class="idnumber">
-						<label for="id_number">ID Number
-							<p class="visible_tooltip"><span id="visible_tooltip_text_id_number"></span></p>
-						</label>
-						<input type="text"  name="id_number" id="id_number">
-					</li>
-					<li class="birthday">
-						<label for="date_of_birth">Date of Birth
-							<p class="tooltip">
-								<a id="tooltip_dob">?</a>
-								<span class="tooltip_text" id="tooltip_text_dob">On your voter registration application, you are required to indicate whether you will be 18 years old on or before election day. However, many states allow you to register before your 18th birthday, so please click <a href="http://www.rockthevote.com/voter-registration/online-application-system/register-before-you-are-18-rules.html" target="_blank">here</a> to see the rule for your state.</span>
-							</p>
-						</label>
-						<input type="text"  name="date_of_birth" id="date_of_birth" placeholder="MM-DD-YYYY" />
-					</li>
-				</ul>
-			</fieldset>
-			<fieldset id="contact">
-				<legend>4. Contact Information</legend>
-				<ul>
-					<li class="emailaddress">
-						<label for="email_address">Email Address</label>
-						<input type="text" name="email_address" id="email_address" readonly="readonly"/>
-					</li>
-					<li class="checkbox emailoptin">
-						<label class="checkbox_label" for="opt_in_email">
-						<input type="checkbox" name="opt_in_email" id="opt_in_email" checked="checked"/> Receive email updates from Rock the Vote</label>
-					</li>
-					<li class="phonenumber optional">
-						<label for="phone">Phone
-							<p class="tooltip"><a id="tooltip_phone">?</a><span class="tooltip_text" id="tooltip_text_phone">Most states ask for your telephone number in case there are questions about your application. You are not required to provide your phone number.</span></p>
-						</label>
-						<input type="text" name="phone" id="phone" placeholder="323-555-4385"/>
-					</li>
-					<li class="phonetype no_clear">
-						<label for="phone_type">Type</label>
-						<select name="phone_type" id="phone_type">
-							<option value="Mobile">Mobile</option>
-							<option value="Home">Home</option>
-							<option value="Work">Work</option>
-							<option value="Other">Other</option>
-						</select>
-					</li>
-					<li class="checkbox smsoptin">
-						<label class="checkbox_label" for="opt_in_sms">
-							<input type="checkbox" name="opt_in_sms" id="opt_in_sms" /> Receive text messages from Rock The Vote.
-						</label>
-					</li>
-				</ul>
-			</fieldset>
-			<fieldset id="additional">
-				<legend>5. Additional Information</legend>
-				<ul>
-					<li class="race">
-						<label for="race">Race or Ethnic Group
-						<p class="tooltip tooltip-select"><a id="tooltip_race">?</a><span class="tooltip_text" id="tooltip_text_race"></span></p>
-						</label>
-						<select id="race" name="race" >
-							<option value=""></option>
-							<option value="American Indian / Alaskan Native">American Indian / Alaskan Native</option>
-							<option value="Asian / Pacific Islander">Asian / Pacific Islander</option>
-							<option value="Black (Not Hispanic">Black (Not Hispanic)</option>
-							<option value="Hispanic">Hispanic</option>
-							<option value="Multi-racial">Multi-racial</option>
-							<option value="White (not Hispanic)">White (not Hispanic)</option>
-							<option value="Other">Other</option>
-							<option value="Decline to State">Decline to State</option>
-						</select>
-					</li>
-					<li class="party">
-						<label for="party">Political Affiliation
-						<p class="tooltip tooltip-select"><a id="tooltip_party">?</a> <span class="tooltip_text" id="tooltip_text_party"></span></p>
-						</label>
-						<select id="party" name="party">
-							<option value=""></option>
-						</select>
-					</li>
-					<li class="checkbox citizen">
-						<label class="checkbox_label" for="us_citizen">
-							<input type="checkbox" name="us_citizen" id="us_citizen" checked="checked"/> I am a US Citizen
-
-						</label>
-					</li>
-					<li class="form-action">
-						<input type="hidden" name="partner_id" value="{{partner_id}}" />
-						<input type="hidden" name="lang" id="lang_id" value="en">
-						<input type="submit" id="register" action="submit" value="Register" />
-					</li>
-				</ul>
-			</fieldset>
-		</form>
-	</section>
+    <form class="registration-form" method="post" action="/register" accept-charset="UTF-8">
+      <fieldset class="address">
+        <div class="row">
+          <div class="input text span-12">
+            <label for="home_address">Street Address</label>
+            <input required id="home_address" name="home_address" type="text" />
+            <div class="home-address-hint tooltip">
+              Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form.
+            </div>
+          </div>
+          <div class="input text zip-code span-12 last">
+            <a class="incorrect-location" tabindex="-1" href="../map/">Not in {{ state }}?</a>
+            <label for="home_zip_code">Zip Code</label>
+            <input required id="home_zip_code" name="home_zip_code" type="text" />
+            <input name="home_city" id="home_city" type="hidden" />
+            <input name="home_state_id" id="home_state_id" type="hidden" />
+            <div class="zip-code-location-hint"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span-6">
+            <a tabindex="-1" href="#">Registering Abroad?</a>
+          </div>
+          <div class="input checkbox span-10">
+            <input id="has_mailing_address" name="has_mailing_address" value="1" type="checkbox" />
+            <label for="has_mailing_address">I have a different mailing address</label>
+          </div>
+          <div class="input checkbox span-8 last">
+            <input id="change_of_address" name="change_of_address" value="1" type="checkbox" />
+            <label for="change_of_address">I have recently moved</label>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="mailing-address closed">
+        <div class="row">
+          <div class="input text span-12">
+            <label for="mailing_address">Mailing Street Address</label>
+            <input id="mailing_address" name="mailing_address" type="text" />
+            <div class="mailing-address-hint tooltip">
+              If you receive mail at a different address, please enter it here.
+            </div>
+          </div>
+          <div class="input text zip-code span-12 last">
+            <label for="mailing_zip_code">Mailing Zip Code</label>
+            <input id="mailing_zip_code" name="mailing_zip_code" type="text" />
+            <input name="mailing_city" id="mailing_city" type="hidden" />
+            <input name="mailing_state" id="mailing_state" type="hidden" />
+            <div class="zip-code-location-hint"></div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="previous-address closed">
+        <div class="row">
+          <div class="input text span-12">
+            <label for="prev_address">Previous Street Address</label>
+            <input id="prev_address" name="prev_address" type="text" />
+            <div class="previous-address-hint tooltip">
+              If you have moved since your last registration, enter your previous address.
+            </div>
+          </div>
+          <div class="input text zip-code span-12 last">
+            <label for="prev_zip_code">Previous Zip Code</label>
+            <input id="prev_zip_code" name="prev_zip_code" type="text" />
+            <input name="prev_city" id="prev_city" type="hidden" />
+            <input name="prev_state_id" id="prev_state_id" type="hidden" />
+            <div class="zip-code-location-hint"></div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="name">
+        <div class="row">
+          <div class="input select span-4">
+            <label for="name_title">Title</label>
+            <select required name="name_title">
+              <option value="--">--</option>
+              <option value="Mr.">Mr.</option>
+              <option value="Ms.">Ms.</option>
+              <option value="Mrs.">Mrs.</option>
+              <option value="Dr.">Dr.</option>
+            </select>
+          </div>
+          <div class="input text span-8">
+            <label for="first_name">First Name</label>
+            <input required id="first_name" name="first_name" type="text" />
+            <div class="full-name-hint tooltip">Use your full first name. Do not use nicknames or initials.</div>
+          </div>
+          <div class="input text span-8">
+            <label for="last_name">Last Name</label>
+            <input required id="last_name" name="last_name" type="text" />
+          </div>
+          <div class="input select span-4 last">
+            <label for="suffix">Suffix</label>
+            <select id="suffix" name="suffix">
+              <option value="--">--</option>
+              <option value="Jr.">Jr.</option>
+              <option value="Sr.">Sr.</option>
+              <option value="II">II</option>
+              <option value="III">III</option>
+              <option value="IV">IV</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input checkbox span-8">
+            <input required checked id="us_citizen" name="us_citizen" value="1" type="checkbox" />
+            <label for="us_citizen">I am a U.S. Citizen</label>
+          </div>
+          <div class="input checkbox span-16 last">
+            <input id="change_of_name" name="change_of_name" value="1" type="checkbox" />
+            <label for="change_of_name">I have recently changed my name</label>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="previous-name closed">
+        <h3>Previous Name</h3>
+        <div class="row">
+          <div class="input select span-4">
+            <label for="prev_name_title">Title</label>
+            <select name="prev_name_title">
+              <option value="--">--</option>
+              <option value="Mr.">Mr.</option>
+              <option value="Ms.">Ms.</option>
+              <option value="Mrs.">Mrs.</option>
+              <option value="Dr.">Dr.</option>
+            </select>
+          </div>
+          <div class="input text span-8">
+            <label for="prev_first_name">First Name</label>
+            <input id="prev_first_name" name="prev_first_name" type="text" />
+          </div>
+          <div class="input text span-8">
+            <label for="prev_last_name">Last Name</label>
+            <input id="prev_last_name" name="prev_last_name" type="text" />
+          </div>
+          <div class="input select span-4 last">
+            <label for="prev_name_suffix">Suffix</label>
+            <select name="prev_name_suffix">
+              <option value="--">--</option>
+              <option value="Jr.">Jr.</option>
+              <option value="Sr.">Sr.</option>
+              <option value="II">II</option>
+              <option value="III">III</option>
+              <option value="IV">IV</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <div class="row">
+          <div class="input text span-16 id-number">
+            <label for="id_number">ID Number</label>
+            <input id="id_number" name="id_number" type="text" />
+            <div class="id-number-hint-icon"></div>
+            <div class="id-number-hint tooltip">
+              {{ staterequirements.id_number_msg }}
+            </div>
+          </div>
+          <div class="input text span-8 last">
+            <label for="date_of_birth">Birthdate</label>
+            <input required placeholder="MM/DD/YY" id="date_of_birth" name="date_of_birth" type="text" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input text span-12">
+            <label for="email_address">Email Address</label>
+            <input required type="email" id="email_address" name="email_address" />
+          </div>
+          <div class="input text span-7">
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="text" />
+          </div>
+          <div class="input select span-5 last">
+            <label for="phone_type">Type</label>
+            <select required id="phone_type" name="phone_type">
+              <option value="Home">Home</option>
+              <option value="Work">Work</option>
+              <option value="Mobile">Mobile</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <div class="input select span-12">
+          <label for="party">Political Affiliation</label>
+          <select {% if staterequirements.requires_party %}required{% endif %} id="party" name="party">
+            <option value="Select One...">Select One...</option>
+          	{% for party in staterequirements.party_list %}
+          	<option value="{{ party }}">{{ party }}</option>
+          	{% endfor %}
+          	{% if staterequirements.no_party_msg %}
+          	<option value="{{ staterequirements.no_party_msg }}">{{ staterequirements.no_party_msg }}</option>
+          	{% endif %}
+          </select>
+          <div class="political-affiliation-hint tooltip">{{ staterequirements.requires_party_msg }}</div>
+        </div>
+        <div class="input select span-12 last">
+          <label for="race">Race or Ethnic Group</label>
+          <select {% if staterequirements.requires_race %}required{% endif %} id="race" name="race">
+            <option value="Select One...">Select One...</option>
+            <option value="American Indian / Alaskan Native">American Indian / Alaskan Native</option>
+            <option value="Asian / Pacific Islander">Asian / Pacific Islander</option>
+            <option value="Black (Not Hispanic)">Black (Not Hispanic)</option>
+            <option value="Hispanic">Hispanic</option>
+            <option value="White (Not Hispanic)">White (Not Hispanic)</option>
+            <option value="Multi-racial">Multi-racial</option>
+            <option value="Other">Other</option>
+            <option value="Decline to State">Decline to State</option>
+          </select>
+          <div class="race-hint tooltip">{{ staterequirements.requires_race_msg }}</div>
+        </div>
+      </fieldset>
+      <fieldset class="submit">
+        <div class="inputs">
+          <div class="input checkbox">
+            <input id="email_rtv" name="email_rtv" value="1" type="checkbox" />
+            <label for="email_rtv">Receive Email Updates from Rock The Vote</label>
+          </div>
+          <div class="input checkbox">
+            <input id="sms_rtv" name="sms_rtv" value="1" type="checkbox" />
+            <label for="sms_rtv">Receive Texts from Rock The Vote</label>
+          </div>
+          <div class="input checkbox">
+            <input id="email_cel" name="email_cel" value="1" type="checkbox" />
+            <label for="email_cel">Receive Emails from CEL</label>
+          </div>
+        </div>
+        <button class="button button-primary" tabindex="20" type="submit">Register</button>
+      </fieldset>
+    </form>
+  
 {%endblock content%}
