@@ -25,6 +25,7 @@ def register(request):
         #TODO: get language code from localeurl
         staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':'en'},'/api/v1/state_requirements.json')
         context['staterequirements'] = staterequirements
+        context['state'] = state
     else:
         return redirect('/registrants/map/')
     
