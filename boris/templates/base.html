@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8" />
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
 
-	<head>
-		<title>{%block title%}{%endblock title%}</title>
-		<!-- Import CSS -->
-		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css" />
-		{%block styles%}{%endblock styles%}
-		
-		<!-- Import Javascript -->
-		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
-		<!--[if IE]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		{%block scripts%}{%endblock scripts%}
-		
-		<script type="text/javascript">
+	<title>{% block title %}Voter Registration{% endblock title %}</title>
 
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-31241858-1']);
-		  _gaq.push(['_trackPageview']);
-
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-
-		</script>
-	</head>
-	
-	<body>
-		<div class="wrapper">
-			<header>
-				<h1>Voter Registration</h1>
-			</header>
-
+	<link href="{{ STATIC_URL }}stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+	{% block styles %}{% endblock styles %}
+	<script src="javascripts/modernizr.js" type="text/javascript"></script>
+</head>
+<body class="{% block body_class %}{% endblock body_class %}">
+	<div id="main" role="main">
+		<header id="header">
+			<h1 class="container">
+				<a class="logo">
+					<img src="{{ STATIC_URL }}images/logo.png" />
+				</a>
+				Voter Registration
+			</h1>
+		</header>
+		<div id="content">{%block content%}{%endblock%}</div>
+		<footer id="footer">
 			<div class="container">
-				{%block content%}{%endblock%}
+				<p>
+					Powered by
+					<a href="" tabindex="-1">Rock The Vote</a>
+				</p>
+				<nav>
+					<a>FAQ</a>
+					<a>Privacy &amp; Security</a>
+					<a>Contact Us</a>
+					<a>About</a>
+				</nav>
 			</div>
-			<div class="push"></div>
-		</div>
-		<footer class="footer">
-			<a href="http://www.rockthevote.com/voter-registration/online-application-system/faq.html">FAQ</a>
-			<a href="http://www.rockthevote.com/voter-registration/online-application-system/privacy.html">Privacy &amp; Security</a>
-			<a href="http://www.rockthevote.com/voter-registration/online-application-system/contact.html">Contact</a>
-			<a href="http://www.rockthevote.com/voter-registration/online-application-system/about.html">About</a>
-			<span>© Copyright 2012, Rock the Vote</span>
 		</footer>
-	</body>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<script src="{{STATIC_URL}}javascripts/application.js" type="text/javascript"></script>
+	<script src="{{STATIC_URL}}javascripts/form.js" type="text/javascript"></script>
+	{%block scripts%}{%endblock scripts%}
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-31241858-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+</body>
 </html>
