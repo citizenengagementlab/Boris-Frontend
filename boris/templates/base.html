@@ -8,14 +8,14 @@
 
 	<link href="{{ STATIC_URL }}stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
 	{% block styles %}{% endblock styles %}
-	<script src="javascripts/modernizr.js" type="text/javascript"></script>
+	<script src="{{STATIC_URL}}javascripts/modernizr.js" type="text/javascript"></script>
 </head>
 <body class="{% block body_class %}{% endblock body_class %}">
 	<div id="main" role="main">
 		<header id="header">
 			<h1 class="container">
 				<a class="logo">
-					<img src="{{ STATIC_URL }}images/logo.png" />
+					<img src="{{ STATIC_URL }}images/rtvlogo-white.png" />
 				</a>
 				Voter Registration
 			</h1>
@@ -28,17 +28,16 @@
 					<a href="" tabindex="-1">Rock The Vote</a>
 				</p>
 				<nav>
-					<a>FAQ</a>
-					<a>Privacy &amp; Security</a>
-					<a>Contact Us</a>
-					<a>About</a>
+					<a href="http://www.rockthevote.com/voter-registration/online-application-system/faq.html" target="_blank">FAQ</a>
+					<a href="http://www.rockthevote.com/voter-registration/online-application-system/privacy.html" target="_blank">Privacy &amp; Security</a>
+					<a href="http://www.rockthevote.com/voter-registration/online-application-system/contact.html" target="_blank">Contact Us</a>
+					<a href="http://www.rockthevote.com/voter-registration/online-application-system/about.html" target="_blank">About</a>
 				</nav>
 			</div>
 		</footer>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 	<script src="{{STATIC_URL}}javascripts/application.js" type="text/javascript"></script>
-	<script src="{{STATIC_URL}}javascripts/form.js" type="text/javascript"></script>
 	{%block scripts%}{%endblock scripts%}
 	<script type="text/javascript">
 
