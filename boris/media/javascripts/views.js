@@ -446,7 +446,7 @@
 
     return DateOfBirthFormField;
 
-  })(Views.HomeZipCodeFormField);
+  })(Views.FormField);
 
   Views.PhoneFormField = (function(_super) {
 
