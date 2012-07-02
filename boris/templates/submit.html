@@ -7,16 +7,26 @@
 
 {%block content%}
 <section>
+  {% if pdfurl %}
   <header>
     <h2>You're not quite done!</h2>
     <p>You still need to download your form.</p>
   </header>
   <div class="prepend-3 span-18 append-3 last">
-    <a class="button download button-primary" href="#download">Download</a>
+	    <a class="button download button-primary" href="{{ pdfurl }}">Download</a>
   </div>
+
   <div class="prepend-3 span-18 append-3 last">
     <p class="subtle">(We've also e-mailed you a link to retreive your form later)</p>
   </div>
+
+  {% elif error %}
+  	<header>
+  		<h2>Something went wrong :(</h2>
+  	  	<p>{{ error }}</p>
+  	</header>
+  {% endif %}
+
 </section>
 <section>
   <header>

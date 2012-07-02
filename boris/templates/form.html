@@ -98,8 +98,8 @@
             <input required id="last_name" name="last_name" type="text" />
           </div>
           <div class="input select span-4 last">
-            <label for="suffix">Suffix</label>
-            <select id="suffix" name="suffix">
+            <label for="name_suffix">Suffix</label>
+            <select id="name_suffix" name="name_suffix">
               <option value="--">--</option>
               <option value="Jr.">Jr.</option>
               <option value="Sr.">Sr.</option>
@@ -227,7 +227,7 @@
           </div>            
           {% endcomment %}
           <div class="input checkbox">
-            <input checked id="sms_rtv" name="sms_rtv" value="1" type="checkbox" />
+            <input checked id="opt_in_sms" name="opt_in_sms" value="1" type="checkbox" />
             <label for="sms_rtv">Receive Text Updates from RockTheVote (data & msg rates may apply)</label>
           </div>
           <div class="input checkbox">
@@ -235,6 +235,11 @@
             <label for="email_cel">I want to learn more about opportunities for activism in my community</label>
           </div>
         </div>
+        {% comment %}
+          Hidden but Required Fields
+        {% endcomment %}
+        <input type="hidden" name="lang" value="en">
+        <input type="hidden" name="partner_id" value="{{ partner_id }}">
         <button class="button button-primary" tabindex="20" type="submit">Register</button>
       </fieldset>
     </form>
