@@ -181,9 +181,9 @@
           <div class="input select span-5 last">
             <label for="phone_type">Type</label>
             <select required id="phone_type" name="phone_type">
+              <option value="Mobile">Mobile</option>
               <option value="Home">Home</option>
               <option value="Work">Work</option>
-              <option value="Mobile">Mobile</option>
             </select>
           </div>
         </div>
@@ -220,17 +220,19 @@
       </fieldset>
       <fieldset class="submit">
         <div class="inputs">
+          {% comment %}
           <div class="input checkbox">
             <input id="email_rtv" name="email_rtv" value="1" type="checkbox" />
             <label for="email_rtv">Receive Email Updates from Rock The Vote</label>
-          </div>
+          </div>            
+          {% endcomment %}
           <div class="input checkbox">
-            <input id="sms_rtv" name="sms_rtv" value="1" type="checkbox" />
-            <label for="sms_rtv">Receive Texts from Rock The Vote</label>
+            <input checked id="sms_rtv" name="sms_rtv" value="1" type="checkbox" />
+            <label for="sms_rtv">Receive Text Updates from RockTheVote (data & msg rates may apply)</label>
           </div>
           <div class="input checkbox">
             <input id="email_cel" name="email_cel" value="1" type="checkbox" />
-            <label for="email_cel">Receive Emails from CEL</label>
+            <label for="email_cel">I want to learn more about opportunities for activism in my community</label>
           </div>
         </div>
         <button class="button button-primary" tabindex="20" type="submit">Register</button>
