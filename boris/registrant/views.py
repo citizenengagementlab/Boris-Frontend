@@ -54,6 +54,11 @@ def submit(request):
         if not submitted_form.has_key(r):
             #and fill it in with zero
             submitted_form[r] = '0'
+    
+    #check for suffix and clear it if it's an invalid value
+    suffix = submitted_form.get('name_suffix')
+    if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
+        submitted_form['name_suffix'] = ""
             
     #hit the api
     #todo, do this async?
