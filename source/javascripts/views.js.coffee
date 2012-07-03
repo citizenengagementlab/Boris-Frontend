@@ -143,6 +143,12 @@ class Views.FormField extends Backbone.View
 class Views.IdNumberFormField extends Views.FormField
   events:
     "click .id-number-hint-icon": "toggleHint"
+  valid: ->
+    if @value()
+      re = /^(none|\d{4}|[-*A-Z0-9]{7,42})$/i
+      if !@value.match(re)
+        return false
+    return true
 
   toggleHint: ->
     @$el.toggleClass "tooltip-open"
@@ -158,7 +164,7 @@ class Views.PartyFormField extends Views.FormField
     if @required()
       return @value() != "Select One..."
     true
-    
+
 class Views.NameTitleFormField extends Views.FormField
   valid: ->
     if @required()
