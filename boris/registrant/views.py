@@ -26,6 +26,9 @@ def register(request):
         staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':'en'},'/api/v1/state_requirements.json')
         context['staterequirements'] = staterequirements
         context['state'] = state
+        if staterequirements.has_key('error'):
+            return render_to_response('ineligible.html',context,
+                        context_instance=RequestContext(request))
     else:
         return redirect('/registrants/map/')
     
