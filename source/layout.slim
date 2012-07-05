@@ -8,7 +8,6 @@ head
   == yield_content :head
   == javascript_include_tag "modernizr"
 
-
 body class=page_classes
   #main role="main"
     header#header
@@ -21,6 +20,9 @@ body class=page_classes
 
     #content
       == yield
+    
+    .scroll-shadows.top
+    .scroll-shadows.bottom
   
     footer#footer
       .container

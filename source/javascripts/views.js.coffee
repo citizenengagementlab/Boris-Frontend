@@ -17,6 +17,8 @@ class Views.Form extends Backbone.View
     "change input[name=change_of_name]": (e) ->
       toggleFieldset @$("fieldset.previous-name"), e.target.checked
 
+   
+
   openFieldset = ($el) ->
     $el.slideDown()
       .removeClass("closed")
@@ -78,7 +80,7 @@ class Views.Form extends Backbone.View
       @disableButton()
 
     this
-
+    
 
 class Views.FormField extends Backbone.View
   errorMessage: "can't be blank"
@@ -143,6 +145,7 @@ class Views.FormField extends Backbone.View
 class Views.IdNumberFormField extends Views.FormField
   events:
     "click .id-number-hint-icon": "toggleHint"
+
   valid: ->
     if @value()
       re = /^(none|\d{4}|[-*A-Z0-9]{7,42})$/i
