@@ -226,6 +226,13 @@ class Views.PhoneFormField extends Views.FormField
 
 class Views.UsCitizenFormField extends Views.FormField
   errorMessage: "Must be a citizen to register"
+  initialize: ->
+    super()
+    @$input.on "change", =>
+      if @valid()
+        @hideTooltip()
+      else
+        @showTooltip()
   valid: =>
     if !@$input.attr('checked')
       return false
