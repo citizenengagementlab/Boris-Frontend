@@ -268,7 +268,9 @@ class Views.State extends Backbone.View
                                                            # dynamically setting the
                                                            # selected region.
     @$select.val code.toUpperCase()
+    @$select.trigger 'focus'
     @enableButton()
+
 
   enableButton:  -> @$button.prop "disabled", false
 
