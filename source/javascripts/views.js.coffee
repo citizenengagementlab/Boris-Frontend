@@ -84,23 +84,24 @@ class Views.FormField extends Backbone.View
   errorMessage: "can't be blank"
 
   initialize: ->
+    @getErrorTip()
     @input = @options.input
     @$input = $ @input
     @$input.on "change blur keyup", => @_onChange()
     @$input.on "change blur", => @validate()
 
     @$input.on "focus", =>
-      @showTooltip() unless @valid()
+      @showTooltip() # unless @valid() //always show tooltip onFocus
 
     @$input.on "blur", =>
       @hideTooltip()
-
+    ###
     @$input.on "change", =>
       if @valid()
         @hideTooltip()
       else
         @showTooltip()
-
+    ###
     @required = ->
       @input.required
 
@@ -114,8 +115,6 @@ class Views.FormField extends Backbone.View
     true
 
   validate: ->
-    @getErrorTip()
-
     if @valid()
       @hideError()
     else
