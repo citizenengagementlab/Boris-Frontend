@@ -144,7 +144,7 @@ class Views.IdNumberFormField extends Views.FormField
     "click .id-number-hint-icon": "toggleHint"
   valid: ->
     if @value()
-      return false unless @value().match(/^(none|\d{4}|[-*A-Z0-9]{7,42})$/i)
+      return (/^(none|\d{4}|[-*A-Z0-9]{7,42})$/i).test @value()
     return true
 
   toggleHint: ->
