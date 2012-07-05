@@ -86,23 +86,24 @@ class Views.FormField extends Backbone.View
   errorMessage: "can't be blank"
 
   initialize: ->
+    @getErrorTip()
     @input = @options.input
     @$input = $ @input
     @$input.on "change blur keyup", => @_onChange()
     @$input.on "change blur", => @validate()
 
     @$input.on "focus", =>
-      @showTooltip() unless @valid()
+      @showTooltip() # unless @valid() //always show tooltip onFocus
 
     @$input.on "blur", =>
       @hideTooltip()
-
+    ###
     @$input.on "change", =>
       if @valid()
         @hideTooltip()
       else
         @showTooltip()
-
+    ###
     @required = ->
       @input.required
 
@@ -116,8 +117,6 @@ class Views.FormField extends Backbone.View
     true
 
   validate: ->
-    @getErrorTip()
-
     if @valid()
       @hideError()
     else
@@ -148,9 +147,7 @@ class Views.IdNumberFormField extends Views.FormField
 
   valid: ->
     if @value()
-      re = /^(none|\d{4}|[-*A-Z0-9]{7,42})$/i
-      if !@value.match(re)
-        return false
+      return false unless @value().match(/^(none|\d{4}|[-*A-Z0-9]{7,42})$/i)
     return true
 
   toggleHint: ->
@@ -184,7 +181,7 @@ class Views.HomeZipCodeFormField extends Views.FormField
   errorMessage: "Enter a valid 5 digit zip code."
   valid: =>
     if @required()
-      return super && @value().length == 5
+      return super && @value().match(/^((\d{5}(-\d{4}))|(\d{5}))$/)
     else
       true
 
@@ -230,6 +227,13 @@ class Views.PhoneFormField extends Views.FormField
 
 class Views.UsCitizenFormField extends Views.FormField
   errorMessage: "Must be a citizen to register"
+  initialize: ->
+    super()
+    @$input.on "change", =>
+      if @valid()
+        @hideTooltip()
+      else
+        @showTooltip()
   valid: =>
     if !@$input.attr('checked')
       return false
