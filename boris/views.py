@@ -11,11 +11,12 @@ def frontpage(request):
     #lookup IP and redirect user to correct state
     #using free MaxMind GeoLiteCity db
     geoip = pygeoip.GeoIP(join(settings.MEDIA_ROOT,'GeoLiteCity.dat'))
-    ip_addr = request.META['REMOTE_ADDR']
+    ip_addr = request.META.get('HTTP_X_FORWARDED_FOR', '') or request.META.get('REMOTE_ADDR')
     params = {}
     #if settings.DEBUG and ip_addr == "127.0.0.1":
     #    ip_addr = "75.101.48.104" #test with known CA IP
     #    params['debug'] = 1
+    print request.META
     print ip_addr
     result = geoip.record_by_addr(ip_addr)
     if result:
