@@ -16,6 +16,7 @@ def frontpage(request):
     #if settings.DEBUG and ip_addr == "127.0.0.1":
     #    ip_addr = "75.101.48.104" #test with known CA IP
     #    params['debug'] = 1
+    print ip_addr
     result = geoip.record_by_addr(ip_addr)
     if result:
         params['state'] = result['region_name']

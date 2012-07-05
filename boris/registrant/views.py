@@ -30,7 +30,7 @@ def register(request):
             return render_to_response('ineligible.html',context,
                         context_instance=RequestContext(request))
     else:
-        return redirect('/registrants/map/')
+        return redirect('/') #redirect to frontpage to do geolocation
     
     return render_to_response('form.html',context,
                 context_instance=RequestContext(request))
