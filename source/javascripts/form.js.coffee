@@ -18,6 +18,8 @@ requestAnimFrame = (()->
 
 content = document.getElementById("content")
 $main = $ "#main"
+$topShadow = $(".scroll-shadows.top")
+$bottomShadow = $(".scroll-shadows.bottom")
 
 check = ->
 
@@ -27,12 +29,12 @@ check = ->
     $main.removeClass('scrollable')
   
   if content.scrollTop == 0
-    $(".scroll-shadows.top").addClass('at-top')
+    $topShadow.addClass('at-top')
   else if content.scrollHeight == content.offsetHeight + content.scrollTop
-    $(".scroll-shadows.bottom").addClass('at-bottom')
+    $bottomShadow.addClass('at-bottom')
   else
-    $(".scroll-shadows.top").removeClass('at-top')
-    $(".scroll-shadows.bottom").removeClass('at-bottom')
+    $topShadow.removeClass('at-top')
+    $bottomShadow.removeClass('at-bottom')
 
   requestAnimFrame(check)
 
