@@ -36,6 +36,7 @@ class Views.Form extends Backbone.View
     @$fieldsets = @$ "fieldset"
     @$inputs = @$ ":text, select, input[type=email], input[type=date], #us_citizen"
     @$button = @$ ".button-primary"
+    @$button.on 'click', @_onSubmit
 
     @fields = for input in @$inputs
       id = input.name
@@ -55,10 +56,10 @@ class Views.Form extends Backbone.View
   valid: ->
     _.all _.invoke(@fields, "valid"), _.identity
 
-  enableButton: -> @$button.prop "disabled", false
+  enableButton: -> @$button.removeClass "disabled"
 
   disableButton: ->
-    @$button.prop "disabled", true
+    @$button.addClass "disabled"
 
   focusInputByIndex: (idx) ->
     @$inputs[idx].focus()
@@ -78,10 +79,35 @@ class Views.Form extends Backbone.View
       @disableButton()
 
     this
+  
+  _onSubmit: (e) =>
+    e.preventDefault()
+    if @$button.hasClass 'disabled'
+      errors = []
+      @fields.forEach (field) ->
+        field.validate()
+        errors.push {name: field.$input.siblings('label').text(), error: field.errorMessage} unless field.valid()
+      
+      $('.error-list').remove() #remove if already exists
+
+      $errorList = $("<ul class='error-list'></ul>")
+      html = "<h2>Please correct the following errors:</h2>"
+      errors.forEach (error) ->
+        if error.name
+          html += "<li>#{error.name}: #{error.error}</li>"
+        else
+          html += "<li>#{error.error}</li>"
+      $errorList.html(html)
+      $('fieldset.submit').prepend $errorList
+      return false
+    else
+      console.log 'good to go!'
+      return false #for now
+
 
 
 class Views.FormField extends Backbone.View
-  errorMessage: "can't be blank"
+  errorMessage: "Required"
 
   initialize: ->
     @getErrorTip()
@@ -111,7 +137,6 @@ class Views.FormField extends Backbone.View
   valid: ->
     value = @value()
     return false if @required() && value == ''
-
     true
 
   validate: ->
