@@ -7,4 +7,5 @@ wsgiref==0.1.2
 gunicorn==0.14.2
 newrelic
 pygeoip
+django-sslify
 django-evolution
