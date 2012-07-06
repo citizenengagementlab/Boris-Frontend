@@ -13,16 +13,27 @@ def frontpage(request):
     geoip = pygeoip.GeoIP(join(settings.MEDIA_ROOT,'GeoLiteCity.dat'))
     ip_addr = request.META.get('HTTP_X_FORWARDED_FOR', '') or request.META.get('REMOTE_ADDR')
     params = {}
+
+    #preserve the get parameters in redirect
+    #to be backwards compatible with old rocky frontend
+    if request.GET.get('partner'):
+        params['partner'] = request.GET.get('partner')
+    if request.GET.get('source'):
+        params['source'] = request.GET.get('source')
+
     try:
         result = geoip.record_by_addr(ip_addr)
     except pygeoip.GeoIPError:
         result = None
+
+    redirect_url = reverse('registrant.views.map')
     if result:
+        redirect_url = reverse('registrant.views.register')
         params['state'] = result['region_name']
-        return redirect(reverse('registrant.views.register')+
-            "?"+urllib.urlencode(params))
-    else:
-        return redirect(reverse('registrant.views.map'))
+
+    if params:
+        redirect_url += "?"+urllib.urlencode(params)
+    return redirect(redirect_url)
 
 def rtv_iframe_test(request):
     layout = request.GET.get('layout')

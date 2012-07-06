@@ -1,22 +1,38 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
-from django.http import HttpResponse,HttpResponseBadRequest
 
 from proxy.views import rtv_proxy
-from registrant.models import Registrant,RegistrationProgress
+from proxy.models import CustomForm
+
+from django.contrib.localflavor.us import us_states
+STATE_NAME_LOOKUP = dict(us_states.US_STATES)
 
 def map(request):
-    return render_to_response('map.html',{},
+    context = {}
+    if request.GET.get('partner'):
+        context['partner'] = request.GET.get('partner')
+    if request.GET.get('source'):
+        context['source'] = request.GET.get('source')
+
+    return render_to_response('map.html',context,
             context_instance=RequestContext(request))
 
 def register(request):
     context = {}
-    #setup partner_id based on get parameter
-    if 'partner_id' in request.GET:
-        context['partner_id'] = request.GET.get('partner_id')
+    #setup partner id based on get parameter
+    if 'partner' in request.GET:
+        context['partner'] = request.GET.get('partner')
+        try:
+            context['customform'] = CustomForm.objects.get(partner_id=context['partner'])
+        except (CustomForm.DoesNotExist,ValueError):
+            context['customform'] = None
+            context['partner'] = 9937
     else:
         #use CEL default
-        context['partner_id'] = 9937
+        context['partner'] = 9937
+
+    if request.GET.get('source'):
+        context['source'] = request.GET.get('source')
 
     #set state based on get parameter
     if 'state' in request.GET:
@@ -26,6 +42,7 @@ def register(request):
         staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':'en'},'/api/v1/state_requirements.json')
         context['staterequirements'] = staterequirements
         context['state'] = state
+        context['state_name'] = STATE_NAME_LOOKUP[state]
         if staterequirements.has_key('error'):
             return render_to_response('ineligible.html',context,
                         context_instance=RequestContext(request))
@@ -67,9 +84,9 @@ def submit(request):
     if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
         submitted_form['name_suffix'] = ""
             
-    #hit the api
-    #todo, do this async?
+    #hit the rocky api
     rtv_response = rtv_proxy('POST',submitted_form,'/api/v1/registrations.json')
+
     context = {}
     if rtv_response.has_key('pdfurl'):
         context['pdfurl'] = rtv_response['pdfurl']
@@ -83,7 +100,26 @@ def submit(request):
         except KeyError:
             context['error'] = "Looks like we've gone sideways"
     context['email_address'] = submitted_form.get("email_address")
+
+    #if a partner, post to their api
+    if submitted_form.has_key('partner_id'):
+        try:
+            customform = CustomForm.objects.get(partner_id=submitted_form['partner_id'])
+            response = customform.submit(submitted_form)
+            if response.get('error'):
+                #something went wrong...
+                # email admin?
+                print response
+        except (CustomForm.DoesNotExist,ValueError):
+            pass
+
+    context['state_name'] = STATE_NAME_LOOKUP[submitted_form.get('home_state_id')]
+
+    #send user values to context, for trackable social media links
+    context['partner'] = submitted_form.get('partner_id')
+    context['source'] = submitted_form.get('source')
+    #TODO, what user id should we use?
+    #some hash of email and partner_id?
+    context['user_id'] = "TBD"
+
     return render_to_response('submit.html', context, context_instance=RequestContext(request))
-    
-def finish(request):
-    return render_to_response('finish.html',context_instance=RequestContext(request))

@@ -27,7 +27,7 @@ def rtv_proxy(method, values, url):
         url = PROXY_FORMAT % url
         if 'registrations.json' in url:
             #don't use urllib.urlencode to encode data dictionary,
-            #that munges the brackets, do &-join manually and quote_plus the values
+            #that munges the brackets, quote_plus the values and do &-join manually
             data = []
             for (k,v) in values.items():
                 data.append('registration[%s]=%s' % (k,urllib.quote_plus(v)))
@@ -57,3 +57,20 @@ def rtv_proxy(method, values, url):
         
     content = response.read()
     return json.loads(content)
+
+
+def partner_proxy(method,url,values):
+    #values should be a dictionary at this point
+    if settings.DEBUG: print "PARTNER PROXY",method
+
+    if method == "POST":
+        data = urllib.urlencode(values)
+        try:
+            response = urllib2.urlopen(url,data)
+        except urllib2.HTTPError,e:
+            error_dict = {'error':json.loads(e.read())}
+            error_dict['status'] = e.code
+            return error_dict
+
+        content = response.read()
+        return json.loads(content)

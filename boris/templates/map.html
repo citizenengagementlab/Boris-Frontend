@@ -65,5 +65,9 @@
         <option value="WY">Wyoming</option></select></div>
       <div class="span-4 last">
         <button class="button button-primary" tabindex="20" type="submit">Continue</button>
-      </div></fieldset></form>
+      </div></fieldset>
+
+      {%if partner%}<input type="hidden" name="partner" value="{{partner}}" />{%endif%}
+      {%if source%}<input type="hidden" name="source" value="{{source}}" />{%endif%}
+  </form>
 {%endblock content%}
