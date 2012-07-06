@@ -11,6 +11,10 @@ def map(request):
     context = {}
     if request.GET.get('partner'):
         context['partner'] = request.GET.get('partner')
+        try:
+            context['customform'] = CustomForm.objects.get(partner_id=context['partner'])
+        except (CustomForm.DoesNotExist,ValueError):
+            context['customform'] = None
     if request.GET.get('source'):
         context['source'] = request.GET.get('source')
 
@@ -21,15 +25,17 @@ def register(request):
     context = {}
     #setup partner id based on get parameter
     if 'partner' in request.GET:
+        context['has_partner'] = True
         context['partner'] = request.GET.get('partner')
         try:
             context['customform'] = CustomForm.objects.get(partner_id=context['partner'])
         except (CustomForm.DoesNotExist,ValueError):
             context['customform'] = None
-            context['partner'] = 9937
     else:
         #use CEL default
         context['partner'] = 9937
+        context['has_partner'] = False
+        #so we don't show the param in subsequent links
 
     if request.GET.get('source'):
         context['source'] = request.GET.get('source')
@@ -109,6 +115,7 @@ def submit(request):
     if submitted_form.has_key('partner_id'):
         try:
             customform = CustomForm.objects.get(partner_id=submitted_form['partner_id'])
+            context['customform'] = customform
             response = customform.submit(submitted_form)
             if response.get('error'):
                 #something went wrong...
