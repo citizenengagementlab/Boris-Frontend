@@ -64,7 +64,7 @@ def submit(request):
 
     #rename source to partner_tracking_id as per api
     if 'source' in submitted_form:
-        submitted_form['partner_tracking_id'] = submitted_form.pop('source')
+        submitted_form['partner_tracking_id'] = submitted_form.pop('source')[0]
     
     #convert "on/off" to boolean values expected by api
     booleans = ['first_registration','has_mailing_address',
