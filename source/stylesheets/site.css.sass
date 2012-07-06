@@ -81,8 +81,10 @@ a
 
 #main
   width: $width
+  height: $height
   margin: 0 auto
   overflow: hidden
+  position: relative
 
 
 #content
@@ -156,6 +158,8 @@ body.finish
   text-align: center
   background-color: #e4e4e4
   +box-shadow(inset 0 1px 2px rgba(0,0,0,0.3))
+  position: relative
+  z-index: 1000
 
   p
     font:
@@ -506,7 +510,12 @@ fieldset
   line-height: 16px
   color: #9c9c9c
   background: #393939
-  +transition-property(all)
+  // +transition-property("transform, opacity")
+  -webkit-transition-property: -webkit-transform, opacity
+  -moz-transition-property: -moz-transform, opacity
+  -ms-transition-property: -ms-transform, opacity
+  -o-transition-property: -o-transform, opacity
+  transition-property: transform, opacity
   +transition-duration(0.2s)
 
   &:after
@@ -524,7 +533,6 @@ fieldset
     visibility: visible
     +opacity(1)
     +translateY(8px)
-
 
 .id-number-hint
   &:after
@@ -565,6 +573,36 @@ fieldset.submit
   > li
     margin-left: 20px
     color: $input-error-border-color
+
+.scroll-shadows
+  position: absolute
+  height: 2px
+  width: 100%
+  +opacity(0)
+  +transition-property("opacity")
+  +transition-duration(0.2s)
+  z-index: 1
+
+  &.top
+    top: $header-height - 2px
+    +box-shadow(0 1px 16px black)
+
+    &.at-top
+      +opacity(0)
+
+  &.bottom
+    bottom: $footer-height - 2px
+    +box-shadow(0 -1px 16px black)
+
+    &.at-bottom
+      +opacity(0)
+
+  .scrollable &
+    +opacity(1)
+
+
+
+>>>>>>> c9fda43b0ab3e66f2d933edae9caf6b9f0681831
 
 // Map
 @import map

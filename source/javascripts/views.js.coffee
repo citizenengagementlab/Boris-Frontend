@@ -17,6 +17,8 @@ class Views.Form extends Backbone.View
     "change input[name=change_of_name]": (e) ->
       toggleFieldset @$("fieldset.previous-name"), e.target.checked
 
+   
+
   openFieldset = ($el) ->
     $el.slideDown()
       .removeClass("closed")
@@ -81,8 +83,8 @@ class Views.Form extends Backbone.View
     this
   
   _onSubmit: (e) =>
-    e.preventDefault()
     if @$button.hasClass 'disabled'
+      e.preventDefault()
       errors = []
       @fields.forEach (field) ->
         field.validate()
@@ -101,10 +103,7 @@ class Views.Form extends Backbone.View
       $('fieldset.submit').prepend $errorList
       return false
     else
-      console.log 'good to go!'
-      return false #for now
-
-
+      true
 
 class Views.FormField extends Backbone.View
   errorMessage: "Required"
@@ -167,6 +166,7 @@ class Views.FormField extends Backbone.View
 class Views.IdNumberFormField extends Views.FormField
   events:
     "click .id-number-hint-icon": "toggleHint"
+
   valid: ->
     if @value()
       return (/^(none|\d{4}|[-*A-Z0-9]{7,42})$/i).test @value()
