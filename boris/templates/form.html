@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="input text zip-code span-12 last">
-            <a class="incorrect-location" tabindex="-1" href="../map/">Not in {{ state }}?</a>
+            <a class="incorrect-location" tabindex="-1" href="../map/{%if partner%}?partner={{partner}}{%endif%}">Not in {{ state }}?</a>
             <label for="home_zip_code">Zip Code</label>
             <input required id="home_zip_code" name="home_zip_code" type="text" />
             <input name="home_city" id="home_city" type="hidden" />
