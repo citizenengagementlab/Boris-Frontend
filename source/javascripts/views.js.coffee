@@ -10,12 +10,15 @@ class Views.Form extends Backbone.View
 
     "change input[name=has_mailing_address]": (e) ->
       toggleFieldset @$("fieldset.mailing-address"), e.target.checked
+      @_onFieldChange()
 
     "change input[name=change_of_address]": (e) ->
       toggleFieldset @$("fieldset.previous-address"), e.target.checked
+      @_onFieldChange()
 
     "change input[name=change_of_name]": (e) ->
       toggleFieldset @$("fieldset.previous-name"), e.target.checked
+      @_onFieldChange()
 
    
 
@@ -83,6 +86,8 @@ class Views.Form extends Backbone.View
     this
   
   _onSubmit: (e) =>
+    $('.error-list').remove() #remove error-list if already exists
+
     if @$button.hasClass 'disabled'
       e.preventDefault()
       errors = []
@@ -90,8 +95,6 @@ class Views.Form extends Backbone.View
         field.validate()
         errors.push {name: field.$input.siblings('label').text(), error: field.errorMessage} unless field.valid()
       
-      $('.error-list').remove() #remove if already exists
-
       $errorList = $("<ul class='error-list'></ul>")
       html = "<h2>Please correct the following errors:</h2>"
       errors.forEach (error) ->
