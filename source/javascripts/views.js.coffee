@@ -178,7 +178,7 @@ class Views.HomeZipCodeFormField extends Views.FormField
   errorMessage: "Enter a valid 5 digit zip code."
   valid: =>
     if @required()
-      return super && @value().match(/^((\d{5}(-\d{4}))|(\d{5}))$/)
+      (/^((\d{5}(-\d{4}))|(\d{5}))$/).test @value()
     else
       true
 
