@@ -16,11 +16,16 @@
 	    font-size: 11px;
 	    font-weight:normal;
 	  }
+
+    h1 > a > img {
+      max-width:150px;
+    }
 	</style>
 {% endblock scripts %}
 
 {%block content%}
     <form class="registration-form" method="post" action="../submit/" accept-charset="UTF-8">
+      {% csrf_token %}
       <fieldset class="address">
         <div class="row">
           <div class="input text span-12">
@@ -31,7 +36,7 @@
             </div>
           </div>
           <div class="input text zip-code span-12 last">
-            <a class="incorrect-location" tabindex="-1" href="../map/">Not in {{ state }}?</a>
+            <a class="incorrect-location" tabindex="-1" href="../map/{%if partner%}?partner={{partner}}{%endif%}">Not in {{ state }}?</a>
             <label for="home_zip_code">Zip Code</label>
             <input required id="home_zip_code" name="home_zip_code" type="text" />
             <input name="home_city" id="home_city" type="hidden" />
@@ -233,20 +238,31 @@
       </fieldset>
       <fieldset class="submit">
         <div class="inputs">
-          {% comment %}
           <div class="input checkbox">
-            <input id="opt_in_email" name="opt_in_email" value="1" type="checkbox" />
-            <label for="opt_in_email">Receive Email Updates from Rock The Vote</label>
-          </div>            
-          {% endcomment %}
-          <div class="input checkbox">
-            <input checked id="opt_in_sms" name="opt_in_sms" value="1" type="checkbox" />
-            <label for="opt_in_sms">Send me txt messages from Rock the Vote <span class="subtle">(data &amp; msg rates may apply)</span></label>
+            <input id="opt_in_email" name="opt_in_email" type="checkbox" checked="checked" />
+            <label for="opt_in_email">{%if customform %}
+              {%if customform.email_optin_text%}{{customform.email_optin_text}}
+                {%else%}Receive Email Updates from {{customform.name}}{%endif%}
+              {%else%}Receive Email Updates from Rock the Vote{%endif%}</label>
           </div>
           <div class="input checkbox">
-            <input id="volunteer" name="volunteer" value="0" type="checkbox" />
-            <label for="volunteer">I would like to volunteer with Rock the Vote</label>
+            <input id="opt_in_sms" name="opt_in_sms" type="checkbox" />
+            <label for="opt_in_sms">{%if customform%}
+              {%if customform.sms_optin_text%}{{customform.sms_optin_text}}
+                {%else%}Send me txt messages from {{customform.name}}{%endif%}
+              {%else%}Send me txt messages from Rock the Vote{%endif%}
+              <span class="subtle">(data &amp; msg rates may apply)</span></label>
           </div>
+          {% comment %} Does the new form have volunteer input? {% endcomment %}
+          {%comment%}
+          <div class="input checkbox">
+            <input id="volunteer" name="volunteer" type="checkbox" />
+            <label for="volunteer">{%if customform%}
+              {%if customform.volunteer_text%}{{customform.volunteer_text}}
+                {%else%}I would like to volunteer with {{customform.name}}{%endif%}
+              {%else%}I would like to volunteer withRock the Vote{%endif%}</label>
+          </div>
+          {%endcomment%}
           {% comment %} New inputs for CEL {% endcomment %}
           {% comment %} deactivate while in testing
           <div class="input checkbox">
@@ -255,12 +271,14 @@
           </div>
           {% endcomment %}
         </div>
-        {% comment %} Hidden field, default to true {% endcomment %}
+        {% comment %} Hidden field, default to true
         <input id="opt_in_email" name="opt_in_email" value="1" type="hidden" />
+        {% endcomment %}
         
         {% comment %} Hidden but Required Fields {% endcomment %}
         <input type="hidden" name="lang" value="en">
-        <input type="hidden" name="partner_id" value="{{ partner_id }}">
+        <input type="hidden" name="partner_id" value="{{ partner }}">
+        {%if source%}<input type="hidden" name="source" value="{{ source }}">{%endif%}
         <button class="button button-primary" tabindex="20" type="submit">Register</button>
       </fieldset>
     </form>

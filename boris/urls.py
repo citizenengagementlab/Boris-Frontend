@@ -15,11 +15,11 @@ urlpatterns += patterns('',
 
 admin.autodiscover()
 urlpatterns += patterns('',
-    (r'^admin/summary_stats', 'registrant.utils.stats'),
     (r'^admin/', include(admin.site.urls)),
 )
 
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT }),
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT }),
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT }),
     )

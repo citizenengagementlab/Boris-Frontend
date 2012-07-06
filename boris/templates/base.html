@@ -15,9 +15,9 @@
 		<header id="header">
 			<h1 class="container">
 				<a class="logo">
-					<img src="{{ STATIC_URL }}images/rtvlogo-white.png" />
+					{% if customform.logo%}<img src="{{ MEDIA_URL }}{{customform.logo}}" />{%endif%}
 				</a>
-				Voter Registration
+				{{ state_name }} Voter Registration
 			</h1>
 		</header>
 		<div id="content">{%block content%}{%endblock%}</div>
