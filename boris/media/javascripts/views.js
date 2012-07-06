@@ -23,13 +23,16 @@
         return this.activateFieldset($fieldset);
       },
       "change input[name=has_mailing_address]": function(e) {
-        return toggleFieldset(this.$("fieldset.mailing-address"), e.target.checked);
+        toggleFieldset(this.$("fieldset.mailing-address"), e.target.checked);
+        return this._onFieldChange();
       },
       "change input[name=change_of_address]": function(e) {
-        return toggleFieldset(this.$("fieldset.previous-address"), e.target.checked);
+        toggleFieldset(this.$("fieldset.previous-address"), e.target.checked);
+        return this._onFieldChange();
       },
       "change input[name=change_of_name]": function(e) {
-        return toggleFieldset(this.$("fieldset.previous-name"), e.target.checked);
+        toggleFieldset(this.$("fieldset.previous-name"), e.target.checked);
+        return this._onFieldChange();
       }
     };
 
@@ -118,6 +121,7 @@
 
     Form.prototype._onSubmit = function(e) {
       var $errorList, errors, html;
+      $('.error-list').remove();
       if (this.$button.hasClass('disabled')) {
         e.preventDefault();
         errors = [];
@@ -130,7 +134,6 @@
             });
           }
         });
-        $('.error-list').remove();
         $errorList = $("<ul class='error-list'></ul>");
         html = "<h2>Please correct the following errors:</h2>";
         errors.forEach(function(error) {
@@ -492,7 +495,7 @@
 
     return DateOfBirthFormField;
 
-  })(Views.FormField);
+  })(Views.HomeZipCodeFormField);
 
   Views.PhoneFormField = (function(_super) {
 
