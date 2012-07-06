@@ -17,6 +17,6 @@ class ProgressAdmin(admin.ModelAdmin):
     list_display = ['created_at','registrant','field_name','field_value']
     raw_id_fields = ['registrant',]
     
-
-admin.site.register(Registrant,RegistrantAdmin)
-admin.site.register(RegistrationProgress,ProgressAdmin)
+#no longer used, don't show in admin
+#admin.site.register(Registrant,RegistrantAdmin)
+#admin.site.register(RegistrationProgress,ProgressAdmin)
