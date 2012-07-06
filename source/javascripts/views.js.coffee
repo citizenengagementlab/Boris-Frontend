@@ -151,18 +151,21 @@ class Views.IdNumberFormField extends Views.FormField
     @$el.toggleClass "tooltip-open"
 
 class Views.RaceFormField extends Views.FormField
+  errorMessage: "Enter your race or ethnic group."
   valid: ->
     if @required()
       return @value() != "Select One..."
     true
 
 class Views.PartyFormField extends Views.FormField
+  errorMessage: "Select your political affiliation."
   valid: ->
     if @required()
       return @value() != "Select One..."
     true
 
 class Views.NameTitleFormField extends Views.FormField
+  errorMessage: "Title is required."
   valid: ->
     if @required()
       return @value() != "--"
