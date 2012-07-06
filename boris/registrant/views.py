@@ -40,6 +40,10 @@ def submit(request):
         return redirect('/registrants/new/')
     submitted_form = request.POST.copy()
     #make a mutable copy
+
+    #delete csrf token
+    if 'csrfmiddlewaretoken' in submitted_form:
+        submitted_form.pop('csrfmiddlewaretoken')
     
     #convert "on/off" to boolean values expected by api
     booleans = ['first_registration','has_mailing_address',

@@ -21,6 +21,7 @@
 
 {%block content%}
     <form class="registration-form" method="post" action="../submit/" accept-charset="UTF-8">
+      {% csrf_token %}
       <fieldset class="address">
         <div class="row">
           <div class="input text span-12">
