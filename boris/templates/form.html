@@ -4,6 +4,19 @@
 
 {% block scripts %}
 	<script src="{{STATIC_URL}}javascripts/form.js" type="text/javascript"></script>
+	<style>
+	/* the last refuge of scoundrels */
+	  fieldset.submit > .inputs { 
+	    width:300px;
+	  }
+	  fieldset.submit .fake-checkbox-wrap {
+	    float:left;
+	  } 
+	  fieldset.submit span.subtle { 
+	    font-size: 11px;
+	    font-weight:normal;
+	  }
+	</style>
 {% endblock scripts %}
 
 {%block content%}
@@ -98,8 +111,8 @@
             <input required id="last_name" name="last_name" type="text" />
           </div>
           <div class="input select span-4 last">
-            <label for="suffix">Suffix</label>
-            <select id="suffix" name="suffix">
+            <label for="name_suffix">Suffix</label>
+            <select id="name_suffix" name="name_suffix">
               <option value="--">--</option>
               <option value="Jr.">Jr.</option>
               <option value="Sr.">Sr.</option>
@@ -181,9 +194,9 @@
           <div class="input select span-5 last">
             <label for="phone_type">Type</label>
             <select required id="phone_type" name="phone_type">
+              <option value="Mobile">Mobile</option>
               <option value="Home">Home</option>
               <option value="Work">Work</option>
-              <option value="Mobile">Mobile</option>
             </select>
           </div>
         </div>
@@ -220,19 +233,34 @@
       </fieldset>
       <fieldset class="submit">
         <div class="inputs">
+          {% comment %}
           <div class="input checkbox">
             <input id="email_rtv" name="email_rtv" value="1" type="checkbox" />
             <label for="email_rtv">Receive Email Updates from Rock The Vote</label>
+          </div>            
+          {% endcomment %}
+          <div class="input checkbox">
+            <input checked id="opt_in_sms" name="opt_in_sms" value="1" type="checkbox" />
+            <label for="opt_in_sms">Send me txt messages from Rock the Vote <span class="subtle">(data &amp; msg rates may apply)</span></label>
           </div>
           <div class="input checkbox">
-            <input id="sms_rtv" name="sms_rtv" value="1" type="checkbox" />
-            <label for="sms_rtv">Receive Texts from Rock The Vote</label>
+            <input id="volunteer" name="volunteer" value="0" type="checkbox" />
+            <label for="volunteer">I would like to volunteer with Rock the Vote</label>
           </div>
+          {% comment %} New inputs for CEL {% endcomment %}
+          {% comment %} deactivate while in testing
           <div class="input checkbox">
             <input id="email_cel" name="email_cel" value="1" type="checkbox" />
-            <label for="email_cel">Receive Emails from CEL</label>
+            <label for="email_cel">I want to learn more about opportunities for activism in my community</label>
           </div>
+          {% endcomment %}
         </div>
+        {% comment %} Hidden field, default to true {% endcomment %}
+        <input id="email_rtv" name="email_rtv" value="1" type="hidden" />
+        
+        {% comment %} Hidden but Required Fields {% endcomment %}
+        <input type="hidden" name="lang" value="en">
+        <input type="hidden" name="partner_id" value="{{ partner_id }}">
         <button class="button button-primary" tabindex="20" type="submit">Register</button>
       </fieldset>
     </form>

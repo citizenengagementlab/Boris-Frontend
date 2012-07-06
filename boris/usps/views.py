@@ -13,6 +13,10 @@ def zip_lookup(request):
     connector = CityStateLookup(USPS_CONNECTION, USERID)
     
     zip5 = request.GET.get('zip')
+    
+    if len(zip5) > 5:
+        #might be a zip9, try to parse zip5
+        zip5 = zip5[:5]
     if zip5:
         try:
             response = connector.execute([{'Zip5':zip5}])[0]
@@ -24,8 +28,7 @@ def zip_lookup(request):
         except USPSXMLError,e:
             return HttpResponseServerError('USPS Error: %s' % e)
         except URLError,e:
-            print e
-            return HttpResponse(json.dumps({'error':'timeout'}),mimetype="application/json")
+            return HttpResponseServerError(json.dumps({'error':'timeout'}),mimetype="application/json")
     else:
         return HttpResponseServerError('requires zip get parameter')
     

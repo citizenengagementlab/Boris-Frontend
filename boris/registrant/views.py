@@ -26,8 +26,11 @@ def register(request):
         staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':'en'},'/api/v1/state_requirements.json')
         context['staterequirements'] = staterequirements
         context['state'] = state
+        if staterequirements.has_key('error'):
+            return render_to_response('ineligible.html',context,
+                        context_instance=RequestContext(request))
     else:
-        return redirect('/registrants/map/')
+        return redirect('/') #redirect to frontpage to do geolocation
     
     return render_to_response('form.html',context,
                 context_instance=RequestContext(request))
@@ -54,6 +57,11 @@ def submit(request):
         if not submitted_form.has_key(r):
             #and fill it in with zero
             submitted_form[r] = '0'
+    
+    #check for suffix and clear it if it's an invalid value
+    suffix = submitted_form.get('name_suffix')
+    if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
+        submitted_form['name_suffix'] = ""
             
     #hit the api
     #todo, do this async?
