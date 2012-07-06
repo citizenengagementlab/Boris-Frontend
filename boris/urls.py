@@ -15,7 +15,6 @@ urlpatterns += patterns('',
 
 admin.autodiscover()
 urlpatterns += patterns('',
-    (r'^admin/summary_stats', 'registrant.utils.stats'),
     (r'^admin/', include(admin.site.urls)),
 )
 
