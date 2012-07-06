@@ -61,6 +61,12 @@ def submit(request):
     #delete csrf token
     if 'csrfmiddlewaretoken' in submitted_form:
         submitted_form.pop('csrfmiddlewaretoken')
+
+    #delete source, but save it for later
+    #HACK: because the API isn't accepting it as a parameter
+    saved_source = None
+    if 'source' in submitted_form:
+        saved_source = submitted_form.pop('source')
     
     #convert "on/off" to boolean values expected by api
     booleans = ['first_registration','has_mailing_address',
@@ -117,7 +123,8 @@ def submit(request):
 
     #send user values to context, for trackable social media links
     context['partner'] = submitted_form.get('partner_id')
-    context['source'] = submitted_form.get('source')
+    if saved_source:
+        context['source'] = saved_source
     #TODO, what user id should we use?
     #some hash of email and partner_id?
     context['user_id'] = "TBD"
