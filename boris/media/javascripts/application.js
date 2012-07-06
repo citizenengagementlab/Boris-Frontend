@@ -2551,9 +2551,9 @@
 
 }).call(this);
 (function() {
-  var __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   this.Views || (this.Views = {});
 
@@ -2563,6 +2563,7 @@
     __extends(Form, _super);
 
     function Form() {
+      this._onSubmit = __bind(this._onSubmit, this);
       return Form.__super__.constructor.apply(this, arguments);
     }
 
@@ -2608,6 +2609,7 @@
       this.$fieldsets = this.$("fieldset");
       this.$inputs = this.$(":text, select, input[type=email], input[type=date], #us_citizen");
       this.$button = this.$(".button-primary");
+      this.$button.on('click', this._onSubmit);
       this.fields = (function() {
         var _i, _len, _ref, _results;
         _ref = this.$inputs;
@@ -2637,11 +2639,11 @@
     };
 
     Form.prototype.enableButton = function() {
-      return this.$button.prop("disabled", false);
+      return this.$button.removeClass("disabled");
     };
 
     Form.prototype.disableButton = function() {
-      return this.$button.prop("disabled", true);
+      return this.$button.addClass("disabled");
     };
 
     Form.prototype.focusInputByIndex = function(idx) {
@@ -2666,6 +2668,38 @@
       return this;
     };
 
+    Form.prototype._onSubmit = function(e) {
+      var $errorList, errors, html;
+      if (this.$button.hasClass('disabled')) {
+        e.preventDefault();
+        errors = [];
+        this.fields.forEach(function(field) {
+          field.validate();
+          if (!field.valid()) {
+            return errors.push({
+              name: field.$input.siblings('label').text(),
+              error: field.errorMessage
+            });
+          }
+        });
+        $('.error-list').remove();
+        $errorList = $("<ul class='error-list'></ul>");
+        html = "<h2>Please correct the following errors:</h2>";
+        errors.forEach(function(error) {
+          if (error.name) {
+            return html += "<li>" + error.name + ": " + error.error + "</li>";
+          } else {
+            return html += "<li>" + error.error + "</li>";
+          }
+        });
+        $errorList.html(html);
+        $('fieldset.submit').prepend($errorList);
+        return false;
+      } else {
+        return true;
+      }
+    };
+
     return Form;
 
   })(Backbone.View);
@@ -2678,10 +2712,11 @@
       return FormField.__super__.constructor.apply(this, arguments);
     }
 
-    FormField.prototype.errorMessage = "can't be blank";
+    FormField.prototype.errorMessage = "Required";
 
     FormField.prototype.initialize = function() {
       var _this = this;
+      this.getErrorTip();
       this.input = this.options.input;
       this.$input = $(this.input);
       this.$input.on("change blur keyup", function() {
@@ -2691,20 +2726,19 @@
         return _this.validate();
       });
       this.$input.on("focus", function() {
-        if (!_this.valid()) {
-          return _this.showTooltip();
-        }
+        return _this.showTooltip();
       });
       this.$input.on("blur", function() {
         return _this.hideTooltip();
       });
-      this.$input.on("change", function() {
-        if (_this.valid()) {
-          return _this.hideTooltip();
-        } else {
-          return _this.showTooltip();
-        }
-      });
+      /*
+          @$input.on "change", =>
+            if @valid()
+              @hideTooltip()
+            else
+              @showTooltip()
+      */
+
       return this.required = function() {
         return this.input.required;
       };
@@ -2724,7 +2758,6 @@
     };
 
     FormField.prototype.validate = function() {
-      this.getErrorTip();
       if (this.valid()) {
         this.hideError();
       } else {
@@ -2773,6 +2806,13 @@
       "click .id-number-hint-icon": "toggleHint"
     };
 
+    IdNumberFormField.prototype.valid = function() {
+      if (this.value()) {
+        return /^(none|\d{4}|[-*A-Z0-9]{7,42})$/i.test(this.value());
+      }
+      return true;
+    };
+
     IdNumberFormField.prototype.toggleHint = function() {
       return this.$el.toggleClass("tooltip-open");
     };
@@ -2788,6 +2828,8 @@
     function RaceFormField() {
       return RaceFormField.__super__.constructor.apply(this, arguments);
     }
+
+    RaceFormField.prototype.errorMessage = "Enter your race or ethnic group.";
 
     RaceFormField.prototype.valid = function() {
       if (this.required()) {
@@ -2808,6 +2850,8 @@
       return PartyFormField.__super__.constructor.apply(this, arguments);
     }
 
+    PartyFormField.prototype.errorMessage = "Select your political affiliation.";
+
     PartyFormField.prototype.valid = function() {
       if (this.required()) {
         return this.value() !== "Select One...";
@@ -2826,6 +2870,8 @@
     function NameTitleFormField() {
       return NameTitleFormField.__super__.constructor.apply(this, arguments);
     }
+
+    NameTitleFormField.prototype.errorMessage = "Title is required.";
 
     NameTitleFormField.prototype.valid = function() {
       if (this.required()) {
@@ -2870,7 +2916,7 @@
 
     HomeZipCodeFormField.prototype.valid = function() {
       if (this.required()) {
-        return HomeZipCodeFormField.__super__.valid.apply(this, arguments) && this.value().length === 5;
+        return /^((\d{5}(-\d{4}))|(\d{5}))$/.test(this.value());
       } else {
         return true;
       }
@@ -3004,6 +3050,18 @@
 
     UsCitizenFormField.prototype.errorMessage = "Must be a citizen to register";
 
+    UsCitizenFormField.prototype.initialize = function() {
+      var _this = this;
+      UsCitizenFormField.__super__.initialize.call(this);
+      return this.$input.on("change", function() {
+        if (_this.valid()) {
+          return _this.hideTooltip();
+        } else {
+          return _this.showTooltip();
+        }
+      });
+    };
+
     UsCitizenFormField.prototype.valid = function() {
       if (!this.$input.attr('checked')) {
         return false;
@@ -3061,6 +3119,7 @@
         this.$map.find("#jqvmap1_" + (code.toLowerCase(''))).click();
       }
       this.$select.val(code.toUpperCase());
+      this.$select.trigger('focus');
       return this.enableButton();
     };
 
