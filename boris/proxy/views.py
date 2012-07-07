@@ -58,6 +58,16 @@ def rtv_proxy(method, values, url):
     content = response.read()
     return json.loads(content)
 
+def url_exists(url):
+    #use HEAD method to get only response code, not full contents
+    class HeadRequest(urllib2.Request):
+        def get_method(self):
+            return "HEAD"
+    try:
+        response = urllib2.urlopen(HeadRequest(url))
+        return (response.code == 200)
+    except urllib2.HTTPError:
+        return False
 
 def partner_proxy(method,url,values):
     #values should be a dictionary at this point
