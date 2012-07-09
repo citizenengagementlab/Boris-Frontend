@@ -10,6 +10,8 @@ def rtv_proxy_view(request,url):
         response = rtv_proxy("GET",request.GET,url)
     elif request.method == "POST":
         response = rtv_proxy("POST",request.GET,url)
+    elif request.method == "HEAD":
+        response = {'exists':url_exists(url)}
     if response.has_key('error'):
         status = response['status']
     else:
@@ -51,7 +53,11 @@ def rtv_proxy(method, values, url):
         elif method == "POST":
             response = urllib2.urlopen(url,data)
     except urllib2.HTTPError,e:
-        error_dict = {'error':json.loads(e.read())}
+        error_message = e.read()
+        try:
+            error_dict = {'error':json.loads(error_message)}
+        except ValueError:
+            error_dict = {'error':error_message}
         error_dict['status'] = e.code
         return error_dict
         
@@ -63,6 +69,7 @@ def url_exists(url):
     class HeadRequest(urllib2.Request):
         def get_method(self):
             return "HEAD"
+
     try:
         response = urllib2.urlopen(HeadRequest(url))
         return (response.code == 200)
