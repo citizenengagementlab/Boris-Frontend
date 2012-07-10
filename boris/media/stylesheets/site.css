@@ -865,6 +865,54 @@ fieldset {
       background-size: 26px 26px; }
     .button.download::after {
       display: none; }
+  .button.facebook {
+    position: relative;
+    padding-right: 63px;
+    background-color: #3865a4;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #3865a4), color-stop(100%, #315c99));
+    background-image: -webkit-linear-gradient(top, #3865a4 0%, #315c99 100%);
+    background-image: -moz-linear-gradient(top, #3865a4 0%, #315c99 100%);
+    background-image: -o-linear-gradient(top, #3865a4 0%, #315c99 100%);
+    background-image: -ms-linear-gradient(top, #3865a4 0%, #315c99 100%);
+    background-image: linear-gradient(top, #3865a4 0%, #315c99 100%);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 0 rgba(0, 0, 0, 0.1); }
+    .button.facebook:after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 16px;
+      width: 27px;
+      height: 100%;
+      background: no-repeat right center;
+      background-image: url('../images/facebook-icon-sm.png');
+      background-size: 27px 27px; }
+  .button.twitter {
+    position: relative;
+    padding-right: 63px;
+    background-color: #4695d7;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4695d7), color-stop(100%, #2471b0));
+    background-image: -webkit-linear-gradient(top, #4695d7 0%, #2471b0 100%);
+    background-image: -moz-linear-gradient(top, #4695d7 0%, #2471b0 100%);
+    background-image: -o-linear-gradient(top, #4695d7 0%, #2471b0 100%);
+    background-image: -ms-linear-gradient(top, #4695d7 0%, #2471b0 100%);
+    background-image: linear-gradient(top, #4695d7 0%, #2471b0 100%);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 0 rgba(0, 0, 0, 0.1); }
+    .button.twitter:after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 16px;
+      width: 27px;
+      height: 100%;
+      background: no-repeat right center;
+      background-image: url('../images/twitter-icon-sm.png');
+      background-size: 27px 27px; }
 
 .fake-select-wrap {
   position: relative; }
@@ -1139,6 +1187,17 @@ fieldset.submit {
   .scrollable .scroll-shadows {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1; }
+
+fieldset.submit > .inputs {
+  width: 300px; }
+fieldset.submit .fake-checkbox-wrap {
+  float: left; }
+fieldset.submit .subtle {
+  font-size: 11px;
+  font-weight: normal; }
+
+h1 > a > img {
+  max-width: 150px; }
 
 #map {
   -webkit-box-sizing: border-box;
