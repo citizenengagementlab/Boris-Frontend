@@ -11,7 +11,14 @@ def rtv_proxy_view(request,url):
     elif request.method == "POST":
         response = rtv_proxy("POST",request.GET,url)
     elif request.method == "HEAD":
-        response = {'exists':url_exists(url)}
+        exists = url_exists(PROXY_FORMAT % url)
+        response = {'exists':exists,
+            'error':not exists,
+        }
+        if exists:
+            response['status'] = 200
+        else:
+            response['status'] = 404
     if response.has_key('error'):
         status = response['status']
     else:
@@ -74,6 +81,9 @@ def url_exists(url):
         response = urllib2.urlopen(HeadRequest(url))
         return (response.code == 200)
     except urllib2.HTTPError:
+        return False
+    except Exception,e:
+        if settings.DEBUG: print e
         return False
 
 def partner_proxy(method,url,values):
