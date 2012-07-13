@@ -61,7 +61,7 @@ checkPdfUrl = function() {
       return setTimeout(checkPdfUrl, 1000);
     },
     success: function(d) {
-      Window.ellipsis.stop();
+      window.ellipsis.stop();
       return $('#waiting').fadeOut(function() {
         return $('#download').fadeIn();
       });
@@ -71,6 +71,6 @@ checkPdfUrl = function() {
 
 $(function() {
   $('#download').hide();
-  Window.ellipsis = new Ellipsis($('span.ellipsis'));
-  setTimeout(checkPdfUrl, 3000);
+  window.ellipsis = new Ellipsis($('span.ellipsis'));
+  return setTimeout(checkPdfUrl, 3000);
 });
