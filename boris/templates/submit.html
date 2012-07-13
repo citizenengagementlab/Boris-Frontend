@@ -5,6 +5,7 @@
 {% block body_class %}finish{% endblock body_class %}
 
 {%block scripts%}
+<script type="text/javascript" src="{{ STATIC_URL }}javascripts/finish.js"></script>
 <!-- Google Code for UI TESTING Conversion Page -->
 <script type="text/javascript">
 /* <![CDATA[ */
@@ -33,12 +34,23 @@ if (1) {
     <h2>You're not quite done!</h2>
     <p>You still need to download your form.</p>
   </header>
-  <div class="prepend-3 span-18 append-3 last">
-	    <a class="button download button-primary" href="{{ pdfurl }}">Download</a>
-  </div>
+  <div id="download" style="display:none">
+    <div class="prepend-3 span-18 append-3 last">
+      <a class="button download button-primary" href="{{ pdfurl }}">Download</a>
+    </div>
 
-  <div class="prepend-3 span-18 append-3 last">
-    <p class="subtle">(We've also e-mailed you a link to retreive your form later)</p>
+    <div class="prepend-3 span-18 append-3 last">
+      <p class="subtle">(We've also e-mailed you a link to retreive your form later)</p>
+    </div>
+  </div>
+  <div id="waiting">
+    <div class="prepend-3 span-18 append-3 last">
+      <a class="button button-primary waiting" style="display:block" disabled>Preparing Form<span style="position:fixed" class="ellipsis"></span></a>
+    </div>
+
+    <div class="prepend-3 span-18 append-3 last">
+      <p class="subtle">(This should only take a second)</p>
+    </div>
   </div>
 
   {% elif error %}
