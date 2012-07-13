@@ -370,6 +370,17 @@ fieldset
 
     &::after
       display: none
+  &.facebook
+    +after-image("facebook-icon-sm.png", 36px, 0, 16px)
+    background-color: #3865a4
+    +background-image(linear-gradient(top, #3865a4 0%, #315c99 100%))
+    +box-shadow(inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 0 rgba(0,0,0,0.1))
+
+  &.twitter
+    +after-image("twitter-icon-sm.png", 36px, 0, 16px)
+    background-color: #4695d7
+    +background-image(linear-gradient(top, #4695d7 0%, #2471b0 100%))
+    +box-shadow(inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 0 rgba(0,0,0,0.1))
 
 .fake-select-wrap
   position: relative
@@ -600,11 +611,18 @@ fieldset.submit
   .scrollable &
     +opacity(1)
 
+fieldset.submit 
+  > .inputs
+    width: 300px
+  
+  .fake-checkbox-wrap
+    float: left
+  .subtle
+    font-size: 11px
+    font-weight: normal
 
-
->>>>>>> c9fda43b0ab3e66f2d933edae9caf6b9f0681831
+h1 > a > img
+  max-width: 150px
 
 // Map
 @import map
-
-
