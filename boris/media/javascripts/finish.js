@@ -71,6 +71,6 @@ checkPdfUrl = function() {
 
 $(function() {
   $('#download').hide();
-  Window.ellipsis = new Ellipsis($('span.ellipsis'));
-  setTimeout(checkPdfUrl, 3000);
+  window.ellipsis = new Ellipsis($('span.ellipsis'));
+  return setTimeout(checkPdfUrl, 3000);
 });
