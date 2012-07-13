@@ -61,7 +61,7 @@ checkPdfUrl = function() {
       return setTimeout(checkPdfUrl, 1000);
     },
     success: function(d) {
-      Window.ellipsis.stop();
+      window.ellipsis.stop();
       return $('#waiting').fadeOut(function() {
         return $('#download').fadeIn();
       });
