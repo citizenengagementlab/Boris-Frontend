@@ -13,6 +13,7 @@
 </head>
 <body class="{% block body_class %}{% endblock body_class %}">
 	<div id="main" role="main">
+		<div id="wrap">
 		<header id="header">
 			<h1 class="container">
 				<a class="logo">
@@ -22,6 +23,7 @@
 			</h1>
 		</header>
 		<div id="content">{%block content%}{%endblock%}</div>
+		</div>
 	    <div class="scroll-shadows top"></div>
     	<div class="scroll-shadows bottom"></div>
 		<footer id="footer">
