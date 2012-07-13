@@ -81,16 +81,16 @@ a
 
 #main
   width: $width
-  height: $height
+  // height: $height
   margin: 0 auto
-  overflow: hidden
+  // overflow: hidden
   position: relative
 
 
 #content
   position: relative
   width: $width
-  height: 795px - $footer-height - $header-height
+  // height: 795px - $footer-height - $header-height
   overflow: auto
   overflow-x: hidden
   overflow-y: auto
@@ -153,6 +153,8 @@ body.finish
   width: 100%
   height: $footer-height - 4px - 18px
   padding: 4px 0 18px
+  -moz-box-sizing: border-box
+  box-sizing: border-box
   color: #818181
   text-shadow: 0 1px 0 white
   text-align: center
@@ -623,6 +625,23 @@ fieldset.submit
 
 h1 > a > img
   max-width: 150px
+
+html, body, #wrap, #main
+  height: 100%
+
+#main > #wrap
+  height: auto
+  min-height: 100%
+
+#content
+  overflow: auto
+  padding-bottom: $footer-height
+
+#footer
+  position: relative
+  margin-top: -$footer-height
+  height: $footer-height
+  clear: both
 
 // Map
 @import map

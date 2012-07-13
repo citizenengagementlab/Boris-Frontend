@@ -10,20 +10,21 @@ head
 
 body class=page_classes
   #main role="main"
-    header#header
-      h1.container
-        a.logo == image_tag "logo.png"
-        - if content_for? :header
-          == yield_content :header
-        - else
-          | Voter Registration
+    #wrap
+      header#header
+        h1.container
+          a.logo == image_tag "logo.png"
+          - if content_for? :header
+            == yield_content :header
+          - else
+            | Voter Registration
 
-    #content
-      == yield
+      #content
+        == yield
+      
+      .scroll-shadows.top
+      .scroll-shadows.bottom
     
-    .scroll-shadows.top
-    .scroll-shadows.bottom
-  
     footer#footer
       .container
         p Powered by <a href="" tabindex="-1">Rock The Vote</a>
