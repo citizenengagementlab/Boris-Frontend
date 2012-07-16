@@ -72,9 +72,8 @@
       },
       success: function(d) {
         window.ellipsis.stop();
-        return $('#waiting').fadeOut(function() {
-          return $('#download').fadeIn();
-        });
+        $('#waiting').hide();
+        return $('#download').show();
       }
     });
   };
