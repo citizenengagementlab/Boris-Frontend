@@ -4,6 +4,14 @@
 
 {% block scripts %}
 	<script src="{{STATIC_URL}}javascripts/form.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('a#toggle_questions').click(function(event) {
+        event.preventDefault();
+        $('div.questions').toggle();
+      });
+    });
+  </script>
 {% endblock scripts %}
 
 {%block content%}
@@ -237,15 +245,36 @@
               <span class="subtle">(data &amp; msg rates may apply)</span></label>
           </div>
           {% comment %} Does the new form have volunteer input? {% endcomment %}
-          {%comment%}
           <div class="input checkbox">
             <input id="volunteer" name="volunteer" type="checkbox" />
             <label for="volunteer">{%if customform%}
               {%if customform.volunteer_text%}{{customform.volunteer_text}}
                 {%else%}I would like to volunteer with {{customform.name}}{%endif%}
-              {%else%}I would like to volunteer withRock the Vote{%endif%}</label>
+              {%else%}I would like to volunteer with Rock the Vote{%endif%}</label>
           </div>
-          {%endcomment%}
+
+
+          {% comment %} Use the default RTV questions for testing {% endcomment %}
+          {% comment %}
+          <a id="toggle_questions">Survey Questions</a>
+          <div class="input questions" style="display:none;">
+            {%if customform%}
+              {%if customform.question_1 %}
+              <input id="question1" name="survey_question_1" type="text"/>
+              <label for="question1">{{customform.question_1}}</label>
+              {%endif%}
+              {%if customform.question_2 %}
+              <input id="question2" name="survey_question_2" type="text"/>
+              <label for="question2">{{customform.question_2}}</label>
+              {%endif%}
+            {%else%}
+              <input id="question1" name="survey_question_1" type="text"/>
+              <label for="question1">If you are in school, where do you go?</label>
+              <input id="question2" name="survey_question_2" type="text"/>
+              <label for="question2">What issue do you care most about?</label>
+            {%endif%}
+          </div>
+          {% endcomment %}
           {% comment %} New inputs for CEL {% endcomment %}
           {% comment %} deactivate while in testing
           <div class="input checkbox">
