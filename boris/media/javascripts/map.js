@@ -40,7 +40,7 @@
       backgroundColor: '#a5bfdd',
       color: '#f4f3f0',
       hoverColor: '#c9dfaf',
-	  selectedColor: '#c9dfaf',
+    selectedColor: '#c9dfaf',
       scaleColors: ['#b6d6ff', '#005ace'],
       normalizeFunction: 'linear',
       enableZoom: true,
@@ -64,7 +64,7 @@
       $.extend(defaultParams, options);
       defaultParams.container = this;
       this.css({ position: 'relative', overflow: 'hidden' });
-	  
+    
       map = new WorldMap(defaultParams);
 
       this.data('mapObject', map);
@@ -82,7 +82,7 @@
   var VectorCanvas = function (width, height, params)
   {
     this.mode = window.SVGAngle ? 'svg' : 'vml';
-	this.params = params;
+  this.params = params;
 
     if (this.mode == 'svg')
     {
@@ -191,10 +191,10 @@
         node.setFill = function (color)
         {
           this.setAttribute("fill", color);
-		  if(this.getAttribute("original") === null)
-		  {
-		  	this.setAttribute("original", color);
-		  }
+      if(this.getAttribute("original") === null)
+      {
+        this.setAttribute("original", color);
+      }
         };
 
         node.getFill = function (color)
@@ -204,9 +204,9 @@
 
         node.getOriginalFill = function ()
         {
-		  return this.getAttribute("original");
+      return this.getAttribute("original");
         };
-		
+    
         node.setOpacity = function (opacity)
         {
           this.setAttribute('fill-opacity', opacity);
@@ -389,10 +389,10 @@
           cy = coords[coords.length - 1];
           return 'c' + coords.join(',');
           break;
-		  
-		default:
-		  return false;
-		  break;
+      
+    default:
+      return false;
+      break;
       }
 
       return '';
@@ -403,7 +403,7 @@
   var WorldMap = function (params)
   {
     params = params || {};
-	var map = this;
+  var map = this;
     var mapData = WorldMap.maps[params.map];
 
     this.container = params.container;
@@ -444,19 +444,19 @@
       jQuery('<div/>').addClass('jqvmap-zoomin').text('+').appendTo(params.container);
       jQuery('<div/>').addClass('jqvmap-zoomout').html('&#x2212;').appendTo(params.container);
     }
-	
-	map.countries = [];
-	
+  
+  map.countries = [];
+  
     for (var key in mapData.pathes)
     {
       var path = this.canvas.createPath({
         path: mapData.pathes[key].path
       });
-	  
+    
       path.setFill(this.color);
       path.id = 'jqvmap' + map.index + '_' + key;
       map.countries[key] = path;
-	  
+    
       jQuery(this.rootGroup).append(path);
 
       path.setAttribute('class', 'jqvmap-region');
@@ -519,9 +519,9 @@
 
     jQuery(params.container).delegate(this.canvas.mode == 'svg' ? 'path' : 'shape', 'click', function (e){
 
-	  for (var key in mapData.pathes)
+    for (var key in mapData.pathes)
       {
-		map.countries[key].currentFillColor = map.countries[key].getOriginalFill();
+    map.countries[key].currentFillColor = map.countries[key].getOriginalFill();
         map.countries[key].setFill(map.countries[key].getOriginalFill());
       }
 
@@ -530,7 +530,7 @@
 
       jQuery(params.container).trigger('regionClick.jqvmap', [code, mapData.pathes[code].name]);
 
-	  path.currentFillColor = params.selectedColor;
+    path.currentFillColor = params.selectedColor;
       path.setFill(params.selectedColor);
 
     });
@@ -588,7 +588,7 @@
       if (typeof key == 'string')
       {
         this.countries[key].setFill(color);
-  	  	this.countries[key].setAttribute("original", color);
+        this.countries[key].setAttribute("original", color);
       }
       else
       {
@@ -599,7 +599,7 @@
           if (this.countries[code])
           {
             this.countries[code].setFill(colors[code]);
-			this.countries[code].setAttribute("original", colors[code]);
+      this.countries[code].setAttribute("original", colors[code]);
           }
         }
       }
@@ -1047,10 +1047,11 @@ jQuery.fn.vectorMap('addMap', 'usa_en', {"width":959,"height":593,"pathes":{"hi"
 (function() {
   var form;
 
-  this.form = form = new Views.State({
-    el: $(".state-form")
-  });
-
-  form.disableButton();
+  if (Modernizr.inlinesvg && Modernizr.svg) {
+    this.form = form = new Views.State({
+      el: $(".state-form")
+    });
+    form.disableButton();
+  }
 
 }).call(this);
