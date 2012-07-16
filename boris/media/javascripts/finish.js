@@ -64,16 +64,16 @@
         }
         if (status === "Unknown") {
           return setTimeout(function() {
-            return $('#waiting').fadeOut(function() {
-              return $('#download').fadeIn();
-            }, 2000);
-          });
+            $('#waiting').hide();
+            return $('#download').show();
+          }, 2000);
         }
       },
       success: function(d) {
-        window.ellipsis.stop();
-        $('#waiting').hide();
-        return $('#download').show();
+        Window.ellipsis.stop();
+        return $('#waiting').fadeOut(function() {
+          return $('#download').fadeIn();
+        });
       }
     });
   };
