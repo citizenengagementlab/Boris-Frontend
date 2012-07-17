@@ -31,7 +31,12 @@ checkPdfUrl = ->
     type: "HEAD"
     cache: false
     error: (xhr, status, err) ->
-      setTimeout checkPdfUrl, 1000
+      setTimeout checkPdfUrl, 1000 unless status == "Unknown" # Gross I.E. 8 hack, doesn't return a proper statuscode from the AJAX request 
+      if status == "Unknown"
+        setTimeout ->
+          $('#waiting').hide()
+          $('#download').show()
+        , 2000 # Just wait 2 seconds and fade it in!
 
     success: (d) ->
       Window.ellipsis.stop()

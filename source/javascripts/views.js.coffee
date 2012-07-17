@@ -109,7 +109,7 @@ class Views.Form extends Backbone.View
       true
 
 class Views.FormField extends Backbone.View
-  errorMessage: "Required"
+  errorMessage: "This field is required"
 
   initialize: ->
     @getErrorTip()
