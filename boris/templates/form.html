@@ -246,8 +246,8 @@
             <input id="opt_in_sms" name="opt_in_sms" type="checkbox" />
             <label for="opt_in_sms">{%if customform%}
               {%if customform.sms_optin_text%}{{customform.sms_optin_text}}
-                {%else%}Send me txt messages from {{customform.name}}{%endif%}
-              {%else%}Send me txt messages from Rock the Vote{%endif%}.
+                {%else%}Send me txt messages from {{customform.name}}.{%endif%}
+              {%else%}Send me txt messages from Rock the Vote.{%endif%}
               <span class="subtle">(data &amp; msg rates may apply)</span></label>
           </div>
           {% comment %} Does the new form have volunteer input? {% endcomment %}
@@ -255,8 +255,8 @@
             <input id="volunteer" name="volunteer" type="checkbox" />
             <label for="volunteer">{%if customform%}
               {%if customform.volunteer_text%}{{customform.volunteer_text}}
-                {%else%}I would like to volunteer with {{customform.name}}{%endif%}
-              {%else%}I would like to volunteer with Rock the Vote{%endif%}.</label>
+                {%else%}I would like to volunteer with {{customform.name}}.{%endif%}
+              {%else%}I would like to volunteer with Rock the Vote.{%endif%}</label>
           </div>
 
 
