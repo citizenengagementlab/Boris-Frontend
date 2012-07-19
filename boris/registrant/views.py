@@ -112,7 +112,7 @@ def submit(request):
     context['email_address'] = submitted_form.get("email_address")
 
     #if a partner, post to their api
-    if submitted_form.has_key('partner_id'):
+    if submitted_form.has_key('partner_id') and bool(submitted_form['opt_in_email']) == True:
         try:
             customform = CustomForm.objects.get(partner_id=submitted_form['partner_id'])
             context['customform'] = customform
