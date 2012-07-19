@@ -15,7 +15,7 @@ $ ->
     else
       return false
   
-  registrationLinks = $ 'a.floatbox[href*="register.rockthevote.com"],a.floatbox[href*="register2.rockthevote.com"]'
+  registrationLinks = $ '.floatbox[href*="register.rockthevote.com"],.floatbox[href*="register2.rockthevote.com"]'
   registrationLinks.on 'click', (e) ->
     e.preventDefault()
     $el = $(@)
