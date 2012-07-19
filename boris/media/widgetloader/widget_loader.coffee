@@ -1,7 +1,14 @@
 $ ->
+  ovrCss = document.createElement "link"
+  ovrCss.href = 'css/style.css'
+  ovrCss.rel = "stylesheet"
+  ovrCss.type = "text/css"
+  head = document.getElementsByTagName("head")[0]
+  head.appendChild(ovrCss)
+
   $('a.ovr-close').live 'click', (e) ->
     e.preventDefault()
-    close = confirm("Are you sure you want to close the voter registration form?")
+    close = confirm("Close voter registration application?")
     if close
       $('.ovr-overlay, #ovr-container').remove()
     else
