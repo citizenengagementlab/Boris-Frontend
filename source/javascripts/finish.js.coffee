@@ -39,7 +39,7 @@ checkPdfUrl = ->
         , 2000 # Just wait 2 seconds and fade it in!
 
     success: (d) ->
-      Window.ellipsis.stop()
+      window.ellipsis.stop()
       $('#waiting').fadeOut( ->
         $('#download').fadeIn()
       )
