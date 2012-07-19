@@ -264,9 +264,9 @@
           </div>
           {%endif%}
 
-          {% comment %} Use the default RTV questions for testing {% endcomment %}
-          {% comment %}
-          <a id="toggle_questions">Survey Questions</a>
+          {% comment %} Use the default RTV questions for testing, if not a custom form {% endcomment %}
+          {%if not customform%}
+          <a id="toggle_questions">Questions For You</a>
           <div class="input questions" style="display:none;">
             {%if customform%}
               {%if customform.question_1 %}
@@ -284,7 +284,7 @@
               <label for="question2">What issue do you care most about?</label>
             {%endif%}
           </div>
-          {% endcomment %}
+          {%endif%}
           {% comment %} New inputs for CEL {% endcomment %}
           {% comment %} deactivate while in testing
           <div class="input checkbox">
