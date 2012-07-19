@@ -13,6 +13,7 @@ class CustomForm(models.Model):
         help_text="If not defined, defaults to: 'Send me txt messages from {{partner_name}}'")
     email_optin_text = models.CharField(max_length=255,null=True,blank=True,
         help_text="If not defined, defaults to: 'Receive Email Updates from {{partner_name}}'")
+    show_volunteer_box = models.BooleanField(default=False)
     privacy_policy_link = models.URLField()
     question_1 = models.CharField(max_length=255,null=True,blank=True)
     question_2 = models.CharField(max_length=255,null=True,blank=True)

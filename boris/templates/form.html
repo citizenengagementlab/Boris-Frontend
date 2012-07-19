@@ -239,8 +239,12 @@
             <input id="opt_in_email" name="opt_in_email" type="checkbox" checked="checked" />
             <label for="opt_in_email">{%if customform %}
               {%if customform.email_optin_text%}{{customform.email_optin_text}}
-                {%else%}Receive Email Updates from {{customform.name}}{%endif%}
-              {%else%}Receive Email Updates from Rock the Vote{%endif%}.</label>
+                {%else%}Receive Email Updates from {{customform.name}}.{%endif%}
+              {%else%}Receive Email Updates from Rock the Vote.{%endif%}
+              {%if customform.privacy_policy_link%}
+                <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} privacy policy)</a></span>
+              {%endif%}
+            </label>
           </div>
           <div class="input checkbox">
             <input id="opt_in_sms" name="opt_in_sms" type="checkbox" />
@@ -250,7 +254,7 @@
               {%else%}Send me txt messages from Rock the Vote.{%endif%}
               <span class="subtle">(data &amp; msg rates may apply)</span></label>
           </div>
-          {% comment %} Does the new form have volunteer input? {% endcomment %}
+          {%if customform.show_volunteer_box or not customform%}
           <div class="input checkbox">
             <input id="volunteer" name="volunteer" type="checkbox" />
             <label for="volunteer">{%if customform%}
@@ -258,7 +262,7 @@
                 {%else%}I would like to volunteer with {{customform.name}}.{%endif%}
               {%else%}I would like to volunteer with Rock the Vote.{%endif%}</label>
           </div>
-
+          {%endif%}
 
           {% comment %} Use the default RTV questions for testing {% endcomment %}
           {% comment %}
