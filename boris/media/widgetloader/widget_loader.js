@@ -4,7 +4,7 @@
   $(function() {
     var head, ovrCss, registrationLinks;
     ovrCss = document.createElement("link");
-    ovrCss.href = 'css/style.css';
+    ovrCss.href = 'https://s3.amazonaws.com/register2.rockthevote.com/widgetloader/css/style.css';
     ovrCss.rel = "stylesheet";
     ovrCss.type = "text/css";
     head = document.getElementsByTagName("head")[0];
@@ -19,7 +19,7 @@
         return false;
       }
     });
-    registrationLinks = $('a.floatbox[href*="rockthevote.com/registrants/new"]');
+    registrationLinks = $('a.floatbox[href*="register.rockthevote.com"],a.floatbox[href*="register2.rockthevote.com"]');
     return registrationLinks.on('click', function(e) {
       var $body, $close, $container, $el, $iframe, $overlay;
       e.preventDefault();
