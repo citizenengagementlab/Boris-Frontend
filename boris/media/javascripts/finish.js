@@ -51,6 +51,7 @@
   checkPdfUrl = function() {
     var a, downloadLink, proxyUrl;
     downloadLink = $('a.download').attr('href');
+    console.log(downloadLink); //is downloadlink empty?
     a = $('<a />');
     a.href = downloadLink;
     proxyUrl = a.pathname;
