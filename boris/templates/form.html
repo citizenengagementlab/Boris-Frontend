@@ -242,22 +242,26 @@
               <div class="input span-12">
                 <label for="question1">{{customform.question_1}}</label>
                 <input id="question1" name="survey_answer_1" type="text"/>
+                <div class="question-hint tooltip">Optional</div>
               </div>
               {%endif%}
               {%if customform.question_2 %}
               <div class="input span-12 last">
                 <label for="question2">{{customform.question_2}}</label>
                 <input id="question2" name="survey_answer_2" type="text"/>
+                <div class="question-hint tooltip">Optional</div>
               </div>
               {%endif%}
             {%else%}
               <div class="input span-12">
                 <label for="question1">If you are in school, where do you go?</label>
                 <input id="question1" name="survey_answer_1" type="text"/>
+                <div class="question-hint tooltip">Optional</div>
               </div>
               <div class="input span-12 last">
                 <label for="question2">What issue do you care most about?</label>
                 <input id="question2" name="survey_answer_2" type="text"/>
+                <div class="question-hint tooltip">Optional</div>
               </div>
             {%endif%}
           </div>
