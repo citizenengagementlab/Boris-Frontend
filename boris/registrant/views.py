@@ -43,12 +43,17 @@ def register(request):
     #set state based on get parameter
     if 'state' in request.GET:
         #hit rtv_proxy for staterequirements
-        state = request.GET.get('state')
+        state = request.GET.get('state').upper()
+        context['state'] = state
+        try:
+            context['state_name'] = STATE_NAME_LOOKUP[state]
+        except KeyError:
+            return redirect('/registrants/map/')
+
         #TODO: get language code from localeurl
         staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':'en'},'/api/v1/state_requirements.json')
         context['staterequirements'] = staterequirements
-        context['state'] = state
-        context['state_name'] = STATE_NAME_LOOKUP[state]
+
         if staterequirements.has_key('error'):
             return render_to_response('ineligible.html',context,
                         context_instance=RequestContext(request))
