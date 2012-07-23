@@ -167,6 +167,7 @@ except:
     #PROXY_CREDENTIALS = {'user':os.environ['RTV_USER'],
     #                     'password':os.environ['RTV_PASS']}
     #USPS_USERID = os.environ['USPS_USERID']
+    SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
     #sendgrid settings
     EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
     EMAIL_HOST= 'smtp.sendgrid.net'
