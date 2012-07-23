@@ -1,17 +1,3 @@
-
-if typeof jQuery == "undefined"
-  script = document.createElement("script")
-  script.src = "http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"
-  head = document.getElementsByTagName("head")[0]
-  head.appendChild(script)
-  script.onload = ->
-    jQuery ($) ->
-      initializeWidget()  
-
-else
-  jQuery ($) ->
-    initializeWidget()
-
 initializeWidget = ->    
   #inject css
   ovrCss = document.createElement "link"
@@ -44,3 +30,16 @@ initializeWidget = ->
         $('.ovr-overlay, #ovr-container').remove()
       else
         return false
+
+if typeof jQuery == "undefined"
+  script = document.createElement("script")
+  script.src = "http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"
+  head = document.getElementsByTagName("head")[0]
+  head.appendChild(script)
+  script.onload = ->
+    jQuery ($) ->
+      initializeWidget()  
+
+else
+  jQuery ($) ->
+    initializeWidget()
