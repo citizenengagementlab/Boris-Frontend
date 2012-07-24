@@ -42,4 +42,16 @@
 
   check();
 
+  Modernizr.load({
+    test: Modernizr.input.required,
+    nope: 'jquery.h5validate.js',
+    complete: function() {
+      if (!Modernizr.input.required) {
+        return $(function() {
+          return $('form').h5Validate();
+        });
+      }
+    }
+  });
+
 }).call(this);
