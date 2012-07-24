@@ -113,8 +113,14 @@ def submit(request):
             message = rtv_response['error']['message'].lower()
             context['error'] = "%s %s" % (field_name, message)
         except KeyError:
-            context['error'] = "Looks like we've gone sideways"
+            context['error'] = "Rocky API Error: %s " % rtv_response['error']
     context['email_address'] = submitted_form.get("email_address")
+
+    try:
+        context['state_name'] = STATE_NAME_LOOKUP[submitted_form.get('home_state_id')]
+    except KeyError:
+        #unrecognized state
+        context['error'] = "Unrecognized state, please go back and try again."
 
     #if a partner, post to their api
     if submitted_form.has_key('partner_id') and bool(submitted_form['opt_in_email']) == True:
@@ -128,8 +134,6 @@ def submit(request):
                 print response
         except (CustomForm.DoesNotExist,ValueError):
             pass
-
-    context['state_name'] = STATE_NAME_LOOKUP[submitted_form.get('home_state_id')]
 
     #send user values to context, for trackable social media links
     context['partner'] = submitted_form.get('partner_id')
