@@ -11,14 +11,16 @@ STATE_NAME_LOOKUP = dict(us_states.US_STATES)
 def get_branding(context):
     #util method to get branding given partner id
     #return dict with updated context
+
+    #check for cobrand form first
     try:
         context['cobrandform'] = CoBrandForm.objects.get(partner_id=context['partner'])
         context['customform'] = context['cobrandform'].toplevel_org
         return context
-
     except (CoBrandForm.DoesNotExist,ValueError):
-        context['cobrandform'] = None
+
         #then custom form
+        context['cobrandform'] = None
         try:
             context['customform'] = CustomForm.objects.get(partner_id=context['partner'])
             return context
@@ -96,7 +98,9 @@ def submit(request):
     #convert "on/off" to boolean values expected by api
     booleans = ['first_registration','has_mailing_address',
                 'change_of_name','change_of_address',
-                'opt_in_sms','opt_in_email','us_citizen']
+                'opt_in_sms','opt_in_email','opt_in_volunteer',
+                'partner_opt_in_sms','partner_opt_in_email','partner_opt_in_volunteer',
+                'us_citizen','volunteer'] #volunteer is old syntax, remove when api is updated
     for b in booleans:
         if submitted_form.get(b) == "off":
             submitted_form[b] = '0'
