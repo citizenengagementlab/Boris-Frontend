@@ -16,7 +16,7 @@ def get_branding(context):
         context['customform'] = context['cobrandform'].toplevel_org
         return context
 
-    except (CustomForm.DoesNotExist,ValueError):
+    except (CoBrandForm.DoesNotExist,ValueError):
         context['cobrandform'] = None
         #then custom form
         try:
