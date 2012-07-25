@@ -84,7 +84,11 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_QUERYSTRING_AUTH = False
+from boto.s3.connection import OrdinaryCallingFormat
+AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '=80-zfiesp1dv1)k5lg_(#w3l5@#=3_lou2t@*8kyo!eb62mv='
