@@ -191,7 +191,11 @@
       */
 
       return this.required = function() {
-        return this.input.required;
+        if (typeof this.input.required !== "undefined") {
+          return this.input.required;
+        } else {
+          return !!this.$input.attr('required');
+        }
       };
     };
 
