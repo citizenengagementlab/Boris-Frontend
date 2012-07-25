@@ -44,7 +44,7 @@
 
   Modernizr.load({
     test: Modernizr.input.required,
-    nope: 'jquery.h5validate.js',
+    nope: 'https://s3.amazonaws.com/register2.rockthevote.com/javascripts/jquery.h5validate.js',
     complete: function() {
       if (!Modernizr.input.required) {
         return $(function() {
