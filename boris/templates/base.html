@@ -22,7 +22,7 @@
 				<a class="logo cobrand">
 					{% if cobrandform.logo%}<img src="{{ STATIC_URL }}{{cobrandform.logo}}" />{%endif%}
 				</a>
-				<div class="title">Register in {{ state_name }}</div>
+				<div class="title">{%if state_name%}Register in {{ state_name }}{%else%}Register to vote{%endif%}</div>
 
 			</h1>
 		</header>
