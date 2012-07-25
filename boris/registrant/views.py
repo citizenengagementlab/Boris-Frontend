@@ -2,19 +2,37 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
 
 from proxy.views import rtv_proxy
-from proxy.models import CustomForm
+from proxy.models import CustomForm,CoBrandForm
 
 from django.contrib.localflavor.us import us_states
 STATE_NAME_LOOKUP = dict(us_states.US_STATES)
+
+
+def get_branding(context):
+    #util method to get branding given partner id
+    #return dict with updated context
+    try:
+        context['cobrandform'] = CoBrandForm.objects.get(partner_id=context['partner'])
+        context['customform'] = context['cobrandform'].toplevel_org
+        return context
+
+    except (CustomForm.DoesNotExist,ValueError):
+        context['cobrandform'] = None
+        #then custom form
+        try:
+            context['customform'] = CustomForm.objects.get(partner_id=context['partner'])
+            return context
+        except (CustomForm.DoesNotExist,ValueError):
+            context['customform'] = None
+            return context
+    return context
+
 
 def map(request):
     context = {}
     if request.GET.get('partner'):
         context['partner'] = request.GET.get('partner')
-        try:
-            context['customform'] = CustomForm.objects.get(partner_id=context['partner'])
-        except (CustomForm.DoesNotExist,ValueError):
-            context['customform'] = None
+        context = get_branding(context)
     if request.GET.get('source'):
         context['source'] = request.GET.get('source')
 
@@ -27,10 +45,8 @@ def register(request):
     if 'partner' in request.GET:
         context['has_partner'] = True
         context['partner'] = request.GET.get('partner')
-        try:
-            context['customform'] = CustomForm.objects.get(partner_id=context['partner'])
-        except (CustomForm.DoesNotExist,ValueError):
-            context['customform'] = None
+        context = get_branding(context)
+       
     else:
         #use CEL default
         context['partner'] = 9937
@@ -138,6 +154,8 @@ def submit(request):
     #send user values to context, for trackable social media links
     context['partner'] = submitted_form.get('partner_id')
     context['source'] = submitted_form.get('partner_tracking_id')
+    context = get_branding(context)
+
     #TODO, what user id should we use?
     #some hash of email and partner_id?
     context['user_id'] = "TBD"

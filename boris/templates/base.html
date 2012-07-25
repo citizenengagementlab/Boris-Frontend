@@ -19,7 +19,11 @@
 				<a class="logo">
 					{% if customform.logo%}<img src="{{ STATIC_URL }}{{customform.logo}}" />{%endif%}
 				</a>
-				{{ state_name }} Voter Registration
+				<a class="logo cobrand">
+					{% if cobrandform.logo%}<img src="{{ STATIC_URL }}{{cobrandform.logo}}" />{%endif%}
+				</a>
+				<div class="title">Register in {{ state_name }}</div>
+
 			</h1>
 		</header>
 		<div id="content">{%block content%}{%endblock%}</div>

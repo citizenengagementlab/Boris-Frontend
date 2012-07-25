@@ -516,6 +516,15 @@ a {
     font-weight: bold; }
     #header > h1 > .logo {
       float: left; }
+    #header > h1 > .logo.cobrand {
+      float: right; }
+    #header > h1 > .logo > img {
+      vertical-align:middle;
+      max-width:150px;
+    }
+    #header > h1 > .logo.cobrand > img {
+      max-width:100px;
+    }
 
 #main {
   width: 600px;
@@ -1193,7 +1202,8 @@ fieldset.submit .fake-checkbox-wrap {
   float: left; }
 fieldset.submit .subtle {
   font-size: 11px;
-  font-weight: normal; }
+  font-weight: normal;
+  display:block; }
 
 h1 > a > img {
   max-width: 150px; }

@@ -298,6 +298,16 @@
           </div>
           {%endif%}
 
+          {% if cobrandform.show_email_optin %}
+          <div class="input checkbox">
+            <input id="partner_opt_in_email" name="partner_opt_in_email" type="checkbox" {%if cobrandform.default_email_optin%}checked="checked"{%endif%} />
+            <label for="partner_opt_in_email">
+              {%if cobrandform.email_optin_text%}{{cobrandform.email_optin_text}}
+                {%else%}Receive Email Updates from {{cobrandform.name}}.{%endif%}
+            </label>
+          </div>
+          {%endif%}
+
           {% comment %} New inputs for CEL {% endcomment %}
           {% comment %} deactivate while in testing
           <div class="input checkbox">

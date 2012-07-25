@@ -48,3 +48,16 @@ class CustomForm(models.Model):
         values = t.render(Context(context))
         values_dict = eval(values)
         return partner_proxy("POST",self.list_signup_endpoint,values_dict)
+
+class CoBrandForm(models.Model):
+    toplevel_org = models.ForeignKey(CustomForm)
+    partner_id = models.IntegerField()
+    name = models.CharField(max_length=100)
+    logo = models.ImageField(upload_to="partner_logos")
+    show_email_optin = models.BooleanField()
+    default_email_option = models.BooleanField()
+    email_optin_text = models.CharField(max_length=255,null=True,blank=True,
+        help_text="If not defined, defaults to: 'Receive Email Updates from {{partner_name}}'")
+
+    def __unicode__(self):
+        return self.name
