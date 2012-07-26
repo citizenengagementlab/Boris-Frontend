@@ -1,0 +1,20 @@
+#header > h1 > .logo.cobrand {
+	float: right;
+}
+
+#header > h1 > .logo > img {
+	vertical-align: baseline;
+	max-width:150px;
+}
+
+#header > h1 > .logo.cobrand > img {
+	max-width:100px;
+}
+
+#footer p > a.cobrand {
+	background-image: none;
+	text-indent: 0;
+}
+#footer p > a.cobrand > img {
+	width:129px;
+}
