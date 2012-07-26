@@ -519,7 +519,6 @@ a {
     #header > h1 > .logo.cobrand {
       float: right; }
     #header > h1 > .logo > img {
-      vertical-align:middle;
       max-width:150px;
     }
     #header > h1 > .logo.cobrand > img {

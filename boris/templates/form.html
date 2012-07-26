@@ -280,6 +280,8 @@
               {%endif%}
             </label>
           </div>
+
+          {%if customform.show_sms_box or not customform%}
           <div class="input checkbox">
             <input id="opt_in_sms" name="opt_in_sms" type="checkbox" />
             <label for="opt_in_sms">{%if customform%}
@@ -288,6 +290,8 @@
               {%else%}Send me txt messages from Rock the Vote.{%endif%}
               <span class="subtle">(data &amp; msg rates may apply)</span></label>
           </div>
+          {%endif%}
+
           {%if customform.show_volunteer_box or not customform%}
           <div class="input checkbox">
             <input id="volunteer" name="volunteer" type="checkbox" />
@@ -304,6 +308,9 @@
             <label for="partner_opt_in_email">
               {%if cobrandform.email_optin_text%}{{cobrandform.email_optin_text}}
                 {%else%}Receive Email Updates from {{cobrandform.name}}.{%endif%}
+              {%if cobrandform.privacy_policy_link%}
+                <span class="subtle"><a href="{{cobrandform.privacy_policy_link}}" target="_blank">({{cobrandform.name}} privacy policy)</a></span>
+              {%endif%}
             </label>
           </div>
           {%endif%}

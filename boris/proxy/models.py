@@ -9,14 +9,20 @@ class CustomForm(models.Model):
     partner_id = models.IntegerField()
     name = models.CharField(max_length=100)
     logo = models.ImageField(upload_to="partner_logos")
+    logo_link = models.URLField(null=True,blank=True)
     sms_optin_text = models.CharField(max_length=255,null=True,blank=True,
         help_text="If not defined, defaults to: 'Send me txt messages from {{partner_name}}'")
     email_optin_text = models.CharField(max_length=255,null=True,blank=True,
         help_text="If not defined, defaults to: 'Receive Email Updates from {{partner_name}}'")
     show_volunteer_box = models.BooleanField(default=False)
+    show_sms_box = models.BooleanField(default=True)
+
     privacy_policy_link = models.URLField()
     question_1 = models.CharField(max_length=255,null=True,blank=True)
     question_2 = models.CharField(max_length=255,null=True,blank=True)
+
+    facebook_share_text = models.CharField(null=True,blank=True,max_length=255)
+    twitter_share_text = models.CharField(null=True,blank=True,max_length=120)
 
     list_signup_endpoint = models.URLField(null=True,blank=True,
         help_text="url to join partner list, should expect POST")
@@ -54,8 +60,11 @@ class CoBrandForm(models.Model):
     partner_id = models.IntegerField()
     name = models.CharField(max_length=100)
     logo = models.ImageField(upload_to="partner_logos")
-    show_email_optin = models.BooleanField()
-    default_email_option = models.BooleanField()
+    show_logo = models.BooleanField(default=True)
+    logo_link = models.URLField(null=True,blank=True)
+    show_email_optin = models.BooleanField(default=True)
+    default_email_option = models.BooleanField(default=True)
+    privacy_policy_link = models.URLField(default="http://example.com/privacy")
     email_optin_text = models.CharField(max_length=255,null=True,blank=True,
         help_text="If not defined, defaults to: 'Receive Email Updates from {{partner_name}}'")
 
