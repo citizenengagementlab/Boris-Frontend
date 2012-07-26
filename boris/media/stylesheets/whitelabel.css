@@ -15,6 +15,12 @@
 	background-image: none;
 	text-indent: 0;
 }
+#footer p > a.cobrand.Presente\.org {
+	position:relative;
+	top:11px;
+}
+
 #footer p > a.cobrand > img {
 	width:129px;
 }
+
