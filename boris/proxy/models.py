@@ -55,15 +55,17 @@ class CustomForm(models.Model):
         values_dict = eval(values)
         return partner_proxy("POST",self.list_signup_endpoint,values_dict)
 
+show_logo_choices = (('t','top'),('b','bottom'),('','hide'))
+
 class CoBrandForm(models.Model):
     toplevel_org = models.ForeignKey(CustomForm)
     partner_id = models.IntegerField()
     name = models.CharField(max_length=100)
     logo = models.ImageField(upload_to="partner_logos")
-    show_logo = models.BooleanField(default=True)
+    show_logo = models.CharField(null=True,blank=True,max_length=1,choices=show_logo_choices)
     logo_link = models.URLField(null=True,blank=True)
     show_email_optin = models.BooleanField(default=True)
-    default_email_option = models.BooleanField(default=True)
+    default_email_optin = models.BooleanField(default=True)
     privacy_policy_link = models.URLField(default="http://example.com/privacy")
     email_optin_text = models.CharField(max_length=255,null=True,blank=True,
         help_text="If not defined, defaults to: 'Receive Email Updates from {{partner_name}}'")
