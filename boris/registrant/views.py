@@ -66,7 +66,10 @@ def register(request):
         try:
             context['state_name'] = STATE_NAME_LOOKUP[state]
         except KeyError:
-            return redirect('/registrants/map/')
+            redirect_url = '/registrants/map/'
+            if context['has_partner']:
+                redirect_url = redirect_url + '?partner=' + context['partner']
+            return redirect(redirect_url)
 
         #TODO: get language code from localeurl
         staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':'en'},'/api/v1/state_requirements.json')
@@ -76,7 +79,10 @@ def register(request):
             return render_to_response('ineligible.html',context,
                         context_instance=RequestContext(request))
     else:
-        return redirect('/') #redirect to frontpage to do geolocation
+        redirect_url = '/'
+        if context['has_partner']:
+                redirect_url = redirect_url + '?partner=' + context['partner']
+        return redirect(redirect_url) #redirect to frontpage to do geolocation
     
     return render_to_response('form.html',context,
                 context_instance=RequestContext(request))
