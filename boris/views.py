@@ -28,7 +28,7 @@ def frontpage(request):
 
     redirect_url = reverse('registrant.views.map')
     if result and result.has_key('region_name'):
-        redirect_url = reverse('registrant.views.register')
+        redirect_url = 'https://'+reverse('registrant.views.register')
         params['state'] = result['region_name']
 
     if params:
