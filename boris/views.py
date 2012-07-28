@@ -27,9 +27,11 @@ def frontpage(request):
         result = None
 
     redirect_url = reverse('registrant.views.map')
-    if result and result.has_key('region_name'):
-        redirect_url = reverse('registrant.views.register')
-        params['state'] = result['region_name']
+    
+    #turn geolocation off for rtv a/b testing
+    #if result and result.has_key('region_name'):
+    #    redirect_url = reverse('registrant.views.register')
+    #    params['state'] = result['region_name']
 
     if params:
         redirect_url += "?"+urllib.urlencode(params)
