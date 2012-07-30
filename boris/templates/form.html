@@ -14,6 +14,22 @@
   </script>
 {% endblock scripts %}
 
+{%block styles%}
+<style>
+fieldset.surveyquestions h2 { 
+  color: #797569;
+  font-size:14px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+fieldset.surveyquestions .questions label {
+  font-weight:normal;
+}
+</style>
+
+{%endblock%}
+
 {%block content%}
     <form class="registration-form" method="post" action="../submit/" accept-charset="UTF-8">
       {% csrf_token %}
@@ -234,6 +250,7 @@
         </div>
       </fieldset>
       <fieldset class="surveyquestions">
+        <h2>Survey Questions (optional)</h2>
         {% comment %} Use the default RTV questions for testing, if not a custom form {% endcomment %}
           {%if not customform%}
           <div class="input questions">
