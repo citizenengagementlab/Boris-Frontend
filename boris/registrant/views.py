@@ -1,5 +1,6 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
+from django.contrib import messages
 
 from proxy.views import rtv_proxy
 from proxy.models import CustomForm,CoBrandForm
@@ -135,18 +136,21 @@ def submit(request):
         #something went wrong that wasn't caught in the frontend validation
         #clean up error message for human consumption
         try:
-            field_name = rtv_response['error']['field_name'].replace('_',' ').title()
-            message = rtv_response['error']['message'].lower()
-            context['error'] = "%s %s" % (field_name, message)
+            context['error'] = True
+            messages.error(request, rtv_response['error']['message'].lower(),
+                extra_tags=rtv_response['error']['field_name'].replace('_',' ').title())
         except KeyError:
-            context['error'] = "Rocky API Error: %s " % rtv_response['error']
+            context['error'] = True
+            messages.error(request, rtv_response['error'],
+                extra_tags="Rocky API")
     context['email_address'] = submitted_form.get("email_address")
 
     try:
         context['state_name'] = STATE_NAME_LOOKUP[submitted_form.get('home_state_id')]
     except KeyError:
         #unrecognized state
-        context['error'] = "Unrecognized state, please go back and try again."
+        context['error'] = True
+        messages.error(request, "Unrecognized state, please go back and try again.")
 
     #if a partner, post to their api
     if submitted_form.has_key('partner_id') and bool(submitted_form['opt_in_email']) == True:
@@ -155,9 +159,9 @@ def submit(request):
             context['customform'] = customform
             response = customform.submit(submitted_form)
             if response.get('error'):
-                #something went wrong...
-                # email admin?
-                print response
+                context['error'] = True
+                messages.error(request, "Unknown error, please contact an admin",
+                    extra_tags=response)
         except (CustomForm.DoesNotExist,ValueError):
             pass
 
@@ -170,4 +174,10 @@ def submit(request):
     #some hash of email and partner_id?
     context['user_id'] = "TBD"
 
-    return render_to_response('submit.html', context, context_instance=RequestContext(request))
+    if context.has_key('error'):
+        return redirect('/registrants/error/')
+    else:
+        return render_to_response('submit.html', context, context_instance=RequestContext(request))
+
+def error(request):
+    return render_to_response('error.html', {}, context_instance=RequestContext(request))
