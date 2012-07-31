@@ -2,6 +2,11 @@
 	float: right;
 }
 
+#header > h1 > .logo.presenteorg {
+	position:relative;
+	top:11px;
+}
+
 #header > h1 > .logo > img {
 	vertical-align: baseline;
 	max-width:150px;

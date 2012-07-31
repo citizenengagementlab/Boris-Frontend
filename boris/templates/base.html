@@ -24,7 +24,7 @@
 		<header id="header">
 			<h1 class="container">
 				{% if customform.logo%}
-				<a class="logo" {%if customform.logo_link%}href="{{customform.logo_link}}" target="_blank"{%endif%}>
+				<a class="logo {{customform.name|slugify}}" {%if customform.logo_link%}href="{{customform.logo_link}}" target="_blank"{%endif%}>
 					<img src="{{ STATIC_URL }}{{customform.logo}}" />
 				</a>
 				{%endif%}
