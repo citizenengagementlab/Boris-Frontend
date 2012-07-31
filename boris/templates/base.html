@@ -29,7 +29,7 @@
 				</a>
 				{%endif%}
 				{% if cobrandform.logo and cobrandform.show_logo = 't'%}
-				<a class="logo cobrand {{cobrandform.name}}" {%if cobrandform.logo_link%}href="{{cobrandform.logo_link}}" target="_blank"{%endif%}>
+				<a class="logo cobrand {{cobrandform.name|slugify}}" {%if cobrandform.logo_link%}href="{{cobrandform.logo_link}}" target="_blank"{%endif%}>
 					<img src="{{ STATIC_URL }}{{cobrandform.logo}}" />
 				</a>
 				{%endif%}
@@ -47,7 +47,7 @@
 					Powered by
 					<a href="" tabindex="-1" class="rtv-logo">Rock The Vote</a>
 					{% if cobrandform.logo and cobrandform.show_logo = 'b'%}
-					&nbsp;&amp;&nbsp;<a class="logo cobrand {{cobrandform.name}}" {%if cobrandform.logo_link%}href="{{cobrandform.logo_link}}" target="_blank"{%endif%}>
+					&nbsp;&amp;&nbsp;<a class="logo cobrand {{cobrandform.name|slugify}}" {%if cobrandform.logo_link%}href="{{cobrandform.logo_link}}" target="_blank"{%endif%}>
 					<img src="{{ STATIC_URL }}{{cobrandform.logo}}" />
 					{%endif%}
 				</a>
