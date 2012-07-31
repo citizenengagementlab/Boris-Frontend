@@ -289,21 +289,32 @@ fieldset.surveyquestions .questions label {
       <fieldset class="submit">
         <div class="inputs">
           <div class="input checkbox">
-            <input id="opt_in_email" name="opt_in_email" type="checkbox" checked="checked" />
-            <label for="opt_in_email">{%if customform %}
+            {% if customform %}
+            {% comment %} If customform, show partner optin as main email signup, and opt-out of RTV.
+            {% endcomment %}
+            <input id="opt_in_email" name="opt_in_email" type="hidden" value="0" />
+            <input id="partner_opt_in_email" name="partner_opt_in_email" type="checkbox" checked="checked" />
+            <label for="partner_opt_in_email">
               {%if customform.email_optin_text%}{{customform.email_optin_text}}
                 {%else%}Receive Email Updates from {{customform.name}}.{%endif%}
-              {%else%}Receive Email Updates from Rock the Vote.{%endif%}
               {%if customform.privacy_policy_link%}
                 <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} privacy policy)</a></span>
               {%endif%}
             </label>
+            {%else%}
+            {% comment %} Normal flow, display rockthevote opt_in {% endcomment %}
+            <input id="opt_in_email" name="opt_in_email" type="checkbox" checked="checked" />
+            <label for="opt_in_email">
+              Receive Email Updates from RockTheVote.
+            </label>
+            {%endif%}
           </div>
 
           {%if customform.show_sms_box or not customform%}
           <div class="input checkbox">
-            <input id="opt_in_sms" name="opt_in_sms" type="checkbox" />
-            <label for="opt_in_sms">{%if customform%}
+            <input id="{%if customform %}partner_{%endif%}opt_in_sms"
+            name="{%if customform %}partner_{%endif%}opt_in_sms" type="checkbox" checked="checked" />
+            <label for="{%if customform %}partner_{%endif%}opt_in_sms">{%if customform%}
               {%if customform.sms_optin_text%}{{customform.sms_optin_text}}
                 {%else%}Send me txt messages from {{customform.name}}.{%endif%}
               {%else%}Send me txt messages from Rock the Vote.{%endif%}
