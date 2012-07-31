@@ -249,10 +249,11 @@ fieldset.surveyquestions .questions label {
           <div class="race-hint tooltip">{{ staterequirements.requires_race_msg }}</div>
         </div>
       </fieldset>
+
+      {%if not customform%}
+      {% comment %} Use the default RTV questions for testing, if not a custom form {% endcomment %}
       <fieldset class="surveyquestions">
-        <h2>Survey Questions (optional)</h2>
-        {% comment %} Use the default RTV questions for testing, if not a custom form {% endcomment %}
-          {%if not customform%}
+          <h2>Survey Questions (optional)</h2>
           <div class="input questions">
             {%if customform%}
               {%if customform.question_1 %}
@@ -282,8 +283,9 @@ fieldset.surveyquestions .questions label {
               </div>
             {%endif%}
           </div>
-          {%endif%}
-      </fieldset>
+      </fieldset>      
+      {%endif%}
+
       <fieldset class="submit">
         <div class="inputs">
           <div class="input checkbox">
