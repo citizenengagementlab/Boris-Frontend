@@ -80,8 +80,8 @@ if (1) {
   </header>
   <div class="prepend-3 span-18 append-3 last">
     <div class="share">
-      <a class="button facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fregister2.rockthevote.com%2F{%if customform%}%3Fpartner%3D{{customform.partner_id}}{%endif%}&amp;t={{customform.facebook_share_text|default:'I just registered to vote and so can you!'|urlencode}}" target="_blank">Facebook</a>
-      <a class="button twitter" href="http://twitter.com/home?status={{customform.twitter_share_text|default:'I just registered to vote and so can you!'|urlencode}}+https%3A%2F%2Fregister2.rockthevote.com%2F{%if customform%}%3Fpartner%3D{{customform.partner_id}}{%endif%}" target="_blank">Twitter</a>
+      <a class="button facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fregister2.rockthevote.com%2F{%if has_partner%}%3Fpartner%3D{{partner}}{%endif%}&amp;t={{customform.facebook_share_text|default:'I just registered to vote and so can you!'|urlencode}}" target="_blank">Facebook</a>
+      <a class="button twitter" href="http://twitter.com/home?status={{customform.twitter_share_text|default:'I just registered to vote and so can you!'|urlencode}}+https%3A%2F%2Fregister2.rockthevote.com%2F{%if has_partner%}%3Fpartner%3D{{partner}}{%endif%}" target="_blank">Twitter</a>
     </div>
   </div>
 </section>
