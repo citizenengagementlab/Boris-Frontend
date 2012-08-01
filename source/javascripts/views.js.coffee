@@ -211,6 +211,27 @@ class Views.PrevNameTitleFormField extends Views.FormField
 
 class Views.HomeZipCodeFormField extends Views.FormField
   errorMessage: "Enter a valid 5 digit zip code."
+
+  initialize: =>
+    super()
+    @$el.on 'change blur', ->
+      @zipLookUp(@value())
+
+  zipLookUp: (zip) =>
+    $.ajax
+      type: 'get'
+      url: '/usps/zip_lookup/'
+      data:
+        zip: zip
+      success: (d) ->
+        if d.state?
+          city = d.city
+          state = d.state
+          @$el.children('input[id$="_city"]').val city
+          @$el.children('input[id$="_state_id"]').val state
+          @$el.children('.zip-code-location-hint').text "#{city}, #{state}"
+
+
   valid: =>
     if @required()
       (/^((\d{5}(-\d{4}))|(\d{5}))$/).test @value()
