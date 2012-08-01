@@ -2933,6 +2933,7 @@
     };
 
     HomeZipCodeFormField.prototype.zipLookUp = function(zip) {
+      var _this = this;
       return $.ajax({
         type: 'get',
         url: '/usps/zip_lookup/',
@@ -2944,9 +2945,9 @@
           if (d.state != null) {
             city = d.city;
             state = d.state;
-            this.$el.children('input[id$="_city"]').val(city);
-            this.$el.children('input[id$="_state_id"]').val(state);
-            return this.$el.children('.zip-code-location-hint').text("" + city + ", " + state);
+            _this.$el.children('input[id$="_city"]').val(city);
+            _this.$el.children('input[id$="_state_id"]').val(state);
+            return _this.$el.children('.zip-code-location-hint').text("" + city + ", " + state);
           }
         }
       });
