@@ -130,8 +130,12 @@ class Views.FormField extends Backbone.View
       else
         @showTooltip()
     ###
+    # Validation hack for browsers that don't support input.required
     @required = ->
-      @input.required
+      if typeof @input.required != "undefined"
+        return @input.required
+      else
+        return !!@$input.attr('required') # Double "!" to typecast to boolean
 
   value: ->
     $.trim @input.value
