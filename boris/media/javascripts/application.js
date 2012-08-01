@@ -2677,7 +2677,7 @@
       if (this.$button.hasClass('disabled')) {
         e.preventDefault();
         errors = [];
-        this.fields.forEach(function(field) {
+        _.forEach(this.fields, function(field) {
           field.validate();
           if (!field.valid()) {
             return errors.push({
@@ -2688,7 +2688,7 @@
         });
         $errorList = $("<ul class='error-list'></ul>");
         html = "<h2>Please correct the following errors:</h2>";
-        errors.forEach(function(error) {
+        _.forEach(errors, function(error) {
           if (error.name) {
             return html += "<li>" + error.name + ": " + error.error + "</li>";
           } else {
@@ -2743,7 +2743,7 @@
       */
 
       return this.required = function() {
-        if (typeof this.input.required !== "undefined") {
+        if (typeof this.input.required !== "undefined" && this.input.required !== "") {
           return this.input.required;
         } else {
           return !!this.$input.attr('required');
@@ -2917,22 +2917,22 @@
     function HomeZipCodeFormField() {
       this.valid = __bind(this.valid, this);
 
-      this.zipLookup = __bind(this.zipLookup, this);
+      this.zipLookUp = __bind(this.zipLookUp, this);
+
+      this.initialize = __bind(this.initialize, this);
       return HomeZipCodeFormField.__super__.constructor.apply(this, arguments);
     }
 
     HomeZipCodeFormField.prototype.errorMessage = "Enter a valid 5 digit zip code.";
 
     HomeZipCodeFormField.prototype.initialize = function() {
-      var _this = this;
       HomeZipCodeFormField.__super__.initialize.call(this);
-      return this.$el.on("change blur", function() {
-        return _this.zipLookup(_this.value());
+      return this.$el.on('change blur', function() {
+        return this.zipLookUp(this.value());
       });
     };
 
-    HomeZipCodeFormField.prototype.zipLookup = function(zip) {
-      var _this = this;
+    HomeZipCodeFormField.prototype.zipLookUp = function(zip) {
       return $.ajax({
         type: 'get',
         url: '/usps/zip_lookup/',
@@ -2941,12 +2941,12 @@
         },
         success: function(d) {
           var city, state;
-          if (d.state !== void 0) {
+          if (d.state != null) {
             city = d.city;
             state = d.state;
-            _this.$el.children('input[id$="_city"]').val(city);
-            _this.$el.children('input[id$="_state_id"]').val(state);
-            return _this.$el.children('.zip-code-location-hint').text("" + city + ", " + state);
+            this.$el.children('input[id$="_city"]').val(city);
+            this.$el.children('input[id$="_state_id"]').val(state);
+            return this.$el.children('.zip-code-location-hint').text("" + city + ", " + state);
           }
         }
       });
