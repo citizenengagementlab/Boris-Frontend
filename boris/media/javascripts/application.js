@@ -2926,9 +2926,10 @@
     HomeZipCodeFormField.prototype.errorMessage = "Enter a valid 5 digit zip code.";
 
     HomeZipCodeFormField.prototype.initialize = function() {
+      var _this = this;
       HomeZipCodeFormField.__super__.initialize.call(this);
       return this.$el.on('change blur', function() {
-        return this.zipLookUp(this.value());
+        return _this.zipLookUp(_this.value());
       });
     };
 

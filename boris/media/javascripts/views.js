@@ -374,13 +374,15 @@
     HomeZipCodeFormField.prototype.errorMessage = "Enter a valid 5 digit zip code.";
 
     HomeZipCodeFormField.prototype.initialize = function() {
+      var _this = this;
       HomeZipCodeFormField.__super__.initialize.call(this);
       return this.$el.on('change blur', function() {
-        return this.zipLookUp(this.value());
+        return _this.zipLookUp(_this.value());
       });
     };
 
     HomeZipCodeFormField.prototype.zipLookUp = function(zip) {
+      var _this = this;
       return $.ajax({
         type: 'get',
         url: '/usps/zip_lookup/',
@@ -392,9 +394,9 @@
           if (d.state != null) {
             city = d.city;
             state = d.state;
-            this.$el.children('input[id$="_city"]').val(city);
-            this.$el.children('input[id$="_state_id"]').val(state);
-            return this.$el.children('.zip-code-location-hint').text("" + city + ", " + state);
+            _this.$el.children('input[id$="_city"]').val(city);
+            _this.$el.children('input[id$="_state_id"]').val(state);
+            return _this.$el.children('.zip-code-location-hint').text("" + city + ", " + state);
           }
         }
       });
