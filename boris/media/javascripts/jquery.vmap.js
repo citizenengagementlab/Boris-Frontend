@@ -9,7 +9,6 @@
  *
  * Fork Me @ https://github.com/manifestinteractive/jqvmap
  */
-
 (function ($){
 
   var apiParams = {
@@ -23,7 +22,8 @@
     borderColor: 1,
     borderWidth: 1,
     borderOpacity: 1,
-    selectedRegion: 1
+    selectedRegions: 1,
+  multiSelectRegion: 1
   };
 
   var apiEvents = {
@@ -40,7 +40,7 @@
       backgroundColor: '#a5bfdd',
       color: '#f4f3f0',
       hoverColor: '#c9dfaf',
-	  selectedColor: '#c9dfaf',
+    selectedColor: '#c9dfaf',
       scaleColors: ['#b6d6ff', '#005ace'],
       normalizeFunction: 'linear',
       enableZoom: true,
@@ -48,7 +48,8 @@
       borderColor: '#818181',
       borderWidth: 1,
       borderOpacity: 0.25,
-      selectedRegion: null
+      selectedRegions: null,
+    multiSelectRegion: false
     }, map;
 
     if (options === 'addMap')
@@ -64,7 +65,7 @@
       $.extend(defaultParams, options);
       defaultParams.container = this;
       this.css({ position: 'relative', overflow: 'hidden' });
-	  
+    
       map = new WorldMap(defaultParams);
 
       this.data('mapObject', map);
@@ -82,7 +83,7 @@
   var VectorCanvas = function (width, height, params)
   {
     this.mode = window.SVGAngle ? 'svg' : 'vml';
-	this.params = params;
+  this.params = params;
 
     if (this.mode == 'svg')
     {
@@ -191,10 +192,10 @@
         node.setFill = function (color)
         {
           this.setAttribute("fill", color);
-		  if(this.getAttribute("original") === null)
-		  {
-		  	this.setAttribute("original", color);
-		  }
+      if(this.getAttribute("original") === null)
+      {
+        this.setAttribute("original", color);
+      }
         };
 
         node.getFill = function (color)
@@ -204,9 +205,9 @@
 
         node.getOriginalFill = function ()
         {
-		  return this.getAttribute("original");
+      return this.getAttribute("original");
         };
-		
+    
         node.setOpacity = function (opacity)
         {
           this.setAttribute('fill-opacity', opacity);
@@ -236,13 +237,20 @@
         node.setFill = function (color)
         {
           this.getElementsByTagName('fill')[0].color = color;
+          if(this.getAttribute("original") === null)
+          {
+            this.setAttribute("original", color);
+          }
         };
 
         node.getFill = function (color)
         {
           return this.getElementsByTagName('fill')[0].color;
         };
-
+        node.getOriginalFill = function ()
+        {
+          return this.getAttribute("original");
+        };
         node.setOpacity = function (opacity)
         {
           this.getElementsByTagName('fill')[0].opacity = parseInt(opacity * 100, 10) + '%';
@@ -389,10 +397,10 @@
           cy = coords[coords.length - 1];
           return 'c' + coords.join(',');
           break;
-		  
-		default:
-		  return false;
-		  break;
+      
+    default:
+      return false;
+      break;
       }
 
       return '';
@@ -403,8 +411,10 @@
   var WorldMap = function (params)
   {
     params = params || {};
-	var map = this;
+  var map = this;
     var mapData = WorldMap.maps[params.map];
+  
+  selectedRegions = [];
 
     this.container = params.container;
 
@@ -444,29 +454,49 @@
       jQuery('<div/>').addClass('jqvmap-zoomin').text('+').appendTo(params.container);
       jQuery('<div/>').addClass('jqvmap-zoomout').html('&#x2212;').appendTo(params.container);
     }
-	
-	map.countries = [];
-	
+  
+  map.countries = [];
+  
     for (var key in mapData.pathes)
     {
       var path = this.canvas.createPath({
         path: mapData.pathes[key].path
       });
-	  
+    
       path.setFill(this.color);
       path.id = 'jqvmap' + map.index + '_' + key;
       map.countries[key] = path;
-	  
+
+      if (this.canvas.mode == 'svg')
+      {
+        path.setAttribute('class', 'jvectormap-region');
+      }
+      else
+      {
+        jQuery(path).addClass('jvectormap-region');
+      }
+
       jQuery(this.rootGroup).append(path);
 
-      path.setAttribute('class', 'jqvmap-region');
-
-      if(params.selectedRegion !== null)
+      if(params.selectedRegions !== null)
       {
-        if(key.toLowerCase() == params.selectedRegion.toLowerCase())
+    if(params.selectedRegions instanceof Array){
+      for(var k in params.selectedRegions){
+        var code = params.selectedRegions[k].toLowerCase();
+        if(key.toLowerCase() == code)
         {
-          path.setFill(params.selectedColor);
-        }
+        path.setFill(params.selectedColor);
+        selectedRegions.push(code);
+      }
+      }
+    }else{
+      var code = params.selectedRegions.toLowerCase();
+      if(key.toLowerCase() == code)
+      {
+        path.setFill(params.selectedColor);
+        selectedRegions.push(code);
+      }
+    }
       }
     }
 
@@ -518,20 +548,40 @@
     });
 
     jQuery(params.container).delegate(this.canvas.mode == 'svg' ? 'path' : 'shape', 'click', function (e){
-
-	  for (var key in mapData.pathes)
-      {
-		map.countries[key].currentFillColor = map.countries[key].getOriginalFill();
-        map.countries[key].setFill(map.countries[key].getOriginalFill());
-      }
-
-      var path = e.target;
+      if(!params.multiSelectRegion){
+    for (var key in mapData.pathes)
+        {
+          map.countries[key].currentFillColor = map.countries[key].getOriginalFill();
+          map.countries[key].setFill(map.countries[key].getOriginalFill());
+        }
+    }
+    
+    var path = e.target;
       var code = e.target.id.split('_').pop();
+    
+    jQuery(params.container).trigger('regionClick.jqvmap', [code, mapData.pathes[code].name]);
 
-      jQuery(params.container).trigger('regionClick.jqvmap', [code, mapData.pathes[code].name]);
+    if(params.multiSelectRegion){
+    if(selectedRegions.indexOf(code) !== -1){
+      selectedRegions.splice(selectedRegions.indexOf(code), 1);
 
-	  path.currentFillColor = params.selectedColor;
+      path.currentFillColor = params.color;
+      path.setFill(params.color);
+    }else{
+      selectedRegions.push(code);
+      
+      path.currentFillColor = params.selectedColor;
       path.setFill(params.selectedColor);
+    }
+    }else{
+    selectedRegions = new Array;
+    selectedRegions.push(code);
+    
+    path.currentFillColor = params.selectedColor;
+    path.setFill(params.selectedColor);
+    }
+    
+    //console.log(selectedRegions);
 
     });
 
@@ -588,7 +638,7 @@
       if (typeof key == 'string')
       {
         this.countries[key].setFill(color);
-  	  	this.countries[key].setAttribute("original", color);
+        this.countries[key].setAttribute("original", color);
       }
       else
       {
@@ -599,7 +649,7 @@
           if (this.countries[code])
           {
             this.countries[code].setFill(colors[code]);
-			this.countries[code].setAttribute("original", colors[code]);
+      this.countries[code].setAttribute("original", colors[code]);
           }
         }
       }
