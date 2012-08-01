@@ -6,6 +6,10 @@
 	position:relative;
 	top:11px;
 }
+#header > h1 > .logo.national-black-justice-coalition {
+	position:relative;
+	top:7px;
+}
 
 #header > h1 > .logo > img {
 	vertical-align: baseline;
