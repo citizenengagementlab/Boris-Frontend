@@ -165,10 +165,13 @@ def submit(request):
         except (CustomForm.DoesNotExist,ValueError):
             pass
 
-    #send user values to context, for trackable social media links
+    #send branding partner ids to context, for trackable social media links
     context['partner'] = submitted_form.get('partner_id')
     context['source'] = submitted_form.get('partner_tracking_id')
     context = get_branding(context)
+    #don't show partner for cel testing links
+    if context['partner'] != 9937:
+        context['has_partner'] = True
 
     #TODO, what user id should we use?
     #some hash of email and partner_id?
