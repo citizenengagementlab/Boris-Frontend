@@ -290,17 +290,28 @@ fieldset.surveyquestions .questions label {
         <div class="inputs">
           <div class="input checkbox">
             {% if customform %}
-            {% comment %} If customform, show partner optin as main email signup, and opt-out of RTV.
-            {% endcomment %}
-            <input id="opt_in_email" name="opt_in_email" type="hidden" value="0" />
-            <input id="partner_opt_in_email" name="partner_opt_in_email" type="checkbox" checked="checked" />
-            <label for="partner_opt_in_email">
-              {%if customform.email_optin_text%}{{customform.email_optin_text}}
-                {%else%}Receive Email Updates from {{customform.name}}.{%endif%}
-              {%if customform.privacy_policy_link%}
-                <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} privacy policy)</a></span>
+              {% if cobrandform %}
+                {% comment %} If customform and cobrand form, RTV and custom share main optin, cobrand gets secondary.{% endcomment %}
+                <input id="opt_in_email" name="opt_in_email" type="checkbox" checked="checked" />
+                <label for="opt_in_email">
+                  {%if customform.email_optin_text%}{{customform.email_optin_text}}
+                    {%else%}Receive Email Updates from {{customform.name}}.{%endif%}
+                  {%if customform.privacy_policy_link%}
+                    <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} privacy policy)</a></span>
+                  {%endif%}
+                </label>
+              {%else%}
+                {% comment %} If customform but not cobrand form, show partner optin as main email signup, and opt-out of RTV.{% endcomment %}
+                <input id="opt_in_email" name="opt_in_email" type="hidden" value="0" />
+                <input id="partner_opt_in_email" name="partner_opt_in_email" type="checkbox" checked="checked" />
+                <label for="partner_opt_in_email">
+                  {%if customform.email_optin_text%}{{customform.email_optin_text}}
+                    {%else%}Receive Email Updates from {{customform.name}}.{%endif%}
+                  {%if customform.privacy_policy_link%}
+                    <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} privacy policy)</a></span>
+                  {%endif%}
+                </label>
               {%endif%}
-            </label>
             {%else%}
             {% comment %} Normal flow, display rockthevote opt_in {% endcomment %}
             <input id="opt_in_email" name="opt_in_email" type="checkbox" checked="checked" />
