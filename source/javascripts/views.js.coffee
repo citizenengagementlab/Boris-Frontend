@@ -91,13 +91,13 @@ class Views.Form extends Backbone.View
     if @$button.hasClass 'disabled'
       e.preventDefault()
       errors = []
-      @fields.forEach (field) ->
+      _.forEach(@fields, (field) ->
         field.validate()
         errors.push {name: field.$input.siblings('label').text(), error: field.errorMessage} unless field.valid()
-      
+        )
       $errorList = $("<ul class='error-list'></ul>")
       html = "<h2>Please correct the following errors:</h2>"
-      errors.forEach (error) ->
+      _.forEach errors, (error) ->
         if error.name
           html += "<li>#{error.name}: #{error.error}</li>"
         else
@@ -132,7 +132,7 @@ class Views.FormField extends Backbone.View
     ###
     # Validation hack for browsers that don't support input.required
     @required = ->
-      if typeof @input.required != "undefined"
+      if typeof @input.required != "undefined" and @input.required != ""
         return @input.required
       else
         return !!@$input.attr('required') # Double "!" to typecast to boolean
@@ -214,7 +214,7 @@ class Views.HomeZipCodeFormField extends Views.FormField
 
   initialize: =>
     super()
-    @$el.on 'change blur', ->
+    @$el.on 'change blur', =>
       @zipLookUp(@value())
 
   zipLookUp: (zip) =>
@@ -223,7 +223,7 @@ class Views.HomeZipCodeFormField extends Views.FormField
       url: '/usps/zip_lookup/'
       data:
         zip: zip
-      success: (d) ->
+      success: (d) =>
         if d.state?
           city = d.city
           state = d.state
