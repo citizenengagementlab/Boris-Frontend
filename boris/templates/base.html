@@ -41,13 +41,13 @@
 		</div>
 	    <div class="scroll-shadows top"></div>
     	<div class="scroll-shadows bottom"></div>
-		<footer id="footer">
+		<footer id="footer" {%if customform%}class="{{customform.name|slugify}}"{%endif%}>
 			<div class="container">
 				<p>
 					Powered by
 					<a href="" tabindex="-1" class="rtv-logo">Rock The Vote</a>
 					{% if cobrandform.logo and cobrandform.show_logo = 'b'%}
-					&nbsp;&amp;&nbsp;<a class="logo cobrand {{cobrandform.name|slugify}}" {%if cobrandform.logo_link%}href="{{cobrandform.logo_link}}" target="_blank"{%endif%}>
+					<a class="logo cobrand {{cobrandform.name|slugify}}" {%if cobrandform.logo_link%}href="{{cobrandform.logo_link}}" target="_blank"{%endif%}>
 					<img src="{{ STATIC_URL }}{{cobrandform.logo}}" />
 					{%endif%}
 				</a>

@@ -24,6 +24,7 @@
 	background-image: none;
 	text-indent: 0;
 }
+
 #footer p > a.cobrand.presenteorg {
 	position:relative;
 	top:11px;
@@ -33,3 +34,15 @@
 	width:129px;
 }
 
+/* add ampersand in css, so we can override only for mfv */
+#footer p > a.cobrand::before {
+	content:"&nbsp;&amp;&nbsp;";
+}
+
+/* hide rtv logo on mi familia vota */
+#footer.mi-familia-vota a.rtv-logo {
+	display:none;
+}
+#footer.mi-familia-vota p > a.cobrand::before {
+	content:none;
+}
