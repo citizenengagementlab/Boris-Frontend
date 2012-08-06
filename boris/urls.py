@@ -28,3 +28,8 @@ if settings.DEBUG:
         (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT }),
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT }),
     )
+else:
+    urlpatterns += patterns('boris.views',
+    (r'^static/(?P<path>.*)$', 'static_redirect', {'url':'%(path)s'}),
+    (r'^media/(?P<path>.*)$', 'static_redirect', {'url':'%(path)s'}),
+)
