@@ -10,6 +10,10 @@
 	position:relative;
 	top:7px;
 }
+#header > h1 > .logo.ultraviolet {
+	position:relative;
+	top:9px;
+}
 
 #header > h1 > .logo > img {
 	vertical-align: baseline;
