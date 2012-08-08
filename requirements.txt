@@ -10,3 +10,4 @@ pygeoip
 pillow
 django-sslify
 django-evolution
+python-dateutil==1.2
