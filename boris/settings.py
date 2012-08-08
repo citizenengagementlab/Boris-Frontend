@@ -182,7 +182,8 @@ except:
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = 'register2.rockthevote.com'
-    STATIC_URL = 'https://s3.amazonaws.com/register2.rockthevote.com/'
+    AWS_S3_CUSTOM_DOMAIN = 'dyw5n6uc3lgo5.cloudfront.net'
+    STATIC_URL = 'https://dyw5n6uc3lgo5.cloudfront.net/'
     #use heroku db
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
