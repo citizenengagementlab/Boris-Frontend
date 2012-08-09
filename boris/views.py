@@ -8,11 +8,23 @@ import pygeoip
 import urllib
 
 def frontpage(request):
+    params = {}
+
+    #geolocation didn't help, turn it off
     #lookup IP and redirect user to correct state
     #using free MaxMind GeoLiteCity db
-    geoip = pygeoip.GeoIP(join(settings.MEDIA_ROOT,'GeoLiteCity.dat'))
-    ip_addr = request.META.get('HTTP_X_FORWARDED_FOR', '') or request.META.get('REMOTE_ADDR')
-    params = {}
+    #geoip = pygeoip.GeoIP(join(settings.MEDIA_ROOT,'GeoLiteCity.dat'))
+    #ip_addr = request.META.get('HTTP_X_FORWARDED_FOR', '') or request.META.get('REMOTE_ADDR')
+    #try:
+    #    result = geoip.record_by_addr(ip_addr)
+    #except pygeoip.GeoIPError:
+    #    result = None
+    #if result and result.has_key('region_name'):
+    #    redirect_url = reverse('registrant.views.register')
+    #    params['state'] = result['region_name']
+
+    #now everybody redirects to first step
+    redirect_url = reverse('registrant.views.map')
 
     #preserve the get parameters in redirect
     #to be backwards compatible with old rocky frontend
@@ -20,18 +32,6 @@ def frontpage(request):
         params['partner'] = request.GET.get('partner')
     if request.GET.get('source'):
         params['source'] = request.GET.get('source')
-
-    try:
-        result = geoip.record_by_addr(ip_addr)
-    except pygeoip.GeoIPError:
-        result = None
-
-    redirect_url = reverse('registrant.views.map')
-    
-    #turn geolocation off for rtv a/b testing
-    #if result and result.has_key('region_name'):
-    #    redirect_url = reverse('registrant.views.register')
-    #    params['state'] = result['region_name']
 
     if params:
         redirect_url += "?"+urllib.urlencode(params)
