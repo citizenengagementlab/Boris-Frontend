@@ -10,8 +10,8 @@ STATE_NAME_LOOKUP = dict(us_states.US_STATES)
 
 
 def get_branding(context):
-    #util method to get branding given partner id
-    #return dict with updated context
+    """Util method to get branding given partner id
+    Returns dict with updated context"""
 
     #check for cobrand form first
     try:
@@ -30,8 +30,8 @@ def get_branding(context):
             return context
     return context
 
-
 def map(request):
+    "Map for state select"
     context = {}
     if request.GET.get('partner'):
         context['partner'] = request.GET.get('partner')
@@ -102,6 +102,7 @@ def register(request):
                 context_instance=RequestContext(request))
     
 def submit(request):
+    "Submit the posted form to the Rocky API"
     if request.method != "POST":
         return redirect('/registrants/new/')
     submitted_form = request.POST.copy()
