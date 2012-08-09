@@ -31,7 +31,7 @@ fieldset.surveyquestions .questions label {
 {%endblock%}
 
 {%block content%}
-    <form class="registration-form" method="post" action="../submit/" accept-charset="UTF-8">
+    <form class="registration-form" method="post" action="/registrants/submit/" accept-charset="UTF-8">
       {% csrf_token %}
       <fieldset class="name">
         <div class="row">
