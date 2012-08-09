@@ -42,7 +42,20 @@ def map(request):
     return render_to_response('map.html',context,
             context_instance=RequestContext(request))
 
+def start(request):
+    "Simple form for initial user engagement"
+    context = {}
+    if request.GET.get('partner'):
+        context['partner'] = request.GET.get('partner')
+        context = get_branding(context)
+    if request.GET.get('source'):
+        context['source'] = request.GET.get('source')
+
+    return render_to_response('start.html',context,
+            context_instance=RequestContext(request))
+
 def register(request):
+    "The full form, in a single page format"
     context = {}
     #setup partner id based on get parameter
     if 'partner' in request.GET:
