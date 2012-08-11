@@ -1,6 +1,7 @@
-{%extends "base.html"%}
+{% extends "base.html" %}
+{% load i18n %} 
 
-{%block title%}Register to Vote {%if state_name%}| {{ state_name }}{%endif%}{%endblock title%}
+{% block title%}{% trans "Register to Vote" %}{%if state_name%}| {{ state_name }}{%endif%}{%endblock title%}
 
 {% block scripts %}
 	<script src="{{STATIC_URL}}javascripts/form.js" type="text/javascript"></script>
@@ -50,26 +51,25 @@ fieldset.surveyquestions .questions label {
       <fieldset class="name">
         <div class="row">
           <div class="input select span-4">
-            <label for="name_title">Title</label>
+            <label for="name_title">{% trans "Title" %}</label>
             <select required name="name_title">
               <option value="--">--</option>
-              <option value="Mr.">Mr.</option>
-              <option value="Ms.">Ms.</option>
-              <option value="Mrs.">Mrs.</option>
-              <option value="Dr.">Dr.</option>
+              <option value="{% trans 'Mr.' %}">{% trans 'Mr.' %}</option>
+              <option value="{% trans 'Ms.' %}">{% trans 'Ms.' %}</option>
+              <option value="{% trans 'Mrs.' %}.">{% trans 'Mrs.' %}</option>
             </select>
           </div>
           <div class="input text span-8">
-            <label for="first_name">First Name</label>
+            <label for="first_name">{% trans "First Name" %}</label>
             <input required id="first_name" name="first_name" type="text" />
-            <div class="full-name-hint tooltip">Use your full first name. Do not use nicknames or initials.</div>
+            <div class="full-name-hint tooltip">{% trans "Use your full first name. Do not use nicknames or initials."%}</div>
           </div>
           <div class="input text span-8">
-            <label for="last_name">Last Name</label>
+            <label for="last_name">{% trans "Last Name" %}</label>
             <input required id="last_name" name="last_name" type="text" />
           </div>
           <div class="input select span-4 last">
-            <label for="name_suffix">Suffix</label>
+            <label for="name_suffix">{% trans "Suffix" %}</label>
             <select id="name_suffix" name="name_suffix">
               <option value="--">--</option>
               <option value="Jr.">Jr.</option>
@@ -79,44 +79,42 @@ fieldset.surveyquestions .questions label {
               <option value="IV">IV</option>
             </select>
             <div class="id-number-hint tooltip">
-              optional
+              {% trans "optional" %}
             </div>
           </div>
         </div>
         <div class="row">
           <div class="input checkbox span-8">
             <input required checked id="us_citizen" name="us_citizen" value="1" type="checkbox" />
-            <label for="us_citizen">I am a U.S. Citizen</label>
+            <label for="us_citizen">{% trans "I am a U.S. Citizen" %}</label>
           </div>
           <div class="input checkbox span-16 last">
             <input id="change_of_name" name="change_of_name" value="1" type="checkbox" />
-            <label for="change_of_name">I have recently changed my name</label>
+            <label for="change_of_name">{% trans "I have recently changed my name" %}</label>
           </div>
         </div>
       </fieldset>
       <fieldset class="previous-name closed">
-        <h3>Previous Name</h3>
+        <h3>{% trans "Previous Name" %}</h3>
         <div class="row">
           <div class="input select span-4">
-            <label for="prev_name_title">Title</label>
+            <label for="prev_name_title">{% trans "Title" %}</label>
             <select name="prev_name_title">
-              <option value="--">--</option>
-              <option value="Mr.">Mr.</option>
-              <option value="Ms.">Ms.</option>
-              <option value="Mrs.">Mrs.</option>
-              <option value="Dr.">Dr.</option>
+              <option value="{% trans 'Mr.' %}">{% trans 'Mr.' %}</option>
+              <option value="{% trans 'Ms.' %}">{% trans 'Ms.' %}</option>
+              <option value="{% trans 'Mrs.' %}.">{% trans 'Mrs.' %}</option>
             </select>
           </div>
           <div class="input text span-8">
-            <label for="prev_first_name">First Name</label>
+            <label for="prev_first_name">{% trans "First Name" %}</label>
             <input id="prev_first_name" name="prev_first_name" type="text" />
           </div>
           <div class="input text span-8">
-            <label for="prev_last_name">Last Name</label>
+            <label for="prev_last_name">{% trans "Last Name" %}</label>
             <input id="prev_last_name" name="prev_last_name" type="text" />
           </div>
           <div class="input select span-4 last">
-            <label for="prev_name_suffix">Suffix</label>
+            <label for="prev_name_suffix">{% trans "Suffix" %}</label>
             <select name="prev_name_suffix">
               <option value="--">--</option>
               <option value="Jr.">Jr.</option>
@@ -126,7 +124,7 @@ fieldset.surveyquestions .questions label {
               <option value="IV">IV</option>
             </select>
             <div class="id-number-hint tooltip">
-              optional
+              {% trans "optional" %}
             </div>
           </div>
         </div>
@@ -135,15 +133,15 @@ fieldset.surveyquestions .questions label {
       <fieldset class="address">
         <div class="row">
           <div class="input text span-12">
-            <label for="home_address">Street Address</label>
+            <label for="home_address">{% trans "Street Address" %}</label>
             <input required id="home_address" name="home_address" type="text" />
             <div class="home-address-hint tooltip">
-              Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form.
+              {% trans "Put your home address in these boxes. Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number. If you live in a rural area but do not have a street address, or if you have no address, please show where you live using the map on the printed form." %}
             </div>
           </div>
           <div class="input text zip-code span-12 last">
-            <a class="incorrect-location" tabindex="-1" href="../map/{%if has_partner%}?partner={{partner}}{%endif%}">Not in {{ state }}?</a>
-            <label for="home_zip_code">Zip Code</label>
+            <a class="incorrect-location" tabindex="-1" href="../map/{%if has_partner%}?partner={{partner}}{%endif%}">{% trans "Not in"%} {{ state }}?</a>
+            <label for="home_zip_code">{% trans "Zip Code" %}</label>
             <input required id="home_zip_code" name="home_zip_code" type="text" />
             <input name="home_city" id="home_city" type="hidden" />
             <input name="home_state_id" id="home_state_id" type="hidden" />
@@ -152,29 +150,29 @@ fieldset.surveyquestions .questions label {
         </div>
         <div class="row">
           <div class="span-6">
-            <a tabindex="-1" href="http://www.rockthevote.com/voting-is-easy/voting-rights/overseas-rights/overseas.html">Registering Abroad?</a>
+            <a tabindex="-1" href="http://www.rockthevote.com/voting-is-easy/voting-rights/overseas-rights/overseas.html">{% trans "Registering Abroad?" %}</a>
           </div>
           <div class="input checkbox span-10">
             <input id="has_mailing_address" name="has_mailing_address" value="1" type="checkbox" />
-            <label for="has_mailing_address">I have a different mailing address</label>
+            <label for="has_mailing_address">{% trans "I have a different mailing address" %}</label>
           </div>
           <div class="input checkbox span-8 last">
             <input id="change_of_address" name="change_of_address" value="1" type="checkbox" />
-            <label for="change_of_address">I have recently moved</label>
+            <label for="change_of_address">{% trans "I have recently moved" %}</label>
           </div>
         </div>
       </fieldset>
       <fieldset class="mailing-address closed">
         <div class="row">
           <div class="input text span-12">
-            <label for="mailing_address">Mailing Street Address</label>
+            <label for="mailing_address">{% trans "Mailing Street Address" %}</label>
             <input id="mailing_address" name="mailing_address" type="text" />
             <div class="mailing-address-hint tooltip">
-              If you receive mail at a different address, please enter it here.
+              {% trans "If you receive mail at a different address, please enter it here." %}
             </div>
           </div>
           <div class="input text zip-code span-12 last">
-            <label for="mailing_zip_code">Mailing Zip Code</label>
+            <label for="mailing_zip_code">{% trans "Mailing Zip Code" %}</label>
             <input id="mailing_zip_code" name="mailing_zip_code" type="text" />
             <input name="mailing_city" id="mailing_city" type="hidden" />
             <input name="mailing_state" id="mailing_state" type="hidden" />
@@ -185,14 +183,14 @@ fieldset.surveyquestions .questions label {
       <fieldset class="previous-address closed">
         <div class="row">
           <div class="input text span-12">
-            <label for="prev_address">Previous Street Address</label>
+            <label for="prev_address">{% trans "Previous Street Address" %}</label>
             <input id="prev_address" name="prev_address" type="text" />
             <div class="previous-address-hint tooltip">
-              If you have moved since your last registration, enter your previous address.
+              {% trans "If you have moved since your last registration, enter your previous address." %}
             </div>
           </div>
           <div class="input text zip-code span-12 last">
-            <label for="prev_zip_code">Previous Zip Code</label>
+            <label for="prev_zip_code">{% trans "Previous Zip Code" %}</label>
             <input id="prev_zip_code" name="prev_zip_code" type="text" />
             <input name="prev_city" id="prev_city" type="hidden" />
             <input name="prev_state_id" id="prev_state_id" type="hidden" />
@@ -204,7 +202,7 @@ fieldset.surveyquestions .questions label {
       <fieldset>
         <div class="row">
           <div class="input text span-16 id-number">
-            <label for="id_number">ID Number</label>
+            <label for="id_number">{% trans "ID Number" %}</label>
             <input id="id_number" name="id_number" type="text" />
             <div class="id-number-hint-icon"></div>
             <div class="id-number-hint tooltip">
@@ -212,34 +210,34 @@ fieldset.surveyquestions .questions label {
             </div>
           </div>
           <div class="input text span-8 last">
-            <label for="date_of_birth">Birthdate</label>
+            <label for="date_of_birth">{% trans "Birthdate" %}</label>
             <input required placeholder="MM/DD/YY" id="date_of_birth" name="date_of_birth" type="text" />
           </div>
         </div>
         <div class="row">
           <div class="input text span-12">
-            <label for="email_address">Email Address</label>
+            <label for="email_address">{% trans "Email Address" %}</label>
             <input required type="email" id="email_address" name="email_address" />
           </div>
           <div class="input text span-7">
-            <label for="phone">Phone Number</label>
+            <label for="phone">{% trans "Phone Number" %}</label>
             <input id="phone" name="phone" type="text" />
           </div>
           <div class="input select span-5 last">
-            <label for="phone_type">Type</label>
+            <label for="phone_type">{% trans "Type" %}</label>
             <select required id="phone_type" name="phone_type">
-              <option value="Mobile">Mobile</option>
-              <option value="Home">Home</option>
-              <option value="Work">Work</option>
+              <option value="Mobile">{% trans "Mobile" %}</option>
+              <option value="Home">{% trans "Home" %}</option>
+              <option value="Work">{% trans "Work" %}</option>
             </select>
           </div>
         </div>
       </fieldset>
       <fieldset>
         <div class="input select span-12">
-          <label for="party">Political Affiliation</label>
+          <label for="party">{% trans "Political Affiliation" %}</label>
           <select {% if staterequirements.requires_party %}required{% endif %} id="party" name="party">
-            <option value="Select One...">Select One...</option>
+            <option value="Select One...">{% trans "Select One..." %}</option>
           	{% for party in staterequirements.party_list %}
           	<option value="{{ party }}">{{ party }}</option>
           	{% endfor %}
@@ -250,17 +248,17 @@ fieldset.surveyquestions .questions label {
           <div class="political-affiliation-hint tooltip">{{ staterequirements.requires_party_msg }}</div>
         </div>
         <div class="input select span-12 last">
-          <label for="race">Race or Ethnic Group</label>
+          <label for="race">{% trans "Race or Ethnic Group" %}</label>
           <select {% if staterequirements.requires_race %}required{% endif %} id="race" name="race">
-            <option value="Select One...">Select One...</option>
-            <option value="American Indian / Alaskan Native">American Indian / Alaskan Native</option>
-            <option value="Asian / Pacific Islander">Asian / Pacific Islander</option>
-            <option value="Black (not Hispanic)">Black (not Hispanic)</option>
-            <option value="Hispanic">Hispanic</option>
-            <option value="White (not Hispanic)">White (not Hispanic)</option>
-            <option value="Multi-racial">Multi-racial</option>
-            <option value="Other">Other</option>
-            <option value="Decline to State">Decline to State</option>
+            <option value="Select One...">{% trans "Select One..."%}</option>
+            <option value="{% trans 'American Indian / Alaskan Native' %}">{% trans "American Indian / Alaskan Native" %}</option>
+            <option value="{% trans 'Asian / Pacific Islander' %}">{% trans "Asian / Pacific Islander" %}</option>
+            <option value="{% trans 'Black (not Hispanic)' %}">{% trans "Black (not Hispanic)" %}</option>
+            <option value="{% trans 'Hispanic' %}">{% trans "Hispanic" %}</option>
+            <option value="{% trans 'White (not Hispanic)' %}">{% trans "White (not Hispanic)" %}</option>
+            <option value="{% trans 'Multi-racial' %}">{% trans "Multi-racial" %}</option>
+            <option value="{% trans 'Other' %}">{% trans "Other" %}</option>
+            <option value="{% trans 'Decline to State' %}">{% trans "Decline to State" %}</option>
           </select>
           <div class="race-hint tooltip">{{ staterequirements.requires_race_msg }}</div>
         </div>
@@ -269,33 +267,33 @@ fieldset.surveyquestions .questions label {
       {%if not customform%}
       {% comment %} Use the default RTV questions for testing, if not a custom form {% endcomment %}
       <fieldset class="surveyquestions">
-          <h2>Survey Questions (optional)</h2>
+          <h2>{% trans "Survey Questions (optional)"%}</h2>
           <div class="input questions">
             {%if customform%}
               {%if customform.question_1 %}
               <div class="input span-12">
                 <label for="question1">{{customform.question_1}}</label>
                 <input id="question1" name="survey_answer_1" type="text"/>
-                <div class="question-hint tooltip">Optional</div>
+                <div class="question-hint tooltip">{% trans "Optional" %}</div>
               </div>
               {%endif%}
               {%if customform.question_2 %}
               <div class="input span-12 last">
                 <label for="question2">{{customform.question_2}}</label>
                 <input id="question2" name="survey_answer_2" type="text"/>
-                <div class="question-hint tooltip">Optional</div>
+                <div class="question-hint tooltip">{% trans "Optional" %}</div>
               </div>
               {%endif%}
             {%else%}
               <div class="input span-12">
-                <label for="question1">If you are in school, where do you go?</label>
+                <label for="question1">{% trans "If you are in school, where do you go?" %}</label>
                 <input id="question1" name="survey_answer_1" type="text"/>
-                <div class="question-hint tooltip">Optional</div>
+                <div class="question-hint tooltip">{% trans "Optional" %}</div>
               </div>
               <div class="input span-12 last">
-                <label for="question2">What issue do you care most about?</label>
+                <label for="question2">{% trans "What issue do you care most about?" %}</label>
                 <input id="question2" name="survey_answer_2" type="text"/>
-                <div class="question-hint tooltip">Optional</div>
+                <div class="question-hint tooltip">{% trans "Optional" %}</div>
               </div>
             {%endif%}
           </div>
@@ -311,9 +309,9 @@ fieldset.surveyquestions .questions label {
                 <input id="opt_in_email" name="opt_in_email" type="checkbox" checked="checked" />
                 <label for="opt_in_email">
                   {%if customform.email_optin_text%}{{customform.email_optin_text}}
-                    {%else%}Receive Email Updates from {{customform.name}}.{%endif%}
+                    {%else%}{% trans "Receive Email Updates from" %} {{customform.name}}.{%endif%}
                   {%if customform.privacy_policy_link%}
-                    <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} privacy policy)</a></span>
+                    <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} {% trans "privacy policy" %})</a></span>
                   {%endif%}
                 </label>
               {%else%}
@@ -322,9 +320,9 @@ fieldset.surveyquestions .questions label {
                 <input id="partner_opt_in_email" name="partner_opt_in_email" type="checkbox" checked="checked" />
                 <label for="partner_opt_in_email">
                   {%if customform.email_optin_text%}{{customform.email_optin_text}}
-                    {%else%}Receive Email Updates from {{customform.name}}.{%endif%}
+                    {%else%}{% trans "Receive Email Updates from" %} {{customform.name}}.{%endif%}
                   {%if customform.privacy_policy_link%}
-                    <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} privacy policy)</a></span>
+                    <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} {% trans "privacy policy"%})</a></span>
                   {%endif%}
                 </label>
               {%endif%}
@@ -332,7 +330,7 @@ fieldset.surveyquestions .questions label {
             {% comment %} Normal flow, display rockthevote opt_in {% endcomment %}
             <input id="opt_in_email" name="opt_in_email" type="checkbox" checked="checked" />
             <label for="opt_in_email">
-              Receive Email Updates from RockTheVote.
+              {% trans "Receive Email Updates from Rock the Vote." %}
             </label>
             {%endif%}
           </div>
@@ -343,9 +341,9 @@ fieldset.surveyquestions .questions label {
             name="{%if customform %}partner_{%endif%}opt_in_sms" type="checkbox" checked="checked" />
             <label for="{%if customform %}partner_{%endif%}opt_in_sms">{%if customform%}
               {%if customform.sms_optin_text%}{{customform.sms_optin_text}}
-                {%else%}Send me txt messages from {{customform.name}}.{%endif%}
-              {%else%}Send me txt messages from Rock the Vote.{%endif%}
-              <span class="subtle">(data &amp; msg rates may apply)</span></label>
+                {%else%}{% trans "Send me txt messages from" %} {{customform.name}}.{%endif%}
+              {%else%}{% trans "Send me txt messages from Rock the Vote."%}{%endif%}
+              <span class="subtle">{% trans "(data &amp; msg rates may apply)"%}</span></label>
           </div>
           {%endif%}
 
@@ -354,8 +352,8 @@ fieldset.surveyquestions .questions label {
             <input id="volunteer" name="volunteer" type="checkbox" />
             <label for="volunteer">{%if customform%}
               {%if customform.volunteer_text%}{{customform.volunteer_text}}
-                {%else%}I would like to volunteer with {{customform.name}}.{%endif%}
-              {%else%}I would like to volunteer with Rock the Vote.{%endif%}</label>
+                {%else%}{% trans "I would like to volunteer with"%} {{customform.name}}.{%endif%}
+              {%else%}{% trans "I would like to volunteer with Rock the Vote."%}{%endif%}</label>
           </div>
           {%endif%}
 
@@ -364,9 +362,9 @@ fieldset.surveyquestions .questions label {
             <input id="partner_opt_in_email" name="partner_opt_in_email" type="checkbox" {%if cobrandform.default_email_optin%}checked="checked"{%endif%} />
             <label for="partner_opt_in_email">
               {%if cobrandform.email_optin_text%}{{cobrandform.email_optin_text}}
-                {%else%}Receive Email Updates from {{cobrandform.name}}.{%endif%}
+                {%else%}{% trans "Receive Email Updates from"%} {{cobrandform.name}}.{%endif%}
               {%if cobrandform.privacy_policy_link%}
-                <span class="subtle"><a href="{{cobrandform.privacy_policy_link}}" target="_blank">({{cobrandform.name}} privacy policy)</a></span>
+                <span class="subtle"><a href="{{cobrandform.privacy_policy_link}}" target="_blank">({{cobrandform.name}} {% trans "privacy policy"%})</a></span>
               {%endif%}
             </label>
           </div>
@@ -388,7 +386,7 @@ fieldset.surveyquestions .questions label {
         <input type="hidden" name="lang" value="en">
         <input type="hidden" name="partner_id" value="{{ partner }}">
         {%if source%}<input type="hidden" name="source" value="{{ source }}">{%endif%}
-        <button class="button button-primary" tabindex="" type="submit">Register</button>
+        <button class="button button-primary" tabindex="" type="submit">{% trans "Register"%}</button>
       </fieldset>
     </form>
   

@@ -1,6 +1,7 @@
 {%extends "base.html"%}
+{% load i18n %} 
 
-{%block title%}Register to Vote | Select Your State{%endblock title%}
+{%block title%}{% trans "Register to Vote" %} | {% trans "Select Your State" %}{%endblock title%}
 
 {%block scripts%}
 <script src="{{STATIC_URL}}javascripts/map.js" type="text/javascript"></script>
@@ -23,10 +24,10 @@ h1.map {
 {%endblock styles%}
 
 {%block content%}
-<h1 class="map">Select your state to get started</h1>
+<h1 class="map">{% trans "Select your state to get started" %}</h1>
 <form class="state-form" method="get" action="/registrants/new/" accept-charset="UTF-8"><div id="map"></div><fieldset class="submit">
       <div class="input select span-16"><select required tabindex="1" class="large" id="state" name="state">
-        <option value="Select State...">Select State</option>
+        <option value="Select State...">{% trans "Select State" %}</option>
         <option value="AK">Alaska</option>
         <option value="AL">Alabama</option>
         <option value="AR">Arkansas</option>
@@ -79,7 +80,7 @@ h1.map {
         <option value="WV">West Virginia</option>
         <option value="WY">Wyoming</option></select></div>
       <div class="span-4 last">
-        <button class="button button-primary" tabindex="20" type="submit">Continue</button>
+        <button class="button button-primary" tabindex="20" type="submit">{% trans "Continue" %}</button>
       </div></fieldset>
 
       {%if partner%}<input type="hidden" name="partner" value="{{partner}}" />{%endif%}

@@ -1,6 +1,6 @@
 {%extends "base.html"%}
 
-{%block title%}Register to Vote | Error Processing Your Form{%endblock title%}
+{%block title%}{% trans "Register to Vote"%} | {% trans "Error Processing Your Form" %}{%endblock title%}
 
 {% block body_class %}finish{% endblock body_class %}
 
@@ -10,11 +10,11 @@
 {%block content%}
 <section>
   	<header>
-  		<h2>Something went wrong :-(</h2>
+  		<h2>{% trans "Something went wrong" %} :-(</h2>
       {% for message in messages %}
         <p>{{message.tags}}: {{message}}</p>
       {% endfor %}
-      <p><br><a href="javascript:history.back();">Go back and try again?</a></p>
+      <p><br><a href="javascript:history.back();">{% trans "Go back and try again?" %}</a></p>
   	</header>
 </section>
 {%endblock content%}

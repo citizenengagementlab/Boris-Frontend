@@ -1,6 +1,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
 from django.contrib import messages
+from django.utils.translation import ugettext as _
 
 from proxy.views import rtv_proxy
 from proxy.models import CustomForm,CoBrandForm
@@ -30,8 +31,22 @@ def get_branding(context):
             return context
     return context
 
+def get_locale(request):
+    """Util method to determine locale from request. Checks session first, then get parameter.
+    Returns 'en' or 'es', for use in context."""
+    if request.GET.get('locale'):
+        locale = request.GET['locale']
+        request.session['django_language'] = locale
+        return locale
+    elif request.session.has_key('django_language'):
+        return request.session['django_language']
+    else:
+        return "en"
+
 def map(request):
     "Map for state select"
+    get_locale(request)
+
     context = {}
     if request.GET.get('partner'):
         context['partner'] = request.GET.get('partner')
@@ -44,6 +59,8 @@ def map(request):
 
 def start(request):
     "Simple form for initial user engagement"
+    get_locale(request)
+
     context = {}
     if request.GET.get('partner'):
         context['partner'] = request.GET.get('partner')
@@ -56,13 +73,14 @@ def start(request):
 
 def register(request):
     "The full form, in a single page format"
+    locale = get_locale(request)
+
     context = {}
     #setup partner id based on get parameter
     if 'partner' in request.GET:
         context['has_partner'] = True
         context['partner'] = request.GET.get('partner')
         context = get_branding(context)
-       
     else:
         #use CEL default
         context['partner'] = 9937
@@ -86,10 +104,13 @@ def register(request):
             return redirect(redirect_url)
 
         #TODO: get language code from localeurl
-        staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':'en'},'/api/v1/state_requirements.json')
+
+        staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':locale},
+            '/api/v2/state_requirements.json')
         context['staterequirements'] = staterequirements
 
         if staterequirements.has_key('error'):
+            print staterequirements
             return render_to_response('ineligible.html',context,
                         context_instance=RequestContext(request))
     else:
@@ -103,6 +124,8 @@ def register(request):
     
 def submit(request):
     "Submit the posted form to the Rocky API"
+    get_locale(request)
+
     if request.method != "POST":
         return redirect('/registrants/new/')
     submitted_form = request.POST.copy()
@@ -164,7 +187,7 @@ def submit(request):
     except KeyError:
         #unrecognized state
         context['error'] = True
-        messages.error(request, "Unrecognized state, please go back and try again.")
+        messages.error(request, _("Unrecognized state, please go back and try again."))
 
     #if a partner, post to their api
     if submitted_form.has_key('partner_id') and bool(submitted_form['opt_in_email']) == True:
@@ -174,7 +197,7 @@ def submit(request):
             response = customform.submit(submitted_form)
             if response.get('error'):
                 context['error'] = True
-                messages.error(request, "Unknown error, please contact an admin",
+                messages.error(request, _("Unknown error, please contact an admin"),
                     extra_tags=response)
         except (CustomForm.DoesNotExist,ValueError):
             pass
@@ -197,4 +220,5 @@ def submit(request):
         return render_to_response('submit.html', context, context_instance=RequestContext(request))
 
 def error(request):
+    get_locale(request)
     return render_to_response('error.html', {}, context_instance=RequestContext(request))

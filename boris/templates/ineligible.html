@@ -1,4 +1,5 @@
 {%extends "base.html"%}
+{% load i18n %} 
 
 {% block body_class %}ineligible{% endblock body_class %}
 
@@ -8,8 +9,8 @@
 {%block content%}
 <section>
   <header>
-    <h2>Something went wrong :-( </h2>
-    <p>Sorry, you are not eligible to register to vote for the following reason(s):</p>
+    <h2>{% trans "Something went wrong" %} :-( </h2>
+    <p>{% trans "Sorry, you are not eligible to register to vote for the following reason(s):" %}</p>
   </header>
   <p>{{staterequirements.error.message|urlize}}</p>
 </section>

@@ -1,10 +1,11 @@
+{% load i18n %} 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
 
-	<title>{% block title %}Voter Registration{% endblock title %}</title>
+	<title>{% block title %}{% trans "Voter Registration" %}{% endblock title %}</title>
 
 	<link href="{{ STATIC_URL }}stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
 	{%if customform %}<link href="{{ STATIC_URL }}stylesheets/whitelabel.css" media="screen" rel="stylesheet" type="text/css" />{%endif%}
@@ -33,7 +34,7 @@
 					<img src="{{ STATIC_URL }}{{cobrandform.logo}}" />
 				</a>
 				{%endif%}
-				<div class="title">{%if state_name%}Register in {{ state_name }}{%else%}Register to Vote{%endif%}</div>
+				<div class="title">{%if state_name%}{% trans "Register in" %} {{ state_name }}{%else%}{% trans "Register to Vote"%}{%endif%}</div>
 
 			</h1>
 		</header>
@@ -44,7 +45,7 @@
 		<footer id="footer" {%if customform%}class="{{customform.name|slugify}}"{%endif%}>
 			<div class="container">
 				<p>
-					Powered by
+					{% trans "Powered by" %}
 					<a href="" tabindex="-1" class="rtv-logo">Rock The Vote</a>
 					{% if cobrandform.logo and cobrandform.show_logo = 'b'%}
 					<a class="logo cobrand {{cobrandform.name|slugify}}" {%if cobrandform.logo_link%}href="{{cobrandform.logo_link}}" target="_blank"{%endif%}>
