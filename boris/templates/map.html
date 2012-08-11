@@ -24,6 +24,9 @@ h1.map {
 {%endblock styles%}
 
 {%block content%}
+{%if LANGUAGE_CODE == "en" %}<a class="locale" tabindex="-1" href="?locale=es">En espa&ntilde;ol</a>
+{%else%}<a class="locale" tabindex="-1" href="?locale=en">In english</a>{%endif%}
+
 <h1 class="map">{% trans "Select your state to get started" %}</h1>
 <form class="state-form" method="get" action="/registrants/new/" accept-charset="UTF-8"><div id="map"></div><fieldset class="submit">
       <div class="input select span-16"><select required tabindex="1" class="large" id="state" name="state">

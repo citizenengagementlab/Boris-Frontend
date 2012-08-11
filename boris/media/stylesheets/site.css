@@ -525,6 +525,8 @@ a {
       max-width:100px;
     }
 
+a.locale { float:right; }
+
 #main {
   width: 600px;
   margin: 0 auto;

@@ -46,6 +46,9 @@ fieldset.surveyquestions .questions label {
 {%endblock%}
 
 {%block content%}
+{%if LANGUAGE_CODE == "en" %}<a class="locale" tabindex="-1" href="?locale=es{% if state%}&state={{state}}{%endif%}">En espa&ntilde;ol</a>
+{%else%}<a class="locale" tabindex="-1" href="?locale=en{%if state%}&state={{state}}{%endif%}">In english</a>{%endif%}
+
     <form class="registration-form" method="post" action="/registrants/submit/" accept-charset="UTF-8">
       {% csrf_token %}
       <fieldset class="name">
