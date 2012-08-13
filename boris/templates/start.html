@@ -4,7 +4,7 @@
 {%block title%}{% trans "Register to Vote" %} | {% trans "Get Started" %}{%endblock title%}
 
 {% block scripts %}
-    <!--<script src="{{STATIC_URL}}javascripts/form.js" type="text/javascript"></script>-->
+    <script src="{{STATIC_URL}}javascripts/form.js" type="text/javascript"></script>
 {% endblock scripts %}
 
 {% block body_class %}map{% endblock body_class %}
@@ -16,10 +16,10 @@
 {%if LANGUAGE_CODE == "en" %}<a class="locale" tabindex="-1" href="?locale=es">En espa&ntilde;ol</a>
 {%else%}<a class="locale" tabindex="-1" href="?locale=en">In english</a>{%endif%}
 
-<form class="new-form" method="get" action="/registrants/new/" accept-charset="UTF-8">
+<form class="new-form registration-form" method="get" action="/registrants/new/" accept-charset="UTF-8">
     <fieldset class="name">
         <div class="row">
-          <div class="input select span-4">
+          <div class="input select span-6">
             <label for="name_title">{% trans "Title" %}</label>
             <select name="name_title">
               <option value="--">--</option>
@@ -28,12 +28,12 @@
               <option value="{% trans 'Mrs.' %}">{% trans "Mrs." %}</option>
             </select>
           </div>
-          <div class="input text span-8">
+          <div class="input text span-9">
             <label for="first_name">{% trans "First Name" %}</label>
             <input id="first_name" name="first_name" type="text" />
             <div class="full-name-hint tooltip">{% trans "Use your full first name. Do not use nicknames or initials." %}</div>
           </div>
-          <div class="input text span-8">
+          <div class="input text span-9 last">
             <label for="last_name">{% trans "Last Name" %}</label>
             <input id="last_name" name="last_name" type="text" />
           </div>
@@ -46,10 +46,11 @@
             <label for="email_address">{% trans "Email Address" %}</label>
             <input type="email" id="email_address" name="email_address" />
           </div>
-          <div class="input text zip-code span-8 last">
+          <div class="input text zip-code span-12 last">
             <label for="home_zip_code">{% trans "Zip Code" %}</label>
             <input id="home_zip_code" name="home_zip_code" type="text" />
-            <input name="home_state_id" id="home_state_id" type="hidden" />
+            <input name="home_city" id="home_city" type="hidden" />
+            <input name="state" id="home_state_id" type="hidden" />
             <div class="zip-code-location-hint"></div>
           </div>
         </div>

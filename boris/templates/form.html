@@ -22,7 +22,7 @@
           $('select[name="name_title"] option[value="'+decodeURIComponent(value)+'"]').attr('selected','selected');
           $('select[name="name_title"]').siblings('.fake-select').html(value);
         } else {
-          $('input[name="'+field+'"]').val(decodeURIComponent(value));
+          $('input[name="'+field+'"]').val(decodeURIComponent(value)).trigger('change');
         }
       }
     });
