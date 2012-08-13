@@ -1,4 +1,7 @@
-import urllib2,urllib,json
+import urllib2
+import urllib
+import json
+from django.utils.http import urlquote_plus
 from django.http import HttpResponse
 
 from django.conf import settings
@@ -39,7 +42,7 @@ def rtv_proxy(method, values, url):
             #that munges the brackets, quote_plus the values and do &-join manually
             data = []
             for (k,v) in values.items():
-                data.append('registration[%s]=%s' % (k,urllib.quote_plus(v)))
+                data.append('registration[%s]=%s' % (k,urlquote_plus(v)))
             data = "&".join(data)
         else:
             data = urllib.urlencode(values)
