@@ -57,6 +57,20 @@ def map(request):
     return render_to_response('map.html',context,
             context_instance=RequestContext(request))
 
+def map2(request):
+    "Map for state select, with email"
+    get_locale(request)
+
+    context = {}
+    if request.GET.get('partner'):
+        context['partner'] = request.GET.get('partner')
+        context = get_branding(context)
+    if request.GET.get('source'):
+        context['source'] = request.GET.get('source')
+
+    return render_to_response('map2.html',context,
+            context_instance=RequestContext(request))
+
 def start(request):
     "Simple form for initial user engagement"
     get_locale(request)
