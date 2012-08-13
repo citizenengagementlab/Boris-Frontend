@@ -153,6 +153,7 @@ fieldset.surveyquestions div.radios label {
             <a class="incorrect-location" tabindex="-1" href="../map/{%if has_partner%}?partner={{partner}}{%endif%}">{% trans "Not in"%} {{ state }}?</a>
             <label for="home_zip_code">{% trans "Zip Code" %}</label>
             <input required id="home_zip_code" name="home_zip_code" type="text" />
+            <div class="home_zip_code-hint tooltip">{% trans "Enter a valid 5 digit zip code."%}</div>
             <input name="home_city" id="home_city" type="hidden" />
             <input name="home_state_id" id="home_state_id" type="hidden" />
             <div class="zip-code-location-hint"></div>
@@ -184,6 +185,7 @@ fieldset.surveyquestions div.radios label {
           <div class="input text zip-code span-12 last">
             <label for="mailing_zip_code">{% trans "Mailing Zip Code" %}</label>
             <input id="mailing_zip_code" name="mailing_zip_code" type="text" />
+            <div class="mailing_zip_code-hint tooltip">{% trans "Enter a valid 5 digit zip code."%}</div>
             <input name="mailing_city" id="mailing_city" type="hidden" />
             <input name="mailing_state" id="mailing_state" type="hidden" />
             <div class="zip-code-location-hint"></div>
@@ -202,6 +204,7 @@ fieldset.surveyquestions div.radios label {
           <div class="input text zip-code span-12 last">
             <label for="prev_zip_code">{% trans "Previous Zip Code" %}</label>
             <input id="prev_zip_code" name="prev_zip_code" type="text" />
+            <div class="prev_zip_code-hint tooltip">{% trans "Enter a valid 5 digit zip code."%}</div>
             <input name="prev_city" id="prev_city" type="hidden" />
             <input name="prev_state_id" id="prev_state_id" type="hidden" />
             <div class="zip-code-location-hint"></div>
@@ -222,16 +225,19 @@ fieldset.surveyquestions div.radios label {
           <div class="input text span-8 last">
             <label for="date_of_birth">{% trans "Birthdate" %}</label>
             <input required placeholder="MM/DD/YYYY" id="date_of_birth" name="date_of_birth" type="text" />
+            <div class="date_of_birth-hint tooltip">{% trans "Enter your birthdate in MM/DD/YYYY format."%}</div>
           </div>
         </div>
         <div class="row">
           <div class="input text span-12">
             <label for="email_address">{% trans "Email Address" %}</label>
             <input required type="email" id="email_address" name="email_address" />
+            <div class="email_address-hint tooltip">{% trans "Enter a valid email address."%}</div>
           </div>
           <div class="input text span-7">
             <label for="phone">{% trans "Phone Number" %}</label>
             <input id="phone" name="phone" type="text" />
+            <div class="phone-hint tooltip">{% trans "Enter a phone number in xxx-xxx-xxxx format."%}</div>
           </div>
           <div class="input select span-5 last">
             <label for="phone_type">{% trans "Type" %}</label>
