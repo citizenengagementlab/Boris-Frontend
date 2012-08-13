@@ -41,6 +41,11 @@ fieldset.surveyquestions h2 {
 fieldset.surveyquestions .questions label {
   font-weight:normal;
 }
+
+fieldset.surveyquestions div.radios label {
+  display:inline-block;
+  font-weight:normal;
+}
 </style>
 
 {%endblock%}
@@ -269,12 +274,10 @@ fieldset.surveyquestions .questions label {
         </div>
       </fieldset>
 
-      {%if not customform%}
-      {% comment %} Use the default RTV questions for testing, if not a custom form {% endcomment %}
       <fieldset class="surveyquestions">
+        {%if customform%}
           <h2>{% trans "Survey Questions (optional)"%}</h2>
           <div class="input questions">
-            {%if customform%}
               {%if customform.question_1 %}
               <div class="input span-12">
                 <label for="question1">{{customform.question_1}}</label>
@@ -289,21 +292,40 @@ fieldset.surveyquestions .questions label {
                 <div class="question-hint tooltip">{% trans "Optional" %}</div>
               </div>
               {%endif%}
-            {%else%}
-              <div class="input span-12">
-                <label for="question1">{% trans "If you are in school, where do you go?" %}</label>
-                <input id="question1" name="survey_answer_1" type="text"/>
-                <div class="question-hint tooltip">{% trans "Optional" %}</div>
-              </div>
-              <div class="input span-12 last">
-                <label for="question2">{% trans "What issue do you care most about?" %}</label>
-                <input id="question2" name="survey_answer_2" type="text"/>
-                <div class="question-hint tooltip">{% trans "Optional" %}</div>
-              </div>
-            {%endif%}
+          </div>    
+        {%else%}
+          {% comment %} Use the default RTV questions for testing, if not a custom form {% endcomment %}
+          <h2>{% trans "Survey Questions (optional)"%}</h2>
+          <div class="input questions">
+            <div class="input span-12">
+              <label for="question1">{% trans "If you are in school, where do you go?" %}</label>
+              <input id="question1" name="survey_answer_1" type="text"/>
+              <div class="question-hint tooltip">{% trans "Optional" %}</div>
+            </div>
+            <div class="input span-12 last">
+              <label for="question2">{% trans "What issue do you care most about?" %}</label>
+              <input id="question2" name="survey_answer_2" type="text"/>
+              <div class="question-hint tooltip">{% trans "Optional" %}</div>
+            </div>
           </div>
-      </fieldset>      
-      {%endif%}
+{% comment %}
+          <!-- New voter survey layout, for testing -->
+          <h2>{% trans "Why are you voting? (optional)"%}</h2>
+          <div class="input questions span-24 radios">
+            <input id="question1" name="survey_answer_1" type="radio" value="economy"/>
+            <label for="question1">Economy</label>
+            <input id="question2" name="survey_answer_1" type="radio" value="education"/>
+            <label for="question2">Education</label>
+            <input id="question3" name="survey_answer_1" type="radio" value="womens-rights"/>
+            <label for="question3">Womens Rights</label>
+            <input id="question4" name="survey_answer_1" type="radio" value="civil-rights"/>
+            <label for="question4">Civil Rights</label>
+            <input id="question5" name="survey_answer_1" type="radio" value="climate-change"/>
+            <label for="question5">Climate Change</label>
+          </div>
+{% endcomment %}
+        {%endif%}
+      </fieldset>
 
       <fieldset class="submit">
         <div class="inputs">
