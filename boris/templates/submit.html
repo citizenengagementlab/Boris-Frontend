@@ -1,6 +1,7 @@
 {%extends "base.html"%}
+{% load i18n %} 
 
-{%block title%}Register to Vote | Download Your Form{%endblock title%}
+{%block title%}{% trans "Register to Vote" %} | {% trans "Download Your Form" %}{%endblock title%}
 
 {% block body_class %}finish{% endblock body_class %}
 
@@ -31,16 +32,16 @@ if (1) {
 <section>
   {% if pdfurl %}
   <header>
-    <h2>You're not quite done!</h2>
-    <p>You still need to download your form.</p>
+    <h2>{% trans "You're not quite done!"%}</h2>
+    <p>{% trans "You still need to download your form."%}</p>
   </header>
   <div id="download" style="display:none">
     <div class="prepend-3 span-18 append-3 last">
-      <a class="button download button-primary" href="{{ pdfurl }}">Download</a>
+      <a class="button download button-primary" href="{{ pdfurl }}">{% trans "Download" %}</a>
     </div>
 
     <div class="prepend-3 span-18 append-3 last">
-      <p class="subtle">(We've also e-mailed you a link to retreive your form later)</p>
+      <p class="subtle">({% trans "We've also e-mailed you a link to retreive your form later" %})</p>
     </div>
   </div>
   <div id="waiting">
@@ -49,13 +50,13 @@ if (1) {
     </div>
 
     <div class="prepend-3 span-18 append-3 last">
-      <p class="subtle">(This should only take a second)</p>
+      <p class="subtle">({% trans "This should only take a second" %})</p>
     </div>
   </div>
 
   {% elif error %}
   	<header>
-  		<h2>Something went wrong :(</h2>
+  		<h2>{% trans "Something went wrong "%}:(</h2>
   	  	<p>{{ error }}</p>
   	</header>
   {% endif %}
@@ -76,7 +77,7 @@ if (1) {
 {%endcomment%}
 <section>
   <header>
-    <h2>Spread the word!</h2>
+    <h2>{% trans "Spread the word!" %}</h2>
   </header>
   <div class="prepend-3 span-18 append-3 last">
     <div class="share">
