@@ -2722,10 +2722,10 @@
       this.getErrorTip();
       this.input = this.options.input;
       this.$input = $(this.input);
-      this.$input.on("change blur keyup", function() {
+      this.$input.on("blur", function() {
         return _this._onChange();
       });
-      this.$input.on("change blur", function() {
+      this.$input.on("blur", function() {
         return _this.validate();
       });
       this.$input.on("focus", function() {
@@ -3033,7 +3033,15 @@
     DateOfBirthFormField.prototype.errorMessage = 'Enter your birthdate in MM/DD/YYYY format';
 
     DateOfBirthFormField.prototype.valid = function() {
-      var age, birthday, month, today;
+      var age, birthday, month, today, valArr;
+      valArr = [];
+      _(this.value().split(/[\-\/\s\.]/g)).each(function(val) {
+        if (val.length === 1) {
+          val = "0" + val;
+        }
+        return valArr.push(val);
+      });
+      this.$input.val(valArr.join("/"));
       if (!this.value().match(/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d+$/)) {
         return false;
       }
@@ -3047,13 +3055,15 @@
       if (age < 17) {
         this.$input.siblings('.tooltip').text("You must turn 18 by the next election to register to vote.");
         return false;
+      } else {
+        this.$input.siblings('.tooltip').text(this.errorMessage);
       }
       return true;
     };
 
     return DateOfBirthFormField;
 
-  })(Views.HomeZipCodeFormField);
+  })(Views.FormField);
 
   Views.PhoneFormField = (function(_super) {
 
