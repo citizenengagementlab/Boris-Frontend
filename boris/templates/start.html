@@ -13,9 +13,10 @@
 {%endblock styles%}
 
 {%block content%}
-{%if LANGUAGE_CODE == "en" %}<a class="locale" tabindex="-1" href="?locale=es">En espa&ntilde;ol</a>
+<div class="span-24 last" style="padding: 19px 20px 3px">
+  {%if LANGUAGE_CODE == "en" %}<a class="locale" tabindex="-1" href="?locale=es">En espa&ntilde;ol</a>
 {%else%}<a class="locale" tabindex="-1" href="?locale=en">In english</a>{%endif%}
-
+</div>
 <form class="new-form registration-form" method="get" action="/registrants/new/" accept-charset="UTF-8">
     <fieldset class="name">
         <div class="row">
