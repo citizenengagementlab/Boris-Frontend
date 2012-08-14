@@ -70,5 +70,10 @@ class CoBrandForm(models.Model):
     email_optin_text = models.CharField(max_length=255,null=True,blank=True,
         help_text="If not defined, defaults to: 'Receive Email Updates from {{partner_name}}'")
 
+    question_1 = models.CharField(max_length=255,null=True,blank=True)
+    question_1_customhtml = models.TextField(null=True,blank=True,help_text="custom html for the response")
+    question_2 = models.CharField(max_length=255,null=True,blank=True)
+    question_2_customhtml = models.TextField(null=True,blank=True,help_text="custom html for the response")
+
     def __unicode__(self):
         return self.name

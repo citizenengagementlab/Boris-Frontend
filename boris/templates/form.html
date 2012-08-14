@@ -281,26 +281,54 @@ fieldset.surveyquestions div.radios label {
       </fieldset>
 
       <fieldset class="surveyquestions">
-        {%if customform%}
+        {% comment %} Cobranded questions override customform questions {% endcomment %}
+        {%if cobrandform and cobrandform.question_1%}
           <h2>{% trans "Survey Questions (optional)"%}</h2>
           <div class="input questions">
-              {%if customform.question_1 %}
+            {%if cobrandform.question_1 %}
+              <div class="input span-12">
+                <label for="question1">{{cobrandform.question_1}}</label>
+                {%if cobrandform.question_1_customhtml%}
+                {{cobrandform.question_1_customhtml|safe}}
+                {%else%}
+                <input id="question1" name="survey_answer_1" type="text"/>
+                <div class="question-hint tooltip">{% trans "Optional" %}</div>
+                {%endif%}
+              </div>
+            {%endif%}
+            {%if cobrandform.question_2 %}
+              <div class="input span-12 last">
+                <label for="question2">{{cobrandform.question_2}}</label>
+                {%if cobrandform.question_2_customhtml%}
+                {{cobrandform.question_2_customhtml|safe}}
+                {%else%}
+                <input id="question2" name="survey_answer_2" type="text"/>
+                <div class="question-hint tooltip">{% trans "Optional" %}</div>
+                {%endif%}
+              </div>
+            {%endif%}
+          </div>
+        {%elif customform and customform.question_1%}
+          {% comment %}Then custom form{% endcomment %}
+          <h2>{% trans "Survey Questions (optional)"%}</h2>
+          <div class="input questions">
+            {%if customform.question_1 %}
               <div class="input span-12">
                 <label for="question1">{{customform.question_1}}</label>
                 <input id="question1" name="survey_answer_1" type="text"/>
                 <div class="question-hint tooltip">{% trans "Optional" %}</div>
               </div>
-              {%endif%}
-              {%if customform.question_2 %}
+            {%endif%}
+            {%if customform.question_2 %}
               <div class="input span-12 last">
                 <label for="question2">{{customform.question_2}}</label>
                 <input id="question2" name="survey_answer_2" type="text"/>
                 <div class="question-hint tooltip">{% trans "Optional" %}</div>
               </div>
-              {%endif%}
-          </div>    
+            {%endif%}
+          </div>
         {%else%}
-          {% comment %} Use the default RTV questions for testing, if not a custom form {% endcomment %}
+          {% comment %} Neither custom nor cobrand, use the default RTV questions for testing {% endcomment %}
           <h2>{% trans "Survey Questions (optional)"%}</h2>
           <div class="input questions">
             <div class="input span-12">
