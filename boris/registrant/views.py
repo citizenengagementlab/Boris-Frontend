@@ -8,7 +8,7 @@ from proxy.models import CustomForm,CoBrandForm
 
 from django.contrib.localflavor.us import us_states
 STATE_NAME_LOOKUP = dict(us_states.US_STATES)
-
+STATE_NAME_LOOKUP['DC'] = "DC" #monkey patch, because "District of Columbia doesn't fit"
 
 def get_branding(context):
     """Util method to get branding given partner id
