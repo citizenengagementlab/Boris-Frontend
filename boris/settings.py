@@ -164,6 +164,29 @@ LOCALE_PATHS = (os.path.join(PROJECT_PATH,'locale'),)
 
 EMAIL_SUBJECT_PREFIX = "[Rocky-Boris] "
 
+def get_cache():
+    import os
+    try:
+        os.environ['MEMCACHE_SERVERS'] = os.environ['MEMCACHIER_SERVERS']
+        os.environ['MEMCACHE_USERNAME'] = os.environ['MEMCACHIER_USERNAME']
+        os.environ['MEMCACHE_PASSWORD'] = os.environ['MEMCACHIER_PASSWORD']
+        return {
+          'default': {
+            'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
+            'LOCATION': os.environ['MEMCACHIER_SERVERS'],
+            'TIMEOUT': 500,
+            'BINARY': True,
+          }
+        }
+    except:
+        return {
+          'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+          }
+        }
+
+CACHES = get_cache()
+
 try:
     from settings_local import *
 except:
@@ -184,6 +207,8 @@ except:
     AWS_S3_CUSTOM_DOMAIN = 'dyw5n6uc3lgo5.cloudfront.net'
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
     STATIC_URL = 'https://dyw5n6uc3lgo5.cloudfront.net/'
+    #use heroku memcache
+    
     #use heroku db
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
