@@ -1,12 +1,13 @@
 {%extends "base.html"%}
 {% load i18n %} 
+{% load static from staticfiles %}
 
 {%block title%}{% trans "Register to Vote" %} | {% trans "Download Your Form" %}{%endblock title%}
 
 {% block body_class %}finish{% endblock body_class %}
 
 {%block scripts%}
-<script type="text/javascript" src="{{ STATIC_URL }}javascripts/finish.js"></script>
+<script type="text/javascript" src="{% static 'javascripts/finish.js'%}"></script>
 <!-- Google Code for UI TESTING Conversion Page -->
 <script type="text/javascript">
 /* <![CDATA[ */
