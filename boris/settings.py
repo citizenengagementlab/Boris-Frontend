@@ -101,7 +101,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'sslify.middleware.SSLifyMiddleware',
+    #'sslify.middleware.SSLifyMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -207,7 +207,7 @@ except:
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = 'rocky-boris-test'
     #AWS_S3_CUSTOM_DOMAIN = 'dyw5n6uc3lgo5.cloudfront.net'
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
     STATIC_URL = 'https://s3.amazonaws.com/rocky-boris-test/'
     #use heroku db
     import dj_database_url
