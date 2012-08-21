@@ -205,10 +205,10 @@ except:
     #s3 settings
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    AWS_STORAGE_BUCKET_NAME = 'register2.rockthevote.com'
-    AWS_S3_CUSTOM_DOMAIN = 'dyw5n6uc3lgo5.cloudfront.net'
+    AWS_STORAGE_BUCKET_NAME = 'rocky-boris-test'
+    #AWS_S3_CUSTOM_DOMAIN = 'dyw5n6uc3lgo5.cloudfront.net'
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
-    STATIC_URL = 'https://dyw5n6uc3lgo5.cloudfront.net/'
+    STATIC_URL = 'https://s3.amazonaws.com/rocky-boris-test/'
     #use heroku db
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
