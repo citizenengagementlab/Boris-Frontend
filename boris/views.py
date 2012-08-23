@@ -7,6 +7,9 @@ from os.path import join
 import pygeoip
 import urllib
 
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
 def frontpage(request):
     params = {}
 
