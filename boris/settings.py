@@ -4,7 +4,7 @@ PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
 
 # Django settings for boris project.
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -194,7 +194,7 @@ try:
     from settings_local import *
 except:
     #we're on Heroku, sensitive info is in environ
-    DEBUG = False
+    DEBUG = True
     PROXY_DOMAIN = "register.rockthevote.com"
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
     #sendgrid settings
