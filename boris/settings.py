@@ -212,7 +212,7 @@ except:
     AWS_STORAGE_BUCKET_NAME = 'rocky-boris-test'
     #AWS_S3_CUSTOM_DOMAIN = 'dyw5n6uc3lgo5.cloudfront.net'
     #STATIC_URL = 'https://dyw5n6uc3lgo5.cloudfront.net/'
-    STATIC_URL = 'https://s3.amazonaws.com/rocky-boris-test'
+    STATIC_URL = 'https://s3.amazonaws.com/rocky-boris-test/'
     #use heroku db
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
