@@ -164,8 +164,13 @@
           if (response.authResponse) {
             FB.api('/me', function(me){             
               if (me.name) {
-                if (typeof checkInfo == "function")
-                  checkInfo(me);
+                var user = me;
+                if (typeof checkInfo == "function") {
+                  checkInfo(user);
+                } else {
+                  $(document).ready(function(){checkInfo(user);});
+                }
+                  
               }
             });        
             $('a.button.facebook').click(function(){
