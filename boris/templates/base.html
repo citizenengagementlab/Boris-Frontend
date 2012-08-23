@@ -211,7 +211,7 @@
         FB.getLoginStatus(function(response) { statusCheck(response); });
                
         //possible TODO - handle cases where user removes authorization with app still open
-        //FB.Event.subscribe('auth.statusChange', function(response) { statusCheck(response); });
+        FB.Event.subscribe('auth.statusChange', function(response) { statusCheck(response); });
 
      };
      (function() {
