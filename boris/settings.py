@@ -194,7 +194,7 @@ try:
     from settings_local import *
 except:
     #we're on Heroku, sensitive info is in environ
-    DEBUG = True
+    DEBUG = False
     PROXY_DOMAIN = "register.rockthevote.com"
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
     #sendgrid settings
