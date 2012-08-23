@@ -2,7 +2,7 @@
 {% load i18n %} 
 {% load static from staticfiles %}
 
-{% block title%}{% trans "Register to Vote" %}{%if state_name%}| {{ state_name }}{%endif%}{%endblock title%}
+{% block title%}{% trans "Register to Vote" %}{%if state_name%} | {{ state_name }}{%endif%}{%endblock title%}
 
 {% block scripts %}
 	<script src="{% static 'javascripts/form.js'%}" type="text/javascript"></script>
