@@ -27,7 +27,7 @@ def frontpage(request):
     #    params['state'] = result['region_name']
 
     #now everybody redirects to first step
-    redirect_url = reverse('registrant.views.map')
+    redirect_url = reverse('registrant.views.map2')
 
     #preserve the get parameters in redirect
     #to be backwards compatible with old rocky frontend
