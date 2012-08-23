@@ -164,7 +164,7 @@ def submit(request):
         submitted_form['name_suffix'] = ""
             
     #hit the rocky api
-    rtv_response = rtv_proxy('POST',submitted_form,'/api/v1/registrations.json')
+    rtv_response = rtv_proxy('POST',submitted_form,'/api/v2/registrations.json')
 
     context = {}
     if rtv_response.has_key('pdfurl'):
