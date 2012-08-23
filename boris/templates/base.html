@@ -162,7 +162,8 @@
         
         function statusCheck(response){        
           if (response.authResponse) {
-            FB.api('/me', function(me){             
+            FB.api('/me', function(me){    
+              console.log(me);         
               if (me.name) {
                 var user = me;
                 if (typeof checkInfo == "function") {
