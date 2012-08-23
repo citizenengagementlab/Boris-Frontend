@@ -191,16 +191,20 @@ def submit(request):
 
     #if a partner, post to their api
     if submitted_form.has_key('partner_id') and bool(submitted_form['opt_in_email']) == True:
-        try:
-            customform = CustomForm.objects.get(partner_id=submitted_form['partner_id'])
-            context['customform'] = customform
+        branding = get_branding({'partner':submitted_form['partner_id']})
+        if branding.has_key('cobrandform'):
+            customform = branding['cobrandform'].toplevel_org
+        elif branding.has_key('customform'):
+            customform = branding['customform']
+        else:
+            customform = None
+
+        if customform:
             response = customform.submit(submitted_form)
             if response.get('error'):
                 context['error'] = True
                 messages.error(request, _("Unknown error, please contact an admin"),
                     extra_tags=response)
-        except (CustomForm.DoesNotExist,ValueError):
-            pass
 
     #send branding partner ids to context, for trackable social media links
     context['partner'] = submitted_form.get('partner_id')
