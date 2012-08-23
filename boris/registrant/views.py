@@ -192,9 +192,9 @@ def submit(request):
     #if a partner, post to their api
     if submitted_form.has_key('partner_id') and bool(submitted_form['opt_in_email']) == True:
         branding = get_branding({'partner':submitted_form['partner_id']})
-        if branding.has_key('cobrandform'):
+        if branding.get('cobrandform'):
             customform = branding['cobrandform'].toplevel_org
-        elif branding.has_key('customform'):
+        elif branding.get('customform'):
             customform = branding['customform']
         else:
             customform = None
