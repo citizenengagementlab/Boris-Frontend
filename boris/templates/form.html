@@ -150,7 +150,7 @@ fieldset.surveyquestions div.radios label {
             </div>
           </div>
           <div class="input text zip-code span-12 last">
-            <a class="incorrect-location" tabindex="-1" href="../map/{%if has_partner%}?partner={{partner}}{%endif%}">{% trans "Not in"%} {{ state }}?</a>
+            <a class="incorrect-location" tabindex="-1" href="../map2/{%if has_partner%}?partner={{partner}}&autosubmit=false&autosubmitoverride=true{%else%}?autosubmit=false&autosubmitoverride=true{%endif%}">{% trans "Not in"%} {{ state }}?</a>
             <label for="home_zip_code">{% trans "Zip Code" %}</label>
             <input required id="home_zip_code" name="home_zip_code" type="text" />
             <div class="home_zip_code-hint tooltip">{% trans "Enter a valid 5 digit zip code."%}</div>
@@ -450,5 +450,22 @@ fieldset.surveyquestions div.radios label {
         <button class="button button-primary" tabindex="" type="submit">{% trans "Register"%}</button>
       </fieldset>
     </form>
-  
+    <script type="text/javascript">
+      function checkInfo(user){  
+        if (user) {
+          if (user.hasOwnProperty('first_name') && getParam('first_name') == "")
+          $('input[name="first_name"]').val(user.first_name);
+          
+          if (user.hasOwnProperty('last_name') && getParam('last_name') == "")
+            $('input[name="last_name"]').val(user.last_name);
+            
+          if (user.hasOwnProperty('birthday') && getParam('date_of_birth') == "")
+            $('input[name="date_of_birth"]').val(user.birthday);
+            
+          if (user.hasOwnProperty('email') && getParam("email_address") == "") {
+            $('input[name="email_address"]').val(user.email);
+          }
+        }       
+      }
+    </script>
 {%endblock content%}

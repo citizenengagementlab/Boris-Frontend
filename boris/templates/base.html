@@ -13,15 +13,68 @@
 	{%if customform %}<link href="{{ STATIC_URL }}stylesheets/whitelabel.css" media="screen" rel="stylesheet" type="text/css" />{%endif%}
 	{% block styles %}{% endblock styles %}
 	<script src="{{STATIC_URL}}javascripts/modernizr.js" type="text/javascript"></script>
-
+  
 	<link rel="canonical" href="https://register2.rockthevote.com/{%if customform%}?partner={{customform.partner_id}}{%endif%}" />
 	<meta property="og:url" content="https://register2.rockthevote.com/{%if customform%}?partner={{customform.partner_id}}{%endif%}" />
 	<meta property="og:title" content="Register to Vote{%if customform%} with {{customform.name}}{%endif%}" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content="{{customform.facebook_share_text|default:'I just registered to vote and so can you!'}}"/>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+  <script src="{{STATIC_URL}}javascripts/application.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    function getParam(name){
+      name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+      var regexS = "[\\?&]" + name + "=([^&#]*)";
+      var regex = new RegExp(regexS);
+      var results = regex.exec(window.location.search);
+      if(results == null)
+        return "";
+      else
+        return decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+  
+    //may or may not be needed
+    jQuery(document).ajaxSend(function(event, xhr, settings) {
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        function sameOrigin(url) {
+            // url could be relative or scheme relative or absolute
+            var host = document.location.host; // host + port
+            var protocol = document.location.protocol;
+            var sr_origin = '//' + host;
+            var origin = protocol + sr_origin;
+            // Allow absolute or scheme relative URLs to same origin
+            return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+                (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+                // or any other URL that isn't scheme relative or absolute i.e relative.
+                !(/^(\/\/|http:|https:).*/.test(url));
+        }
+        function safeMethod(method) {
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+    
+        if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+    });
+  </script>
 </head>
 <body class="{% block body_class %}{% endblock body_class %}">
+  
+
 	<div id="main" role="main">
 		<div id="wrap">
 		<header id="header">
@@ -64,10 +117,113 @@
 			</div>
 		</footer>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-	<script src="{{STATIC_URL}}javascripts/application.js" type="text/javascript"></script>
+	
 	{%block scripts%}{%endblock scripts%}
+  <div id="fb-root"></div>
+  <script type="text/javascript">
+    var fbAppID = '347566241989371';
+    var fbAppUrl = 'http://apps.facebook.com/rtvfbapptest/'; //no SSL for now
+    
+    if (window.location != top.location) { //should probably use more specific (back-end) detection as to whether we're loading in a Facebook canvas
+      
+      function preAuthView() { //likewise, may want to load a separate pre-auth view, rather than swapping out markup on the fly
+        var pA = ['<div id="non-auth">'];
+        pA.push('<p style="margin: 30px 20px; width: 560px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>');
+        pA.push('<a id="fb-auth" class="button button-primary" style="float: left; margin: 0 0 0 143px;" href="');
+        pA.push('https://www.facebook.com/dialog/oauth?client_id=');
+        pA.push(fbAppID);
+        pA.push('&redirect_uri=');
+        if (window.location.search.length) {
+          pA.push(encodeURIComponent(fbAppUrl+window.location.search+'&autosubmit=true'));
+        } else {
+          pA.push(encodeURIComponent(fbAppUrl+'?autosubmit=true'));
+        }
+        pA.push('&scope=email,user_birthday,user_location');
+        pA.push('" target="_top">Register via Facebook</a>');
+        pA.push('<p style="margin: 15px 0; float: left; clear: both; width: 100%; text-align: center;">- OR -</p>');
+        pA.push('<a style="font-size: 16px; font-weight: bold; margin: 0; float: left; clear: both; width: 100%; text-align: center;" href="');
+        pA.push(window.location.href);
+        pA.push('" target="_top">Register on RockTheVote.com</a>');
+        pA.push('</div>');
+        $('#content').html(pA.join(""));
+      };
+      
+      // Init the SDK upon load
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : fbAppID, // App ID
+          //channelUrl : '//'+window.location.hostname+'/channel', // Path to your Channel File
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow the server to access the session
+          xfbml      : true  // parse XFBML
+        });
+        
+        function statusCheck(response){        
+          if (response.authResponse) {
+            FB.api('/me', function(me){             
+              if (me.name) {
+                if (typeof checkInfo == "function")
+                  checkInfo(me);
+              }
+            });        
+            $('a.button.facebook').click(function(){
+              $b = $(this);
+              var pObj = {
+                'name' : 'Rock the Vote 2012',
+                'description' : 'this is the description',
+                'media': [{
+                  "type": "flash", 
+                  "swfsrc": window.location.origin+"/static/widgetloader/rtv_fb.swf?v="+(+new Date()), 
+                  "imgsrc": window.location.origin+"/static/images/flash-preview.gif", 
+                  //"imgsrc": "http://icanhascheezburger.files.wordpress.com/2009/04/funny-pictures-hairless-cat-phones-home.jpg",
+                  "width": "130", 
+                  "height": "87",
+                  "expanded_width": "398", 
+                  "expanded_height": "340"
+                }]
+              };
 
+              FB.ui(
+                {
+                  method: 'stream.publish',
+                  //message: 'Lorem ipsum',
+                  //user_message: 'test user message',
+                  attachment: pObj,
+                  user_message_prompt: 'Tell your friends to register!'
+                },
+                function(response) {
+                  if (response.hasOwnProperty("post_id")) {
+                    $b.html("Thanks for sharing!").attr('disabled',true);
+                  } else {
+                    alert("There was an error in publishing your post. Please try again.");
+                  }
+                }
+              );
+             
+            });
+          } else {
+            preAuthView();
+          }
+        }
+        
+        FB.getLoginStatus(function(response) { statusCheck(response); });
+               
+        //possible TODO - handle cases where user removes authorization with app still open
+        //FB.Event.subscribe('auth.statusChange', function(response) { statusCheck(response); });
+
+     };
+     (function() {
+       var e = document.createElement('script'); e.async = true;
+       e.src = document.location.protocol +
+         '//connect.facebook.net/en_US/all.js';
+       document.getElementById('fb-root').appendChild(e);
+     }());
+
+    } else if (window.location.search.length && typeof checkInfo == "function") {
+      checkInfo();
+    }
+  </script>
+  
 	<script type="text/javascript">
 	setTimeout(function(){var a=document.createElement("script");
 	var b=document.getElementsByTagName("script")[0];

@@ -28,8 +28,25 @@ h1.map {
 {%if LANGUAGE_CODE == "en" %}<a class="locale" tabindex="-1" href="?locale=es">En espa&ntilde;ol</a>
 {%else%}<a class="locale" tabindex="-1" href="?locale=en">In english</a>{%endif%}
 
+{% comment %}
+<div id="non-auth">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  
+  <a id="fb-auth" class="button button-primary" href="javascript:;" target="_top">Register via Facebook</a>
+  <p>- OR -</p>
+  <a href="{{STATIC_URL}}" target="_top">Register on RockTheVote.com</a>
+  <script>
+    var authUrl = "https://www.facebook.com/dialog/oauth?client_id="+fbAppID+"&redirect_uri="+encodeURIComponent(document.location.href)+"&scope="+encodeURIComponent('email,user_birthday,user_location');
+    $('#fb-auth').attr('href',authUrl);
+  </script>
+
+</div>
+{% endcomment %}
+
 <h1 class="map">{% trans "Select your state to get started" %}</h1>
-<form class="state-form" method="get" action="/registrants/new/" accept-charset="UTF-8"><div id="map"></div><fieldset class="submit">
+<form class="state-form" method="get" action="/registrants/new/" accept-charset="UTF-8"><div id="map"></div>
+  <fieldset class="submit">
+      {% csrf_token %}
       <div class="input select span-24"><select required tabindex="1" class="large" id="state" name="state">
         <option value="Select State...">{% trans "Select State" %}</option>
         <option value="AK">Alaska</option>
@@ -88,7 +105,7 @@ h1.map {
             <!--[if IE]<label for="email_address">{% trans "Email Address" %}</label>[endif]-->
             <input type="email" id="email_address" name="email_address" style="height:47px" placeholder="Email Address" />
         </div>
-
+        
       <div class="span-4 last">
         <button class="button button-primary" tabindex="20" type="submit">{% trans "Continue" %}</button>
       </div></fieldset>
@@ -96,4 +113,157 @@ h1.map {
       {%if partner%}<input type="hidden" name="partner" value="{{partner}}" />{%endif%}
       {%if source%}<input type="hidden" name="source" value="{{source}}" />{%endif%}
   </form>
+  <script type="text/javascript">
+    function checkInfo(user){  
+      if (getParam("home_zip_code") != "") {    
+        var zip = getParam("home_zip_code");
+        console.log("zip: "+zip);
+        $.ajax({
+          type: 'get',
+          url: '/usps/zip_lookup/',
+          data: {
+            zip: zip
+          },
+          success: function(d) {
+            if (d.state) {
+              $('select[name="state"]').val(d.state).focus();
+              $('form.state-form').append('<input type="hidden" name="home_zip_code" value="'+zip+'" />');
+            }
+          }
+        });
+      } else if (user && user.hasOwnProperty("location")) {
+        if (user.locale == "en_US") {
+          function stateAbbr(stateName) {
+            switch (stateName.toUpperCase()) {
+                case "ALABAMA": return "AL";
+
+                case "ALASKA": return "AK";
+
+                case "ARIZONA": return "AZ";
+
+                case "ARKANSAS": return "AR";
+
+                case "CALIFORNIA": return "CA";
+
+                case "COLORADO": return "CO";
+
+                case "CONNECTICUT": return "CT";
+
+                case "DELAWARE": return "DE";
+
+                case "DISTRICT OF COLUMBIA": return "DC";
+
+                case "FLORIDA": return "FL";
+
+                case "GEORGIA": return "GA";
+                
+                case "HAWAII": return "HI";
+
+                case "IDAHO": return "ID";
+
+                case "ILLINOIS": return "IL";
+
+                case "INDIANA": return "IN";
+
+                case "IOWA": return "IA";
+
+                case "KANSAS": return "KS";
+
+                case "KENTUCKY": return "KY";
+
+                case "LOUISIANA": return "LA";
+
+                case "MAINE": return "ME";
+
+                case "MARYLAND": return "MD";
+
+                case "MASSACHUSETTS": return "MA";
+
+                case "MICHIGAN": return "MI";
+
+                case "MINNESOTA": return "MN";
+
+                case "MISSISSIPPI": return "MS";
+
+                case "MISSOURI": return "MO";
+
+                case "MONTANA": return "MT";
+
+                case "NEBRASKA": return "NE";
+
+                case "NEVADA": return "NV";
+
+                case "NEW HAMPSHIRE": return "NH";
+
+                case "NEW JERSEY": return "NJ";
+
+                case "NEW MEXICO": return "NM";
+
+                case "NEW YORK": return "NY";
+
+                case "NORTH CAROLINA": return "NC";
+
+                case "NORTH DAKOTA": return "ND";
+
+                case "OHIO": return "OH";
+
+                case "OKLAHOMA": return "OK";
+
+                case "OREGON": return "OR";
+
+                case "PALAU": return "PW";
+
+                case "PENNSYLVANIA": return "PA";
+
+                case "RHODE ISLAND": return "RI";
+
+                case "SOUTH CAROLINA": return "SC";
+
+                case "SOUTH DAKOTA": return "SD";
+
+                case "TENNESSEE": return "TN";
+
+                case "TEXAS": return "TX";
+
+                case "UTAH": return "UT";
+
+                case "VERMONT": return "VT";
+
+                case "VIRGINIA": return "VA";
+
+                case "WASHINGTON": return "WA";
+
+                case "WEST VIRGINIA": return "WV";
+
+                case "WISCONSIN": return "WI";
+
+                case "WYOMING": return "WY";
+                
+                default: return "";
+            }
+          }
+          
+          var loc = user.location.name.split(", ");
+          var abbr = stateAbbr(loc[1]);
+          if (abbr != "")
+            $('select[name="state"]').val(abbr).focus();
+        }
+      }
+
+      if (getParam("email_address") != "") {
+        $('input[name="email_address"]').val(getParam("email_address"));
+      } else if (user && user.hasOwnProperty('email')) {
+        $('input[name="email_address"]').val(user.email);
+      }
+      if ($('input[name="email_address"]').val() != "" && $('input[name="email_address"]').val() != $('input[name="email_address"]').attr('placeholder')) {        
+        if ($('select[name="state"]').val() != "Select State...") {
+          $('form.state-form button').prop('disabled', false);
+          if (getParam("autosubmit") == 'true' && getParam("autosubmitoverride") != 'true')
+            $('form.state-form').submit();
+        }
+      }
+    }
+
+  </script>
+  
 {%endblock content%}

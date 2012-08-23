@@ -18,7 +18,9 @@
 {%else%}<a class="locale" tabindex="-1" href="?locale=en">In english</a>{%endif%}
 </div>
 <form class="new-form registration-form" method="get" action="/registrants/new/" accept-charset="UTF-8">
+    {% csrf_token %}
     <fieldset class="name">
+      
         <div class="row">
           <div class="input select span-6">
             <label for="name_title">{% trans "Title" %}</label>

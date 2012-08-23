@@ -1,0 +1,5 @@
+#!c:\pythondev\Boris-Frontend\venv\Scripts\python.exe
+
+import newrelic.console
+
+newrelic.console.main()
