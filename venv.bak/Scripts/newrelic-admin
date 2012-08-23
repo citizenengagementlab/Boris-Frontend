@@ -1,5 +1,0 @@
-#!c:\pythondev\Boris-Frontend\venv\Scripts\python.exe
-
-import newrelic.admin
-
-newrelic.admin.main()
