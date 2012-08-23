@@ -168,9 +168,11 @@
                 if (typeof checkInfo == "function") {
                   checkInfo(user);
                 } else {
-                  $(document).ready(function(){checkInfo(user);});
-                }
-                  
+                  $(document).ready(function(){
+                    if (typeof checkInfo == "function")
+                      checkInfo(user);
+                  });
+                }                 
               }
             });        
             $('a.button.facebook').click(function(){
