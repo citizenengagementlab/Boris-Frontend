@@ -102,13 +102,15 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'sslify.middleware.SSLifyMiddleware',
+    #'sslify.middleware.SSLifyMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'boris.urls'
@@ -165,6 +167,29 @@ LOCALE_PATHS = (os.path.join(PROJECT_PATH,'locale'),)
 
 EMAIL_SUBJECT_PREFIX = "[Rocky-Boris] "
 
+def get_cache():
+    import os
+    try:
+        os.environ['MEMCACHE_SERVERS'] = os.environ['MEMCACHIER_SERVERS']
+        os.environ['MEMCACHE_USERNAME'] = os.environ['MEMCACHIER_USERNAME']
+        os.environ['MEMCACHE_PASSWORD'] = os.environ['MEMCACHIER_PASSWORD']
+        return {
+          'default': {
+            'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
+            'LOCATION': os.environ['MEMCACHIER_SERVERS'],
+            'TIMEOUT': 500,
+            'BINARY': True,
+          }
+        }
+    except:
+        return {
+          'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+          }
+        }
+
+CACHES = get_cache()
+
 try:
     from settings_local import *
 except:
@@ -187,7 +212,7 @@ except:
     AWS_STORAGE_BUCKET_NAME = 'rocky-boris-test'
     #AWS_S3_CUSTOM_DOMAIN = 'dyw5n6uc3lgo5.cloudfront.net'
     #STATIC_URL = 'https://dyw5n6uc3lgo5.cloudfront.net/'
-    STATIC_URL = 'https://s3.amazonaws.com/rocky-boris-test''
+    STATIC_URL = 'https://s3.amazonaws.com/rocky-boris-test'
     #use heroku db
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}

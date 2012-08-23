@@ -704,6 +704,7 @@ input::-webkit-inner-spin-button {
   margin: 0; }
 
 fieldset {
+  clear:both;
   overflow: visible;
   width: 560px;
   padding: 19px 20px 3px;

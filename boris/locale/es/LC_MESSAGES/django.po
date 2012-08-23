@@ -20,7 +20,7 @@ msgstr ""
 
 #: registrant/views.py:204
 msgid "Unrecognized state, please go back and try again."
-msgstr "Estado no reconocido, por favor, vuelve e inténtalo de nuevo."
+msgstr "Estado no reconocido, por favor regrese e inténtelo de nuevo."
 
 #: registrant/views.py:214
 msgid "Unknown error, please contact an admin"
@@ -33,7 +33,7 @@ msgstr "Registro de Votantes"
 #: templates/base.html:39
 #, fuzzy
 msgid "Register in"
-msgstr "Regístrate en"
+msgstr "Regístrese en"
 
 #: templates/base.html:39 templates/error.html:4 templates/form.html:4
 #: templates/map.html:4 templates/map2.html:4 templates/start.html:4
@@ -47,7 +47,7 @@ msgstr "Desarrollado por"
 
 #: templates/error.html:4
 msgid "Error Processing Your Form"
-msgstr "Error al procesar tu formulario"
+msgstr "Error al procesar su formulario"
 
 #: templates/error.html:14 templates/ineligible.html:12
 msgid "Something went wrong"
@@ -55,7 +55,7 @@ msgstr "Algo salió mal"
 
 #: templates/error.html:18
 msgid "Go back and try again?"
-msgstr "Vuelve y vuelve a intentarlo?"
+msgstr "Regresar y volver a intentarlo?"
 
 #: templates/form.html:64 templates/form.html.py:111 templates/start.html:24
 msgid "Title"
@@ -95,7 +95,7 @@ msgstr "opcional"
 
 #: templates/form.html:99 templates/start.html:64
 msgid "I am a U.S. Citizen"
-msgstr "Soy ciudadano americano."
+msgstr "Soy ciudadano estadounidense."
 
 #: templates/form.html:103
 msgid "I have recently changed my name"
@@ -107,7 +107,7 @@ msgstr "Nombre Anterior"
 
 #: templates/form.html:146
 msgid "Street Address"
-msgstr "Dirección Casa"
+msgstr "Dirección de Calle"
 
 #: templates/form.html:149
 msgid ""
@@ -117,10 +117,10 @@ msgid ""
 "have a street address, or if you have no address, please show where you live "
 "using the map on the printed form."
 msgstr ""
-"Poner tu dirección en estos espacios. No poner tu dirección de correo aquí "
-"si es diferente a la dirección de tu casa. No usar Post office Box o rural "
-"route sin un número de box. Si vives en un area rural y no tienes calle o si "
-"no tienes dirección, favor mostrar donde vives en el mapa anexo a la forma."
+"Poner su dirección en estos espacios. No poner su dirección de correo aquí "
+"si es diferente a la dirección de su casa. No usar apartado postal o "
+"ruta rural sin un número de caja. Si vives en una área rural y no tienes calle o si "
+"no tiene dirección, favor de mostrar en donde vive en el mapa impreso en el formulario."
 
 #: templates/form.html:153
 msgid "Not in"
@@ -132,11 +132,11 @@ msgstr "Código Postal"
 
 #: templates/form.html:156 templates/form.html.py:188 templates/form.html:207
 msgid "Enter a valid 5 digit zip code."
-msgstr "Introduzca un código postal válido de 5 dígitos."
+msgstr "Ingrese un código postal válido de 5 dígitos."
 
 #: templates/form.html:164
 msgid "Registering Abroad?"
-msgstr "El registro en el extranjero?"
+msgstr "¿Registrándose  en el extranjero?"
 
 #: templates/form.html:168
 msgid "I have a different mailing address"
@@ -148,7 +148,7 @@ msgstr "He cambiado mi dirección"
 
 #: templates/form.html:179
 msgid "Mailing Street Address"
-msgstr "Dirección correo"
+msgstr "Dirección de correo"
 
 #: templates/form.html:182
 msgid "If you receive mail at a different address, please enter it here."
@@ -166,8 +166,7 @@ msgstr "Dirección Anterior"
 msgid ""
 "If you have moved since your last registration, enter your previous address."
 msgstr ""
-"Si te has cambiado de dirección desde tu ultimo registro, favor de proveer "
-"la dirección anterior."
+"Si se ha cambiado de dirección desde su último registro, favor provee la dirección anterior."
 
 #: templates/form.html:205
 msgid "Previous Zip Code"
@@ -179,11 +178,11 @@ msgstr "Número ID"
 
 #: templates/form.html:226
 msgid "Birthdate"
-msgstr "Fecha de Nac"
+msgstr "Fecha de Nacimiento"
 
 #: templates/form.html:228
 msgid "Enter your birthdate in MM/DD/YYYY format."
-msgstr "Ingrese su fecha de nacimiento en el MM/DD/AAAA formato"
+msgstr "Ingrese su fecha de nacimiento en el formato MM/DD/AAAA"
 
 #: templates/form.html:233 templates/map2.html:88 templates/start.html:47
 msgid "Email Address"
@@ -191,7 +190,7 @@ msgstr "Correo Electrónico"
 
 #: templates/form.html:235
 msgid "Enter a valid email address."
-msgstr "Escriba una dirección válida de correo electrónico"
+msgstr "Escriba un correo electrónico válido."
 
 #: templates/form.html:238
 msgid "Phone Number"
@@ -199,7 +198,7 @@ msgstr "Teléfono"
 
 #: templates/form.html:240
 msgid "Enter a phone number in xxx-xxx-xxxx format."
-msgstr "Introduzca un número de teléfono en xxx-xxx-xxxx formato"
+msgstr "Ingrese un número de teléfono en formato xxx-xxx-xxxx"
 
 #: templates/form.html:243
 msgid "Type"
@@ -227,7 +226,7 @@ msgstr "Seleccione uno..."
 
 #: templates/form.html:267
 msgid "Race or Ethnic Group"
-msgstr "Raza"
+msgstr "Raza o grupo étnico"
 
 #: templates/form.html:270
 msgid "American Indian / Alaskan Native"
@@ -272,15 +271,15 @@ msgstr "opcional"
 
 #: templates/form.html:308
 msgid "If you are in school, where do you go?"
-msgstr "Si usted está en la escuela, ¿dónde ir?"
+msgstr "Si usted está en la escuela, ¿a dónde va?"
 
 #: templates/form.html:313
 msgid "What issue do you care most about?"
-msgstr "¿Qué tema te preocupan más?"
+msgstr "¿Qué tema le preocupa más?"
 
 #: templates/form.html:347 templates/form.html.py:359 templates/form.html:402
 msgid "Receive Email Updates from"
-msgstr "Recibir emails de"
+msgstr "Recibir correos electrónicos de"
 
 #: templates/form.html:349 templates/form.html.py:361 templates/form.html:404
 msgid "privacy policy"
@@ -288,7 +287,7 @@ msgstr "política de privacidad"
 
 #: templates/form.html:370
 msgid "Receive Email Updates from Rock the Vote."
-msgstr "Recibir emails de Rock the Vote"
+msgstr "Recibir correos electrónicos de Rock the Vote"
 
 #: templates/form.html:381
 msgid "Send me txt messages from"
@@ -300,19 +299,19 @@ msgstr "Deseo recibir mensajes de texto de Rock the Vote."
 
 #: templates/form.html:383
 msgid "(data &amp; msg rates may apply)"
-msgstr "(datos y tarifas msg o de pago)"
+msgstr "(datos y tarifas msg pueden aplicar)"
 
 #: templates/form.html:392
 msgid "I would like to volunteer with"
-msgstr "Me gustaría voluntariar para"
+msgstr "Me gustaría ser voluntario para"
 
 #: templates/form.html:393
 msgid "I would like to volunteer with Rock the Vote."
-msgstr "Me gustaría voluntariar para Rock the Vote"
+msgstr "Me gustaría ser voluntario para Rock the Vote"
 
 #: templates/form.html:430
 msgid "Register"
-msgstr "Registrar"
+msgstr "Registrarse"
 
 #: templates/ineligible.html:13
 msgid ""
@@ -324,7 +323,7 @@ msgstr ""
 #: templates/map.html:4 templates/map2.html:4
 #, fuzzy
 msgid "Select Your State"
-msgstr "Declino comentar"
+msgstr "Seleccione su estado"
 
 #: templates/map.html:32 templates/map2.html:31
 msgid "Select your state to get started"
@@ -333,7 +332,7 @@ msgstr "Seleccione su estado para empezar"
 #: templates/map.html:35 templates/map2.html:34
 #, fuzzy
 msgid "Select State"
-msgstr "Declino comentar"
+msgstr "Seleccione el estado"
 
 #: templates/map.html:88 templates/map2.html:93 templates/start.html:67
 msgid "Continue"
@@ -345,7 +344,7 @@ msgstr "Comenzar"
 
 #: templates/start.html:65
 msgid "Must be a citizen to register"
-msgstr "Debe ser un ciudadano para registrar"
+msgstr "Debe ser un ciudadano para registrarse"
 
 #: templates/submit.html:4
 msgid "Download Your Form"
@@ -353,11 +352,11 @@ msgstr "Descargue su formulario"
 
 #: templates/submit.html:35
 msgid "You're not quite done!"
-msgstr "No hemos terminado"
+msgstr "Todavía no hemos terminado"
 
 #: templates/submit.html:36
 msgid "You still need to download your form."
-msgstr "Usted todavía necesita para descargar el formulario"
+msgstr "Usted todavía necesita descargar el formulario"
 
 #: templates/submit.html:40
 msgid "Download"
@@ -365,7 +364,7 @@ msgstr "Descargar"
 
 #: templates/submit.html:44
 msgid "We've also e-mailed you a link to retreive your form later"
-msgstr "Hemos también le envió un correo electrónico un enlace a recuperar tu forma "
+msgstr "Le hemos también enviado un enlace por correo electrónico para obtener tu formulario "
 "posterior"
 
 #: templates/submit.html:53
@@ -379,4 +378,4 @@ msgstr "Algo salió mal"
 
 #: templates/submit.html:81
 msgid "Spread the word!"
-msgstr ""
+msgstr "Corre la voz"
