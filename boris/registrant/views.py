@@ -135,16 +135,18 @@ def submit(request):
     if 'csrfmiddlewaretoken' in submitted_form:
         submitted_form.pop('csrfmiddlewaretoken')
 
-    #rename source to partner_tracking_id as per api
+    #rename source to source_tracking_id as per api
     if 'source' in submitted_form:
-        submitted_form['partner_tracking_id'] = submitted_form.pop('source')[0]
-    
+        submitted_form['source_tracking_id'] = submitted_form.pop('source')[0]
+    #use partner_tracking_id for referrals
+    #TBD
+
     #convert "on/off" to boolean values expected by api
     booleans = ['first_registration','has_mailing_address',
                 'change_of_name','change_of_address',
                 'opt_in_sms','opt_in_email','opt_in_volunteer',
                 'partner_opt_in_sms','partner_opt_in_email','partner_opt_in_volunteer',
-                'us_citizen','volunteer'] #volunteer is old syntax, remove when api is updated
+                'us_citizen']
     for b in booleans:
         if submitted_form.get(b) == "off":
             submitted_form[b] = '0'
