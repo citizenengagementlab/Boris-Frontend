@@ -168,6 +168,30 @@ def submit(request):
     #force allow rocky to send confirmation emails
     submitted_form['send_confirmation_reminder_emails'] ='1'
 
+    #send questions to api if answers were set
+    #defaults first
+    question_1 = "If you are in school, where do you go?"
+    question_2 = "What issue do you care most about?"
+
+    #then check cobrand and custom form
+    branding = get_branding({'partner':submitted_form['partner_id']})
+    if branding.get('cobrandform'):
+        cobrand = branding['cobrandform']
+        if cobrand.question_1:
+            question_1 = cobrand.question_1
+        if cobrand.question_2:
+            question_2 = cobrand.question_2
+    elif branding.get('customform'):
+        customform = branding.get('customform')
+        if customform.question_1:
+            question_1 = customform.question_1
+        if customform.question_2:
+            question_2 = customform.question_2
+    if submitted_form['survey_answer_1']:
+        submitted_form['survey_question_1'] = question_1
+    if submitted_form['survey_answer_2']:
+        submitted_form['survey_question_2'] = question_2
+
     #hit the rocky api
     rtv_response = rtv_proxy('POST',submitted_form,'/api/v2/registrations.json')
 
@@ -196,7 +220,6 @@ def submit(request):
 
     #if a partner, post to their api
     if submitted_form.has_key('partner_id') and bool(submitted_form['opt_in_email']) == True:
-        branding = get_branding({'partner':submitted_form['partner_id']})
         if branding.get('cobrandform'):
             customform = branding['cobrandform'].toplevel_org
         elif branding.get('customform'):
