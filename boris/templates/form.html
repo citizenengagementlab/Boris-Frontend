@@ -411,8 +411,12 @@ fieldset.surveyquestions div.radios label {
 
           {%if customform.show_volunteer_box or not customform%}
           <div class="input checkbox">
-            <input id="volunteer" name="volunteer" type="checkbox" />
-            <label for="volunteer">{%if customform%}
+            {%if customform.show_volunteer_box%}
+            <input id="opt_in_volunteer" name="partner_opt_in_volunteer" type="checkbox" />
+            {%else%}
+            <input id="opt_in_volunteer" name="opt_in_volunteer" type="checkbox" />
+            {%endif%}
+            <label for="opt_in_volunteer">{%if customform%}
               {%if customform.volunteer_text%}{{customform.volunteer_text}}
                 {%else%}{% trans "I would like to volunteer with"%} {{customform.name}}.{%endif%}
               {%else%}{% trans "I would like to volunteer with Rock the Vote."%}{%endif%}</label>
