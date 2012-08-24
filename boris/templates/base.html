@@ -162,18 +162,10 @@
         
         function statusCheck(response){        
           if (response.authResponse) {
-            FB.api('/me', function(me){    
-              console.log(me);         
+            FB.api('/me', function(me){            
               if (me.name) {
-                var user = me;
-                if (typeof checkInfo == "function") {
-                  checkInfo(user);
-                } else {
-                  $(document).ready(function(){
-                    if (typeof checkInfo == "function")
-                      checkInfo(user);
-                  });
-                }                 
+                if (typeof checkInfo == "function")
+                  checkInfo(me);         
               }
             });        
             $('a.button.facebook').click(function(){
@@ -183,8 +175,8 @@
                 'description' : 'this is the description',
                 'media': [{
                   "type": "flash", 
-                  "swfsrc": "https://s3.amazonaws.com/rocky-boris-test/widgetloader/rtv_fb.swf", //window.location.origin+"/static/widgetloader/rtv_fb.swf?v="+(+new Date()), 
-                  "imgsrc": "https://s3.amazonaws.com/rocky-boris-test/images/flash-preview.gif", //window.location.origin+"/static/images/flash-preview.gif", 
+                  "swfsrc": "https://s3.amazonaws.com/rocky-boris-test/widgetloader/rtv_fb.swf?v="+(+new Date()), //window.location.origin+"/static/widgetloader/rtv_fb.swf?v="+(+new Date()), 
+                  "imgsrc": "https://s3.amazonaws.com/rocky-boris-test/images/flash-preview.gif?v="+(+new Date()), //window.location.origin+"/static/images/flash-preview.gif", 
                   //"imgsrc": "http://icanhascheezburger.files.wordpress.com/2009/04/funny-pictures-hairless-cat-phones-home.jpg",
                   "width": "130", 
                   "height": "87",
@@ -203,7 +195,7 @@
                 },
                 function(response) {
                   if (response.hasOwnProperty("post_id")) {
-                    $b.html("Thanks for sharing!").attr('disabled',true);
+                    $b.html("Thanks for sharing!").attr('disabled',true).unbind('click');
                   } else {
                     alert("There was an error in publishing your post. Please try again.");
                   }
