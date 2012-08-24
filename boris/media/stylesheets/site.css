@@ -528,11 +528,12 @@ a {
 a.locale { float:right; }
 
 #main {
-  width: 600px;
+  min-width: 600px;
   margin: 0 auto;
   position: relative; }
 
 #content {
+  margin: 0 auto;
   position: relative;
   width: 600px;
   overflow: auto;
