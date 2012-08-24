@@ -162,7 +162,10 @@ def submit(request):
     suffix = submitted_form.get('name_suffix')
     if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
         submitted_form['name_suffix'] = ""
-            
+    
+    #force allow rocky to send confirmation emails
+    submitted_form['send_confirmation_reminder_emails'] ='1'
+
     #hit the rocky api
     rtv_response = rtv_proxy('POST',submitted_form,'/api/v2/registrations.json')
 
