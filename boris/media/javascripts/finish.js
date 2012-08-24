@@ -53,7 +53,7 @@
     downloadLink = $('a.download').attr('href');
     a = $('<a />');
     a.attr('href',downloadLink);
-    proxyUrl = '/rtv/'+a[0].pathname;
+    proxyUrl = '/rtv'+a[0].pathname;
     return $.ajax({
       url: proxyUrl,
       type: "HEAD",
