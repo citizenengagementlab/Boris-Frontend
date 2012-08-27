@@ -191,13 +191,13 @@ def get_cache():
 
 CACHES = get_cache()
 
-FACEBOOK_APP_SECRET = "fill this in when we know it"
+FACEBOOK_APP_SECRET = "4a81af510cab2129f90c0960b34d4b43"
 
 try:
     from settings_local import *
 except:
     #we're on Heroku, sensitive info is in environ
-    DEBUG = False
+    DEBUG = True
     PROXY_DOMAIN = "register.rockthevote.com"
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
     #sendgrid settings
