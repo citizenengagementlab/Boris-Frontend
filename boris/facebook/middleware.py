@@ -7,5 +7,5 @@ class IgnoreFbCsrfMiddleware(object):
     def process_request(self, request):
         signed_request = request.REQUEST.get('signed_request', None)
         if signed_request:
-            signed_request = decode_signed_request(settings.FACEBOOK_APP_SECRET, signed_request)
+            signed_request = decode_signed_request(settings.FACEBOOK_APP_SECRET, str(signed_request))
             request.csrf_processing_done = signed_request != None
