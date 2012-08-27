@@ -5,6 +5,7 @@ rocky_dev.db
 .DS_Store
 .Python
 .project
+.settings
 build/
 include/
 lib/
