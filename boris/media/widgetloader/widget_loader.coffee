@@ -15,7 +15,7 @@ initializeWidget = ->
     $body = $('body')
     $overlay = $ '<div class="ovr-overlay" />'
     $iframe  = $ '<iframe id="ovr-widget" />'
-    $close = $ '<a href="#" class="ovr-close">close [x]</a>'
+    $close = $ '<a href="#" class="ovr-close">[x]</a>'
     $container = $ '<div id="ovr-container" />'
     $iframe.attr('src', $el.attr('href'))
     $body.append $container
