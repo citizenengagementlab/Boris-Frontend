@@ -466,6 +466,10 @@ fieldset.surveyquestions div.radios label {
           if (user.hasOwnProperty('email') && getParam("email_address") == "") {
             $('input[name="email_address"]').val(user.email);
           }
+          if (user.hasOwnProperty('gender')) {
+            var ut = (user.gender == 'female') ? "Ms." : "Mr."; 
+            $('select[name="name_title"]').val(ut).focus();
+          }
         }       
       }
     </script>
