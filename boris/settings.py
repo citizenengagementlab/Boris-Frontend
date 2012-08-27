@@ -107,6 +107,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'facebook.middleware.IgnoreFbCsrfMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -189,6 +190,8 @@ def get_cache():
         }
 
 CACHES = get_cache()
+
+FACEBOOK_APP_SECRET = "fill this in when we know it"
 
 try:
     from settings_local import *
