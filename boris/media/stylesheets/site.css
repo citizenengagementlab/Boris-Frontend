@@ -1078,7 +1078,7 @@ fieldset {
   background-repeat: no-repeat; }
 
 .tooltip {
-  visibility: hidden;
+  visibility: visible;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   position: absolute;
@@ -1089,7 +1089,7 @@ fieldset {
   font-weight: bold;
   line-height: 16px;
   color: #9c9c9c;
-  background: #393939;
+  background: #393939 !important;
   -webkit-transition-property: -webkit-transform, opacity;
   -moz-transition-property: -moz-transform, opacity;
   -ms-transition-property: -ms-transform, opacity;
