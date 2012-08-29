@@ -229,7 +229,7 @@ window.fbAsyncInit = function() {
     $b = $(this);
     var pObj = {
       'name' : "Rock the Vote 2012",
-      'description' : "November will be here before you know it! Are you registered to vote? If not, now's the time! Register here - in 3 easy steps! - using Rock the Vote's online voter registration tool. "+window.location.host,
+      'description' : "November will be here before you know it! Are you registered to vote? If not, now's the time! Register here - in 3 easy steps! - using Rock the Vote's online voter registration tool.",
       'media': [{
         "type": "flash", 
         "swfsrc": "https://s3.amazonaws.com/rocky-boris-test/widgetloader/rtv_fb.swf?v="+(+new Date()), //window.location.origin+"/static/widgetloader/rtv_fb.swf?v="+(+new Date()), 
@@ -239,7 +239,7 @@ window.fbAsyncInit = function() {
         "expanded_width": "398", 
         "expanded_height": "375"
       }],
-      'actions': [{ link: window.location.href, name: "RockTheVote.com" }]
+      //'actions': [{ link: window.location.href, name: "RockTheVote.com" }]
     };
 
     FB.ui(
@@ -252,7 +252,16 @@ window.fbAsyncInit = function() {
       },
       function(response) {
         if (response.hasOwnProperty("post_id")) {
-          $b.html("Thanks for sharing!").attr('disabled',true).unbind('click');
+          $b.html("Send Requests!").unbind('click').click(function(){
+            var user_ids = document.getElementsByName("user_ids")[0].value;
+            FB.ui({method: 'apprequests',
+              message: 'Become a registered voter!',
+              to: user_ids
+            }, function(response){
+              console.log(response);
+              $b.html("Thanks for sharing!").attr('disabled',true).css('opacity',0.4).unbind('click');
+            });
+          });
         } else {
           alert("There was an error in publishing your post. Please try again.");
         }
