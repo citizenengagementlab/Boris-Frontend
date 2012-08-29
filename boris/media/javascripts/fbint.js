@@ -256,8 +256,11 @@ window.fbAsyncInit = function() {
             FB.ui({method: 'apprequests',
               message: 'Become a registered voter!'
             }, function(response){
-              console.log(response);
-              $b.html("Thanks for sharing!").attr('disabled',true).css('opacity',0.4).unbind('click');
+              if (response.hasOwnPropety("request")){
+                $b.html("Thanks for sharing!").attr('disabled',true).css('opacity',0.4).unbind('click');
+              } else {
+                alert("There was an error in sending your requests. Please try again.");
+              }           
             });
           });
         } else {
@@ -281,7 +284,8 @@ window.fbAsyncInit = function() {
   }
   
   if (getParam("request_ids") != "") {
-    FB.api(getParam("request_ids"), 'delete');
+    //delete accepted requests, if desired
+    //FB.api(getParam("request_ids"), 'delete', function(response){ console.log(response) });
   }
   
   if (top.location != window.location) {
