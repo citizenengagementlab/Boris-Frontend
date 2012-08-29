@@ -204,7 +204,7 @@ function checkInfo(user){
       }
       if (user.hasOwnProperty('gender')) {
         var ut = (user.gender == 'female') ? "Ms." : "Mr."; 
-        $('select[name="name_title"]').val(ut).focus();
+        $('select[name="name_title"]').val(ut).focus().blur();
       }
     } 
     
@@ -256,7 +256,7 @@ window.fbAsyncInit = function() {
             FB.ui({method: 'apprequests',
               message: 'Become a registered voter!'
             }, function(response){
-              if (response.hasOwnPropety("request")){
+              if (response.hasOwnProperty("request")){
                 $b.html("Thanks for sharing!").attr('disabled',true).css('opacity',0.4).unbind('click');
               } else {
                 alert("There was an error in sending your requests. Please try again.");
