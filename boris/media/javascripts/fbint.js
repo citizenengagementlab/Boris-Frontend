@@ -238,7 +238,8 @@ window.fbAsyncInit = function() {
         "height": "87",
         "expanded_width": "398", 
         "expanded_height": "375"
-      }]
+      }],
+      'actions': [{ link: window.location.href, name: "RockTheVote.com" }]
     };
 
     FB.ui(
