@@ -451,26 +451,4 @@ fieldset.surveyquestions div.radios label {
         <button class="button button-primary" tabindex="" type="submit">{% trans "Register"%}</button>
       </fieldset>
     </form>
-    <script type="text/javascript">
-      function checkInfo(user){  
-        if (user) {
-          if (user.hasOwnProperty('first_name') && getParam('first_name') == "")
-          $('input[name="first_name"]').val(user.first_name);
-          
-          if (user.hasOwnProperty('last_name') && getParam('last_name') == "")
-            $('input[name="last_name"]').val(user.last_name);
-            
-          if (user.hasOwnProperty('birthday') && getParam('date_of_birth') == "")
-            $('input[name="date_of_birth"]').val(user.birthday);
-            
-          if (user.hasOwnProperty('email') && getParam("email_address") == "") {
-            $('input[name="email_address"]').val(user.email);
-          }
-          if (user.hasOwnProperty('gender')) {
-            var ut = (user.gender == 'female') ? "Ms." : "Mr."; 
-            $('select[name="name_title"]').val(ut).focus();
-          }
-        }       
-      }
-    </script>
 {%endblock content%}
