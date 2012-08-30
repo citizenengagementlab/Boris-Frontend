@@ -179,13 +179,13 @@ function checkInfo(user){
     }
     if (user) {
       $('form.state-form button').prop('disabled', false);
-      $('form.state-form').submit();
+      //$('form.state-form').submit();
     } else if ($('input[name="email_address"]').val() != "" && $('input[name="email_address"]').val() != $('input[name="email_address"]').attr('placeholder')) {        
       if ($('select[name="state"]').val() != "Select State...") {
         $('form.state-form button').prop('disabled', false);
         if (getParam("autosubmit") == 'true' && getParam("autosubmitoverride") != 'true') {
           $('form.state-form').submit();
-        }          
+        }
       }
     }
   } else if ($('form.registration-form').length) {
