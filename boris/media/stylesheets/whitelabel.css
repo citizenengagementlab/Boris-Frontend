@@ -39,19 +39,19 @@
 	top:11px;
 }
 
-#footer p > a.cobrand > img {
-	width:129px;
+#footer p > a.cobrand.apia-vote {
+	position:relative;
+	top:8px;
 }
 
-/* add ampersand in css, so we can override only for mfv */
-#footer p > a.cobrand::before {
-	content:"&nbsp;&amp;&nbsp;";
+#footer p > a.cobrand > img {
+	width:129px;
 }
 
 /* hide rtv logo on mi familia vota */
 #footer.mi-familia-vota a.rtv-logo {
 	display:none;
 }
-#footer.mi-familia-vota p > a.cobrand::before {
-	content:none;
+#footer.mi-familia-vota p span.amp {
+	display:none;
 }
