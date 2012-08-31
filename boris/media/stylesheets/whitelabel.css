@@ -14,6 +14,11 @@
 	position:relative;
 	top:9px;
 }
+#header > h1 > .logo.florida-new-majority {
+	position:relative;
+	right:15px;
+	top:3px;
+}
 
 #header > h1 > .logo > img {
 	vertical-align: baseline;
