@@ -57,20 +57,6 @@ def map(request):
     return render_to_response('map.html',context,
             context_instance=RequestContext(request))
 
-def start(request):
-    "Simple form for initial user engagement"
-    get_locale(request)
-
-    context = {}
-    if request.GET.get('partner'):
-        context['partner'] = request.GET.get('partner')
-        context = get_branding(context)
-    if request.GET.get('source'):
-        context['source'] = request.GET.get('source')
-
-    return render_to_response('start.html',context,
-            context_instance=RequestContext(request))
-
 def register(request):
     "The full form, in a single page format"
     locale = get_locale(request)
@@ -92,8 +78,13 @@ def register(request):
 
     #set state based on get parameter
     if 'state' in request.GET:
-        #hit rtv_proxy for staterequirements
         state = request.GET.get('state').upper()
+
+        #check for direct submission state
+        #if state in ['WA'] and not request.GET.has_key('no_redirect'):
+        #    return redirect('/registrants/new/'+state.lower())
+
+        #hit rtv_proxy for staterequirements
         context['state'] = state
         try:
             context['state_name'] = STATE_NAME_LOOKUP[state]
@@ -250,6 +241,22 @@ def submit(request):
         return redirect('/registrants/error/')
     else:
         return render_to_response('submit.html', context, context_instance=RequestContext(request))
+
+def wa_direct(request):
+    "direct submission to WA state form"
+    get_locale(request)
+
+    context = {}
+    if request.GET.get('partner'):
+        context['partner'] = request.GET.get('partner')
+        context = get_branding(context)
+    if request.GET.get('source'):
+        context['source'] = request.GET.get('source')
+
+    context['state_name'] = "Washington"
+
+    return render_to_response('form_wa_direct.html',context,
+            context_instance=RequestContext(request))
 
 def error(request):
     get_locale(request)
