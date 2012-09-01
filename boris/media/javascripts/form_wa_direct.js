@@ -8,6 +8,13 @@ function showStateRegContinueButtons() {
   }
 }
 
+function redirectToRegularForm() {
+   //serialize values input so far
+  var formValues = $('form input[name!=csrfmiddlewaretoken]').serialize();
+  //redirect to regular form
+  window.location.replace('/registrants/new/?state=WA&no_redirect&'+formValues);
+}
+
 $(document).ready(function() {
   $('.has_license').hide();
 
@@ -24,14 +31,13 @@ $(document).ready(function() {
       //add disclaimer
       $('#content').append("<p class='explanation'>You can complete your voter registration online with Washington " +
           "using the form below. If your driver's license or state identification card is invalid " +
-          "or the state can't find or confirm your DMV record, don't worry—you can also finish your " +
-          "registration with Rock the Vote. You will just have to print, sign, and mail it in.</p>");
+          "or the state can't find or confirm your DMV record, don't worry—you can also <a href='javascript:redirectToRegularForm()'>" +
+          "finish your registration with Rock the Vote</a>. You will just have to print, sign, and mail it in.</p>");
 
       //add WA state iframe
       var fn = $('input#first_name').val();
       var ln = $('input#last_name').val();
       var dob = $('input#date_of_birth').val();
-      console.log(dob);
       $('#content').append('<iframe src="https://weiapplets.sos.wa.gov/myvote/myvote?'+
         'language=en&amp;Org=RocktheVote&amp;'+
         'firstname='+fn+'&amp;lastName='+ln+'&amp;DOB='+encodeURIComponent(dob)+
@@ -40,11 +46,7 @@ $(document).ready(function() {
       //TODO:
       //submit partial registration to RTV for tracking
     } else if ($("input:radio[name='registrant[has_state_license]']:checked").val()=='0') {
-      //serialize values input so far
-      var formValues = $('form input[name!=csrfmiddlewaretoken]').serialize();
-      console.log(formValues);
-      //redirect to regular form
-      window.location.replace('/registrants/new/?state=WA&no_redirect&'+formValues);
+       redirectToRegularForm();
     }
 
   });
