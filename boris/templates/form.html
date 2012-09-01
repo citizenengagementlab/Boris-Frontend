@@ -7,12 +7,7 @@
 {% block scripts %}
 	<script src="{% static 'javascripts/form.js'%}" type="text/javascript"></script>
   <script type="text/javascript">
-    $(document).ready(function() {
-      $('a#toggle_questions').click(function(event) {
-        event.preventDefault();
-        $('div.questions').toggle();
-      });
-
+  $(document).ready(function() {
       //pull url parameters into fields
       var url_params = window.location.search.split('&')
       for (i in url_params) {
