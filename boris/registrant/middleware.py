@@ -1,9 +1,10 @@
 #modified from django-mobile middleware
 #https://github.com/gregmuellegger/django-mobile/blob/master/django_mobile/middleware.py
 
-import re
 from django.conf import settings
 from django.http import HttpResponseRedirect
+import re
+import urllib
 
 class MobileDetectionMiddleware(object):
     user_agents_test_match = (
@@ -63,4 +64,12 @@ class MobileDetectionMiddleware(object):
                     is_mobile = True
 
         if is_mobile:
-            return HttpResponseRedirect("http://mobile.rockthevote.com")
+            redirect_url = "http://mobile.rockthevote.com"
+            params = {}
+            if request.GET.get('partner'):
+                params['partner'] = request.GET.get('partner')
+            if request.GET.get('source'):
+                params['source'] = request.GET.get('source')
+            if params:
+                redirect_url += "?"+urllib.urlencode(params)
+            return HttpResponseRedirect(redirect_url)
