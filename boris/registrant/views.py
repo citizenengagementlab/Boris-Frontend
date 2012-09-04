@@ -213,6 +213,7 @@ def submit(request):
     if submitted_form.has_key('partner_id') and bool(submitted_form['opt_in_email']) == True:
         if branding.get('cobrandform'):
             customform = branding['cobrandform'].toplevel_org
+            submitted_form['cobrand'] = branding['cobrandform'].name
         elif branding.get('customform'):
             customform = branding['customform']
         else:
