@@ -7,6 +7,9 @@ from os.path import join
 import pygeoip
 import urllib
 
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
 def frontpage(request):
     params = {}
 
@@ -24,7 +27,7 @@ def frontpage(request):
     #    params['state'] = result['region_name']
 
     #now everybody redirects to first step
-    redirect_url = reverse('registrant.views.map')
+    redirect_url = reverse('registrant.views.map2')
 
     #preserve the get parameters in redirect
     #to be backwards compatible with old rocky frontend
@@ -45,3 +48,4 @@ def rtv_iframe_test(request):
     context = {'layout':layout}
     return render_to_response('rtv_iframe_test.html',context,
                 context_instance=RequestContext(request))
+                

@@ -24,6 +24,8 @@
 
 </head>
 <body class="{% block body_class %}{% endblock body_class %}">
+  
+
 	<div id="main" role="main">
 		<div id="wrap">
 		<header id="header">
@@ -73,10 +75,12 @@
 			</div>
 		</footer>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-	<script src="{% static 'javascripts/application.js'%}" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+  <script src="{{STATIC_URL}}javascripts/application.js" type="text/javascript"></script>
 	{%block scripts%}{%endblock scripts%}
-
+  <div id="fb-root"></div>
+  <script type="text/javascript" src="{{STATIC_URL}}javascripts/fbint.js"></script>
+  
 	<script type="text/javascript">
 	setTimeout(function(){var a=document.createElement("script");
 	var b=document.getElementsByTagName("script")[0];

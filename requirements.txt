@@ -13,3 +13,4 @@ django-evolution
 python-dateutil==1.2
 pylibmc==1.2.3
 django-pylibmc-sasl==0.2.4
+dj-database-url
