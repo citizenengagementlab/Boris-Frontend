@@ -52,10 +52,17 @@
 			<div class="container">
 				<p>
 					{% trans "Powered by" %}
-					<a href="" tabindex="-1" class="rtv-logo">Rock The Vote</a>
+					<a href="http://rockthevote.com" tabindex="-1" class="rtv-logo" target="_blank">Rock The Vote</a>
 					{% if cobrandform.logo and cobrandform.show_logo = 'b'%}
+					<span class="amp">&nbsp;&amp;&nbsp;</span>
 					<a class="logo cobrand {{cobrandform.name|slugify}}" {%if cobrandform.logo_link%}href="{{cobrandform.logo_link}}" target="_blank"{%endif%}>
 					<img src="{{ STATIC_URL }}{{cobrandform.logo}}" />
+					{%endif%}
+					{% if customform.powered_by_logo%}
+					<span class="amp">&nbsp;&amp;&nbsp;</span>
+					<a class="logo cobrand powered_by {{customform.name|slugify}}"
+					{%if customform.powered_by_logo_link%}href="{{customform.powered_by_logo_link}}" target="_blank"{%endif%}>
+					<img src="{{ STATIC_URL }}{{customform.powered_by_logo}}" />
 					{%endif%}
 				</a>
 				</p>

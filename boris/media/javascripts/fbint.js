@@ -39,7 +39,6 @@ function checkInfo(user){
   if ($('form.state-form').length) {
     if (getParam("home_zip_code") != "") {    
       var zip = getParam("home_zip_code");
-      console.log("zip: "+zip);
       $.ajax({
         type: 'get',
         url: '/usps/zip_lookup/',
@@ -50,6 +49,7 @@ function checkInfo(user){
           if (d.state) {
             $('select[name="state"]').val(d.state).focus();
             $('form.state-form').append('<input type="hidden" name="home_zip_code" value="'+zip+'" />');
+            checkVals();
           }
         }
       });
@@ -177,17 +177,20 @@ function checkInfo(user){
     } else if (user && user.hasOwnProperty('email')) {
       $('input[name="email_address"]').val(user.email);
     }
-    if (user) {
-      $('form.state-form button').prop('disabled', false);
-      //$('form.state-form').submit();
-    } else if ($('input[name="email_address"]').val() != "" && $('input[name="email_address"]').val() != $('input[name="email_address"]').attr('placeholder')) {        
-      if ($('select[name="state"]').val() != "Select State...") {
-        $('form.state-form button').prop('disabled', false);
-        if (getParam("autosubmit") == 'true' && getParam("autosubmitoverride") != 'true') {
-          $('form.state-form').submit();
+    
+    
+    function checkVals(){
+      if ($('input[name="email_address"]').val() != "" && $('input[name="email_address"]').val() != $('input[name="email_address"]').attr('placeholder')) {        
+        if ($('select[name="state"]').val() != "Select State...") {
+          $('form.state-form button').prop('disabled', false);       
+          if (getParam("autosubmit") == 'true' && getParam("autosubmitoverride") != 'true') {
+            
+            $('form.state-form').submit();
+          }
         }
       }
     }
+    checkVals();
   } else if ($('form.registration-form').length) {
     if (user) {
       if (user.hasOwnProperty('first_name') && getParam('first_name') == "")

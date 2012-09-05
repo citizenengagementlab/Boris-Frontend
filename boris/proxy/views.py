@@ -102,5 +102,7 @@ def partner_proxy(method,url,values):
             error_dict['status'] = e.code
             return error_dict
 
+        if settings.DEBUG: print "PARTNER PROXY DATA",data
+
         content = response.read()
         return json.loads(content)

@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+{% load i18n %} 
+{% load static from staticfiles %}
+
+{% block title%}{% trans "Register to Vote" %}{%if state_name%} | {{ state_name }}{%endif%}{%endblock title%}
+
+{% block scripts %}
+	<script src="{% static 'javascripts/form.js'%}" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      //pull url parameters into fields
+      var url_params = window.location.search.split('&')
+      for (i in url_params) {
+        var p = url_params[i];
+        var field = p.split('=')[0].replace('?','');
+        var value = p.split('=')[1];
+        if (field == "name_title") {
+          $('select[name="name_title"] option[value="'+decodeURIComponent(value)+'"]').attr('selected','selected');
+          $('select[name="name_title"]').siblings('.fake-select').html(value);
+        } else {
+          $('input[name="'+field+'"]').val(decodeURIComponent(value)).trigger('change');
+        }
+      }
+    });
+  </script>
+
+  <script type="text/javascript" src="{% static 'javascripts/form_wa_direct.js'%}"></script>
+{% endblock scripts %}
+
+{%block styles%}
+<style>
+fieldset.surveyquestions h2 { 
+  color: #797569;
+  font-size:14px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+fieldset.surveyquestions .questions label {
+  font-weight:normal;
+}
+
+fieldset.surveyquestions div.radios label {
+  display:inline-block;
+  font-weight:normal;
+}
+
+p.explanation {
+  color:#2F9E00;
+  font-weight:bold;
+  padding:20px;
+  background-color:#E4E4E4;
+}
+button.button-primary {
+  width:250px;
+}
+
+.input.one-line input {
+  position:absolute;
+  top: -8px;
+  left: 171px;
+  width:180px;
+}
+.input.one-line.text.error::after {
+  top:-2px;
+  right:-70px;
+}
+.input.one-line .tooltip {
+  right:-70px;
+  top:27px;
+}
+</style>
+
+{%endblock%}
+
+{%block content%}
+<div class="span-24 last" style="padding: 19px 20px 3px">
+  {%if LANGUAGE_CODE == "en" %}<a class="locale" tabindex="-1" href="?locale=es">En espa&ntilde;ol</a>
+{%else%}<a class="locale" tabindex="-1" href="?locale=en">In english</a>{%endif%}
+</div>
+
+    <form class="registration-form" method="post" action="" accept-charset="UTF-8">
+      {% csrf_token %}
+      <fieldset class="name">
+        <div class="row">
+          <div class="input select span-4">
+            <label for="name_title">{% trans "Title" %}</label>
+            <select required name="name_title">
+              <option value="--">--</option>
+              <option value="{% trans 'Mr.' %}">{% trans 'Mr.' %}</option>
+              <option value="{% trans 'Ms.' %}">{% trans 'Ms.' %}</option>
+              <option value="{% trans 'Mrs.' %}.">{% trans 'Mrs.' %}</option>
+            </select>
+          </div>
+          <div class="input text span-8">
+            <label for="first_name">{% trans "First Name" %}</label>
+            <input required id="first_name" name="first_name" type="text" />
+            <div class="full-name-hint tooltip">{% trans "Use your full first name. Do not use nicknames or initials."%}</div>
+          </div>
+          <div class="input text span-8">
+            <label for="last_name">{% trans "Last Name" %}</label>
+            <input required id="last_name" name="last_name" type="text" />
+          </div>
+
+          <div class="input select span-4 last">
+            <label for="prev_name_suffix">{% trans "Suffix" %}</label>
+            <select name="prev_name_suffix">
+              <option value="--">--</option>
+              <option value="Jr.">Jr.</option>
+              <option value="Sr.">Sr.</option>
+              <option value="II">II</option>
+              <option value="III">III</option>
+              <option value="IV">IV</option>
+            </select>
+            <div class="id-number-hint tooltip">
+              {% trans "optional" %}
+            </div>
+        </div>
+        <div class="row">
+          <div class="input checkbox span-8">
+            <input required checked id="us_citizen" name="us_citizen" value="1" type="checkbox" />
+            <label for="us_citizen">{% trans "I am a U.S. Citizen" %}</label>
+          </div>
+        </div>
+
+        <div class="input text prepend-4 span-8 last one-line">
+            <label for="date_of_birth">{% trans "Birthdate" %}</label>
+            <input required placeholder="MM/DD/YYYY" id="date_of_birth" name="date_of_birth" type="text" />
+            <div class="date_of_birth-hint tooltip">{% trans "Enter your birthdate in MM/DD/YYYY format."%}</div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <div class="row">
+          <div class="input text span-12">
+            <label for="email_address">{% trans "Email Address" %}</label>
+            <input required type="email" id="email_address" name="email_address" />
+            <div class="email_address-hint tooltip">{% trans "Enter a valid email address."%}</div>
+          </div>
+          <div class="input text span-7">
+            <label for="phone">{% trans "Phone Number" %}</label>
+            <input id="phone" name="phone" type="text" />
+            <div class="phone-hint tooltip">{% trans "Enter a phone number in xxx-xxx-xxxx format."%}</div>
+          </div>
+          <div class="input select span-5 last">
+            <label for="phone_type">{% trans "Type" %}</label>
+            <select required id="phone_type" name="phone_type">
+              <option value="Mobile">{% trans "Mobile" %}</option>
+              <option value="Home">{% trans "Home" %}</option>
+              <option value="Work">{% trans "Work" %}</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <div class="row">
+          <div class="input text prepend-2 span-22">
+            <label for="registrant_has_state_license_1">
+              <input checked="checked" id="registrant_has_state_license_1" name="registrant[has_state_license]" type="radio" value="1">I have a current WA state identification card or driver's license
+            </label>
+            <div class="has_license span-20">
+              <p class="explanation">You may be eligible to finish your voter registration using the Washington online voter registration system.</p>
+            </div>
+          </div>
+          <div class="input text prepend-2 span-22">
+            <label for="registrant_has_state_license_0">
+              <input id="registrant_has_state_license_0" name="registrant[has_state_license]" type="radio" value="0">I do not have a current WA state identification card or driver's license
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="submit">
+        <div class="inputs">
+          <div class="input checkbox">
+            {% if customform %}
+              {% if cobrandform %}
+                {% comment %} If customform and cobrand form, RTV and custom share main optin, cobrand gets secondary.{% endcomment %}
+                <input id="opt_in_email" name="opt_in_email" type="checkbox" checked="checked" />
+                <label for="opt_in_email">
+                  {%if customform.email_optin_text%}{{customform.email_optin_text}}
+                    {%else%}{% trans "Receive Email Updates from" %} {{customform.name}}.{%endif%}
+                  {%if customform.privacy_policy_link%}
+                    <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} {% trans "privacy policy" %})</a></span>
+                  {%endif%}
+                </label>
+              {%else%}
+                {% comment %} If customform but not cobrand form, show partner optin as main email signup, and opt-out of RTV.{% endcomment %}
+                <input id="opt_in_email" name="opt_in_email" type="hidden" value="0" />
+                <input id="partner_opt_in_email" name="partner_opt_in_email" type="checkbox" checked="checked" />
+                <label for="partner_opt_in_email">
+                  {%if customform.email_optin_text%}{{customform.email_optin_text}}
+                    {%else%}{% trans "Receive Email Updates from" %} {{customform.name}}.{%endif%}
+                  {%if customform.privacy_policy_link%}
+                    <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} {% trans "privacy policy"%})</a></span>
+                  {%endif%}
+                </label>
+              {%endif%}
+            {%else%}
+            {% comment %} Normal flow, display rockthevote opt_in {% endcomment %}
+            <input id="opt_in_email" name="opt_in_email" type="checkbox" checked="checked" />
+            <label for="opt_in_email">
+              {% trans "Receive Email Updates from Rock the Vote." %}
+            </label>
+            {%endif%}
+          </div>
+
+          {%if customform.show_sms_box or not customform%}
+          <div class="input checkbox">
+            <input id="{%if customform %}partner_{%endif%}opt_in_sms"
+            name="{%if customform %}partner_{%endif%}opt_in_sms" type="checkbox" checked="checked" />
+            <label for="{%if customform %}partner_{%endif%}opt_in_sms">{%if customform%}
+              {%if customform.sms_optin_text%}{{customform.sms_optin_text}}
+                {%else%}{% trans "Send me txt messages from" %} {{customform.name}}.{%endif%}
+              {%else%}{% trans "Send me txt messages from Rock the Vote."%}{%endif%}
+              <span class="subtle">{% trans "(data &amp; msg rates may apply)"%}</span></label>
+          </div>
+          {%endif%}
+
+          {%if customform.show_volunteer_box or not customform%}
+          <div class="input checkbox">
+            {%if customform.show_volunteer_box%}
+            <input id="opt_in_volunteer" name="partner_opt_in_volunteer" type="checkbox" />
+            {%else%}
+            <input id="opt_in_volunteer" name="opt_in_volunteer" type="checkbox" />
+            {%endif%}
+            <label for="opt_in_volunteer">{%if customform%}
+              {%if customform.volunteer_text%}{{customform.volunteer_text}}
+                {%else%}{% trans "I would like to volunteer with"%} {{customform.name}}.{%endif%}
+              {%else%}{% trans "I would like to volunteer with Rock the Vote."%}{%endif%}</label>
+          </div>
+          {%endif%}
+
+          {% if cobrandform.show_email_optin %}
+          <div class="input checkbox">
+            <input id="partner_opt_in_email" name="partner_opt_in_email" type="checkbox" {%if cobrandform.default_email_optin%}checked="checked"{%endif%} />
+            <label for="partner_opt_in_email">
+              {%if cobrandform.email_optin_text%}{{cobrandform.email_optin_text}}
+                {%else%}{% trans "Receive Email Updates from"%} {{cobrandform.name}}.{%endif%}
+              {%if cobrandform.privacy_policy_link%}
+                <span class="subtle"><a href="{{cobrandform.privacy_policy_link}}" target="_blank">({{cobrandform.name}} {% trans "privacy policy"%})</a></span>
+              {%endif%}
+            </label>
+          </div>
+          {%endif%}
+
+          {% comment %} New inputs for CEL {% endcomment %}
+          {% comment %} deactivate while in testing
+          <div class="input checkbox">
+            <input id="email_cel" name="email_cel" value="1" type="checkbox" />
+            <label for="email_cel">I want to learn more about opportunities for activism in my community</label>
+          </div>
+          {% endcomment %}
+        </div>
+        {% comment %} Hidden field, default to true
+        <input id="opt_in_email" name="opt_in_email" value="1" type="hidden" />
+        {% endcomment %}
+        
+        {% comment %} Hidden but Required Fields {% endcomment %}
+        <input type="hidden" name="lang" value="en">
+        <input type="hidden" name="partner_id" value="{{ partner }}">
+        {%if source%}<input type="hidden" name="source" value="{{ source }}">{%endif%}
+        <button class="button button-primary has_license" tabindex="" type="submit">Submit my form online with the state</button>
+        <button class="button button-primary has_no_license" tabindex="" type="submit">Register with Rock the Vote</button>
+      </fieldset>
+    </form>
+  
+{%endblock content%}

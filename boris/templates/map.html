@@ -6,6 +6,7 @@
 
 {%block scripts%}
 <script src="{% static 'javascripts/map.js'%}" type="text/javascript"></script>
+<script src="{% static 'javascripts/form.js'%}" type="text/javascript"></script>
 {%endblock scripts%}
 
 {% block body_class %}map{% endblock body_class %}
@@ -25,16 +26,14 @@ h1.map {
 {%endblock styles%}
 
 {%block content%}
-<div class="span-24 last" style="padding: 19px 20px 3px">
-  {%if LANGUAGE_CODE == "en" %}<a class="locale" tabindex="-1" href="?locale=es">En espa&ntilde;ol</a>
+{%if LANGUAGE_CODE == "en" %}<a class="locale" tabindex="-1" href="?locale=es">En espa&ntilde;ol</a>
 {%else%}<a class="locale" tabindex="-1" href="?locale=en">In english</a>{%endif%}
-</div>
 
 <h1 class="map">{% trans "Select your state to get started" %}</h1>
 <form class="state-form" method="get" action="/registrants/new/" accept-charset="UTF-8"><div id="map"></div>
   <fieldset class="submit">
     {% csrf_token %}
-      <div class="input select span-16"><select required tabindex="1" class="large" id="state" name="state">
+      <div class="input select span-24"><select required tabindex="1" class="large" id="state" name="state">
         <option value="Select State...">{% trans "Select State" %}</option>
         <option value="AK">Alaska</option>
         <option value="AL">Alabama</option>
@@ -87,6 +86,12 @@ h1.map {
         <option value="WI">Wisconsin</option>
         <option value="WV">West Virginia</option>
         <option value="WY">Wyoming</option></select></div>
+
+        <div class="input text span-16">
+            <!--[if IE]<label for="email_address">{% trans "Email Address" %}</label>[endif]-->
+            <input type="email" id="email_address" name="email_address" style="height:47px" placeholder="Email Address" />
+        </div>
+
       <div class="span-4 last">
         <button class="button button-primary" tabindex="20" type="submit">{% trans "Continue" %}</button>
       </div></fieldset>
