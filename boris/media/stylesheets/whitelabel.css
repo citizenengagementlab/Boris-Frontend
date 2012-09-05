@@ -21,12 +21,14 @@
 }
 
 #header > h1 > .logo > img {
-	vertical-align: baseline;
+	vertical-align: middle;
 	max-width:150px;
 }
 
 #header > h1 > .logo.cobrand > img {
 	max-width:100px;
+	position:relative;
+	right:5px;
 }
 
 #footer p > a.cobrand {
