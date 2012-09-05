@@ -2,24 +2,6 @@
 	float: right;
 }
 
-#header > h1 > .logo.presenteorg {
-	position:relative;
-	top:11px;
-}
-#header > h1 > .logo.national-black-justice-coalition {
-	position:relative;
-	top:7px;
-}
-#header > h1 > .logo.ultraviolet {
-	position:relative;
-	top:9px;
-}
-#header > h1 > .logo.florida-new-majority {
-	position:relative;
-	right:15px;
-	top:3px;
-}
-
 #header > h1 > .logo > img {
 	vertical-align: middle;
 	max-width:150px;
