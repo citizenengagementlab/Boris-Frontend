@@ -198,7 +198,7 @@ try:
     from settings_local import *
 except:
     #we're on Heroku, sensitive info is in environ
-    DEBUG = True
+    DEBUG = False
     PROXY_DOMAIN = "register.rockthevote.com"
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
     #sendgrid settings
@@ -208,15 +208,11 @@ except:
     EMAIL_USE_TLS = True
     EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
     #s3 settings
-    #AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-    AWS_ACCESS_KEY_ID = 'AKIAJRGB5M6GUP2RWPYA'
-    #AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    AWS_SECRET_ACCESS_KEY = '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'
-    #AWS_STORAGE_BUCKET_NAME = 'register2.rockthevote.com'
-    AWS_STORAGE_BUCKET_NAME = 'rocky-boris-test'
-    #AWS_S3_CUSTOM_DOMAIN = 'dyw5n6uc3lgo5.cloudfront.net'
-    #STATIC_URL = 'https://dyw5n6uc3lgo5.cloudfront.net/'
-    STATIC_URL = 'https://s3.amazonaws.com/rocky-boris-test/'
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = 'register2.rockthevote.com'
+    AWS_S3_CUSTOM_DOMAIN = 'dyw5n6uc3lgo5.cloudfront.net'
+    STATIC_URL = 'https://dyw5n6uc3lgo5.cloudfront.net/'
     #use heroku db
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
