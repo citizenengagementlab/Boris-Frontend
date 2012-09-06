@@ -2,7 +2,7 @@ var fbAppID = '347566241989371';
 var fbAppUrl = 'https://apps.facebook.com/rockthevotenow/';
 $('#content').css('opacity',0);
    
-function preAuthView() { //likewise, may want to load a separate pre-auth view, rather than swapping out markup on the fly
+function preAuthView() {
   var pA = ['<div id="non-auth">'];
   //pA.push('<p style="margin: 30px 20px; width: 560px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>');
   pA.push('<a id="fb-auth" class="button button-primary" style="float: left; margin: 30px 0 0 143px;" href="');
@@ -29,15 +29,15 @@ function getParam(name){
   var regexS = "[\\?&]" + name + "=([^&#]*)";
   var regex = new RegExp(regexS);
   var results = regex.exec(window.location.search);
-  if(results == null)
+  if(results === null)
     return "";
   else
     return decodeURIComponent(results[1].replace(/\+/g, " "));
 };
 
-function checkInfo(user){  
+function checkInfo(user){
   if ($('form.state-form').length) {
-    if (getParam("home_zip_code") != "") {    
+    if (getParam("home_zip_code") !== "") {
       var zip = getParam("home_zip_code");
       $.ajax({
         type: 'get',
@@ -58,121 +58,69 @@ function checkInfo(user){
         function stateAbbr(stateName) {
           switch (stateName.toUpperCase()) {
               case "ALABAMA": return "AL";
-
               case "ALASKA": return "AK";
-
               case "ARIZONA": return "AZ";
-
               case "ARKANSAS": return "AR";
-
               case "CALIFORNIA": return "CA";
-
               case "COLORADO": return "CO";
-
               case "CONNECTICUT": return "CT";
-
               case "DELAWARE": return "DE";
-
               case "DISTRICT OF COLUMBIA": return "DC";
-
               case "FLORIDA": return "FL";
-
               case "GEORGIA": return "GA";
-              
               case "HAWAII": return "HI";
-
               case "IDAHO": return "ID";
-
               case "ILLINOIS": return "IL";
-
               case "INDIANA": return "IN";
-
               case "IOWA": return "IA";
-
               case "KANSAS": return "KS";
-
               case "KENTUCKY": return "KY";
-
               case "LOUISIANA": return "LA";
-
               case "MAINE": return "ME";
-
               case "MARYLAND": return "MD";
-
               case "MASSACHUSETTS": return "MA";
-
               case "MICHIGAN": return "MI";
-
               case "MINNESOTA": return "MN";
-
               case "MISSISSIPPI": return "MS";
-
               case "MISSOURI": return "MO";
-
               case "MONTANA": return "MT";
-
               case "NEBRASKA": return "NE";
-
               case "NEVADA": return "NV";
-
               case "NEW HAMPSHIRE": return "NH";
-
               case "NEW JERSEY": return "NJ";
-
               case "NEW MEXICO": return "NM";
-
               case "NEW YORK": return "NY";
-
               case "NORTH CAROLINA": return "NC";
-
               case "NORTH DAKOTA": return "ND";
-
               case "OHIO": return "OH";
-
               case "OKLAHOMA": return "OK";
-
               case "OREGON": return "OR";
-
               case "PALAU": return "PW";
-
               case "PENNSYLVANIA": return "PA";
-
               case "RHODE ISLAND": return "RI";
-
               case "SOUTH CAROLINA": return "SC";
-
               case "SOUTH DAKOTA": return "SD";
-
               case "TENNESSEE": return "TN";
-
               case "TEXAS": return "TX";
-
               case "UTAH": return "UT";
-
               case "VERMONT": return "VT";
-
               case "VIRGINIA": return "VA";
-
               case "WASHINGTON": return "WA";
-
               case "WEST VIRGINIA": return "WV";
-
               case "WISCONSIN": return "WI";
-
               case "WYOMING": return "WY";
-              
               default: return "";
           }
         }
         
         var loc = user.location.name.split(", ");
         var abbr = stateAbbr(loc[1]);
-        if (abbr != "")
+        if (abbr !== "")
           $('select[name="state"]').val(abbr).focus();
       }
     }
 
-    if (getParam("email_address") != "") {
+    if (getParam("email_address") !== "") {
       $('input[name="email_address"]').val(getParam("email_address"));
     } else if (user && user.hasOwnProperty('email')) {
       $('input[name="email_address"]').val(user.email);
@@ -180,9 +128,9 @@ function checkInfo(user){
     
     
     function checkVals(){
-      if ($('input[name="email_address"]').val() != "" && $('input[name="email_address"]').val() != $('input[name="email_address"]').attr('placeholder')) {        
-        if ($('select[name="state"]').val() != "Select State...") {
-          $('form.state-form button').prop('disabled', false);  
+      if ($('input[name="email_address"]').val() !== "" && $('input[name="email_address"]').val() !== $('input[name="email_address"]').attr('placeholder')) {
+        if ($('select[name="state"]').val() !== "Select State...") {
+          $('form.state-form button').prop('disabled', false);
           if (getParam("autosubmit") == 'true' && getParam("autosubmitoverride") != 'true') {
             $('form.state-form').submit();
           }
@@ -192,23 +140,23 @@ function checkInfo(user){
     checkVals();
   } else if ($('form.registration-form').length) {
     if (user) {
-      if (user.hasOwnProperty('first_name') && getParam('first_name') == "")
+      if (user.hasOwnProperty('first_name') && getParam('first_name') === "")
       $('input[name="first_name"]').val(user.first_name);
       
-      if (user.hasOwnProperty('last_name') && getParam('last_name') == "")
+      if (user.hasOwnProperty('last_name') && getParam('last_name') === "")
         $('input[name="last_name"]').val(user.last_name);
         
-      if (user.hasOwnProperty('birthday') && getParam('date_of_birth') == "")
+      if (user.hasOwnProperty('birthday') && getParam('date_of_birth') === "")
         $('input[name="date_of_birth"]').val(user.birthday);
         
-      if (user.hasOwnProperty('email') && getParam("email_address") == "") {
+      if (user.hasOwnProperty('email') && getParam("email_address") === "") {
         $('input[name="email_address"]').val(user.email);
       }
       if (user.hasOwnProperty('gender')) {
-        var ut = (user.gender == 'female') ? "Ms." : "Mr."; 
+        var ut = (user.gender === 'female') ? "Ms." : "Mr.";
         $('select[name="name_title"]').val(ut).focus().blur();
       }
-    } 
+    }
     
     
   }
@@ -240,9 +188,9 @@ window.fbAsyncInit = function() {
         "imgsrc": window.location.origin+"/static/images/flash-preview.gif", 
         "width": "130", 
         "height": "87",
-        "expanded_width": "398", 
+        "expanded_width": "398",
         "expanded_height": "375"
-      }],
+      }]
       //'actions': [{ link: window.location.href, name: "RockTheVote.com" }]
     };
 
@@ -264,7 +212,7 @@ window.fbAsyncInit = function() {
                 $b.html("Thanks for sharing!").attr('disabled',true).css('opacity',0.4).unbind('click');
               } else {
                 alert("There was an error in sending your requests. Please try again.");
-              }           
+              }
             });
           });
         } else {
@@ -275,33 +223,33 @@ window.fbAsyncInit = function() {
    
   });
     
-  function statusCheck(response){        
+  function statusCheck(response){
     if (response.authResponse) {
-      FB.api('/me', function(me){            
+      FB.api('/me', function(me){
         if (me.name)
-          checkInfo(me);         
-      });        
+          checkInfo(me);
+      });
       
     } else {
       preAuthView();
     }
-    $('#content').css('opacity',1);       
+    $('#content').css('opacity',1);
   }
   
-  if (getParam("request_ids") != "") {
+  if (getParam("request_ids") !== "") {
     //delete accepted requests, if desired
     //FB.api(getParam("request_ids"), 'delete', function(response){ console.log(response) });
   }
-  
-  //if (top.location != window.location) {
+
   if (getParam("facebook") == 'true') {
     FB.getLoginStatus(function(response) { statusCheck(response); });
          
     //possible TODO - handle cases where user removes authorization with app still open
     FB.Event.subscribe('auth.statusChange', function(response) { statusCheck(response); });
   } else {
+    //not on facebook iframe
     if (window.location.search.length) checkInfo();
-    $('#content').css('opacity',1); 
+    $('#content').css('opacity',1);
   }
 };
 
