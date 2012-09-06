@@ -35,6 +35,12 @@ def frontpage(request):
         params['partner'] = request.GET.get('partner')
     if request.GET.get('source'):
         params['source'] = request.GET.get('source')
+    if request.GET.get('email_address'):
+        params['email_address'] = request.GET.get('email_address')
+    if request.GET.get('state'):
+        #redirect to the form, not the map
+        redirect_url = reverse('registrant.views.register')
+        params['state'] = request.GET.get('state')
 
     if params:
         redirect_url += "?"+urllib.urlencode(params)
@@ -48,4 +54,3 @@ def rtv_iframe_test(request):
     context = {'layout':layout}
     return render_to_response('rtv_iframe_test.html',context,
                 context_instance=RequestContext(request))
-                

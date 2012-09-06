@@ -2,9 +2,12 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
 from django.contrib import messages
 from django.utils.translation import ugettext as _
+from django.core.urlresolvers import reverse
 
 from proxy.views import rtv_proxy
 from proxy.models import CustomForm,CoBrandForm
+
+import urllib
 
 from django.contrib.localflavor.us import us_states
 STATE_NAME_LOOKUP = dict(us_states.US_STATES)
@@ -48,11 +51,24 @@ def map(request):
     get_locale(request)
 
     context = {}
+    params = {}
     if request.GET.get('partner'):
         context['partner'] = request.GET.get('partner')
         context = get_branding(context)
+        params['partner'] = context['partner']
     if request.GET.get('source'):
         context['source'] = request.GET.get('source')
+        params['source'] = context['source']
+    if request.GET.get('email_address'):
+        context['email_address'] = request.GET.get('email_address')
+        params['email_address'] = context['email_address']
+
+    #if state, redirect to the form
+    if request.GET.get('state'):
+        params['state'] = request.GET.get('state')
+        redirect_url = reverse('registrant.views.register')
+        redirect_url += "?"+urllib.urlencode(params)
+        return redirect(redirect_url)
 
     return render_to_response('map.html',context,
             context_instance=RequestContext(request))
@@ -89,9 +105,15 @@ def register(request):
         try:
             context['state_name'] = STATE_NAME_LOOKUP[state]
         except KeyError:
-            redirect_url = '/registrants/map/'
+            #don't have a state, redirect to the map
+            redirect_url = reverse('registrant.views.map')
+            params = {}
             if context['has_partner']:
-                redirect_url = redirect_url + '?partner=' + context['partner']
+                params['partner'] = context['partner']
+            if request.GET.get('email_address'):
+                params['email_address'] = request.GET.get('email_address')
+            if params:
+                redirect_url += "?"+urllib.urlencode(params)
             return redirect(redirect_url)
 
         #TODO: get language code from localeurl
@@ -101,14 +123,18 @@ def register(request):
         context['staterequirements'] = staterequirements
 
         if staterequirements.has_key('error'):
-            print staterequirements
             return render_to_response('ineligible.html',context,
                         context_instance=RequestContext(request))
     else:
-        redirect_url = '/'
+        redirect_url = reverse('registrant.views.map')
+        params = {}
         if context['has_partner']:
-                redirect_url = redirect_url + '?partner=' + context['partner']
-        return redirect(redirect_url) #redirect to frontpage to do geolocation
+            params['partner'] = context['partner']
+        if request.GET.get('email_address'):
+                params['email_address'] = request.GET.get('email_address')
+        if params:
+            redirect_url += "?"+urllib.urlencode(params)
+        return redirect(redirect_url) #redirect to the map
     
     return render_to_response('form.html',context,
                 context_instance=RequestContext(request))
