@@ -2,7 +2,7 @@ var fbAppID = '347566241989371';
 var fbAppUrl = 'https://apps.facebook.com/rockthevotenow/';
 $('#content').css('opacity',0);
    
-function preAuthView() { //likewise, may want to load a separate pre-auth view, rather than swapping out markup on the fly
+function preAuthView() {
   var pA = ['<div id="non-auth">'];
   //pA.push('<p style="margin: 30px 20px; width: 560px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>');
   pA.push('<a id="fb-auth" class="button button-primary" style="float: left; margin: 30px 0 0 143px;" href="');
@@ -132,7 +132,6 @@ function checkInfo(user){
         if ($('select[name="state"]').val() !== "Select State...") {
           $('form.state-form button').prop('disabled', false);
           if (getParam("autosubmit") == 'true' && getParam("autosubmitoverride") != 'true') {
-            
             $('form.state-form').submit();
           }
         }
@@ -184,10 +183,10 @@ window.fbAsyncInit = function() {
       'media': [{
         "type": "flash", 
         //"swfsrc": "https://s3.amazonaws.com/rocky-boris-test/widgetloader/rtv_fb.swf?v="+(+new Date()), 
-        "swfsrc": window.location.origin+"/static/widgetloader/rtv_fb.swf?v="+(+new Date()), 
+        "swfsrc": window.location.origin+"/static/widgetloader/rtv_fb.swf", 
         //"imgsrc": "https://s3.amazonaws.com/rocky-boris-test/images/flash-preview.gif?v="+(+new Date()), 
-        "imgsrc": window.location.origin+"/static/images/flash-preview.gif?v="+(+new Date()), 
-        "width": "130",
+        "imgsrc": window.location.origin+"/static/images/flash-preview.gif", 
+        "width": "130", 
         "height": "87",
         "expanded_width": "398",
         "expanded_height": "375"
@@ -241,8 +240,8 @@ window.fbAsyncInit = function() {
     //delete accepted requests, if desired
     //FB.api(getParam("request_ids"), 'delete', function(response){ console.log(response) });
   }
-  
-  if (window.location.hostname.search('facebook') >= 0) {
+
+  if (getParam("facebook") == 'true') {
     FB.getLoginStatus(function(response) { statusCheck(response); });
          
     //possible TODO - handle cases where user removes authorization with app still open
