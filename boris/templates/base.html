@@ -83,6 +83,7 @@
 	<script type="text/javascript" src="{% static 'javascripts/fbint.js' %}"></script>
 	{%else%}
 	<!-- load fb only for sharing, not for form filling -->
+	<script type="text/javascript" src="{% static 'javascripts/fbshare.js' %}"></script>
 	{%endif%}
 
 	{%block scripts%}{%endblock scripts%}  
