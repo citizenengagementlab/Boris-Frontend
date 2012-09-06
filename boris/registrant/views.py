@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response,redirect
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
+from django.core.mail import mail_admins
 
 from proxy.views import rtv_proxy
 from proxy.models import CustomForm,CoBrandForm
@@ -218,6 +219,7 @@ def submit(request):
     if rtv_response.has_key('error'):
         #something went wrong that wasn't caught in the frontend validation
         #clean up error message for human consumption
+        mail_admins('rocky error',rtv_response)
         try:
             context['error'] = True
             messages.error(request, rtv_response['error']['message'].lower(),
@@ -248,8 +250,9 @@ def submit(request):
         if customform:
             response = customform.submit(submitted_form)
             if response.get('error'):
+                mail_admins('customform error',response)
                 context['error'] = True
-                messages.error(request, _("Unknown error, please contact an admin"),
+                messages.error(request, _("Unknown error: the web administrators have been contacted."),
                     extra_tags=response)
 
     #send branding partner ids to context, for trackable social media links
