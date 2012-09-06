@@ -242,7 +242,7 @@ window.fbAsyncInit = function() {
     //FB.api(getParam("request_ids"), 'delete', function(response){ console.log(response) });
   }
   
-  if (top.location.hostname.search('facebook') >= 0) {
+  if (window.location.hostname.search('facebook') >= 0) {
     FB.getLoginStatus(function(response) { statusCheck(response); });
          
     //possible TODO - handle cases where user removes authorization with app still open
