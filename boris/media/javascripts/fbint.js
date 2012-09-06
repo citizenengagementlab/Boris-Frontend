@@ -247,7 +247,8 @@ window.fbAsyncInit = function() {
          
     //possible TODO - handle cases where user removes authorization with app still open
     FB.Event.subscribe('auth.statusChange', function(response) { statusCheck(response); });
-  } else if (window.location.search.length) {
+  //} else if (window.location.search.length) {
+  } else {
     checkInfo();
     $('#content').css('opacity',1);
   }
