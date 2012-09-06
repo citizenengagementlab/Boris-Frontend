@@ -182,9 +182,8 @@ function checkInfo(user){
     function checkVals(){
       if ($('input[name="email_address"]').val() != "" && $('input[name="email_address"]').val() != $('input[name="email_address"]').attr('placeholder')) {        
         if ($('select[name="state"]').val() != "Select State...") {
-          $('form.state-form button').prop('disabled', false);       
+          $('form.state-form button').prop('disabled', false);  
           if (getParam("autosubmit") == 'true' && getParam("autosubmitoverride") != 'true') {
-            
             $('form.state-form').submit();
           }
         }
@@ -236,9 +235,9 @@ window.fbAsyncInit = function() {
       'media': [{
         "type": "flash", 
         //"swfsrc": "https://s3.amazonaws.com/rocky-boris-test/widgetloader/rtv_fb.swf?v="+(+new Date()), 
-        "swfsrc": window.location.origin+"/static/widgetloader/rtv_fb.swf?v="+(+new Date()), 
+        "swfsrc": window.location.origin+"/static/widgetloader/rtv_fb.swf", 
         //"imgsrc": "https://s3.amazonaws.com/rocky-boris-test/images/flash-preview.gif?v="+(+new Date()), 
-        "imgsrc": window.location.origin+"/static/images/flash-preview.gif?v="+(+new Date()), 
+        "imgsrc": window.location.origin+"/static/images/flash-preview.gif", 
         "width": "130", 
         "height": "87",
         "expanded_width": "398", 
@@ -294,7 +293,8 @@ window.fbAsyncInit = function() {
     //FB.api(getParam("request_ids"), 'delete', function(response){ console.log(response) });
   }
   
-  if (top.location != window.location) {
+  //if (top.location != window.location) {
+  if (getParam("facebook") == 'true') {
     FB.getLoginStatus(function(response) { statusCheck(response); });
          
     //possible TODO - handle cases where user removes authorization with app still open
