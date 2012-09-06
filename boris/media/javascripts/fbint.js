@@ -242,12 +242,13 @@ window.fbAsyncInit = function() {
     //FB.api(getParam("request_ids"), 'delete', function(response){ console.log(response) });
   }
   
-  if (top.location != window.location) {
+  if (top.location.hostname.search('facebook') >= 0) {
     FB.getLoginStatus(function(response) { statusCheck(response); });
          
     //possible TODO - handle cases where user removes authorization with app still open
     FB.Event.subscribe('auth.statusChange', function(response) { statusCheck(response); });
   } else {
+    //not on facebook iframe
     if (window.location.search.length) checkInfo();
     $('#content').css('opacity',1);
   }
