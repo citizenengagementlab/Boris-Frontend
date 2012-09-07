@@ -152,7 +152,8 @@ def submit(request):
     #remove inputs that we needed, but the api will reject
     remove_inputs = ['csrfmiddlewaretoken','facebook']
     for t in remove_inputs:
-        submitted_form.pop(t)
+        if submitted_form.has_key(t):
+            submitted_form.pop(t)
 
     #rename source to source_tracking_id as per api
     if 'source' in submitted_form:
