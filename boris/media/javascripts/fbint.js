@@ -127,6 +127,7 @@ function checkInfo(user){
     }
     
     
+    
     function checkVals(){
       if ($('input[name="email_address"]').val() !== "" && $('input[name="email_address"]').val() !== $('input[name="email_address"]').attr('placeholder')) {
         if ($('select[name="state"]').val() !== "Select State...") {
@@ -141,7 +142,7 @@ function checkInfo(user){
   } else if ($('form.registration-form').length) {
     if (user) {
       if (user.hasOwnProperty('first_name') && getParam('first_name') === "")
-      $('input[name="first_name"]').val(user.first_name);
+        $('input[name="first_name"]').val(user.first_name);
       
       if (user.hasOwnProperty('last_name') && getParam('last_name') === "")
         $('input[name="last_name"]').val(user.last_name);
@@ -149,9 +150,8 @@ function checkInfo(user){
       if (user.hasOwnProperty('birthday') && getParam('date_of_birth') === "")
         $('input[name="date_of_birth"]').val(user.birthday);
         
-      if (user.hasOwnProperty('email') && getParam("email_address") === "") {
+      if (user.hasOwnProperty('email') && getParam("email_address") === "")
         $('input[name="email_address"]').val(user.email);
-      }
       if (user.hasOwnProperty('gender')) {
         var ut = (user.gender === 'female') ? "Ms." : "Mr.";
         $('select[name="name_title"]').val(ut).focus().blur();
@@ -241,11 +241,16 @@ window.fbAsyncInit = function() {
     //FB.api(getParam("request_ids"), 'delete', function(response){ console.log(response) });
   }
 
-  if (getParam("facebook") == 'true') {
+  if (getParam("facebook") == 1) {
+    
+    if ($('form').length)
+      $('form').append('<input type="hidden" name="facebook" value="1" />');
+    
     FB.getLoginStatus(function(response) { statusCheck(response); });
          
     //possible TODO - handle cases where user removes authorization with app still open
     FB.Event.subscribe('auth.statusChange', function(response) { statusCheck(response); });
+
   } else {
     //not on facebook iframe
     if (window.location.search.length) checkInfo();
