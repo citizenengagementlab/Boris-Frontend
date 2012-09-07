@@ -191,12 +191,12 @@ def submit(request):
     for f in zip_fields:
         zipcode = submitted_form.get(f+'_zip_code')
         city = submitted_form.get(f+'_city')
-        state = submitted_form.get(f+'_state')
+        state = submitted_form.get(f+'_state_id')
         if zipcode and not (city and state):
             try:
                 place = ZipCode.objects.get(zipcode=zipcode)
                 submitted_form[f+'_city'] = place.city.lower().title()
-                submitted_form[f+'_state'] = place.state
+                submitted_form[f+'_state_id'] = place.state
             except ZipCode.DoesNotExist:
                 pass
     #this can happen if the user has to go back and resubmit the form, but the zipcode lookup js doesn't re-run
