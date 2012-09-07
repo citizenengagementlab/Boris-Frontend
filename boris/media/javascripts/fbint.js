@@ -243,9 +243,10 @@ window.fbAsyncInit = function() {
 
   if (getParam("facebook") == 1) {
     
-    if ($('form').length)
+    if ($('form').length) {
       $('form').append('<input type="hidden" name="facebook" value="1" />');
-    
+    }
+
     FB.getLoginStatus(function(response) { statusCheck(response); });
          
     //possible TODO - handle cases where user removes authorization with app still open
