@@ -8,6 +8,8 @@ from django.core.mail import mail_admins
 from proxy.views import rtv_proxy
 from proxy.models import CustomForm,CoBrandForm
 
+from ziplookup.models import ZipCode
+
 import urllib
 
 from django.contrib.localflavor.us import us_states
@@ -179,7 +181,27 @@ def submit(request):
         if not submitted_form.has_key(r):
             #and fill it in with zero
             submitted_form[r] = '0'
+
+    #fill in none for blank id number
+    if submitted_form['id_number'] == "0" or submitted_form['id_number'] == "":
+        submitted_form['id_number'] = "none"
     
+    #fill in missing city/state fields if we have zipcodes
+    zip_fields = ['home','mailing','prev']
+    for f in zip_fields:
+        zipcode = submitted_form.get(f+'_zip_code')
+        city = submitted_form.get(f+'_city')
+        state = submitted_form.get(f+'_state')
+        if zipcode and not (city and state):
+            try:
+                place = ZipCode.objects.get(zipcode=zipcode)
+                submitted_form[f+'_city'] = place.city.lower().title()
+                submitted_form[f+'_state'] = place.state
+            except ZipCode.DoesNotExist:
+                pass
+    #this can happen if the user has to go back and resubmit the form, but the zipcode lookup js doesn't re-run
+    #should probably also fix this client side...
+
     #check for suffix and clear it if it's an invalid value
     suffix = submitted_form.get('name_suffix')
     if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
