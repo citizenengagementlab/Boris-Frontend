@@ -219,7 +219,6 @@ def submit(request):
     if rtv_response.has_key('error'):
         #something went wrong that wasn't caught in the frontend validation
         #clean up error message for human consumption
-        mail_admins('rocky error',rtv_response)
         try:
             context['error'] = True
             messages.error(request, rtv_response['error']['message'].lower(),
@@ -228,6 +227,9 @@ def submit(request):
             context['error'] = True
             messages.error(request, rtv_response['error'],
                 extra_tags="Rocky API")
+        #also mail the admins to see if there's a persistent problem
+        mail_admins('rocky error',"rtv_response: %s\nsubmitted_form:%s" % (rtv_response,submitted_form))
+        
     context['email_address'] = submitted_form.get("email_address")
 
     try:
