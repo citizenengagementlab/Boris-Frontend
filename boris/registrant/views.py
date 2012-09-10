@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.core.mail import mail_admins
 
 from proxy.views import rtv_proxy
-from proxy.models import CustomForm,CoBrandForm
+from registrant.utils import get_branding,empty
 
 from ziplookup.models import ZipCode
 
@@ -15,27 +15,6 @@ import urllib
 from django.contrib.localflavor.us import us_states
 STATE_NAME_LOOKUP = dict(us_states.US_STATES)
 STATE_NAME_LOOKUP['DC'] = "DC" #monkey patch, because "District of Columbia doesn't fit"
-
-def get_branding(context):
-    """Util method to get branding given partner id
-    Returns dict with updated context"""
-
-    #check for cobrand form first
-    try:
-        context['cobrandform'] = CoBrandForm.objects.get(partner_id=context['partner'])
-        context['customform'] = context['cobrandform'].toplevel_org
-        return context
-    except (CoBrandForm.DoesNotExist,ValueError):
-
-        #then custom form
-        context['cobrandform'] = None
-        try:
-            context['customform'] = CustomForm.objects.get(partner_id=context['partner'])
-            return context
-        except (CustomForm.DoesNotExist,ValueError):
-            context['customform'] = None
-            return context
-    return context
 
 def get_locale(request):
     """Util method to determine locale from request. Checks session first, then get parameter.
@@ -170,10 +149,11 @@ def submit(request):
                 'partner_opt_in_sms','partner_opt_in_email','partner_opt_in_volunteer',
                 'us_citizen']
     for b in booleans:
-        if submitted_form.get(b) == "off":
-            submitted_form[b] = '0'
-        if submitted_form.get(b) == "on":
-            submitted_form[b] = '1'
+        if submitted_form.has_key(b):
+            if submitted_form.get(b)[0] == "off":
+                submitted_form[b] = '0'
+            if submitted_form.get(b)[0] == "on":
+                submitted_form[b] = '1'
     
     #check for required values that aren't defined in the post
     required_fields = ['opt_in_sms','opt_in_email','us_citizen','id_number']
@@ -183,7 +163,7 @@ def submit(request):
             submitted_form[r] = '0'
 
     #fill in none for blank id number
-    if submitted_form['id_number'] == "0" or submitted_form['id_number'] == "":
+    if empty(submitted_form['id_number']):
         submitted_form['id_number'] = "none"
     
     #fill in missing city/state fields if we have zipcodes
@@ -192,7 +172,7 @@ def submit(request):
         zipcode = submitted_form.get(f+'_zip_code')
         city = submitted_form.get(f+'_city')
         state = submitted_form.get(f+'_state_id')
-        if zipcode and not (city and state):
+        if not empty(zipcode) and (empty(city) and empty(state)):
             try:
                 place = ZipCode.objects.get(zipcode=zipcode)
                 submitted_form[f+'_city'] = place.city.lower().title()
@@ -202,11 +182,19 @@ def submit(request):
     #this can happen if the user has to go back and resubmit the form, but the zipcode lookup js doesn't re-run
     #should probably also fix this client side...
 
+    #check for title and replace it if it's an invalid value
+    if submitted_form.has_key('name_title'):
+        title = submitted_form.get('name_title')
+        print "title",title
+        if title not in ["Mr.", "Ms.", "Mrs.", "Sr.", "Sra.","Srta."]:
+            submitted_form['name_title'] = "Mr." #guess, because we have to send valid data to API
+
     #check for suffix and clear it if it's an invalid value
-    suffix = submitted_form.get('name_suffix')
-    if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
-        submitted_form['name_suffix'] = ""
-    
+    if submitted_form.has_key('name_suffix'):
+        suffix = submitted_form.get('name_suffix')
+        if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
+            submitted_form['name_suffix'] = ""
+
     #force allow rocky to send confirmation emails
     submitted_form['send_confirmation_reminder_emails'] ='1'
 
