@@ -240,7 +240,8 @@ def submit(request):
             messages.error(request, rtv_response['error'],
                 extra_tags="Rocky API")
         #also mail the admins to see if there's a persistent problem
-        mail_admins('rocky error',"rtv_response: %s\nsubmitted_form:%s" % (rtv_response,submitted_form))
+        mail_admins('rocky error: validating %s' % rtv_response['error']['field_name'],
+            "rtv_response: %s\nsubmitted_form:%s" % (rtv_response,submitted_form))
         
     context['email_address'] = submitted_form.get("email_address")
 
