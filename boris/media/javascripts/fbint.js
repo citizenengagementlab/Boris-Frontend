@@ -18,7 +18,14 @@ function preAuthView() {
   pA.push('" target="_top">Register via Facebook</a>');
   pA.push('<p style="margin: 15px 0; float: left; clear: both; width: 100%; text-align: center;">- OR -</p>');
   pA.push('<a style="font-size: 16px; font-weight: bold; margin: 0; float: left; clear: both; width: 100%; text-align: center;" href="');
-  pA.push(window.location.href);
+  if (getParam('facebook') == 1) {
+    var ind = window.location.search.indexOf('facebook'); 
+    var qStr = window.location.search.slice(0,ind)+window.location.search.slice(ind+11);
+    pA.push(window.location.origin+qStr);
+  } else {
+    pA.push(window.location.href);
+  }
+  
   pA.push('" target="_top">Register on RockTheVote.com</a>');
   pA.push('</div>');
   $('#content').html(pA.join(""));
@@ -48,6 +55,7 @@ function checkInfo(user){
         success: function(d) {
           if (d.state) {
             $('select[name="state"]').val(d.state).focus();
+            $('#map path').attr('fill','transparent').filter('path#jqvmap1_'+d.state.toLowerCase()).attr('fill','#21CB00');
             $('form.state-form').append('<input type="hidden" name="home_zip_code" value="'+zip+'" />');
             checkVals();
           }
@@ -65,7 +73,7 @@ function checkInfo(user){
               case "COLORADO": return "CO";
               case "CONNECTICUT": return "CT";
               case "DELAWARE": return "DE";
-              case "DISTRICT OF COLUMBIA": return "DC";
+              case "DISTRICT OF COLUMBIA": case "DISTRICT": return "DC";
               case "FLORIDA": return "FL";
               case "GEORGIA": return "GA";
               case "HAWAII": return "HI";
@@ -115,8 +123,11 @@ function checkInfo(user){
         
         var loc = user.location.name.split(", ");
         var abbr = stateAbbr(loc[1]);
-        if (abbr !== "")
+        if (abbr !== "") {
           $('select[name="state"]').val(abbr).focus();
+          $('#map path').attr('fill','transparent').filter('path#jqvmap1_'+abbr.toLowerCase()).attr('fill','#21CB00');
+        }
+          
       }
     }
 
