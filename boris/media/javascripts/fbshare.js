@@ -1,6 +1,17 @@
 var fbAppID = '347566241989371';
 var fbAppUrl = 'https://apps.facebook.com/rockthevotenow/';
 
+function getParam(name){
+  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+  var regexS = "[\\?&]" + name + "=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.search);
+  if(results === null)
+    return "";
+  else
+    return decodeURIComponent(results[1].replace(/\+/g, " "));
+};
+
 window.fbAsyncInit = function() {
   FB.init({
     appId      : fbAppID, // App ID
@@ -12,15 +23,16 @@ window.fbAsyncInit = function() {
 
 $('a.button.facebook#facebook-app-share').click(function(){
   $b = $(this);
+  var fGet = (getParam('partner_id') != "") ? "?partner_id="+getParam('partner_id') : "";
   var pObj = {
     'name' : "Rock the Vote 2012",
     'description' : "November will be here before you know it! Are you registered to vote? If not, now's the time! Register here - in 3 easy steps! - using Rock the Vote's online voter registration tool.",
     'media': [{
       "type": "flash", 
       //"swfsrc": "https://s3.amazonaws.com/rocky-boris-test/widgetloader/rtv_fb.swf?v="+(+new Date()), 
-      "swfsrc": window.location.origin+"/static/widgetloader/rtv_fb.swf?v="+(+new Date()), 
+      "swfsrc": window.location.origin+"/static/widgetloader/rtv_fb.swf"+fGet, 
       //"imgsrc": "https://s3.amazonaws.com/rocky-boris-test/images/flash-preview.gif?v="+(+new Date()), 
-      "imgsrc": window.location.origin+"/static/images/flash-preview.gif?v="+(+new Date()), 
+      "imgsrc": window.location.origin+"/static/images/flash-preview.gif", 
       "width": "130",
       "height": "87",
       "expanded_width": "398",
