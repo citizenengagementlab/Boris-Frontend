@@ -10,7 +10,7 @@ window.fbAsyncInit = function() {
   });
 };
 
-$('a.button.facebook').click(function(){
+$('a.button.facebook#facebook-app-share').click(function(){
   $b = $(this);
   var pObj = {
     'name' : "Rock the Vote 2012",

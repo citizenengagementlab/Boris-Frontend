@@ -7,7 +7,16 @@ from ziplookup.models import ZipCode
 
 def zip_lookup(request):
     
-    zip5 = request.GET.get('zip')
+    zipcode = request.GET.get('zip')
+
+    if len(zipcode) > 5:
+        if '-' in zipcode:
+            zip5,plus4 = zipcode.split('-')
+        else:
+            zip5 = zipcode[:5]
+    else:
+        zip5 = zipcode
+
     if zip5:
         try:
             place = ZipCode.objects.get(zipcode=zip5)

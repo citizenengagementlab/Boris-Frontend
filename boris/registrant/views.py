@@ -2,34 +2,19 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
 from django.contrib import messages
 from django.utils.translation import ugettext as _
+from django.core.urlresolvers import reverse
+from django.core.mail import mail_admins
 
 from proxy.views import rtv_proxy
-from proxy.models import CustomForm,CoBrandForm
+from registrant.utils import get_branding,empty
+
+from ziplookup.models import ZipCode
+
+import urllib
 
 from django.contrib.localflavor.us import us_states
 STATE_NAME_LOOKUP = dict(us_states.US_STATES)
 STATE_NAME_LOOKUP['DC'] = "DC" #monkey patch, because "District of Columbia doesn't fit"
-
-def get_branding(context):
-    """Util method to get branding given partner id
-    Returns dict with updated context"""
-
-    #check for cobrand form first
-    try:
-        context['cobrandform'] = CoBrandForm.objects.get(partner_id=context['partner'])
-        context['customform'] = context['cobrandform'].toplevel_org
-        return context
-    except (CoBrandForm.DoesNotExist,ValueError):
-
-        #then custom form
-        context['cobrandform'] = None
-        try:
-            context['customform'] = CustomForm.objects.get(partner_id=context['partner'])
-            return context
-        except (CustomForm.DoesNotExist,ValueError):
-            context['customform'] = None
-            return context
-    return context
 
 def get_locale(request):
     """Util method to determine locale from request. Checks session first, then get parameter.
@@ -48,11 +33,24 @@ def map(request):
     get_locale(request)
 
     context = {}
+    params = {}
     if request.GET.get('partner'):
         context['partner'] = request.GET.get('partner')
         context = get_branding(context)
+        params['partner'] = context['partner']
     if request.GET.get('source'):
         context['source'] = request.GET.get('source')
+        params['source'] = context['source']
+    if request.GET.get('email_address'):
+        context['email_address'] = request.GET.get('email_address')
+        params['email_address'] = context['email_address']
+
+    #if state, redirect to the form
+    if request.GET.get('state'):
+        params['state'] = request.GET.get('state')
+        redirect_url = reverse('registrant.views.register')
+        redirect_url += "?"+urllib.urlencode(params)
+        return redirect(redirect_url)
 
     return render_to_response('map.html',context,
             context_instance=RequestContext(request))
@@ -89,9 +87,15 @@ def register(request):
         try:
             context['state_name'] = STATE_NAME_LOOKUP[state]
         except KeyError:
-            redirect_url = '/registrants/map/'
+            #don't have a state, redirect to the map
+            redirect_url = reverse('registrant.views.map')
+            params = {}
             if context['has_partner']:
-                redirect_url = redirect_url + '?partner=' + context['partner']
+                params['partner'] = context['partner']
+            if request.GET.get('email_address'):
+                params['email_address'] = request.GET.get('email_address')
+            if params:
+                redirect_url += "?"+urllib.urlencode(params)
             return redirect(redirect_url)
 
         #TODO: get language code from localeurl
@@ -101,14 +105,18 @@ def register(request):
         context['staterequirements'] = staterequirements
 
         if staterequirements.has_key('error'):
-            print staterequirements
             return render_to_response('ineligible.html',context,
                         context_instance=RequestContext(request))
     else:
-        redirect_url = '/'
+        redirect_url = reverse('registrant.views.map')
+        params = {}
         if context['has_partner']:
-                redirect_url = redirect_url + '?partner=' + context['partner']
-        return redirect(redirect_url) #redirect to frontpage to do geolocation
+            params['partner'] = context['partner']
+        if request.GET.get('email_address'):
+                params['email_address'] = request.GET.get('email_address')
+        if params:
+            redirect_url += "?"+urllib.urlencode(params)
+        return redirect(redirect_url) #redirect to the map
     
     return render_to_response('form.html',context,
                 context_instance=RequestContext(request))
@@ -122,9 +130,11 @@ def submit(request):
     submitted_form = request.POST.copy()
     #make a mutable copy
 
-    #delete csrf token
-    if 'csrfmiddlewaretoken' in submitted_form:
-        submitted_form.pop('csrfmiddlewaretoken')
+    #remove inputs that we needed, but the api will reject
+    remove_inputs = ['csrfmiddlewaretoken','facebook']
+    for t in remove_inputs:
+        if submitted_form.has_key(t):
+            submitted_form.pop(t)
 
     #rename source to source_tracking_id as per api
     if 'source' in submitted_form:
@@ -139,10 +149,11 @@ def submit(request):
                 'partner_opt_in_sms','partner_opt_in_email','partner_opt_in_volunteer',
                 'us_citizen']
     for b in booleans:
-        if submitted_form.get(b) == "off":
-            submitted_form[b] = '0'
-        if submitted_form.get(b) == "on":
-            submitted_form[b] = '1'
+        if submitted_form.has_key(b):
+            if submitted_form.get(b)[0] == "off":
+                submitted_form[b] = '0'
+            if submitted_form.get(b)[0] == "on":
+                submitted_form[b] = '1'
     
     #check for required values that aren't defined in the post
     required_fields = ['opt_in_sms','opt_in_email','us_citizen','id_number']
@@ -150,12 +161,40 @@ def submit(request):
         if not submitted_form.has_key(r):
             #and fill it in with zero
             submitted_form[r] = '0'
+
+    #fill in none for blank id number
+    if empty(submitted_form['id_number']):
+        submitted_form['id_number'] = "none"
     
+    #fill in missing city/state fields if we have zipcodes
+    zip_fields = ['home','mailing','prev']
+    for f in zip_fields:
+        zipcode = submitted_form.get(f+'_zip_code')
+        city = submitted_form.get(f+'_city')
+        state = submitted_form.get(f+'_state_id')
+        if not empty(zipcode) and (empty(city) and empty(state)):
+            try:
+                place = ZipCode.objects.get(zipcode=zipcode)
+                submitted_form[f+'_city'] = place.city.lower().title()
+                submitted_form[f+'_state_id'] = place.state
+            except ZipCode.DoesNotExist:
+                pass
+    #this can happen if the user has to go back and resubmit the form, but the zipcode lookup js doesn't re-run
+    #should probably also fix this client side...
+
+    #check for title and replace it if it's an invalid value
+    if submitted_form.has_key('name_title'):
+        title = submitted_form.get('name_title')
+        print "title",title
+        if title not in ["Mr.", "Ms.", "Mrs.", "Sr.", "Sra.","Srta."]:
+            submitted_form['name_title'] = "Mr." #guess, because we have to send valid data to API
+
     #check for suffix and clear it if it's an invalid value
-    suffix = submitted_form.get('name_suffix')
-    if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
-        submitted_form['name_suffix'] = ""
-    
+    if submitted_form.has_key('name_suffix'):
+        suffix = submitted_form.get('name_suffix')
+        if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
+            submitted_form['name_suffix'] = ""
+
     #force allow rocky to send confirmation emails
     submitted_form['send_confirmation_reminder_emails'] ='1'
 
@@ -200,6 +239,10 @@ def submit(request):
             context['error'] = True
             messages.error(request, rtv_response['error'],
                 extra_tags="Rocky API")
+        #also mail the admins to see if there's a persistent problem
+        mail_admins('rocky error: validating %s' % rtv_response['error']['field_name'],
+            "rtv_response: %s\nsubmitted_form:%s" % (rtv_response,submitted_form))
+        
     context['email_address'] = submitted_form.get("email_address")
 
     try:
@@ -222,8 +265,9 @@ def submit(request):
         if customform:
             response = customform.submit(submitted_form)
             if response.get('error'):
+                mail_admins('customform error',response)
                 context['error'] = True
-                messages.error(request, _("Unknown error, please contact an admin"),
+                messages.error(request, _("Unknown error: the web administrators have been contacted."),
                     extra_tags=response)
 
     #send branding partner ids to context, for trackable social media links

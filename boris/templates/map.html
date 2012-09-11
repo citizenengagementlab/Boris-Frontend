@@ -88,7 +88,8 @@ h1.map {
 
         <div class="input text span-16">
             <!--[if IE]<label for="email_address">{% trans "Email Address" %}</label>[endif]-->
-            <input type="email" id="email_address" name="email_address" style="height:47px" placeholder="Email Address" />
+            <input type="email" id="email_address" name="email_address" style="height:47px" placeholder="Email Address"
+            {%if email_address%}value="{{email_address}}"{%endif%} />
         </div>
 
       <div class="span-4 last">

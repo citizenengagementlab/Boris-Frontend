@@ -1269,3 +1269,39 @@ html, body, #wrap, #main {
 .jqvmap-ajax_response {
   width: 100%;
   height: 500px; }
+
+/*added after metalabs, need to merge back*/
+fieldset.surveyquestions h2 { 
+  color: #797569;
+  font-size:14px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+fieldset.surveyquestions .questions label {
+  font-weight:normal;
+}
+
+fieldset.surveyquestions div.radios label {
+  display:inline-block;
+  font-weight:normal;
+}
+
+#footer {
+  text-align:left;
+}
+
+#footer nav > a:first-child {
+  padding-left:0px;
+}
+
+#footer div.container {
+  position:relative;
+}
+
+#footer img.ssl {
+  position:absolute;
+  left:449px;
+  top:1px;
+}
+
