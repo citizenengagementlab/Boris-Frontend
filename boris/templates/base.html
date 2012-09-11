@@ -21,6 +21,7 @@
 	<meta property="og:title" content="Register to Vote{%if customform%} with {{customform.name}}{%endif%}" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content="{{customform.facebook_share_text|default:'I just registered to vote and so can you!'}}"/>
+	<meta property="og:image" content="{% static 'images/flash-preview.gif'%}"/>
 
 </head>
 <body class="{% block body_class %}{% endblock body_class %}">
