@@ -49,7 +49,10 @@ def frontpage(request):
     return redirect(redirect_url)
 
 def static_redirect(request,path):
-    return redirect(settings.STATIC_URL+path)
+    redirect_url = settings.STATIC_URL+path
+    if request.GET:
+        redirect_url += "?"+urllib.urlencode(request.GET)
+    return redirect(redirect_url)
 
 def rtv_iframe_test(request):
     layout = request.GET.get('layout')
