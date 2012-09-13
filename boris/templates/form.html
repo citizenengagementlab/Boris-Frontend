@@ -6,6 +6,7 @@
 
 {% block scripts %}
 	<script src="{% static 'javascripts/form.js'%}" type="text/javascript"></script>
+  <script src="{% static 'javascripts/allCookies.js'%}" type="text/javascript"></script>
   <script type="text/javascript">
   $(document).ready(function() {
       //pull url parameters into fields
@@ -21,12 +22,15 @@
           $('input[name="'+field+'"]').val(decodeURIComponent(value)).trigger('change');
         }
       }
-    });
 
-  //force ajax requests to include csrf token
-  $.ajaxSetup({
-    data: {csrfmiddlewaretoken: '{% csrf_token %}' },
-});
+      //reset csrf token via cookie, in case it's been set incorrectly
+      if (navigator.cookieEnabled) {
+        current_token = $("input[name='csrfmiddlewaretoken']").val();
+        if ((!allCookies.hasItem('csrftoken')) || (current_token !== allCookies.getItem('csrftoken'))) {
+          allCookies.setItem('csrftoken',current_token);
+        }
+      }
+    });
   </script>
 {% endblock scripts %}
 
