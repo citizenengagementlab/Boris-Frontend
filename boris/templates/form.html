@@ -22,6 +22,11 @@
         }
       }
     });
+
+  //force ajax requests to include csrf token
+  $.ajaxSetup({
+    data: {csrfmiddlewaretoken: '{% csrf_token %}' },
+});
   </script>
 {% endblock scripts %}
 
