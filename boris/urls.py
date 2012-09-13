@@ -14,6 +14,11 @@ urlpatterns += patterns('',
     (r'^usps/',include('ziplookup.urls')),
 )
 
+#static file patterns to be compatible with old site
+urlpatterns += patterns('boris.views',
+    (r'^widget_loader\.js', 'static_redirect', {'path':'widgetloader/widget_loader.js'}),
+)
+
 admin.autodiscover()
 urlpatterns += patterns('',
     (r'^admin/', include(admin.site.urls)),
