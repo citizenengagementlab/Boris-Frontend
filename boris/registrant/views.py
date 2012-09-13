@@ -142,25 +142,27 @@ def submit(request):
     #use partner_tracking_id for referrals
     #TBD
 
-    #convert "on/off" to boolean values expected by api
-    booleans = ['first_registration','has_mailing_address',
+    #convert "on/off" to "boolean" values expected by api
+    booleans = ['us_citizen','first_registration','has_mailing_address',
                 'change_of_name','change_of_address',
                 'opt_in_sms','opt_in_email','opt_in_volunteer',
-                'partner_opt_in_sms','partner_opt_in_email','partner_opt_in_volunteer',
-                'us_citizen']
+                'partner_opt_in_sms','partner_opt_in_email','partner_opt_in_volunteer']
     for b in booleans:
         if submitted_form.has_key(b):
-            if submitted_form.get(b)[0] == "off":
-                submitted_form[b] = '0'
-            if submitted_form.get(b)[0] == "on":
-                submitted_form[b] = '1'
+            try:
+                submitted_form[b] = int(submitted_form[b])
+            except ValueError:
+                if submitted_form.get(b) == "off":
+                    submitted_form[b] = 0
+                if submitted_form.get(b) == "on":
+                    submitted_form[b] = 1
     
-    #check for required values that aren't defined in the post
+    #check for rocky required fields, fill them with defaults
     required_fields = ['opt_in_sms','opt_in_email','us_citizen','id_number']
     for r in required_fields:
         if not submitted_form.has_key(r):
             #and fill it in with zero
-            submitted_form[r] = '0'
+            submitted_form[r] = 0
 
     #strip spaces from id_number, because rocky doesn't like them
     if (' ' in submitted_form['id_number']):
