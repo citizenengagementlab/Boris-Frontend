@@ -162,7 +162,11 @@ def submit(request):
             #and fill it in with zero
             submitted_form[r] = '0'
 
-    #fill in none for blank id number
+    #strip spaces from id_number, because rocky doesn't like them
+    if (' ' in submitted_form['id_number']):
+        submitted_form['id_number'] = submitted_form['id_number'].replace(' ','')
+
+    #if id_number blank, fill it in with none
     if empty(submitted_form['id_number']):
         submitted_form['id_number'] = "none"
     
