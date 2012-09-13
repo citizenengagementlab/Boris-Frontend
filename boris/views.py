@@ -59,3 +59,7 @@ def rtv_iframe_test(request):
     context = {'layout':layout}
     return render_to_response('rtv_iframe_test.html',context,
                 context_instance=RequestContext(request))
+
+def p3p_policy(request):
+    return render_to_response('p3p.xml',{},
+                context_instance=RequestContext(request))

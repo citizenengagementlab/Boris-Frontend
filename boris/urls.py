@@ -5,6 +5,7 @@ from django.conf import settings
 urlpatterns = patterns('boris.views',
     (r'^$', 'frontpage'),
     (r'^rtv_iframe_test/$', 'rtv_iframe_test'),
+    (r'^w3c/p3p\.xml$', 'p3p_policy'),
 )
 
 urlpatterns += patterns('',

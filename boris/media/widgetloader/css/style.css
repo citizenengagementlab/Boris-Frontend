@@ -25,11 +25,11 @@
 }
 #ovr-widget {
   min-height: 100%;
-  width: 600px;
+  width: 620px;
   position: absolute;
   top: 0;
   left: 50%;
-  margin-left: -300px;
+  margin-left: -310px;
   border: none;
 }
 .ovr-overlay {

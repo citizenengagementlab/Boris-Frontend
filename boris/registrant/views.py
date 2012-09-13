@@ -162,14 +162,18 @@ def submit(request):
             #and fill it in with zero
             submitted_form[r] = '0'
 
-    #fill in none for blank id number
+    #strip spaces from id_number, because rocky doesn't like them
+    if (' ' in submitted_form['id_number']):
+        submitted_form['id_number'] = submitted_form['id_number'].replace(' ','')
+
+    #if id_number blank, fill it in with none
     if empty(submitted_form['id_number']):
         submitted_form['id_number'] = "none"
     
     #fill in missing city/state fields if we have zipcodes
     zip_fields = ['home','mailing','prev']
     for f in zip_fields:
-        zipcode = submitted_form.get(f+'_zip_code')
+        zipcode = submitted_form.get(f+'_zip_code').strip()
         city = submitted_form.get(f+'_city')
         state = submitted_form.get(f+'_state_id')
         if not empty(zipcode) and (empty(city) and empty(state)):
@@ -263,12 +267,13 @@ def submit(request):
             customform = None
 
         if customform:
-            response = customform.submit(submitted_form)
-            if response.get('error'):
-                mail_admins('customform error',response)
+            proxy_response = customform.submit(submitted_form)
+            if proxy_response.get('error'):
+                mail_admins('rocky error: custom form:  %s' % customform.name,
+                            "proxy_response: %s\nsubmitted_form:%s" % (proxy_response,submitted_form))
                 context['error'] = True
                 messages.error(request, _("Unknown error: the web administrators have been contacted."),
-                    extra_tags=response)
+                    extra_tags=proxy_response)
 
     #send branding partner ids to context, for trackable social media links
     context['partner'] = submitted_form.get('partner_id')
@@ -306,3 +311,7 @@ def wa_direct(request):
 def error(request):
     get_locale(request)
     return render_to_response('error.html', {}, context_instance=RequestContext(request))
+
+def csrf_failure(request, reason=""):
+    mail_admins('rocky error: csrf failure',"request: %s" % request)
+    return render_to_response('403.html', {}, context_instance=RequestContext(request))

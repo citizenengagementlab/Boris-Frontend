@@ -104,6 +104,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'sslify.middleware.SSLifyMiddleware',
     'registrant.middleware.MobileDetectionMiddleware',
+    'registrant.middleware.MiddlewareResponseInjectP3P',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -202,6 +203,8 @@ def get_cache():
         }
 
 CACHES = get_cache()
+
+CSRF_FAILURE_VIEW = 'registrant.views.csrf_failure'
 
 FACEBOOK_APP_SECRET = "4a81af510cab2129f90c0960b34d4b43"
 
