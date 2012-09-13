@@ -307,3 +307,7 @@ def wa_direct(request):
 def error(request):
     get_locale(request)
     return render_to_response('error.html', {}, context_instance=RequestContext(request))
+
+def csrf_failure(request, reason=""):
+    mail_admins('rocky error: csrf failure',"request: %s" % request)
+    return render_to_response('403.html', {}, context_instance=RequestContext(request))
