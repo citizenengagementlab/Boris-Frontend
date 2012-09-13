@@ -43,7 +43,7 @@
 {%else%}<a class="locale" tabindex="-1" href="?locale=en">In english</a>{%endif%}
 </div>
 
-    <form class="registration-form" method="post" action="/registrants/submit/" accept-charset="UTF-8">
+    <form class="registration-form" method="post" action="/registrants/submit/{%if has_partner%}?partner={{partner}}{%endif%}" accept-charset="UTF-8">
       {% csrf_token %}
       <fieldset class="name">
         <div class="row">
