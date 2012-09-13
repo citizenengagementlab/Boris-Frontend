@@ -30,9 +30,9 @@ $('a.button.facebook#facebook-app-share').click(function(){
     'media': [{
       "type": "flash", 
       //"swfsrc": "https://s3.amazonaws.com/rocky-boris-test/widgetloader/rtv_fb.swf?v="+(+new Date()), 
-      "swfsrc": window.location.origin+"/static/widgetloader/rtv_fb.swf"+fGet, 
+      "swfsrc": "https://"+window.location.hostname+"/static/widgetloader/rtv_fb.swf"+fGet, 
       //"imgsrc": "https://s3.amazonaws.com/rocky-boris-test/images/flash-preview.gif?v="+(+new Date()), 
-      "imgsrc": window.location.origin+"/static/images/flash-preview.gif", 
+      "imgsrc": "https://"+window.location.hostname+"/static/images/flash-preview.gif", 
       "width": "130",
       "height": "87",
       "expanded_width": "398",
