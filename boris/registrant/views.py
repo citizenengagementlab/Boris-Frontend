@@ -263,12 +263,13 @@ def submit(request):
             customform = None
 
         if customform:
-            response = customform.submit(submitted_form)
-            if response.get('error'):
-                mail_admins('customform error',response)
+            proxy_response = customform.submit(submitted_form)
+            if proxy_response.get('error'):
+                mail_admins('rocky error: custom form:  %s' % customform.name,
+                            "proxy_response: %s\nsubmitted_form:%s" % (proxy_response,submitted_form))
                 context['error'] = True
                 messages.error(request, _("Unknown error: the web administrators have been contacted."),
-                    extra_tags=response)
+                    extra_tags=proxy_response)
 
     #send branding partner ids to context, for trackable social media links
     context['partner'] = submitted_form.get('partner_id')
