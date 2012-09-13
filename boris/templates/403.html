@@ -1,0 +1,31 @@
+{%extends "base.html"%}
+
+{%block title%}There was an error submitting the form (403){%endblock title%}
+
+{%block styles%}
+	<style type="text/css">
+		div.dialog {
+			width: 25em;
+			padding: 0 4em;
+			margin: 4em auto 3em auto;
+			border: 1px solid #ccc;
+			border-right-color: #999;
+			border-bottom-color: #999;
+		}
+		h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+	</style>
+{%endblock styles%}
+
+{%block content%}
+  <div class="dialog">
+    <h1>There was an error submitting the form.</h1>
+    <p>
+      You might be trying to access a page from an expired or completed voter registration session.
+      If your session has expired, please return to <a href="http://register2.rockthevote.com">start a new voter registration</a>.
+    </p>
+    <p>
+      If you have already completed a voter registration application, please check your email inbox for a message
+      from Rock The Vote with a link where you can download your completed application form.
+    </p>
+  </div>
+{%endblock content%}
