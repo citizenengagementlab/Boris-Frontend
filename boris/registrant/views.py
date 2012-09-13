@@ -247,9 +247,8 @@ def submit(request):
         #also mail the admins to see if there's a persistent problem
         mail_admins('rocky error: validating %s' % rtv_response['error']['field_name'],
             "rtv_response: %s\nsubmitted_form:%s" % (rtv_response,submitted_form))
-        
-    context['email_address'] = submitted_form.get("email_address")
 
+    #check state id against list of valid abbreviations
     try:
         context['state_name'] = STATE_NAME_LOOKUP[submitted_form.get('home_state_id')]
     except KeyError:
@@ -288,14 +287,10 @@ def submit(request):
     #send branding partner ids to context, for trackable social media links
     context['partner'] = submitted_form.get('partner_id')
     context['source'] = submitted_form.get('partner_tracking_id')
-    context = get_branding(context)
+    context['email_address'] = submitted_form.get("email_address")
     #don't show partner for cel testing links
     if context['partner'] != 9937:
         context['has_partner'] = True
-
-    #TODO, what user id should we use?
-    #some hash of email and partner_id?
-    context['user_id'] = "TBD"
 
     if context.has_key('error'):
         return redirect('/registrants/error/')
