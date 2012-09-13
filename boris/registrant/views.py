@@ -257,24 +257,33 @@ def submit(request):
         context['error'] = True
         messages.error(request, _("Unrecognized state, please go back and try again."))
 
-    #if a partner, post to their api
-    if submitted_form.has_key('partner_id') and bool(submitted_form['opt_in_email']) == True:
-        if branding.get('cobrandform'):
-            customform = branding['cobrandform'].toplevel_org
-            submitted_form['cobrand'] = branding['cobrandform'].name
-        elif branding.get('customform'):
-            customform = branding['customform']
-        else:
-            customform = None
+    #get toplevel org for partner proxy submit
+    if branding.get('cobrandform'):
+        customform = branding['cobrandform'].toplevel_org
+        submitted_form['cobrand'] = branding['cobrandform'].name
+        #If customform and cobrand form, RTV and custom share main optin,
+        #so use opt_in_email for partner_proxy_signup
+        partner_proxy_signup = submitted_form['opt_in_email']
+    elif branding.get('customform'):
+        customform = branding['customform']
+        #If customform but not cobrand form, set partner_proxy_signup to partner_opt_in_email
+        partner_proxy_signup = submitted_form['opt_in_email']
+    else:
+        customform = None
+        partner_proxy_signup = None
 
-        if customform:
-            proxy_response = customform.submit(submitted_form)
-            if proxy_response.get('error'):
-                mail_admins('rocky error: custom form:  %s' % customform.name,
-                            "proxy_response: %s\nsubmitted_form:%s" % (proxy_response,submitted_form))
-                context['error'] = True
-                messages.error(request, _("Unknown error: the web administrators have been contacted."),
-                    extra_tags=proxy_response)
+    #if a custom form has endpoint, and we got user permission, post to the partner proxy
+    if customform and customform.list_signup_endpoint and partner_proxy_signup:
+        proxy_response = customform.submit(submitted_form)
+        if proxy_response.get('error'):
+            mail_admins('rocky error: custom form:  %s' % customform.name,
+                        "proxy_response: %s\nsubmitted_form:%s" % (proxy_response,submitted_form))
+            context['error'] = True
+            messages.error(request, _("Unknown error: the web administrators have been contacted."),
+                extra_tags=proxy_response)
+
+    #append branding to context, so partner logos appear in submit page
+    context.update(branding)
 
     #send branding partner ids to context, for trackable social media links
     context['partner'] = submitted_form.get('partner_id')
