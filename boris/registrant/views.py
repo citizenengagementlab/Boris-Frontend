@@ -189,7 +189,6 @@ def submit(request):
     #check for title and replace it if it's an invalid value
     if submitted_form.has_key('name_title'):
         title = submitted_form.get('name_title')
-        print "title",title
         if title not in ["Mr.", "Ms.", "Mrs.", "Sr.", "Sra.","Srta."]:
             submitted_form['name_title'] = "Mr." #guess, because we have to send valid data to API
 
