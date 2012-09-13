@@ -169,7 +169,7 @@ def submit(request):
     #fill in missing city/state fields if we have zipcodes
     zip_fields = ['home','mailing','prev']
     for f in zip_fields:
-        zipcode = submitted_form.get(f+'_zip_code')
+        zipcode = submitted_form.get(f+'_zip_code').strip()
         city = submitted_form.get(f+'_city')
         state = submitted_form.get(f+'_state_id')
         if not empty(zipcode) and (empty(city) and empty(state)):
