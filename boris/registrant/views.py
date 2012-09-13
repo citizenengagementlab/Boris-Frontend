@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
 from django.core.mail import mail_admins
+from django.views.decorators.csrf import csrf_exempt
 
 from proxy.views import rtv_proxy
 from registrant.utils import get_branding,empty
@@ -120,7 +121,8 @@ def register(request):
     
     return render_to_response('form.html',context,
                 context_instance=RequestContext(request))
-    
+ 
+@csrf_exempt #because sometimes cookies can't be set correctly by iframe
 def submit(request):
     "Submit the posted form to the Rocky API"
     get_locale(request)
