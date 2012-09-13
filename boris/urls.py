@@ -5,17 +5,13 @@ from django.conf import settings
 urlpatterns = patterns('boris.views',
     (r'^$', 'frontpage'),
     (r'^rtv_iframe_test/$', 'rtv_iframe_test'),
+    (r'^w3c/p3p\.xml$', 'p3p_policy'),
 )
 
 urlpatterns += patterns('',
     (r'^registrants/', include('registrant.urls')),
     (r'^rtv/', include('proxy.urls')),
     (r'^usps/',include('ziplookup.urls')),
-)
-
-#static file patterns to be compatible with old site
-urlpatterns += patterns('boris.views',
-    (r'^widget_loader\.js', 'static_redirect', {'path':'widgetloader/widget_loader.js'}),
 )
 
 admin.autodiscover()

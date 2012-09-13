@@ -104,6 +104,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'sslify.middleware.SSLifyMiddleware',
     'registrant.middleware.MobileDetectionMiddleware',
+    'registrant.middleware.MiddlewareResponseInjectP3P',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',

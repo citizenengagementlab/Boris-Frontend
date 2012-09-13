@@ -73,3 +73,13 @@ class MobileDetectionMiddleware(object):
             if params:
                 redirect_url += "?"+urllib.urlencode(params)
             return HttpResponseRedirect(redirect_url)
+
+
+P3P_COMPACT = "policyref=\"/w3c/p3p.xml\""
+class MiddlewareResponseInjectP3P(object):
+    def __init__(self):
+        self.process_response = self.inject
+
+    def inject(self, request, response):
+        response['P3P'] = P3P_COMPACT
+        return response
