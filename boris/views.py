@@ -29,20 +29,13 @@ def frontpage(request):
     #now everybody redirects to first step
     redirect_url = reverse('registrant.views.map')
 
-    #preserve the get parameters in redirect
+    #preserve  get parameters in redirect
     #to be backwards compatible with old rocky frontend
-    if request.GET.get('partner'):
-        params['partner'] = request.GET.get('partner')
-    if request.GET.get('source'):
-        params['source'] = request.GET.get('source')
-    if request.GET.get('email_address'):
-        params['email_address'] = request.GET.get('email_address')
-    if request.GET.get('facebook'):
-        params['facebook'] = request.GET.get('facebook')
-    if request.GET.get('state'):
+    for p in request.GET:
+        params[p] = request.GET.get(p)
+    if params.has_key('state'):
         #redirect to the form, not the map
         redirect_url = reverse('registrant.views.register')
-        params['state'] = request.GET.get('state')
 
     if params:
         redirect_url += "?"+urllib.urlencode(params)
