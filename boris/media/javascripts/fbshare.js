@@ -26,7 +26,7 @@ $('a.button.facebook#facebook-app-share').click(function(){
   var partner = (getParam('partner') != "") ? "?partner="+getParam('partner') : "";
   var pObj = {
     'name' : "Rock the Vote 2012",
-    'description' : "November will be here before you know it! Are you registered to vote? If not, now's the time! Register here - in 3 easy steps! - using Rock the Vote's online voter registration tool.",
+    'description' : "Register to vote in 3 easy steps using Rock the Vote's online voter registration tool!",
     'media': [{
       "type": "flash", 
       //"swfsrc": "https://s3.amazonaws.com/rocky-boris-test/widgetloader/rtv_fb.swf?v="+(+new Date()), 
