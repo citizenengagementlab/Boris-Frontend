@@ -37,8 +37,9 @@ $('a.button.facebook#facebook-app-share').click(function(){
       "height": "87",
       "expanded_width": "398",
       "expanded_height": "375"
-    }]
-    //'actions': [{ link: window.location.href, name: "RockTheVote.com" }]
+    }],
+    'href' : "https://register2.rockthevote.com/"
+    //, 'actions': [{ link: window.location.href, name: "RockTheVote.com" }]
   };
 
   FB.ui(
