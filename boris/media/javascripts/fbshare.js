@@ -23,22 +23,23 @@ window.fbAsyncInit = function() {
 
 $('a.button.facebook#facebook-app-share').click(function(){
   $b = $(this);
-  var fGet = (getParam('partner') != "") ? "?partner="+getParam('partner') : "";
+  var partner = (getParam('partner') != "") ? "?partner="+getParam('partner') : "";
   var pObj = {
     'name' : "Rock the Vote 2012",
-    'description' : "November will be here before you know it! Are you registered to vote? If not, now's the time! Register here - in 3 easy steps! - using Rock the Vote's online voter registration tool.",
+    'description' : "Register to vote in 3 easy steps using Rock the Vote's online voter registration tool!",
     'media': [{
       "type": "flash", 
       //"swfsrc": "https://s3.amazonaws.com/rocky-boris-test/widgetloader/rtv_fb.swf?v="+(+new Date()), 
-      "swfsrc": "https://"+window.location.hostname+"/static/widgetloader/rtv_fb.swf"+fGet, 
+      "swfsrc": "https://"+window.location.hostname+"/static/widgetloader/rtv_fb.swf"+partner, 
       //"imgsrc": "https://s3.amazonaws.com/rocky-boris-test/images/flash-preview.gif?v="+(+new Date()), 
       "imgsrc": "https://"+window.location.hostname+"/static/images/flash-preview.gif", 
       "width": "130",
       "height": "87",
       "expanded_width": "398",
       "expanded_height": "375"
-    }]
-    //'actions': [{ link: window.location.href, name: "RockTheVote.com" }]
+    }],
+    'href' : "https://register2.rockthevote.com/"+partner
+    //, 'actions': [{ link: window.location.href, name: "RockTheVote.com" }]
   };
 
   FB.ui(
