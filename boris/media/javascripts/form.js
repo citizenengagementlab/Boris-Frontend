@@ -40,6 +40,23 @@
     return requestAnimFrame(check);
   };
 
+  decodeURLParams = function() {
+    //pull url parameters into fields
+    var url_params = window.location.search.split('&');
+    for (var i in url_params) {
+      var p = url_params[i];
+      var field = p.split('=')[0].replace('?','');
+      var value = p.split('=')[1];
+      if (field == "name_title") {
+        $('select[name="name_title"] option[value="'+decodeURIComponent(value)+'"]').attr('selected','selected');
+        $('select[name="name_title"]').siblings('.fake-select').html(value);
+      } else {
+        $('input[name="'+field+'"]').val(decodeURIComponent(value)).trigger('change');
+      }
+    }
+  };
+
   check();
+  decodeURLParams();
 
 }).call(this);
