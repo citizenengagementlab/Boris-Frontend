@@ -1,0 +1,28 @@
+{% extends "form_direct.html" %}
+
+{%block add_state_iframe%}
+<script type="text/javascript">
+    function add_state_iframe() {
+      var lang = $('input#lang').val();
+      var fn = $('input#first_name').val();
+      var ln = $('input#last_name').val();
+      var sf = $('input#name_suffix').val();
+      var zip = ""; //no field in form for city / zip
+      var dob = $('input#date_of_birth').val();
+      $('#content').append('<iframe src="https://nvsos.gov/sosvoterservices/Registration/step1.aspx'+
+        '?source=rtv&utm_source=rtv&utm_medium=rtv&utm_campaign=rtv' +
+        '&lang='+lang+
+        '&fn='+fn+'&ln='+ln+'&sf='+sf+
+        '&zip='+zip+'&dob='+encodeURIComponent(dob)+
+        '" width="600" height="725"></iframe>');
+    }
+  </script>
+{%endblock%}
+ 
+{%block state_explanation%}
+<div id="state-explanation" class="explanation" style="display:none">
+{%blocktrans%}<p>You can complete your voter registration online with the state below. The Nevada Online Voter Application (NOVA) is provided by Nevada Secretary of State, Ross Miller, for registering Nevada citizens to vote, or to change their existing registration information. NOVA is also available <a href="https://nvsos.gov/sosvoterservices/Registration/step1.aspx?r=gov" target="_blank">here.</a></p>{%endblocktrans%}
+
+{%blocktrans%}<p>If your driver's license or state identification card is invalid or the state can't find or confirm your DMV record &emdash; don't worry &emdash; you can also <a href='javascript:redirectToRegularForm()'> finish your registration with Rock the Vote</a>. You will just have to print, sign, and mail it in.</p>{%endblocktrans%}
+</div>
+{%endblock%}

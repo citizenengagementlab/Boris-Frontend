@@ -17,6 +17,9 @@ from django.contrib.localflavor.us import us_states
 STATE_NAME_LOOKUP = dict(us_states.US_STATES)
 STATE_NAME_LOOKUP['DC'] = "DC" #monkey patch, because "District of Columbia doesn't fit"
 
+#states with direct submission forms
+DIRECT_SUBMIT_STATES = ['WA','NV']
+
 def get_locale(request):
     """Util method to determine locale from request. Checks session first, then get parameter.
     Returns 'en' or 'es', for use in context."""
@@ -80,7 +83,7 @@ def register(request):
         state = request.GET.get('state').upper()
 
         #check for direct submission state
-        #if state in ['WA'] and not request.GET.has_key('no_redirect'):
+        #if state in DIRECT_SUBMIT_STATES and not request.GET.has_key('no_redirect'):
         #    return redirect('/registrants/new/'+state.lower())
 
         #hit rtv_proxy for staterequirements
@@ -299,8 +302,19 @@ def submit(request):
     else:
         return render_to_response('submit.html', context, context_instance=RequestContext(request))
 
-def wa_direct(request):
-    "direct submission to WA state form"
+def direct_submit(request,state_abbr):
+    "direct submission to state forms"
+
+    #check for direct submit states
+    state = state_abbr.upper()
+    if not state in DIRECT_SUBMIT_STATES:
+        redirect_url = reverse('registrant.views.register')
+        params = request.GET.copy()
+        params['state'] = state
+        if params:
+            redirect_url += "?"+urllib.urlencode(params)
+        return redirect(redirect_url) #redirect to the regular form
+
     get_locale(request)
 
     context = {}
@@ -310,9 +324,9 @@ def wa_direct(request):
     if request.GET.get('source'):
         context['source'] = request.GET.get('source')
 
-    context['state_name'] = "Washington"
+    context['state_name'] = STATE_NAME_LOOKUP[state]
 
-    return render_to_response('form_wa_direct.html',context,
+    return render_to_response('form_%s_direct.html' % state.lower(),context,
             context_instance=RequestContext(request))
 
 def error(request):

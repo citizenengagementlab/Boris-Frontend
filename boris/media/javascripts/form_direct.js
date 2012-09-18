@@ -12,7 +12,8 @@ function redirectToRegularForm() {
    //serialize values input so far
   var formValues = $('form input[name!=csrfmiddlewaretoken]').serialize();
   //redirect to regular form
-  window.location.replace('/registrants/new/?state=WA&no_redirect&'+formValues);
+  var state = $('form.registration-form input#home_state_id').val();
+  window.location.replace('/registrants/new/?state='+state+'&no_redirect&'+formValues);
 }
 
 $(document).ready(function() {
@@ -28,20 +29,11 @@ $(document).ready(function() {
       //hide initial form
       $('form.registration-form').hide();
 
-      //add disclaimer
-      $('#content').append("<p class='explanation'>You can complete your voter registration online with Washington " +
-          "using the form below. If your driver's license or state identification card is invalid " +
-          "or the state can't find or confirm your DMV record, don't worry—you can also <a href='javascript:redirectToRegularForm()'>" +
-          "finish your registration with Rock the Vote</a>. You will just have to print, sign, and mail it in.</p>");
+      //show disclaimer
+      $('#state-explanation').show();
 
-      //add WA state iframe
-      var fn = $('input#first_name').val();
-      var ln = $('input#last_name').val();
-      var dob = $('input#date_of_birth').val();
-      $('#content').append('<iframe src="https://weiapplets.sos.wa.gov/myvote/myvote?'+
-        'language=en&amp;Org=RocktheVote&amp;'+
-        'firstname='+fn+'&amp;lastName='+ln+'&amp;DOB='+encodeURIComponent(dob)+
-        '" width="600" height="725"></iframe>');
+      //add state iframe
+      add_state_iframe(); //function defined in template, so we can reuse this file for multiple states
 
       //TODO:
       //submit partial registration to RTV for tracking
