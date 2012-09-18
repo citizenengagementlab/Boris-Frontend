@@ -228,7 +228,7 @@ button.button-primary {
         {% endcomment %}
         
         {% comment %} Hidden but Required Fields {% endcomment %}
-        <input type="hidden" name="lang" id="lang" value="{{LANGUAGE_CODE}}">
+        <input type="hidden" name="lang" id="lang" value="{{LANGUAGE_CODE|default:'en'}}">
         <input type="hidden" name="partner_id" value="{{ partner }}">
         {%if source%}<input type="hidden" name="source" value="{{ source }}">{%endif%}
         <button class="button button-primary has_license" tabindex="" type="submit">Submit my form online with the state</button>
