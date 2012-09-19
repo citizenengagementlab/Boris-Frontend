@@ -43,8 +43,9 @@ def map(request):
     if request.GET.get('clear_state'):
         print "clear state"
         print request.session.get('state')
+    if request.GET.get('clear_location'):
         request.session['state'] = None
-        print request.session.get('state')
+        request.session['home_zip_code'] = None
 
     #check for zipcode
     if request.session.get('home_zip_code'):
