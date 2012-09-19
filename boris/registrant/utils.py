@@ -1,5 +1,17 @@
 from proxy.models import CustomForm,CoBrandForm
 
+def get_locale(request):
+    """Util method to determine locale from request. Checks session first, then get parameter.
+    Returns 'en' or 'es', for use in context."""
+    if request.GET.get('locale'):
+        locale = request.GET['locale']
+        request.session['django_language'] = locale
+        return locale
+    elif request.session.has_key('django_language'):
+        return request.session['django_language']
+    else:
+        return "en"
+
 def get_branding(context):
     """Util method to get branding given partner id
     Returns dict with updated context"""

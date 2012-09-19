@@ -7,7 +7,7 @@ from django.core.mail import mail_admins
 from django.views.decorators.csrf import csrf_exempt
 
 from proxy.views import rtv_proxy
-from registrant.utils import get_branding,empty
+from registrant.utils import get_locale,get_branding,empty
 
 from ziplookup.models import ZipCode
 
@@ -19,18 +19,6 @@ STATE_NAME_LOOKUP['DC'] = "DC" #monkey patch, because "District of Columbia does
 
 #states with direct submission forms
 DIRECT_SUBMIT_STATES = ['WA','NV']
-
-def get_locale(request):
-    """Util method to determine locale from request. Checks session first, then get parameter.
-    Returns 'en' or 'es', for use in context."""
-    if request.GET.get('locale'):
-        locale = request.GET['locale']
-        request.session['django_language'] = locale
-        return locale
-    elif request.session.has_key('django_language'):
-        return request.session['django_language']
-    else:
-        return "en"
 
 def map(request):
     "Map for state select"
