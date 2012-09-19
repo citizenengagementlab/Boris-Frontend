@@ -245,13 +245,15 @@ def submit(request):
             context['error'] = True
             messages.error(request, rtv_response['error']['message'].lower(),
                 extra_tags=rtv_response['error']['field_name'].replace('_',' ').title())
+            #also mail the admins to see if there's a persistent problem
+            mail_admins('rocky error: validating %s' % rtv_response['error']['field_name'],
+                "rtv_response: %s\n\nsubmitted_form:%s" % (rtv_response,submitted_form))
         except KeyError:
             context['error'] = True
             messages.error(request, rtv_response['error'],
                 extra_tags="Rocky API")
-        #also mail the admins to see if there's a persistent problem
-        mail_admins('rocky error: validating %s' % rtv_response['error']['field_name'],
-            "rtv_response: %s\nsubmitted_form:%s" % (rtv_response,submitted_form))
+            mail_admins('rocky error: api issue',
+                "rtv_response: %s\n\nsubmitted_form:%s" % (rtv_response,submitted_form))
 
     #check state id against list of valid abbreviations
     try:
