@@ -145,7 +145,7 @@ function checkInfo(user){
         if ($('select[name="state"]').val() !== "Select State...") {
           $('form.state-form button').prop('disabled', false);
           if (getParam("autosubmit") == 'true' && getParam("autosubmitoverride") != 'true') {
-            $('form.state-form').submit();
+            //$('form.state-form').submit();
           }
         }
       }
