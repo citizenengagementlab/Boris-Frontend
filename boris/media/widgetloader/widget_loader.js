@@ -77,7 +77,7 @@ initializeWidget = function($) {
     return $close.on('click', function(e) {
       var close;
       e.preventDefault();
-      close = confirm("Close voter registration application?");
+      close = confirm("Close voter registration form?");
       if (close) {
         return $('.ovr-overlay, #ovr-container').remove();
       } else {
