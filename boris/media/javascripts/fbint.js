@@ -21,7 +21,8 @@ function preAuthView() {
   if (getParam('facebook') == 1) {
     var ind = window.location.search.indexOf('facebook'); 
     var qStr = window.location.search.slice(0,ind)+window.location.search.slice(ind+11);
-    pA.push(window.location.origin+qStr);
+    if (qStr === "?") qStr = "";
+    pA.push("https://"+window.location.host+qStr);
   } else {
     pA.push(window.location.href);
   }
@@ -144,7 +145,7 @@ function checkInfo(user){
         if ($('select[name="state"]').val() !== "Select State...") {
           $('form.state-form button').prop('disabled', false);
           if (getParam("autosubmit") == 'true' && getParam("autosubmitoverride") != 'true') {
-            $('form.state-form').submit();
+            //$('form.state-form').submit();
           }
         }
       }
