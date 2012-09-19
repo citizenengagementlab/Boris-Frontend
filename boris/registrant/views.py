@@ -7,7 +7,8 @@ from django.core.mail import mail_admins
 from django.views.decorators.csrf import csrf_exempt
 
 from proxy.views import rtv_proxy
-from registrant.utils import get_locale,get_branding,empty
+from registrant.utils import get_branding,empty
+from registrant.decorators import capture_locale
 
 from ziplookup.models import ZipCode
 
@@ -20,9 +21,9 @@ STATE_NAME_LOOKUP['DC'] = "DC" #monkey patch, because "District of Columbia does
 #states with direct submission forms
 DIRECT_SUBMIT_STATES = ['WA','NV']
 
+@capture_locale
 def map(request):
     "Map for state select"
-    get_locale(request)
 
     context = {}
     params = {}
@@ -70,9 +71,9 @@ def map(request):
     return render_to_response('map.html',context,
             context_instance=RequestContext(request))
 
+@capture_locale
 def register(request):
     "The full form, in a single page format"
-    locale = get_locale(request)
 
     context = {}
     #setup partner id based on get parameter
@@ -115,7 +116,7 @@ def register(request):
 
         #TODO: get language code from localeurl
 
-        staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':locale},
+        staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':request.LANGUAGE_CODE},
             '/api/v2/state_requirements.json')
         context['staterequirements'] = staterequirements
 
@@ -139,7 +140,6 @@ def register(request):
 @csrf_exempt #because sometimes cookies can't be set correctly by iframe
 def submit(request):
     "Submit the posted form to the Rocky API"
-    get_locale(request)
 
     if request.method != "POST":
         return redirect('/registrants/new/')
@@ -328,8 +328,6 @@ def direct_submit(request,state_abbr):
             redirect_url += "?"+urllib.urlencode(params)
         return redirect(redirect_url) #redirect to the regular form
 
-    get_locale(request)
-
     context = {}
     if request.GET.get('partner'):
         context['partner'] = request.GET.get('partner')
@@ -343,7 +341,6 @@ def direct_submit(request,state_abbr):
             context_instance=RequestContext(request))
 
 def error(request):
-    get_locale(request)
     return render_to_response('error.html', {}, context_instance=RequestContext(request))
 
 def csrf_failure(request, reason=""):

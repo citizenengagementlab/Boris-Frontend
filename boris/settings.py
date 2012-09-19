@@ -102,17 +102,23 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    #cache first
+    'django.middleware.cache.UpdateCacheMiddleware',
+    #then redirection
     'sslify.middleware.SSLifyMiddleware',
     'registrant.middleware.MobileDetectionMiddleware',
-    'registrant.middleware.MiddlewareResponseInjectP3P',
-    'django.middleware.cache.UpdateCacheMiddleware',
+    'registrant.middleware.ResponseInjectP3PMiddleware',
+    #then session & locale
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    #then django common
     'django.middleware.common.CommonMiddleware',
-    'facebook.middleware.FacebookCanvasMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    #then facebook
+    'facebook.middleware.FacebookCanvasMiddleware',
+    #and finally cache
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
