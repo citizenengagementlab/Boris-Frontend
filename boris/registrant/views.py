@@ -80,6 +80,7 @@ def register(request):
         #check for direct submission state
         #if state in DIRECT_SUBMIT_STATES and not request.GET.has_key('no_redirect'):
         #    return redirect('/registrants/new/'+state.lower())
+        #not ready yet, do not enable until NV & WA fully tested
 
         #hit rtv_proxy for staterequirements
         context['state'] = state
@@ -112,7 +113,7 @@ def register(request):
         if context['has_partner']:
             params['partner'] = context['partner']
         if request.GET.get('email_address'):
-                params['email_address'] = request.GET.get('email_address')
+            params['email_address'] = request.GET.get('email_address')
         if params:
             redirect_url += "?"+urllib.urlencode(params)
         return redirect(redirect_url) #redirect to the map
