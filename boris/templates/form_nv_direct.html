@@ -8,14 +8,20 @@
       var fn = $('input#first_name').val();
       var ln = $('input#last_name').val();
       var sf = $('input#name_suffix').val();
-      var zip = ""; //no field in form for city / zip
+      var zip = undefined; //no field in form for city / zip
       var dob = $('input#date_of_birth').val();
-      $('#content').append('<iframe src="https://nvsos.gov/sosvoterservices/Registration/step1.aspx'+
-        '?source=rtv&utm_source=rtv&utm_medium=rtv&utm_campaign=rtv' +
-        '&lang='+lang+
-        '&fn='+fn+'&ln='+ln+'&sf='+sf+
-        '&zip='+zip+'&dob='+encodeURIComponent(dob)+
-        '" width="600" height="725"></iframe>');
+
+      var iframe_url = 'https://nvsos.gov/sosvoterservices/Registration/step1.aspx'+
+        '?source=rtv&utm_source=rtv&utm_medium=rtv&utm_campaign=rtv'+
+        '&fn='+fn+'&ln='+ln+
+        '&lang='+lang+'&dob='+encodeURIComponent(dob);
+      if (sf !== undefined) {
+        iframe_url += '&sf='+sf;
+      }
+       if (zip !== undefined) {
+        iframe_url += '&zip='+zip;
+      }
+      $('#content').append('<iframe src="'+iframe_url+'" width="600" height="725"></iframe>');
     }
   </script>
 {%endblock%}
