@@ -210,6 +210,8 @@ def get_cache():
 
 CACHES = get_cache()
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+
 CSRF_FAILURE_VIEW = 'registrant.views.csrf_failure'
 
 FACEBOOK_APP_SECRET = "4a81af510cab2129f90c0960b34d4b43"

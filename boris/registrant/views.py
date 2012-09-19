@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from proxy.views import rtv_proxy
 from registrant.utils import get_branding,empty
-from registrant.decorators import capture_locale
+from registrant.decorators import capture_locale,capture_get_parameters
 
 from ziplookup.models import ZipCode
 
@@ -21,12 +21,14 @@ STATE_NAME_LOOKUP['DC'] = "DC" #monkey patch, because "District of Columbia does
 #states with direct submission forms
 DIRECT_SUBMIT_STATES = ['WA','NV']
 
+@capture_get_parameters(['email_address','home_zip_code','state'])
 @capture_locale
 def map(request):
     "Map for state select"
-
+    
     context = {}
     params = {}
+
     if request.GET.get('partner'):
         context['partner'] = request.GET.get('partner')
         context = get_branding(context)
@@ -38,39 +40,33 @@ def map(request):
         context['email_address'] = request.GET.get('email_address')
         params['email_address'] = context['email_address']
 
-    #check for shorter params and rename
-    if request.GET.get('email'):
-        context['email_address'] = request.GET.get('email')
-        params['email_address'] = context['email_address']
-    if request.GET.get('zip'):
-        context['home_zip_code'] = request.GET.get('zip')
-        params['home_zip_code'] = context['home_zip_code']
-
-    #if state, redirect to the form
-    if request.GET.get('state'):
-        params['state'] = request.GET.get('state')
-        redirect_url = reverse('registrant.views.register')
-        redirect_url += "?"+urllib.urlencode(params)
-        return redirect(redirect_url)
+    if request.GET.get('clear_state'):
+        print "clear state"
+        print request.session.get('state')
+        request.session['state'] = None
+        print request.session.get('state')
 
     #check for zipcode
-    if (request.GET.get('home_zip_code') or request.GET.get('zip')):
+    if request.session.get('home_zip_code'):
         #lookup state from zip
         try:
-            place = ZipCode.objects.get(zipcode=context['home_zip_code'])
+            place = ZipCode.objects.get(zipcode=request.session['home_zip_code'])
+            request.session['state'] = place.state
             params['state'] = place.state
         except ZipCode.DoesNotExist:
             pass
 
-        #but only redirect if we're told to by the flash widget
-        if request.GET.get('autosubmit') and not request.GET.get('autosubmitoverride'):
-            redirect_url = reverse('registrant.views.register')
-            redirect_url += "?"+urllib.urlencode(params)
-            return redirect(redirect_url)
+    #if state, redirect to the form
+    if request.session.get('state'):
+        params['state'] = request.session['state']
+        redirect_url = reverse('registrant.views.register')
+        redirect_url += "?"+urllib.urlencode(params)
+        return redirect(redirect_url)
 
     return render_to_response('map.html',context,
             context_instance=RequestContext(request))
 
+@capture_get_parameters(['email_address','home_zip_code','state'])
 @capture_locale
 def register(request):
     "The full form, in a single page format"

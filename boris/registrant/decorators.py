@@ -14,7 +14,8 @@ def capture_get_parameters(params):
         @wraps(view, assigned=available_attrs(view))
         def inner(request, *args, **kwargs):
             for p in params:
-                request.session[p] = request.GET.get(p)
+                if request.GET.get(p):
+                    request.session[p] = request.GET.get(p)
             return view(request, *args, **kwargs)
         return inner
     return decorator
@@ -41,25 +42,5 @@ def capture_locale(view):
             locale = "en"
         request.LANGUAGE_CODE = locale
         request.session['django_language'] = locale
-        return view(request, *args, **kwargs)
-    return inner
-
-def capture_partner(view):
-    """
-    Decorator to determine branding from request get parameters
-    Sets session partner and source
-
-    @capture_partner
-    def my_view(request):
-    # partner id now in request.session
-
-    """
-    @wraps(view)
-    def inner(request, *args, **kwargs):
-        if request.GET.get('partner'):
-            request.session['partner'] = request.GET.get('partner')
-        if request.GET.get('source'):
-            request.session['source'] = request.GET.get('source')
-
         return view(request, *args, **kwargs)
     return inner
