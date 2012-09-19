@@ -25,24 +25,10 @@ DIRECT_SUBMIT_STATES = ['WA','NV']
 @capture_locale
 def map(request):
     "Map for state select"
-    
+
     context = {}
-    params = {}
+    params = request.GET.copy()
 
-    if request.GET.get('partner'):
-        context['partner'] = request.GET.get('partner')
-        context = get_branding(context)
-        params['partner'] = context['partner']
-    if request.GET.get('source'):
-        context['source'] = request.GET.get('source')
-        params['source'] = context['source']
-    if request.GET.get('email_address'):
-        context['email_address'] = request.GET.get('email_address')
-        params['email_address'] = context['email_address']
-
-    if request.GET.get('clear_state'):
-        print "clear state"
-        print request.session.get('state')
     if request.GET.get('clear_location'):
         request.session['state'] = None
         request.session['home_zip_code'] = None
@@ -77,7 +63,7 @@ def register(request):
     if 'partner' in request.GET:
         context['has_partner'] = True
         context['partner'] = request.GET.get('partner')
-        context = get_branding(context)
+#        context = get_branding(context)
     else:
         #use CEL default
         context['partner'] = 9937
@@ -326,11 +312,11 @@ def direct_submit(request,state_abbr):
         return redirect(redirect_url) #redirect to the regular form
 
     context = {}
-    if request.GET.get('partner'):
-        context['partner'] = request.GET.get('partner')
-        context = get_branding(context)
-    if request.GET.get('source'):
-        context['source'] = request.GET.get('source')
+    #if request.GET.get('partner'):
+    #    context['partner'] = request.GET.get('partner')
+    #    #context = get_branding(context)
+    #if request.GET.get('source'):
+    #    context['source'] = request.GET.get('source')
 
     context['state_name'] = STATE_NAME_LOOKUP[state]
 
