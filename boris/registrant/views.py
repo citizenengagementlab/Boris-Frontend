@@ -49,12 +49,35 @@ def map(request):
         context['email_address'] = request.GET.get('email_address')
         params['email_address'] = context['email_address']
 
+    #check for shorter params and rename
+    if request.GET.get('email'):
+        context['email_address'] = request.GET.get('email')
+        params['email_address'] = context['email_address']
+    if request.GET.get('zip'):
+        context['home_zip_code'] = request.GET.get('zip')
+        params['home_zip_code'] = context['home_zip_code']
+
     #if state, redirect to the form
     if request.GET.get('state'):
         params['state'] = request.GET.get('state')
         redirect_url = reverse('registrant.views.register')
         redirect_url += "?"+urllib.urlencode(params)
         return redirect(redirect_url)
+
+    #check for zipcode
+    if (request.GET.get('home_zip_code') or request.GET.get('zip')):
+        #lookup state from zip
+        try:
+            place = ZipCode.objects.get(zipcode=context['home_zip_code'])
+            params['state'] = place.state
+        except ZipCode.DoesNotExist:
+            pass
+
+        #but only redirect if we're told to by the flash widget
+        if request.GET.get('autosubmit') and not request.GET.get('autosubmitoverride'):
+            redirect_url = reverse('registrant.views.register')
+            redirect_url += "?"+urllib.urlencode(params)
+            return redirect(redirect_url)
 
     return render_to_response('map.html',context,
             context_instance=RequestContext(request))
