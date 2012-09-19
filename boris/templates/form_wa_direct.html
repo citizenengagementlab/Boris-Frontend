@@ -1,4 +1,5 @@
 {% extends "form_direct.html" %}
+{% load i18n %} 
 
 {%block add_state_iframe%}
 <script type="text/javascript">
@@ -16,7 +17,7 @@
  
 {%block state_explanation%}
 <div id="state-explanation" class="explanation" style="display:none">
-{%blocktrans%}<p>You can complete your voter registration online with the Washington below.</p>{%endblocktrans%}
-{%blocktrans%}<p>If your driver's license or state identification card is invalid or the state can't find or confirm your DMV record, don't worry—you can also <a href='javascript:redirectToRegularForm()'> finish your registration with Rock the Vote</a>. You will just have to print, sign, and mail it in.</p>{%endblocktrans%}
+<p>{%blocktrans%}You can complete your voter registration online with the Washington below.{%endblocktrans%}</p>
+<p>{%blocktrans%}If your driver's license or state identification card is invalid or the state can't find or confirm your DMV record, don't worry—you can also <a href='javascript:redirectToRegularForm()'> finish your registration with Rock the Vote</a>. You will just have to print, sign, and mail it in.{%endblocktrans%}</p>
 </div>
 {%endblock%}
