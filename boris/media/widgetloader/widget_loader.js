@@ -102,5 +102,5 @@ if (typeof jQuery === "undefined") {
 } else if (isVersion(jQuery.fn.jquery,"<","1.7")) {
   injectjQuery();
 } else {
-  initializeWidget();
+  initializeWidget(jQuery);
 }
