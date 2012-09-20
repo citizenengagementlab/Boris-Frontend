@@ -42,7 +42,8 @@ def rtv_proxy(method, values, url):
             #that munges the brackets, quote_plus the values and do &-join manually
             data = []
             for (k,v) in values.items():
-                data.append('registration[%s]=%s' % (k,urlquote_plus(v)))
+                v_s = unicode(v).strip() #strip spaces, because rocky doesn't like them
+                data.append('registration[%s]=%s' % (k,urlquote_plus(v_s)))
             data = "&".join(data)
         else:
             data = urllib.urlencode(values)
