@@ -177,8 +177,7 @@ def submit(request):
     for f in zip_fields:
         zipcode = submitted_form.get(f+'_zip_code').strip()
         city = submitted_form.get(f+'_city')
-        state = submitted_form.get(f+'_state_id')
-        if not empty(zipcode) and (empty(city) and empty(state)):
+        if empty(city) and not empty(zipcode):
             try:
                 place = ZipCode.objects.get(zipcode=zipcode)
                 submitted_form[f+'_city'] = place.city.lower().title()
