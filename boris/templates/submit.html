@@ -92,7 +92,7 @@ if (1) {
 
       <a class="button facebook" id="facebook-app-share" href="javascript:void(0);">Facebook</a>
 
-      <a class="button twitter" href="http://twitter.com/home?status={{customform.twitter_share_text|default:'I just registered to vote and so can you!'|urlencode}}+https%3A%2F%2Fregister2.rockthevote.com%2F{%if has_partner%}%3Fpartner%3D{{partner}}{%endif%}" target="_blank">Twitter</a>
+      <a class="button twitter" href="http://twitter.com/home?status={{customform.twitter_share_text|default:'I just registered to vote and so can you!'|urlencode}}+{%if has_partner%}https%3A%2F%2Fregister2.rockthevote.com%2F%3Fpartner%3D{{partner}}{%else%}http%3A%2F%2Frtvote.com%2FQnjESN{%endif%}" target="_blank">Twitter</a>
     </div>
   </div>
 </section>
