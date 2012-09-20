@@ -22,10 +22,13 @@ def rtv_proxy_view(request,url):
             response['status'] = 200
         else:
             response['status'] = 404
-    if response.has_key('error'):
-        status = response['status']
-    else:
-        status = 200
+    try:
+        if response.has_key('error'):
+            status = response['status']
+        else:
+            status = 200
+    except UnboundLocalError:
+        response = {'error':'unknown rtv proxy error'}
     return HttpResponse(json.dumps(response),mimetype="application/json",status=status)
 
 def rtv_proxy(method, values, url):
