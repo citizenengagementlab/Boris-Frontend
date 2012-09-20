@@ -21,6 +21,9 @@ STATE_NAME_LOOKUP['DC'] = "DC" #monkey patch, because "District of Columbia does
 #states with direct submission forms
 DIRECT_SUBMIT_STATES = ['WA','NV']
 
+#if the submission is made using these partner ids, do not display custom branding
+DEFAULT_PARTNER_IDS = [1,9937]
+
 @capture_get_parameters(['email_address','home_zip_code','state'])
 @capture_locale
 def map(request):
@@ -289,9 +292,10 @@ def submit(request):
     context['partner'] = submitted_form.get('partner_id')
     context['source'] = submitted_form.get('partner_tracking_id')
     context['email_address'] = submitted_form.get("email_address")
-    #don't show partner for cel testing links
-    if context['partner'] != 9937:
-        context['has_partner'] = True
+
+    #don't show partner for testings partner ids
+    if context['partner'] in DEFAULT_PARTNER_IDS:
+        context['has_partner'] = False
 
     if context.has_key('error'):
         return redirect('/registrants/error/')
