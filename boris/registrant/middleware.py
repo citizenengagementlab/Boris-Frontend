@@ -5,6 +5,8 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 import re
 import urllib
+from registrant.utils import removeNonAscii
+
 
 class MobileDetectionMiddleware(object):
     user_agents_test_match = (
@@ -67,9 +69,9 @@ class MobileDetectionMiddleware(object):
             redirect_url = "http://mobile.rockthevote.com"
             params = {}
             if request.GET.get('partner'):
-                params['partner'] = request.GET.get('partner')
+                params['partner'] = removeNonAscii(request.GET.get('partner'))
             if request.GET.get('source'):
-                params['source'] = request.GET.get('source')
+                params['source'] = removeNonAscii(request.GET.get('source'))
             if params:
                 redirect_url += "?"+urllib.urlencode(params)
             return HttpResponseRedirect(redirect_url)

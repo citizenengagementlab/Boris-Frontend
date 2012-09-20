@@ -36,3 +36,6 @@ def empty(the_list):
             return True
     except IndexError:
         return False
+
+def removeNonAscii(s):
+    return "".join(i for i in s if ord(i)<128)

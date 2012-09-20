@@ -2,12 +2,13 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 
 from os.path import join
 import pygeoip
 import urllib
 
-from django.views.decorators.csrf import csrf_exempt
+from registrant.utils import removeNonAscii
 
 @csrf_exempt
 def frontpage(request):
@@ -32,7 +33,7 @@ def frontpage(request):
     #preserve  get parameters in redirect
     #to be backwards compatible with old rocky frontend
     for p in request.GET:
-        params[p] = request.GET.get(p)
+        params[p] = removeNonAscii(request.GET.get(p))
     if params.has_key('state'):
         #redirect to the form, not the map
         redirect_url = reverse('registrant.views.register')
