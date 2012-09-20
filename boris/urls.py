@@ -17,6 +17,7 @@ urlpatterns += patterns('',
 #static file patterns to be compatible with old site
 urlpatterns += patterns('boris.views',
     (r'^widget_loader\.js', 'static_redirect', {'path':'widgetloader/widget_loader.js'}),
+    (r'^widget_loader\.css', 'static_redirect', {'path':'widgetloader/css/style.css'}),
 )
 
 admin.autodiscover()

@@ -53,7 +53,7 @@ isVersion = function(left, oper, right) {
 initializeWidget = function($) {
   var head, ovrCss, registrationLinks;
   ovrCss = document.createElement("link");
-  ovrCss.href = 'https://s3.amazonaws.com/register2.rockthevote.com/widgetloader/css/style.css';
+  ovrCss.href = 'https://register2.rockthevote.com/widget_loader.css';
   ovrCss.rel = "stylesheet";
   ovrCss.type = "text/css";
   head = document.getElementsByTagName("head")[0];
