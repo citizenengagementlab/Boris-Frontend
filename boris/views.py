@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response,redirect
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 from os.path import join
 import pygeoip
@@ -43,7 +44,8 @@ def frontpage(request):
     return redirect(redirect_url)
 
 def static_redirect(request,path):
-    redirect_url = settings.STATIC_URL+path
+    redirect_url = staticfiles_storage.url(path)
+    print redirect_url
     if request.GET:
         redirect_url += "?"+urllib.urlencode(request.GET)
     return redirect(redirect_url)
