@@ -290,7 +290,7 @@
           </div>
         {%else%}
           {% comment %} Neither custom nor cobrand, use the default RTV questions for testing {% endcomment %}
-          {% comment %}
+
           <h2>{% trans "Survey Questions (optional)"%}</h2>
           <div class="input questions">
             <div class="input span-12">
@@ -304,7 +304,7 @@
               <div class="question-hint tooltip">{% trans "Optional" %}</div>
             </div>
           </div>
-          {% endcomment %}
+          {% comment %}
           <!-- New voter survey layout, for testing -->
           <h2>{% trans "Why are you voting? (optional)"%}</h2>
           <div class="row">
@@ -329,6 +329,7 @@
               <label for="opt_in_activism_email">{% trans "I want to act on important issues I care about" %}</label>
             </div>
           </div>
+          {% endcomment %}
         {%endif%}
       </fieldset>
 
