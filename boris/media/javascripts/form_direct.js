@@ -1,8 +1,8 @@
 function showStateRegContinueButtons() {
-  if ($("input:radio[name='registrant[has_state_license]']:checked").val()=='1') {
+  if ($("input#registrant_has_state_license_1:checked").val()=='1') {
       $('.has_no_license').hide();
       $('.has_license').show();
-  } else if ($("input:radio[name='registrant[has_state_license]']:checked").val()=='0') {
+  } else if ($("input#registrant_has_state_license_1:checked").val()=='0') {
       $('.has_license').hide();
       $('.has_no_license').show();
   }
@@ -10,10 +10,36 @@ function showStateRegContinueButtons() {
 
 function redirectToRegularForm() {
    //serialize values input so far
-  var formValues = $('form input[name!=csrfmiddlewaretoken]').serialize();
+  var formValues = $('form input[name!=csrfmiddlewaretoken], form select').serialize();
   //redirect to regular form
   var state = $('form.registration-form input#home_state_id').val();
   window.location.replace('/registrants/new/?state='+state+'&no_redirect&'+formValues);
+}
+
+function submitPartialToRocky() {
+  //submit partial registration to RTV for tracking
+  var formValues = $('form input[name!=csrfmiddlewaretoken], form select').serialize();
+  var submitURL = $('form').attr('action');
+  $.ajax({
+    type:'POST',
+    url:submitURL,
+    data: formValues,
+    success: continueToStateForm,
+    error: function() {
+      console.log('error');
+    }
+  });
+}
+
+function continueToStateForm() {
+  //hide initial form
+  $('form.registration-form').hide();
+
+  //show state explanation
+  $('.explanation#state').show();
+
+  //function defined in template, so we can reuse this file for multiple states
+  add_state_iframe();
 }
 
 $(document).ready(function() {
@@ -25,19 +51,9 @@ $(document).ready(function() {
   $('form.registration-form').submit(function(event) {
     event.preventDefault(); //don't actually submit the form
 
-    if ($("input:radio[name='registrant[has_state_license]']:checked").val()=='1') {
-      //hide initial form
-      $('form.registration-form').hide();
-
-      //show disclaimer
-      $('#state-explanation').show();
-
-      //add state iframe
-      add_state_iframe(); //function defined in template, so we can reuse this file for multiple states
-
-      //TODO:
-      //submit partial registration to RTV for tracking
-    } else if ($("input:radio[name='registrant[has_state_license]']:checked").val()=='0') {
+    if ($("input#registrant_has_state_license_1:checked").val()=='1') {
+      submitPartialToRocky();
+    } else if ($("input#registrant_has_state_license_1:checked").val()=='0') {
        redirectToRegularForm();
     }
 

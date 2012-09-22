@@ -290,6 +290,7 @@
           </div>
         {%else%}
           {% comment %} Neither custom nor cobrand, use the default RTV questions for testing {% endcomment %}
+          {% comment %}
           <h2>{% trans "Survey Questions (optional)"%}</h2>
           <div class="input questions">
             <div class="input span-12">
@@ -303,22 +304,31 @@
               <div class="question-hint tooltip">{% trans "Optional" %}</div>
             </div>
           </div>
-{% comment %}
+          {% endcomment %}
           <!-- New voter survey layout, for testing -->
           <h2>{% trans "Why are you voting? (optional)"%}</h2>
-          <div class="input questions span-24 radios">
-            <input id="question1" name="survey_answer_1" type="radio" value="economy"/>
-            <label for="question1">Economy</label>
-            <input id="question2" name="survey_answer_1" type="radio" value="education"/>
-            <label for="question2">Education</label>
-            <input id="question3" name="survey_answer_1" type="radio" value="womens-rights"/>
-            <label for="question3">Womens Rights</label>
-            <input id="question4" name="survey_answer_1" type="radio" value="civil-rights"/>
-            <label for="question4">Civil Rights</label>
-            <input id="question5" name="survey_answer_1" type="radio" value="climate-change"/>
-            <label for="question5">Climate Change</label>
+          <div class="row">
+            <div class="input questions span-24 radios">
+              <input id="question1" name="survey_answer_1" type="radio" value="economy"/>
+              <label for="question1">Economy</label>
+              <input id="question2" name="survey_answer_1" type="radio" value="education"/>
+              <label for="question2">Education</label>
+              <input id="question3" name="survey_answer_1" type="radio" value="womens-rights"/>
+              <label for="question3">Womens Rights</label>
+              <input id="question4" name="survey_answer_1" type="radio" value="civil-rights"/>
+              <label for="question4">Civil Rights</label>
+              <input id="question5" name="survey_answer_1" type="radio" value="climate-change"/>
+              <label for="question5">Climate Change</label>
+            </div>
+            <!--<div class="input span-8">
+              <input id="question_other" name="survey_answer_1" type="text" placeholder="other"/>
+              <div class="question-hint tooltip">{% trans "Optional" %}</div>
+            </div>-->
+            <div class="input checkbox span-14">
+              <input id="opt_in_activism_email" name="opt_in_activism_email" value="1" type="checkbox" />
+              <label for="opt_in_activism_email">{% trans "I want to act on important issues I care about" %}</label>
+            </div>
           </div>
-{% endcomment %}
         {%endif%}
       </fieldset>
 
@@ -404,9 +414,6 @@
           </div>
           {% endcomment %}
         </div>
-        {% comment %} Hidden field, default to true
-        <input id="opt_in_email" name="opt_in_email" value="1" type="hidden" />
-        {% endcomment %}
         
         {% comment %} Hidden but Required Fields {% endcomment %}
         <input type="hidden" name="lang" id="lang" value="{{LANGUAGE_CODE}}">

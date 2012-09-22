@@ -13,14 +13,24 @@
 
 {%block styles%}
 <style>
-p.explanation {
-  color:#2F9E00;
+.explanation {
   font-weight:bold;
   padding:20px;
   background-color:#E4E4E4;
 }
+.explanation#eligible {
+  color:#2F9E00;
+}
+
+.explanation#state {
+  margin-bottom:10px;
+}
 button.button-primary {
   width:250px;
+}
+
+.input.pushdown {
+  margin-top:20px;
 }
 
 .input.one-line input {
@@ -47,7 +57,7 @@ button.button-primary {
 {%else%}<a class="locale" tabindex="-1" href="?locale=en">In english</a>{%endif%}
 </div>
 
-    <form class="registration-form" method="post" action="" accept-charset="UTF-8">
+    <form class="registration-form" method="post" action="/registrants/submit/{{state}}/" accept-charset="UTF-8">
       {% csrf_token %}
       <fieldset class="name">
         <div class="row">
@@ -86,17 +96,28 @@ button.button-primary {
           </div>
         </div>
 
+      </fieldset>
+
+      <fieldset>
         <div class="row">
-          <div class="input checkbox span-8">
-            <input required checked id="us_citizen" name="us_citizen" value="1" type="checkbox" />
-            <label for="us_citizen">{% trans "I am a U.S. Citizen" %}</label>
+          <div class="input text span-12">
+            <a class="incorrect-location" tabindex="-1" href="../map/?clear_location=true&{%if has_partner%}&partner={{partner}}{%endif%}">{% trans "Not in"%} {{ state }}?</a>
+            <label for="home_zip_code">{% trans "Zip Code" %}</label>
+            <input required id="home_zip_code" name="home_zip_code" type="text" />
+            <div class="home_zip_code-hint tooltip">{% trans "Enter a valid 5 digit zip code."%}</div>
           </div>
 
-          <div class="input text prepend-4 span-8 last one-line">
+          <div class="input text span-8">
               <label for="date_of_birth">{% trans "Birthdate" %}</label>
               <input required placeholder="MM/DD/YYYY" id="date_of_birth" name="date_of_birth" type="text" />
               <div class="date_of_birth-hint tooltip">{% trans "Enter your birthdate in MM/DD/YYYY format."%}</div>
           </div>
+
+          <div class="input checkbox span-4 pushdown last">
+            <input required checked id="us_citizen" name="us_citizen" value="1" type="checkbox" />
+            <label for="us_citizen">{% trans "I am a U.S. Citizen" %}</label>
+          </div>
+
         </div>
       </fieldset>
 
@@ -127,15 +148,15 @@ button.button-primary {
         <div class="row">
           <div class="input text prepend-2 span-22">
             <label for="registrant_has_state_license_1">
-              <input checked="checked" id="registrant_has_state_license_1" name="registrant[has_state_license]" type="radio" value="1">I have a current {{state_abbr}} state identification card or driver's license
+              <input checked="checked" id="registrant_has_state_license_1" name="has_state_license" type="radio" value="1">I have a current {{state}} state identification card or driver's license
             </label>
             <div class="has_license span-20">
-              <p class="explanation">You may be eligible to finish your voter registration using the {{state_name}} online voter registration system.</p>
+              <p class="explanation" id="eligible">You may be eligible to finish your voter registration using the {{state_name}} online voter registration system.</p>
             </div>
           </div>
           <div class="input text prepend-2 span-22">
             <label for="registrant_has_state_license_0">
-              <input id="registrant_has_state_license_0" name="registrant[has_state_license]" type="radio" value="0">I do not have a current {{state_abbr}} state identification card or driver's license
+              <input id="registrant_has_state_license_0" name="has_state_license" type="radio" value="0">I do not have a current {{state}} state identification card or driver's license
             </label>
           </div>
         </div>
@@ -229,7 +250,7 @@ button.button-primary {
         
         {% comment %} Hidden but Required Fields {% endcomment %}
         <input type="hidden" name="lang" id="lang" value="{{LANGUAGE_CODE|default:'en'}}">
-        <input type="hidden" name="partner_id" value="{{ partner }}">
+        <input type="hidden" name="partner_id" value="{{ partner|default:'1' }}">
         {%if source%}<input type="hidden" name="source" value="{{ source }}">{%endif%}
         <button class="button button-primary has_license" tabindex="" type="submit">Submit my form online with the state</button>
         <button class="button button-primary has_no_license" tabindex="" type="submit">Register with Rock the Vote</button>
@@ -237,7 +258,7 @@ button.button-primary {
     </form>
 
 {%block state_explanation%}
-<div id="state-explanation" class="explanation" style="display:none">
+<div id="state" class="explanation" style="display:none">
 <p>{%blocktrans%}You can complete your voter registration online with the the state below.{%endblocktrans%}</p>
 <p>{%blocktrans%}If your driver's license or state identification card is invalid or the state can't find or confirm your DMV record, don't worry—you can also <a href='javascript:redirectToRegularForm()'> finish your registration with Rock the Vote</a>. You will just have to print, sign, and mail it in.{%endblocktrans%}</p>
 </div>

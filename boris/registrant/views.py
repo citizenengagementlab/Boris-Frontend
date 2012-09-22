@@ -1,5 +1,6 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
+from django.http import HttpResponse,HttpResponseServerError
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
@@ -12,6 +13,7 @@ from registrant.decorators import capture_locale,capture_get_parameters
 
 from ziplookup.models import ZipCode
 
+import json
 import urllib
 
 from django.contrib.localflavor.us import us_states
@@ -181,11 +183,13 @@ def submit(request):
         zipcode = submitted_form.get(f+'_zip_code').strip()
         city = submitted_form.get(f+'_city')
         if empty(city) and not empty(zipcode):
+            print "lookup city from",zipcode
             try:
                 place = ZipCode.objects.get(zipcode=zipcode)
                 submitted_form[f+'_city'] = place.city.lower().title()
                 submitted_form[f+'_state_id'] = place.state
-            except ZipCode.DoesNotExist:
+            except (ZipCode.DoesNotExist,ValueError,IndexError):
+                print "error"
                 pass
     #this can happen if the user has to go back and resubmit the form, but the zipcode lookup js doesn't re-run
     #should probably also fix this client side...
@@ -302,8 +306,8 @@ def submit(request):
     else:
         return render_to_response('submit.html', context, context_instance=RequestContext(request))
 
-def direct_submit(request,state_abbr):
-    "direct submission to state forms"
+def register_direct(request,state_abbr):
+    "direct registration via state website"
 
     #check for direct submit states
     state = state_abbr.upper()
@@ -316,16 +320,53 @@ def direct_submit(request,state_abbr):
         return redirect(redirect_url) #redirect to the regular form
 
     context = {}
-    #if request.GET.get('partner'):
-    #    context['partner'] = request.GET.get('partner')
-    #    #context = get_branding(context)
-    #if request.GET.get('source'):
-    #    context['source'] = request.GET.get('source')
-
+    context['state'] = state
     context['state_name'] = STATE_NAME_LOOKUP[state]
 
     return render_to_response('form_%s_direct.html' % state.lower(),context,
             context_instance=RequestContext(request))
+
+@csrf_exempt
+def submit_direct(request,state_abbr):
+    "save direct info in Rocky, returns json"
+    if not request.method == "POST":
+        return HttpResponse(json.dumps({'error':'incorrect method','message':'this url expects POST'}))
+
+    submitted_form = request.POST.copy()
+
+    #remove inputs that we needed, but the api will reject
+    remove_inputs = ['csrfmiddlewaretoken','facebook','has_state_license','name_suffix']
+    for t in remove_inputs:
+        if submitted_form.has_key(t):
+            submitted_form.pop(t)
+
+    #rename source to source_tracking_id as per api
+    if 'source' in submitted_form:
+        submitted_form['source_tracking_id'] = submitted_form.pop('source')[0]
+
+    #and add the ones it does
+    submitted_form['home_state_id'] = state_abbr
+    submitted_form['send_confirmation_reminder_emails'] = '1'
+
+    #check for title and replace it if it's an invalid value
+    if submitted_form.has_key('name_title'):
+        title = submitted_form.get('name_title')
+        if title not in ["Mr.", "Ms.", "Mrs.", "Sr.", "Sra.","Srta."]:
+            submitted_form['name_title'] = "Mr." #guess, because we have to send valid data to API
+
+    #check for suffix and clear it if it's an invalid value
+    if submitted_form.has_key('name_suffix'):
+        suffix = submitted_form.get('name_suffix')
+        if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
+            submitted_form['name_suffix'] = ""
+
+    #submit to rocky
+    rtv_response = rtv_proxy('POST',submitted_form,'/api/v2/gregistrations.json')
+    print rtv_response
+    if rtv_response.has_key('error'):
+        return HttpResponseServerError(rtv_response)
+
+    return HttpResponse('OK')
 
 def error(request):
     return render_to_response('error.html', {}, context_instance=RequestContext(request))
