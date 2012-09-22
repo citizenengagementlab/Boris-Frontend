@@ -183,13 +183,11 @@ def submit(request):
         zipcode = submitted_form.get(f+'_zip_code').strip()
         city = submitted_form.get(f+'_city')
         if empty(city) and not empty(zipcode):
-            print "lookup city from",zipcode
             try:
                 place = ZipCode.objects.get(zipcode=zipcode)
                 submitted_form[f+'_city'] = place.city.lower().title()
                 submitted_form[f+'_state_id'] = place.state
             except (ZipCode.DoesNotExist,ValueError,IndexError):
-                print "error"
                 pass
     #this can happen if the user has to go back and resubmit the form, but the zipcode lookup js doesn't re-run
     #should probably also fix this client side...
@@ -362,7 +360,6 @@ def submit_direct(request,state_abbr):
 
     #submit to rocky
     rtv_response = rtv_proxy('POST',submitted_form,'/api/v2/gregistrations.json')
-    print rtv_response
     if rtv_response.has_key('error'):
         return HttpResponseServerError(rtv_response)
 
