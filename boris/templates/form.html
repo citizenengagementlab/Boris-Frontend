@@ -355,7 +355,7 @@
                   {%if customform.email_optin_text%}{{customform.email_optin_text}}
                     {%else%}{% trans "Receive Email Updates from" %} {{customform.name}}.{%endif%}
                   {%if customform.privacy_policy_link%}
-                    <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({{customform.name}} {% trans "privacy policy"%})</a></span>
+                    <span class="subtle"><a href="{{customform.privacy_policy_link}}" target="_blank">({% trans "privacy policy"%})</a></span>
                   {%endif%}
                 </label>
               {%endif%}
@@ -401,7 +401,7 @@
               {%if cobrandform.email_optin_text%}{{cobrandform.email_optin_text}}
                 {%else%}{% trans "Receive Email Updates from"%} {{cobrandform.name}}.{%endif%}
               {%if cobrandform.privacy_policy_link%}
-                <span class="subtle"><a href="{{cobrandform.privacy_policy_link}}" target="_blank">({{cobrandform.name}} {% trans "privacy policy"%})</a></span>
+                <span class="subtle"><a href="{{cobrandform.privacy_policy_link}}" target="_blank">({% trans "privacy policy"%})</a></span>
               {%endif%}
             </label>
           </div>
