@@ -19,7 +19,7 @@
  
 {%block state_eligible%}
 <label for="registrant_has_state_license_1">
-    <input checked="checked" id="registrant_has_state_license_1" name="has_state_license" type="checkbox" value="1">I am a resident of {{state}}, living in the United States.
+    <input checked="checked" id="registrant_has_state_license_1" name="has_state_license" type="checkbox" value="1">{%blocktrans%}I am a resident of {{state}}, living in the United States.{%endblocktrans%}
   </label>
 <div class="has_license span-20">
     <p class="explanation" id="eligible">You are eligible to finish your voter registration using the {{state_name}} online voter registration system.</p>
