@@ -2,7 +2,7 @@ function showStateRegContinueButtons() {
   if ($("input#registrant_has_state_license_1:checked").val()=='1') {
       $('.has_no_license').hide();
       $('.has_license').show();
-  } else if ($("input#registrant_has_state_license_1:checked").val()=='0') {
+  } else {
       $('.has_license').hide();
       $('.has_no_license').show();
   }
@@ -53,7 +53,7 @@ $(document).ready(function() {
 
     if ($("input#registrant_has_state_license_1:checked").val()=='1') {
       submitPartialToRocky();
-    } else if ($("input#registrant_has_state_license_1:checked").val()=='0') {
+    } else {
        redirectToRegularForm();
     }
 
