@@ -1,0 +1,41 @@
+{% extends "form_direct.html" %}
+{% load i18n %} 
+
+{%block add_state_iframe%}
+<script type="text/javascript">
+    function add_state_iframe() {
+      var lang = $('input#lang').val();
+      var fn = $('input#first_name').val();
+      var ln = $('input#last_name').val();
+      var sf = $('input#name_suffix').val();
+      var zip = undefined; //no field in form for city / zip
+      var dob = $('input#date_of_birth').val();
+
+      var iframe_url = 'https://rtv.sos.ca.gov/elections/register-to-vote/';
+      $('#content').append('<div class="big-button"><a class="button button-primary" tabindex="" href="'+iframe_url+'" target="_blank">Continue with CA Voter Registration</a></div>');
+    }
+  </script>
+{%endblock%}
+ 
+{%block state_eligible%}
+<label for="registrant_has_state_license_1">
+    <input checked="checked" id="registrant_has_state_license_1" name="has_state_license" type="checkbox" value="1">I am a resident of {{state}}, living in the United States.
+  </label>
+<div class="has_license span-20">
+    <p class="explanation" id="eligible">You are eligible to finish your voter registration using the {{state_name}} online voter registration system.</p>
+  </div>
+</div>
+
+<!--<div class="input text prepend-2 span-22">
+  <label for="registrant_has_state_license_0">
+    <input id="registrant_has_state_license_0" name="has_state_license" type="radio" value="0">I do not have a current {{state}} state identification card or driver's license
+  </label>
+</div>-->
+{%endblock%}
+
+
+{%block state_explanation%}
+<div id="state" class="explanation" style="display:none">
+<p>{%blocktrans%}You can complete your voter registration online with the state right now - using the application provided by Secretary of State Debra Bowen.  If you don't know your social security number, your driver's license or identification card is invalid, or the state can't find or confirm your DMV record - don't worry - you can also <a href='javascript:redirectToRegularForm()'> finish your registration with Rock the Vote</a>.  You will just have to print, sign, and mail in the form by October 22nd.{%endblocktrans%}</p>
+</div>
+{%endblock%}

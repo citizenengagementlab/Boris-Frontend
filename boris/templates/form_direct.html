@@ -47,6 +47,10 @@ button.button-primary {
   right:-70px;
   top:27px;
 }
+
+.big-button {
+  text-align:center; padding-top:10px;
+}
 </style>
 
 {%endblock%}
@@ -147,6 +151,7 @@ button.button-primary {
       <fieldset>
         <div class="row">
           <div class="input text prepend-2 span-22">
+            {%block state_eligible%}
             <label for="registrant_has_state_license_1">
               <input checked="checked" id="registrant_has_state_license_1" name="has_state_license" type="radio" value="1">I have a current {{state}} state identification card or driver's license
             </label>
@@ -159,6 +164,7 @@ button.button-primary {
               <input id="registrant_has_state_license_0" name="has_state_license" type="radio" value="0">I do not have a current {{state}} state identification card or driver's license
             </label>
           </div>
+          {%endblock%}
         </div>
       </fieldset>
 
@@ -260,7 +266,7 @@ button.button-primary {
 {%block state_explanation%}
 <div id="state" class="explanation" style="display:none">
 <p>{%blocktrans%}You can complete your voter registration online with the the state below.{%endblocktrans%}</p>
-<p>{%blocktrans%}If your driver's license or state identification card is invalid or the state can't find or confirm your DMV record, don't worry—you can also <a href='javascript:redirectToRegularForm()'> finish your registration with Rock the Vote</a>. You will just have to print, sign, and mail it in.{%endblocktrans%}</p>
+<p>{%blocktrans%}If your driver's license or state identification card is invalid or the state can't find or confirm your DMV record - don't worry — you can also <a href='javascript:redirectToRegularForm()'> finish your registration with Rock the Vote</a>. You will just have to print, sign, and mail it in.{%endblocktrans%}</p>
 </div>
 {%endblock%}
 

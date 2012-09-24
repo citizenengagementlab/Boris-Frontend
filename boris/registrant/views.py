@@ -21,7 +21,7 @@ STATE_NAME_LOOKUP = dict(us_states.US_STATES)
 STATE_NAME_LOOKUP['DC'] = "DC" #monkey patch, because "District of Columbia doesn't fit"
 
 #states with direct submission forms
-DIRECT_SUBMIT_STATES = ['WA','NV']
+DIRECT_SUBMIT_STATES = ['WA','NV','CA']
 
 #if the submission is made using these partner ids, do not display custom branding
 DEFAULT_PARTNER_IDS = [1,9937]
@@ -85,7 +85,7 @@ def register(request):
         #check for direct submission state
         #if state in DIRECT_SUBMIT_STATES and not request.GET.has_key('no_redirect'):
         #    return redirect('/registrants/new/'+state.lower())
-        #not ready yet, do not enable until NV & WA fully tested
+        #not ready yet, do not enable until fully tested
 
         #hit rtv_proxy for staterequirements
         context['state'] = state
