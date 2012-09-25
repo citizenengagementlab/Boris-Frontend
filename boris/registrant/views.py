@@ -371,3 +371,6 @@ def error(request):
 def csrf_failure(request, reason=""):
     mail_admins('rocky error: csrf failure',"request: %s" % request)
     return render_to_response('403.html', {}, context_instance=RequestContext(request))
+
+def share(request):
+    return render_to_response('share.html', {}, context_instance=RequestContext(request))

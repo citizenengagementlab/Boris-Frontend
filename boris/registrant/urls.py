@@ -6,5 +6,6 @@ urlpatterns = patterns('registrant.views',
     (r'^submit/$', 'submit'),
     (r'^new/(?P<state_abbr>[a-zA-Z]{2})/$', 'register_direct'),
     (r'^submit/(?P<state_abbr>[a-zA-Z]{2})/$', 'submit_direct'),
+    (r'^share/$', 'share'),
     (r'^error/$', 'error'),
 )
