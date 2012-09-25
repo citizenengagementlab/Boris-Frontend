@@ -23,7 +23,7 @@ window.fbAsyncInit = function() {
 
 $('a.button.facebook#facebook-app-share').click(function(){
   $b = $(this);
-  var partner = (getParam('partner') != "") ? "?partner="+getParam('partner') : "";
+  var partner = (getParam('partner') != "") ? "?partner="+getParam('partner') : "19093";
   var pObj = {
     'name' : "Rock the Vote 2012",
     'description' : "Register to vote in 3 easy steps using Rock the Vote's online voter registration tool!",
