@@ -39,19 +39,3 @@
 <p>{%blocktrans%}You can complete your voter registration online with the state right now - using the application provided by Secretary of State Debra Bowen. {%endblocktrans%}</p>
 </div>
 {%endblock%}
-
-{%block share_buttons%}
-<section class="share prepend-top" style="display:none;">
-    <header>
-    <h2>{% trans "Spread the word" %}</h2>
-  </header>
-  <p>{% trans "Don't forget to tell your friends and family how easy it was to register. Here are a few tools you can use to spread the word about voter registration:" %}</p>
-  <div class="prepend-top prepend-2 span-18 append-4 last">
-    <div class="share">
-      <a class="button facebook" id="facebook-app-share" href="javascript:void(0);">Post to Your Wall</a>
-
-      <a class="button twitter" href="http://twitter.com/home?status={{customform.twitter_share_text|default:'I just registered to vote and so can you!'|urlencode}}+{%if has_partner%}https%3A%2F%2Fregister2.rockthevote.com%2F%3Fpartner%3D{{partner}}{%else%}http%3A%2F%2Frtvote.com%2FQnjESN{%endif%}" target="_blank">Tweet This</a>
-    </div>
-  </div>
-</section>
-{%endblock%}

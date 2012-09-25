@@ -7,7 +7,7 @@
       var fn = $('input#first_name').val();
       var ln = $('input#last_name').val();
       var dob = $('input#date_of_birth').val();
-      $('#content').append('<iframe src="https://weiapplets.sos.wa.gov/myvote/myvote?'+
+      $('#form-replacement').html('<iframe src="https://weiapplets.sos.wa.gov/myvote/myvote?'+
         'language=en&amp;Org=RocktheVote&amp;'+
         'firstname='+fn+'&amp;lastName='+ln+'&amp;DOB='+encodeURIComponent(dob)+
         '" width="600" height="725"></iframe>');
