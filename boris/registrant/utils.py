@@ -1,4 +1,6 @@
 from proxy.models import CustomForm,CoBrandForm
+from proxy.views import rtv_proxy
+from django.core.mail import mail_admins
 
 def get_branding(context):
     """Util method to get branding given partner id.
@@ -11,15 +13,45 @@ def get_branding(context):
         context['customform'] = context['cobrandform'].toplevel_org
         return context
     except (CoBrandForm.DoesNotExist,ValueError):
+        pass
 
-        #then custom form
-        context['cobrandform'] = None
-        try:
-            context['customform'] = CustomForm.objects.get(partner_id=context['partner'])
-            return context
-        except (CustomForm.DoesNotExist,ValueError):
-            context['customform'] = None
-            return context
+    #then custom form
+    context['cobrandform'] = None
+    try:
+        context['customform'] = CustomForm.objects.get(partner_id=context['partner'])
+        return context
+    except (CustomForm.DoesNotExist,ValueError):
+        pass
+
+    #finally, try rtv whitelabel
+    try:
+        rtv_whitelabel = rtv_proxy('GET',{'partner_id':context['partner']},
+        'api/v2/partnerpublicprofiles/partner.json')
+        #cache these?
+    
+        #duck type a customform
+        quack = {'partner_id':context['partner'],
+                 'name':rtv_whitelabel['org_name'],
+                 'logo':rtv_whitelabel['logo_image_URL'],
+                 'logo_link':rtv_whitelabel['org_URL'],
+                 'show_sms_box':rtv_whitelabel['partner_ask_sms_opt_in'],
+                 'show_volunteer_box':rtv_whitelabel['rtv_ask_volunteer'],
+                 'question_1':rtv_whitelabel['survey_question_1_en'],
+                 'question_2':rtv_whitelabel['survey_question_2_en'],
+                 }
+        #check for missing logo image url
+        if '/logos/original/missing.png' in quack['logo']:
+            quack['logo'] = None
+        context['rtv_whitelabel'] = True
+
+        #unlike in context_processor, this needs to be object-like
+        #so create a CustomForm, but don't save it
+        fakin_bacon = CustomForm(**quack)
+        context['customform'] = fakin_bacon
+    except KeyError:
+        #whitelabel error, never mind
+        mail_admins("white label error, id %s" % context['partner'], "rtv_whitelabel:%s\n" % rtv_whitelabel)
+
     return context
 
 def empty(the_list):

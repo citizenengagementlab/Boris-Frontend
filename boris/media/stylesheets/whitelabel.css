@@ -13,6 +13,10 @@
 	right:5px;
 }
 
+#header img.rtv-whitelabel {
+	max-height:50px;
+}
+
 #footer p > a.cobrand {
 	background-image: none;
 	text-indent: 0;
