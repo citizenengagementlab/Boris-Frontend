@@ -22,6 +22,17 @@ h1.map {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 	font-weight:bold;
 }
+
+.button#map-continue {
+    width:100%;
+}
+
+.full {
+    width:580px;
+}
+.right {
+    text-align:right;
+}
 </style>
 {%endblock styles%}
 
@@ -92,14 +103,14 @@ h1.map {
             {%if email_address%}value="{{email_address}}"{%endif%} />
         </div>
 
-      <div class="span-4 last">
-        <button class="button button-primary" tabindex="20" type="submit">{% trans "Continue" %}</button>
+      <div class="input span-8 last">
+        <button class="button button-primary" id="map-continue" tabindex="20" type="submit">{% trans "Continue" %}</button>
       </div></fieldset>
 
       {%if partner%}<input type="hidden" name="partner" value="{{partner}}" />{%endif%}
       {%if source%}<input type="hidden" name="source" value="{{source}}" />{%endif%}
 
-      <div class="prepend-15 span-12">
+      <div class="full right">
         Already registered? <a href="/registrants/share/">Share with your friends</a>
       </div>
   </form>
