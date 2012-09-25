@@ -115,7 +115,7 @@ section.share p {
       <fieldset>
         <div class="row">
           <div class="input text span-12">
-            <a class="incorrect-location" tabindex="-1" href="../map/?clear_location=true&{%if has_partner%}&partner={{partner}}{%endif%}">{% trans "Not in"%} {{ state }}?</a>
+            <a class="incorrect-location" tabindex="-1" href="/registrants/map/?clear_location=true&{%if has_partner%}&partner={{partner}}{%endif%}">{% trans "Not in"%} {{ state }}?</a>
             <label for="home_zip_code">{% trans "Zip Code" %}</label>
             <input required id="home_zip_code" name="home_zip_code" type="text" />
             <div class="home_zip_code-hint tooltip">{% trans "Enter a valid 5 digit zip code."%}</div>
