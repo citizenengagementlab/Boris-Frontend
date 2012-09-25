@@ -36,9 +36,14 @@ def get_branding(context):
                  'logo_link':rtv_whitelabel['org_URL'],
                  'show_sms_box':rtv_whitelabel['partner_ask_sms_opt_in'],
                  'show_volunteer_box':rtv_whitelabel['rtv_ask_volunteer'],
-                 'question_1':rtv_whitelabel['survey_question_1_en'],
-                 'question_2':rtv_whitelabel['survey_question_2_en'],
                  }
+        if context['language'] == "es":
+            quack['question_1'] = rtv_whitelabel['survey_question_1_es']
+            quack['question_2'] = rtv_whitelabel['survey_question_2_es']
+        else:
+            quack['question_1'] = rtv_whitelabel['survey_question_1_en']
+            quack['question_2'] = rtv_whitelabel['survey_question_2_en']
+
         #check for missing logo image url
         if '/logos/original/missing.png' in quack['logo']:
             quack['logo'] = None

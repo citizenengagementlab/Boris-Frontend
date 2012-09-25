@@ -218,7 +218,7 @@ def submit(request):
     question_2 = "What issue do you care most about?"
 
     #then check cobrand and custom form
-    branding = get_branding({'partner':submitted_form['partner_id']})
+    branding = get_branding({'partner':submitted_form['partner_id'],'language':request.LANGUAGE_CODE})
     if branding.get('cobrandform'):
         cobrand = branding['cobrandform']
         if cobrand.question_1:
