@@ -51,6 +51,16 @@ button.button-primary {
 .big-button {
   text-align:center; padding-top:10px;
 }
+
+
+section.share h1 {
+  font-weight:bold;
+  font-size: 15px;
+}
+section.share p {
+    font-size:14px;
+    margin-bottom:10px;
+  }
 </style>
 
 {%endblock%}
@@ -269,5 +279,11 @@ button.button-primary {
 <p>{%blocktrans%}If your driver's license or state identification card is invalid or the state can't find or confirm your DMV record - don't worry — you can also <a href='javascript:redirectToRegularForm()'> finish your registration with Rock the Vote</a>. You will just have to print, sign, and mail it in.{%endblocktrans%}</p>
 </div>
 {%endblock%}
+
+<section>
+  <div id="form-replacement" class="span-24 last"></div>
+</section>
+
+{%block share_buttons%}{%endblock%}
 
 {%endblock content%}

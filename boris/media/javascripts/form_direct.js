@@ -40,6 +40,10 @@ function continueToStateForm() {
 
   //function defined in template, so we can reuse this file for multiple states
   add_state_iframe();
+
+  //show share buttons
+  $('body').addClass('finish');
+  $('.share').show();
 }
 
 $(document).ready(function() {

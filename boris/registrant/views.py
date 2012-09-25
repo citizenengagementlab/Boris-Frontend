@@ -83,10 +83,9 @@ def register(request):
         state = request.GET.get('state').upper()
 
         #check for direct submission state
-        #if state in DIRECT_SUBMIT_STATES and not request.GET.has_key('no_redirect'):
-        #    return redirect('/registrants/new/'+state.lower())
-        #not ready yet, do not enable until fully tested
-
+        if state in DIRECT_SUBMIT_STATES and not request.GET.has_key('no_redirect'):
+            return redirect('/registrants/new/'+state.lower())
+        
         #hit rtv_proxy for staterequirements
         context['state'] = state
         try:
