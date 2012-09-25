@@ -52,7 +52,7 @@ $('a.button.facebook#facebook-app-share').click(function(){
     },
     function(response) {
       if (response.hasOwnProperty("post_id")) {
-        $b.html("Send Requests!").unbind('click').click(function(){
+        $b.html("Invite Your Friends!").unbind('click').click(function(){
           FB.ui({method: 'apprequests',
             message: 'Become a registered voter!'
           }, function(response){
