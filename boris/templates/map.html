@@ -27,11 +27,11 @@ h1.map {
     width:100%;
 }
 
-.full {
-    width:580px;
-}
-.right {
-    text-align:right;
+#share-link {
+	width:580px;
+	text-align:right;
+	font-size:16px;
+	margin-bottom: 15px;
 }
 </style>
 {%endblock styles%}
@@ -110,7 +110,7 @@ h1.map {
       {%if partner%}<input type="hidden" name="partner" value="{{partner}}" />{%endif%}
       {%if source%}<input type="hidden" name="source" value="{{source}}" />{%endif%}
 
-      <div class="full right">
+      <div id="share-link">
         Already registered? <a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">Share with your friends</a>
       </div>
   </form>
