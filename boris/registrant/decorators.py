@@ -16,6 +16,7 @@ def capture_get_parameters(params):
             for p in params:
                 if request.GET.get(p):
                     request.session[p] = request.GET.get(p)
+            request.session.modified = True
             return view(request, *args, **kwargs)
         return inner
     return decorator
