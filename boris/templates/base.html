@@ -34,12 +34,12 @@
 			<h1 class="container">
 				{% if customform.logo%}
 				<a class="logo {{customform.name|slugify}}" {%if customform.logo_link%}href="{{customform.logo_link}}" target="_blank"{%endif%}>
-					<img src="{% static customform.logo %}" />
+					<img src="{{ STATIC_URL }}{{customform.logo}}" />
 				</a>
 				{%endif%}
 				{% if cobrandform.logo and cobrandform.show_logo = 't'%}
 				<a class="logo cobrand {{cobrandform.name|slugify}}" {%if cobrandform.logo_link%}href="{{cobrandform.logo_link}}" target="_blank"{%endif%}>
-					<img src="{% static cobrandform.logo %}" />
+					<img src="{{ STATIC_URL }}{{cobrandform.logo}}" />
 				</a>
 				{%endif%}
 				<div class="title">{%if state_name%}{% trans "Register in" %} {{ state_name }}{%else%}{% trans "Register to Vote"%}{%endif%}</div>
