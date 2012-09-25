@@ -2,12 +2,14 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response,redirect
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 from os.path import join
 import pygeoip
 import urllib
 
-from django.views.decorators.csrf import csrf_exempt
+from registrant.utils import removeNonAscii
 
 @csrf_exempt
 def frontpage(request):
@@ -29,27 +31,21 @@ def frontpage(request):
     #now everybody redirects to first step
     redirect_url = reverse('registrant.views.map')
 
-    #preserve the get parameters in redirect
+    #preserve  get parameters in redirect
     #to be backwards compatible with old rocky frontend
-    if request.GET.get('partner'):
-        params['partner'] = request.GET.get('partner')
-    if request.GET.get('source'):
-        params['source'] = request.GET.get('source')
-    if request.GET.get('email_address'):
-        params['email_address'] = request.GET.get('email_address')
-    if request.GET.get('facebook'):
-        params['facebook'] = request.GET.get('facebook')
-    if request.GET.get('state'):
+    for p in request.GET:
+        params[p] = removeNonAscii(request.GET.get(p))
+    if params.has_key('state'):
         #redirect to the form, not the map
         redirect_url = reverse('registrant.views.register')
-        params['state'] = request.GET.get('state')
 
     if params:
         redirect_url += "?"+urllib.urlencode(params)
     return redirect(redirect_url)
 
 def static_redirect(request,path):
-    redirect_url = settings.STATIC_URL+path
+    redirect_url = staticfiles_storage.url(path)
+    print redirect_url
     if request.GET:
         redirect_url += "?"+urllib.urlencode(request.GET)
     return redirect(redirect_url)

@@ -1,0 +1,37 @@
+{% extends "form_direct.html" %}
+{% load i18n %} 
+
+{%block add_state_iframe%}
+<script type="text/javascript">
+    function add_state_iframe() {
+      var lang = $('input#lang').val();
+      var fn = $('input#first_name').val();
+      var ln = $('input#last_name').val();
+      var sf = $('input#name_suffix').val();
+      var zip = $('input#home_zip_code').val();
+      var dob = $('input#date_of_birth').val();
+
+      var iframe_url = 'https://nvsos.gov/sosvoterservices/Registration/step1.aspx'+
+        '?source=rtv&utm_source=rtv&utm_medium=rtv&utm_campaign=rtv'+
+        '&fn='+fn+'&ln='+ln+
+        '&lang='+lang+'&dob='+encodeURIComponent(dob);
+      if (sf !== undefined) {
+        iframe_url += '&sf='+sf;
+      }
+       if (zip !== undefined) {
+        iframe_url += '&zip='+zip;
+      }
+      //too big to fit in iframe, big button instead
+      //$('#content').append('<iframe src="'+iframe_url+'" width="600" height="725"></iframe>');
+      $('#form-replacement').html('<div class="big-button"><a class="button button-primary" tabindex="" href="'+iframe_url+'" target="_blank">Continue with NV Voter Registration</a></div>');
+    }
+  </script>
+{%endblock%}
+ 
+{%block state_explanation%}
+<div id="state" class="explanation" style="display:none">
+<p>{%blocktrans%}You can complete your voter registration online with the state below. The Nevada Online Voter Application (NOVA) is provided by Nevada Secretary of State, Ross Miller, for registering Nevada citizens to vote, or to change their existing registration information. NOVA is also available <a href="https://nvsos.gov/sosvoterservices/Registration/step1.aspx?r=gov" target="_blank">here.</a>{%endblocktrans%}</p>
+
+<p>{%blocktrans%}If your driver's license or state identification card is invalid or the state can't find or confirm your DMV record - don't worry - you can also <a href='javascript:redirectToRegularForm()'> finish your registration with Rock the Vote</a>. You will just have to print, sign, and mail it in.{%endblocktrans%}</p>
+</div>
+{%endblock%}

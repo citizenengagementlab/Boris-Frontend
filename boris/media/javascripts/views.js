@@ -396,8 +396,12 @@
             state = d.state;
             _this.$el.children('input[id$="_city"]').val(city);
             _this.$el.children('input[id$="_state_id"]').val(state);
+            _this.$el.children('.zip-code-location-hint').removeClass('error');
             return _this.$el.children('.zip-code-location-hint').text("" + city + ", " + state);
           }
+        }, error: function(d) {
+          _this.$el.children('.zip-code-location-hint').addClass('error');
+          return _this.$el.children('.zip-code-location-hint').text("unknown zip code");
         }
       });
     };

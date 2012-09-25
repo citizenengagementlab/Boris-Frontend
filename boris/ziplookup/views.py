@@ -27,7 +27,7 @@ def zip_lookup(request):
             #print cleaned
         except ZipCode.DoesNotExist:
             #print e
-            return HttpResponse(json.dumps({'error':'invalid zipcode'}),mimetype="application/json")
+            return HttpResponseServerError(json.dumps({'error':'unknown zipcode'}),mimetype="application/json")
     else:
         return HttpResponseServerError('requires zip get parameter')
     return HttpResponse(json.dumps(cleaned),mimetype="application/json")

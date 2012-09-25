@@ -5,6 +5,8 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 import re
 import urllib
+from registrant.utils import removeNonAscii
+
 
 class MobileDetectionMiddleware(object):
     user_agents_test_match = (
@@ -67,16 +69,16 @@ class MobileDetectionMiddleware(object):
             redirect_url = "http://mobile.rockthevote.com"
             params = {}
             if request.GET.get('partner'):
-                params['partner'] = request.GET.get('partner')
+                params['partner'] = removeNonAscii(request.GET.get('partner'))
             if request.GET.get('source'):
-                params['source'] = request.GET.get('source')
+                params['source'] = removeNonAscii(request.GET.get('source'))
             if params:
                 redirect_url += "?"+urllib.urlencode(params)
             return HttpResponseRedirect(redirect_url)
 
 #return p3p headers, so IE doesn't complain about iframe cookies
-P3P_COMPACT = "policyref=\"/w3c/p3p.xml\", CP=\"Rock the Vote has a firm commitment to internet privacy. http://www.rockthevote.com/privacy-policy.html\""
-class MiddlewareResponseInjectP3P(object):
+P3P_COMPACT = "policyref=\"/w3c/p3p.xml\", CP=\"CAO PSA CUR OUR IND PHY DEM POL GOV\""
+class ResponseInjectP3PMiddleware(object):
     def __init__(self):
         self.process_response = self.inject
 

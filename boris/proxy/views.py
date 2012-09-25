@@ -22,10 +22,14 @@ def rtv_proxy_view(request,url):
             response['status'] = 200
         else:
             response['status'] = 404
-    if response.has_key('error'):
-        status = response['status']
-    else:
-        status = 200
+    try:
+        if response.has_key('error'):
+            status = response['status']
+        else:
+            status = 200
+    except UnboundLocalError:
+        response = {'error':'unknown rtv proxy error'}
+        status = 404
     return HttpResponse(json.dumps(response),mimetype="application/json",status=status)
 
 def rtv_proxy(method, values, url):
@@ -42,7 +46,8 @@ def rtv_proxy(method, values, url):
             #that munges the brackets, quote_plus the values and do &-join manually
             data = []
             for (k,v) in values.items():
-                data.append('registration[%s]=%s' % (k,urlquote_plus(v)))
+                v_s = unicode(v).strip() #strip spaces, because rocky doesn't like them
+                data.append('registration[%s]=%s' % (k,urlquote_plus(v_s)))
             data = "&".join(data)
         else:
             data = urllib.urlencode(values)

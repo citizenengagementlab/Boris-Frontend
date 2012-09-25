@@ -22,6 +22,17 @@ h1.map {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 	font-weight:bold;
 }
+
+.button#map-continue {
+    width:100%;
+}
+
+#share-link {
+	width:580px;
+	text-align:right;
+	font-size:16px;
+	margin-bottom: 15px;
+}
 </style>
 {%endblock styles%}
 
@@ -92,11 +103,15 @@ h1.map {
             {%if email_address%}value="{{email_address}}"{%endif%} />
         </div>
 
-      <div class="span-4 last">
-        <button class="button button-primary" tabindex="20" type="submit">{% trans "Continue" %}</button>
+      <div class="input span-8 last">
+        <button class="button button-primary" id="map-continue" tabindex="20" type="submit">{% trans "Continue" %}</button>
       </div></fieldset>
 
       {%if partner%}<input type="hidden" name="partner" value="{{partner}}" />{%endif%}
       {%if source%}<input type="hidden" name="source" value="{{source}}" />{%endif%}
+
+      <div id="share-link">
+        Already registered? <a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">Share with your friends</a>
+      </div>
   </form>
 {%endblock content%}

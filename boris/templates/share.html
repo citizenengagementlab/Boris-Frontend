@@ -1,0 +1,38 @@
+{%extends "base.html"%}
+{% load i18n %} 
+{% load static from staticfiles %}
+
+{%block title%}{% trans "Register to Vote" %} | {% trans "Spread the Word" %}{%endblock title%}
+
+{% block body_class %}finish{% endblock body_class %}
+
+{%block scripts%}
+{%endblock%}
+
+{%block styles%}
+<style>
+  section.share p {
+    font-size:14px;
+    margin-bottom:10px;
+  }
+</style>
+{%endblock styles%}
+
+{%block content%}
+<section class="share">
+  <header>
+    <h2>{% trans "Spread the word"%}</h2>
+      <p>{% trans "Tell your friends and family to register"%}</p>
+  </header>
+
+  <p>{%trans "Here are a few tools you can use to spread the word about voter registration:" %}</p>
+  <div class="prepend-top prepend-2 span-18 append-4 last">
+    <div class="share">
+      <a class="button facebook" id="facebook-app-share" href="javascript:void(0);">Post to Your Wall</a>
+
+      <a class="button twitter" href="http://twitter.com/home?status={{customform.twitter_share_text|default:'Register to vote with Rock the Vote!'|urlencode}}+{%if has_partner%}https%3A%2F%2Fregister2.rockthevote.com%2F%3Fpartner%3D{{partner}}{%else%}http%3A%2F%2Frtvote.com%2FQnjESN{%endif%}" target="_blank">Tweet This</a>
+    </div>
+  </div>
+</section>
+
+{%endblock content%}

@@ -17,6 +17,7 @@ urlpatterns += patterns('',
 #static file patterns to be compatible with old site
 urlpatterns += patterns('boris.views',
     (r'^widget_loader\.js', 'static_redirect', {'path':'widgetloader/widget_loader.js'}),
+    (r'^widget_loader\.css', 'static_redirect', {'path':'widgetloader/css/style.css'}),
 )
 
 admin.autodiscover()
@@ -26,11 +27,11 @@ urlpatterns += patterns('',
 
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT }),
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT }),
-    )
+       (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT }),
+       (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT }),
+   )
 else:
-    urlpatterns += patterns('boris.views',
-    (r'^static/(?P<path>.*)$', 'static_redirect'),
-    (r'^media/(?P<path>.*)$', 'static_redirect'),
-)
+   urlpatterns += patterns('boris.views',
+       (r'^static/(?P<path>.*)$', 'static_redirect'),
+       (r'^media/(?P<path>.*)$', 'static_redirect'),
+   )

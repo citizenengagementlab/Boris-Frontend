@@ -37,7 +37,7 @@ $('a.button.facebook#facebook-app-share').click(function(){
   } */
   
   if (qStr === "?") qStr = "";
-  
+
   var pObj = {
     'name' : "Rock the Vote 2012",
     'description' : "Register to vote in 3 easy steps using Rock the Vote's online voter registration tool!",
@@ -62,7 +62,7 @@ $('a.button.facebook#facebook-app-share').click(function(){
     },
     function(response) {
       if (response.hasOwnProperty("post_id")) {
-        $b.html("Send Requests!").unbind('click').click(function(){
+        $b.html("Invite Your Friends!").unbind('click').click(function(){
           FB.ui({method: 'apprequests',
             message: 'Become a registered voter!'
           }, function(response){

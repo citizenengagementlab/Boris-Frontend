@@ -3,7 +3,9 @@ from django.conf.urls.defaults import *
 urlpatterns = patterns('registrant.views',
     (r'^map/$', 'map'),
     (r'^new/$', 'register'),
-    (r'^new/wa(?i)/$', 'wa_direct'),
     (r'^submit/$', 'submit'),
+    (r'^new/(?P<state_abbr>[a-zA-Z]{2})/$', 'register_direct'),
+    (r'^submit/(?P<state_abbr>[a-zA-Z]{2})/$', 'submit_direct'),
+    (r'^share/$', 'share'),
     (r'^error/$', 'error'),
 )

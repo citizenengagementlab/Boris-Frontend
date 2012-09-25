@@ -102,17 +102,23 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    #cache first
+    'django.middleware.cache.UpdateCacheMiddleware',
+    #then redirection
     'sslify.middleware.SSLifyMiddleware',
     'registrant.middleware.MobileDetectionMiddleware',
-    'registrant.middleware.MiddlewareResponseInjectP3P',
-    'django.middleware.cache.UpdateCacheMiddleware',
+    'registrant.middleware.ResponseInjectP3PMiddleware',
+    #then session & locale
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    #then django common
     'django.middleware.common.CommonMiddleware',
-    'facebook.middleware.FacebookCanvasMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    #then facebook
+    'facebook.middleware.FacebookCanvasMiddleware',
+    #and finally cache
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
@@ -131,6 +137,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request", #add so we can access session in templates
+    "registrant.context_processors.whitelabel",
 )
 
 INSTALLED_APPS = (
@@ -203,6 +210,8 @@ def get_cache():
         }
 
 CACHES = get_cache()
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 CSRF_FAILURE_VIEW = 'registrant.views.csrf_failure'
 

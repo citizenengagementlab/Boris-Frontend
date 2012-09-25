@@ -1,8 +1,10 @@
 #ovr-container {
-    position: absolute;
+    position: fixed;
     top: 0;
     min-height: 100%;
-    width: 100%;}
+    width: 100%;
+    z-index:9000;
+}
 
 .ovr-close:link, .ovr-close:visited {
     position: absolute;
@@ -11,7 +13,7 @@
     left: 50%;
     top: 5px;
     color: #999;
-    margin-left: 275px;
+    margin-left: 280px;
     text-shadow: 0 1px 0 rgba(0,0,0,.5);
     text-decoration: none;
     &:hover, &:active {
@@ -20,16 +22,17 @@
     }
 }
 #ovr-widget {
+    z-index: 9999;
     min-height: 100%;
     width: 620px;
-    position: absolute;
+    position: absolue;
     top: 0;
     left: 50%;
     margin-left: -310px;
     border: none;
 }
 .ovr-overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
