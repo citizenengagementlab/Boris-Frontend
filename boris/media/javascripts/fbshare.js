@@ -19,34 +19,44 @@ window.fbAsyncInit = function() {
     cookie     : true, // enable cookies to allow the server to access the session
     xfbml      : true  // parse XFBML
   });
+  
+  FB.Canvas.setAutoGrow();
 };
 
 $('a.button.facebook#facebook-app-share').click(function(){
   $b = $(this);
-  var partner = (getParam('partner') != "") ? "?partner="+getParam('partner') : "";
+  
+  var qStr = "?";
+  if (getParam('partner') != "") 
+    qStr += "partner="+getParam('partner');
+  
+  //re-enable if RTV decide to include "source" param in share links  
+  /*if (getParam('source') != "") {
+    if (qString.length > 1 ) qStr += "&";
+    qStr +=  "source="+getParam('source');
+  } */
+  
+  if (qStr === "?") qStr = "";
+  
   var pObj = {
     'name' : "Rock the Vote 2012",
     'description' : "Register to vote in 3 easy steps using Rock the Vote's online voter registration tool!",
+    'message' : "Have you registered to vote?",
     'media': [{
       "type": "flash", 
-      //"swfsrc": "https://s3.amazonaws.com/rocky-boris-test/widgetloader/rtv_fb.swf?v="+(+new Date()), 
-      "swfsrc": "https://"+window.location.hostname+"/static/widgetloader/rtv_fb.swf"+partner, 
-      //"imgsrc": "https://s3.amazonaws.com/rocky-boris-test/images/flash-preview.gif?v="+(+new Date()), 
+      "swfsrc": "https://"+window.location.hostname+"/static/widgetloader/rtv_fb.swf"+qStr, 
       "imgsrc": "https://"+window.location.hostname+"/static/images/flash-preview.gif", 
       "width": "130",
       "height": "87",
       "expanded_width": "398",
       "expanded_height": "375"
     }],
-    'href' : "https://register2.rockthevote.com/"+partner
-    //, 'actions': [{ link: window.location.href, name: "RockTheVote.com" }]
+    'href' : "https://register2.rockthevote.com/"+qStr
   };
 
   FB.ui(
     {
       method: 'stream.publish',
-      //message: 'Lorem ipsum',
-      //user_message: 'test user message',
       attachment: pObj,
       user_message_prompt: 'Tell your friends to register!'
     },
