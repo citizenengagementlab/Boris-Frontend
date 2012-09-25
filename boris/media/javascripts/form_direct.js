@@ -24,10 +24,7 @@ function submitPartialToRocky() {
     type:'POST',
     url:submitURL,
     data: formValues,
-    success: continueToStateForm,
-    error: function() {
-      console.log('error');
-    }
+    success: continueToStateForm
   });
 }
 
