@@ -84,7 +84,13 @@ def register(request):
 
         #check for direct submission state
         if state in DIRECT_SUBMIT_STATES and not request.GET.has_key('no_redirect'):
-            return redirect('/registrants/new/'+state.lower())
+            #redirect to direct submit form
+            params = request.GET.copy()
+            if 'state' in params:
+                params.pop('state')
+            redirect_url = '/registrants/new/'+state.lower()
+            redirect_url += "/?"+urllib.urlencode(params)
+            return redirect(redirect_url)
         
         #hit rtv_proxy for staterequirements
         context['state'] = state
@@ -303,6 +309,8 @@ def submit(request):
     else:
         return render_to_response('submit.html', context, context_instance=RequestContext(request))
 
+@capture_get_parameters(['email_address','home_zip_code','state'])
+@capture_locale
 def register_direct(request,state_abbr):
     "direct registration via state website"
 
