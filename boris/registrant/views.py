@@ -235,9 +235,9 @@ def submit(request):
             question_1 = customform.question_1
         if customform.question_2:
             question_2 = customform.question_2
-    if submitted_form['survey_answer_1']:
+    if submitted_form.has_key('survey_answer_1'):
         submitted_form['survey_question_1'] = question_1
-    if submitted_form['survey_answer_2']:
+    if submitted_form.has_key('survey_answer_2'):
         submitted_form['survey_question_2'] = question_2
 
     #hit the rocky api
