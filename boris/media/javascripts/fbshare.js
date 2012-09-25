@@ -26,9 +26,8 @@ window.fbAsyncInit = function() {
 $('a.button.facebook#facebook-app-share').click(function(){
   $b = $(this);
   
-  var qStr = "?";
-  if (getParam('partner') != "") 
-    qStr += "partner="+getParam('partner');
+  var qStr = "?partner=";
+  qStr += (getParam('partner') != "") ? getParam('partner') : "19093";
   
   //re-enable if RTV decide to include "source" param in share links  
   /*if (getParam('source') != "") {
@@ -36,7 +35,7 @@ $('a.button.facebook#facebook-app-share').click(function(){
     qStr +=  "source="+getParam('source');
   } */
   
-  if (qStr === "?") qStr = "";
+  //if (qStr === "?") qStr = "";
 
   var pObj = {
     'name' : "Rock the Vote 2012",
