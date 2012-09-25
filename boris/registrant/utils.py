@@ -53,9 +53,10 @@ def get_branding(context):
         #so create a CustomForm, but don't save it
         fakin_bacon = CustomForm(**quack)
         context['customform'] = fakin_bacon
-    except KeyError:
+    except KeyError,e:
         #whitelabel error, never mind
-        mail_admins("white label error, id %s" % context['partner'], "rtv_whitelabel:%s\n" % rtv_whitelabel)
+        mail_admins("white label error, id %s" % context['partner'],
+            "key error:%s\n,rtv_whitelabel:%s\n" % (e,rtv_whitelabel))
 
     return context
 
