@@ -111,7 +111,7 @@ h1.map {
       {%if source%}<input type="hidden" name="source" value="{{source}}" />{%endif%}
 
       <div class="full right">
-        Already registered? <a href="/registrants/share/">Share with your friends</a>
+        Already registered? <a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">Share with your friends</a>
       </div>
   </form>
 {%endblock content%}
