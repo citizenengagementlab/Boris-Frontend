@@ -69,6 +69,13 @@ def register(request):
         context['has_partner'] = True
         context['partner'] = request.GET.get('partner')
     else:
+        if request.session.has_key('facebook_canvas'):
+            #use facebook default
+            context['partner'] = 19093
+        else:
+            #use RTV default
+            context['partner'] = 1
+
         context['has_partner'] = False
         #so we don't show the param in subsequent links
 
