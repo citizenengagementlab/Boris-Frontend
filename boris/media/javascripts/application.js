@@ -2948,13 +2948,21 @@
             state = d.state;
             _this.$el.children('input[id$="_city"]').val(city);
             _this.$el.children('input[id$="_state_id"]').val(state);
+            _this.$el.children('.zip-code-location-hint').removeClass('error');
             return _this.$el.children('.zip-code-location-hint').text("" + city + ", " + state);
           }
+        }, error: function(d) {
+          _this.$el.children('.zip-code-location-hint').addClass('error');
+          return _this.$el.children('.zip-code-location-hint').text("unknown zip code");
         }
       });
     };
 
     HomeZipCodeFormField.prototype.valid = function() {
+      if (this.$el.children('.zip-code-location-hint').hasClass('error')) {
+        return false;
+      }
+
       if (this.required()) {
         return /^((\d{5}(-\d{4}))|(\d{5}))$/.test(this.value());
       } else {
