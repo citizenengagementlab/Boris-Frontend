@@ -83,7 +83,7 @@ def register(request):
         state = request.GET.get('state').upper()
 
         #check for direct submission state
-        if state in DIRECT_SUBMIT_STATES and not request.GET.has_key('no_redirect'):
+        if (state in DIRECT_SUBMIT_STATES) and (not request.GET.has_key('no_redirect')):
             #redirect to direct submit form
             params = request.GET.copy()
             if 'state' in params:

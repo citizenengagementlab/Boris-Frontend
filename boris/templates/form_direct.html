@@ -119,6 +119,7 @@ section.share p {
             <label for="home_zip_code">{% trans "Zip Code" %}</label>
             <input required id="home_zip_code" name="home_zip_code" type="text" />
             <div class="home_zip_code-hint tooltip">{% trans "Enter a valid 5 digit zip code."%}</div>
+            <input id="home_state_id" name="home_state_id" type="hidden" value="{{state}}" />
           </div>
 
           <div class="input text span-8">

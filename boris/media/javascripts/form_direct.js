@@ -13,7 +13,7 @@ function redirectToRegularForm() {
   var formValues = $('form input[name!=csrfmiddlewaretoken], form select').serialize();
   //redirect to regular form
   var state = $('form.registration-form input#home_state_id').val();
-  window.location.replace('/registrants/new/?state='+state+'&no_redirect&'+formValues);
+  window.location.replace('/registrants/new/?state='+state+'&no_redirect=1&'+formValues);
 }
 
 function submitPartialToRocky() {
