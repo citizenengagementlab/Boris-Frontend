@@ -359,7 +359,7 @@ def submit_direct(request,state_abbr):
 
     #and add the ones it does
     submitted_form['home_state_id'] = state_abbr
-    submitted_form['send_confirmation_reminder_emails'] = '0'
+    submitted_form['send_confirmation_reminder_emails'] = '1'
 
     #check for title and replace it if it's an invalid value
     if submitted_form.has_key('name_title'):
