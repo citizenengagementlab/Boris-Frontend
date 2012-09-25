@@ -328,6 +328,10 @@ def register_direct(request,state_abbr):
     context['state'] = state
     context['state_name'] = STATE_NAME_LOOKUP[state]
 
+    if 'partner' in request.GET:
+        context['has_partner'] = True
+        context['partner'] = request.GET.get('partner')
+
     return render_to_response('form_%s_direct.html' % state.lower(),context,
             context_instance=RequestContext(request))
 
