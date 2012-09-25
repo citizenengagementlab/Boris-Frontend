@@ -68,10 +68,7 @@ def register(request):
     if 'partner' in request.GET:
         context['has_partner'] = True
         context['partner'] = request.GET.get('partner')
-#        context = get_branding(context)
     else:
-        #use CEL default
-        context['partner'] = 9937
         context['has_partner'] = False
         #so we don't show the param in subsequent links
 
