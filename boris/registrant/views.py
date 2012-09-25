@@ -373,6 +373,21 @@ def submit_direct(request,state_abbr):
         if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
             submitted_form['name_suffix'] = ""
 
+    #convert "on/off" to "boolean" values expected by api
+    booleans = ['us_citizen','first_registration','has_mailing_address',
+                'change_of_name','change_of_address',
+                'opt_in_sms','opt_in_email','opt_in_volunteer',
+                'partner_opt_in_sms','partner_opt_in_email','partner_opt_in_volunteer']
+    for b in booleans:
+        if submitted_form.has_key(b):
+            try:
+                submitted_form[b] = int(submitted_form[b])
+            except ValueError:
+                if submitted_form.get(b) == "off":
+                    submitted_form[b] = 0
+                if submitted_form.get(b) == "on":
+                    submitted_form[b] = 1
+                    
     #submit to rocky
     rtv_response = rtv_proxy('POST',submitted_form,'/api/v2/gregistrations.json')
     if rtv_response.has_key('error'):
