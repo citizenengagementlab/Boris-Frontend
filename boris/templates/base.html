@@ -40,8 +40,8 @@
 				{%endif%}
 				{% if cobrandform.logo and cobrandform.show_logo = 't'%}
 				<a class="logo cobrand {{cobrandform.name|slugify}}" {%if cobrandform.logo_link%}href="{{cobrandform.logo_link}}" target="_blank"{%endif%}>
-					{% if rtv_whitelabel%}<img src="{{customform.logo}}" class="rtv-whitelabel" />
-					{%else%}<img src="{{ STATIC_URL }}{{customform.logo}}" />{%endif%}
+					{% if rtv_whitelabel%}<img src="{{cobrandform.logo}}" class="rtv-whitelabel" />
+					{%else%}<img src="{{ STATIC_URL }}{{cobrandform.logo}}" />{%endif%}
 				</a>
 				{%endif%}
 				<div class="title">{%if state_name%}{% trans "Register in" %} {{ state_name }}{%else%}{% trans "Register to Vote"%}{%endif%}</div>
