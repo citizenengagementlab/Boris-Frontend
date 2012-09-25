@@ -228,14 +228,14 @@
           <label for="race">{% trans "Race or Ethnic Group" %}</label>
           <select {% if staterequirements.requires_race %}required{% endif %} id="race" name="race">
             <option value="Select One...">{% trans "Select One..."%}</option>
-            <option value="{% trans 'American Indian / Alaskan Native' %}">{% trans "American Indian / Alaskan Native" %}</option>
-            <option value="{% trans 'Asian / Pacific Islander' %}">{% trans "Asian / Pacific Islander" %}</option>
-            <option value="{% trans 'Black (not Hispanic)' %}">{% trans "Black (not Hispanic)" %}</option>
-            <option value="{% trans 'Hispanic' %}">{% trans "Hispanic" %}</option>
-            <option value="{% trans 'White (not Hispanic)' %}">{% trans "White (not Hispanic)" %}</option>
-            <option value="{% trans 'Multi-racial' %}">{% trans "Multi-racial" %}</option>
-            <option value="{% trans 'Other' %}">{% trans "Other" %}</option>
-            <option value="{% trans 'Decline to State' %}">{% trans "Decline to State" %}</option>
+            <option value="American Indian / Alaskan Native">{% trans "American Indian / Alaskan Native" %}</option>
+            <option value="Asian / Pacific Islander">{% trans "Asian / Pacific Islander" %}</option>
+            <option value="Black (not Hispanic">{% trans "Black (not Hispanic)" %}</option>
+            <option value="Hispanic">{% trans "Hispanic" %}</option>
+            <option value="White (not Hispanic)">{% trans "White (not Hispanic)" %}</option>
+            <option value="Multi-racial">{% trans "Multi-racial" %}</option>
+            <option value="Other">{% trans "Other" %}</option>
+            <option value="Decline to State">{% trans "Decline to State" %}</option>
           </select>
           <div class="race-hint tooltip">{{ staterequirements.requires_race_msg }}</div>
         </div>
