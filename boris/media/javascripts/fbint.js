@@ -27,7 +27,7 @@ function preAuthView() {
   }
   
   pA.push('" target="_top">Register on RockTheVote.com</a>');
-  pA.push('<p style="margin: 30px 0; float: left; clear: both; width: 100%; text-align: center;">');
+  pA.push('<p style="margin: 30px 0; float: left; clear: both; width: 100%; text-align: center; font-size:16px;">');
   pA.push('Already registered? <a href="/registrants/share/">Share with your friends</a></p>');
   pA.push('</div>');
   $('#content').html(pA.join(""));
