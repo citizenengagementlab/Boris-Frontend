@@ -4,7 +4,6 @@ $('#content').css('opacity',0);
    
 function preAuthView() {
   var pA = ['<div id="non-auth">'];
-  //pA.push('<p style="margin: 30px 20px; width: 560px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>');
   pA.push('<a id="fb-auth" class="button button-primary" style="float: left; margin: 30px 0 0 143px;" href="');
   pA.push('https://www.facebook.com/dialog/oauth?client_id=');
   pA.push(fbAppID);
@@ -28,6 +27,8 @@ function preAuthView() {
   }
   
   pA.push('" target="_top">Register on RockTheVote.com</a>');
+  pA.push('<p style="margin: 30px 0; float: left; clear: both; width: 100%; text-align: center;">');
+  pA.push('Already registered? <a href="/registrants/share/">Share with your friends</a></p>');
   pA.push('</div>');
   $('#content').html(pA.join(""));
 };
