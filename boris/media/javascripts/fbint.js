@@ -186,7 +186,9 @@ window.fbAsyncInit = function() {
     cookie     : true, // enable cookies to allow the server to access the session
     xfbml      : true  // parse XFBML
   });
-    
+  
+  FB.Canvas.setAutoGrow();
+  
   function statusCheck(response){
     if (response.authResponse) {
       FB.api('/me', function(me){
