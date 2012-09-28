@@ -153,8 +153,6 @@ def submit(request):
     #rename source to source_tracking_id as per api
     if 'source' in submitted_form:
         submitted_form['source_tracking_id'] = submitted_form.pop('source')[0]
-    #use partner_tracking_id for referrals
-    #TBD
 
     #convert "on/off" to "boolean" values expected by api
     booleans = ['us_citizen','first_registration','has_mailing_address',
@@ -212,6 +210,16 @@ def submit(request):
         suffix = submitted_form.get('name_suffix')
         if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
             submitted_form['name_suffix'] = ""
+
+    #check for race and clear it if it's an invalid value
+    if submitted_form.has_key('race'):
+        race = submitted_form.get('race')
+        if race not in ["American Indian / Alaskan Native", "Asian / Pacific Islander",
+                        "Black (not Hispanic)", "Hispanic", "Multi-racial",
+                        "White (not Hispanic)", "Other", "Decline to State",
+                        "Indio Americano / Nativo de Alaska", "Asiatico / Islas del Pacifico",
+                        "Negra (no Hispano)", "Hispano", "Blanca (no Hispano)", "Otra", "Declino comentar"]:
+            submitted_form['race'] = "Other"
 
     #force allow rocky to send confirmation emails
     submitted_form['send_confirmation_reminder_emails'] ='1'
@@ -353,25 +361,14 @@ def submit_direct(request,state_abbr):
         if submitted_form.has_key(t):
             submitted_form.pop(t)
 
-    #rename source to source_tracking_id as per api
-    if 'source' in submitted_form:
-        submitted_form['source_tracking_id'] = submitted_form.pop('source')[0]
-
     #and add the ones it does
     submitted_form['home_state_id'] = state_abbr
     submitted_form['send_confirmation_reminder_emails'] = '1'
 
-    #check for title and replace it if it's an invalid value
-    if submitted_form.has_key('name_title'):
-        title = submitted_form.get('name_title')
-        if title not in ["Mr.", "Ms.", "Mrs.", "Sr.", "Sra.","Srta."]:
-            submitted_form['name_title'] = "Mr." #guess, because we have to send valid data to API
+    #rename source to source_tracking_id as per api
+    if 'source' in submitted_form:
+        submitted_form['source_tracking_id'] = submitted_form.pop('source')[0]
 
-    #check for suffix and clear it if it's an invalid value
-    if submitted_form.has_key('name_suffix'):
-        suffix = submitted_form.get('name_suffix')
-        if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
-            submitted_form['name_suffix'] = ""
 
     #convert "on/off" to "boolean" values expected by api
     booleans = ['us_citizen','first_registration','has_mailing_address',
@@ -387,6 +384,28 @@ def submit_direct(request,state_abbr):
                     submitted_form[b] = 0
                 if submitted_form.get(b) == "on":
                     submitted_form[b] = 1
+
+    #check for title and replace it if it's an invalid value
+    if submitted_form.has_key('name_title'):
+        title = submitted_form.get('name_title')
+        if title not in ["Mr.", "Ms.", "Mrs.", "Sr.", "Sra.","Srta."]:
+            submitted_form['name_title'] = "Mr." #guess, because we have to send valid data to API
+
+    #check for suffix and clear it if it's an invalid value
+    if submitted_form.has_key('name_suffix'):
+        suffix = submitted_form.get('name_suffix')
+        if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
+            submitted_form['name_suffix'] = ""
+
+    #check for race and clear it if it's an invalid value
+    if submitted_form.has_key('race'):
+        race = submitted_form.get('race')
+        if race not in ["American Indian / Alaskan Native", "Asian / Pacific Islander",
+                        "Black (not Hispanic)", "Hispanic", "Multi-racial",
+                        "White (not Hispanic)", "Other", "Decline to State",
+                        "Indio Americano / Nativo de Alaska", "Asiatico / Islas del Pacifico",
+                        "Negra (no Hispano)", "Hispano", "Blanca (no Hispano)", "Otra", "Declino comentar"]:
+            submitted_form['race'] = "Other"
                     
     #submit to rocky
     rtv_response = rtv_proxy('POST',submitted_form,'/api/v2/gregistrations.json')
