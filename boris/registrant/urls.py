@@ -1,6 +1,10 @@
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('registrant.views',
+urlpatterns = patterns('django.views.generic.simple',
+    (r'^$', 'redirect_to', {'url': 'map/'}),
+)
+
+urlpatterns += patterns('registrant.views',
     (r'^map/$', 'map'),
     (r'^new/$', 'register'),
     (r'^submit/$', 'submit'),
