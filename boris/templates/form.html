@@ -111,7 +111,7 @@
             </div>
           </div>
           <div class="input text zip-code span-12 last">
-            <a class="incorrect-location" tabindex="-1" href="../map/?clear_location=true&autosubmit=false&autosubmitoverride=true{%if has_partner%}&partner={{partner}}{%endif%}">{% trans "Not in"%} {{ state }}?</a>
+            <a class="incorrect-location" tabindex="-1" href="../map/?clear_location=true&autosubmit=false&autosubmitoverride=true{%if has_partner%}&partner={{partner}}{%endif%}{%if source%}?source={{source}}{%endif%}">{% trans "Not in"%} {{ state }}?</a>
             <label for="home_zip_code">{% trans "Zip Code" %}</label>
             <input required id="home_zip_code" name="home_zip_code" type="text" />
             <div class="home_zip_code-hint tooltip">{% trans "Enter a valid 5 digit zip code."%}</div>
