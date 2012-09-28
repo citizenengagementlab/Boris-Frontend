@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.core.mail import mail_admins
 from django.views.decorators.csrf import csrf_exempt
 
-from proxy.views import rtv_proxy
+from proxy.views import rtv_proxy,rtv_proxy_cached
 from registrant.utils import get_branding,empty
 from registrant.decorators import capture_locale,capture_get_parameters
 
@@ -114,7 +114,7 @@ def register(request):
 
         #TODO: get language code from localeurl
 
-        staterequirements = rtv_proxy('POST',{'home_state_id':state,'lang':request.LANGUAGE_CODE},
+        staterequirements = rtv_proxy_cached('POST',{'home_state_id':state,'lang':request.LANGUAGE_CODE},
             '/api/v2/state_requirements.json')
         context['staterequirements'] = staterequirements
 

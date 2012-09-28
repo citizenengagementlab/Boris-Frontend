@@ -1,10 +1,12 @@
+from django.http import HttpResponse
+from django.conf import settings
+from django.core.cache import cache
+from django.utils.http import urlquote_plus
+
 import urllib2
 import urllib
 import json
-from django.utils.http import urlquote_plus
-from django.http import HttpResponse
 
-from django.conf import settings
 PROXY_FORMAT = u"https://%s/%s" % (settings.PROXY_DOMAIN, u"%s")
 
 def rtv_proxy_view(request,url):
@@ -78,6 +80,19 @@ def rtv_proxy(method, values, url):
         
     content = response.read()
     return json.loads(content)
+
+def rtv_proxy_cached(method, values, url):
+    #cached proxy, should probably only be used for getting state requirements
+    cache_key = "%s:%s:%s" % (method,url, ".".join(values.values()))
+    if cache.get(cache_key):
+        if settings.DEBUG: print "cache.get", cache_key
+        return cache.get(cache_key)
+    else:
+        response = rtv_proxy(method,values,url)
+        cache.set(cache_key,response,3600)
+        if settings.DEBUG: print "cache.set", cache_key
+        return response
+
 
 def url_exists(url):
     #use HEAD method to get only response code, not full contents

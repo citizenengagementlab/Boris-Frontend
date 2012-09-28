@@ -1,5 +1,6 @@
 from proxy.models import CustomForm,CoBrandForm
 from proxy.views import rtv_proxy
+from django.core.cache import cache
 from django.core.mail import mail_admins
 
 def whitelabel(request):
@@ -41,9 +42,15 @@ def whitelabel(request):
 
     try:
         #finally, try rtv whitelabel
-        rtv_whitelabel = rtv_proxy('GET',{'partner_id':context['partner']},
-        'api/v2/partnerpublicprofiles/partner.json')
-        #cache these?
+
+        #check cache first
+        cache_key = 'rtv_whitelabel_%s' % context['partner']
+        if cache.get(cache_key):
+            rtv_whitelabel = cache.get(cache_key)
+        else:
+            rtv_whitelabel = rtv_proxy('GET',{'partner_id':context['partner']},
+            'api/v2/partnerpublicprofiles/partner.json')
+            cache.set(cache_key,rtv_whitelabel,3600) #cache whitelabel hits for an hour
     
         #duck type a customform
         quack = {'partner_id':context['partner'],
