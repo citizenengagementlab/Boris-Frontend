@@ -112,8 +112,6 @@ def register(request):
                 redirect_url += "?"+urllib.urlencode(params)
             return redirect(redirect_url)
 
-        #TODO: get language code from localeurl
-
         staterequirements = rtv_proxy_cached('POST',{'home_state_id':state,'lang':request.LANGUAGE_CODE},
             '/api/v2/state_requirements.json')
         context['staterequirements'] = staterequirements
@@ -221,6 +219,18 @@ def submit(request):
                         "Negra (no Hispano)", "Hispano", "Blanca (no Hispano)", "Otra", "Declino comentar"]:
             submitted_form['race'] = "Other"
 
+    #rocky api only accepts en/es, clear country specific locales
+    if submitted_form.has_key('lang'):
+        lang = submitted_form.get('lang')
+        if lang.starts_with('en'):
+            lang = 'en'
+        elif lang.starts_with('es'):
+            lang = 'es'
+        else:
+            lang = 'en'
+        submitted_form['lang'] = lang
+
+
     #force allow rocky to send confirmation emails
     submitted_form['send_confirmation_reminder_emails'] ='1'
 
@@ -230,7 +240,7 @@ def submit(request):
     question_2 = "What issue do you care most about?"
 
     #then check cobrand and custom form
-    branding = get_branding({'partner':submitted_form['partner_id'],'language':request.LANGUAGE_CODE})
+    branding = get_branding({'partner':submitted_form['partner_id'],'language':lang})
     if branding.get('cobrandform'):
         cobrand = branding['cobrandform']
         if cobrand.question_1:
