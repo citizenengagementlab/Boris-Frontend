@@ -423,4 +423,8 @@
         <button class="button button-primary" tabindex="" type="submit">{% trans "Register"%}</button>
       </fieldset>
     </form>
+
+    <div id="share-link">
+        Already registered? <a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">Share with your friends</a>
+    </div>
 {%endblock content%}
