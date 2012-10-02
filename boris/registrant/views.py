@@ -219,16 +219,18 @@ def submit(request):
                         "Negra (no Hispano)", "Hispano", "Blanca (no Hispano)", "Otra", "Declino comentar"]:
             submitted_form['race'] = "Other"
 
-    #rocky api only accepts en/es, clear country specific locales
+    #rocky api only accepts en/es, clear country specific locales (eg, en-gb)
     if submitted_form.has_key('lang'):
         lang = submitted_form.get('lang')
-        if lang.starts_with('en'):
+        if lang.startswith('en'):
             lang = 'en'
-        elif lang.starts_with('es'):
+        elif lang.startswith('es'):
             lang = 'es'
         else:
             lang = 'en'
-        submitted_form['lang'] = lang
+    else:
+        lang = 'en'
+    submitted_form['lang'] = lang
 
 
     #force allow rocky to send confirmation emails
