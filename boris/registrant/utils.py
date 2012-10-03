@@ -1,6 +1,101 @@
 from proxy.models import CustomForm,CoBrandForm
 from proxy.views import rtv_proxy
+from django.core.cache import cache
 from django.core.mail import mail_admins
+
+def cleanup_form(form):
+    """Util method to cleanup user submitted form, in preparation for sending to Rocky"""
+
+    #remove inputs that we needed, but the api will reject
+    remove_inputs = ['csrfmiddlewaretoken','facebook','has_state_license']
+    for t in remove_inputs:
+        if form.has_key(t):
+            form.pop(t)
+
+    #and add the ones it does
+    form['send_confirmation_reminder_emails'] = '1'
+
+    #rename source to source_tracking_id as per api
+    if 'source' in form:
+        form['source_tracking_id'] = form.pop('source')[0]
+
+    #convert "on/off" to "boolean" values expected by api
+    booleans = ['us_citizen','first_registration','has_mailing_address',
+                'change_of_name','change_of_address','us_citizen',
+                'opt_in_sms','opt_in_email','opt_in_volunteer',
+                'partner_opt_in_sms','partner_opt_in_email','partner_opt_in_volunteer']
+    for b in booleans:
+        if form.has_key(b):
+            try:
+                form[b] = int(form[b])
+            except ValueError:
+                #print "value error converting int(form[%s])" % b
+                if form.get(b) == "off":
+                    #print "setting form[%s] = off" % b
+                    form[b] = 0
+                if form.get(b) == "on":
+                    #print "setting form[%s] = on" % b
+                    form[b] = 1
+
+    #check for rocky required fields, fill them with defaults
+    required_fields = ['opt_in_sms','opt_in_email','us_citizen']
+    for r in required_fields:
+        if not r in form:
+            #and fill it in with zero
+            form[r] = 0
+            print "setting form[%s] = 0" % r
+
+    #check for title and replace it if it's an invalid value
+    if 'name_title' in form:
+        title = form.get('name_title')
+        if title not in ["Mr.", "Ms.", "Mrs.", "Sr.", "Sra.","Srta."]:
+            form['name_title'] = "Mr." #guess, because we have to send valid data to API
+
+    #check for suffix and clear it if it's an invalid value
+    if 'name_suffix' in form:
+        suffix = form.get('name_suffix')
+        if suffix not in ["Jr.", "Sr.", "II", "III", "IV"]:
+            form['name_suffix'] = ""
+
+    #check for race and clear it if it's an invalid value
+    if 'race' in form:
+        race = form.get('race')
+        if race not in ["American Indian / Alaskan Native", "Asian / Pacific Islander",
+                        "Black (not Hispanic)", "Hispanic", "Multi-racial",
+                        "White (not Hispanic)", "Other", "Decline to State",
+                        "Indio Americano / Nativo de Alaska", "Asiatico / Islas del Pacifico",
+                        "Negra (no Hispano)", "Hispano", "Blanca (no Hispano)", "Otra", "Declino comentar"]:
+            form['race'] = "Other"
+
+    
+    #strip leading and trailing space from open text fields
+    strip_fields = ['id_number','email_address','race']
+    for f in strip_fields:
+        if f in form:
+            form[f] = form[f].strip()
+       
+    #replace any other spaces in id_number, because rocky doesn't like them
+    if 'id_number' in form:
+        if (' ' in form['id_number']):
+            form['id_number'] = form['id_number'].replace(' ','')
+            
+        #if id_number blank, fill it in with none
+        if empty(form['id_number']):
+            form['id_number'] = "none"
+
+    #rocky api only accepts en/es, clear country specific locales
+    if 'lang' in form:
+        lang = form.get('lang')
+        if lang.startswith('en'):
+            lang = 'en'
+        elif lang.startswith('es'):
+            lang = 'es'
+        else:
+            lang = 'en'
+        form['lang'] = lang
+
+
+    return form
 
 def get_branding(context):
     """Util method to get branding given partner id.
@@ -67,7 +162,7 @@ def get_branding(context):
 
 def empty(the_list):
     #returns True if list has only one object, and it's empty or otherwise False-y
-    #need this because the submitted_form is a dict of lists, not a dict of values
+    #need this because the form is a dict of lists, not a dict of values
     #could be as simple as not bool(the_list[0]), but let's be more explicit...
     if len(the_list) == 0:
         return True
