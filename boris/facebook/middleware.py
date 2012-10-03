@@ -1,5 +1,6 @@
 from django.conf import settings
 from facebook.canvas import decode_signed_request
+from django.core.mail import mail_admins
 
 #from http://djangosnippets.org/snippets/2272/
 
@@ -21,10 +22,11 @@ class FacebookCanvasMiddleware(object):
                 #check against facebook partners list
                 try:
                     fb_page_id = signed_request['page']['id']
-                except AttributeError:
+                except KeyError,e:
+                    mail_admins("facebook app error",
+                        "key error:%s\n,signed_request:%s\n" % (e,signed_request))
                     return {}
 
-                print fb_page_id
                 fb_partner_map = settings.FACEBOOK_PARTNERS_MAP
 
                 if fb_page_id in fb_partner_map.keys():
