@@ -25,9 +25,14 @@ def get_branding(context):
 
     #finally, try rtv whitelabel
     try:
-        rtv_whitelabel = rtv_proxy('GET',{'partner_id':context['partner']},
-        'api/v2/partnerpublicprofiles/partner.json')
-        #cache these?
+        #check cache first
+        cache_key = 'rtv_whitelabel_%s' % context['partner']
+        if cache.get(cache_key):
+            rtv_whitelabel = cache.get(cache_key)
+        else:
+            rtv_whitelabel = rtv_proxy('GET',{'partner_id':context['partner']},
+            'api/v2/partnerpublicprofiles/partner.json')
+            cache.set(cache_key,rtv_whitelabel,3600) #cache whitelabel hits for an hour
     
         #duck type a customform
         quack = {'partner_id':context['partner'],
