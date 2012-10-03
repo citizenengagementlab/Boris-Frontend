@@ -117,7 +117,7 @@ def register(request):
         redirect_url = reverse('registrant.views.map')
         params = {}
         if context.get('has_partner'):
-            params['partner'] = context['partner']
+            params['partner'] = context.get('partner')
         if request.GET.get('email_address'):
             params['email_address'] = request.GET.get('email_address')
         if params:
