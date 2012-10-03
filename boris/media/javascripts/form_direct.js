@@ -41,6 +41,7 @@ function continueToStateForm() {
   //show share buttons
   $('body').addClass('finish');
   $('.share').show();
+  $('#share-link').hide();
 }
 
 $(document).ready(function() {
