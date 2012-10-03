@@ -138,6 +138,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request", #add so we can access session in templates
     "registrant.context_processors.whitelabel",
+    "registrant.context_processors.facebook",
 )
 
 INSTALLED_APPS = (

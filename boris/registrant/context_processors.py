@@ -3,6 +3,21 @@ from proxy.views import rtv_proxy
 from django.core.cache import cache
 from django.core.mail import mail_admins
 
+def facebook(request):
+    """Context processor to add facebook partner & source from session"""
+    context = {}
+    
+    if request.session.has_key('facebook_canvas'):
+        if request.session.has_key('facebook_partner_id'):
+            context['partner'] = request.session['facebook_partner_id']
+        else:
+            #use facebook default
+            context['partner'] = 19093
+
+        #if not already a source, add it
+        if not request.GET.get('source'):
+            context['source'] = request.session['facebook_source']
+
 def whitelabel(request):
     """
     Context processor to add customform and cobrandform to request.session
@@ -74,8 +89,9 @@ def whitelabel(request):
         context['customform'] = quack
 
     except KeyError,e:
+        pass
         #whitelabel error, never mind
-        mail_admins("white label error, id %s" % context['partner'],
-            "key error:%s\n,rtv_whitelabel:%s\n" % (e,rtv_whitelabel))
+        #mail_admins("white label error, id %s" % context['partner'],
+        #    "key error:%s\n,rtv_whitelabel:%s\n" % (e,rtv_whitelabel))
 
     return context
