@@ -216,12 +216,10 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 CSRF_FAILURE_VIEW = 'registrant.views.csrf_failure'
 
-FACEBOOK_APP_SECRET = "4a81af510cab2129f90c0960b34d4b43"
+FACEBOOK_APP_SECRET = "06e898abaae86401d7ff3ba1af1d6937" #local testing id, actual is in the environ
+
 #maps facebook page ids to partner ids
-FACEBOOK_PARTNERS_MAP = {'123441234': 123,
-                        '123323123': 332,
-                        '533335353': 6566,
-                        '18957518672': 19093, #rockthevote
+FACEBOOK_PARTNERS_MAP = {'18957518672': 19093, #rockthevote
                         '48449211200':13153, #rockthevote PA
                         '311052938931010':10981, #spinthevote
                         '422539957805075':9937} #local testing
@@ -233,6 +231,8 @@ except:
     DEBUG = False
     PROXY_DOMAIN = "register.rockthevote.com"
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+    #facebook settings
+    FACEBOOK_APP_SECRET = os.environ['FACEBOOK_APP_SECRET']
     #sendgrid settings
     EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
     EMAIL_HOST= 'smtp.sendgrid.net'
