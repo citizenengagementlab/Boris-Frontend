@@ -418,7 +418,7 @@
         
         {% comment %} Hidden but Required Fields {% endcomment %}
         <input type="hidden" name="lang" id="lang" value="{{LANGUAGE_CODE}}">
-        <input type="hidden" name="partner_id" value="{{ partner }}">
+        <input type="hidden" name="partner_id" value="{{ partner|default:'1' }}">
         {%if source%}<input type="hidden" name="source" value="{{ source }}">{%endif%}
         <button class="button button-primary" tabindex="" type="submit">{% trans "Register"%}</button>
       </fieldset>
