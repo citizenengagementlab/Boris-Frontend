@@ -30,9 +30,11 @@ def whitelabel(request):
     if request.GET.get('partner'):
         partner = request.GET.get('partner')
         context['partner'] = partner
+        context['has_partner'] = True
     elif not context.has_key('partner'):
         #no partner specified, return early
         context['partner'] = 1
+        context['has_partner'] = False
         return context
 
     if request.GET.get('source'):
