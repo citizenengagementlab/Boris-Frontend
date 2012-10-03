@@ -216,6 +216,12 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 CSRF_FAILURE_VIEW = 'registrant.views.csrf_failure'
 
 FACEBOOK_APP_SECRET = "4a81af510cab2129f90c0960b34d4b43"
+#maps facebook page ids to partner ids
+FACEBOOK_PARTNERS_MAP = {'123441234': 123,
+                        '123323123': 332,
+                        '533335353': 6566,
+                        '18957518672': 19093,
+                        '422539957805075':9937}
 
 try:
     from settings_local import *

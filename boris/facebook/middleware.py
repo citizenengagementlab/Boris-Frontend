@@ -11,8 +11,28 @@ class FacebookCanvasMiddleware(object):
                 signed_request = decode_signed_request(settings.FACEBOOK_APP_SECRET, str(signed_request))
             except ValueError:
                 #can't decode signed request
-                pass
+                signed_request = None
             request.csrf_processing_done = (signed_request != None)
             #stop csrf processing
             request.session['facebook_canvas'] = True
             #save to session
+
+            if signed_request:
+                #check against facebook partners list
+                try:
+                    fb_page_id = signed_request['page']['id']
+                except AttributeError:
+                    return {}
+
+                print fb_page_id
+                fb_partner_map = settings.FACEBOOK_PARTNERS_MAP
+
+                if fb_page_id in fb_partner_map.keys():
+                    request.session['facebook_partner_id'] = fb_partner_map[fb_page_id]
+                else:
+                    #rtv default
+                    request.session['facebook_partner_id'] = 19093
+
+                #set source, if not already set
+                if not request.GET.get('source'):
+                    request.session['facebook_source'] = "FBAPP"
