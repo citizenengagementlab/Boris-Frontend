@@ -221,8 +221,10 @@ FACEBOOK_APP_SECRET = "4a81af510cab2129f90c0960b34d4b43"
 FACEBOOK_PARTNERS_MAP = {'123441234': 123,
                         '123323123': 332,
                         '533335353': 6566,
-                        '18957518672': 19093,
-                        '422539957805075':9937}
+                        '18957518672': 19093, #rockthevote
+                        '48449211200':13153, #rockthevote PA
+                        '311052938931010':10981, #spinthevote
+                        '422539957805075':9937} #local testing
 
 try:
     from settings_local import *
