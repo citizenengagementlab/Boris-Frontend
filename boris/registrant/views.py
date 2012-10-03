@@ -66,6 +66,10 @@ def register(request):
     "The full form, in a single page format"
     context = {}
 
+    #don't show partner for testings partner ids
+    if context.get('partner') in DEFAULT_PARTNER_IDS:
+        context['has_partner'] = False
+
     #set state based on get parameter
     if 'state' in request.GET:
         state = request.GET.get('state').upper()

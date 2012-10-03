@@ -10,7 +10,7 @@ def facebook(request):
     if request.session.has_key('facebook_canvas'):
         if request.session.has_key('facebook_partner_id'):
             context['partner'] = request.session['facebook_partner_id']
-        else:
+        elif not request.GET.has_key('partner'):
             #use facebook default
             context['partner'] = 19093
 
