@@ -98,8 +98,8 @@ def register(request):
             #don't have a state, redirect to the map
             redirect_url = reverse('registrant.views.map')
             params = {}
-            if context.get('has_partner'):
-                params['partner'] = context['partner']
+            if context.get('has_partner') and context.get('partner'):
+                params['partner'] = context.get('partner')
             if request.GET.get('email_address'):
                 params['email_address'] = request.GET.get('email_address')
             if params:
@@ -116,7 +116,7 @@ def register(request):
     else:
         redirect_url = reverse('registrant.views.map')
         params = {}
-        if context.get('has_partner'):
+        if context.get('has_partner') and context.get('partner'):
             params['partner'] = context.get('partner')
         if request.GET.get('email_address'):
             params['email_address'] = request.GET.get('email_address')
