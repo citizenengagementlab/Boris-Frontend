@@ -24,7 +24,7 @@ STATE_NAME_LOOKUP['DC'] = "DC" #monkey patch, because "District of Columbia does
 DIRECT_SUBMIT_STATES = ['WA','NV','CA']
 
 #if the submission is made using these partner ids, do not display custom branding
-DEFAULT_PARTNER_IDS = [1,9937]
+DEFAULT_PARTNER_IDS = [1,9937,19093]
 
 @capture_get_parameters(['email_address','home_zip_code','state'])
 @capture_locale
@@ -66,9 +66,15 @@ def register(request):
     "The full form, in a single page format"
     context = {}
 
-    #don't show partner for testings partner ids
-    if context.get('partner') in DEFAULT_PARTNER_IDS:
+    #don't show partner for testing partner ids
+    if request.GET.get('partner'):
+        if request.GET.get('partner') in DEFAULT_PARTNER_IDS:
+            context['has_partner'] = False
+        else:
+            context['has_partner'] = True
+    else:
         context['has_partner'] = False
+
 
     #set state based on get parameter
     if 'state' in request.GET:
@@ -236,8 +242,13 @@ def submit(request):
     context['source'] = submitted_form.get('partner_tracking_id')
     context['email_address'] = submitted_form.get("email_address")
 
-    #don't show partner for testings partner ids
-    if context['partner'] in DEFAULT_PARTNER_IDS:
+    #don't show partner for testing partner ids
+    if request.GET.get('partner'):
+        if request.GET.get('partner') in DEFAULT_PARTNER_IDS:
+            context['has_partner'] = False
+        else:
+            context['has_partner'] = True
+    else:
         context['has_partner'] = False
 
     if context.has_key('error'):
@@ -263,6 +274,15 @@ def register_direct(request,state_abbr):
     context = {}
     context['state'] = state
     context['state_name'] = STATE_NAME_LOOKUP[state]
+
+    #don't show partner for testings partner ids
+    if request.GET.get('partner'):
+        if request.GET.get('partner') in DEFAULT_PARTNER_IDS:
+            context['has_partner'] = False
+        else:
+            context['has_partner'] = True
+    else:
+        context['has_partner'] = False
 
     return render_to_response('form_%s_direct.html' % state.lower(),context,
             context_instance=RequestContext(request))
