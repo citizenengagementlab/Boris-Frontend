@@ -24,7 +24,7 @@ class FacebookCanvasMiddleware(object):
                     fb_page_id = signed_request['page']['id']
                 except KeyError,e:
                     mail_admins("facebook app error",
-                        "key error:%s\n,signed_request:%s\n" % (e,signed_request))
+                        "key error:%s,\nsigned_request:%s\n" % (e,signed_request))
                     return {}
 
                 fb_partner_map = settings.FACEBOOK_PARTNERS_MAP
