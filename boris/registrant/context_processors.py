@@ -15,8 +15,9 @@ def facebook(request):
             context['partner'] = 19093
 
         #if not already a source, add it
-        if not request.GET.get('source'):
+        if not request.GET.get('source') and request.session.has_key('facebook_source'):
             context['source'] = request.session['facebook_source']
+    return context
 
 def whitelabel(request):
     """
