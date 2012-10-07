@@ -1,3 +1,17 @@
+function addFloodlightTrackingPixel() {
+/*
+  Start of DoubleClick Floodlight Tag: Please do not remove
+  Activity name of this tag: Rock The Vote Conversion Pixel
+  URL of the webpage where the tag is expected to be placed: http://www.rockthevote.com/
+
+  This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+  Creation Date: 10/05/2012
+  */
+  var axel = Math.random() + "";
+  var a = axel * 10000000000000;
+  $('body').append('<iframe src="http://fls.doubleclick.net/activityi;src=3838314;type=rtvco381;cat=rockt950;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+}
+
 function showStateRegContinueButtons() {
   if ($("input#registrant_has_state_license_1:checked").val()=='1') {
       $('.has_no_license').hide();
@@ -37,7 +51,10 @@ function continueToStateForm() {
 
   //function defined in template, so we can reuse this file for multiple states
   add_state_iframe();
-
+  
+  //add tracking pixel for floodlight
+  addFloodlightTrackingPixel();
+  
   //show share buttons
   $('body').addClass('finish');
   $('.share').show();
