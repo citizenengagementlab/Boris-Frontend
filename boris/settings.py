@@ -206,7 +206,7 @@ def get_cache():
     except:
         return {
           'default': {
-            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
           }
         }
 
@@ -220,7 +220,7 @@ FACEBOOK_APP_SECRET = "06e898abaae86401d7ff3ba1af1d6937" #local testing id, actu
 
 #maps facebook page ids to partner ids
 FACEBOOK_PARTNERS_MAP = {'18957518672': 19093, #rockthevote
-                        '48449211200':13153, #rockthevote PA
+                        '48449211200':13153, #rockthevote PA (twonky?)
                         '311052938931010':10981, #spinthevote
                         '422539957805075':9937} #local testing
 
