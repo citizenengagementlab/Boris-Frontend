@@ -26,6 +26,22 @@ h1.map {
 .button#map-continue {
     width:100%;
 }
+
+fieldset.submit {
+    padding-bottom:10px;
+}
+
+#deadline-notice {
+    width: 580px;
+    background: #E4E4E4;
+    color:#2F9E00;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 24px;
+    border-radius: 6px;
+    padding: 10px;
+}
 </style>
 {%endblock styles%}
 
@@ -102,6 +118,10 @@ h1.map {
 
       {%if partner%}<input type="hidden" name="partner" value="{{partner}}" />{%endif%}
       {%if source%}<input type="hidden" name="source" value="{{source}}" />{%endif%}
+
+      <div id="deadline-notice">
+        Your state's deadline to register to vote in the November 2012 election may have already passed. Check the <a href="http://www.rockthevote.com/election-center/registration-deadlines/">Election Center</a> to find out.
+      </div>
 
       <div id="share-link">
         Already registered? <a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">Share with your friends</a>
