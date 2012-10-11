@@ -73,12 +73,18 @@ def whitelabel(request):
     
         #duck type a customform
         quack = {'partner_id':context['partner'],
-                 'name':rtv_whitelabel['org_name'],
-                 'logo':rtv_whitelabel['logo_image_URL'],
-                 'logo_link':rtv_whitelabel['org_URL'],
-                 'show_sms_box':rtv_whitelabel['partner_ask_sms_opt_in'],
-                 'show_volunteer_box':rtv_whitelabel['rtv_ask_volunteer'],
-                 }
+                     'name':rtv_whitelabel['org_name'],
+                     'logo':rtv_whitelabel['logo_image_URL'],
+                     'logo_link':rtv_whitelabel['org_URL']}
+        if rtv_whitelabel['whitelabeled']:
+            quack['show_sms_box'] = rtv_whitelabel['partner_ask_sms_opt_in']
+            quack['show_volunteer_box'] = rtv_whitelabel['ask_volunteer']
+            quack['show_email_optin'] = rtv_whitelabel['ask_email_opt_in']
+        else:
+            quack['show_sms_box'] = rtv_whitelabel['rtv_ask_sms_opt_in']
+            quack['show_volunteer_box'] = rtv_whitelabel['rtv_ask_volunteer']
+            quack['show_email_optin'] = rtv_whitelabel['rtv_ask_email_opt_in']
+            
         if request.LANGUAGE_CODE == "es":
             quack['question_1'] = rtv_whitelabel['survey_question_1_es']
             quack['question_2'] = rtv_whitelabel['survey_question_2_es']
