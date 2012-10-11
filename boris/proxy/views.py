@@ -39,7 +39,8 @@ def rtv_proxy(method, values, url):
     if settings.DEBUG: print "PROXY",method,
     if method == "GET":
         if settings.DEBUG: print values
-        url_ending = "%s?%s" % (url, urllib.urlencode(values))
+        data = urllib.urlencode(values)
+        url_ending = "%s?%s" % (url, data)
         url = PROXY_FORMAT % url_ending
     elif method == "POST":
         if settings.DEBUG: print values
