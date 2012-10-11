@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-25 05:14+0000\n"
+"POT-Creation-Date: 2012-10-11 02:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: registrant/views.py:268
+#: registrant/views.py:210
 msgid "Unrecognized state, please go back and try again."
 msgstr "Estado no reconocido, por favor regrese e inténtelo de nuevo."
 
-#: registrant/views.py:292
+#: registrant/views.py:234
 msgid "Unknown error: the web administrators have been contacted."
 msgstr ""
 
@@ -30,18 +30,18 @@ msgstr ""
 msgid "Voter Registration"
 msgstr "Registro de Votantes"
 
-#: templates/base.html:45
+#: templates/base.html:47
 #, fuzzy
 msgid "Register in"
 msgstr "Regístrese en"
 
-#: templates/base.html:45 templates/error.html:4 templates/form.html:5
+#: templates/base.html:47 templates/error.html:4 templates/form.html:5
 #: templates/form_direct.html:5 templates/map.html:5 templates/share.html:5
 #: templates/start.html:5 templates/submit.html:5
 msgid "Register to Vote"
 msgstr "Registrarse para votar"
 
-#: templates/base.html:56
+#: templates/base.html:58
 msgid "Powered by"
 msgstr "Desarrollado por"
 
@@ -153,7 +153,8 @@ msgstr "¿Registrándose  en el extranjero?"
 
 #: templates/form.html:129
 msgid "I have a different mailing address"
-msgstr "Recibo mi correo en una dirección diferente a la provista anteriormente."
+msgstr ""
+"Recibo mi correo en una dirección diferente a la provista anteriormente."
 
 #: templates/form.html:133
 msgid "I have recently moved"
@@ -200,7 +201,7 @@ msgid "Enter your birthdate in MM/DD/YYYY format."
 msgstr "Ingrese su fecha de nacimiento en el formato MM/DD/AAAA"
 
 #: templates/form.html:194 templates/form_direct.html:144
-#: templates/map.html:101 templates/start.html:48
+#: templates/map.html:110 templates/start.html:48
 msgid "Email Address"
 msgstr "Correo Electrónico"
 
@@ -356,21 +357,11 @@ msgstr ""
 "Ahora, se puede completar su formulario de inscripción de votante en linea "
 "con el estado - usando el formulario de la Secretaria del Estado Debra Bowen."
 
-#: templates/form_ca_direct.html:46 templates/form_nv_direct.html:42
-#: templates/share.html:24
-#, fuzzy
-msgid "Spread the word"
-msgstr "Corre la voz"
-
-#: templates/form_ca_direct.html:48 templates/form_nv_direct.html:44
-msgid ""
-"Don't forget to tell your friends and family how easy it was to register. "
-"Here are a few tools you can use to spread the word about voter registration:"
-msgstr ""
-
 #: templates/form_direct.html:288 templates/form_wa_direct.html:20
 msgid "You can complete your voter registration online with the state below."
-msgstr "Se puede completar su formulario de inscripción de votante en linea con el estado."
+msgstr ""
+"Se puede completar su formulario de inscripción de votante en linea con el "
+"estado."
 
 #: templates/form_direct.html:289
 msgid ""
@@ -379,6 +370,19 @@ msgid ""
 "href='javascript:redirectToRegularForm()'> finish your registration with "
 "Rock the Vote</a>. You will just have to print, sign, and mail it in."
 msgstr ""
+
+#: templates/form_direct.html:300 templates/share.html:24
+#, fuzzy
+msgid "Spread the word"
+msgstr "Corre la voz"
+
+#: templates/form_direct.html:302
+msgid ""
+"Don't forget to tell your friends and family how easy it was to register. "
+"Here are a few tools you can use to spread the word about voter registration:"
+msgstr ""
+"No te olvides de decirle a sus amigos y familiares lo fácil que era para registrarse."
+"Aquí hay algunas herramientas que puede utilizar para correr la voz sobre el registro de votantes:"
 
 #: templates/form_nv_direct.html:33
 msgid ""
@@ -389,6 +393,12 @@ msgid ""
 "\"https://nvsos.gov/sosvoterservices/Registration/step1.aspx?r=gov\" target="
 "\"_blank\">here.</a>"
 msgstr ""
+"Puede completar tu registro de votantes con el estado siguiente. El"
+"Nevada Aplicación Votantes Online (NOVA) es proporcionado por la secretaria de Nevada"
+"Estado, Ross Miller, para el registro de los ciudadanos de Nevada para votar, o cambiar a"
+"su información de registro existente. NOVA también está disponible <a href ="
+"\" https://nvsos.gov/sosvoterservices/Registration/step1.aspx?r=gov\" target ="
+"\" _blank\"> aquí. </a>"
 
 #: templates/form_nv_direct.html:35 templates/form_wa_direct.html:21
 msgid ""
@@ -397,6 +407,10 @@ msgid ""
 "href='javascript:redirectToRegularForm()'> finish your registration with "
 "Rock the Vote</a>. You will just have to print, sign, and mail it in."
 msgstr ""
+"If your driver's license or state identification card is invalid or the "
+"state can't find or confirm your DMV record - don't worry - you can also <a "
+"href='javascript:redirectToRegularForm()'> finish your registration with "
+"Rock the Vote</a>. You will just have to print, sign, and mail it in."
 
 #: templates/ineligible.html:13
 msgid ""
@@ -410,18 +424,34 @@ msgstr ""
 msgid "Select Your State"
 msgstr "Seleccione su estado"
 
-#: templates/map.html:43
+#: templates/map.html:52
 msgid "Select your state to get started"
 msgstr "Seleccione su estado para empezar"
 
-#: templates/map.html:47
+#: templates/map.html:56
 #, fuzzy
 msgid "Select State"
 msgstr "Seleccione el estado"
 
-#: templates/map.html:107 templates/start.html:68
+#: templates/map.html:116 templates/start.html:68
 msgid "Continue"
 msgstr "Continuar"
+
+#: templates/map.html:123
+msgid ""
+"Your state's deadline to register to vote in the November 2012 election may "
+"have already passed. Check the <a href=\"http://www.rockthevote.com/election-"
+"center/registration-deadlines/\">Election Center</a> to find out."
+msgstr "Es posible que ya pasó la fecha para registrar de votar en su estado para las elecciones de noviembre 2012.  Para mas información, revisa el <a href=\"http://www.rockthevote.com/election-"
+"center/registration-deadlines/\">Centro de Elecciones</a>."
+
+#: templates/map.html:127
+msgid "Already registered?"
+msgstr "Ya está registrado?"
+
+#: templates/map.html:127
+msgid "Share with your friends"
+msgstr "Corre la voz"
 
 #: templates/share.html:5
 #, fuzzy
@@ -430,13 +460,14 @@ msgstr "Corre la voz"
 
 #: templates/share.html:25
 msgid "Tell your friends and family to register"
-msgstr ""
+msgstr "Dile a tus amigos y familiares a registrarse"
 
 #: templates/share.html:28
 msgid ""
 "Here are a few tools you can use to spread the word about voter registration:"
-msgstr "Aquí hay algunas herramientas que puede utilizar para correr la voz "
-"sobre el inscripción de votante:"
+msgstr ""
+"Aquí hay algunas herramientas que puede utilizar para correr la voz sobre el "
+"inscripción de votante:"
 
 #: templates/start.html:5
 msgid "Get Started"
@@ -450,34 +481,34 @@ msgstr "Debe ser un ciudadano para registrarse"
 msgid "Download Your Form"
 msgstr "Descargue su formulario"
 
-#: templates/submit.html:42
+#: templates/submit.html:64
 msgid "You're not quite done!"
 msgstr "Todavía no hemos terminado"
 
-#: templates/submit.html:43
+#: templates/submit.html:65
 msgid "You still need to download your form."
 msgstr "Usted todavía necesita descargar el formulario"
 
-#: templates/submit.html:47
+#: templates/submit.html:69
 msgid "Download"
 msgstr "Descargar"
 
-#: templates/submit.html:51
+#: templates/submit.html:73
 msgid "We've also e-mailed you a link to retreive your form later"
 msgstr ""
 "Le hemos también enviado un enlace por correo electrónico para obtener tu "
 "formulario posterior"
 
-#: templates/submit.html:60
+#: templates/submit.html:82
 msgid "This should only take a second"
 msgstr "Esto sólo se debe tomar un segundo"
 
-#: templates/submit.html:66
+#: templates/submit.html:88
 #, fuzzy
 msgid "Something went wrong "
 msgstr "Algo salió mal"
 
-#: templates/submit.html:88
+#: templates/submit.html:110
 msgid "Spread the word!"
 msgstr "Corre la voz"
 

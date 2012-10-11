@@ -120,11 +120,11 @@ fieldset.submit {
       {%if source%}<input type="hidden" name="source" value="{{source}}" />{%endif%}
 
       <div id="deadline-notice">
-        Your state's deadline to register to vote in the November 2012 election may have already passed. Check the <a href="http://www.rockthevote.com/election-center/registration-deadlines/">Election Center</a> to find out.
+        {%blocktrans%}Your state's deadline to register to vote in the November 2012 election may have already passed. Check the <a href="http://www.rockthevote.com/election-center/registration-deadlines/">Election Center</a> to find out.{%endblocktrans%}
       </div>
 
       <div id="share-link">
-        Already registered? <a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">Share with your friends</a>
+        {%trans "Already registered?" %} <a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">{%trans "Share with your friends" %}</a>
       </div>
   </form>
 {%endblock content%}
