@@ -39,7 +39,7 @@ class Views.Form extends Backbone.View
 
   initialize: ->
     @$fieldsets = @$ "fieldset"
-    @$inputs = @$ ":text, select, input[type=email], input[type=date], #us_citizen"
+    @$inputs = @$ ":text, select, input[type=email], input[type=date], input[type=checkbox]"
     @$button = @$ ".button-primary"
     @$button.on 'click', @_onSubmit
 
@@ -47,6 +47,7 @@ class Views.Form extends Backbone.View
       id = input.name
       id = id.charAt(0).toUpperCase() + id.slice(1)
       klassName = id.replace /_\D/g, (match) -> match.charAt(1).toUpperCase()
+      console.log(klassName)
       klass = Views["#{klassName}FormField"] || Views.FormField
       field = new klass
         el: $(input).closest(".input")
@@ -285,6 +286,20 @@ class Views.UsCitizenFormField extends Views.FormField
         @showTooltip()
   valid: =>
     if !@$input.attr('checked')
+      return false
+    true
+
+class Views.SMSOptinFormField extends Views.FormField
+  errorMessage: "Phone number required to receive text messages"
+  initialize: ->
+    super()
+    @$input.on "change", =>
+      if @valid()
+        @hideTooltip()
+      else
+        @showTooltip()
+  valid: =>
+    if !Views.PhoneFormField.$input.val()
       return false
     true
 
