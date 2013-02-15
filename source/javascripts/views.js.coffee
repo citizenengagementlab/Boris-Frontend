@@ -92,13 +92,13 @@ class Views.Form extends Backbone.View
     if @$button.hasClass 'disabled'
       e.preventDefault()
       errors = []
-      @fields.forEach (field) ->
+      _.forEach(@fields, (field) ->
         field.validate()
         errors.push {name: field.$input.siblings('label').text(), error: field.errorMessage} unless field.valid()
-      
+        )
       $errorList = $("<ul class='error-list'></ul>")
       html = "<h2>Please correct the following errors:</h2>"
-      errors.forEach (error) ->
+      _.forEach errors, (error) ->
         if error.name
           html += "<li>#{error.name}: #{error.error}</li>"
         else
@@ -116,12 +116,11 @@ class Views.FormField extends Backbone.View
     @getErrorTip()
     @input = @options.input
     @$input = $ @input
-    @$input.on "change blur keyup", => @_onChange()
-    @$input.on "change blur", => @validate()
+    @$input.on "blur", => @_onChange()
+    @$input.on "blur", => @validate()
 
     @$input.on "focus", =>
       @showTooltip() # unless @valid() //always show tooltip onFocus
-
     @$input.on "blur", =>
       @hideTooltip()
     ###
@@ -131,8 +130,12 @@ class Views.FormField extends Backbone.View
       else
         @showTooltip()
     ###
+    # Validation hack for browsers that don't support input.required
     @required = ->
-      @input.required
+      if typeof @input.required != "undefined" and @input.required != ""
+        return @input.required
+      else
+        return !!@$input.attr('required') # Double "!" to typecast to boolean
 
   value: ->
     $.trim @input.value
@@ -211,7 +214,7 @@ class Views.HomeZipCodeFormField extends Views.FormField
 
   initialize: =>
     super()
-    @$el.on 'change blur', ->
+    @$el.on 'change blur', =>
       @zipLookUp(@value())
 
   zipLookUp: (zip) =>
@@ -220,7 +223,7 @@ class Views.HomeZipCodeFormField extends Views.FormField
       url: '/usps/zip_lookup/'
       data:
         zip: zip
-      success: (d) ->
+      success: (d) =>
         if d.state?
           city = d.city
           state = d.state
@@ -249,9 +252,16 @@ class Views.EmailAddressFormField extends Views.FormField
     re = /^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     super && re.test(@value())
 
-class Views.DateOfBirthFormField extends Views.HomeZipCodeFormField
+class Views.DateOfBirthFormField extends Views.FormField
   errorMessage: 'Enter your birthdate in MM/DD/YYYY format'
   valid: =>
+    valArr = []
+    _(@value().split(/[\-\/\s\.]/g)).each((val) ->
+      if val.length == 1
+        val = "0" + val
+      valArr.push val
+      )
+    @$input.val valArr.join("/")
     if !@value().match(/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d+$/)
       return false
     # Check Age
@@ -265,6 +275,8 @@ class Views.DateOfBirthFormField extends Views.HomeZipCodeFormField
     if age < 17
       @$input.siblings('.tooltip').text "You must turn 18 by the next election to register to vote."
       return false
+    else
+      @$input.siblings('.tooltip').text @errorMessage
     true
 
 class Views.PhoneFormField extends Views.FormField

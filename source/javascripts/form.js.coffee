@@ -39,4 +39,3 @@ check = ->
   requestAnimFrame(check)
 
 check()
-
