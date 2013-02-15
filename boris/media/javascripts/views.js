@@ -58,7 +58,7 @@
     Form.prototype.initialize = function() {
       var field, id, input, klass, klassName;
       this.$fieldsets = this.$("fieldset");
-      this.$inputs = this.$(":text, select, input[type=email], input[type=date], #us_citizen");
+      this.$inputs = this.$(":text, select, input[type=email], input[type=date], input[type=checkbox]");
       this.$button = this.$(".button-primary");
       this.$button.on('click', this._onSubmit);
       this.fields = (function() {
@@ -396,12 +396,8 @@
             state = d.state;
             _this.$el.children('input[id$="_city"]').val(city);
             _this.$el.children('input[id$="_state_id"]').val(state);
-            _this.$el.children('.zip-code-location-hint').removeClass('error');
             return _this.$el.children('.zip-code-location-hint').text("" + city + ", " + state);
           }
-        }, error: function(d) {
-          _this.$el.children('.zip-code-location-hint').addClass('error');
-          return _this.$el.children('.zip-code-location-hint').text("unknown zip code");
         }
       });
     };
@@ -572,6 +568,74 @@
     };
 
     return UsCitizenFormField;
+
+  })(Views.FormField);
+
+  Views.OptInSmsFormField = (function(_super) {
+
+    __extends(OptInSmsFormField, _super);
+
+    function OptInSmsFormField() {
+      this.valid = __bind(this.valid, this);
+      return OptInSmsFormField.__super__.constructor.apply(this, arguments);
+    }
+
+    OptInSmsFormField.prototype.errorMessage = "Phone number required to receive text messages";
+
+    OptInSmsFormField.prototype.initialize = function() {
+      var _this = this;
+      OptInSmsFormField.__super__.initialize.call(this);
+      return this.$input.on("change", function() {
+        if (_this.valid()) {
+          return _this.hideTooltip();
+        } else {
+          return _this.showTooltip();
+        }
+      });
+    };
+
+    OptInSmsFormField.prototype.valid = function() {
+      if (this.$input.attr('checked') && !$('input#phone').val()) {
+        return false;
+      }
+      return true;
+    };
+
+    return OptInSmsFormField;
+
+  })(Views.FormField);
+
+  Views.PartnerOptInSmsFormField = (function(_super) {
+
+    __extends(PartnerOptInSmsFormField, _super);
+
+    function PartnerOptInSmsFormField() {
+      this.valid = __bind(this.valid, this);
+      return PartnerOptInSmsFormField.__super__.constructor.apply(this, arguments);
+    }
+
+    PartnerOptInSmsFormField.prototype.errorMessage = "Phone number required to receive text messages";
+
+    PartnerOptInSmsFormField.prototype.initialize = function() {
+      var _this = this;
+      PartnerOptInSmsFormField.__super__.initialize.call(this);
+      return this.$input.on("change", function() {
+        if (_this.valid()) {
+          return _this.hideTooltip();
+        } else {
+          return _this.showTooltip();
+        }
+      });
+    };
+
+    PartnerOptInSmsFormField.prototype.valid = function() {
+      if (this.$input.attr('checked') && !$('input#phone').val()) {
+        return false;
+      }
+      return true;
+    };
+
+    return PartnerOptInSmsFormField;
 
   })(Views.FormField);
 
