@@ -150,11 +150,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django.contrib.admin',
-    ''
     #3rd party packages for deployment
     'storages',
     'gunicorn',
     'django_evolution',
+    'raven.contrib.django.raven_compat',
     #internal apps
     'registrant',
     'proxy',
@@ -249,3 +249,5 @@ except:
     #use heroku db
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+    #sentry
+    SENTRY_DSN = 'https://03ce71b943cf4f78808948a93c7919d6:f367ba0538dd4ba496dd4977e4755de2@app.getsentry.com/5523'
