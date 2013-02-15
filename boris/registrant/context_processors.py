@@ -1,7 +1,9 @@
 from proxy.models import CustomForm,CoBrandForm
 from proxy.views import rtv_proxy
 from django.core.cache import cache
-from django.core.mail import mail_admins
+import logging
+
+logger = logging.getLogger(__name__)
 
 def facebook(request):
     """Context processor to add facebook partner & source from session"""
@@ -99,9 +101,8 @@ def whitelabel(request):
         context['customform'] = quack
 
     except KeyError,e:
-        pass
-        #whitelabel error, never mind
-        #mail_admins("white label error, id %s" % context['partner'],
-        #    "key error:%s\n,rtv_whitelabel:%s\n" % (e,rtv_whitelabel))
+        #whitelabel error
+        logger.error("white label error, id %s" % context['partner'],
+            exc_info=True,extra={'request':request})
 
     return context

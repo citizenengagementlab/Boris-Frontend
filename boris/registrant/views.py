@@ -4,7 +4,6 @@ from django.http import HttpResponse,HttpResponseServerError
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
-from django.core.mail import mail_admins
 from django.views.decorators.csrf import csrf_exempt
 
 from proxy.views import rtv_proxy,rtv_proxy_cached
@@ -15,6 +14,7 @@ from ziplookup.models import ZipCode
 
 import json
 import urllib
+import logging
 
 from django.contrib.localflavor.us import us_states
 STATE_NAME_LOOKUP = dict(us_states.US_STATES)
@@ -25,6 +25,8 @@ DIRECT_SUBMIT_STATES = ['WA','NV','CA']
 
 #if the submission is made using these partner ids, do not display custom branding
 DEFAULT_PARTNER_IDS = [1,9937,19093]
+
+logger = logging.getLogger(__name__)
 
 @capture_get_parameters(['email_address','home_zip_code','state'])
 @capture_locale
@@ -192,14 +194,14 @@ def submit(request):
             messages.error(request, rtv_response['error']['message'].lower(),
                 extra_tags=rtv_response['error']['field_name'].replace('_',' ').title())
             #also mail the admins to see if there's a persistent problem
-            mail_admins('rocky error: validating %s' % rtv_response['error']['field_name'],
-                "rtv_response: %s\n\nsubmitted_form:%s" % (rtv_response,submitted_form))
+            logger.error('rocky error: validating %s' % rtv_response['error']['field_name'],
+                exc_info=True, extra={'request':request})
         except KeyError:
             context['error'] = True
             messages.error(request, rtv_response['error'],
                 extra_tags="Rocky API")
-            mail_admins('rocky error: api issue',
-                "rtv_response: %s\n\nsubmitted_form:%s" % (rtv_response,submitted_form))
+            logger.error('rocky error: api issue',exc_info=True,
+                extra={'request':request})
 
     #check state id against list of valid abbreviations
     try:
@@ -228,8 +230,8 @@ def submit(request):
     if customform and customform.list_signup_endpoint and partner_proxy_signup:
         proxy_response = customform.submit(submitted_form)
         if proxy_response.get('error'):
-            mail_admins('rocky error: custom form:  %s' % customform.name,
-                        "proxy_response: %s\nsubmitted_form:%s" % (proxy_response,submitted_form))
+            logger.error('rocky error: custom form:  %s' % customform.name,
+                        exc_info=True,extra={'request':request})
             context['error'] = True
             messages.error(request, _("Unknown error: the web administrators have been contacted."),
                 extra_tags=proxy_response)
@@ -311,7 +313,7 @@ def error(request):
     return render_to_response('error.html', {}, context_instance=RequestContext(request))
 
 def csrf_failure(request, reason=""):
-    mail_admins('rocky error: csrf failure',"request: %s" % request)
+    logger.info('rocky error: csrf failure',exc_info=True,extra={'request':request})
     return render_to_response('403.html', {}, context_instance=RequestContext(request))
 
 def share(request):
