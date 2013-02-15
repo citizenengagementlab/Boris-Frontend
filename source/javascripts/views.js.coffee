@@ -301,7 +301,7 @@ class Views.UsCitizenFormField extends Views.FormField
       return false
     true
 
-class Views.SMSOptinFormField extends Views.FormField
+class Views.OptInSmsFormField extends Views.FormField
   errorMessage: "Phone number required to receive text messages"
   initialize: ->
     super()
@@ -311,9 +311,24 @@ class Views.SMSOptinFormField extends Views.FormField
       else
         @showTooltip()
   valid: =>
-    if !Views.PhoneFormField.$input.val()
+    if @$input.attr('checked') && !$('input#phone').val()
       return false
     true
+
+class Views.PartnerOptInSmsFormField extends Views.FormField
+  errorMessage: "Phone number required to receive text messages"
+  initialize: ->
+    super()
+    @$input.on "change", =>
+      if @valid()
+        @hideTooltip()
+      else
+        @showTooltip()
+  valid: =>
+    if @$input.attr('checked') && !$('input#phone').val()
+      return false
+    true
+
 
 class Views.State extends Backbone.View
   events:

@@ -167,8 +167,12 @@
         == label_tag :email_rtv, :caption => "Receive Email Updates from Rock The Vote"
 
       .input.checkbox
-        == check_box_tag :sms_rtv
+        == check_box_tag :opt_in_sms
         == label_tag :sms_rtv, :caption => "Receive Texts from Rock The Vote"
+
+      .input.checkbox
+        == check_box_tag :partner_opt_in_sms
+        == label_tag :sms_rtv, :caption => "Receive Texts from CEL"
 
       .input.checkbox
         == check_box_tag :email_cel
