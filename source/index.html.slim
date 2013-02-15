@@ -94,7 +94,7 @@
         == label_tag :us_citizen, :caption => "I am a U.S. Citizen"
 
       .input.checkbox.span-16.last
-        == check_box_tag :change_of_name, :required => true
+        == check_box_tag :change_of_name, :required => false
         == label_tag :change_of_name, :caption => "I have recently changed my name"
 
   - field_set_tag :class => "previous-name closed" do
