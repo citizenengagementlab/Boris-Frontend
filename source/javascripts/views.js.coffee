@@ -47,7 +47,6 @@ class Views.Form extends Backbone.View
       id = input.name
       id = id.charAt(0).toUpperCase() + id.slice(1)
       klassName = id.replace /_\D/g, (match) -> match.charAt(1).toUpperCase()
-      console.log(klassName)
       klass = Views["#{klassName}FormField"] || Views.FormField
       field = new klass
         el: $(input).closest(".input")
