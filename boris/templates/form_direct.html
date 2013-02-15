@@ -271,8 +271,8 @@ section.share p {
         <input type="hidden" name="lang" id="lang" value="{{LANGUAGE_CODE|default:'en'}}">
         <input type="hidden" name="partner_id" value="{{ partner|default:'1' }}">
         {%if source%}<input type="hidden" name="source" value="{{ source }}">{%endif%}
-        <button class="button button-primary has_license" tabindex="" type="submit">Submit my form online with the state</button>
-        <button class="button button-primary has_no_license" tabindex="" type="submit">Register with Rock the Vote</button>
+        <button class="button button-primary has_license" tabindex="" type="submit">{% trans "Submit my form online with the state" %}</button>
+        <button class="button button-primary has_no_license" tabindex="" type="submit">{% trans "Register with Rock the Vote" %}</button>
       </fieldset>
     </form>
 
@@ -303,6 +303,6 @@ section.share p {
 </section>{%endblock%}
 
   <div id="share-link">
-    Already registered? <a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">Share with your friends</a>
+    {% trans "Already registered?" %}<a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">{% trans "Share with your friends" %}</a>
   </div>
 {%endblock content%}

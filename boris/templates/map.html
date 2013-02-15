@@ -56,7 +56,7 @@ fieldset.submit {
 <form class="state-form" method="get" action="/registrants/new/" accept-charset="UTF-8"><div id="map"></div>
   <fieldset class="submit">
       <div class="input select span-24"><select required tabindex="1" class="large" id="state" name="state">
-        <option value="Select State...">{% trans "Select State" %}</option>
+        <option value="{% trans 'Select State' %}">{% trans "Select State" %}</option>
         <option value="AK">Alaska</option>
         <option value="AL">Alabama</option>
         <option value="AR">Arkansas</option>
@@ -111,7 +111,7 @@ fieldset.submit {
 
         <div class="input text span-16">
             <!--[if IE]<label for="email_address">{% trans "Email Address" %}</label>[endif]-->
-            <input type="email" id="email_address" name="email_address" style="height:47px" placeholder="Email Address"
+            <input type="email" id="email_address" name="email_address" style="height:47px" placeholder="{% trans 'Email Address' %}"
             {%if email_address%}value="{{email_address}}"{%endif%} />
         </div>
 

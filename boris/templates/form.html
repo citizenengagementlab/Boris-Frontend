@@ -122,7 +122,7 @@
         </div>
         <div class="row">
           <div class="span-6">
-            <a tabindex="-1" href="http://www.rockthevote.com/voting-is-easy/voting-rights/overseas-rights/overseas.html">{% trans "Registering Abroad?" %}</a>
+            <a tabindex="-1" href="https://rockthevote.overseasvotefoundation.org/vote/home.htm" target="_blank">{% trans "Registering Abroad?" %}</a>
           </div>
           <div class="input checkbox span-10">
             <input id="has_mailing_address" name="has_mailing_address" value="1" type="checkbox" />
@@ -425,6 +425,6 @@
     </form>
 
     <div id="share-link">
-        Already registered? <a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">Share with your friends</a>
+        {% trans "Already registered?" %} <a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}"> {% trans "Share with your friends" %}</a>
     </div>
 {%endblock content%}
