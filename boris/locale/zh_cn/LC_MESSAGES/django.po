@@ -1,0 +1,523 @@
+# ROCK THE VOTE VOTER REGISTRATION TOOL LANGUAGE FOR UI.
+# © COPYRIGHT 2013 - ROCK THE VOTE
+# This file is distributed under the same license as the PACKAGE package.
+# ROCK THE VOTE <ADMIN@ROCKTHEVOTE.COM>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ROCKTHEVOTE\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-15 01:33+0000\n"
+"PO-Revision-Date: 2013-02-14 15:44-0800\n"
+"Last-Translator: ROCK THE VOTE <ADMIN@ROCKTHEVOTE.COM>\n"
+"Language-Team: RTV\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#: registrant/views.py:210
+msgid "Unrecognized state, please go back and try again."
+msgstr "無法識別狀態，請返回，再試一次。"
+
+#: registrant/views.py:234
+msgid "Unknown error: the web administrators have been contacted."
+msgstr "未知錯誤：已聯繫網絡管理員。"
+
+#: templates/base.html:10
+msgid "Voter Registration"
+msgstr "選民登記"
+
+#: templates/base.html:47
+msgid "Register in"
+msgstr "註冊在"
+
+#: templates/base.html:47 templates/error.html:4 templates/form.html:5
+#: templates/form_direct.html:5 templates/map.html:5 templates/share.html:5
+#: templates/start.html:5 templates/submit.html:5
+msgid "Register to Vote"
+msgstr "登記投票"
+
+#: templates/base.html:58
+msgid "Powered by"
+msgstr "由.......提供"
+
+#: templates/error.html:4
+msgid "Error Processing Your Form"
+msgstr "處理您的表格時出現錯誤"
+
+#: templates/error.html:14 templates/ineligible.html:12
+msgid "Something went wrong"
+msgstr "發生錯誤"
+
+#: templates/error.html:18
+msgid "Go back and try again?"
+msgstr "要返回再試一次嗎？"
+
+#: templates/form.html:25 templates/form.html.py:72
+#: templates/form_direct.html:79 templates/start.html:25
+msgid "Title"
+msgstr "稱號"
+
+#: templates/form.html:28 templates/form.html.py:74
+#: templates/form_direct.html:82 templates/start.html:28
+msgid "Mr."
+msgstr "先生"
+
+#: templates/form.html:29 templates/form.html.py:75
+#: templates/form_direct.html:83 templates/start.html:29
+msgid "Ms."
+msgstr "女士"
+
+#: templates/form.html:30 templates/form.html.py:76
+#: templates/form_direct.html:84 templates/start.html:30
+msgid "Mrs."
+msgstr "太太"
+
+#: templates/form.html:34 templates/form.html.py:80
+#: templates/form_direct.html:88 templates/start.html:34
+msgid "First Name"
+msgstr "名字"
+
+#: templates/form.html:36 templates/form_direct.html:90
+#: templates/start.html:36
+msgid "Use your full first name. Do not use nicknames or initials."
+msgstr "請使用完整名字。不要使用綽號或姓名縮寫。"
+
+#: templates/form.html:39 templates/form.html.py:84
+#: templates/form_direct.html:93 templates/start.html:39
+msgid "Last Name"
+msgstr "姓"
+
+#: templates/form.html:43 templates/form.html.py:88
+#: templates/form_direct.html:98
+msgid "Suffix"
+msgstr "名字後綴"
+
+#: templates/form.html:53 templates/form.html.py:98
+#: templates/form_direct.html:108
+msgid "optional"
+msgstr "自願填寫"
+
+#: templates/form.html:60 templates/form_direct.html:135
+#: templates/start.html:65
+msgid "I am a U.S. Citizen"
+msgstr "我是美國公民"
+
+#: templates/form.html:64
+msgid "I have recently changed my name"
+msgstr "我最近改了名字"
+
+#: templates/form.html:69
+msgid "Previous Name"
+msgstr "過去的名字"
+
+#: templates/form.html:107
+msgid "Street Address"
+msgstr "街道地址"
+
+#: templates/form.html:110
+msgid ""
+"Put your home address in these boxes. Do not put your mailing address here "
+"if it is different from your home address. Do not use a post office box or "
+"rural route without a box number. If you live in a rural area but do not "
+"have a street address, or if you have no address, please show where you live "
+"using the map on the printed form."
+msgstr ""
+"請在這些空格內填寫您的家庭地址。請勿填寫您的郵件地址，假若和您的家庭地址相"
+"異。不要忘記在郵政信箱或農村路線加上郵箱號碼。若您居住在農業區，並沒有一個街"
+"道地址，或沒有地址，請在印製的地圖上指示出您所居住的地方。"
+
+#: templates/form.html:114 templates/form_direct.html:118
+msgid "Not in"
+msgstr "不在"
+
+#: templates/form.html:115 templates/form_direct.html:119
+#: templates/start.html:52
+msgid "Zip Code"
+msgstr "郵政編碼"
+
+#: templates/form.html:117 templates/form.html.py:149 templates/form.html:168
+#: templates/form_direct.html:121
+msgid "Enter a valid 5 digit zip code."
+msgstr "輸入一個有效的5位數字的郵政編碼。"
+
+#: templates/form.html:125
+msgid "Registering Abroad?"
+msgstr "在國外註冊嗎？"
+
+#: templates/form.html:129
+msgid "I have a different mailing address"
+msgstr "我有一個不同的郵寄地址"
+
+#: templates/form.html:133
+msgid "I have recently moved"
+msgstr "我最近遷居"
+
+#: templates/form.html:140
+msgid "Mailing Street Address"
+msgstr "郵寄街道地址"
+
+#: templates/form.html:143
+msgid "If you receive mail at a different address, please enter it here."
+msgstr "若您在不同的地址收取郵件，請在此輸入。"
+
+#: templates/form.html:147
+msgid "Mailing Zip Code"
+msgstr "郵寄郵政編碼"
+
+#: templates/form.html:159
+msgid "Previous Street Address"
+msgstr "過去的街道地址"
+
+#: templates/form.html:162
+msgid ""
+"If you have moved since your last registration, enter your previous address."
+msgstr "若您在上一次註冊後已遷居，請輸入過去的地址。"
+
+#: templates/form.html:166
+msgid "Previous Zip Code"
+msgstr "過去的郵政編碼"
+
+#: templates/form.html:179
+msgid "ID Number"
+msgstr "身份證號碼"
+
+#: templates/form.html:187 templates/form_direct.html:128
+msgid "Birthdate"
+msgstr "出生日期"
+
+#: templates/form.html:189 templates/form_direct.html:130
+msgid "Enter your birthdate in MM/DD/YYYY format."
+msgstr "請按 月/日/年 格式輸入您的出生日期。"
+
+#: templates/form.html:194 templates/form_direct.html:144
+#: templates/map.html:113 templates/map.html.py:114 templates/start.html:48
+msgid "Email Address"
+msgstr "電子郵件地址"
+
+#: templates/form.html:196 templates/form_direct.html:146
+msgid "Enter a valid email address."
+msgstr "請輸入一個有效的電子郵件地址。"
+
+#: templates/form.html:199 templates/form_direct.html:149
+msgid "Phone Number"
+msgstr "電話號碼"
+
+#: templates/form.html:201 templates/form_direct.html:151
+msgid "Enter a phone number in xxx-xxx-xxxx format."
+msgstr "請按 xxx-xxx-xxxx格式輸入一個電話號碼。"
+
+#: templates/form.html:204 templates/form_direct.html:154
+msgid "Type"
+msgstr "類型"
+
+#: templates/form.html:206 templates/form_direct.html:156
+msgid "Mobile"
+msgstr "手機"
+
+#: templates/form.html:207 templates/form_direct.html:157
+msgid "Home"
+msgstr "家"
+
+#: templates/form.html:208 templates/form_direct.html:158
+msgid "Work"
+msgstr "工作"
+
+#: templates/form.html:215
+msgid "Political Affiliation"
+msgstr "所屬政治團體"
+
+#: templates/form.html:217 templates/form.html.py:230
+msgid "Select One..."
+msgstr "請選擇其中一項..."
+
+#: templates/form.html:228
+msgid "Race or Ethnic Group"
+msgstr "種族或族裔"
+
+#: templates/form.html:231
+msgid "American Indian / Alaskan Native"
+msgstr "美國印第安人/阿拉斯加原住民"
+
+#: templates/form.html:232
+msgid "Asian / Pacific Islander"
+msgstr "亞裔/太平洋島民"
+
+#: templates/form.html:233
+msgid "Black (not Hispanic)"
+msgstr "黑人（非西班牙裔）"
+
+#: templates/form.html:234
+msgid "Hispanic"
+msgstr "西班牙裔"
+
+#: templates/form.html:235
+msgid "White (not Hispanic)"
+msgstr "白人（非西班牙裔）"
+
+#: templates/form.html:236
+msgid "Multi-racial"
+msgstr "多種族"
+
+#: templates/form.html:237
+msgid "Other"
+msgstr "其它"
+
+#: templates/form.html:238
+msgid "Decline to State"
+msgstr "拒絕透露"
+
+#: templates/form.html:248 templates/form.html.py:276 templates/form.html:297
+msgid "Survey Questions (optional)"
+msgstr "調查問題 (自願填寫)"
+
+#: templates/form.html:257 templates/form.html.py:268 templates/form.html:282
+#: templates/form.html.py:289 templates/form.html:302
+#: templates/form.html.py:307
+msgid "Optional"
+msgstr "自願填寫"
+
+#: templates/form.html:300
+msgid "If you are in school, where do you go?"
+msgstr "如您現時在上學，在哪裡上學呢？"
+
+#: templates/form.html:305
+msgid "What issue do you care most about?"
+msgstr "你最關心什麼問題？"
+
+#: templates/form.html:350 templates/form.html.py:362 templates/form.html:409
+#: templates/form_direct.html:194 templates/form_direct.html.py:206
+#: templates/form_direct.html:253
+msgid "Receive Email Updates from"
+msgstr "從........接收電子郵件更新 (from.....to receive email updates)"
+
+#: templates/form.html:352 templates/form.html.py:364 templates/form.html:411
+#: templates/form_direct.html:196 templates/form_direct.html.py:208
+#: templates/form_direct.html:255
+msgid "privacy policy"
+msgstr "私隱政策"
+
+#: templates/form.html:373 templates/form_direct.html:217
+msgid "Receive Email Updates from Rock the Vote."
+msgstr "從Rock the Vote接收電子郵件更新。"
+
+#: templates/form.html:384 templates/form_direct.html:228
+msgid "Send me txt messages from"
+msgstr "從....與我發短信(from....to send me text messages)"
+
+#: templates/form.html:385 templates/form_direct.html:229
+msgid "Send me txt messages from Rock the Vote."
+msgstr "請Rock the Vote與我發短信。"
+
+#: templates/form.html:386 templates/form_direct.html:230
+msgid "(data &amp; msg rates may apply)"
+msgstr "(數據；短信費用可能適用)"
+
+#: templates/form.html:399 templates/form_direct.html:243
+msgid "I would like to volunteer with"
+msgstr "我希望與......作志願者"
+
+#: templates/form.html:400 templates/form_direct.html:244
+msgid "I would like to volunteer with Rock the Vote."
+msgstr "我希望與Rock the Vote作志願者。"
+
+#: templates/form.html:433
+msgid "Register"
+msgstr "登記"
+
+#: templates/form.html:438 templates/form_direct.html:313
+#: templates/map.html:130
+msgid "Already registered?"
+msgstr "已經登記了嗎？"
+
+#: templates/form.html:438 templates/form_direct.html:313
+#: templates/map.html:130
+msgid "Share with your friends"
+msgstr "向朋友分享"
+
+#: templates/form_ca_direct.html:22
+#, python-format
+msgid "I am a resident of %(state)s, living in the United States."
+msgstr "我是%(state)s 的居民，居住在美國。"
+
+#: templates/form_ca_direct.html:25
+#, python-format
+msgid ""
+" You are eligible to finish your voter registration using the %(state_name)s "
+"online voter registration system. "
+msgstr "您有資格使用 %(state_name)s 的網上選民登記系統去完成您的選民登記。"
+
+#: templates/form_ca_direct.html:39
+msgid ""
+"You can complete your voter registration online with the state right now - "
+"using the application provided by Secretary of State Debra Bowen. "
+msgstr ""
+"您現在可向州政府完成您的網上選民登記 - 使用由州務卿Debra Bowen 提供的應用程"
+"序。"
+
+#: templates/form_direct.html:281
+msgid "Submit my form online with the state"
+msgstr ""
+
+#: templates/form_direct.html:282
+#, fuzzy
+msgid "Register with Rock the Vote"
+msgstr "登記投票"
+
+#: templates/form_direct.html:288 templates/form_wa_direct.html:20
+msgid "You can complete your voter registration online with the state below."
+msgstr "您可以在下面向州政府完成您的網上選民登記。"
+
+#: templates/form_direct.html:289
+msgid ""
+"If your driver's license or state identification card is invalid or the "
+"state can't find or confirm your DMV record - don't worry — you can also <a "
+"href='javascript:redirectToRegularForm()'> finish your registration with "
+"Rock the Vote</a>. You will just have to print, sign, and mail it in."
+msgstr ""
+"若您的駕駛執照或州身份證已無效或州政府不能找到或確認您的DMV記錄 - 請不用擔心 "
+"- 您可以<a href='javascript:redirectToRegularForm()'>與Rock the Vote完成您的"
+"註冊</ a>。您只需要打印，簽名，然後郵寄。"
+
+#: templates/form_direct.html:300 templates/share.html:24
+msgid "Spread the word"
+msgstr "傳播消息"
+
+#: templates/form_direct.html:302
+msgid ""
+"Don't forget to tell your friends and family how easy it was to register. "
+"Here are a few tools you can use to spread the word about voter registration:"
+msgstr ""
+"請不要忘記向朋友和家人分享登記是一件多麼容易的事情。這裡有一些工具讓您傳播有"
+"關選民登記的消息："
+
+#: templates/form_nv_direct.html:33
+msgid ""
+"You can complete your voter registration online with the state below. The "
+"Nevada Online Voter Application (NOVA) is provided by Nevada Secretary of "
+"State, Ross Miller, for registering Nevada citizens to vote, or to change "
+"their existing registration information. NOVA is also available <a href="
+"\"https://nvsos.gov/sosvoterservices/Registration/step1.aspx?r=gov\" target="
+"\"_blank\">here.</a>"
+msgstr ""
+"您可以在下面完成您的網上選民登記。 Nevada Online Voter Application (NOVA) 是"
+"由內華達州州務卿 Ross Miller提供，讓內華達州的公民投票，或更改現存的登記資"
+"料。 NOVA也可在<a href=\"https://nvsos.gov/sosvoterservices/Registration/"
+"step1.aspx?r=gov\" target=\"_blank\">此處</ A>找到"
+
+#: templates/form_nv_direct.html:35 templates/form_wa_direct.html:21
+msgid ""
+"If your driver's license or state identification card is invalid or the "
+"state can't find or confirm your DMV record - don't worry - you can also <a "
+"href='javascript:redirectToRegularForm()'> finish your registration with "
+"Rock the Vote</a>. You will just have to print, sign, and mail it in."
+msgstr ""
+"若您的駕駛執照或州身份證已無效或州政府不能找到或確認您的DMV記錄 - 請不用擔心 "
+"- 您可以<a href='javascript:redirectToRegularForm()'>與Rock the Vote完成您的"
+"註冊</ a>。您只需要打印，簽名，然後郵寄。"
+
+#: templates/ineligible.html:13
+msgid ""
+"Sorry, you are not eligible to register to vote for the following reason(s):"
+msgstr "對不起，因為以下的原因，您不合乎資格登記投票："
+
+#: templates/map.html:5
+msgid "Select Your State"
+msgstr "請選擇您的州"
+
+#: templates/map.html:55
+msgid "Select your state to get started"
+msgstr "請選擇您的州以便開始"
+
+#: templates/map.html:59
+msgid "Select State"
+msgstr "選擇州"
+
+#: templates/map.html:119 templates/start.html:68
+msgid "Continue"
+msgstr "繼續"
+
+#: templates/map.html:126
+msgid ""
+"Your state's deadline to register to vote in the November 2012 election may "
+"have already passed. Check the <a href=\"http://www.rockthevote.com/election-"
+"center/registration-deadlines/\">Election Center</a> to find out."
+msgstr ""
+"有關2012年11月的選舉在您的州進行的選民登記的截止日期可能已經過去了。請向<a "
+"href=\"http://www.rockthevote.com/election-center/registration-deadlines/\">"
+"選舉中心</ a>查詢。"
+
+#: templates/share.html:5
+msgid "Spread the Word"
+msgstr "將消息傳播"
+
+#: templates/share.html:25
+msgid "Tell your friends and family to register"
+msgstr "告訴您的朋友和家人去登記"
+
+#: templates/share.html:28
+msgid ""
+"Here are a few tools you can use to spread the word about voter registration:"
+msgstr "這裡有一些工具，讓您傳播有關選民登記的消息："
+
+#: templates/start.html:5
+msgid "Get Started"
+msgstr "開始使用"
+
+#: templates/start.html:66
+msgid "Must be a citizen to register"
+msgstr "必須為公民進行登記"
+
+#: templates/submit.html:5
+msgid "Download Your Form"
+msgstr "下載您的表格"
+
+#: templates/submit.html:64
+msgid "You're not quite done!"
+msgstr "您還沒有完成！"
+
+#: templates/submit.html:65
+msgid "You still need to download your form."
+msgstr "您還需要下載您的表格。"
+
+#: templates/submit.html:69
+msgid "Download"
+msgstr "下載"
+
+#: templates/submit.html:73
+msgid "We've also e-mailed you a link to retreive your form later"
+msgstr "我們同時將可以獲取您的表格的網址鏈接發送到了您的電子郵箱"
+
+#: templates/submit.html:82
+msgid "This should only take a second"
+msgstr "這應該只需要很短的時間"
+
+#: templates/submit.html:88
+msgid "Something went wrong "
+msgstr "發生錯誤"
+
+#: templates/submit.html:110
+msgid "Spread the word!"
+msgstr "傳播消息"
+
+#~ msgid ""
+#~ "You can complete your voter registration online with the state right now "
+#~ "- using the application provided by Secretary of State Debra Bowen.  If "
+#~ "you don't know your social security number, your driver's license or "
+#~ "identification card is invalid, or the state can't find or confirm your "
+#~ "DMV record - don't worry - you can also <a href='javascript:"
+#~ "redirectToRegularForm()'> finish your registration with Rock the Vote</"
+#~ "a>.  You will just have to print, sign, and mail in the form by October "
+#~ "22nd."
+#~ msgstr ""
+#~ "您現在可向州政府完成您的網上選民登記 - 使用由州務卿Debra Bowen 提供的應用"
+#~ "程序。如果您不知道您的社會安全號碼，或您的駕駛執照或身份證是無效的，或州政"
+#~ "府不能找到或確認您的DMV記錄 - 請不要擔心 - 您可以<a href='javascript:"
+#~ "redirectToRegularForm()'>與 Rock the Vote完成您的登記</a>。您只需要打印，"
+#~ "簽署，及在10月22日前郵寄表格。"
+
+#~ msgid "Unknown error, please contact an admin"
+#~ msgstr "未知錯誤，請與管理員聯繫"
