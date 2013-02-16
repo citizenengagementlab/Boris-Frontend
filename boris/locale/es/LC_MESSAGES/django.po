@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-15 01:33+0000\n"
+"POT-Creation-Date: 2013-02-16 01:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: registrant/views.py:210
+#: registrant/views.py:212
 msgid "Unrecognized state, please go back and try again."
 msgstr "Estado no reconocido, por favor regrese e inténtelo de nuevo."
 
-#: registrant/views.py:234
+#: registrant/views.py:236
 msgid "Unknown error: the web administrators have been contacted."
 msgstr ""
 
@@ -30,18 +30,22 @@ msgstr ""
 msgid "Voter Registration"
 msgstr "Registro de Votantes"
 
-#: templates/base.html:47
+#: templates/base.html:55
 #, fuzzy
 msgid "Register in"
 msgstr "Regístrese en"
 
-#: templates/base.html:47 templates/error.html:4 templates/form.html:5
+#: templates/base.html:55 templates/error.html:4 templates/form.html:5
 #: templates/form_direct.html:5 templates/map.html:5 templates/share.html:5
 #: templates/start.html:5 templates/submit.html:5
 msgid "Register to Vote"
 msgstr "Registrarse para votar"
 
-#: templates/base.html:58
+#: templates/base.html:64
+msgid "Translate"
+msgstr ""
+
+#: templates/base.html:82
 msgid "Powered by"
 msgstr "Desarrollado por"
 
@@ -57,69 +61,69 @@ msgstr "Algo salió mal"
 msgid "Go back and try again?"
 msgstr "Regresar y volver a intentarlo?"
 
-#: templates/form.html:25 templates/form.html.py:72
-#: templates/form_direct.html:79 templates/start.html:25
+#: templates/form.html:20 templates/form.html.py:67
+#: templates/form_direct.html:74 templates/start.html:25
 msgid "Title"
 msgstr "Titulo"
 
-#: templates/form.html:28 templates/form.html.py:74
-#: templates/form_direct.html:82 templates/start.html:28
+#: templates/form.html:23 templates/form.html.py:69
+#: templates/form_direct.html:77 templates/start.html:28
 msgid "Mr."
 msgstr "Sr."
 
-#: templates/form.html:29 templates/form.html.py:75
-#: templates/form_direct.html:83 templates/start.html:29
+#: templates/form.html:24 templates/form.html.py:70
+#: templates/form_direct.html:78 templates/start.html:29
 msgid "Ms."
 msgstr "Srta."
 
-#: templates/form.html:30 templates/form.html.py:76
-#: templates/form_direct.html:84 templates/start.html:30
+#: templates/form.html:25 templates/form.html.py:71
+#: templates/form_direct.html:79 templates/start.html:30
 msgid "Mrs."
 msgstr "Sra."
 
-#: templates/form.html:34 templates/form.html.py:80
-#: templates/form_direct.html:88 templates/start.html:34
+#: templates/form.html:29 templates/form.html.py:75
+#: templates/form_direct.html:83 templates/start.html:34
 msgid "First Name"
 msgstr "Nombre"
 
-#: templates/form.html:36 templates/form_direct.html:90
+#: templates/form.html:31 templates/form_direct.html:85
 #: templates/start.html:36
 msgid "Use your full first name. Do not use nicknames or initials."
 msgstr "Use su nombre completo. No utilizar apodos o iniciales."
 
-#: templates/form.html:39 templates/form.html.py:84
-#: templates/form_direct.html:93 templates/start.html:39
+#: templates/form.html:34 templates/form.html.py:79
+#: templates/form_direct.html:88 templates/start.html:39
 msgid "Last Name"
 msgstr "Apellido"
 
-#: templates/form.html:43 templates/form.html.py:88
-#: templates/form_direct.html:98
+#: templates/form.html:38 templates/form.html.py:83
+#: templates/form_direct.html:93
 msgid "Suffix"
 msgstr "Sufijo"
 
-#: templates/form.html:53 templates/form.html.py:98
-#: templates/form_direct.html:108
+#: templates/form.html:48 templates/form.html.py:93
+#: templates/form_direct.html:103
 msgid "optional"
 msgstr "opcional"
 
-#: templates/form.html:60 templates/form_direct.html:135
+#: templates/form.html:55 templates/form_direct.html:130
 #: templates/start.html:65
 msgid "I am a U.S. Citizen"
 msgstr "Soy ciudadano estadounidense."
 
-#: templates/form.html:64
+#: templates/form.html:59
 msgid "I have recently changed my name"
 msgstr "Recientemente he cambiado mi nombre"
 
-#: templates/form.html:69
+#: templates/form.html:64
 msgid "Previous Name"
 msgstr "Nombre Anterior"
 
-#: templates/form.html:107
+#: templates/form.html:102
 msgid "Street Address"
 msgstr "Dirección de Calle"
 
-#: templates/form.html:110
+#: templates/form.html:105
 msgid ""
 "Put your home address in these boxes. Do not put your mailing address here "
 "if it is different from your home address. Do not use a post office box or "
@@ -133,215 +137,215 @@ msgstr ""
 "si no tiene dirección, favor de mostrar en donde vive en el mapa impreso en "
 "el formulario."
 
-#: templates/form.html:114 templates/form_direct.html:118
+#: templates/form.html:109 templates/form_direct.html:113
 msgid "Not in"
 msgstr "No en"
 
-#: templates/form.html:115 templates/form_direct.html:119
+#: templates/form.html:110 templates/form_direct.html:114
 #: templates/start.html:52
 msgid "Zip Code"
 msgstr "Código Postal"
 
-#: templates/form.html:117 templates/form.html.py:149 templates/form.html:168
-#: templates/form_direct.html:121
+#: templates/form.html:112 templates/form.html.py:144 templates/form.html:163
+#: templates/form_direct.html:116
 msgid "Enter a valid 5 digit zip code."
 msgstr "Ingrese un código postal válido de 5 dígitos."
 
-#: templates/form.html:125
+#: templates/form.html:120
 msgid "Registering Abroad?"
 msgstr "¿Registrándose  en el extranjero?"
 
-#: templates/form.html:129
+#: templates/form.html:124
 msgid "I have a different mailing address"
 msgstr ""
 "Recibo mi correo en una dirección diferente a la provista anteriormente."
 
-#: templates/form.html:133
+#: templates/form.html:128
 msgid "I have recently moved"
 msgstr "He cambiado mi dirección"
 
-#: templates/form.html:140
+#: templates/form.html:135
 msgid "Mailing Street Address"
 msgstr "Dirección de correo"
 
-#: templates/form.html:143
+#: templates/form.html:138
 msgid "If you receive mail at a different address, please enter it here."
 msgstr ""
 "Recibo mi correo en una dirección diferente a la provista anteriormente."
 
-#: templates/form.html:147
+#: templates/form.html:142
 msgid "Mailing Zip Code"
 msgstr "Código Postal"
 
-#: templates/form.html:159
+#: templates/form.html:154
 msgid "Previous Street Address"
 msgstr "Dirección Anterior"
 
-#: templates/form.html:162
+#: templates/form.html:157
 msgid ""
 "If you have moved since your last registration, enter your previous address."
 msgstr ""
 "Si se ha cambiado de dirección desde su último registro, favor provee la "
 "dirección anterior."
 
-#: templates/form.html:166
+#: templates/form.html:161
 msgid "Previous Zip Code"
 msgstr "Código Postal"
 
-#: templates/form.html:179
+#: templates/form.html:174
 msgid "ID Number"
 msgstr "Número ID"
 
-#: templates/form.html:187 templates/form_direct.html:128
+#: templates/form.html:182 templates/form_direct.html:123
 msgid "Birthdate"
 msgstr "Fecha de Nacimiento"
 
-#: templates/form.html:189 templates/form_direct.html:130
+#: templates/form.html:184 templates/form_direct.html:125
 msgid "Enter your birthdate in MM/DD/YYYY format."
 msgstr "Ingrese su fecha de nacimiento en el formato MM/DD/AAAA"
 
-#: templates/form.html:194 templates/form_direct.html:144
-#: templates/map.html:113 templates/map.html.py:114 templates/start.html:48
+#: templates/form.html:189 templates/form_direct.html:139
+#: templates/map.html:110 templates/map.html.py:111 templates/start.html:48
 msgid "Email Address"
 msgstr "Correo Electrónico"
 
-#: templates/form.html:196 templates/form_direct.html:146
+#: templates/form.html:191 templates/form_direct.html:141
 msgid "Enter a valid email address."
 msgstr "Escriba un correo electrónico válido."
 
-#: templates/form.html:199 templates/form_direct.html:149
+#: templates/form.html:194 templates/form_direct.html:144
 msgid "Phone Number"
 msgstr "Teléfono"
 
-#: templates/form.html:201 templates/form_direct.html:151
+#: templates/form.html:196 templates/form_direct.html:146
 msgid "Enter a phone number in xxx-xxx-xxxx format."
 msgstr "Ingrese un número de teléfono en formato xxx-xxx-xxxx"
 
-#: templates/form.html:204 templates/form_direct.html:154
+#: templates/form.html:199 templates/form_direct.html:149
 msgid "Type"
 msgstr "Tipo"
 
-#: templates/form.html:206 templates/form_direct.html:156
+#: templates/form.html:201 templates/form_direct.html:151
 msgid "Mobile"
 msgstr "Móvil"
 
-#: templates/form.html:207 templates/form_direct.html:157
+#: templates/form.html:202 templates/form_direct.html:152
 msgid "Home"
 msgstr "Casa"
 
-#: templates/form.html:208 templates/form_direct.html:158
+#: templates/form.html:203 templates/form_direct.html:153
 msgid "Work"
 msgstr "Trabajo"
 
-#: templates/form.html:215
+#: templates/form.html:210
 msgid "Political Affiliation"
 msgstr "Partido"
 
-#: templates/form.html:217 templates/form.html.py:230
+#: templates/form.html:212 templates/form.html.py:225
 msgid "Select One..."
 msgstr "Seleccione uno..."
 
-#: templates/form.html:228
+#: templates/form.html:223
 msgid "Race or Ethnic Group"
 msgstr "Raza o grupo étnico"
 
-#: templates/form.html:231
+#: templates/form.html:226
 msgid "American Indian / Alaskan Native"
 msgstr "Indio Americano / Nativo de Alaska"
 
-#: templates/form.html:232
+#: templates/form.html:227
 msgid "Asian / Pacific Islander"
 msgstr "Asiático / Islas del Pacífico"
 
-#: templates/form.html:233
+#: templates/form.html:228
 msgid "Black (not Hispanic)"
 msgstr "Negra (No hispano)"
 
-#: templates/form.html:234
+#: templates/form.html:229
 msgid "Hispanic"
 msgstr "Hispano"
 
-#: templates/form.html:235
+#: templates/form.html:230
 msgid "White (not Hispanic)"
 msgstr "Blanca (no hispano)"
 
-#: templates/form.html:236
+#: templates/form.html:231
 msgid "Multi-racial"
 msgstr "Multi-racial"
 
-#: templates/form.html:237
+#: templates/form.html:232
 msgid "Other"
 msgstr "Otra"
 
-#: templates/form.html:238
+#: templates/form.html:233
 msgid "Decline to State"
 msgstr "Declino comentar"
 
-#: templates/form.html:248 templates/form.html.py:276 templates/form.html:297
+#: templates/form.html:243 templates/form.html.py:271 templates/form.html:292
 msgid "Survey Questions (optional)"
 msgstr "Preguntas de la encuesta (opcional)"
 
-#: templates/form.html:257 templates/form.html.py:268 templates/form.html:282
-#: templates/form.html.py:289 templates/form.html:302
-#: templates/form.html.py:307
+#: templates/form.html:252 templates/form.html.py:263 templates/form.html:277
+#: templates/form.html.py:284 templates/form.html:297
+#: templates/form.html.py:302
 msgid "Optional"
 msgstr "opcional"
 
-#: templates/form.html:300
+#: templates/form.html:295
 msgid "If you are in school, where do you go?"
 msgstr "Si usted está en la escuela, ¿a dónde va?"
 
-#: templates/form.html:305
+#: templates/form.html:300
 msgid "What issue do you care most about?"
 msgstr "¿Qué tema le preocupa más?"
 
-#: templates/form.html:350 templates/form.html.py:362 templates/form.html:409
-#: templates/form_direct.html:194 templates/form_direct.html.py:206
-#: templates/form_direct.html:253
+#: templates/form.html:345 templates/form.html.py:357 templates/form.html:404
+#: templates/form_direct.html:189 templates/form_direct.html.py:201
+#: templates/form_direct.html:248
 msgid "Receive Email Updates from"
 msgstr "Recibir correos electrónicos de"
 
-#: templates/form.html:352 templates/form.html.py:364 templates/form.html:411
-#: templates/form_direct.html:196 templates/form_direct.html.py:208
-#: templates/form_direct.html:255
+#: templates/form.html:347 templates/form.html.py:359 templates/form.html:406
+#: templates/form_direct.html:191 templates/form_direct.html.py:203
+#: templates/form_direct.html:250
 msgid "privacy policy"
 msgstr "política de privacidad"
 
-#: templates/form.html:373 templates/form_direct.html:217
+#: templates/form.html:368 templates/form_direct.html:212
 msgid "Receive Email Updates from Rock the Vote."
 msgstr "Recibir correos electrónicos de Rock the Vote"
 
-#: templates/form.html:384 templates/form_direct.html:228
+#: templates/form.html:379 templates/form_direct.html:223
 msgid "Send me txt messages from"
 msgstr "Deseo recibir mensajes de texto de"
 
-#: templates/form.html:385 templates/form_direct.html:229
+#: templates/form.html:380 templates/form_direct.html:224
 msgid "Send me txt messages from Rock the Vote."
 msgstr "Deseo recibir mensajes de texto de Rock the Vote."
 
-#: templates/form.html:386 templates/form_direct.html:230
+#: templates/form.html:381 templates/form_direct.html:225
 msgid "(data &amp; msg rates may apply)"
 msgstr "(datos y tarifas msg pueden aplicar)"
 
-#: templates/form.html:399 templates/form_direct.html:243
+#: templates/form.html:394 templates/form_direct.html:238
 msgid "I would like to volunteer with"
 msgstr "Me gustaría ser voluntario para"
 
-#: templates/form.html:400 templates/form_direct.html:244
+#: templates/form.html:395 templates/form_direct.html:239
 msgid "I would like to volunteer with Rock the Vote."
 msgstr "Me gustaría ser voluntario para Rock the Vote"
 
-#: templates/form.html:433
+#: templates/form.html:428
 msgid "Register"
 msgstr "Registrarse"
 
-#: templates/form.html:438 templates/form_direct.html:313
-#: templates/map.html:130
+#: templates/form.html:433 templates/form_direct.html:308
+#: templates/map.html:127
 msgid "Already registered?"
 msgstr "Ya está registrado?"
 
-#: templates/form.html:438 templates/form_direct.html:313
-#: templates/map.html:130
+#: templates/form.html:433 templates/form_direct.html:308
+#: templates/map.html:127
 msgid "Share with your friends"
 msgstr "Corre la voz"
 
@@ -367,22 +371,22 @@ msgstr ""
 "Ahora, se puede completar su formulario de inscripción de votante en linea "
 "con el estado - usando el formulario de la Secretaria del Estado Debra Bowen."
 
-#: templates/form_direct.html:281
+#: templates/form_direct.html:276
 msgid "Submit my form online with the state"
 msgstr ""
 
-#: templates/form_direct.html:282
+#: templates/form_direct.html:277
 #, fuzzy
 msgid "Register with Rock the Vote"
 msgstr "Registrarse para votar"
 
-#: templates/form_direct.html:288 templates/form_wa_direct.html:20
+#: templates/form_direct.html:283 templates/form_wa_direct.html:20
 msgid "You can complete your voter registration online with the state below."
 msgstr ""
 "Se puede completar su formulario de inscripción de votante en linea con el "
 "estado."
 
-#: templates/form_direct.html:289
+#: templates/form_direct.html:284
 msgid ""
 "If your driver's license or state identification card is invalid or the "
 "state can't find or confirm your DMV record - don't worry — you can also <a "
@@ -390,12 +394,12 @@ msgid ""
 "Rock the Vote</a>. You will just have to print, sign, and mail it in."
 msgstr ""
 
-#: templates/form_direct.html:300 templates/share.html:24
+#: templates/form_direct.html:295 templates/share.html:24
 #, fuzzy
 msgid "Spread the word"
 msgstr "Corre la voz"
 
-#: templates/form_direct.html:302
+#: templates/form_direct.html:297
 msgid ""
 "Don't forget to tell your friends and family how easy it was to register. "
 "Here are a few tools you can use to spread the word about voter registration:"
@@ -444,20 +448,20 @@ msgstr ""
 msgid "Select Your State"
 msgstr "Seleccione su estado"
 
-#: templates/map.html:55
+#: templates/map.html:52
 msgid "Select your state to get started"
 msgstr "Seleccione su estado para empezar"
 
-#: templates/map.html:59
+#: templates/map.html:56
 #, fuzzy
 msgid "Select State"
 msgstr "Seleccione el estado"
 
-#: templates/map.html:119 templates/start.html:68
+#: templates/map.html:116 templates/start.html:68
 msgid "Continue"
 msgstr "Continuar"
 
-#: templates/map.html:126
+#: templates/map.html:123
 msgid ""
 "Your state's deadline to register to vote in the November 2012 election may "
 "have already passed. Check the <a href=\"http://www.rockthevote.com/election-"
