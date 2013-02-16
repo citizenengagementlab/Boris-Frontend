@@ -1,7 +1,9 @@
 from proxy.models import CustomForm,CoBrandForm
 from proxy.views import rtv_proxy
 from django.core.cache import cache
-from django.core.mail import mail_admins
+import logging
+
+logger = logging.getLogger(__name__)
 
 def cleanup_form(form):
     """Util method to cleanup user submitted form, in preparation for sending to Rocky"""
@@ -153,10 +155,10 @@ def get_branding(context):
         #so create a CustomForm, but don't save it
         fakin_bacon = CustomForm(**quack)
         context['customform'] = fakin_bacon
-    except KeyError,e:
-        #whitelabel error, never mind
-        mail_admins("white label error, id %s" % context['partner'],
-            "key error:%s\n,rtv_whitelabel:%s\n" % (e,rtv_whitelabel))
+    except KeyError:
+        #whitelabel error
+        logger.error("white label error, id %s" % context['partner'],
+            exc_info=True,extra={'context':context})
 
     return context
 

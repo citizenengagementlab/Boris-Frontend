@@ -2,11 +2,13 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.core.cache import cache
 from django.utils.http import urlquote_plus
-from django.core.mail import mail_admins
 
 import urllib2
 import urllib
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 
 PROXY_FORMAT = u"https://%s/%s" % (settings.PROXY_DOMAIN, u"%s")
 
@@ -73,8 +75,7 @@ def rtv_proxy(method, values, url):
             response = urllib2.urlopen(url,data)
     except urllib2.HTTPError,e:
         error_message = e.read()
-        mail_admins('rocky api error: %s' % e.code,
-                    'url:%s\ndata:%s\nresponse:%s' % (url,data,error_message))
+        logger.error('rocky api error: %s' % e.code,exc_info=True,extra={'error_message':error_message})
         try:
             error_dict = {'error':json.loads(error_message)}
         except ValueError:
