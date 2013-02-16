@@ -14,6 +14,14 @@
 	<link rel="P3Pv1" href="w3c/p3p.xml" />
 	<link href="{% static 'stylesheets/site.css'%}" media="screen" rel="stylesheet" type="text/css" />
 	{%if customform %}<link href="{% static 'stylesheets/whitelabel.css'%}" media="screen" rel="stylesheet" type="text/css" />{%endif%}
+
+	{# david's mobile css#}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+	<link media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" href="http://s3.rockthevote.com/dp/mobile/modified-css.css" type="text/css" rel="stylesheet" />
+	<!--[if IEMobile]>
+	<link rel="stylesheet" type="text/css" href="http://s3.rockthevote.com/dp/mobile/modified-css.css" media="screen" />
+	<![endif]-->	
+
 	{% block styles %}{% endblock styles %}
 	<script src="{% static 'javascripts/modernizr.js'%}" type="text/javascript"></script>
 
