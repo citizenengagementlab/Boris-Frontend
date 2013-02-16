@@ -1,6 +1,9 @@
+# coding=utf-8
+
 import os,sys
 from os.path import join
 PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
+from django.utils.translation import ugettext_lazy as _
 
 # Django settings for boris project.
 
@@ -36,6 +39,14 @@ TIME_ZONE = 'UTC'
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en'
+
+#for the defined site translations
+#first locale code, then language in its own descriptor
+LANGUAGES = (('en', 'English'),
+             ('es', 'Español'),
+             ('zh', '中文'),
+             ('kr', '한국어')
+            )
 
 SITE_ID = 1
 
@@ -105,7 +116,7 @@ MIDDLEWARE_CLASSES = (
     #cache first
     'django.middleware.cache.UpdateCacheMiddleware',
     #then redirection
-    'sslify.middleware.SSLifyMiddleware',
+    #'sslify.middleware.SSLifyMiddleware',
     'registrant.middleware.MobileDetectionMiddleware',
     'registrant.middleware.ResponseInjectP3PMiddleware',
     #then session & locale

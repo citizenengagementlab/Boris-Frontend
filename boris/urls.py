@@ -12,6 +12,7 @@ urlpatterns += patterns('',
     (r'^registrants/', include('registrant.urls')),
     (r'^rtv/', include('proxy.urls')),
     (r'^usps/',include('ziplookup.urls')),
+    (r'^i18n/', include('django.conf.urls.i18n')),
 )
 
 #static file patterns to be compatible with old site

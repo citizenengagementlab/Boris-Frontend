@@ -3220,7 +3220,7 @@
       $el.wrap("<div class='fake-select-wrap'></div>");
       $el.parent().append($fake);
       check = function() {
-        $fake.text($el.val());
+        $fake.text($el.children('option:selected').text());
         return $fake.toggleClass("focus", document.activeElement === this);
       };
       $el.on("change blur focus keyup", check);
