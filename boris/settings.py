@@ -3,7 +3,6 @@
 import os,sys
 from os.path import join
 PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
-from django.utils.translation import ugettext_lazy as _
 
 # Django settings for boris project.
 
@@ -45,7 +44,7 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = (('en', 'English'),
              ('es', 'Español'),
              ('zh', '中文'),
-             ('kr', '한국어')
+             ('ko', '한국어')
             )
 
 SITE_ID = 1
