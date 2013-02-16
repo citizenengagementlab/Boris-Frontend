@@ -1,0 +1,522 @@
+# © COPYRIGHT 2013 - ROCK THE VOTE
+# This file is distributed under the same license as the PACKAGE package.
+# ROCK THE VOTE <ADMIN@ROCKTHEVOTE.COM>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ROCKTHEVOTE\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-11 02:21+0000\n"
+"PO-Revision-Date: 2013-02-14 16:27-0800\n"
+"Last-Translator: ROCK THE VOTE <ADMIN@ROCKTHEVOTE.COM>\n"
+"Language-Team: RTV\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#: registrant/views.py:210
+msgid "Unrecognized state, please go back and try again."
+msgstr "에러가 발생했습니다. 다시 시도하십시오. (Unrecognized state)"
+
+#: registrant/views.py:234
+msgid "Unknown error: the web administrators have been contacted."
+msgstr "에러가 발생했습니다. 관리자에게 알려드렸습니다. (Unknown error)"
+
+#: templates/base.html:10
+msgid "Voter Registration"
+msgstr "유권자 등록"
+
+#: templates/base.html:47
+#, fuzzy
+msgid "Register in"
+msgstr "여기서 등록하십시오: "
+
+#: templates/base.html:47 templates/error.html:4 templates/form.html:5
+#: templates/form_direct.html:5 templates/map.html:5 templates/share.html:5
+#: templates/start.html:5 templates/submit.html:5
+msgid "Register to Vote"
+msgstr "유권자 등록 하세요"
+
+#: templates/base.html:58
+msgid "Powered by"
+msgstr "개발자: "
+
+#: templates/error.html:4
+msgid "Error Processing Your Form"
+msgstr "양식을 처리하는 과정에서 에러가 발생했습니다"
+
+#: templates/error.html:14 templates/ineligible.html:12
+msgid "Something went wrong"
+msgstr "에러가 발생했습니다"
+
+#: templates/error.html:18
+msgid "Go back and try again?"
+msgstr "다시 시도할까요?"
+
+#: templates/form.html:25 templates/form.html.py:72
+#: templates/form_direct.html:79 templates/start.html:25
+msgid "Title"
+msgstr "호칭"
+
+#: templates/form.html:28 templates/form.html.py:74
+#: templates/form_direct.html:82 templates/start.html:28
+msgid "Mr."
+msgstr "Mr. (미스터)"
+
+#: templates/form.html:29 templates/form.html.py:75
+#: templates/form_direct.html:83 templates/start.html:29
+msgid "Ms."
+msgstr "Ms. (미즈)"
+
+#: templates/form.html:30 templates/form.html.py:76
+#: templates/form_direct.html:84 templates/start.html:30
+#, fuzzy
+msgid "Mrs."
+msgstr "Mrs. (미세스)"
+
+#: templates/form.html:34 templates/form.html.py:80
+#: templates/form_direct.html:88 templates/start.html:34
+msgid "First Name"
+msgstr "이름"
+
+#: templates/form.html:36 templates/form_direct.html:90
+#: templates/start.html:36
+msgid "Use your full first name. Do not use nicknames or initials."
+msgstr "본인의 이름을 기입하십시오. 별명이나 이름 첫글자만을 쓰지는 마십시오."
+
+#: templates/form.html:39 templates/form.html.py:84
+#: templates/form_direct.html:93 templates/start.html:39
+msgid "Last Name"
+msgstr "성(Last name)"
+
+#: templates/form.html:43 templates/form.html.py:88
+#: templates/form_direct.html:98
+msgid "Suffix"
+msgstr "Suffix"
+
+#: templates/form.html:53 templates/form.html.py:98
+#: templates/form_direct.html:108
+msgid "optional"
+msgstr "선택 사항"
+
+#: templates/form.html:60 templates/form_direct.html:135
+#: templates/start.html:65
+msgid "I am a U.S. Citizen"
+msgstr "시민권자입니다"
+
+#: templates/form.html:64
+msgid "I have recently changed my name"
+msgstr "최근 이름을 바꾼 적이 있습니다"
+
+#: templates/form.html:69
+msgid "Previous Name"
+msgstr "이전 이름"
+
+#: templates/form.html:107
+msgid "Street Address"
+msgstr "주소 (Street)"
+
+#: templates/form.html:110
+msgid ""
+"Put your home address in these boxes. Do not put your mailing address here "
+"if it is different from your home address. Do not use a post office box or "
+"rural route without a box number. If you live in a rural area but do not "
+"have a street address, or if you have no address, please show where you live "
+"using the map on the printed form."
+msgstr ""
+"거주지(집) 주소를 쓰십시오. 따로 우편 주소가 있을 경우 우편 주소를 쓰지는 마"
+"십시오.  PO Box 나 번지수 없는 농촌 지역 루트를 기입하지 마십시오.농촌 지역"
+"에 거주하며 주소가 없을 경우,  인쇄용 양식의 지도를 이용해 자신의 거주지를 표"
+"시 해 주십시오."
+
+#: templates/form.html:114 templates/form_direct.html:118
+msgid "Not in"
+msgstr "No en_later_"
+
+#: templates/form.html:115 templates/form_direct.html:119
+#: templates/start.html:52
+msgid "Zip Code"
+msgstr "우편번호(Zip)"
+
+#: templates/form.html:117 templates/form.html.py:149 templates/form.html:168
+#: templates/form_direct.html:121
+msgid "Enter a valid 5 digit zip code."
+msgstr "우편번호는 5자리수로 기입하십시오."
+
+#: templates/form.html:125
+msgid "Registering Abroad?"
+msgstr "해외에서 등록하고 계십니까?"
+
+#: templates/form.html:129
+msgid "I have a different mailing address"
+msgstr "거주지 주소와 별도로 우편주소를 가지고 있습니다"
+
+#: templates/form.html:133
+msgid "I have recently moved"
+msgstr "최근 이사한 적이 있습니다"
+
+#: templates/form.html:140
+msgid "Mailing Street Address"
+msgstr "우편주소"
+
+#: templates/form.html:143
+msgid "If you receive mail at a different address, please enter it here."
+msgstr "우편물을 거주지와 다른 주소에서 받는 경우, 여기에 기입하십시오"
+
+#: templates/form.html:147
+msgid "Mailing Zip Code"
+msgstr "우편번호(Zip)"
+
+#: templates/form.html:159
+msgid "Previous Street Address"
+msgstr "이전 주소"
+
+#: templates/form.html:162
+msgid ""
+"If you have moved since your last registration, enter your previous address."
+msgstr ""
+"마지막으로 유권자 등록을 한 이후 이사한 적이 있다면 이전에 유권자 등록을 했"
+"던 주소를 기입하시오 "
+
+#: templates/form.html:166
+msgid "Previous Zip Code"
+msgstr "우편번호(Zip)"
+
+#: templates/form.html:179
+msgid "ID Number"
+msgstr "ID번호"
+
+#: templates/form.html:187 templates/form_direct.html:128
+msgid "Birthdate"
+msgstr "생년월일"
+
+#: templates/form.html:189 templates/form_direct.html:130
+msgid "Enter your birthdate in MM/DD/YYYY format."
+msgstr "생년월일을 기입하시오. (양식: 월/일/연도 MM/DD/YYYY)"
+
+#: templates/form.html:194 templates/form_direct.html:144
+#: templates/map.html:110 templates/start.html:48
+msgid "Email Address"
+msgstr "이메일"
+
+#: templates/form.html:196 templates/form_direct.html:146
+msgid "Enter a valid email address."
+msgstr "이메일 주소를 잘못 기입하셨습니다"
+
+#: templates/form.html:199 templates/form_direct.html:149
+msgid "Phone Number"
+msgstr "전화번호"
+
+#: templates/form.html:201 templates/form_direct.html:151
+msgid "Enter a phone number in xxx-xxx-xxxx format."
+msgstr "전화번호 양식을 xxx-xxx-xxxx 으로 기입 해 주십시오"
+
+#: templates/form.html:204 templates/form_direct.html:154
+msgid "Type"
+msgstr "종류"
+
+#: templates/form.html:206 templates/form_direct.html:156
+msgid "Mobile"
+msgstr "핸드폰"
+
+#: templates/form.html:207 templates/form_direct.html:157
+msgid "Home"
+msgstr "집"
+
+#: templates/form.html:208 templates/form_direct.html:158
+msgid "Work"
+msgstr "직장"
+
+#: templates/form.html:215
+msgid "Political Affiliation"
+msgstr "정당"
+
+#: templates/form.html:217 templates/form.html.py:230
+msgid "Select One..."
+msgstr "한가지만 선택하십시오..."
+
+#: templates/form.html:228
+msgid "Race or Ethnic Group"
+msgstr "인종/민족"
+
+#: templates/form.html:231
+msgid "American Indian / Alaskan Native"
+msgstr "미국 원주민"
+
+#: templates/form.html:232
+msgid "Asian / Pacific Islander"
+msgstr "아시안계/태평양계"
+
+#: templates/form.html:233
+msgid "Black (not Hispanic)"
+msgstr "흑인"
+
+#: templates/form.html:234
+msgid "Hispanic"
+msgstr "라티노/히스패닉"
+
+#: templates/form.html:235
+msgid "White (not Hispanic)"
+msgstr "백인"
+
+#: templates/form.html:236
+msgid "Multi-racial"
+msgstr "다인종/다민족"
+
+#: templates/form.html:237
+msgid "Other"
+msgstr "기타"
+
+#: templates/form.html:238
+msgid "Decline to State"
+msgstr "정당 없음"
+
+#: templates/form.html:248 templates/form.html.py:276 templates/form.html:297
+msgid "Survey Questions (optional)"
+msgstr "(선택사항) 설문조사"
+
+#: templates/form.html:257 templates/form.html.py:268 templates/form.html:282
+#: templates/form.html.py:289 templates/form.html:302
+#: templates/form.html.py:307
+msgid "Optional"
+msgstr "선택사항"
+
+#: templates/form.html:300
+msgid "If you are in school, where do you go?"
+msgstr "학생일 경우, 어느 학교를 다니십니까?"
+
+#: templates/form.html:305
+msgid "What issue do you care most about?"
+msgstr "¿어떤 사회 현안을 가장 중요하게 생각하십니까?"
+
+#: templates/form.html:350 templates/form.html.py:362 templates/form.html:409
+#: templates/form_direct.html:194 templates/form_direct.html.py:206
+#: templates/form_direct.html:253
+msgid "Receive Email Updates from"
+msgstr "다음의 단체에서 이메일을 받고 싶습니다: "
+
+#: templates/form.html:352 templates/form.html.py:364 templates/form.html:411
+#: templates/form_direct.html:196 templates/form_direct.html.py:208
+#: templates/form_direct.html:255
+msgid "privacy policy"
+msgstr "개인정보 보호정책"
+
+#: templates/form.html:373 templates/form_direct.html:217
+msgid "Receive Email Updates from Rock the Vote."
+msgstr "Rock the Vote 단체에서 이메일 소식을 받아보십시오"
+
+#: templates/form.html:384 templates/form_direct.html:228
+msgid "Send me txt messages from"
+msgstr "다음의 단체에서 문자 메세지를 받아보고 싶습니다: "
+
+#: templates/form.html:385 templates/form_direct.html:229
+msgid "Send me txt messages from Rock the Vote."
+msgstr "Rock the Vote 단체에서 문자 메세지를 받아보고 싶습니다."
+
+#: templates/form.html:386 templates/form_direct.html:230
+msgid "(data &amp; msg rates may apply)"
+msgstr "(핸드폰 플랜에 따라서 문자 메세지 관련 과금이 있을 수 있습니다)"
+
+#: templates/form.html:399 templates/form_direct.html:243
+msgid "I would like to volunteer with"
+msgstr "자원봉사하고 싶습니다. 함께 활동하고 싶은 단체:"
+
+#: templates/form.html:400 templates/form_direct.html:244
+msgid "I would like to volunteer with Rock the Vote."
+msgstr "Rock the Vote 단체에서 자원봉사를 하고 싶습니다."
+
+#: templates/form.html:433 templates/form_ca_direct.html:22
+#, python-format
+msgid "I am a resident of %(state)s, living in the United States."
+msgstr "저는 %(state)s 의 주민이며 미국에서 살고 있습니다의 거주민입니다."
+
+#: templates/form_ca_direct.html:25
+#, python-format
+msgid ""
+" You are eligible to finish your voter registration using the %(state_name)s "
+"online voter registration system. "
+msgstr ""
+"유권자 등록 절차를 마치기 위해서는 %(state_name)s 주의 등록 시스템을 이용하십"
+"시오."
+
+#: templates/form_ca_direct.html:39
+msgid ""
+"You can complete your voter registration online with the state right now - "
+"using the application provided by Secretary of State Debra Bowen. "
+msgstr ""
+"캘리포니아 주 총무처 데브라 보웬 장관이 제공하는 신청서를 통해 인터넷 상에서 "
+"유권자 등록을 하실 수 있습니다."
+
+#: templates/form_direct.html:288 templates/form_wa_direct.html:20
+msgid "You can complete your voter registration online with the state below."
+msgstr "아래의 주에서 온라인 유권자 등록을 하실 수 있습니다"
+
+#: templates/form_direct.html:289
+msgid ""
+"If your driver's license or state identification card is invalid or the "
+"state can't find or confirm your DMV record - don't worry — you can also <a "
+"href='javascript:redirectToRegularForm()'> finish your registration with "
+"Rock the Vote</a>. You will just have to print, sign, and mail it in."
+msgstr ""
+"운전면허증 또는 정부 ID 번호가 유효하지 않거나 주 정부에서 귀하의 정보를 확인"
+"하지 못하더라도 <a href='javascript:redirectToRegularForm()'>Rock the Vote 웹"
+"사이트</a> 에서 신청을 하실 수 있습니다.양식을 인쇄해서 서명하고 우편으로 보"
+"내시면 됩니다."
+
+#: templates/form_direct.html:300 templates/share.html:24
+#, fuzzy
+msgid "Spread the word"
+msgstr "널리 알려주세요!"
+
+#: templates/form_direct.html:302
+msgid ""
+"Don't forget to tell your friends and family how easy it was to register. "
+"Here are a few tools you can use to spread the word about voter registration:"
+msgstr ""
+"등록 절차, 쉬우셨죠? 주변 사람들에게 널리 알려주십시오!여기에 SNS등을 통해 알"
+"릴 수 있는 몇가지 도구들이 있습니다."
+
+#: templates/form_nv_direct.html:33
+msgid ""
+"You can complete your voter registration online with the state below. The "
+"Nevada Online Voter Application (NOVA) is provided by Nevada Secretary of "
+"State, Ross Miller, for registering Nevada citizens to vote, or to change "
+"their existing registration information. NOVA is also available <a href="
+"\"https://nvsos.gov/sosvoterservices/Registration/step1.aspx?r=gov\" target="
+"\"_blank\">here.</a>"
+msgstr ""
+"아래의 주 정부를 통해 유권자 등록을 완성하실 수 있습니다.네바다 정부의 NOVA "
+"시스템은 네바다 주 총무처 Ross Miller 장관이 제공하고 있으며 네바다의 시민권"
+"자들이 유권자 등록 및 정보갱신을 할 수 있게 합니다. NOVA는 또한 <a href="
+"\"https://nvsos.gov/sosvoterservices/Registration/step1.aspx?r=gov\" target="
+"\"_blank\">이 링크</a>에서도 제공됩니다"
+
+#: templates/form_nv_direct.html:35 templates/form_wa_direct.html:21
+msgid ""
+"If your driver's license or state identification card is invalid or the "
+"state can't find or confirm your DMV record - don't worry - you can also <a "
+"href='javascript:redirectToRegularForm()'> finish your registration with "
+"Rock the Vote</a>. You will just have to print, sign, and mail it in."
+msgstr ""
+"운전면허증 또는 정부 ID 번호가 유효하지 않거나 주 정부에서 귀하의 정보를 확인"
+"하지 못하더라도 <a href='javascript:redirectToRegularForm()'>Rock the Vote 웹"
+"사이트</a> 에서 신청을 하실 수 있습니다.양식을 인쇄해서 서명하고 우편으로 보"
+"내시면 됩니다."
+
+#: templates/ineligible.html:13
+msgid ""
+"Sorry, you are not eligible to register to vote for the following reason(s):"
+msgstr "다음의 이유로 인해 등록을 하실 수 없습니다:"
+
+#: templates/map.html:5
+#, fuzzy
+msgid "Select Your State"
+msgstr "주(State)를 선택하시오"
+
+#: templates/map.html:52
+msgid "Select your state to get started"
+msgstr "시작하기 위해서는 거주하는 주(State)를 선택하세요"
+
+#: templates/map.html:56
+#, fuzzy
+msgid "Select State"
+msgstr "주를 선택하시오"
+
+#: templates/map.html:116 templates/start.html:68
+msgid "Continue"
+msgstr "계속하기"
+
+#: templates/map.html:123
+msgid ""
+"Your state's deadline to register to vote in the November 2012 election may "
+"have already passed. Check the <a href=\"http://www.rockthevote.com/election-"
+"center/registration-deadlines/\">Election Center</a> to find out."
+msgstr ""
+"유권자 등록 마감일이 지났을 수 있습니다.자세한 것은  <a href=\"http://www."
+"rockthevote.com/election-center/registration-deadlines/\">선거문의센터</a>를 "
+"이용하십시오."
+
+#: templates/map.html:127
+msgid "Already registered?"
+msgstr "이미 등록하셨습니까?"
+
+#: templates/map.html:127
+msgid "Share with your friends"
+msgstr "주변인들과 나누세요"
+
+#: templates/share.html:5
+#, fuzzy
+msgid "Spread the Word"
+msgstr "주변인들과 나누세요"
+
+#: templates/share.html:25
+msgid "Tell your friends and family to register"
+msgstr "친구와 가족들에게 등록할 것을 권유하세요"
+
+#: templates/share.html:28
+msgid ""
+"Here are a few tools you can use to spread the word about voter registration:"
+msgstr "유권자 등록에 대해 SNS등을 통해 알릴 수 있는 몇가지 도구들이 있습니다:"
+
+#: templates/start.html:5
+msgid "Get Started"
+msgstr "시작하기"
+
+#: templates/start.html:66
+msgid "Must be a citizen to register"
+msgstr "유권자 등록을 하기 위해서는 시민권자여야 합니다"
+
+#: templates/submit.html:5
+msgid "Download Your Form"
+msgstr "양식을 다운로드 하십시오"
+
+#: templates/submit.html:64
+msgid "You're not quite done!"
+msgstr "이제 거의 끝났습니다!"
+
+#: templates/submit.html:65
+msgid "You still need to download your form."
+msgstr "양식을 다운로드 하셔야 합니다"
+
+#: templates/submit.html:69
+msgid "Download"
+msgstr "다운로드 하기"
+
+#: templates/submit.html:73
+msgid "We've also e-mailed you a link to retreive your form later"
+msgstr ""
+"나중에 열어볼 수 있도록 이메일로도 양식을 다운로드 받을 수 있는링크를 보내드"
+"렸습니다"
+
+#: templates/submit.html:82
+msgid "This should only take a second"
+msgstr "금방 끝낼 수 있습니다"
+
+#: templates/submit.html:88
+#, fuzzy
+msgid "Something went wrong "
+msgstr "에러가 발생했습니다"
+
+#: templates/submit.html:110
+msgid "Spread the word!"
+msgstr "주변인과 나누세요"
+
+msgid ""
+"You can complete your voter registration online with the state right now - "
+"using the application provided by Secretary of State Debra Bowen.  If you "
+"don't know your social security number, your driver's license or "
+"identification card is invalid, or the state can't find or confirm your DMV "
+"record - don't worry - you can also <a href='javascript:redirectToRegularForm"
+"()'> finish your registration with Rock the Vote</a>.  You will just have to "
+"print, sign, and mail in the form by October 22nd."
+msgstr ""
+"캘리포니아 주 총무처 Debra Bown 장관이 제공하는 온라인 유권자 등록 양식을 통"
+"해유권자 등록을 하실 수 있습니다. 소셜번호나 운전면허증 번호, 주 정부 ID 번호"
+"를 모르거나주 정부 시스템이 번호를 인식하지 못하더라도 <a href='javascript:"
+"redirectToRegularForm()'>Rock the Vote 웹사이트</a> 에서 신청을 하실 수 있습"
+"니다.양식을 인쇄해서 서명하고 10월 22일까지 우편으로 보내시면 됩니다."
+
+msgid "Unknown error, please contact an admin"
+msgstr "에러가 발생했습니다. 관리자에게 연락을 취하십시오. (Unknown error)"
