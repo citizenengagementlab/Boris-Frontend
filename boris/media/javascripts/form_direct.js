@@ -9,7 +9,7 @@ function addFloodlightTrackingPixel() {
   */
   var axel = Math.random() + "";
   var a = axel * 10000000000000;
-  $('body').append('<iframe src="http://fls.doubleclick.net/activityi;src=3838314;type=rtvco381;cat=rockt950;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+  $('body').append('<iframe src="https://fls.doubleclick.net/activityi;src=3838314;type=rtvco381;cat=rockt950;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
 }
 
 function showStateRegContinueButtons() {
@@ -53,7 +53,7 @@ function continueToStateForm() {
   add_state_iframe();
   
   //add tracking pixel for floodlight
-  addFloodlightTrackingPixel();
+  //addFloodlightTrackingPixel();
   
   //show share buttons
   $('body').addClass('finish');
