@@ -9,3 +9,4 @@ rocky_dev.db
 build/
 include/
 lib/
+boris/static
