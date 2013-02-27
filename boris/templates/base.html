@@ -84,7 +84,7 @@
 					{% if cobrandform.logo and cobrandform.show_logo = 'b'%}
 					<span class="amp">&nbsp;&amp;&nbsp;</span>
 					<a class="logo cobrand {{cobrandform.name|slugify}}" {%if cobrandform.logo_link%}href="{{cobrandform.logo_link}}" target="_blank"{%endif%}>
-					<img src="{{ STATIC_URL }}{{cobrandform.logo}}" />
+					<img src="{{ STATIC_URL }}{{cobrandform.logo}}" /></a>
 					{%endif%}
 					{% if customform.powered_by_logo%}
 					<span class="amp">&nbsp;&amp;&nbsp;</span>
