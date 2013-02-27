@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ROCKTHEVOTE\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-16 01:58+0000\n"
+"POT-Creation-Date: 2013-02-27 21:01+0000\n"
 "PO-Revision-Date: 2013-02-14 16:27-0800\n"
 "Last-Translator: ROCK THE VOTE <ADMIN@ROCKTHEVOTE.COM>\n"
 "Language-Team: RTV\n"
@@ -60,70 +60,84 @@ msgstr "에러가 발생했습니다"
 msgid "Go back and try again?"
 msgstr "다시 시도할까요?"
 
-#: templates/form.html:20 templates/form.html.py:67
+#: templates/form.html:20 templates/form.html.py:70
 #: templates/form_direct.html:74 templates/start.html:25
 msgid "Title"
 msgstr "호칭"
 
-#: templates/form.html:23 templates/form.html.py:69
+#: templates/form.html:23 templates/form.html.py:72
 #: templates/form_direct.html:77 templates/start.html:28
 msgid "Mr."
 msgstr "Mr. (미스터)"
 
-#: templates/form.html:24 templates/form.html.py:70
+#: templates/form.html:24 templates/form.html.py:73
 #: templates/form_direct.html:78 templates/start.html:29
 msgid "Ms."
 msgstr "Ms. (미즈)"
 
-#: templates/form.html:25 templates/form.html.py:71
+#: templates/form.html:25 templates/form.html.py:74
 #: templates/form_direct.html:79 templates/start.html:30
 #, fuzzy
 msgid "Mrs."
 msgstr "Mrs. (미세스)"
 
-#: templates/form.html:29 templates/form.html.py:75
-#: templates/form_direct.html:83 templates/start.html:34
+#: templates/form.html:27 templates/form.html.py:76
+#: templates/form_direct.html:81
+msgid "Title is required."
+msgstr ""
+
+#: templates/form.html:30 templates/form.html.py:79
+#: templates/form_direct.html:84 templates/start.html:34
 msgid "First Name"
 msgstr "이름"
 
-#: templates/form.html:31 templates/form_direct.html:85
-#: templates/start.html:36
+#: templates/form.html:32 templates/form.html.py:81
+#: templates/form_direct.html:86 templates/start.html:36
 msgid "Use your full first name. Do not use nicknames or initials."
 msgstr "본인의 이름을 기입하십시오. 별명이나 이름 첫글자만을 쓰지는 마십시오."
 
-#: templates/form.html:34 templates/form.html.py:79
-#: templates/form_direct.html:88 templates/start.html:39
+#: templates/form.html:35 templates/form.html.py:84
+#: templates/form_direct.html:89 templates/start.html:39
 msgid "Last Name"
 msgstr "성(Last name)"
 
-#: templates/form.html:38 templates/form.html.py:83
-#: templates/form_direct.html:93
+#: templates/form.html:37 templates/form.html.py:86
+msgid "This field is required."
+msgstr ""
+
+#: templates/form.html:40 templates/form.html.py:89
+#: templates/form_direct.html:95
 msgid "Suffix"
 msgstr "Suffix"
 
-#: templates/form.html:48 templates/form.html.py:93
-#: templates/form_direct.html:103
+#: templates/form.html:50 templates/form.html.py:99
+#: templates/form_direct.html:105
 msgid "optional"
 msgstr "선택 사항"
 
-#: templates/form.html:55 templates/form_direct.html:130
+#: templates/form.html:56 templates/form_direct.html:131
 #: templates/start.html:65
 msgid "I am a U.S. Citizen"
 msgstr "시민권자입니다"
 
-#: templates/form.html:59
+#: templates/form.html:58 templates/form_direct.html:133
+#, fuzzy
+msgid "You must be a U.S. citizen to register"
+msgstr "유권자 등록을 하기 위해서는 시민권자여야 합니다"
+
+#: templates/form.html:62
 msgid "I have recently changed my name"
 msgstr "최근 이름을 바꾼 적이 있습니다"
 
-#: templates/form.html:64
+#: templates/form.html:67
 msgid "Previous Name"
 msgstr "이전 이름"
 
-#: templates/form.html:102
+#: templates/form.html:108
 msgid "Street Address"
 msgstr "주소 (Street)"
 
-#: templates/form.html:105
+#: templates/form.html:111
 msgid ""
 "Put your home address in these boxes. Do not put your mailing address here "
 "if it is different from your home address. Do not use a post office box or "
@@ -136,213 +150,213 @@ msgstr ""
 "에 거주하며 주소가 없을 경우,  인쇄용 양식의 지도를 이용해 자신의 거주지를 표"
 "시 해 주십시오."
 
-#: templates/form.html:109 templates/form_direct.html:113
+#: templates/form.html:115 templates/form_direct.html:115
 msgid "Not in"
 msgstr "No en_later_"
 
-#: templates/form.html:110 templates/form_direct.html:114
+#: templates/form.html:116 templates/form_direct.html:116
 #: templates/start.html:52
 msgid "Zip Code"
 msgstr "우편번호(Zip)"
 
-#: templates/form.html:112 templates/form.html.py:144 templates/form.html:163
-#: templates/form_direct.html:116
+#: templates/form.html:118 templates/form.html.py:150 templates/form.html:169
+#: templates/form_direct.html:118
 msgid "Enter a valid 5 digit zip code."
 msgstr "우편번호는 5자리수로 기입하십시오."
 
-#: templates/form.html:120
+#: templates/form.html:126
 msgid "Registering Abroad?"
 msgstr "해외에서 등록하고 계십니까?"
 
-#: templates/form.html:124
+#: templates/form.html:130
 msgid "I have a different mailing address"
 msgstr "거주지 주소와 별도로 우편주소를 가지고 있습니다"
 
-#: templates/form.html:128
+#: templates/form.html:134
 msgid "I have recently moved"
 msgstr "최근 이사한 적이 있습니다"
 
-#: templates/form.html:135
+#: templates/form.html:141
 msgid "Mailing Street Address"
 msgstr "우편주소"
 
-#: templates/form.html:138
+#: templates/form.html:144
 msgid "If you receive mail at a different address, please enter it here."
 msgstr "우편물을 거주지와 다른 주소에서 받는 경우, 여기에 기입하십시오"
 
-#: templates/form.html:142
+#: templates/form.html:148
 msgid "Mailing Zip Code"
 msgstr "우편번호(Zip)"
 
-#: templates/form.html:154
+#: templates/form.html:160
 msgid "Previous Street Address"
 msgstr "이전 주소"
 
-#: templates/form.html:157
+#: templates/form.html:163
 msgid ""
 "If you have moved since your last registration, enter your previous address."
 msgstr ""
 "마지막으로 유권자 등록을 한 이후 이사한 적이 있다면 이전에 유권자 등록을 했"
 "던 주소를 기입하시오 "
 
-#: templates/form.html:161
+#: templates/form.html:167
 msgid "Previous Zip Code"
 msgstr "우편번호(Zip)"
 
-#: templates/form.html:174
+#: templates/form.html:180
 msgid "ID Number"
 msgstr "ID번호"
 
-#: templates/form.html:182 templates/form_direct.html:123
+#: templates/form.html:188 templates/form_direct.html:125
 msgid "Birthdate"
 msgstr "생년월일"
 
-#: templates/form.html:184 templates/form_direct.html:125
+#: templates/form.html:190 templates/form_direct.html:127
 msgid "Enter your birthdate in MM/DD/YYYY format."
 msgstr "생년월일을 기입하시오. (양식: 월/일/연도 MM/DD/YYYY)"
 
-#: templates/form.html:189 templates/form_direct.html:139
+#: templates/form.html:195 templates/form_direct.html:142
 #: templates/map.html:110 templates/map.html.py:111 templates/start.html:48
 msgid "Email Address"
 msgstr "이메일"
 
-#: templates/form.html:191 templates/form_direct.html:141
+#: templates/form.html:197 templates/form_direct.html:144
 msgid "Enter a valid email address."
 msgstr "이메일 주소를 잘못 기입하셨습니다"
 
-#: templates/form.html:194 templates/form_direct.html:144
+#: templates/form.html:200 templates/form_direct.html:147
 msgid "Phone Number"
 msgstr "전화번호"
 
-#: templates/form.html:196 templates/form_direct.html:146
+#: templates/form.html:202 templates/form_direct.html:149
 msgid "Enter a phone number in xxx-xxx-xxxx format."
 msgstr "전화번호 양식을 xxx-xxx-xxxx 으로 기입 해 주십시오"
 
-#: templates/form.html:199 templates/form_direct.html:149
+#: templates/form.html:205 templates/form_direct.html:152
 msgid "Type"
 msgstr "종류"
 
-#: templates/form.html:201 templates/form_direct.html:151
+#: templates/form.html:207 templates/form_direct.html:154
 msgid "Mobile"
 msgstr "핸드폰"
 
-#: templates/form.html:202 templates/form_direct.html:152
+#: templates/form.html:208 templates/form_direct.html:155
 msgid "Home"
 msgstr "집"
 
-#: templates/form.html:203 templates/form_direct.html:153
+#: templates/form.html:209 templates/form_direct.html:156
 msgid "Work"
 msgstr "직장"
 
-#: templates/form.html:210
+#: templates/form.html:216
 msgid "Political Affiliation"
 msgstr "정당"
 
-#: templates/form.html:212 templates/form.html.py:225
+#: templates/form.html:218 templates/form.html.py:231
 msgid "Select One..."
 msgstr "한가지만 선택하십시오..."
 
-#: templates/form.html:223
+#: templates/form.html:229
 msgid "Race or Ethnic Group"
 msgstr "인종/민족"
 
-#: templates/form.html:226
+#: templates/form.html:232
 msgid "American Indian / Alaskan Native"
 msgstr "미국 원주민"
 
-#: templates/form.html:227
+#: templates/form.html:233
 msgid "Asian / Pacific Islander"
 msgstr "아시안계/태평양계"
 
-#: templates/form.html:228
+#: templates/form.html:234
 msgid "Black (not Hispanic)"
 msgstr "흑인"
 
-#: templates/form.html:229
+#: templates/form.html:235
 msgid "Hispanic"
 msgstr "라티노/히스패닉"
 
-#: templates/form.html:230
+#: templates/form.html:236
 msgid "White (not Hispanic)"
 msgstr "백인"
 
-#: templates/form.html:231
+#: templates/form.html:237
 msgid "Multi-racial"
 msgstr "다인종/다민족"
 
-#: templates/form.html:232
+#: templates/form.html:238
 msgid "Other"
 msgstr "기타"
 
-#: templates/form.html:233
+#: templates/form.html:239
 msgid "Decline to State"
 msgstr "정당 없음"
 
-#: templates/form.html:243 templates/form.html.py:271 templates/form.html:292
+#: templates/form.html:249 templates/form.html.py:277 templates/form.html:298
 msgid "Survey Questions (optional)"
 msgstr "(선택사항) 설문조사"
 
-#: templates/form.html:252 templates/form.html.py:263 templates/form.html:277
-#: templates/form.html.py:284 templates/form.html:297
-#: templates/form.html.py:302
+#: templates/form.html:258 templates/form.html.py:269 templates/form.html:283
+#: templates/form.html.py:290 templates/form.html:303
+#: templates/form.html.py:308
 msgid "Optional"
 msgstr "선택사항"
 
-#: templates/form.html:295
+#: templates/form.html:301
 msgid "If you are in school, where do you go?"
 msgstr "학생일 경우, 어느 학교를 다니십니까?"
 
-#: templates/form.html:300
+#: templates/form.html:306
 msgid "What issue do you care most about?"
 msgstr "¿어떤 사회 현안을 가장 중요하게 생각하십니까?"
 
-#: templates/form.html:345 templates/form.html.py:357 templates/form.html:404
-#: templates/form_direct.html:189 templates/form_direct.html.py:201
-#: templates/form_direct.html:248
+#: templates/form.html:324 templates/form.html.py:336 templates/form.html:383
+#: templates/form_direct.html:192 templates/form_direct.html.py:204
+#: templates/form_direct.html:251
 msgid "Receive Email Updates from"
 msgstr "다음의 단체에서 이메일을 받고 싶습니다: "
 
-#: templates/form.html:347 templates/form.html.py:359 templates/form.html:406
-#: templates/form_direct.html:191 templates/form_direct.html.py:203
-#: templates/form_direct.html:250
+#: templates/form.html:326 templates/form.html.py:338 templates/form.html:385
+#: templates/form_direct.html:194 templates/form_direct.html.py:206
+#: templates/form_direct.html:253
 msgid "privacy policy"
 msgstr "개인정보 보호정책"
 
-#: templates/form.html:368 templates/form_direct.html:212
+#: templates/form.html:347 templates/form_direct.html:215
 msgid "Receive Email Updates from Rock the Vote."
 msgstr "Rock the Vote 단체에서 이메일 소식을 받아보십시오"
 
-#: templates/form.html:379 templates/form_direct.html:223
+#: templates/form.html:358 templates/form_direct.html:226
 msgid "Send me txt messages from"
 msgstr "다음의 단체에서 문자 메세지를 받아보고 싶습니다: "
 
-#: templates/form.html:380 templates/form_direct.html:224
+#: templates/form.html:359 templates/form_direct.html:227
 msgid "Send me txt messages from Rock the Vote."
 msgstr "Rock the Vote 단체에서 문자 메세지를 받아보고 싶습니다."
 
-#: templates/form.html:381 templates/form_direct.html:225
+#: templates/form.html:360 templates/form_direct.html:228
 msgid "(data &amp; msg rates may apply)"
 msgstr "(핸드폰 플랜에 따라서 문자 메세지 관련 과금이 있을 수 있습니다)"
 
-#: templates/form.html:394 templates/form_direct.html:238
+#: templates/form.html:373 templates/form_direct.html:241
 msgid "I would like to volunteer with"
 msgstr "자원봉사하고 싶습니다. 함께 활동하고 싶은 단체:"
 
-#: templates/form.html:395 templates/form_direct.html:239
+#: templates/form.html:374 templates/form_direct.html:242
 msgid "I would like to volunteer with Rock the Vote."
 msgstr "Rock the Vote 단체에서 자원봉사를 하고 싶습니다."
 
-#: templates/form.html:428
+#: templates/form.html:397
 #, fuzzy
 msgid "Register"
 msgstr "여기서 등록하십시오: "
 
-#: templates/form.html:433 templates/form_direct.html:308
+#: templates/form.html:402 templates/form_direct.html:311
 #: templates/map.html:127
 msgid "Already registered?"
 msgstr "이미 등록하셨습니까?"
 
-#: templates/form.html:433 templates/form_direct.html:308
+#: templates/form.html:402 templates/form_direct.html:311
 #: templates/map.html:127
 msgid "Share with your friends"
 msgstr "주변인들과 나누세요"
@@ -369,20 +383,46 @@ msgstr ""
 "캘리포니아 주 총무처 데브라 보웬 장관이 제공하는 신청서를 통해 인터넷 상에서 "
 "유권자 등록을 하실 수 있습니다."
 
-#: templates/form_direct.html:276
+#: templates/form_direct.html:91
+msgid "Last name is required."
+msgstr ""
+
+#: templates/form_direct.html:167
+#, python-format
+msgid ""
+"I have a current %(state)s state identification card or driver's license"
+msgstr ""
+
+#: templates/form_direct.html:170
+#, fuzzy, python-format
+msgid ""
+"You may be eligible to finish your voter registration using the "
+"%(state_name)s online voter registration system."
+msgstr ""
+"유권자 등록 절차를 마치기 위해서는 %(state_name)s 주의 등록 시스템을 이용하십"
+"시오."
+
+#: templates/form_direct.html:175
+#, python-format
+msgid ""
+"I do not have a current %(state)s state identification card or driver's "
+"license"
+msgstr ""
+
+#: templates/form_direct.html:279
 msgid "Submit my form online with the state"
 msgstr ""
 
-#: templates/form_direct.html:277
+#: templates/form_direct.html:280
 #, fuzzy
 msgid "Register with Rock the Vote"
 msgstr "유권자 등록 하세요"
 
-#: templates/form_direct.html:283 templates/form_wa_direct.html:20
+#: templates/form_direct.html:286 templates/form_wa_direct.html:20
 msgid "You can complete your voter registration online with the state below."
 msgstr "아래의 주에서 온라인 유권자 등록을 하실 수 있습니다"
 
-#: templates/form_direct.html:284
+#: templates/form_direct.html:287
 msgid ""
 "If your driver's license or state identification card is invalid or the "
 "state can't find or confirm your DMV record - don't worry — you can also <a "
@@ -394,12 +434,12 @@ msgstr ""
 "사이트</a> 에서 신청을 하실 수 있습니다.양식을 인쇄해서 서명하고 우편으로 보"
 "내시면 됩니다."
 
-#: templates/form_direct.html:295 templates/share.html:24
+#: templates/form_direct.html:298 templates/share.html:24
 #, fuzzy
 msgid "Spread the word"
 msgstr "널리 알려주세요!"
 
-#: templates/form_direct.html:297
+#: templates/form_direct.html:300
 msgid ""
 "Don't forget to tell your friends and family how easy it was to register. "
 "Here are a few tools you can use to spread the word about voter registration:"
@@ -493,34 +533,43 @@ msgstr "유권자 등록을 하기 위해서는 시민권자여야 합니다"
 msgid "Download Your Form"
 msgstr "양식을 다운로드 하십시오"
 
-#: templates/submit.html:64
+#: templates/submit.html:46
 msgid "You're not quite done!"
 msgstr "이제 거의 끝났습니다!"
 
-#: templates/submit.html:65
-msgid "You still need to download your form."
+#: templates/submit.html:47
+#, fuzzy
+msgid "You still need to sign and mail in your form."
 msgstr "양식을 다운로드 하셔야 합니다"
 
-#: templates/submit.html:69
+#: templates/submit.html:51
 msgid "Download"
 msgstr "다운로드 하기"
 
-#: templates/submit.html:73
+#: templates/submit.html:55
 msgid "We've also e-mailed you a link to retreive your form later"
 msgstr ""
 "나중에 열어볼 수 있도록 이메일로도 양식을 다운로드 받을 수 있는링크를 보내드"
 "렸습니다"
 
-#: templates/submit.html:82
+#: templates/submit.html:60
+msgid "Check your email inbox for a link to your form"
+msgstr ""
+
+#: templates/submit.html:65
+msgid "Preparing Form"
+msgstr ""
+
+#: templates/submit.html:69
 msgid "This should only take a second"
 msgstr "금방 끝낼 수 있습니다"
 
-#: templates/submit.html:88
+#: templates/submit.html:75
 #, fuzzy
 msgid "Something went wrong "
 msgstr "에러가 발생했습니다"
 
-#: templates/submit.html:110
+#: templates/submit.html:97
 msgid "Spread the word!"
 msgstr "주변인과 나누세요"
 

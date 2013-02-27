@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ROCKTHEVOTE\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-16 01:58+0000\n"
+"POT-Creation-Date: 2013-02-27 21:01+0000\n"
 "PO-Revision-Date: 2013-02-14 15:44-0800\n"
 "Last-Translator: ROCK THE VOTE <ADMIN@ROCKTHEVOTE.COM>\n"
 "Language-Team: RTV\n"
@@ -60,69 +60,83 @@ msgstr "發生錯誤"
 msgid "Go back and try again?"
 msgstr "要返回再試一次嗎？"
 
-#: templates/form.html:20 templates/form.html.py:67
+#: templates/form.html:20 templates/form.html.py:70
 #: templates/form_direct.html:74 templates/start.html:25
 msgid "Title"
 msgstr "稱號"
 
-#: templates/form.html:23 templates/form.html.py:69
+#: templates/form.html:23 templates/form.html.py:72
 #: templates/form_direct.html:77 templates/start.html:28
 msgid "Mr."
 msgstr "先生"
 
-#: templates/form.html:24 templates/form.html.py:70
+#: templates/form.html:24 templates/form.html.py:73
 #: templates/form_direct.html:78 templates/start.html:29
 msgid "Ms."
 msgstr "女士"
 
-#: templates/form.html:25 templates/form.html.py:71
+#: templates/form.html:25 templates/form.html.py:74
 #: templates/form_direct.html:79 templates/start.html:30
 msgid "Mrs."
 msgstr "太太"
 
-#: templates/form.html:29 templates/form.html.py:75
-#: templates/form_direct.html:83 templates/start.html:34
+#: templates/form.html:27 templates/form.html.py:76
+#: templates/form_direct.html:81
+msgid "Title is required."
+msgstr ""
+
+#: templates/form.html:30 templates/form.html.py:79
+#: templates/form_direct.html:84 templates/start.html:34
 msgid "First Name"
 msgstr "名字"
 
-#: templates/form.html:31 templates/form_direct.html:85
-#: templates/start.html:36
+#: templates/form.html:32 templates/form.html.py:81
+#: templates/form_direct.html:86 templates/start.html:36
 msgid "Use your full first name. Do not use nicknames or initials."
 msgstr "請使用完整名字。不要使用綽號或姓名縮寫。"
 
-#: templates/form.html:34 templates/form.html.py:79
-#: templates/form_direct.html:88 templates/start.html:39
+#: templates/form.html:35 templates/form.html.py:84
+#: templates/form_direct.html:89 templates/start.html:39
 msgid "Last Name"
 msgstr "姓"
 
-#: templates/form.html:38 templates/form.html.py:83
-#: templates/form_direct.html:93
+#: templates/form.html:37 templates/form.html.py:86
+msgid "This field is required."
+msgstr ""
+
+#: templates/form.html:40 templates/form.html.py:89
+#: templates/form_direct.html:95
 msgid "Suffix"
 msgstr "名字後綴"
 
-#: templates/form.html:48 templates/form.html.py:93
-#: templates/form_direct.html:103
+#: templates/form.html:50 templates/form.html.py:99
+#: templates/form_direct.html:105
 msgid "optional"
 msgstr "自願填寫"
 
-#: templates/form.html:55 templates/form_direct.html:130
+#: templates/form.html:56 templates/form_direct.html:131
 #: templates/start.html:65
 msgid "I am a U.S. Citizen"
 msgstr "我是美國公民"
 
-#: templates/form.html:59
+#: templates/form.html:58 templates/form_direct.html:133
+#, fuzzy
+msgid "You must be a U.S. citizen to register"
+msgstr "必須為公民進行登記"
+
+#: templates/form.html:62
 msgid "I have recently changed my name"
 msgstr "我最近改了名字"
 
-#: templates/form.html:64
+#: templates/form.html:67
 msgid "Previous Name"
 msgstr "過去的名字"
 
-#: templates/form.html:102
+#: templates/form.html:108
 msgid "Street Address"
 msgstr "街道地址"
 
-#: templates/form.html:105
+#: templates/form.html:111
 msgid ""
 "Put your home address in these boxes. Do not put your mailing address here "
 "if it is different from your home address. Do not use a post office box or "
@@ -134,210 +148,210 @@ msgstr ""
 "異。不要忘記在郵政信箱或農村路線加上郵箱號碼。若您居住在農業區，並沒有一個街"
 "道地址，或沒有地址，請在印製的地圖上指示出您所居住的地方。"
 
-#: templates/form.html:109 templates/form_direct.html:113
+#: templates/form.html:115 templates/form_direct.html:115
 msgid "Not in"
 msgstr "不在"
 
-#: templates/form.html:110 templates/form_direct.html:114
+#: templates/form.html:116 templates/form_direct.html:116
 #: templates/start.html:52
 msgid "Zip Code"
 msgstr "郵政編碼"
 
-#: templates/form.html:112 templates/form.html.py:144 templates/form.html:163
-#: templates/form_direct.html:116
+#: templates/form.html:118 templates/form.html.py:150 templates/form.html:169
+#: templates/form_direct.html:118
 msgid "Enter a valid 5 digit zip code."
 msgstr "輸入一個有效的5位數字的郵政編碼。"
 
-#: templates/form.html:120
+#: templates/form.html:126
 msgid "Registering Abroad?"
 msgstr "在國外註冊嗎？"
 
-#: templates/form.html:124
+#: templates/form.html:130
 msgid "I have a different mailing address"
 msgstr "我有一個不同的郵寄地址"
 
-#: templates/form.html:128
+#: templates/form.html:134
 msgid "I have recently moved"
 msgstr "我最近遷居"
 
-#: templates/form.html:135
+#: templates/form.html:141
 msgid "Mailing Street Address"
 msgstr "郵寄街道地址"
 
-#: templates/form.html:138
+#: templates/form.html:144
 msgid "If you receive mail at a different address, please enter it here."
 msgstr "若您在不同的地址收取郵件，請在此輸入。"
 
-#: templates/form.html:142
+#: templates/form.html:148
 msgid "Mailing Zip Code"
 msgstr "郵寄郵政編碼"
 
-#: templates/form.html:154
+#: templates/form.html:160
 msgid "Previous Street Address"
 msgstr "過去的街道地址"
 
-#: templates/form.html:157
+#: templates/form.html:163
 msgid ""
 "If you have moved since your last registration, enter your previous address."
 msgstr "若您在上一次註冊後已遷居，請輸入過去的地址。"
 
-#: templates/form.html:161
+#: templates/form.html:167
 msgid "Previous Zip Code"
 msgstr "過去的郵政編碼"
 
-#: templates/form.html:174
+#: templates/form.html:180
 msgid "ID Number"
 msgstr "身份證號碼"
 
-#: templates/form.html:182 templates/form_direct.html:123
+#: templates/form.html:188 templates/form_direct.html:125
 msgid "Birthdate"
 msgstr "出生日期"
 
-#: templates/form.html:184 templates/form_direct.html:125
+#: templates/form.html:190 templates/form_direct.html:127
 msgid "Enter your birthdate in MM/DD/YYYY format."
 msgstr "請按 月/日/年 格式輸入您的出生日期。"
 
-#: templates/form.html:189 templates/form_direct.html:139
+#: templates/form.html:195 templates/form_direct.html:142
 #: templates/map.html:110 templates/map.html.py:111 templates/start.html:48
 msgid "Email Address"
 msgstr "電子郵件地址"
 
-#: templates/form.html:191 templates/form_direct.html:141
+#: templates/form.html:197 templates/form_direct.html:144
 msgid "Enter a valid email address."
 msgstr "請輸入一個有效的電子郵件地址。"
 
-#: templates/form.html:194 templates/form_direct.html:144
+#: templates/form.html:200 templates/form_direct.html:147
 msgid "Phone Number"
 msgstr "電話號碼"
 
-#: templates/form.html:196 templates/form_direct.html:146
+#: templates/form.html:202 templates/form_direct.html:149
 msgid "Enter a phone number in xxx-xxx-xxxx format."
 msgstr "請按 xxx-xxx-xxxx格式輸入一個電話號碼。"
 
-#: templates/form.html:199 templates/form_direct.html:149
+#: templates/form.html:205 templates/form_direct.html:152
 msgid "Type"
 msgstr "類型"
 
-#: templates/form.html:201 templates/form_direct.html:151
+#: templates/form.html:207 templates/form_direct.html:154
 msgid "Mobile"
 msgstr "手機"
 
-#: templates/form.html:202 templates/form_direct.html:152
+#: templates/form.html:208 templates/form_direct.html:155
 msgid "Home"
 msgstr "家"
 
-#: templates/form.html:203 templates/form_direct.html:153
+#: templates/form.html:209 templates/form_direct.html:156
 msgid "Work"
 msgstr "工作"
 
-#: templates/form.html:210
+#: templates/form.html:216
 msgid "Political Affiliation"
 msgstr "所屬政治團體"
 
-#: templates/form.html:212 templates/form.html.py:225
+#: templates/form.html:218 templates/form.html.py:231
 msgid "Select One..."
 msgstr "請選擇其中一項..."
 
-#: templates/form.html:223
+#: templates/form.html:229
 msgid "Race or Ethnic Group"
 msgstr "種族或族裔"
 
-#: templates/form.html:226
+#: templates/form.html:232
 msgid "American Indian / Alaskan Native"
 msgstr "美國印第安人/阿拉斯加原住民"
 
-#: templates/form.html:227
+#: templates/form.html:233
 msgid "Asian / Pacific Islander"
 msgstr "亞裔/太平洋島民"
 
-#: templates/form.html:228
+#: templates/form.html:234
 msgid "Black (not Hispanic)"
 msgstr "黑人（非西班牙裔）"
 
-#: templates/form.html:229
+#: templates/form.html:235
 msgid "Hispanic"
 msgstr "西班牙裔"
 
-#: templates/form.html:230
+#: templates/form.html:236
 msgid "White (not Hispanic)"
 msgstr "白人（非西班牙裔）"
 
-#: templates/form.html:231
+#: templates/form.html:237
 msgid "Multi-racial"
 msgstr "多種族"
 
-#: templates/form.html:232
+#: templates/form.html:238
 msgid "Other"
 msgstr "其它"
 
-#: templates/form.html:233
+#: templates/form.html:239
 msgid "Decline to State"
 msgstr "拒絕透露"
 
-#: templates/form.html:243 templates/form.html.py:271 templates/form.html:292
+#: templates/form.html:249 templates/form.html.py:277 templates/form.html:298
 msgid "Survey Questions (optional)"
 msgstr "調查問題 (自願填寫)"
 
-#: templates/form.html:252 templates/form.html.py:263 templates/form.html:277
-#: templates/form.html.py:284 templates/form.html:297
-#: templates/form.html.py:302
+#: templates/form.html:258 templates/form.html.py:269 templates/form.html:283
+#: templates/form.html.py:290 templates/form.html:303
+#: templates/form.html.py:308
 msgid "Optional"
 msgstr "自願填寫"
 
-#: templates/form.html:295
+#: templates/form.html:301
 msgid "If you are in school, where do you go?"
 msgstr "如您現時在上學，在哪裡上學呢？"
 
-#: templates/form.html:300
+#: templates/form.html:306
 msgid "What issue do you care most about?"
 msgstr "你最關心什麼問題？"
 
-#: templates/form.html:345 templates/form.html.py:357 templates/form.html:404
-#: templates/form_direct.html:189 templates/form_direct.html.py:201
-#: templates/form_direct.html:248
+#: templates/form.html:324 templates/form.html.py:336 templates/form.html:383
+#: templates/form_direct.html:192 templates/form_direct.html.py:204
+#: templates/form_direct.html:251
 msgid "Receive Email Updates from"
 msgstr "從........接收電子郵件更新 (from.....to receive email updates)"
 
-#: templates/form.html:347 templates/form.html.py:359 templates/form.html:406
-#: templates/form_direct.html:191 templates/form_direct.html.py:203
-#: templates/form_direct.html:250
+#: templates/form.html:326 templates/form.html.py:338 templates/form.html:385
+#: templates/form_direct.html:194 templates/form_direct.html.py:206
+#: templates/form_direct.html:253
 msgid "privacy policy"
 msgstr "私隱政策"
 
-#: templates/form.html:368 templates/form_direct.html:212
+#: templates/form.html:347 templates/form_direct.html:215
 msgid "Receive Email Updates from Rock the Vote."
 msgstr "從Rock the Vote接收電子郵件更新。"
 
-#: templates/form.html:379 templates/form_direct.html:223
+#: templates/form.html:358 templates/form_direct.html:226
 msgid "Send me txt messages from"
 msgstr "從....與我發短信(from....to send me text messages)"
 
-#: templates/form.html:380 templates/form_direct.html:224
+#: templates/form.html:359 templates/form_direct.html:227
 msgid "Send me txt messages from Rock the Vote."
 msgstr "請Rock the Vote與我發短信。"
 
-#: templates/form.html:381 templates/form_direct.html:225
+#: templates/form.html:360 templates/form_direct.html:228
 msgid "(data &amp; msg rates may apply)"
 msgstr "(數據；短信費用可能適用)"
 
-#: templates/form.html:394 templates/form_direct.html:238
+#: templates/form.html:373 templates/form_direct.html:241
 msgid "I would like to volunteer with"
 msgstr "我希望與......作志願者"
 
-#: templates/form.html:395 templates/form_direct.html:239
+#: templates/form.html:374 templates/form_direct.html:242
 msgid "I would like to volunteer with Rock the Vote."
 msgstr "我希望與Rock the Vote作志願者。"
 
-#: templates/form.html:428
+#: templates/form.html:397
 msgid "Register"
 msgstr "登記"
 
-#: templates/form.html:433 templates/form_direct.html:308
+#: templates/form.html:402 templates/form_direct.html:311
 #: templates/map.html:127
 msgid "Already registered?"
 msgstr "已經登記了嗎？"
 
-#: templates/form.html:433 templates/form_direct.html:308
+#: templates/form.html:402 templates/form_direct.html:311
 #: templates/map.html:127
 msgid "Share with your friends"
 msgstr "向朋友分享"
@@ -362,20 +376,44 @@ msgstr ""
 "您現在可向州政府完成您的網上選民登記 - 使用由州務卿Debra Bowen 提供的應用程"
 "序。"
 
-#: templates/form_direct.html:276
+#: templates/form_direct.html:91
+msgid "Last name is required."
+msgstr ""
+
+#: templates/form_direct.html:167
+#, python-format
+msgid ""
+"I have a current %(state)s state identification card or driver's license"
+msgstr ""
+
+#: templates/form_direct.html:170
+#, fuzzy, python-format
+msgid ""
+"You may be eligible to finish your voter registration using the "
+"%(state_name)s online voter registration system."
+msgstr "您有資格使用 %(state_name)s 的網上選民登記系統去完成您的選民登記。"
+
+#: templates/form_direct.html:175
+#, python-format
+msgid ""
+"I do not have a current %(state)s state identification card or driver's "
+"license"
+msgstr ""
+
+#: templates/form_direct.html:279
 msgid "Submit my form online with the state"
 msgstr ""
 
-#: templates/form_direct.html:277
+#: templates/form_direct.html:280
 #, fuzzy
 msgid "Register with Rock the Vote"
 msgstr "登記投票"
 
-#: templates/form_direct.html:283 templates/form_wa_direct.html:20
+#: templates/form_direct.html:286 templates/form_wa_direct.html:20
 msgid "You can complete your voter registration online with the state below."
 msgstr "您可以在下面向州政府完成您的網上選民登記。"
 
-#: templates/form_direct.html:284
+#: templates/form_direct.html:287
 msgid ""
 "If your driver's license or state identification card is invalid or the "
 "state can't find or confirm your DMV record - don't worry — you can also <a "
@@ -386,11 +424,11 @@ msgstr ""
 "- 您可以<a href='javascript:redirectToRegularForm()'>與Rock the Vote完成您的"
 "註冊</ a>。您只需要打印，簽名，然後郵寄。"
 
-#: templates/form_direct.html:295 templates/share.html:24
+#: templates/form_direct.html:298 templates/share.html:24
 msgid "Spread the word"
 msgstr "傳播消息"
 
-#: templates/form_direct.html:297
+#: templates/form_direct.html:300
 msgid ""
 "Don't forget to tell your friends and family how easy it was to register. "
 "Here are a few tools you can use to spread the word about voter registration:"
@@ -479,31 +517,40 @@ msgstr "必須為公民進行登記"
 msgid "Download Your Form"
 msgstr "下載您的表格"
 
-#: templates/submit.html:64
+#: templates/submit.html:46
 msgid "You're not quite done!"
 msgstr "您還沒有完成！"
 
-#: templates/submit.html:65
-msgid "You still need to download your form."
+#: templates/submit.html:47
+#, fuzzy
+msgid "You still need to sign and mail in your form."
 msgstr "您還需要下載您的表格。"
 
-#: templates/submit.html:69
+#: templates/submit.html:51
 msgid "Download"
 msgstr "下載"
 
-#: templates/submit.html:73
+#: templates/submit.html:55
 msgid "We've also e-mailed you a link to retreive your form later"
 msgstr "我們同時將可以獲取您的表格的網址鏈接發送到了您的電子郵箱"
 
-#: templates/submit.html:82
+#: templates/submit.html:60
+msgid "Check your email inbox for a link to your form"
+msgstr ""
+
+#: templates/submit.html:65
+msgid "Preparing Form"
+msgstr ""
+
+#: templates/submit.html:69
 msgid "This should only take a second"
 msgstr "這應該只需要很短的時間"
 
-#: templates/submit.html:88
+#: templates/submit.html:75
 msgid "Something went wrong "
 msgstr "發生錯誤"
 
-#: templates/submit.html:110
+#: templates/submit.html:97
 msgid "Spread the word!"
 msgstr "傳播消息"
 
