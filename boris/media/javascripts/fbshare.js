@@ -42,9 +42,9 @@ $('a.button.facebook#facebook-app-share').click(function(){
     'description' : "Register to vote in 3 easy steps using Rock the Vote's online voter registration tool!",
     'message' : "Have you registered to vote?",
     'media': [{
-      "type": "flash", 
-      "swfsrc": "https://"+window.location.hostname+"/static/widgetloader/rtv_fb.swf"+qStr, 
-      "imgsrc": "https://"+window.location.hostname+"/static/images/flash-preview.gif", 
+      "type": "flash",
+      "swfsrc": "https://"+window.location.hostname+"/static/widgetloader/rtv_fb.swf"+qStr,
+      "imgsrc": "https://"+window.location.hostname+"/static/images/flash-preview.gif",
       "width": "130",
       "height": "87",
       "expanded_width": "398",
