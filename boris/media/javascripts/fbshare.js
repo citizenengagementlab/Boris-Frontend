@@ -38,7 +38,7 @@ $('a.button.facebook#facebook-app-share').click(function(){
   //if (qStr === "?") qStr = "";
 
   var pObj = {
-    'name' : "Rock the Vote 2012",
+    'name' : "Rock the Vote",
     'description' : "Register to vote in 3 easy steps using Rock the Vote's online voter registration tool!",
     'message' : "Have you registered to vote?",
     'media': [{
