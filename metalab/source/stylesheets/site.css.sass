@@ -1,0 +1,648 @@
+$width: 600px
+$height: 795px
+$header-height: 61px
+$footer-height: 80px
+
+
+$blueprint-grid-columns: 24
+$blueprint-grid-width: 8px
+$blueprint-grid-margin: 16px
+
+@import "base"
+@import "blueprint"
+
+
+
+$link-color:         #707070
+$link-hover-color:   #707070
+$link-focus-color:   false
+$link-active-color:  false
+$link-visited-color: false
+
+
+$font-color: #797979
+$base-font-size: 15px
+$base-line-height: 1.4em
+
+
+
+$helvetica-font-family: "Helvetica Neue", Helvetica, sans-serif
+$lucida-font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif
+$georgia-font-family: Georgia, serif
+
+$font-stack: normal normal normal 11px/1.4em $lucida-font-family
+
+$input-font-stack: normal normal normal 15px/16px $lucida-font-family
+$input-height: 31px
+$input-border-color: #bebebe
+$input-border-radius: 4px
+$input-margin-bottom: 21px
+
+$input-focus-border-color: #67c6fd
+$input-error-border-color: #d51514
+
+
+
+
++global-reset
++blueprint-grid
+
+html, body
+  height: 100%
+
+body
+  font: $font-stack
+  color: $font-color
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  background: image_url("bg.jpg") repeat 0 0
+
+a
+  +link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color)
+
+#header
+  height: $header-height - 1px
+  line-height: $header-height - 1px
+  text-align: center
+  color: white
+  text-shadow: 0 -1px 1px black
+  border-bottom: 1px solid #676766
+  background-color: #353535
+  +background-image(linear-gradient(top, #464646 0%, #313131 100%))
+
+  > h1
+    font:
+      family: $helvetica-font-family
+      size: 24px
+      weight: bold
+
+    > .logo
+      float: left
+
+#main
+  width: $width
+  // height: $height
+  margin: 0 auto
+  // overflow: hidden
+  position: relative
+
+
+#content
+  position: relative
+  width: $width
+  // height: 795px - $footer-height - $header-height
+  overflow: auto
+  overflow-x: hidden
+  overflow-y: auto
+
+section
+  padding: 15px 20px
+
+  &::before, &::after
+    content: ""
+    display: table
+
+  &::after
+    clear: both
+
+  & + section
+    border-top: 1px solid #D4D4D4
+
+  header
+    margin-bottom: 15px
+
+    h2
+      line-height: 36px
+      color: #4A4A4A
+      font:
+        family: $georgia-font-family
+        size: 34px
+        weight: normal
+
+    p
+      margin: 0
+      line-height: 30px
+      color: #919191
+      font:
+        family: $georgia-font-family
+        size: 24px
+        weight: normal
+
+  p
+    margin: 10px 0
+
+  .image-well
+    background: transparent image-url("image-well.png") center center no-repeat
+
+    img
+      padding: 5px
+      border: 1px solid #D4D4D4
+      background-color: #FFF
+
+body.finish
+  section
+    text-align: center
+
+    .button.download
+      display: block
+
+      &::before
+        left: 115px
+
+#footer
+  width: 100%
+  height: $footer-height - 4px - 18px
+  padding: 4px 0 18px
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  color: #818181
+  text-shadow: 0 1px 0 white
+  text-align: center
+  background-color: #e4e4e4
+  +box-shadow(inset 0 1px 2px rgba(0,0,0,0.3))
+  position: relative
+  z-index: 1000
+
+  p
+    font:
+      family: Georgia, serif
+      style: italic
+      size: 13px
+
+    > a
+      position: relative
+      top: 2px
+      left: 2px
+      display: inline-block
+      vertical-align: bottom
+      text-indent: -9999em
+      +image-element("footer-logo.png")
+
+
+  nav
+    margin: 12px 0 0 0
+
+    > a
+      padding: 1px 8px
+      text-transform: uppercase
+      color: #818181
+      border:
+        width: 0 1px
+        style: solid
+        color: transparent #cccccc transparent #f0f0f0
+
+      &:first-child
+        border-left: none
+
+      &:last-child
+        border-right: none
+
+.input-focus
+  outline: none
+  border-color: $input-focus-border-color
+  +box-shadow(0 0 0 1px $input-focus-border-color)
+
+
+.input-placeholder
+  color: #d5d5d5
+
+input,
+textarea
+  font: $input-font-stack
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+input[type="tel"],
+textarea,
+  +box-sizing(border-box)
+  height: $input-height
+  width: 100%
+  margin: 0
+  padding: 6px 8px
+  color: black
+  border: 1px solid $input-border-color
+  +border-radius($input-border-radius)
+
+  &:focus
+    @extend .input-focus
+
+  &.placeholder, &:-moz-placeholder, &::-webkit-input-placeholder
+    @extend .input-placeholder
+
+input[type="file"]
+  margin: 0
+
+textarea
+  display: block
+  height: auto
+  min-height: $input-height
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  +appearance(none)
+  margin: 0
+
+fieldset
+  overflow: visible
+  width: $width - 40px
+  padding: 19px 20px 3px
+  border:
+    width: 1px 0
+    style: solid
+    color: transparent transparent #e7e7e7
+  +transition-property("border-color, background-color")
+  +transition-duration(0.14s)
+
+  &:last-child
+    border-bottom: none
+
+  &.active
+    border-color: #c8c2b2
+    background: #fef6df
+    +box-shadow(inset 0 1px 0 #fffaee, 0 1px 0 #e1e0e0)
+
+    label
+      color: #797569
+
+  &.closed
+    display: none
+
+  h3
+    +column(24)
+    margin: 0 0 1em
+    font:
+      family: $helvetica-font-family
+      size: 15px
+      weight: bold
+    
+
+.input
+  position: relative
+  margin-bottom: $input-margin-bottom
+
+  > label
+    display: block
+    margin: 0 0 6px
+    font:
+      family: $helvetica-font-family
+      size: 15px
+      weight: bold
+
+  &.focus
+    > label
+      color: black
+
+  &.checkbox
+    > label
+      display: inline
+      font:
+        family: $lucida-font-family
+        size: 11px
+        weight: bold
+
+  &.text
+    &.error
+      position: relative
+
+      &:after
+        content: " "
+        display: block
+        position: absolute
+        top: 27px
+        right: 7px
+        width: image-width("form-error-icon.png")
+        height: image-height("form-error-icon.png")
+        background: no-repeat right center
+        +image-background("form-error-icon.png")
+        pointer-events: none
+
+  &.select
+    &.error
+      .fake-select
+        border-color: $input-error-border-color
+        +box-shadow(0 0 0 1px $input-error-border-color)
+
+
+
+.button
+  padding: 8px 22px
+  margin: 2px
+  -webkit-font-smoothing: antialiased
+  font:
+    family: $helvetica-font-family
+    size: 22px
+    weight: bold
+  color: #f5fbf7
+  line-height: 26px
+  text-decoration: none
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.4)
+  border: 1px solid #2c7042
+  +border-radius(4px)
+  background-color: #43ab64
+  +background-image(linear-gradient(top, #47b36a 0%, #3a9457 100%))
+  +box-shadow(inset 0 1px 0 #61d292, 0 1px 0 rgba(0,0,0,0.1))
+  +after-image("button-complete-check-icon.png", 36px, 1px, 16px)
+
+  .no-rgba &
+    text-shadow: 0 -1px 0 #2f7746
+  
+  &:hover
+    color: #f5fbf7
+    background-color: #43ab64
+    +background-image(linear-gradient(top, #47b36a 0%, #34864f 100%))
+    cursor: pointer
+
+  &:active
+    position: relative
+    top: 1px
+    background-color: #43ab64
+    +background-image(linear-gradient(top, #47b46a 0%, #3e9f5d 100%))
+
+  &[disabled], &.disabled, :disabled
+    color: #f5fbf7
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4)
+    +after-image("button-check-icon.png", 36px, 0, 16px)
+
+  &.download
+    +before-image("button-download-icon.png", 36px, 0, 16px)
+
+    &::after
+      display: none
+  &.facebook
+    +after-image("facebook-icon-sm.png", 36px, 0, 16px)
+    background-color: #3865a4
+    +background-image(linear-gradient(top, #3865a4 0%, #315c99 100%))
+    +box-shadow(inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 0 rgba(0,0,0,0.1))
+
+  &.twitter
+    +after-image("twitter-icon-sm.png", 36px, 0, 16px)
+    background-color: #4695d7
+    +background-image(linear-gradient(top, #4695d7 0%, #2471b0 100%))
+    +box-shadow(inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 0 rgba(0,0,0,0.1))
+
+.fake-select-wrap
+  position: relative
+
+  &:after
+    content: " "
+    display: block
+    position: absolute
+    top: 0px
+    right: 8px
+    width: image-width("select-arrow.png")
+    height: 100%
+    background: no-repeat right center
+    +image-background("select-arrow.png")
+
+  > .fake-select
+    position: relative
+    +appearance(none)
+    +box-sizing(border-box)
+    height: $input-height
+    width: 100%
+    margin: 0
+    padding: 6px 18px 6px 8px
+    vertical-align: bottom
+    font: $input-font-stack
+    color: black
+    background-color: white
+    border: 1px solid $input-border-color
+    +border-radius($input-border-radius)
+
+    &.large
+      margin: 2px
+      padding: 0 22px
+      height: 45px
+      line-height: 45px
+      font:
+        // family: $helvetica-font-family
+        size: 22px
+        // weight: bold
+      -webkit-font-smoothing: antialiased
+
+    &.focus
+      @extend .input-focus
+
+  > select
+    position: absolute
+    z-index: 3
+    +appearance(none)
+    +opacity(0)
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    padding: 0
+    margin: 0
+    width: 100%
+    height: 100%
+
+.fake-checkbox-wrap
+  display: inline-block
+  position: relative
+  margin: 0 6px 0 0
+  vertical-align: bottom
+
+  > .fake-checkbox
+    +box-sizing(border-box)
+    width: 16px
+    height: 16px
+    background-color: #fafafa
+    +background-image(linear-gradient(top, #ffffff 0%, #f6f6f6 100%))
+    border: 1px solid #a4acb0
+    +border-radius(4px)
+
+    &.checked
+      +after-image("checkbox-icon.png", 0, 0, -4px)
+      padding-right: 0
+
+    &.focus
+      @extend .input-focus
+
+  > input
+    position: absolute
+    z-index: 3
+    top: 0
+    left: 0
+    +opacity(0)
+
+
+
+// 
+// Individual elements/components ----------
+// 
+
+
+.incorrect-location
+  float: right
+  margin: 0 2px 0 0
+  color: #1e75d2
+  font-weight: bold
+  +before-image("location-icon.png", 3px, 1px)
+
+.zip-code
+  position: relative
+
+  &.error
+    .zip-code-location-hint
+      right: 30px
+
+.zip-code-location-hint
+  position: absolute
+  top: 29px
+  right: 10px
+  font:
+    size: 11px
+    weight: bold
+  color: #9b9b9b
+
+.id-number
+  position: relative
+
+.id-number-hint-icon
+  position: absolute
+  top: 27px
+  right: 8px
+  +icon-element("input-help-icon.png")
+
+
+.tooltip
+  visibility: hidden
+  +opacity(0)
+  position: absolute
+  z-index: 2
+  right: 0
+  padding: 8px 12px
+  font:
+    size: 11px
+    weight: bold
+  line-height: 16px
+  color: #9c9c9c
+  background: #393939
+  // +transition-property("transform, opacity")
+  -webkit-transition-property: -webkit-transform, opacity
+  -moz-transition-property: -moz-transform, opacity
+  -ms-transition-property: -ms-transform, opacity
+  -o-transition-property: -o-transform, opacity
+  transition-property: transform, opacity
+  +transition-duration(0.2s)
+
+  &:after
+    content: " "
+    display: block
+    position: absolute
+    top: -5px
+    right: 12px
+    width: 10px
+    height: 10px
+    background: #393939
+    +rotate(45deg)
+
+  .tooltip-open &
+    visibility: visible
+    +opacity(1)
+    +translateY(8px)
+
+.id-number-hint
+  &:after
+    right: 12px
+
+
+fieldset.submit
+  padding-top: 30px
+  padding-bottom: 26px
+
+  > .inputs
+    float: left
+
+    > .input
+      margin: 0 0 4px
+
+      > input
+        margin: 0 9px 0 0
+
+      > label
+        font-size: 12px
+
+  > .button
+    float: right
+    margin-top: 6px
+
+.error-list
+  color: #666
+  border: 2px solid $input-error-border-color
+  background-color: #FFF5F5
+  +border-radius(4px)
+  padding: 10px
+  margin-bottom: 1em
+  > h2
+    margin: 0 0 6px
+    font-size: 15px
+    font-weight: bold
+  > li
+    margin-left: 20px
+    color: $input-error-border-color
+
+.scroll-shadows
+  position: absolute
+  height: 2px
+  width: 100%
+  +opacity(0)
+  +transition-property("opacity")
+  +transition-duration(0.2s)
+  z-index: 1
+
+  &.top
+    top: $header-height - 2px
+    +box-shadow(0 1px 16px black)
+
+    &.at-top
+      +opacity(0)
+
+  &.bottom
+    bottom: $footer-height - 2px
+    +box-shadow(0 -1px 16px black)
+
+    &.at-bottom
+      +opacity(0)
+
+  .scrollable &
+    +opacity(1)
+
+fieldset.submit 
+  > .inputs
+    width: 300px
+  
+  .fake-checkbox-wrap
+    float: left
+  .subtle
+    font-size: 11px
+    font-weight: normal
+    display:block
+
+h1 > a > img
+  max-width: 150px
+
+html, body, #wrap, #main
+  height: 100%
+
+#main > #wrap
+  height: auto
+  min-height: 100%
+
+#content
+  overflow: auto
+  padding-bottom: $footer-height
+
+#footer
+  position: relative
+  margin-top: -$footer-height
+  height: $footer-height
+  clear: both
+
+// Map
+@import map
