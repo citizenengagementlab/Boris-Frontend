@@ -44,7 +44,7 @@ if (1) {
   {% if pdfurl %}
   <header>
     <h2>{% trans "You're not quite done!"%}</h2>
-    <p>{% trans "You still need to download your form."%}</p>
+    <p>{% trans "You still need to sign and mail in your form."%}</p>
   </header>
   <div id="download" style="display:none">
     <div class="prepend-3 span-18 append-3 last">
@@ -55,9 +55,14 @@ if (1) {
       <p class="subtle">({% trans "We've also e-mailed you a link to retreive your form later" %})</p>
     </div>
   </div>
+  <div id="email-mobile" style="display:none">
+    <div class="prepend-3 span-18 append-3 last">
+      <p class="subtle">{% trans "Check your email inbox for a link to your form" %}</p>
+    </div>
+  </div>
   <div id="waiting">
     <div class="prepend-3 span-18 append-3 last">
-      <a class="button button-primary waiting" style="display:block" disabled>Preparing Form<span style="position:fixed" class="ellipsis"></span></a>
+      <a class="button button-primary waiting" style="display:block" disabled>{% trans "Preparing Form" %}<span style="position:fixed" class="ellipsis"></span></a>
     </div>
 
     <div class="prepend-3 span-18 append-3 last">
@@ -78,8 +83,8 @@ if (1) {
 {%comment%}
 <section>
   <header>
-    <h2>Get more involved!</h2>
-    <p>Help your friends register to vote.</p>
+    <h2>{% trans "Get more involved!" %}</h2>
+    <p>{% trans "Help your friends register to vote." %}</p>
   </header>
   <div class="image-well prepend-3 span-18 append-3 last">
     <img src="images/contest-tease.png" />

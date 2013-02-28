@@ -12,11 +12,6 @@
 {%endblock%}
 
 {%block content%}
-<div class="span-24 last" style="padding: 19px 20px 3px">
-  {%if LANGUAGE_CODE == "en" %}<a class="locale" tabindex="-1" href="?locale=es{%if state%}&state={{state}}{%endif%}">En espa&ntilde;ol</a>
-{%else%}<a class="locale" tabindex="-1" href="?locale=en{%if state%}&state={{state}}{%endif%}">In english</a>{%endif%}
-</div>
-
     <form class="registration-form" method="post" action="/registrants/submit/{%if has_partner%}?partner={{partner}}{%endif%}" accept-charset="UTF-8">
       {% csrf_token %}
       <fieldset class="name">
@@ -29,15 +24,17 @@
               <option value="{% trans 'Ms.' %}">{% trans 'Ms.' %}</option>
               <option value="{% trans 'Mrs.' %}">{% trans 'Mrs.' %}</option>
             </select>
+            <div class="name-hint tooltip">{% trans "Title is required." %}</div>
           </div>
           <div class="input text span-8">
             <label for="first_name">{% trans "First Name" %}</label>
             <input required id="first_name" name="first_name" type="text" />
-            <div class="full-name-hint tooltip">{% trans "Use your full first name. Do not use nicknames or initials."%}</div>
+            <div class="first-name-hint tooltip">{% trans "Use your full first name. Do not use nicknames or initials."%}</div>
           </div>
           <div class="input text span-8">
             <label for="last_name">{% trans "Last Name" %}</label>
             <input required id="last_name" name="last_name" type="text" />
+            <div class="last-name-hint tooltip">{% trans "This field is required."%}</div>
           </div>
           <div class="input select span-4 last">
             <label for="name_suffix">{% trans "Suffix" %}</label>
@@ -56,8 +53,9 @@
         </div>
         <div class="row">
           <div class="input checkbox span-8">
-            <input required checked id="us_citizen" name="us_citizen" value="1" type="checkbox" />
             <label for="us_citizen">{% trans "I am a U.S. Citizen" %}</label>
+            <input required checked id="us_citizen" name="us_citizen" value="1" type="checkbox" />
+            <div class="us-citizen-hint tooltip">{% trans "You must be a U.S. citizen to register" %}</div>
           </div>
           <div class="input checkbox span-16 last">
             <input id="change_of_name" name="change_of_name" value="1" type="checkbox" />
@@ -75,14 +73,17 @@
               <option value="{% trans 'Ms.' %}">{% trans 'Ms.' %}</option>
               <option value="{% trans 'Mrs.' %}.">{% trans 'Mrs.' %}</option>
             </select>
+            <div class="name-hint tooltip">{% trans "Title is required." %}</div>
           </div>
           <div class="input text span-8">
             <label for="prev_first_name">{% trans "First Name" %}</label>
             <input id="prev_first_name" name="prev_first_name" type="text" />
+            <div class="prev-first-name-hint tooltip">{% trans "Use your full first name. Do not use nicknames or initials."%}</div>
           </div>
           <div class="input text span-8">
             <label for="prev_last_name">{% trans "Last Name" %}</label>
             <input id="prev_last_name" name="prev_last_name" type="text" />
+            <div class="prev-last-name-hint tooltip">{% trans "This field is required."%}</div>
           </div>
           <div class="input select span-4 last">
             <label for="prev_name_suffix">{% trans "Suffix" %}</label>
@@ -304,32 +305,6 @@
               <div class="question-hint tooltip">{% trans "Optional" %}</div>
             </div>
           </div>
-          {% comment %}
-          <!-- New voter survey layout, for testing -->
-          <h2>{% trans "Why are you voting? (optional)"%}</h2>
-          <div class="row">
-            <div class="input questions span-24 radios">
-              <input id="question1" name="survey_answer_1" type="radio" value="economy"/>
-              <label for="question1">Economy</label>
-              <input id="question2" name="survey_answer_1" type="radio" value="education"/>
-              <label for="question2">Education</label>
-              <input id="question3" name="survey_answer_1" type="radio" value="womens-rights"/>
-              <label for="question3">Womens Rights</label>
-              <input id="question4" name="survey_answer_1" type="radio" value="civil-rights"/>
-              <label for="question4">Civil Rights</label>
-              <input id="question5" name="survey_answer_1" type="radio" value="climate-change"/>
-              <label for="question5">Climate Change</label>
-            </div>
-            <!--<div class="input span-8">
-              <input id="question_other" name="survey_answer_1" type="text" placeholder="other"/>
-              <div class="question-hint tooltip">{% trans "Optional" %}</div>
-            </div>-->
-            <div class="input checkbox span-14">
-              <input id="opt_in_activism_email" name="opt_in_activism_email" value="1" type="checkbox" />
-              <label for="opt_in_activism_email">{% trans "I want to act on important issues I care about" %}</label>
-            </div>
-          </div>
-          {% endcomment %}
         {%endif%}
       </fieldset>
 
@@ -406,14 +381,6 @@
             </label>
           </div>
           {%endif%}
-
-          {% comment %} New inputs for CEL {% endcomment %}
-          {% comment %} deactivate while in testing
-          <div class="input checkbox">
-            <input id="email_cel" name="email_cel" value="1" type="checkbox" />
-            <label for="email_cel">I want to learn more about opportunities for activism in my community</label>
-          </div>
-          {% endcomment %}
         </div>
         
         {% comment %} Hidden but Required Fields {% endcomment %}

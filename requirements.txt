@@ -10,6 +10,7 @@ pygeoip
 pillow
 django-sslify
 django-evolution
+django-urli18n
 python-dateutil==1.2
 pylibmc==1.2.3
 django-pylibmc-sasl==0.2.4

@@ -1,3 +1,5 @@
+# coding=utf-8
+
 import os,sys
 from os.path import join
 PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
@@ -36,6 +38,14 @@ TIME_ZONE = 'UTC'
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en'
+
+#for the defined site translations
+#first locale code, then language in its own descriptor
+LANGUAGES = (('en', 'English'),
+             ('es', 'Español'),
+             #('zh', '中文'),
+             #('ko', '한국어')
+            )
 
 SITE_ID = 1
 
@@ -106,7 +116,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     #then redirection
     'sslify.middleware.SSLifyMiddleware',
-    'registrant.middleware.MobileDetectionMiddleware',
+    #'registrant.middleware.MobileDetectionMiddleware', #comment out, we are testing mobile styles
     'registrant.middleware.ResponseInjectP3PMiddleware',
     #then session & locale
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -261,9 +271,9 @@ except:
     #s3 settings
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    AWS_STORAGE_BUCKET_NAME = 'register2.rockthevote.com'
-    AWS_S3_CUSTOM_DOMAIN = 'dyw5n6uc3lgo5.cloudfront.net'
-    STATIC_URL = 'https://dyw5n6uc3lgo5.cloudfront.net/'
+    AWS_STORAGE_BUCKET_NAME = 'rocky-boris-test'
+    AWS_S3_CUSTOM_DOMAIN = 'd3rou2woe8vj33.cloudfront.net'
+    STATIC_URL = 'https://d3rou2woe8vj33.cloudfront.net/'
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
     #use heroku db
     import dj_database_url

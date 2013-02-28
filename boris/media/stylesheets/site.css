@@ -1273,6 +1273,19 @@ html, body, #wrap, #main {
   height: 500px; }
 
 /*added after metalabs, need to merge back*/
+#setlang {
+  width: 100px;
+  position: absolute;
+  top: 70px;
+  right: 10px;
+}
+
+#setlang input.button {
+  padding:8px;
+  font-size: 12px;
+  line-height: 12px;
+}
+
 fieldset.surveyquestions h2 { 
   color: #797569;
   font-size:14px;

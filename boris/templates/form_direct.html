@@ -66,11 +66,6 @@ section.share p {
 {%endblock%}
 
 {%block content%}
-<div class="span-24 last" style="padding: 19px 20px 3px">
-  {%if LANGUAGE_CODE == "en" %}<a class="locale" tabindex="-1" href="?locale=es">En espa&ntilde;ol</a>
-{%else%}<a class="locale" tabindex="-1" href="?locale=en">In english</a>{%endif%}
-</div>
-
     <form class="registration-form" method="post" action="/registrants/submit/{{state}}/" accept-charset="UTF-8">
       {% csrf_token %}
       <fieldset class="name">
@@ -83,15 +78,17 @@ section.share p {
               <option value="{% trans 'Ms.' %}">{% trans 'Ms.' %}</option>
               <option value="{% trans 'Mrs.' %}.">{% trans 'Mrs.' %}</option>
             </select>
+            <div class="title-hint tooltip">{% trans "Title is required."%}</div>
           </div>
           <div class="input text span-8">
             <label for="first_name">{% trans "First Name" %}</label>
             <input required id="first_name" name="first_name" type="text" />
-            <div class="full-name-hint tooltip">{% trans "Use your full first name. Do not use nicknames or initials."%}</div>
+            <div class="first-name-hint tooltip">{% trans "Use your full first name. Do not use nicknames or initials."%}</div>
           </div>
           <div class="input text span-8">
             <label for="last_name">{% trans "Last Name" %}</label>
             <input required id="last_name" name="last_name" type="text" />
+            <div class="last-name-hint tooltip">{% trans "Last name is required."%}</div>
           </div>
 
           <div class="input select span-4 last">
@@ -131,8 +128,9 @@ section.share p {
           </div>
 
           <div class="input checkbox span-4 pushdown last">
-            <input required checked id="us_citizen" name="us_citizen" value="1" type="checkbox" />
             <label for="us_citizen">{% trans "I am a U.S. Citizen" %}</label>
+            <input required checked id="us_citizen" name="us_citizen" value="1" type="checkbox" />
+            <div class="us-citizen-hint tooltip">{% trans "You must be a U.S. citizen to register" %}</div>
           </div>
 
         </div>
@@ -166,15 +164,15 @@ section.share p {
           <div class="input text prepend-2 span-22">
             {%block state_eligible%}
             <label for="registrant_has_state_license_1">
-              <input checked="checked" id="registrant_has_state_license_1" name="has_state_license" type="radio" value="1">I have a current {{state}} state identification card or driver's license
+              <input checked="checked" id="registrant_has_state_license_1" name="has_state_license" type="radio" value="1">{% blocktrans %}I have a current {{state}} state identification card or driver's license{%endblocktrans%}
             </label>
             <div class="has_license span-20">
-              <p class="explanation" id="eligible">You may be eligible to finish your voter registration using the {{state_name}} online voter registration system.</p>
+              <p class="explanation" id="eligible">{% blocktrans %}You may be eligible to finish your voter registration using the {{state_name}} online voter registration system.{%endblocktrans%}</p>
             </div>
           </div>
           <div class="input text prepend-2 span-22">
             <label for="registrant_has_state_license_0">
-              <input id="registrant_has_state_license_0" name="has_state_license" type="radio" value="0">I do not have a current {{state}} state identification card or driver's license
+              <input id="registrant_has_state_license_0" name="has_state_license" type="radio" value="0">{%blocktrans%}I do not have a current {{state}} state identification card or driver's license{%endblocktrans%}
             </label>
           </div>
           {%endblock%}
@@ -303,6 +301,6 @@ section.share p {
 </section>{%endblock%}
 
   <div id="share-link">
-    {% trans "Already registered?" %}<a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">{% trans "Share with your friends" %}</a>
+    {% trans "Already registered?" %} <a href="/registrants/share/{%if partner%}?partner={{partner}}{%endif%}">{% trans "Share with your friends" %}</a>
   </div>
 {%endblock content%}
