@@ -116,7 +116,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     #then redirection
     'sslify.middleware.SSLifyMiddleware',
-    #'registrant.middleware.MobileDetectionMiddleware', #comment out, we are testing mobile styles
+    #'registrant.middleware.MobileDetectionMiddleware', #don't redirect, we now serve mobile styles
     'registrant.middleware.ResponseInjectP3PMiddleware',
     #then session & locale
     'django.contrib.sessions.middleware.SessionMiddleware',
