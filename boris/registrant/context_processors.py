@@ -105,6 +105,7 @@ def whitelabel(request):
     return context
 
 def source(request):
+    source = None
     if 'source' in request.session:
         #it's been reset by the middleware
         source = request.session['source']
