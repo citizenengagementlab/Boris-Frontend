@@ -47,6 +47,8 @@
       var p = url_params[i];
       var field = p.split('=')[0].replace('?','');
       var value = p.split('=')[1];
+
+      if (field == "source") { return; } //don't pull source, we do that in middleware
       if (field == "name_title") {
         $('select[name="name_title"] option[value="'+decodeURIComponent(value)+'"]').attr('selected','selected');
         $('select[name="name_title"]').siblings('.fake-select').html(value);

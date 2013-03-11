@@ -96,7 +96,6 @@ def cleanup_form(form):
             lang = 'en'
         form['lang'] = lang
 
-
     return form
 
 def get_branding(context):

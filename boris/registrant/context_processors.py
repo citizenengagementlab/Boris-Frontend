@@ -19,6 +19,7 @@ def facebook(request):
         #if not already a source, add it
         if not request.GET.get('source') and request.session.has_key('facebook_source'):
             context['source'] = request.session['facebook_source']
+
     return context
 
 def whitelabel(request):
@@ -28,7 +29,7 @@ def whitelabel(request):
     """
     context = {}
 
-    #save partner & source
+    #save partner
     if request.GET.get('partner'):
         partner = request.GET.get('partner')
         context['partner'] = partner
@@ -38,10 +39,6 @@ def whitelabel(request):
         context['partner'] = 1
         context['has_partner'] = False
         return context
-
-    if request.GET.get('source'):
-        source = request.GET.get('source')
-        context['source'] = source
 
     #get whitelabel branding
     #try CoBrandForm first
@@ -102,7 +99,16 @@ def whitelabel(request):
 
     except KeyError,e:
         #whitelabel error
-        logger.error("white label error, id %s" % context['partner'],
+        logger.error("white label error %s, id %s" % (e,context['partner']),
             exc_info=True,extra={'request':request})
+    
+    return context
 
+def source(request):
+    if 'source' in request.session:
+        #it's been reset by the middleware
+        source = request.session['source']
+    elif request.GET.get('source'):
+        source = request.GET.get('source')
+    context = {'source':source}
     return context

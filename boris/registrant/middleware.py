@@ -7,7 +7,6 @@ import re
 import urllib
 from registrant.utils import removeNonAscii
 
-
 class MobileDetectionMiddleware(object):
     user_agents_test_match = (
         "w3c ", "acs-", "alav", "alca", "amoi", "audi",
@@ -66,15 +65,15 @@ class MobileDetectionMiddleware(object):
                     is_mobile = True
 
         if is_mobile:
-            redirect_url = "http://mobile.rockthevote.com"
-            params = {}
-            if request.GET.get('partner'):
-                params['partner'] = removeNonAscii(request.GET.get('partner'))
+            #save to session, for use in source context processor
             if request.GET.get('source'):
-                params['source'] = removeNonAscii(request.GET.get('source'))
-            if params:
-                redirect_url += "?"+urllib.urlencode(params)
-            return HttpResponseRedirect(redirect_url)
+                source = "MOBILE-%s" % request.GET['source']
+            else:
+                source = "MOBILE"
+            request.session['source'] = source
+            request.session.save()
+        return None
+        #don't stop processing
 
 #return p3p headers, so IE doesn't complain about iframe cookies
 P3P_COMPACT = "policyref=\"/w3c/p3p.xml\", CP=\"CAO PSA CUR OUR IND PHY DEM POL GOV\""

@@ -116,11 +116,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     #then redirection
     'sslify.middleware.SSLifyMiddleware',
-    #'registrant.middleware.MobileDetectionMiddleware', #don't redirect, we now serve mobile styles
     'registrant.middleware.ResponseInjectP3PMiddleware',
-    #then session & locale
+    #then session, locale, mobile
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'registrant.middleware.MobileDetectionMiddleware',
     #then django common
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -147,6 +147,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request", #add so we can access session in templates
+    "registrant.context_processors.source",
     "registrant.context_processors.whitelabel",
     "registrant.context_processors.facebook",
 )
