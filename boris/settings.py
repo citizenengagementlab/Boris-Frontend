@@ -272,12 +272,12 @@ except:
     #s3 settings
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    AWS_STORAGE_BUCKET_NAME = 'register2.rockthevote.com'
-    AWS_S3_CUSTOM_DOMAIN = 'dyw5n6uc3lgo5.cloudfront.net'
-    STATIC_URL = 'https://dyw5n6uc3lgo5.cloudfront.net/'
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    AWS_S3_CUSTOM_DOMAIN = os.environ['AWS_S3_CUSTOM_DOMAIN']
+    STATIC_URL = 'https://'+AWS_S3_CUSTOM_DOMAIN
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
     #use heroku db
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
     #sentry
-    SENTRY_DSN = 'https://dd2eecba1fbb43ae9dceee266d6d869f:a3787fd3a44f4aeaa3b4b12898f9d9e0@app.getsentry.com/7081'
+    SENTRY_DSN = os.environ['SENTRY_DSN']
