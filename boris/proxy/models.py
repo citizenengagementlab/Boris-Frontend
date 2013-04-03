@@ -65,7 +65,7 @@ class CoBrandForm(models.Model):
     partner_id = models.IntegerField()
     name = models.CharField(max_length=100)
     logo = models.ImageField(upload_to="partner_logos")
-    show_logo = models.CharField(null=True,blank=True,max_length=1,choices=show_logo_choices)
+    show_logo = models.CharField(null=True,blank=True,max_length=1,choices=show_logo_choices,default='t')
     logo_link = models.URLField(null=True,blank=True)
     show_email_optin = models.BooleanField(default=True)
     default_email_optin = models.BooleanField(default=True)

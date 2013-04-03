@@ -58,7 +58,7 @@ def map(request):
         redirect_url = reverse('registrant.views.register')
         redirect_url += "?"+urllib.urlencode(params)
         return redirect(redirect_url)
-
+    
     return render_to_response('map.html',context,
             context_instance=RequestContext(request))
 
@@ -179,7 +179,6 @@ def submit(request):
     if cleaned_form.has_key('survey_answer_2'):
         cleaned_form['survey_question_2'] = question_2
 
-
     #hit the rocky api
     rtv_response = rtv_proxy('POST',cleaned_form,'/api/v2/registrations.json')
 
@@ -277,7 +276,7 @@ def register_direct(request,state_abbr):
     context['state'] = state
     context['state_name'] = STATE_NAME_LOOKUP[state]
 
-    #don't show partner for testings partner ids
+    #don't show partner for testing partner ids
     if request.GET.get('partner'):
         if request.GET.get('partner') in DEFAULT_PARTNER_IDS:
             context['has_partner'] = False
@@ -301,7 +300,7 @@ def submit_direct(request,state_abbr):
     submitted_form['home_state_id'] = state_abbr
 
     cleaned_form = cleanup_form(submitted_form)
-                    
+
     #submit to rocky
     rtv_response = rtv_proxy('POST',cleaned_form,'/api/v2/gregistrations.json')
     if rtv_response.has_key('error'):
