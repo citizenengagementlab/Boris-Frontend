@@ -280,4 +280,4 @@ except:
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
     #sentry
-    SENTRY_DSN = 'https://03ce71b943cf4f78808948a93c7919d6:f367ba0538dd4ba496dd4977e4755de2@app.getsentry.com/5523'
+    SENTRY_DSN = 'https://dd2eecba1fbb43ae9dceee266d6d869f:a3787fd3a44f4aeaa3b4b12898f9d9e0@app.getsentry.com/7081'
