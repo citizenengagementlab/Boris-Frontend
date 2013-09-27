@@ -108,7 +108,7 @@ def register(request):
                 redirect_url += "?"+urllib.urlencode(params)
             return redirect(redirect_url)
 
-        staterequirements = rtv_proxy_cached('POST',{'home_state_id':state,'lang':request.LANGUAGE_CODE},
+        staterequirements = rtv_proxy_cached('GET',{'home_state_id':state,'lang':request.LANGUAGE_CODE},
             '/api/v2/state_requirements.json')
         context['staterequirements'] = staterequirements
 
