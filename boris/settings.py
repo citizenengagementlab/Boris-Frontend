@@ -42,9 +42,9 @@ LANGUAGE_CODE = 'en'
 #for the defined site translations
 #first locale code, then language in its own descriptor
 LANGUAGES = (('en', 'English'),
-             ('es', 'Español'),
-             ('zh', '中文'),
-             ('ko', '한국어')
+             ('es', 'Español')
+#             ('zh', '中文'),
+#             ('ko', '한국어')
             )
 
 SITE_ID = 1
